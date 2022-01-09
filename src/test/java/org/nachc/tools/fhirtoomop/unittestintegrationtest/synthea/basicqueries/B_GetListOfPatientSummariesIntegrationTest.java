@@ -1,4 +1,4 @@
-package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
+package org.nachc.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
 import static org.junit.Assert.assertTrue;
 

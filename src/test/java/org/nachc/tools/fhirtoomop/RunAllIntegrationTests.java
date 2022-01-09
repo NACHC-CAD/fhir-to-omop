@@ -1,4 +1,4 @@
-package org.nachc.cosmos.tools.fhirtoomop;
+package org.nachc.tools.fhirtoomop;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

@@ -1,17 +1,13 @@
-package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
+package org.nachc.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
-import org.hl7.fhir.dstu3.model.Patient;
 import org.junit.Test;
-import org.nachc.cosmos.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummarylistbundle.PatientSummaryListBundleParser;
+import org.nachc.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
-import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist.SyntheaPatientSummaryListFetcher;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.json.JsonUtil;

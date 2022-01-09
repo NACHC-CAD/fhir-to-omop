@@ -1,10 +1,10 @@
-package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
+package org.nachc.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
 import static org.junit.Assert.assertTrue;
 
 import org.hl7.fhir.dstu3.model.Patient;
 import org.junit.Test;
-import org.nachc.cosmos.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
+import org.nachc.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
@@ -31,5 +31,5 @@ public class E_GetPatientIntegrationTest {
 		assertTrue(patientId.equals(patientIdFromParser));
 		log.info("Done.");
 	}
-	
+
 }
