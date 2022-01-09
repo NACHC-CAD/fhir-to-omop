@@ -1,9 +1,9 @@
-package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.examples;
+package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.util.synthea.SyntheaPatientSummaryListFetcher;
+import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist.SyntheaPatientSummaryListFetcher;
 
 import com.nach.core.util.json.JsonUtil;
 

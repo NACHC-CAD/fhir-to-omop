@@ -1,6 +1,6 @@
-package org.nachc.tools.fhirtoomop.util.synthea;
+package org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist;
 
-import org.nachc.tools.fhirtoomop.util.synthea.properties.SyntheaParams;
+import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
 
 import com.nach.core.util.http.HttpRequestClient;
 

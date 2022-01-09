@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.synthea.properties;
+package org.nachc.tools.fhirtoomop.util.params;
 
 import java.util.Properties;
 
