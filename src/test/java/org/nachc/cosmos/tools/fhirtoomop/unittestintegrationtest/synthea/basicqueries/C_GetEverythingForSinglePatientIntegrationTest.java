@@ -16,7 +16,7 @@ import com.nach.core.util.json.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class C_GetEverythingForSinglePatient {
+public class C_GetEverythingForSinglePatientIntegrationTest {
 
 	@Test
 	public void shouldGetPatient() {
