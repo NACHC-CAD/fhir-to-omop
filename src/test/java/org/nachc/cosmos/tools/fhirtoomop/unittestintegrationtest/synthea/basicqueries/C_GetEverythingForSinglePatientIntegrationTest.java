@@ -1,5 +1,7 @@
 package org.nachc.cosmos.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.hl7.fhir.dstu3.model.Patient;
@@ -28,14 +30,16 @@ public class C_GetEverythingForSinglePatientIntegrationTest {
 		String patientId = patient.getId();
 		log.info("Got patient: " + patientId);
 		log.info("Getting everything...");
-		SyntheaPatientEverythingFetcher synthia = new SyntheaPatientEverythingFetcher();
-		String everythingJson = synthia.fetchEverything(patientId);
-		log.info("Status: " + synthia.getStatusCode());
+		SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
+		String everythingJson = synthea.fetchEverything(patientId);
+		log.info("Status: " + synthea.getStatusCode());
 		log.info("Got response: \n" + JsonUtil.prettyPrint(everythingJson) + "\n\n");
-		log.info("Status: " + synthia.getStatusCode());
+		log.info("Status: " + synthea.getStatusCode());
 		File file = AppParams.getOutFile("everything-patient.json");
 		log.info("Writing file to: " + FileUtil.getCanonicalPath(file));
 		FileUtil.write(JsonUtil.prettyPrint(everythingJson), file);
+		log.info("Status code: " + synthea.getStatusCode());
+		assertTrue(synthea.getStatusCode() == 200);
 		log.info("Done.");
 	}
 
