@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.CodeSystem.ConceptDefinitionComponent;
+import org.hl7.fhir.dstu3.model.CodeSystem.ConceptPropertyComponent;
+import org.hl7.fhir.dstu3.model.Property;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -66,6 +68,31 @@ public class CodeParser {
 			return parent.getDisplay();
 		}
 	}
+
+	//
+	// method to get if concept is abstract
+	//
+	
+	public boolean isAbstract() {
+		if(this.def == null) {
+			return false;
+		}
+		try {
+			List<ConceptPropertyComponent> props = this.def.getProperty();
+			for(ConceptPropertyComponent prop : props) {
+				if("abstract".equals(prop.getCode()) && prop.getValueBooleanType() != null && prop.getValueBooleanType().getValue() == true) {
+					return true;
+				}
+			}
+			return false;
+		} catch(Exception exp) {
+			return false;
+		}
+	}
+	
+	//
+	// methods to get children
+	//
 	
 	public List<CodeParser> getChildren() {
 		return getChildren(null, this, new ArrayList<CodeParser>());
@@ -79,7 +106,7 @@ public class CodeParser {
 			for(ConceptDefinitionComponent def : defs) {
 				CodeParser code = new CodeParser(def, parent);
 				code.parent = child;
-				log.info(code.getParentDisplay() + "\t" + code.getDisplay());
+				log.debug(code.getParentDisplay() + "\t" + code.getDisplay());
 				rtn.add(code);
 				getChildren(child, code, rtn);
 			}
