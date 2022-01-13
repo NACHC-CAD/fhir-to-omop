@@ -8,9 +8,10 @@ import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
-import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 
-import com.nach.core.util.json.JsonParser;
+import com.nach.core.util.fhir.parser.FhirJsonParser;
+
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +35,7 @@ public class PatientEverythingParser {
 	public PatientEverythingParser(String bundleJson) {
 		// TODO: (JEG) Should probably do some validation here
 		this.jsonString = bundleJson;
-		this.fhirBundle = JsonParser.parse(bundleJson, Bundle.class);
+		this.fhirBundle = FhirJsonParser.parse(bundleJson, Bundle.class);
 		this.bundle = new BundleParser(bundleJson);
 	}
 

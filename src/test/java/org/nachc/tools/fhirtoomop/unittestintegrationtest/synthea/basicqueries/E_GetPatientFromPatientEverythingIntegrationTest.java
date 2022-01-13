@@ -12,23 +12,28 @@ import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.Synthea
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class E_GetPatientIntegrationTest {
+public class E_GetPatientFromPatientEverythingIntegrationTest {
 
 	@Test
 	public void shouldGetPatient() {
 		log.info("Starting test...");
+		// get the patient id and $everything json
 		String patientId = PatientIdFetcher.getASinglePatientId();
 		SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
 		String patientJson = synthea.fetchEverything(patientId);
+		// get the patient $everything parser
 		PatientEverythingParser patientParser = new PatientEverythingParser(patientJson);
+		// get the fhir patient from the everything parser
 		Patient fhirPatient = patientParser.getPatient();
 		log.info("Got Patient: " + fhirPatient);
 		assertTrue(fhirPatient != null);
+		// get the id from the $everything patient
 		PatientParser patient = new PatientParser(fhirPatient);
 		String patientIdFromParser = patient.getId();
 		log.info("Patient ID from request: " + patientId);
 		log.info("Got ID from everything:  " + patientIdFromParser);
 		assertTrue(patientId.equals(patientIdFromParser));
+		// done
 		log.info("Done.");
 	}
 

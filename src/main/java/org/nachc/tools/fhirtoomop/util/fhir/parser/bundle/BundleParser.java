@@ -5,10 +5,11 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+
+import com.nach.core.util.fhir.parser.FhirJsonParser;
+
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
-
-import com.nach.core.util.json.JsonParser;
 
 public class BundleParser {
 
@@ -27,7 +28,7 @@ public class BundleParser {
 	public BundleParser(String bundleJson) {
 		// TODO: (JEG) Should probably do some validation here
 		this.jsonString = bundleJson;
-		this.bundle = JsonParser.parse(bundleJson, Bundle.class);
+		this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
 	}
 
 	// ---

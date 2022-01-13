@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+
+import com.nach.core.util.fhir.parser.FhirJsonParser;
+
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
-
-import com.nach.core.util.json.JsonParser;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +23,7 @@ public class PatientSummaryListBundleParser {
 
 	public PatientSummaryListBundleParser(String bundleJson) {
 		this.jsonString = bundleJson;
-		this.bundle = JsonParser.parse(bundleJson, Bundle.class);
+		this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
 	}
 
 	public List<Patient> getPatients() {
