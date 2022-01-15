@@ -29,6 +29,7 @@ public class PatientParserIntegrationTest {
 		// extensions
 		List<ExtensionParser> extensions = patient.getExtensions();
 		log.info("Got " + extensions.size() + " extensions");
+		assertTrue(extensions.size() == 7);
 		log.info("Done.");
 	}
 

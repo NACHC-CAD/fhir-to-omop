@@ -18,43 +18,43 @@ public class ExtensionParser {
 		return ex.getUrl();
 	}
 
-	public String getCode() {
+	public Coding getCoding() {
 		List<Extension> extensions = ex.getExtension();
 		for (Extension ex : extensions) {
 			Type value = ex.getValue();
 			if (value instanceof Coding == true) {
 				Coding coding = (Coding) value;
-				String rtn = coding.getCode();
-				return rtn;
+				return coding;
 			}
 		}
 		return null;
+	}
+	
+	public String getCode() {
+		Coding coding = getCoding();
+		if(coding != null) {
+			return coding.getCode();
+		} else {
+			return null;
+		}
 	}
 
 	public String getSystem() {
-		List<Extension> extensions = ex.getExtension();
-		for (Extension ex : extensions) {
-			Type value = ex.getValue();
-			if (value instanceof Coding == true) {
-				Coding coding = (Coding) value;
-				String rtn = coding.getSystem();
-				return rtn;
-			}
+		Coding coding = getCoding();
+		if(coding != null) {
+			return coding.getSystem();
+		} else {
+			return null;
 		}
-		return null;
 	}
 
 	public String getDisplay() {
-		List<Extension> extensions = ex.getExtension();
-		for (Extension ex : extensions) {
-			Type value = ex.getValue();
-			if (value instanceof Coding == true) {
-				Coding coding = (Coding) value;
-				String rtn = coding.getDisplay();
-				return rtn;
-			}
+		Coding coding = getCoding();
+		if(coding != null) {
+			return coding.getDisplay();
+		} else {
+			return null;
 		}
-		return null;
 	}
 
 }

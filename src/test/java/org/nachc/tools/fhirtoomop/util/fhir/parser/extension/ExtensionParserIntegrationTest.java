@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
@@ -36,6 +37,11 @@ public class ExtensionParserIntegrationTest {
 		String display = ex.getDisplay();
 		log.info("display: " + display);
 		assertTrue(display.equals("White"));
+		// get as coding
+		Coding coding = ex.getCoding();
+		assertTrue(coding.getCode().equals(code));
+		assertTrue(coding.getSystem().equals(system));
+		assertTrue(coding.getDisplay().equals(display));
 		log.info("Done.");
 	}
 
