@@ -22,6 +22,10 @@ public class FhirToOmopPersonParser {
 		dvo.setPersonSourceValue(patient.getId());
 		return dvo;
 	}
+	
+	private static void getRace(PatientParser patient) {
+		
+	}
 
 }
 
