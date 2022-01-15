@@ -29,19 +29,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "care_site_id",
-        "dea",
-        "gender_concept_id",
-        "gender_source_concept_id",
-        "gender_source_value",
-        "npi",
         "provider_id",
         "provider_name",
-        "provider_source_value",
+        "npi",
+        "dea",
         "specialty_concept_id",
-        "specialty_source_concept_id",
+        "care_site_id",
+        "year_of_birth",
+        "gender_concept_id",
+        "provider_source_value",
         "specialty_source_value",
-        "year_of_birth"
+        "specialty_source_concept_id",
+        "gender_source_value",
+        "gender_source_concept_id"
     };
     
     //
@@ -57,19 +57,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "careSiteId",
-        "dea",
-        "genderConceptId",
-        "genderSourceConceptId",
-        "genderSourceValue",
-        "npi",
         "providerId",
         "providerName",
-        "providerSourceValue",
+        "npi",
+        "dea",
         "specialtyConceptId",
-        "specialtySourceConceptId",
+        "careSiteId",
+        "yearOfBirth",
+        "genderConceptId",
+        "providerSourceValue",
         "specialtySourceValue",
-        "yearOfBirth"
+        "specialtySourceConceptId",
+        "genderSourceValue",
+        "genderSourceConceptId"
     };
     
     //
@@ -77,19 +77,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "CareSiteId",
-        "Dea",
-        "GenderConceptId",
-        "GenderSourceConceptId",
-        "GenderSourceValue",
-        "Npi",
         "ProviderId",
         "ProviderName",
-        "ProviderSourceValue",
+        "Npi",
+        "Dea",
         "SpecialtyConceptId",
-        "SpecialtySourceConceptId",
+        "CareSiteId",
+        "YearOfBirth",
+        "GenderConceptId",
+        "ProviderSourceValue",
         "SpecialtySourceValue",
-        "YearOfBirth"
+        "SpecialtySourceConceptId",
+        "GenderSourceValue",
+        "GenderSourceConceptId"
     };
     
     
@@ -99,31 +99,31 @@ public class ProviderDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer careSiteId;
-    
-    private String dea;
-    
-    private Integer genderConceptId;
-    
-    private Integer genderSourceConceptId;
-    
-    private String genderSourceValue;
-    
-    private String npi;
-    
     private Integer providerId;
     
     private String providerName;
     
-    private String providerSourceValue;
+    private String npi;
+    
+    private String dea;
     
     private Integer specialtyConceptId;
     
-    private Integer specialtySourceConceptId;
+    private Integer careSiteId;
+    
+    private Integer yearOfBirth;
+    
+    private Integer genderConceptId;
+    
+    private String providerSourceValue;
     
     private String specialtySourceValue;
     
-    private Integer yearOfBirth;
+    private Integer specialtySourceConceptId;
+    
+    private String genderSourceValue;
+    
+    private Integer genderSourceConceptId;
     
     private CareSiteDvo careSiteDvo;
     
@@ -159,66 +159,6 @@ public class ProviderDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // careSiteId
-    
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
-    }
-    
-    public Integer getCareSiteId() {
-        return this.careSiteId;
-    }
-    
-    // dea
-    
-    public void setDea(String val) {
-        this.dea = val;
-    }
-    
-    public String getDea() {
-        return this.dea;
-    }
-    
-    // genderConceptId
-    
-    public void setGenderConceptId(Integer val) {
-        this.genderConceptId = val;
-    }
-    
-    public Integer getGenderConceptId() {
-        return this.genderConceptId;
-    }
-    
-    // genderSourceConceptId
-    
-    public void setGenderSourceConceptId(Integer val) {
-        this.genderSourceConceptId = val;
-    }
-    
-    public Integer getGenderSourceConceptId() {
-        return this.genderSourceConceptId;
-    }
-    
-    // genderSourceValue
-    
-    public void setGenderSourceValue(String val) {
-        this.genderSourceValue = val;
-    }
-    
-    public String getGenderSourceValue() {
-        return this.genderSourceValue;
-    }
-    
-    // npi
-    
-    public void setNpi(String val) {
-        this.npi = val;
-    }
-    
-    public String getNpi() {
-        return this.npi;
-    }
-    
     // providerId
     
     public void setProviderId(Integer val) {
@@ -239,14 +179,24 @@ public class ProviderDvo implements Dvo {
         return this.providerName;
     }
     
-    // providerSourceValue
+    // npi
     
-    public void setProviderSourceValue(String val) {
-        this.providerSourceValue = val;
+    public void setNpi(String val) {
+        this.npi = val;
     }
     
-    public String getProviderSourceValue() {
-        return this.providerSourceValue;
+    public String getNpi() {
+        return this.npi;
+    }
+    
+    // dea
+    
+    public void setDea(String val) {
+        this.dea = val;
+    }
+    
+    public String getDea() {
+        return this.dea;
     }
     
     // specialtyConceptId
@@ -259,14 +209,44 @@ public class ProviderDvo implements Dvo {
         return this.specialtyConceptId;
     }
     
-    // specialtySourceConceptId
+    // careSiteId
     
-    public void setSpecialtySourceConceptId(Integer val) {
-        this.specialtySourceConceptId = val;
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
     }
     
-    public Integer getSpecialtySourceConceptId() {
-        return this.specialtySourceConceptId;
+    public Integer getCareSiteId() {
+        return this.careSiteId;
+    }
+    
+    // yearOfBirth
+    
+    public void setYearOfBirth(Integer val) {
+        this.yearOfBirth = val;
+    }
+    
+    public Integer getYearOfBirth() {
+        return this.yearOfBirth;
+    }
+    
+    // genderConceptId
+    
+    public void setGenderConceptId(Integer val) {
+        this.genderConceptId = val;
+    }
+    
+    public Integer getGenderConceptId() {
+        return this.genderConceptId;
+    }
+    
+    // providerSourceValue
+    
+    public void setProviderSourceValue(String val) {
+        this.providerSourceValue = val;
+    }
+    
+    public String getProviderSourceValue() {
+        return this.providerSourceValue;
     }
     
     // specialtySourceValue
@@ -279,14 +259,34 @@ public class ProviderDvo implements Dvo {
         return this.specialtySourceValue;
     }
     
-    // yearOfBirth
+    // specialtySourceConceptId
     
-    public void setYearOfBirth(Integer val) {
-        this.yearOfBirth = val;
+    public void setSpecialtySourceConceptId(Integer val) {
+        this.specialtySourceConceptId = val;
     }
     
-    public Integer getYearOfBirth() {
-        return this.yearOfBirth;
+    public Integer getSpecialtySourceConceptId() {
+        return this.specialtySourceConceptId;
+    }
+    
+    // genderSourceValue
+    
+    public void setGenderSourceValue(String val) {
+        this.genderSourceValue = val;
+    }
+    
+    public String getGenderSourceValue() {
+        return this.genderSourceValue;
+    }
+    
+    // genderSourceConceptId
+    
+    public void setGenderSourceConceptId(Integer val) {
+        this.genderSourceConceptId = val;
+    }
+    
+    public Integer getGenderSourceConceptId() {
+        return this.genderSourceConceptId;
     }
     
     // careSiteDvo

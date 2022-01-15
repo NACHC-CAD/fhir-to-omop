@@ -31,10 +31,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "concept_id_1",
         "concept_id_2",
-        "invalid_reason",
         "relationship_id",
+        "valid_start_date",
         "valid_end_date",
-        "valid_start_date"
+        "invalid_reason"
     };
     
     //
@@ -51,10 +51,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "conceptId1",
         "conceptId2",
-        "invalidReason",
         "relationshipId",
+        "validStartDate",
         "validEndDate",
-        "validStartDate"
+        "invalidReason"
     };
     
     //
@@ -64,10 +64,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "ConceptId1",
         "ConceptId2",
-        "InvalidReason",
         "RelationshipId",
+        "ValidStartDate",
         "ValidEndDate",
-        "ValidStartDate"
+        "InvalidReason"
     };
     
     
@@ -81,17 +81,13 @@ public class ConceptRelationshipDvo implements Dvo {
     
     private Integer conceptId2;
     
-    private String invalidReason;
-    
     private String relationshipId;
     
-    private String validEndDate;
+    private Date validStartDate;
     
-    private String validStartDate;
+    private Date validEndDate;
     
-    private ConceptDvo conceptId1Dvo;
-    
-    private ConceptDvo conceptId2Dvo;
+    private String invalidReason;
     
     private RelationshipDvo relationshipDvo;
     
@@ -119,16 +115,6 @@ public class ConceptRelationshipDvo implements Dvo {
         return this.conceptId2;
     }
     
-    // invalidReason
-    
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
-    }
-    
-    public String getInvalidReason() {
-        return this.invalidReason;
-    }
-    
     // relationshipId
     
     public void setRelationshipId(String val) {
@@ -139,44 +125,34 @@ public class ConceptRelationshipDvo implements Dvo {
         return this.relationshipId;
     }
     
-    // validEndDate
-    
-    public void setValidEndDate(String val) {
-        this.validEndDate = val;
-    }
-    
-    public String getValidEndDate() {
-        return this.validEndDate;
-    }
-    
     // validStartDate
     
-    public void setValidStartDate(String val) {
+    public void setValidStartDate(Date val) {
         this.validStartDate = val;
     }
     
-    public String getValidStartDate() {
+    public Date getValidStartDate() {
         return this.validStartDate;
     }
     
-    // conceptId1Dvo
+    // validEndDate
     
-    public void setConceptId1Dvo(ConceptDvo dvo) {
-        this.conceptId1Dvo = dvo;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public ConceptDvo getConceptId1Dvo() {
-        return this.conceptId1Dvo;
+    public Date getValidEndDate() {
+        return this.validEndDate;
     }
     
-    // conceptId2Dvo
+    // invalidReason
     
-    public void setConceptId2Dvo(ConceptDvo dvo) {
-        this.conceptId2Dvo = dvo;
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
     }
     
-    public ConceptDvo getConceptId2Dvo() {
-        return this.conceptId2Dvo;
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     // relationshipDvo

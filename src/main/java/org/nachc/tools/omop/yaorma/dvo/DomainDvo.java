@@ -29,9 +29,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "domain_concept_id",
         "domain_id",
-        "domain_name"
+        "domain_name",
+        "domain_concept_id"
     };
     
     //
@@ -47,9 +47,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "domainConceptId",
         "domainId",
-        "domainName"
+        "domainName",
+        "domainConceptId"
     };
     
     //
@@ -57,9 +57,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DomainConceptId",
         "DomainId",
-        "DomainName"
+        "DomainName",
+        "DomainConceptId"
     };
     
     
@@ -69,31 +69,19 @@ public class DomainDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer domainConceptId;
-    
     private String domainId;
     
     private String domainName;
+    
+    private Integer domainConceptId;
     
     private ConceptDvo domainConceptDvo;
     
     private ArrayList<CostDvo> costCostDomainList = new ArrayList<CostDvo>();
     
-    private ArrayList<ConceptDvo> conceptDomainList = new ArrayList<ConceptDvo>();
-    
     //
     // trivial getters and setters
     //
-    
-    // domainConceptId
-    
-    public void setDomainConceptId(Integer val) {
-        this.domainConceptId = val;
-    }
-    
-    public Integer getDomainConceptId() {
-        return this.domainConceptId;
-    }
     
     // domainId
     
@@ -115,6 +103,16 @@ public class DomainDvo implements Dvo {
         return this.domainName;
     }
     
+    // domainConceptId
+    
+    public void setDomainConceptId(Integer val) {
+        this.domainConceptId = val;
+    }
+    
+    public Integer getDomainConceptId() {
+        return this.domainConceptId;
+    }
+    
     // domainConceptDvo
     
     public void setDomainConceptDvo(ConceptDvo dvo) {
@@ -131,14 +129,6 @@ public class DomainDvo implements Dvo {
     
     public void setCostCostDomainList(ArrayList<CostDvo> list) {
         this.costCostDomainList = list;
-    }
-    
-    public ArrayList<ConceptDvo> getConceptDomainList() {
-        return conceptDomainList;
-    }
-    
-    public void setConceptDomainList(ArrayList<ConceptDvo> list) {
-        this.conceptDomainList = list;
     }
     
     //

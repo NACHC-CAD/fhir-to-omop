@@ -31,9 +31,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "care_site_id",
         "care_site_name",
-        "care_site_source_value",
-        "location_id",
         "place_of_service_concept_id",
+        "location_id",
+        "care_site_source_value",
         "place_of_service_source_value"
     };
     
@@ -52,9 +52,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "careSiteId",
         "careSiteName",
-        "careSiteSourceValue",
-        "locationId",
         "placeOfServiceConceptId",
+        "locationId",
+        "careSiteSourceValue",
         "placeOfServiceSourceValue"
     };
     
@@ -65,9 +65,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "CareSiteId",
         "CareSiteName",
-        "CareSiteSourceValue",
-        "LocationId",
         "PlaceOfServiceConceptId",
+        "LocationId",
+        "CareSiteSourceValue",
         "PlaceOfServiceSourceValue"
     };
     
@@ -82,11 +82,11 @@ public class CareSiteDvo implements Dvo {
     
     private String careSiteName;
     
-    private String careSiteSourceValue;
+    private Integer placeOfServiceConceptId;
     
     private Integer locationId;
     
-    private Integer placeOfServiceConceptId;
+    private String careSiteSourceValue;
     
     private String placeOfServiceSourceValue;
     
@@ -126,14 +126,14 @@ public class CareSiteDvo implements Dvo {
         return this.careSiteName;
     }
     
-    // careSiteSourceValue
+    // placeOfServiceConceptId
     
-    public void setCareSiteSourceValue(String val) {
-        this.careSiteSourceValue = val;
+    public void setPlaceOfServiceConceptId(Integer val) {
+        this.placeOfServiceConceptId = val;
     }
     
-    public String getCareSiteSourceValue() {
-        return this.careSiteSourceValue;
+    public Integer getPlaceOfServiceConceptId() {
+        return this.placeOfServiceConceptId;
     }
     
     // locationId
@@ -146,14 +146,14 @@ public class CareSiteDvo implements Dvo {
         return this.locationId;
     }
     
-    // placeOfServiceConceptId
+    // careSiteSourceValue
     
-    public void setPlaceOfServiceConceptId(Integer val) {
-        this.placeOfServiceConceptId = val;
+    public void setCareSiteSourceValue(String val) {
+        this.careSiteSourceValue = val;
     }
     
-    public Integer getPlaceOfServiceConceptId() {
-        return this.placeOfServiceConceptId;
+    public String getCareSiteSourceValue() {
+        return this.careSiteSourceValue;
     }
     
     // placeOfServiceSourceValue

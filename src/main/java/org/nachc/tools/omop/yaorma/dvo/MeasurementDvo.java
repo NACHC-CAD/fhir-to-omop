@@ -29,29 +29,29 @@ public class MeasurementDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "meas_event_field_concept_id",
+        "measurement_id",
+        "person_id",
         "measurement_concept_id",
         "measurement_date",
         "measurement_datetime",
-        "measurement_event_id",
-        "measurement_id",
-        "measurement_source_concept_id",
-        "measurement_source_value",
         "measurement_time",
         "measurement_type_concept_id",
         "operator_concept_id",
-        "person_id",
-        "provider_id",
-        "range_high",
-        "range_low",
-        "unit_concept_id",
-        "unit_source_concept_id",
-        "unit_source_value",
-        "value_as_concept_id",
         "value_as_number",
-        "value_source_value",
+        "value_as_concept_id",
+        "unit_concept_id",
+        "range_low",
+        "range_high",
+        "provider_id",
+        "visit_occurrence_id",
         "visit_detail_id",
-        "visit_occurrence_id"
+        "measurement_source_value",
+        "measurement_source_concept_id",
+        "unit_source_value",
+        "unit_source_concept_id",
+        "value_source_value",
+        "measurement_event_id",
+        "meas_event_field_concept_id"
     };
     
     //
@@ -67,29 +67,29 @@ public class MeasurementDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "measEventFieldConceptId",
+        "measurementId",
+        "personId",
         "measurementConceptId",
         "measurementDate",
         "measurementDatetime",
-        "measurementEventId",
-        "measurementId",
-        "measurementSourceConceptId",
-        "measurementSourceValue",
         "measurementTime",
         "measurementTypeConceptId",
         "operatorConceptId",
-        "personId",
-        "providerId",
-        "rangeHigh",
-        "rangeLow",
-        "unitConceptId",
-        "unitSourceConceptId",
-        "unitSourceValue",
-        "valueAsConceptId",
         "valueAsNumber",
-        "valueSourceValue",
+        "valueAsConceptId",
+        "unitConceptId",
+        "rangeLow",
+        "rangeHigh",
+        "providerId",
+        "visitOccurrenceId",
         "visitDetailId",
-        "visitOccurrenceId"
+        "measurementSourceValue",
+        "measurementSourceConceptId",
+        "unitSourceValue",
+        "unitSourceConceptId",
+        "valueSourceValue",
+        "measurementEventId",
+        "measEventFieldConceptId"
     };
     
     //
@@ -97,29 +97,29 @@ public class MeasurementDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "MeasEventFieldConceptId",
+        "MeasurementId",
+        "PersonId",
         "MeasurementConceptId",
         "MeasurementDate",
         "MeasurementDatetime",
-        "MeasurementEventId",
-        "MeasurementId",
-        "MeasurementSourceConceptId",
-        "MeasurementSourceValue",
         "MeasurementTime",
         "MeasurementTypeConceptId",
         "OperatorConceptId",
-        "PersonId",
-        "ProviderId",
-        "RangeHigh",
-        "RangeLow",
-        "UnitConceptId",
-        "UnitSourceConceptId",
-        "UnitSourceValue",
-        "ValueAsConceptId",
         "ValueAsNumber",
-        "ValueSourceValue",
+        "ValueAsConceptId",
+        "UnitConceptId",
+        "RangeLow",
+        "RangeHigh",
+        "ProviderId",
+        "VisitOccurrenceId",
         "VisitDetailId",
-        "VisitOccurrenceId"
+        "MeasurementSourceValue",
+        "MeasurementSourceConceptId",
+        "UnitSourceValue",
+        "UnitSourceConceptId",
+        "ValueSourceValue",
+        "MeasurementEventId",
+        "MeasEventFieldConceptId"
     };
     
     
@@ -129,21 +129,15 @@ public class MeasurementDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer measEventFieldConceptId;
+    private Integer measurementId;
+    
+    private Integer personId;
     
     private Integer measurementConceptId;
     
-    private String measurementDate;
+    private Date measurementDate;
     
     private String measurementDatetime;
-    
-    private String measurementEventId;
-    
-    private Integer measurementId;
-    
-    private Integer measurementSourceConceptId;
-    
-    private String measurementSourceValue;
     
     private String measurementTime;
     
@@ -151,29 +145,35 @@ public class MeasurementDvo implements Dvo {
     
     private Integer operatorConceptId;
     
-    private Integer personId;
-    
-    private Integer providerId;
-    
-    private String rangeHigh;
-    
-    private String rangeLow;
-    
-    private Integer unitConceptId;
-    
-    private Integer unitSourceConceptId;
-    
-    private String unitSourceValue;
+    private String valueAsNumber;
     
     private Integer valueAsConceptId;
     
-    private String valueAsNumber;
+    private Integer unitConceptId;
     
-    private String valueSourceValue;
+    private String rangeLow;
+    
+    private String rangeHigh;
+    
+    private Integer providerId;
+    
+    private Integer visitOccurrenceId;
     
     private Integer visitDetailId;
     
-    private Integer visitOccurrenceId;
+    private String measurementSourceValue;
+    
+    private Integer measurementSourceConceptId;
+    
+    private String unitSourceValue;
+    
+    private Integer unitSourceConceptId;
+    
+    private String valueSourceValue;
+    
+    private String measurementEventId;
+    
+    private Integer measEventFieldConceptId;
     
     private ConceptDvo measurementConceptDvo;
     
@@ -203,14 +203,24 @@ public class MeasurementDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // measEventFieldConceptId
+    // measurementId
     
-    public void setMeasEventFieldConceptId(Integer val) {
-        this.measEventFieldConceptId = val;
+    public void setMeasurementId(Integer val) {
+        this.measurementId = val;
     }
     
-    public Integer getMeasEventFieldConceptId() {
-        return this.measEventFieldConceptId;
+    public Integer getMeasurementId() {
+        return this.measurementId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
     }
     
     // measurementConceptId
@@ -225,11 +235,11 @@ public class MeasurementDvo implements Dvo {
     
     // measurementDate
     
-    public void setMeasurementDate(String val) {
+    public void setMeasurementDate(Date val) {
         this.measurementDate = val;
     }
     
-    public String getMeasurementDate() {
+    public Date getMeasurementDate() {
         return this.measurementDate;
     }
     
@@ -241,46 +251,6 @@ public class MeasurementDvo implements Dvo {
     
     public String getMeasurementDatetime() {
         return this.measurementDatetime;
-    }
-    
-    // measurementEventId
-    
-    public void setMeasurementEventId(String val) {
-        this.measurementEventId = val;
-    }
-    
-    public String getMeasurementEventId() {
-        return this.measurementEventId;
-    }
-    
-    // measurementId
-    
-    public void setMeasurementId(Integer val) {
-        this.measurementId = val;
-    }
-    
-    public Integer getMeasurementId() {
-        return this.measurementId;
-    }
-    
-    // measurementSourceConceptId
-    
-    public void setMeasurementSourceConceptId(Integer val) {
-        this.measurementSourceConceptId = val;
-    }
-    
-    public Integer getMeasurementSourceConceptId() {
-        return this.measurementSourceConceptId;
-    }
-    
-    // measurementSourceValue
-    
-    public void setMeasurementSourceValue(String val) {
-        this.measurementSourceValue = val;
-    }
-    
-    public String getMeasurementSourceValue() {
-        return this.measurementSourceValue;
     }
     
     // measurementTime
@@ -313,74 +283,14 @@ public class MeasurementDvo implements Dvo {
         return this.operatorConceptId;
     }
     
-    // personId
+    // valueAsNumber
     
-    public void setPersonId(Integer val) {
-        this.personId = val;
+    public void setValueAsNumber(String val) {
+        this.valueAsNumber = val;
     }
     
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // rangeHigh
-    
-    public void setRangeHigh(String val) {
-        this.rangeHigh = val;
-    }
-    
-    public String getRangeHigh() {
-        return this.rangeHigh;
-    }
-    
-    // rangeLow
-    
-    public void setRangeLow(String val) {
-        this.rangeLow = val;
-    }
-    
-    public String getRangeLow() {
-        return this.rangeLow;
-    }
-    
-    // unitConceptId
-    
-    public void setUnitConceptId(Integer val) {
-        this.unitConceptId = val;
-    }
-    
-    public Integer getUnitConceptId() {
-        return this.unitConceptId;
-    }
-    
-    // unitSourceConceptId
-    
-    public void setUnitSourceConceptId(Integer val) {
-        this.unitSourceConceptId = val;
-    }
-    
-    public Integer getUnitSourceConceptId() {
-        return this.unitSourceConceptId;
-    }
-    
-    // unitSourceValue
-    
-    public void setUnitSourceValue(String val) {
-        this.unitSourceValue = val;
-    }
-    
-    public String getUnitSourceValue() {
-        return this.unitSourceValue;
+    public String getValueAsNumber() {
+        return this.valueAsNumber;
     }
     
     // valueAsConceptId
@@ -393,24 +303,54 @@ public class MeasurementDvo implements Dvo {
         return this.valueAsConceptId;
     }
     
-    // valueAsNumber
+    // unitConceptId
     
-    public void setValueAsNumber(String val) {
-        this.valueAsNumber = val;
+    public void setUnitConceptId(Integer val) {
+        this.unitConceptId = val;
     }
     
-    public String getValueAsNumber() {
-        return this.valueAsNumber;
+    public Integer getUnitConceptId() {
+        return this.unitConceptId;
     }
     
-    // valueSourceValue
+    // rangeLow
     
-    public void setValueSourceValue(String val) {
-        this.valueSourceValue = val;
+    public void setRangeLow(String val) {
+        this.rangeLow = val;
     }
     
-    public String getValueSourceValue() {
-        return this.valueSourceValue;
+    public String getRangeLow() {
+        return this.rangeLow;
+    }
+    
+    // rangeHigh
+    
+    public void setRangeHigh(String val) {
+        this.rangeHigh = val;
+    }
+    
+    public String getRangeHigh() {
+        return this.rangeHigh;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // visitOccurrenceId
+    
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
+    }
+    
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
     }
     
     // visitDetailId
@@ -423,14 +363,74 @@ public class MeasurementDvo implements Dvo {
         return this.visitDetailId;
     }
     
-    // visitOccurrenceId
+    // measurementSourceValue
     
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
+    public void setMeasurementSourceValue(String val) {
+        this.measurementSourceValue = val;
     }
     
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
+    public String getMeasurementSourceValue() {
+        return this.measurementSourceValue;
+    }
+    
+    // measurementSourceConceptId
+    
+    public void setMeasurementSourceConceptId(Integer val) {
+        this.measurementSourceConceptId = val;
+    }
+    
+    public Integer getMeasurementSourceConceptId() {
+        return this.measurementSourceConceptId;
+    }
+    
+    // unitSourceValue
+    
+    public void setUnitSourceValue(String val) {
+        this.unitSourceValue = val;
+    }
+    
+    public String getUnitSourceValue() {
+        return this.unitSourceValue;
+    }
+    
+    // unitSourceConceptId
+    
+    public void setUnitSourceConceptId(Integer val) {
+        this.unitSourceConceptId = val;
+    }
+    
+    public Integer getUnitSourceConceptId() {
+        return this.unitSourceConceptId;
+    }
+    
+    // valueSourceValue
+    
+    public void setValueSourceValue(String val) {
+        this.valueSourceValue = val;
+    }
+    
+    public String getValueSourceValue() {
+        return this.valueSourceValue;
+    }
+    
+    // measurementEventId
+    
+    public void setMeasurementEventId(String val) {
+        this.measurementEventId = val;
+    }
+    
+    public String getMeasurementEventId() {
+        return this.measurementEventId;
+    }
+    
+    // measEventFieldConceptId
+    
+    public void setMeasEventFieldConceptId(Integer val) {
+        this.measEventFieldConceptId = val;
+    }
+    
+    public Integer getMeasEventFieldConceptId() {
+        return this.measEventFieldConceptId;
     }
     
     // measurementConceptDvo

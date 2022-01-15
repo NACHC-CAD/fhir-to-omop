@@ -29,9 +29,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "concept_class_concept_id",
         "concept_class_id",
-        "concept_class_name"
+        "concept_class_name",
+        "concept_class_concept_id"
     };
     
     //
@@ -47,9 +47,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conceptClassConceptId",
         "conceptClassId",
-        "conceptClassName"
+        "conceptClassName",
+        "conceptClassConceptId"
     };
     
     //
@@ -57,9 +57,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConceptClassConceptId",
         "ConceptClassId",
-        "ConceptClassName"
+        "ConceptClassName",
+        "ConceptClassConceptId"
     };
     
     
@@ -69,29 +69,17 @@ public class ConceptClassDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conceptClassConceptId;
-    
     private String conceptClassId;
     
     private String conceptClassName;
     
-    private ConceptDvo conceptClassConceptDvo;
+    private Integer conceptClassConceptId;
     
-    private ArrayList<ConceptDvo> conceptConceptClassList = new ArrayList<ConceptDvo>();
+    private ConceptDvo conceptClassConceptDvo;
     
     //
     // trivial getters and setters
     //
-    
-    // conceptClassConceptId
-    
-    public void setConceptClassConceptId(Integer val) {
-        this.conceptClassConceptId = val;
-    }
-    
-    public Integer getConceptClassConceptId() {
-        return this.conceptClassConceptId;
-    }
     
     // conceptClassId
     
@@ -113,6 +101,16 @@ public class ConceptClassDvo implements Dvo {
         return this.conceptClassName;
     }
     
+    // conceptClassConceptId
+    
+    public void setConceptClassConceptId(Integer val) {
+        this.conceptClassConceptId = val;
+    }
+    
+    public Integer getConceptClassConceptId() {
+        return this.conceptClassConceptId;
+    }
+    
     // conceptClassConceptDvo
     
     public void setConceptClassConceptDvo(ConceptDvo dvo) {
@@ -121,14 +119,6 @@ public class ConceptClassDvo implements Dvo {
     
     public ConceptDvo getConceptClassConceptDvo() {
         return this.conceptClassConceptDvo;
-    }
-    
-    public ArrayList<ConceptDvo> getConceptConceptClassList() {
-        return conceptConceptClassList;
-    }
-    
-    public void setConceptConceptClassList(ArrayList<ConceptDvo> list) {
-        this.conceptConceptClassList = list;
     }
     
     //

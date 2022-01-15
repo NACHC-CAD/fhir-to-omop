@@ -29,16 +29,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "concept_class_id",
-        "concept_code",
         "concept_id",
         "concept_name",
         "domain_id",
-        "invalid_reason",
+        "vocabulary_id",
+        "concept_class_id",
         "standard_concept",
-        "valid_end_date",
+        "concept_code",
         "valid_start_date",
-        "vocabulary_id"
+        "valid_end_date",
+        "invalid_reason"
     };
     
     //
@@ -54,16 +54,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conceptClassId",
-        "conceptCode",
         "conceptId",
         "conceptName",
         "domainId",
-        "invalidReason",
+        "vocabularyId",
+        "conceptClassId",
         "standardConcept",
-        "validEndDate",
+        "conceptCode",
         "validStartDate",
-        "vocabularyId"
+        "validEndDate",
+        "invalidReason"
     };
     
     //
@@ -71,16 +71,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConceptClassId",
-        "ConceptCode",
         "ConceptId",
         "ConceptName",
         "DomainId",
-        "InvalidReason",
+        "VocabularyId",
+        "ConceptClassId",
         "StandardConcept",
-        "ValidEndDate",
+        "ConceptCode",
         "ValidStartDate",
-        "VocabularyId"
+        "ValidEndDate",
+        "InvalidReason"
     };
     
     
@@ -90,31 +90,25 @@ public class ConceptDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String conceptClassId;
-    
-    private String conceptCode;
-    
     private Integer conceptId;
     
     private String conceptName;
     
     private String domainId;
     
-    private String invalidReason;
+    private String vocabularyId;
+    
+    private String conceptClassId;
     
     private String standardConcept;
     
-    private String validEndDate;
+    private String conceptCode;
     
-    private String validStartDate;
+    private Date validStartDate;
     
-    private String vocabularyId;
+    private Date validEndDate;
     
-    private ConceptClassDvo conceptClassDvo;
-    
-    private DomainDvo domainDvo;
-    
-    private VocabularyDvo vocabularyDvo;
+    private String invalidReason;
     
     private ArrayList<PersonDvo> personGenderConceptList = new ArrayList<PersonDvo>();
     
@@ -314,15 +308,9 @@ public class ConceptDvo implements Dvo {
     
     private ArrayList<CdmSourceDvo> cdmSourceCdmVersionConceptList = new ArrayList<CdmSourceDvo>();
     
-    private ArrayList<VocabularyDvo> vocabularyVocabularyConceptList = new ArrayList<VocabularyDvo>();
-    
     private ArrayList<DomainDvo> domainDomainConceptList = new ArrayList<DomainDvo>();
     
     private ArrayList<ConceptClassDvo> conceptClassConceptClassConceptList = new ArrayList<ConceptClassDvo>();
-    
-    private ArrayList<ConceptRelationshipDvo> conceptRelationshipConceptId1List = new ArrayList<ConceptRelationshipDvo>();
-    
-    private ArrayList<ConceptRelationshipDvo> conceptRelationshipConceptId2List = new ArrayList<ConceptRelationshipDvo>();
     
     private ArrayList<RelationshipDvo> relationshipRelationshipConceptList = new ArrayList<RelationshipDvo>();
     
@@ -356,26 +344,6 @@ public class ConceptDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // conceptClassId
-    
-    public void setConceptClassId(String val) {
-        this.conceptClassId = val;
-    }
-    
-    public String getConceptClassId() {
-        return this.conceptClassId;
-    }
-    
-    // conceptCode
-    
-    public void setConceptCode(String val) {
-        this.conceptCode = val;
-    }
-    
-    public String getConceptCode() {
-        return this.conceptCode;
-    }
-    
     // conceptId
     
     public void setConceptId(Integer val) {
@@ -406,14 +374,24 @@ public class ConceptDvo implements Dvo {
         return this.domainId;
     }
     
-    // invalidReason
+    // vocabularyId
     
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
+    public void setVocabularyId(String val) {
+        this.vocabularyId = val;
     }
     
-    public String getInvalidReason() {
-        return this.invalidReason;
+    public String getVocabularyId() {
+        return this.vocabularyId;
+    }
+    
+    // conceptClassId
+    
+    public void setConceptClassId(String val) {
+        this.conceptClassId = val;
+    }
+    
+    public String getConceptClassId() {
+        return this.conceptClassId;
     }
     
     // standardConcept
@@ -426,64 +404,44 @@ public class ConceptDvo implements Dvo {
         return this.standardConcept;
     }
     
-    // validEndDate
+    // conceptCode
     
-    public void setValidEndDate(String val) {
-        this.validEndDate = val;
+    public void setConceptCode(String val) {
+        this.conceptCode = val;
     }
     
-    public String getValidEndDate() {
-        return this.validEndDate;
+    public String getConceptCode() {
+        return this.conceptCode;
     }
     
     // validStartDate
     
-    public void setValidStartDate(String val) {
+    public void setValidStartDate(Date val) {
         this.validStartDate = val;
     }
     
-    public String getValidStartDate() {
+    public Date getValidStartDate() {
         return this.validStartDate;
     }
     
-    // vocabularyId
+    // validEndDate
     
-    public void setVocabularyId(String val) {
-        this.vocabularyId = val;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public String getVocabularyId() {
-        return this.vocabularyId;
+    public Date getValidEndDate() {
+        return this.validEndDate;
     }
     
-    // conceptClassDvo
+    // invalidReason
     
-    public void setConceptClassDvo(ConceptClassDvo dvo) {
-        this.conceptClassDvo = dvo;
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
     }
     
-    public ConceptClassDvo getConceptClassDvo() {
-        return this.conceptClassDvo;
-    }
-    
-    // domainDvo
-    
-    public void setDomainDvo(DomainDvo dvo) {
-        this.domainDvo = dvo;
-    }
-    
-    public DomainDvo getDomainDvo() {
-        return this.domainDvo;
-    }
-    
-    // vocabularyDvo
-    
-    public void setVocabularyDvo(VocabularyDvo dvo) {
-        this.vocabularyDvo = dvo;
-    }
-    
-    public VocabularyDvo getVocabularyDvo() {
-        return this.vocabularyDvo;
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     public ArrayList<PersonDvo> getPersonGenderConceptList() {
@@ -1278,14 +1236,6 @@ public class ConceptDvo implements Dvo {
         this.cdmSourceCdmVersionConceptList = list;
     }
     
-    public ArrayList<VocabularyDvo> getVocabularyVocabularyConceptList() {
-        return vocabularyVocabularyConceptList;
-    }
-    
-    public void setVocabularyVocabularyConceptList(ArrayList<VocabularyDvo> list) {
-        this.vocabularyVocabularyConceptList = list;
-    }
-    
     public ArrayList<DomainDvo> getDomainDomainConceptList() {
         return domainDomainConceptList;
     }
@@ -1300,22 +1250,6 @@ public class ConceptDvo implements Dvo {
     
     public void setConceptClassConceptClassConceptList(ArrayList<ConceptClassDvo> list) {
         this.conceptClassConceptClassConceptList = list;
-    }
-    
-    public ArrayList<ConceptRelationshipDvo> getConceptRelationshipConceptId1List() {
-        return conceptRelationshipConceptId1List;
-    }
-    
-    public void setConceptRelationshipConceptId1List(ArrayList<ConceptRelationshipDvo> list) {
-        this.conceptRelationshipConceptId1List = list;
-    }
-    
-    public ArrayList<ConceptRelationshipDvo> getConceptRelationshipConceptId2List() {
-        return conceptRelationshipConceptId2List;
-    }
-    
-    public void setConceptRelationshipConceptId2List(ArrayList<ConceptRelationshipDvo> list) {
-        this.conceptRelationshipConceptId2List = list;
     }
     
     public ArrayList<RelationshipDvo> getRelationshipRelationshipConceptList() {

@@ -29,23 +29,23 @@ public class VisitOccurrenceDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "admitted_from_concept_id",
-        "admitted_from_source_value",
-        "care_site_id",
-        "discharged_to_concept_id",
-        "discharged_to_source_value",
-        "person_id",
-        "preceding_visit_occurrence_id",
-        "provider_id",
-        "visit_concept_id",
-        "visit_end_date",
-        "visit_end_datetime",
         "visit_occurrence_id",
-        "visit_source_concept_id",
-        "visit_source_value",
+        "person_id",
+        "visit_concept_id",
         "visit_start_date",
         "visit_start_datetime",
-        "visit_type_concept_id"
+        "visit_end_date",
+        "visit_end_datetime",
+        "visit_type_concept_id",
+        "provider_id",
+        "care_site_id",
+        "visit_source_value",
+        "visit_source_concept_id",
+        "admitted_from_concept_id",
+        "admitted_from_source_value",
+        "discharged_to_concept_id",
+        "discharged_to_source_value",
+        "preceding_visit_occurrence_id"
     };
     
     //
@@ -61,23 +61,23 @@ public class VisitOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "admittedFromConceptId",
-        "admittedFromSourceValue",
-        "careSiteId",
-        "dischargedToConceptId",
-        "dischargedToSourceValue",
-        "personId",
-        "precedingVisitOccurrenceId",
-        "providerId",
-        "visitConceptId",
-        "visitEndDate",
-        "visitEndDatetime",
         "visitOccurrenceId",
-        "visitSourceConceptId",
-        "visitSourceValue",
+        "personId",
+        "visitConceptId",
         "visitStartDate",
         "visitStartDatetime",
-        "visitTypeConceptId"
+        "visitEndDate",
+        "visitEndDatetime",
+        "visitTypeConceptId",
+        "providerId",
+        "careSiteId",
+        "visitSourceValue",
+        "visitSourceConceptId",
+        "admittedFromConceptId",
+        "admittedFromSourceValue",
+        "dischargedToConceptId",
+        "dischargedToSourceValue",
+        "precedingVisitOccurrenceId"
     };
     
     //
@@ -85,23 +85,23 @@ public class VisitOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "AdmittedFromConceptId",
-        "AdmittedFromSourceValue",
-        "CareSiteId",
-        "DischargedToConceptId",
-        "DischargedToSourceValue",
-        "PersonId",
-        "PrecedingVisitOccurrenceId",
-        "ProviderId",
-        "VisitConceptId",
-        "VisitEndDate",
-        "VisitEndDatetime",
         "VisitOccurrenceId",
-        "VisitSourceConceptId",
-        "VisitSourceValue",
+        "PersonId",
+        "VisitConceptId",
         "VisitStartDate",
         "VisitStartDatetime",
-        "VisitTypeConceptId"
+        "VisitEndDate",
+        "VisitEndDatetime",
+        "VisitTypeConceptId",
+        "ProviderId",
+        "CareSiteId",
+        "VisitSourceValue",
+        "VisitSourceConceptId",
+        "AdmittedFromConceptId",
+        "AdmittedFromSourceValue",
+        "DischargedToConceptId",
+        "DischargedToSourceValue",
+        "PrecedingVisitOccurrenceId"
     };
     
     
@@ -111,39 +111,39 @@ public class VisitOccurrenceDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer visitOccurrenceId;
+    
+    private Integer personId;
+    
+    private Integer visitConceptId;
+    
+    private Date visitStartDate;
+    
+    private String visitStartDatetime;
+    
+    private Date visitEndDate;
+    
+    private String visitEndDatetime;
+    
+    private Integer visitTypeConceptId;
+    
+    private Integer providerId;
+    
+    private Integer careSiteId;
+    
+    private String visitSourceValue;
+    
+    private Integer visitSourceConceptId;
+    
     private Integer admittedFromConceptId;
     
     private String admittedFromSourceValue;
-    
-    private Integer careSiteId;
     
     private Integer dischargedToConceptId;
     
     private String dischargedToSourceValue;
     
-    private Integer personId;
-    
     private Integer precedingVisitOccurrenceId;
-    
-    private Integer providerId;
-    
-    private Integer visitConceptId;
-    
-    private String visitEndDate;
-    
-    private String visitEndDatetime;
-    
-    private Integer visitOccurrenceId;
-    
-    private Integer visitSourceConceptId;
-    
-    private String visitSourceValue;
-    
-    private String visitStartDate;
-    
-    private String visitStartDatetime;
-    
-    private Integer visitTypeConceptId;
     
     private ConceptDvo admittedFromConceptDvo;
     
@@ -185,6 +185,126 @@ public class VisitOccurrenceDvo implements Dvo {
     // trivial getters and setters
     //
     
+    // visitOccurrenceId
+    
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
+    }
+    
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // visitConceptId
+    
+    public void setVisitConceptId(Integer val) {
+        this.visitConceptId = val;
+    }
+    
+    public Integer getVisitConceptId() {
+        return this.visitConceptId;
+    }
+    
+    // visitStartDate
+    
+    public void setVisitStartDate(Date val) {
+        this.visitStartDate = val;
+    }
+    
+    public Date getVisitStartDate() {
+        return this.visitStartDate;
+    }
+    
+    // visitStartDatetime
+    
+    public void setVisitStartDatetime(String val) {
+        this.visitStartDatetime = val;
+    }
+    
+    public String getVisitStartDatetime() {
+        return this.visitStartDatetime;
+    }
+    
+    // visitEndDate
+    
+    public void setVisitEndDate(Date val) {
+        this.visitEndDate = val;
+    }
+    
+    public Date getVisitEndDate() {
+        return this.visitEndDate;
+    }
+    
+    // visitEndDatetime
+    
+    public void setVisitEndDatetime(String val) {
+        this.visitEndDatetime = val;
+    }
+    
+    public String getVisitEndDatetime() {
+        return this.visitEndDatetime;
+    }
+    
+    // visitTypeConceptId
+    
+    public void setVisitTypeConceptId(Integer val) {
+        this.visitTypeConceptId = val;
+    }
+    
+    public Integer getVisitTypeConceptId() {
+        return this.visitTypeConceptId;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // careSiteId
+    
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
+    }
+    
+    public Integer getCareSiteId() {
+        return this.careSiteId;
+    }
+    
+    // visitSourceValue
+    
+    public void setVisitSourceValue(String val) {
+        this.visitSourceValue = val;
+    }
+    
+    public String getVisitSourceValue() {
+        return this.visitSourceValue;
+    }
+    
+    // visitSourceConceptId
+    
+    public void setVisitSourceConceptId(Integer val) {
+        this.visitSourceConceptId = val;
+    }
+    
+    public Integer getVisitSourceConceptId() {
+        return this.visitSourceConceptId;
+    }
+    
     // admittedFromConceptId
     
     public void setAdmittedFromConceptId(Integer val) {
@@ -203,16 +323,6 @@ public class VisitOccurrenceDvo implements Dvo {
     
     public String getAdmittedFromSourceValue() {
         return this.admittedFromSourceValue;
-    }
-    
-    // careSiteId
-    
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
-    }
-    
-    public Integer getCareSiteId() {
-        return this.careSiteId;
     }
     
     // dischargedToConceptId
@@ -235,16 +345,6 @@ public class VisitOccurrenceDvo implements Dvo {
         return this.dischargedToSourceValue;
     }
     
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
     // precedingVisitOccurrenceId
     
     public void setPrecedingVisitOccurrenceId(Integer val) {
@@ -253,106 +353,6 @@ public class VisitOccurrenceDvo implements Dvo {
     
     public Integer getPrecedingVisitOccurrenceId() {
         return this.precedingVisitOccurrenceId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // visitConceptId
-    
-    public void setVisitConceptId(Integer val) {
-        this.visitConceptId = val;
-    }
-    
-    public Integer getVisitConceptId() {
-        return this.visitConceptId;
-    }
-    
-    // visitEndDate
-    
-    public void setVisitEndDate(String val) {
-        this.visitEndDate = val;
-    }
-    
-    public String getVisitEndDate() {
-        return this.visitEndDate;
-    }
-    
-    // visitEndDatetime
-    
-    public void setVisitEndDatetime(String val) {
-        this.visitEndDatetime = val;
-    }
-    
-    public String getVisitEndDatetime() {
-        return this.visitEndDatetime;
-    }
-    
-    // visitOccurrenceId
-    
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
-    }
-    
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
-    }
-    
-    // visitSourceConceptId
-    
-    public void setVisitSourceConceptId(Integer val) {
-        this.visitSourceConceptId = val;
-    }
-    
-    public Integer getVisitSourceConceptId() {
-        return this.visitSourceConceptId;
-    }
-    
-    // visitSourceValue
-    
-    public void setVisitSourceValue(String val) {
-        this.visitSourceValue = val;
-    }
-    
-    public String getVisitSourceValue() {
-        return this.visitSourceValue;
-    }
-    
-    // visitStartDate
-    
-    public void setVisitStartDate(String val) {
-        this.visitStartDate = val;
-    }
-    
-    public String getVisitStartDate() {
-        return this.visitStartDate;
-    }
-    
-    // visitStartDatetime
-    
-    public void setVisitStartDatetime(String val) {
-        this.visitStartDatetime = val;
-    }
-    
-    public String getVisitStartDatetime() {
-        return this.visitStartDatetime;
-    }
-    
-    // visitTypeConceptId
-    
-    public void setVisitTypeConceptId(Integer val) {
-        this.visitTypeConceptId = val;
-    }
-    
-    public Integer getVisitTypeConceptId() {
-        return this.visitTypeConceptId;
     }
     
     // admittedFromConceptDvo

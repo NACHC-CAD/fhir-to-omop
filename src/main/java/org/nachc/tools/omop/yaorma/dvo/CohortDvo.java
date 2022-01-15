@@ -30,9 +30,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "cohort_definition_id",
-        "cohort_end_date",
+        "subject_id",
         "cohort_start_date",
-        "subject_id"
+        "cohort_end_date"
     };
     
     //
@@ -49,9 +49,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "cohortDefinitionId",
-        "cohortEndDate",
+        "subjectId",
         "cohortStartDate",
-        "subjectId"
+        "cohortEndDate"
     };
     
     //
@@ -60,9 +60,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "CohortDefinitionId",
-        "CohortEndDate",
+        "SubjectId",
         "CohortStartDate",
-        "SubjectId"
+        "CohortEndDate"
     };
     
     
@@ -74,11 +74,11 @@ public class CohortDvo implements Dvo {
     
     private Integer cohortDefinitionId;
     
-    private String cohortEndDate;
-    
-    private String cohortStartDate;
-    
     private Integer subjectId;
+    
+    private Date cohortStartDate;
+    
+    private Date cohortEndDate;
     
     private ArrayList<CohortDefinitionDvo> cohortDefinitionCohortDefinitionList = new ArrayList<CohortDefinitionDvo>();
     
@@ -96,26 +96,6 @@ public class CohortDvo implements Dvo {
         return this.cohortDefinitionId;
     }
     
-    // cohortEndDate
-    
-    public void setCohortEndDate(String val) {
-        this.cohortEndDate = val;
-    }
-    
-    public String getCohortEndDate() {
-        return this.cohortEndDate;
-    }
-    
-    // cohortStartDate
-    
-    public void setCohortStartDate(String val) {
-        this.cohortStartDate = val;
-    }
-    
-    public String getCohortStartDate() {
-        return this.cohortStartDate;
-    }
-    
     // subjectId
     
     public void setSubjectId(Integer val) {
@@ -124,6 +104,26 @@ public class CohortDvo implements Dvo {
     
     public Integer getSubjectId() {
         return this.subjectId;
+    }
+    
+    // cohortStartDate
+    
+    public void setCohortStartDate(Date val) {
+        this.cohortStartDate = val;
+    }
+    
+    public Date getCohortStartDate() {
+        return this.cohortStartDate;
+    }
+    
+    // cohortEndDate
+    
+    public void setCohortEndDate(Date val) {
+        this.cohortEndDate = val;
+    }
+    
+    public Date getCohortEndDate() {
+        return this.cohortEndDate;
     }
     
     public ArrayList<CohortDefinitionDvo> getCohortDefinitionCohortDefinitionList() {

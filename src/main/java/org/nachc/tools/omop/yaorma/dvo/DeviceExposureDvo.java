@@ -29,25 +29,25 @@ public class DeviceExposureDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "device_concept_id",
-        "device_exposure_end_date",
-        "device_exposure_end_datetime",
         "device_exposure_id",
+        "person_id",
+        "device_concept_id",
         "device_exposure_start_date",
         "device_exposure_start_datetime",
-        "device_source_concept_id",
-        "device_source_value",
+        "device_exposure_end_date",
+        "device_exposure_end_datetime",
         "device_type_concept_id",
-        "person_id",
-        "production_id",
-        "provider_id",
-        "quantity",
         "unique_device_id",
-        "unit_concept_id",
-        "unit_source_concept_id",
-        "unit_source_value",
+        "production_id",
+        "quantity",
+        "provider_id",
+        "visit_occurrence_id",
         "visit_detail_id",
-        "visit_occurrence_id"
+        "device_source_value",
+        "device_source_concept_id",
+        "unit_concept_id",
+        "unit_source_value",
+        "unit_source_concept_id"
     };
     
     //
@@ -63,25 +63,25 @@ public class DeviceExposureDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "deviceConceptId",
-        "deviceExposureEndDate",
-        "deviceExposureEndDatetime",
         "deviceExposureId",
+        "personId",
+        "deviceConceptId",
         "deviceExposureStartDate",
         "deviceExposureStartDatetime",
-        "deviceSourceConceptId",
-        "deviceSourceValue",
+        "deviceExposureEndDate",
+        "deviceExposureEndDatetime",
         "deviceTypeConceptId",
-        "personId",
-        "productionId",
-        "providerId",
-        "quantity",
         "uniqueDeviceId",
-        "unitConceptId",
-        "unitSourceConceptId",
-        "unitSourceValue",
+        "productionId",
+        "quantity",
+        "providerId",
+        "visitOccurrenceId",
         "visitDetailId",
-        "visitOccurrenceId"
+        "deviceSourceValue",
+        "deviceSourceConceptId",
+        "unitConceptId",
+        "unitSourceValue",
+        "unitSourceConceptId"
     };
     
     //
@@ -89,25 +89,25 @@ public class DeviceExposureDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DeviceConceptId",
-        "DeviceExposureEndDate",
-        "DeviceExposureEndDatetime",
         "DeviceExposureId",
+        "PersonId",
+        "DeviceConceptId",
         "DeviceExposureStartDate",
         "DeviceExposureStartDatetime",
-        "DeviceSourceConceptId",
-        "DeviceSourceValue",
+        "DeviceExposureEndDate",
+        "DeviceExposureEndDatetime",
         "DeviceTypeConceptId",
-        "PersonId",
-        "ProductionId",
-        "ProviderId",
-        "Quantity",
         "UniqueDeviceId",
-        "UnitConceptId",
-        "UnitSourceConceptId",
-        "UnitSourceValue",
+        "ProductionId",
+        "Quantity",
+        "ProviderId",
+        "VisitOccurrenceId",
         "VisitDetailId",
-        "VisitOccurrenceId"
+        "DeviceSourceValue",
+        "DeviceSourceConceptId",
+        "UnitConceptId",
+        "UnitSourceValue",
+        "UnitSourceConceptId"
     };
     
     
@@ -117,43 +117,43 @@ public class DeviceExposureDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer deviceConceptId;
-    
-    private String deviceExposureEndDate;
-    
-    private String deviceExposureEndDatetime;
-    
     private Integer deviceExposureId;
-    
-    private String deviceExposureStartDate;
-    
-    private String deviceExposureStartDatetime;
-    
-    private Integer deviceSourceConceptId;
-    
-    private String deviceSourceValue;
-    
-    private Integer deviceTypeConceptId;
     
     private Integer personId;
     
-    private String productionId;
+    private Integer deviceConceptId;
     
-    private Integer providerId;
+    private Date deviceExposureStartDate;
     
-    private Integer quantity;
+    private String deviceExposureStartDatetime;
+    
+    private Date deviceExposureEndDate;
+    
+    private String deviceExposureEndDatetime;
+    
+    private Integer deviceTypeConceptId;
     
     private String uniqueDeviceId;
     
-    private Integer unitConceptId;
+    private String productionId;
     
-    private Integer unitSourceConceptId;
+    private Integer quantity;
     
-    private String unitSourceValue;
+    private Integer providerId;
+    
+    private Integer visitOccurrenceId;
     
     private Integer visitDetailId;
     
-    private Integer visitOccurrenceId;
+    private String deviceSourceValue;
+    
+    private Integer deviceSourceConceptId;
+    
+    private Integer unitConceptId;
+    
+    private String unitSourceValue;
+    
+    private Integer unitSourceConceptId;
     
     private ConceptDvo deviceConceptDvo;
     
@@ -177,36 +177,6 @@ public class DeviceExposureDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // deviceConceptId
-    
-    public void setDeviceConceptId(Integer val) {
-        this.deviceConceptId = val;
-    }
-    
-    public Integer getDeviceConceptId() {
-        return this.deviceConceptId;
-    }
-    
-    // deviceExposureEndDate
-    
-    public void setDeviceExposureEndDate(String val) {
-        this.deviceExposureEndDate = val;
-    }
-    
-    public String getDeviceExposureEndDate() {
-        return this.deviceExposureEndDate;
-    }
-    
-    // deviceExposureEndDatetime
-    
-    public void setDeviceExposureEndDatetime(String val) {
-        this.deviceExposureEndDatetime = val;
-    }
-    
-    public String getDeviceExposureEndDatetime() {
-        return this.deviceExposureEndDatetime;
-    }
-    
     // deviceExposureId
     
     public void setDeviceExposureId(Integer val) {
@@ -217,13 +187,33 @@ public class DeviceExposureDvo implements Dvo {
         return this.deviceExposureId;
     }
     
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // deviceConceptId
+    
+    public void setDeviceConceptId(Integer val) {
+        this.deviceConceptId = val;
+    }
+    
+    public Integer getDeviceConceptId() {
+        return this.deviceConceptId;
+    }
+    
     // deviceExposureStartDate
     
-    public void setDeviceExposureStartDate(String val) {
+    public void setDeviceExposureStartDate(Date val) {
         this.deviceExposureStartDate = val;
     }
     
-    public String getDeviceExposureStartDate() {
+    public Date getDeviceExposureStartDate() {
         return this.deviceExposureStartDate;
     }
     
@@ -237,24 +227,24 @@ public class DeviceExposureDvo implements Dvo {
         return this.deviceExposureStartDatetime;
     }
     
-    // deviceSourceConceptId
+    // deviceExposureEndDate
     
-    public void setDeviceSourceConceptId(Integer val) {
-        this.deviceSourceConceptId = val;
+    public void setDeviceExposureEndDate(Date val) {
+        this.deviceExposureEndDate = val;
     }
     
-    public Integer getDeviceSourceConceptId() {
-        return this.deviceSourceConceptId;
+    public Date getDeviceExposureEndDate() {
+        return this.deviceExposureEndDate;
     }
     
-    // deviceSourceValue
+    // deviceExposureEndDatetime
     
-    public void setDeviceSourceValue(String val) {
-        this.deviceSourceValue = val;
+    public void setDeviceExposureEndDatetime(String val) {
+        this.deviceExposureEndDatetime = val;
     }
     
-    public String getDeviceSourceValue() {
-        return this.deviceSourceValue;
+    public String getDeviceExposureEndDatetime() {
+        return this.deviceExposureEndDatetime;
     }
     
     // deviceTypeConceptId
@@ -267,14 +257,14 @@ public class DeviceExposureDvo implements Dvo {
         return this.deviceTypeConceptId;
     }
     
-    // personId
+    // uniqueDeviceId
     
-    public void setPersonId(Integer val) {
-        this.personId = val;
+    public void setUniqueDeviceId(String val) {
+        this.uniqueDeviceId = val;
     }
     
-    public Integer getPersonId() {
-        return this.personId;
+    public String getUniqueDeviceId() {
+        return this.uniqueDeviceId;
     }
     
     // productionId
@@ -287,16 +277,6 @@ public class DeviceExposureDvo implements Dvo {
         return this.productionId;
     }
     
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
     // quantity
     
     public void setQuantity(Integer val) {
@@ -307,44 +287,24 @@ public class DeviceExposureDvo implements Dvo {
         return this.quantity;
     }
     
-    // uniqueDeviceId
+    // providerId
     
-    public void setUniqueDeviceId(String val) {
-        this.uniqueDeviceId = val;
+    public void setProviderId(Integer val) {
+        this.providerId = val;
     }
     
-    public String getUniqueDeviceId() {
-        return this.uniqueDeviceId;
+    public Integer getProviderId() {
+        return this.providerId;
     }
     
-    // unitConceptId
+    // visitOccurrenceId
     
-    public void setUnitConceptId(Integer val) {
-        this.unitConceptId = val;
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
     }
     
-    public Integer getUnitConceptId() {
-        return this.unitConceptId;
-    }
-    
-    // unitSourceConceptId
-    
-    public void setUnitSourceConceptId(Integer val) {
-        this.unitSourceConceptId = val;
-    }
-    
-    public Integer getUnitSourceConceptId() {
-        return this.unitSourceConceptId;
-    }
-    
-    // unitSourceValue
-    
-    public void setUnitSourceValue(String val) {
-        this.unitSourceValue = val;
-    }
-    
-    public String getUnitSourceValue() {
-        return this.unitSourceValue;
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
     }
     
     // visitDetailId
@@ -357,14 +317,54 @@ public class DeviceExposureDvo implements Dvo {
         return this.visitDetailId;
     }
     
-    // visitOccurrenceId
+    // deviceSourceValue
     
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
+    public void setDeviceSourceValue(String val) {
+        this.deviceSourceValue = val;
     }
     
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
+    public String getDeviceSourceValue() {
+        return this.deviceSourceValue;
+    }
+    
+    // deviceSourceConceptId
+    
+    public void setDeviceSourceConceptId(Integer val) {
+        this.deviceSourceConceptId = val;
+    }
+    
+    public Integer getDeviceSourceConceptId() {
+        return this.deviceSourceConceptId;
+    }
+    
+    // unitConceptId
+    
+    public void setUnitConceptId(Integer val) {
+        this.unitConceptId = val;
+    }
+    
+    public Integer getUnitConceptId() {
+        return this.unitConceptId;
+    }
+    
+    // unitSourceValue
+    
+    public void setUnitSourceValue(String val) {
+        this.unitSourceValue = val;
+    }
+    
+    public String getUnitSourceValue() {
+        return this.unitSourceValue;
+    }
+    
+    // unitSourceConceptId
+    
+    public void setUnitSourceConceptId(Integer val) {
+        this.unitSourceConceptId = val;
+    }
+    
+    public Integer getUnitSourceConceptId() {
+        return this.unitSourceConceptId;
     }
     
     // deviceConceptDvo

@@ -31,8 +31,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "ancestor_concept_id",
         "descendant_concept_id",
-        "max_levels_of_separation",
-        "min_levels_of_separation"
+        "min_levels_of_separation",
+        "max_levels_of_separation"
     };
     
     //
@@ -49,8 +49,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "ancestorConceptId",
         "descendantConceptId",
-        "maxLevelsOfSeparation",
-        "minLevelsOfSeparation"
+        "minLevelsOfSeparation",
+        "maxLevelsOfSeparation"
     };
     
     //
@@ -60,8 +60,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "AncestorConceptId",
         "DescendantConceptId",
-        "MaxLevelsOfSeparation",
-        "MinLevelsOfSeparation"
+        "MinLevelsOfSeparation",
+        "MaxLevelsOfSeparation"
     };
     
     
@@ -75,9 +75,9 @@ public class ConceptAncestorDvo implements Dvo {
     
     private Integer descendantConceptId;
     
-    private Integer maxLevelsOfSeparation;
-    
     private Integer minLevelsOfSeparation;
+    
+    private Integer maxLevelsOfSeparation;
     
     private ConceptDvo ancestorConceptDvo;
     
@@ -107,16 +107,6 @@ public class ConceptAncestorDvo implements Dvo {
         return this.descendantConceptId;
     }
     
-    // maxLevelsOfSeparation
-    
-    public void setMaxLevelsOfSeparation(Integer val) {
-        this.maxLevelsOfSeparation = val;
-    }
-    
-    public Integer getMaxLevelsOfSeparation() {
-        return this.maxLevelsOfSeparation;
-    }
-    
     // minLevelsOfSeparation
     
     public void setMinLevelsOfSeparation(Integer val) {
@@ -125,6 +115,16 @@ public class ConceptAncestorDvo implements Dvo {
     
     public Integer getMinLevelsOfSeparation() {
         return this.minLevelsOfSeparation;
+    }
+    
+    // maxLevelsOfSeparation
+    
+    public void setMaxLevelsOfSeparation(Integer val) {
+        this.maxLevelsOfSeparation = val;
+    }
+    
+    public Integer getMaxLevelsOfSeparation() {
+        return this.maxLevelsOfSeparation;
     }
     
     // ancestorConceptDvo

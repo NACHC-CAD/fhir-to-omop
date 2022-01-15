@@ -29,24 +29,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "birth_datetime",
-        "care_site_id",
-        "day_of_birth",
-        "ethnicity_concept_id",
-        "ethnicity_source_concept_id",
-        "ethnicity_source_value",
-        "gender_concept_id",
-        "gender_source_concept_id",
-        "gender_source_value",
-        "location_id",
-        "month_of_birth",
         "person_id",
-        "person_source_value",
-        "provider_id",
+        "gender_concept_id",
+        "year_of_birth",
+        "month_of_birth",
+        "day_of_birth",
+        "birth_datetime",
         "race_concept_id",
-        "race_source_concept_id",
+        "ethnicity_concept_id",
+        "location_id",
+        "provider_id",
+        "care_site_id",
+        "person_source_value",
+        "gender_source_value",
+        "gender_source_concept_id",
         "race_source_value",
-        "year_of_birth"
+        "race_source_concept_id",
+        "ethnicity_source_value",
+        "ethnicity_source_concept_id"
     };
     
     //
@@ -62,24 +62,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "birthDatetime",
-        "careSiteId",
-        "dayOfBirth",
-        "ethnicityConceptId",
-        "ethnicitySourceConceptId",
-        "ethnicitySourceValue",
-        "genderConceptId",
-        "genderSourceConceptId",
-        "genderSourceValue",
-        "locationId",
-        "monthOfBirth",
         "personId",
-        "personSourceValue",
-        "providerId",
+        "genderConceptId",
+        "yearOfBirth",
+        "monthOfBirth",
+        "dayOfBirth",
+        "birthDatetime",
         "raceConceptId",
-        "raceSourceConceptId",
+        "ethnicityConceptId",
+        "locationId",
+        "providerId",
+        "careSiteId",
+        "personSourceValue",
+        "genderSourceValue",
+        "genderSourceConceptId",
         "raceSourceValue",
-        "yearOfBirth"
+        "raceSourceConceptId",
+        "ethnicitySourceValue",
+        "ethnicitySourceConceptId"
     };
     
     //
@@ -87,24 +87,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "BirthDatetime",
-        "CareSiteId",
-        "DayOfBirth",
-        "EthnicityConceptId",
-        "EthnicitySourceConceptId",
-        "EthnicitySourceValue",
-        "GenderConceptId",
-        "GenderSourceConceptId",
-        "GenderSourceValue",
-        "LocationId",
-        "MonthOfBirth",
         "PersonId",
-        "PersonSourceValue",
-        "ProviderId",
+        "GenderConceptId",
+        "YearOfBirth",
+        "MonthOfBirth",
+        "DayOfBirth",
+        "BirthDatetime",
         "RaceConceptId",
-        "RaceSourceConceptId",
+        "EthnicityConceptId",
+        "LocationId",
+        "ProviderId",
+        "CareSiteId",
+        "PersonSourceValue",
+        "GenderSourceValue",
+        "GenderSourceConceptId",
         "RaceSourceValue",
-        "YearOfBirth"
+        "RaceSourceConceptId",
+        "EthnicitySourceValue",
+        "EthnicitySourceConceptId"
     };
     
     
@@ -114,41 +114,41 @@ public class PersonDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String birthDatetime;
-    
-    private Integer careSiteId;
-    
-    private Integer dayOfBirth;
-    
-    private Integer ethnicityConceptId;
-    
-    private Integer ethnicitySourceConceptId;
-    
-    private String ethnicitySourceValue;
+    private Integer personId;
     
     private Integer genderConceptId;
     
-    private Integer genderSourceConceptId;
-    
-    private String genderSourceValue;
-    
-    private Integer locationId;
+    private Integer yearOfBirth;
     
     private Integer monthOfBirth;
     
-    private Integer personId;
+    private Integer dayOfBirth;
     
-    private String personSourceValue;
-    
-    private Integer providerId;
+    private String birthDatetime;
     
     private Integer raceConceptId;
     
-    private Integer raceSourceConceptId;
+    private Integer ethnicityConceptId;
+    
+    private Integer locationId;
+    
+    private Integer providerId;
+    
+    private Integer careSiteId;
+    
+    private String personSourceValue;
+    
+    private String genderSourceValue;
+    
+    private Integer genderSourceConceptId;
     
     private String raceSourceValue;
     
-    private Integer yearOfBirth;
+    private Integer raceSourceConceptId;
+    
+    private String ethnicitySourceValue;
+    
+    private Integer ethnicitySourceConceptId;
     
     private CareSiteDvo careSiteDvo;
     
@@ -208,64 +208,14 @@ public class PersonDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // birthDatetime
+    // personId
     
-    public void setBirthDatetime(String val) {
-        this.birthDatetime = val;
+    public void setPersonId(Integer val) {
+        this.personId = val;
     }
     
-    public String getBirthDatetime() {
-        return this.birthDatetime;
-    }
-    
-    // careSiteId
-    
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
-    }
-    
-    public Integer getCareSiteId() {
-        return this.careSiteId;
-    }
-    
-    // dayOfBirth
-    
-    public void setDayOfBirth(Integer val) {
-        this.dayOfBirth = val;
-    }
-    
-    public Integer getDayOfBirth() {
-        return this.dayOfBirth;
-    }
-    
-    // ethnicityConceptId
-    
-    public void setEthnicityConceptId(Integer val) {
-        this.ethnicityConceptId = val;
-    }
-    
-    public Integer getEthnicityConceptId() {
-        return this.ethnicityConceptId;
-    }
-    
-    // ethnicitySourceConceptId
-    
-    public void setEthnicitySourceConceptId(Integer val) {
-        this.ethnicitySourceConceptId = val;
-    }
-    
-    public Integer getEthnicitySourceConceptId() {
-        return this.ethnicitySourceConceptId;
-    }
-    
-    // ethnicitySourceValue
-    
-    public void setEthnicitySourceValue(String val) {
-        this.ethnicitySourceValue = val;
-    }
-    
-    public String getEthnicitySourceValue() {
-        return this.ethnicitySourceValue;
+    public Integer getPersonId() {
+        return this.personId;
     }
     
     // genderConceptId
@@ -278,34 +228,14 @@ public class PersonDvo implements Dvo {
         return this.genderConceptId;
     }
     
-    // genderSourceConceptId
+    // yearOfBirth
     
-    public void setGenderSourceConceptId(Integer val) {
-        this.genderSourceConceptId = val;
+    public void setYearOfBirth(Integer val) {
+        this.yearOfBirth = val;
     }
     
-    public Integer getGenderSourceConceptId() {
-        return this.genderSourceConceptId;
-    }
-    
-    // genderSourceValue
-    
-    public void setGenderSourceValue(String val) {
-        this.genderSourceValue = val;
-    }
-    
-    public String getGenderSourceValue() {
-        return this.genderSourceValue;
-    }
-    
-    // locationId
-    
-    public void setLocationId(Integer val) {
-        this.locationId = val;
-    }
-    
-    public Integer getLocationId() {
-        return this.locationId;
+    public Integer getYearOfBirth() {
+        return this.yearOfBirth;
     }
     
     // monthOfBirth
@@ -318,34 +248,24 @@ public class PersonDvo implements Dvo {
         return this.monthOfBirth;
     }
     
-    // personId
+    // dayOfBirth
     
-    public void setPersonId(Integer val) {
-        this.personId = val;
+    public void setDayOfBirth(Integer val) {
+        this.dayOfBirth = val;
     }
     
-    public Integer getPersonId() {
-        return this.personId;
+    public Integer getDayOfBirth() {
+        return this.dayOfBirth;
     }
     
-    // personSourceValue
+    // birthDatetime
     
-    public void setPersonSourceValue(String val) {
-        this.personSourceValue = val;
+    public void setBirthDatetime(String val) {
+        this.birthDatetime = val;
     }
     
-    public String getPersonSourceValue() {
-        return this.personSourceValue;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
+    public String getBirthDatetime() {
+        return this.birthDatetime;
     }
     
     // raceConceptId
@@ -358,14 +278,74 @@ public class PersonDvo implements Dvo {
         return this.raceConceptId;
     }
     
-    // raceSourceConceptId
+    // ethnicityConceptId
     
-    public void setRaceSourceConceptId(Integer val) {
-        this.raceSourceConceptId = val;
+    public void setEthnicityConceptId(Integer val) {
+        this.ethnicityConceptId = val;
     }
     
-    public Integer getRaceSourceConceptId() {
-        return this.raceSourceConceptId;
+    public Integer getEthnicityConceptId() {
+        return this.ethnicityConceptId;
+    }
+    
+    // locationId
+    
+    public void setLocationId(Integer val) {
+        this.locationId = val;
+    }
+    
+    public Integer getLocationId() {
+        return this.locationId;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // careSiteId
+    
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
+    }
+    
+    public Integer getCareSiteId() {
+        return this.careSiteId;
+    }
+    
+    // personSourceValue
+    
+    public void setPersonSourceValue(String val) {
+        this.personSourceValue = val;
+    }
+    
+    public String getPersonSourceValue() {
+        return this.personSourceValue;
+    }
+    
+    // genderSourceValue
+    
+    public void setGenderSourceValue(String val) {
+        this.genderSourceValue = val;
+    }
+    
+    public String getGenderSourceValue() {
+        return this.genderSourceValue;
+    }
+    
+    // genderSourceConceptId
+    
+    public void setGenderSourceConceptId(Integer val) {
+        this.genderSourceConceptId = val;
+    }
+    
+    public Integer getGenderSourceConceptId() {
+        return this.genderSourceConceptId;
     }
     
     // raceSourceValue
@@ -378,14 +358,34 @@ public class PersonDvo implements Dvo {
         return this.raceSourceValue;
     }
     
-    // yearOfBirth
+    // raceSourceConceptId
     
-    public void setYearOfBirth(Integer val) {
-        this.yearOfBirth = val;
+    public void setRaceSourceConceptId(Integer val) {
+        this.raceSourceConceptId = val;
     }
     
-    public Integer getYearOfBirth() {
-        return this.yearOfBirth;
+    public Integer getRaceSourceConceptId() {
+        return this.raceSourceConceptId;
+    }
+    
+    // ethnicitySourceValue
+    
+    public void setEthnicitySourceValue(String val) {
+        this.ethnicitySourceValue = val;
+    }
+    
+    public String getEthnicitySourceValue() {
+        return this.ethnicitySourceValue;
+    }
+    
+    // ethnicitySourceConceptId
+    
+    public void setEthnicitySourceConceptId(Integer val) {
+        this.ethnicitySourceConceptId = val;
+    }
+    
+    public Integer getEthnicitySourceConceptId() {
+        return this.ethnicitySourceConceptId;
     }
     
     // careSiteDvo

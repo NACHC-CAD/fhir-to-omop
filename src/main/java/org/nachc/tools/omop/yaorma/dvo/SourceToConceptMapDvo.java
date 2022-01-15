@@ -29,15 +29,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "invalid_reason",
         "source_code",
-        "source_code_description",
         "source_concept_id",
         "source_vocabulary_id",
+        "source_code_description",
         "target_concept_id",
         "target_vocabulary_id",
+        "valid_start_date",
         "valid_end_date",
-        "valid_start_date"
+        "invalid_reason"
     };
     
     //
@@ -52,15 +52,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "invalidReason",
         "sourceCode",
-        "sourceCodeDescription",
         "sourceConceptId",
         "sourceVocabularyId",
+        "sourceCodeDescription",
         "targetConceptId",
         "targetVocabularyId",
+        "validStartDate",
         "validEndDate",
-        "validStartDate"
+        "invalidReason"
     };
     
     //
@@ -68,15 +68,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "InvalidReason",
         "SourceCode",
-        "SourceCodeDescription",
         "SourceConceptId",
         "SourceVocabularyId",
+        "SourceCodeDescription",
         "TargetConceptId",
         "TargetVocabularyId",
+        "ValidStartDate",
         "ValidEndDate",
-        "ValidStartDate"
+        "InvalidReason"
     };
     
     
@@ -86,23 +86,23 @@ public class SourceToConceptMapDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String invalidReason;
-    
     private String sourceCode;
-    
-    private String sourceCodeDescription;
     
     private Integer sourceConceptId;
     
     private String sourceVocabularyId;
     
+    private String sourceCodeDescription;
+    
     private Integer targetConceptId;
     
     private String targetVocabularyId;
     
-    private String validEndDate;
+    private Date validStartDate;
     
-    private String validStartDate;
+    private Date validEndDate;
+    
+    private String invalidReason;
     
     private ConceptDvo sourceConceptDvo;
     
@@ -114,16 +114,6 @@ public class SourceToConceptMapDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // invalidReason
-    
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
-    }
-    
-    public String getInvalidReason() {
-        return this.invalidReason;
-    }
-    
     // sourceCode
     
     public void setSourceCode(String val) {
@@ -132,16 +122,6 @@ public class SourceToConceptMapDvo implements Dvo {
     
     public String getSourceCode() {
         return this.sourceCode;
-    }
-    
-    // sourceCodeDescription
-    
-    public void setSourceCodeDescription(String val) {
-        this.sourceCodeDescription = val;
-    }
-    
-    public String getSourceCodeDescription() {
-        return this.sourceCodeDescription;
     }
     
     // sourceConceptId
@@ -164,6 +144,16 @@ public class SourceToConceptMapDvo implements Dvo {
         return this.sourceVocabularyId;
     }
     
+    // sourceCodeDescription
+    
+    public void setSourceCodeDescription(String val) {
+        this.sourceCodeDescription = val;
+    }
+    
+    public String getSourceCodeDescription() {
+        return this.sourceCodeDescription;
+    }
+    
     // targetConceptId
     
     public void setTargetConceptId(Integer val) {
@@ -184,24 +174,34 @@ public class SourceToConceptMapDvo implements Dvo {
         return this.targetVocabularyId;
     }
     
-    // validEndDate
-    
-    public void setValidEndDate(String val) {
-        this.validEndDate = val;
-    }
-    
-    public String getValidEndDate() {
-        return this.validEndDate;
-    }
-    
     // validStartDate
     
-    public void setValidStartDate(String val) {
+    public void setValidStartDate(Date val) {
         this.validStartDate = val;
     }
     
-    public String getValidStartDate() {
+    public Date getValidStartDate() {
         return this.validStartDate;
+    }
+    
+    // validEndDate
+    
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
+    }
+    
+    public Date getValidEndDate() {
+        return this.validEndDate;
+    }
+    
+    // invalidReason
+    
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
+    }
+    
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     // sourceConceptDvo

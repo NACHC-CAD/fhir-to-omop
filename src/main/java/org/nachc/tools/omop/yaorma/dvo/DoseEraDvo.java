@@ -29,13 +29,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "dose_era_end_date",
         "dose_era_id",
-        "dose_era_start_date",
-        "dose_value",
-        "drug_concept_id",
         "person_id",
-        "unit_concept_id"
+        "drug_concept_id",
+        "unit_concept_id",
+        "dose_value",
+        "dose_era_start_date",
+        "dose_era_end_date"
     };
     
     //
@@ -51,13 +51,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "doseEraEndDate",
         "doseEraId",
-        "doseEraStartDate",
-        "doseValue",
-        "drugConceptId",
         "personId",
-        "unitConceptId"
+        "drugConceptId",
+        "unitConceptId",
+        "doseValue",
+        "doseEraStartDate",
+        "doseEraEndDate"
     };
     
     //
@@ -65,13 +65,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DoseEraEndDate",
         "DoseEraId",
-        "DoseEraStartDate",
-        "DoseValue",
-        "DrugConceptId",
         "PersonId",
-        "UnitConceptId"
+        "DrugConceptId",
+        "UnitConceptId",
+        "DoseValue",
+        "DoseEraStartDate",
+        "DoseEraEndDate"
     };
     
     
@@ -81,19 +81,19 @@ public class DoseEraDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String doseEraEndDate;
-    
     private Integer doseEraId;
-    
-    private String doseEraStartDate;
-    
-    private String doseValue;
-    
-    private Integer drugConceptId;
     
     private Integer personId;
     
+    private Integer drugConceptId;
+    
     private Integer unitConceptId;
+    
+    private String doseValue;
+    
+    private String doseEraStartDate;
+    
+    private String doseEraEndDate;
     
     private ConceptDvo drugConceptDvo;
     
@@ -105,16 +105,6 @@ public class DoseEraDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // doseEraEndDate
-    
-    public void setDoseEraEndDate(String val) {
-        this.doseEraEndDate = val;
-    }
-    
-    public String getDoseEraEndDate() {
-        return this.doseEraEndDate;
-    }
-    
     // doseEraId
     
     public void setDoseEraId(Integer val) {
@@ -123,36 +113,6 @@ public class DoseEraDvo implements Dvo {
     
     public Integer getDoseEraId() {
         return this.doseEraId;
-    }
-    
-    // doseEraStartDate
-    
-    public void setDoseEraStartDate(String val) {
-        this.doseEraStartDate = val;
-    }
-    
-    public String getDoseEraStartDate() {
-        return this.doseEraStartDate;
-    }
-    
-    // doseValue
-    
-    public void setDoseValue(String val) {
-        this.doseValue = val;
-    }
-    
-    public String getDoseValue() {
-        return this.doseValue;
-    }
-    
-    // drugConceptId
-    
-    public void setDrugConceptId(Integer val) {
-        this.drugConceptId = val;
-    }
-    
-    public Integer getDrugConceptId() {
-        return this.drugConceptId;
     }
     
     // personId
@@ -165,6 +125,16 @@ public class DoseEraDvo implements Dvo {
         return this.personId;
     }
     
+    // drugConceptId
+    
+    public void setDrugConceptId(Integer val) {
+        this.drugConceptId = val;
+    }
+    
+    public Integer getDrugConceptId() {
+        return this.drugConceptId;
+    }
+    
     // unitConceptId
     
     public void setUnitConceptId(Integer val) {
@@ -173,6 +143,36 @@ public class DoseEraDvo implements Dvo {
     
     public Integer getUnitConceptId() {
         return this.unitConceptId;
+    }
+    
+    // doseValue
+    
+    public void setDoseValue(String val) {
+        this.doseValue = val;
+    }
+    
+    public String getDoseValue() {
+        return this.doseValue;
+    }
+    
+    // doseEraStartDate
+    
+    public void setDoseEraStartDate(String val) {
+        this.doseEraStartDate = val;
+    }
+    
+    public String getDoseEraStartDate() {
+        return this.doseEraStartDate;
+    }
+    
+    // doseEraEndDate
+    
+    public void setDoseEraEndDate(String val) {
+        this.doseEraEndDate = val;
+    }
+    
+    public String getDoseEraEndDate() {
+        return this.doseEraEndDate;
     }
     
     // drugConceptDvo

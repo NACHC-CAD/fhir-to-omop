@@ -29,29 +29,29 @@ public class DrugExposureDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "days_supply",
-        "dose_unit_source_value",
-        "drug_concept_id",
-        "drug_exposure_end_date",
-        "drug_exposure_end_datetime",
         "drug_exposure_id",
+        "person_id",
+        "drug_concept_id",
         "drug_exposure_start_date",
         "drug_exposure_start_datetime",
-        "drug_source_concept_id",
-        "drug_source_value",
-        "drug_type_concept_id",
-        "lot_number",
-        "person_id",
-        "provider_id",
-        "quantity",
-        "refills",
-        "route_concept_id",
-        "route_source_value",
-        "sig",
-        "stop_reason",
+        "drug_exposure_end_date",
+        "drug_exposure_end_datetime",
         "verbatim_end_date",
+        "drug_type_concept_id",
+        "stop_reason",
+        "refills",
+        "quantity",
+        "days_supply",
+        "sig",
+        "route_concept_id",
+        "lot_number",
+        "provider_id",
+        "visit_occurrence_id",
         "visit_detail_id",
-        "visit_occurrence_id"
+        "drug_source_value",
+        "drug_source_concept_id",
+        "route_source_value",
+        "dose_unit_source_value"
     };
     
     //
@@ -67,29 +67,29 @@ public class DrugExposureDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "daysSupply",
-        "doseUnitSourceValue",
-        "drugConceptId",
-        "drugExposureEndDate",
-        "drugExposureEndDatetime",
         "drugExposureId",
+        "personId",
+        "drugConceptId",
         "drugExposureStartDate",
         "drugExposureStartDatetime",
-        "drugSourceConceptId",
-        "drugSourceValue",
-        "drugTypeConceptId",
-        "lotNumber",
-        "personId",
-        "providerId",
-        "quantity",
-        "refills",
-        "routeConceptId",
-        "routeSourceValue",
-        "sig",
-        "stopReason",
+        "drugExposureEndDate",
+        "drugExposureEndDatetime",
         "verbatimEndDate",
+        "drugTypeConceptId",
+        "stopReason",
+        "refills",
+        "quantity",
+        "daysSupply",
+        "sig",
+        "routeConceptId",
+        "lotNumber",
+        "providerId",
+        "visitOccurrenceId",
         "visitDetailId",
-        "visitOccurrenceId"
+        "drugSourceValue",
+        "drugSourceConceptId",
+        "routeSourceValue",
+        "doseUnitSourceValue"
     };
     
     //
@@ -97,29 +97,29 @@ public class DrugExposureDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DaysSupply",
-        "DoseUnitSourceValue",
-        "DrugConceptId",
-        "DrugExposureEndDate",
-        "DrugExposureEndDatetime",
         "DrugExposureId",
+        "PersonId",
+        "DrugConceptId",
         "DrugExposureStartDate",
         "DrugExposureStartDatetime",
-        "DrugSourceConceptId",
-        "DrugSourceValue",
-        "DrugTypeConceptId",
-        "LotNumber",
-        "PersonId",
-        "ProviderId",
-        "Quantity",
-        "Refills",
-        "RouteConceptId",
-        "RouteSourceValue",
-        "Sig",
-        "StopReason",
+        "DrugExposureEndDate",
+        "DrugExposureEndDatetime",
         "VerbatimEndDate",
+        "DrugTypeConceptId",
+        "StopReason",
+        "Refills",
+        "Quantity",
+        "DaysSupply",
+        "Sig",
+        "RouteConceptId",
+        "LotNumber",
+        "ProviderId",
+        "VisitOccurrenceId",
         "VisitDetailId",
-        "VisitOccurrenceId"
+        "DrugSourceValue",
+        "DrugSourceConceptId",
+        "RouteSourceValue",
+        "DoseUnitSourceValue"
     };
     
     
@@ -129,51 +129,51 @@ public class DrugExposureDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer daysSupply;
-    
-    private String doseUnitSourceValue;
-    
-    private Integer drugConceptId;
-    
-    private String drugExposureEndDate;
-    
-    private String drugExposureEndDatetime;
-    
     private Integer drugExposureId;
-    
-    private String drugExposureStartDate;
-    
-    private String drugExposureStartDatetime;
-    
-    private Integer drugSourceConceptId;
-    
-    private String drugSourceValue;
-    
-    private Integer drugTypeConceptId;
-    
-    private String lotNumber;
     
     private Integer personId;
     
-    private Integer providerId;
+    private Integer drugConceptId;
     
-    private String quantity;
+    private Date drugExposureStartDate;
     
-    private Integer refills;
+    private String drugExposureStartDatetime;
     
-    private Integer routeConceptId;
+    private Date drugExposureEndDate;
     
-    private String routeSourceValue;
+    private String drugExposureEndDatetime;
     
-    private String sig;
+    private Date verbatimEndDate;
+    
+    private Integer drugTypeConceptId;
     
     private String stopReason;
     
-    private String verbatimEndDate;
+    private Integer refills;
+    
+    private String quantity;
+    
+    private Integer daysSupply;
+    
+    private String sig;
+    
+    private Integer routeConceptId;
+    
+    private String lotNumber;
+    
+    private Integer providerId;
+    
+    private Integer visitOccurrenceId;
     
     private Integer visitDetailId;
     
-    private Integer visitOccurrenceId;
+    private String drugSourceValue;
+    
+    private Integer drugSourceConceptId;
+    
+    private String routeSourceValue;
+    
+    private String doseUnitSourceValue;
     
     private ConceptDvo drugConceptDvo;
     
@@ -195,24 +195,24 @@ public class DrugExposureDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // daysSupply
+    // drugExposureId
     
-    public void setDaysSupply(Integer val) {
-        this.daysSupply = val;
+    public void setDrugExposureId(Integer val) {
+        this.drugExposureId = val;
     }
     
-    public Integer getDaysSupply() {
-        return this.daysSupply;
+    public Integer getDrugExposureId() {
+        return this.drugExposureId;
     }
     
-    // doseUnitSourceValue
+    // personId
     
-    public void setDoseUnitSourceValue(String val) {
-        this.doseUnitSourceValue = val;
+    public void setPersonId(Integer val) {
+        this.personId = val;
     }
     
-    public String getDoseUnitSourceValue() {
-        return this.doseUnitSourceValue;
+    public Integer getPersonId() {
+        return this.personId;
     }
     
     // drugConceptId
@@ -225,43 +225,13 @@ public class DrugExposureDvo implements Dvo {
         return this.drugConceptId;
     }
     
-    // drugExposureEndDate
-    
-    public void setDrugExposureEndDate(String val) {
-        this.drugExposureEndDate = val;
-    }
-    
-    public String getDrugExposureEndDate() {
-        return this.drugExposureEndDate;
-    }
-    
-    // drugExposureEndDatetime
-    
-    public void setDrugExposureEndDatetime(String val) {
-        this.drugExposureEndDatetime = val;
-    }
-    
-    public String getDrugExposureEndDatetime() {
-        return this.drugExposureEndDatetime;
-    }
-    
-    // drugExposureId
-    
-    public void setDrugExposureId(Integer val) {
-        this.drugExposureId = val;
-    }
-    
-    public Integer getDrugExposureId() {
-        return this.drugExposureId;
-    }
-    
     // drugExposureStartDate
     
-    public void setDrugExposureStartDate(String val) {
+    public void setDrugExposureStartDate(Date val) {
         this.drugExposureStartDate = val;
     }
     
-    public String getDrugExposureStartDate() {
+    public Date getDrugExposureStartDate() {
         return this.drugExposureStartDate;
     }
     
@@ -275,24 +245,34 @@ public class DrugExposureDvo implements Dvo {
         return this.drugExposureStartDatetime;
     }
     
-    // drugSourceConceptId
+    // drugExposureEndDate
     
-    public void setDrugSourceConceptId(Integer val) {
-        this.drugSourceConceptId = val;
+    public void setDrugExposureEndDate(Date val) {
+        this.drugExposureEndDate = val;
     }
     
-    public Integer getDrugSourceConceptId() {
-        return this.drugSourceConceptId;
+    public Date getDrugExposureEndDate() {
+        return this.drugExposureEndDate;
     }
     
-    // drugSourceValue
+    // drugExposureEndDatetime
     
-    public void setDrugSourceValue(String val) {
-        this.drugSourceValue = val;
+    public void setDrugExposureEndDatetime(String val) {
+        this.drugExposureEndDatetime = val;
     }
     
-    public String getDrugSourceValue() {
-        return this.drugSourceValue;
+    public String getDrugExposureEndDatetime() {
+        return this.drugExposureEndDatetime;
+    }
+    
+    // verbatimEndDate
+    
+    public void setVerbatimEndDate(Date val) {
+        this.verbatimEndDate = val;
+    }
+    
+    public Date getVerbatimEndDate() {
+        return this.verbatimEndDate;
     }
     
     // drugTypeConceptId
@@ -305,44 +285,14 @@ public class DrugExposureDvo implements Dvo {
         return this.drugTypeConceptId;
     }
     
-    // lotNumber
+    // stopReason
     
-    public void setLotNumber(String val) {
-        this.lotNumber = val;
+    public void setStopReason(String val) {
+        this.stopReason = val;
     }
     
-    public String getLotNumber() {
-        return this.lotNumber;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // quantity
-    
-    public void setQuantity(String val) {
-        this.quantity = val;
-    }
-    
-    public String getQuantity() {
-        return this.quantity;
+    public String getStopReason() {
+        return this.stopReason;
     }
     
     // refills
@@ -355,24 +305,24 @@ public class DrugExposureDvo implements Dvo {
         return this.refills;
     }
     
-    // routeConceptId
+    // quantity
     
-    public void setRouteConceptId(Integer val) {
-        this.routeConceptId = val;
+    public void setQuantity(String val) {
+        this.quantity = val;
     }
     
-    public Integer getRouteConceptId() {
-        return this.routeConceptId;
+    public String getQuantity() {
+        return this.quantity;
     }
     
-    // routeSourceValue
+    // daysSupply
     
-    public void setRouteSourceValue(String val) {
-        this.routeSourceValue = val;
+    public void setDaysSupply(Integer val) {
+        this.daysSupply = val;
     }
     
-    public String getRouteSourceValue() {
-        return this.routeSourceValue;
+    public Integer getDaysSupply() {
+        return this.daysSupply;
     }
     
     // sig
@@ -385,24 +335,44 @@ public class DrugExposureDvo implements Dvo {
         return this.sig;
     }
     
-    // stopReason
+    // routeConceptId
     
-    public void setStopReason(String val) {
-        this.stopReason = val;
+    public void setRouteConceptId(Integer val) {
+        this.routeConceptId = val;
     }
     
-    public String getStopReason() {
-        return this.stopReason;
+    public Integer getRouteConceptId() {
+        return this.routeConceptId;
     }
     
-    // verbatimEndDate
+    // lotNumber
     
-    public void setVerbatimEndDate(String val) {
-        this.verbatimEndDate = val;
+    public void setLotNumber(String val) {
+        this.lotNumber = val;
     }
     
-    public String getVerbatimEndDate() {
-        return this.verbatimEndDate;
+    public String getLotNumber() {
+        return this.lotNumber;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // visitOccurrenceId
+    
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
+    }
+    
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
     }
     
     // visitDetailId
@@ -415,14 +385,44 @@ public class DrugExposureDvo implements Dvo {
         return this.visitDetailId;
     }
     
-    // visitOccurrenceId
+    // drugSourceValue
     
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
+    public void setDrugSourceValue(String val) {
+        this.drugSourceValue = val;
     }
     
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
+    public String getDrugSourceValue() {
+        return this.drugSourceValue;
+    }
+    
+    // drugSourceConceptId
+    
+    public void setDrugSourceConceptId(Integer val) {
+        this.drugSourceConceptId = val;
+    }
+    
+    public Integer getDrugSourceConceptId() {
+        return this.drugSourceConceptId;
+    }
+    
+    // routeSourceValue
+    
+    public void setRouteSourceValue(String val) {
+        this.routeSourceValue = val;
+    }
+    
+    public String getRouteSourceValue() {
+        return this.routeSourceValue;
+    }
+    
+    // doseUnitSourceValue
+    
+    public void setDoseUnitSourceValue(String val) {
+        this.doseUnitSourceValue = val;
+    }
+    
+    public String getDoseUnitSourceValue() {
+        return this.doseUnitSourceValue;
     }
     
     // drugConceptDvo
