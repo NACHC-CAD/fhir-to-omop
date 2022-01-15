@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.patient;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Extension;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
@@ -20,22 +21,40 @@ public class PatientParser {
 		return patientId;
 	}
 
-	public String getRaceCode() {
-		return null;
+	public Coding getRace() {
+		ExtensionParser ex = getExtension("http://hl7.org/fhir/us/core/StructureDefinition/us-core-race");
+		Coding rtn = ex.getCoding();
+		return rtn;
 	}
 
+	public Coding getEthnicity() {
+		ExtensionParser ex = getExtension("http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity");
+		Coding rtn = ex.getCoding();
+		return rtn;
+	}
+	
 	//
-	// methods to get collections
+	// methods for extensions
 	//
 
 	public List<ExtensionParser> getExtensions() {
 		List<ExtensionParser> rtn = new ArrayList<ExtensionParser>();
 		List<Extension> extensions = this.patient.getExtension();
-		for(Extension ex : extensions) {
+		for (Extension ex : extensions) {
 			ExtensionParser parser = new ExtensionParser(ex);
 			rtn.add(parser);
 		}
 		return rtn;
+	}
+
+	public ExtensionParser getExtension(String url) {
+		List<ExtensionParser> extensions = getExtensions();
+		for (ExtensionParser ex : extensions) {
+			if (url != null && url.equals(ex.getUrl())) {
+				return ex;
+			}
+		}
+		return null;
 	}
 
 }
