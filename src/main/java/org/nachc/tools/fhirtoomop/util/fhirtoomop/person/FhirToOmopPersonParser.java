@@ -6,7 +6,8 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.mapping.race.RaceMapping;
+import org.nachc.tools.fhirtoomop.util.mapping.EthnicityMapping;
+import org.nachc.tools.fhirtoomop.util.mapping.RaceMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 
@@ -32,13 +33,14 @@ public class FhirToOmopPersonParser {
 		dvo.setPersonId(personId);
 		// person_source_value
 		dvo.setPersonSourceValue(patient.getId());
-		// race
-		getRace(patient, dvo, conn);
+		// mappings
+		mapRace(patient, dvo, conn);
+		mapEthnicity(patient, dvo, conn);
 		// done
 		return dvo;
 	}
 
-	private static void getRace(PatientParser patient, PersonDvo dvo, Connection conn) {
+	private static void mapRace(PatientParser patient, PersonDvo dvo, Connection conn) {
 		Coding coding = patient.getRace();
 		if (coding != null) {
 			String code = coding.getCode();
@@ -51,5 +53,19 @@ public class FhirToOmopPersonParser {
 			}
 		}
 	}
-
+	
+	private static void mapEthnicity(PatientParser patient, PersonDvo dvo, Connection conn) {
+		Coding coding = patient.getEthnicity();
+		if (coding != null) {
+			String code = coding.getCode();
+			if (code != null) {
+				ConceptDvo eth = new EthnicityMapping(conn).getOmopConceptForFhirCode(code);
+				if(eth != null) {
+					Integer ethId = eth.getConceptId();
+					dvo.setEthnicityConceptId(ethId);
+				}
+			}
+		}
+	}
+	
 }

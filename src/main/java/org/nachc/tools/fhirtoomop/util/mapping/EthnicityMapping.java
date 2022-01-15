@@ -1,24 +1,24 @@
-package org.nachc.tools.fhirtoomop.util.mapping.race;
+package org.nachc.tools.fhirtoomop.util.mapping;
 
 import java.sql.Connection;
 
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
-import org.nachc.tools.omop.yaorma.dvo.FhirToOmopRaceDvo;
+import org.nachc.tools.omop.yaorma.dvo.FhirToOmopEthnicityDvo;
 import org.yaorma.dao.Dao;
 
-public class RaceMapping {
+public class EthnicityMapping {
 
 	private Connection conn;
 
-	public RaceMapping(Connection conn) {
+	public EthnicityMapping(Connection conn) {
 		this.conn = conn;
 	}
 
 	public ConceptDvo getOmopConceptForFhirCode(String code) {
-		FhirToOmopRaceDvo mapping = Dao.find(new FhirToOmopRaceDvo(), "code", code, this.conn);
-		if(mapping != null) {
+		FhirToOmopEthnicityDvo mapping = Dao.find(new FhirToOmopEthnicityDvo(), "code", code, this.conn);
+		if (mapping != null) {
 			Integer omopId = mapping.getOmopCode();
-			if(omopId != null) {
+			if (omopId != null) {
 				ConceptDvo rtn = Dao.find(new ConceptDvo(), "concept_id", omopId + "", conn);
 				return rtn;
 			}
