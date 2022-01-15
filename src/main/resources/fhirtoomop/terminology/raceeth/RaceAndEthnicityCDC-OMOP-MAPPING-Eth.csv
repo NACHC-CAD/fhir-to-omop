@@ -1,0 +1,44 @@
+omop_code,omop_display,depth,parent_code,parent_display,code,display,is_abstract,definition
+38003563,Hispanic or Latino,1,2133-7,Ethnicity,2135-2,Hispanic or Latino,FALSE,Hispanic or Latino
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2137-8,Spaniard,FALSE,Spaniard
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2148-5,Mexican,FALSE,Mexican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2155-0,Central American,FALSE,Central American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2165-9,South American,FALSE,South American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2178-2,Latin American,FALSE,Latin American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2180-8,Puerto Rican,FALSE,Puerto Rican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2182-4,Cuban,FALSE,Cuban
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2184-0,Dominican,FALSE,Dominican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2138-6,Andalusian,FALSE,Andalusian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2139-4,Asturian,FALSE,Asturian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2140-2,Castillian,FALSE,Castillian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2141-0,Catalonian,FALSE,Catalonian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2142-8,Belearic Islander,FALSE,Belearic Islander
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2143-6,Gallego,FALSE,Gallego
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2144-4,Valencian,FALSE,Valencian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2145-1,Canarian,FALSE,Canarian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2146-9,Spanish Basque,FALSE,Spanish Basque
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2149-3,Mexican American,FALSE,Mexican American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2150-1,Mexicano,FALSE,Mexicano
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2151-9,Chicano,FALSE,Chicano
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2152-7,La Raza,FALSE,La Raza
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2153-5,Mexican American Indian,FALSE,Mexican American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2156-8,Costa Rican,FALSE,Costa Rican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2157-6,Guatemalan,FALSE,Guatemalan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2158-4,Honduran,FALSE,Honduran
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2159-2,Nicaraguan,FALSE,Nicaraguan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2160-0,Panamanian,FALSE,Panamanian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2161-8,Salvadoran,FALSE,Salvadoran
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2162-6,Central American Indian,FALSE,Central American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2163-4,Canal Zone,FALSE,Canal Zone
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2166-7,Argentinean,FALSE,Argentinean
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2167-5,Bolivian,FALSE,Bolivian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2168-3,Chilean,FALSE,Chilean
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2169-1,Colombian,FALSE,Colombian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2170-9,Ecuadorian,FALSE,Ecuadorian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2171-7,Paraguayan,FALSE,Paraguayan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2172-5,Peruvian,FALSE,Peruvian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2173-3,Uruguayan,FALSE,Uruguayan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2174-1,Venezuelan,FALSE,Venezuelan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2175-8,South American Indian,FALSE,South American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2176-6,Criollo,FALSE,Criollo
+38003564,Not Hispanic or Latino,1,2133-7,Ethnicity,2186-5,Not Hispanic or Latino,FALSE,"Note that this term remains in the table for completeness, even though within HL7, the notion of ""not otherwise coded"" term is deprecated."
