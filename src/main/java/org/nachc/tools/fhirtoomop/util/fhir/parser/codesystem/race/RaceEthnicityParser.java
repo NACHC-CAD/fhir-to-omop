@@ -88,7 +88,7 @@ public class RaceEthnicityParser {
 				row.add(code.getParentDisplay() != null ? code.getParentDisplay() : "");
 				row.add(code.getCode() != null ? code.getCode() : "");
 				row.add(code.getDisplay() != null ? code.getDisplay() : "");
-				row.add(code.isAbstract() + "");
+				row.add(code.isAbstract() == true ? "1": "0");
 				row.add(code.getDefinition() != null ? code.getDefinition() : "");
 				printer.printRecord(row);
 				printer.flush();
