@@ -14,12 +14,18 @@ public class FhirToOmopPersonParserIntegrationTest {
 
 	@Test
 	public void shouldGetOmopPerson() {
+		// get the test data and create the parser
 		log.info("Starting test...");
 		String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
 		PersonDvo person = FhirToOmopPersonParser.getPerson(json);
+		// person id
 		int id = person.getPersonId();
-		log.info("Got id: " + id);
+		log.info("PersonId: " + id);
 		assertTrue(id > 0);
+		// person source id
+		String personSourceId = person.getPersonSourceValue();
+		log.info("SourceId: " + personSourceId);
+		// done
 		log.info("Done.");
 	}
 	

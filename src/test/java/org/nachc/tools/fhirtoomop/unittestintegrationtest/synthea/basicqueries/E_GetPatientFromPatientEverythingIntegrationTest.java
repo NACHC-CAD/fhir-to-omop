@@ -23,12 +23,8 @@ public class E_GetPatientFromPatientEverythingIntegrationTest {
 		String patientJson = synthea.fetchEverything(patientId);
 		// get the patient $everything parser
 		PatientEverythingParser patientParser = new PatientEverythingParser(patientJson);
-		// get the fhir patient from the everything parser
-		Patient fhirPatient = patientParser.getPatient();
-		log.info("Got Patient: " + fhirPatient);
-		assertTrue(fhirPatient != null);
 		// get the id from the $everything patient
-		PatientParser patient = new PatientParser(fhirPatient);
+		PatientParser patient = patientParser.getPatient();
 		String patientIdFromParser = patient.getId();
 		log.info("Patient ID from request: " + patientId);
 		log.info("Got ID from everything:  " + patientIdFromParser);
