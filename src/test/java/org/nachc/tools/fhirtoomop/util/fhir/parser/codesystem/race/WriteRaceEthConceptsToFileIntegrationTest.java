@@ -15,7 +15,7 @@ public class WriteRaceEthConceptsToFileIntegrationTest {
 	@Test
 	public void shouldWriteFile() {
 		log.info("Starting test...");
-		File dir = AppParams.getOutDir();
+		File dir = AppParams.getTestOutputDir();
 		File file = FileUtil.getFile("/fhir/terminology/uscore/CodeSystem-cdcrec.json");
 		String json = FileUtil.getAsString(file);
 		RaceEthnicityParser parser = new RaceEthnicityParser(json);

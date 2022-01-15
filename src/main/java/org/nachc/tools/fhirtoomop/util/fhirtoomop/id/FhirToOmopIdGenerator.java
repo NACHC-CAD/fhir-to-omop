@@ -16,11 +16,11 @@ public class FhirToOmopIdGenerator {
 			String sqlString = "select max(" + idName + ") as id from " + tableName;
 			Data data = Database.query(sqlString, conn);
 			if (data.size() == 0) {
-				return 0;
+				return 1;
 			} else {
 				Integer rtn = data.get(0).getInt("id");
 				if(rtn == null) {
-					return 0;
+					return 1;
 				} else {
 					return rtn;
 				}

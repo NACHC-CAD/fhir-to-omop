@@ -10,18 +10,18 @@ public class AppParams {
 
 	public static final Properties PROPS = PropertiesUtil.getAsProperties("app.properties");
 
-	public static String getTestOutputDir() {
+	public static String getTestOutputDirName() {
 		return PROPS.getProperty("testOutputDir");
 	}
 
 	public static String OUT_DIR = "/test/synthea-tools";
 
-	public static File getOutDir() {
+	public static File getTestOutputDir() {
 		return new File(OUT_DIR);
 	}
 	
-	public static File getOutFile(String fileName) {
-		return new File(getOutDir(), fileName);
+	public static File getTestOutFile(String fileName) {
+		return new File(getTestOutputDir(), fileName);
 	}
 	
 }
