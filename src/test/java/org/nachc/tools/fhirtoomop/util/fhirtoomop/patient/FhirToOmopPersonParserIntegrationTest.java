@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.patient;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonParser;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 
 import com.nach.core.util.file.FileUtil;
@@ -25,6 +26,7 @@ public class FhirToOmopPersonParserIntegrationTest {
 		// person source id
 		String personSourceId = person.getPersonSourceValue();
 		log.info("SourceId: " + personSourceId);
+		assertTrue(personSourceId.equals("6f7acde5-db81-4361-82cf-886893a3280c"));
 		// done
 		log.info("Done.");
 	}

@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.fhirtoomop.patient;
+package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
