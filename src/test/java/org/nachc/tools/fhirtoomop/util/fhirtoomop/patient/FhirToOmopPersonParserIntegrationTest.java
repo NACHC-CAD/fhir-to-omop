@@ -7,6 +7,8 @@ import java.sql.Connection;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonParser;
+import org.nachc.tools.fhirtoomop.util.omop.datafactory.ConceptDataFactory;
+import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.yaorma.database.Database;
 
@@ -39,6 +41,10 @@ public class FhirToOmopPersonParserIntegrationTest {
 			// race
 			Integer raceId = person.getRaceConceptId();
 			log.info("Got race_id: " + raceId);
+			ConceptDvo raceDvo = ConceptDataFactory.getConcept(raceId, conn);
+			String raceFromOmop = raceDvo.getConceptName();
+			assertTrue(raceFromOmop.equals("White"));
+			log.info("raceFromOmop: " + raceFromOmop);
 		} finally {
 			Database.close(conn);
 		}
