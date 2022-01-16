@@ -9,31 +9,32 @@ public class EncounterParser {
 	//
 	// instance variables
 	//
-	
+
 	private Encounter enc;
 
 	//
 	// constructor
 	//
-	
+
 	public EncounterParser(Encounter enc) {
 		this.enc = enc;
 	}
-	
+
 	//
 	// id stuff
 	//
-	
+
 	public String getEncounterId() {
 		return this.enc.getId();
 	}
 
 	public String getEncounterIdUnqualified() {
-		// TODO: (JEG) There is probably a method in the HAPI API that does this more cleanly
+		// TODO: (JEG) There is probably a method in the HAPI API that does this more
+		// cleanly
 		String str = this.enc.getId();
-		if(str.indexOf('/') > 0) {
+		if (str.indexOf('/') > 0) {
 			str = str.substring((str.indexOf('/') + 1), str.length());
-			if(str.indexOf('/') > 0) {
+			if (str.indexOf('/') > 0) {
 				str = str.substring(0, str.indexOf('/'));
 				return str;
 			}
@@ -51,7 +52,7 @@ public class EncounterParser {
 	//
 	// dates
 	//
-	
+
 	public Date getStartDate() {
 		return this.enc.getPeriod().getStart();
 	}
@@ -59,5 +60,5 @@ public class EncounterParser {
 	public Date getEndDate() {
 		return this.enc.getPeriod().getEnd();
 	}
-	
+
 }

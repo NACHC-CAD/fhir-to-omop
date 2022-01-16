@@ -19,14 +19,21 @@ public class FhirToOmopPersonEverythingParser {
 
 	private Connection conn;
 
+	private PersonDvo person;
+
+	private PatientEverythingParser patient;
+
 	public FhirToOmopPersonEverythingParser(String json, Connection conn) {
 		this.json = json;
 		this.conn = conn;
 	}
 
 	public PersonDvo getPerson() {
-		PatientEverythingParser patient = new PatientEverythingParser(json);
-		return FhirToOmopPersonParser.getPerson(patient, conn);
+		if (this.person == null) {
+			this.patient = new PatientEverythingParser(json);
+			this.person = FhirToOmopPersonParser.getPerson(patient, conn);
+		}
+		return this.person;
 	}
 
 }

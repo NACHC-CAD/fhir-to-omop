@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.fhirtoomop.patient;
+package org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl;
 
 import static org.junit.Assert.assertTrue;
 
