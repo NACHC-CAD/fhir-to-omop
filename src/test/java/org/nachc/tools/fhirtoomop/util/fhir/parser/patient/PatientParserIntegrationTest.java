@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
-import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
@@ -55,6 +54,13 @@ public class PatientParserIntegrationTest {
 		String gender = patient.getGender().toCode();
 		log.info("gender: " + gender);
 		assertTrue(gender.equals("male"));
+		// birth date
+		String birthDateString = patient.getBirthDateAsString();
+		Integer birthYear = patient.getBirthYear();
+		log.info("Got birth date: " + birthDateString);
+		assertTrue(birthDateString.equals("1991-02-10"));
+		log.info("Got birth year: " + birthYear);
+		assertTrue(birthYear == 1991);
 		// done
 		log.info("Done.");
 	}

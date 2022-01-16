@@ -64,6 +64,9 @@ public class FhirToOmopPersonParserIntegrationTest {
 			String genderFromSource = person.getGenderSourceValue();
 			log.info("Got gender from source: " + genderFromSource);
 			assertTrue(genderFromSource.equals("male"));
+			// birth day
+			Integer birthYear = person.getYearOfBirth();
+			log.info("Got birth year: " + birthYear);
 		} finally {
 			Database.close(conn);
 		}

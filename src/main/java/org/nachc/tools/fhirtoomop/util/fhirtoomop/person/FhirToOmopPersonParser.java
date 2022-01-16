@@ -40,6 +40,7 @@ public class FhirToOmopPersonParser {
 		mapRace(patient, dvo, conn);
 		mapEthnicity(patient, dvo, conn);
 		mapGender(patient, dvo, conn);
+		mapBirthDay(patient, dvo, conn);
 		// done
 		return dvo;
 	}
@@ -50,7 +51,7 @@ public class FhirToOmopPersonParser {
 			String code = coding.getCode();
 			if (code != null) {
 				ConceptDvo race = new RaceMapping(conn).getOmopConceptForFhirCode(code);
-				if(race != null) {
+				if (race != null) {
 					Integer raceId = race.getConceptId();
 					dvo.setRaceConceptId(raceId);
 					dvo.setRaceSourceValue(CodingParser.getAsPipeDelimited(patient.getRace()));
@@ -58,14 +59,14 @@ public class FhirToOmopPersonParser {
 			}
 		}
 	}
-	
+
 	private static void mapEthnicity(PatientParser patient, PersonDvo dvo, Connection conn) {
 		Coding coding = patient.getEthnicity();
 		if (coding != null) {
 			String code = coding.getCode();
 			if (code != null) {
 				ConceptDvo eth = new EthnicityMapping(conn).getOmopConceptForFhirCode(code);
-				if(eth != null) {
+				if (eth != null) {
 					Integer ethId = eth.getConceptId();
 					dvo.setEthnicityConceptId(ethId);
 					dvo.setEthnicitySourceValue(CodingParser.getAsPipeDelimited(patient.getEthnicity()));
@@ -73,12 +74,17 @@ public class FhirToOmopPersonParser {
 			}
 		}
 	}
-	
+
 	private static void mapGender(PatientParser patient, PersonDvo dvo, Connection conn) {
 		AdministrativeGender gender = patient.getGender();
 		Integer genderId = GenderMapping.getOmopConceptForFhirCode(gender);
 		dvo.setGenderConceptId(genderId);
 		dvo.setGenderSourceValue(gender.toCode());
 	}
-	
+
+	private static void mapBirthDay(PatientParser patient, PersonDvo dvo, Connection conn) {
+		Integer birthYear = patient.getBirthYear();
+		dvo.setYearOfBirth(birthYear);
+	}
+
 }

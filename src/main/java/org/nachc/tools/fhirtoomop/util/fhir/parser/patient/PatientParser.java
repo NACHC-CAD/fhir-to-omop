@@ -1,13 +1,18 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.patient;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.DateUtil;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.dstu3.model.Extension;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
+import org.yaorma.util.time.TimeUtil;
+
+import com.nach.core.util.string.StringUtil;
 
 public class PatientParser {
 
@@ -39,6 +44,27 @@ public class PatientParser {
 		return ag;
 	}
 
+	public Date getBirthDate() {
+		return this.patient.getBirthDate();
+	}
+	
+	public String getBirthDateAsString() {
+		Date date = this.getBirthDate();
+		String rtn = TimeUtil.format(date, "yyyy-MM-dd");
+		return rtn;
+	}
+	
+	public Integer getBirthYear() {
+		Date date = this.getBirthDate();
+		if(date != null) {
+			String yearString = TimeUtil.format(date, "yyyy");
+			Integer rtn = StringUtil.parseInt(yearString);
+			return rtn;
+		} else {
+			return null;
+		}
+	}
+	
 	//
 	// methods for extensions
 	//
