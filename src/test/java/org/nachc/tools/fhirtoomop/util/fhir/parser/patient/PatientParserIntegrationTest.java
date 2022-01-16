@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
@@ -50,7 +51,11 @@ public class PatientParserIntegrationTest {
 		assertTrue("2186-5".equals(eth.getCode()));
 		assertTrue("urn:oid:2.16.840.1.113883.6.238".equals(eth.getSystem()));
 		assertTrue("Not Hispanic or Latino".equals(eth.getDisplay()));
-		
+		// gender
+		String gender = patient.getGender().toCode();
+		log.info("gender: " + gender);
+		assertTrue(gender.equals("male"));
+		// done
 		log.info("Done.");
 	}
 

@@ -57,6 +57,13 @@ public class FhirToOmopPersonParserIntegrationTest {
 			String ethFromSource = person.getEthnicitySourceValue();
 			log.info("ethFromSource: " + ethFromSource);
 			assertTrue(ethFromSource.equals("2186-5|Not Hispanic or Latino|urn:oid:2.16.840.1.113883.6.238"));
+			// gender
+			Integer genderId = person.getGenderConceptId();
+			log.info("Got gender id: " + genderId);
+			assertTrue(genderId == 8507);
+			String genderFromSource = person.getGenderSourceValue();
+			log.info("Got gender from source: " + genderFromSource);
+			assertTrue(genderFromSource.equals("male"));
 		} finally {
 			Database.close(conn);
 		}

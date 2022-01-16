@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.dstu3.model.Extension;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
@@ -31,6 +32,11 @@ public class PatientParser {
 		ExtensionParser ex = getExtension("http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity");
 		Coding rtn = ex.getCoding();
 		return rtn;
+	}
+
+	public AdministrativeGender getGender() {
+		AdministrativeGender ag = this.patient.getGender();
+		return ag;
 	}
 
 	//

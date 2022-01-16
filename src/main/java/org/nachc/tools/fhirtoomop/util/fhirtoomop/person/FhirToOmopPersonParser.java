@@ -3,11 +3,13 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 import java.sql.Connection;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.coding.CodingParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.EthnicityMapping;
+import org.nachc.tools.fhirtoomop.util.mapping.GenderMapping;
 import org.nachc.tools.fhirtoomop.util.mapping.RaceMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
@@ -37,6 +39,7 @@ public class FhirToOmopPersonParser {
 		// mappings
 		mapRace(patient, dvo, conn);
 		mapEthnicity(patient, dvo, conn);
+		mapGender(patient, dvo, conn);
 		// done
 		return dvo;
 	}
@@ -69,6 +72,13 @@ public class FhirToOmopPersonParser {
 				}
 			}
 		}
+	}
+	
+	private static void mapGender(PatientParser patient, PersonDvo dvo, Connection conn) {
+		AdministrativeGender gender = patient.getGender();
+		Integer genderId = GenderMapping.getOmopConceptForFhirCode(gender);
+		dvo.setGenderConceptId(genderId);
+		dvo.setGenderSourceValue(gender.toCode());
 	}
 	
 }
