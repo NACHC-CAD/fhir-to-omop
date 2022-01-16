@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.fhir.parser.patient;
+package org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,14 +7,14 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.extension.ExtensionParser;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 
 import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PatientParserIntegrationTest {
+public class A_PatientEverythingParserPatientIntegrationTest {
 
 	@Test
 	public void shouldParserPatient() {
@@ -61,7 +61,6 @@ public class PatientParserIntegrationTest {
 		assertTrue(birthDateString.equals("1991-02-10"));
 		log.info("Got birth year: " + birthYear);
 		assertTrue(birthYear == 1991);
-		// TODO: GET STARTED ON ENCOUNTER
 		// done
 		log.info("Done.");
 	}

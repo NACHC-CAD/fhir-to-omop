@@ -64,7 +64,7 @@ public class BundleParser {
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {
 			Resource resource = entry.getResource();
-			if (resource.getClass().equals(type)) {
+			if (resource.getClass().equals(type.getClass())) {
 				rtn.add((T) resource);
 			}
 		}
