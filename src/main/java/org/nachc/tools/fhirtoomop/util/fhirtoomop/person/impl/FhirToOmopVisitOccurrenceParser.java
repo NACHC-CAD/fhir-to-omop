@@ -26,6 +26,9 @@ public class FhirToOmopVisitOccurrenceParser {
 	private VisitOccurrenceDvo getVisitOccurrenceDvo(EncounterParser enc, Integer visitOccurrenceId) {
 		VisitOccurrenceDvo dvo = new VisitOccurrenceDvo();
 		dvo.setVisitOccurrenceId(visitOccurrenceId);
+		dvo.setVisitStartDate(enc.getStartDate());
+		dvo.setVisitEndDate(enc.getEndDate());
+		dvo.setVisitSourceValue(enc.getEncounterIdUncAndQual());
 		return dvo;
 	}
 
