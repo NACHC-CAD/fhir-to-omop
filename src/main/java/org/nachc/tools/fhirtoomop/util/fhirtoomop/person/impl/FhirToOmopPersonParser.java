@@ -16,9 +16,26 @@ import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 
 public class FhirToOmopPersonParser {
 
-	public static PersonDvo getPerson(PatientEverythingParser personEverything, Connection conn) {
+	private PatientEverythingParser patientEverything;
+	
+	private PersonDvo personDvo;
+	
+	private Connection conn;
+
+	public FhirToOmopPersonParser(PatientEverythingParser personEverything, Connection conn) {
+		this.patientEverything = personEverything;
+		this.conn = conn;
+		this.personDvo = initPerson();
+	}
+
+	public PersonDvo getPerson() {
+		return this.personDvo;
+	}
+	
+	
+	public PersonDvo initPerson() {
 		PersonDvo dvo = new PersonDvo();
-		PatientParser patient = personEverything.getPatient();
+		PatientParser patient = patientEverything.getPatient();
 		// person_id
 		Integer personId = FhirToOmopIdGenerator.getId("person", "person_id");
 		dvo.setPersonId(personId);
@@ -33,7 +50,7 @@ public class FhirToOmopPersonParser {
 		return dvo;
 	}
 
-	private static void mapRace(PatientParser patient, PersonDvo dvo, Connection conn) {
+	private void mapRace(PatientParser patient, PersonDvo dvo, Connection conn) {
 		Coding coding = patient.getRace();
 		if (coding != null) {
 			String code = coding.getCode();
@@ -48,7 +65,7 @@ public class FhirToOmopPersonParser {
 		}
 	}
 
-	private static void mapEthnicity(PatientParser patient, PersonDvo dvo, Connection conn) {
+	private void mapEthnicity(PatientParser patient, PersonDvo dvo, Connection conn) {
 		Coding coding = patient.getEthnicity();
 		if (coding != null) {
 			String code = coding.getCode();
@@ -63,14 +80,14 @@ public class FhirToOmopPersonParser {
 		}
 	}
 
-	private static void mapGender(PatientParser patient, PersonDvo dvo, Connection conn) {
+	private void mapGender(PatientParser patient, PersonDvo dvo, Connection conn) {
 		AdministrativeGender gender = patient.getGender();
 		Integer genderId = GenderMapping.getOmopConceptForFhirCode(gender);
 		dvo.setGenderConceptId(genderId);
 		dvo.setGenderSourceValue(gender.toCode());
 	}
 
-	private static void mapBirthDay(PatientParser patient, PersonDvo dvo, Connection conn) {
+	private void mapBirthDay(PatientParser patient, PersonDvo dvo, Connection conn) {
 		Integer birthYear = patient.getBirthYear();
 		dvo.setYearOfBirth(birthYear);
 	}

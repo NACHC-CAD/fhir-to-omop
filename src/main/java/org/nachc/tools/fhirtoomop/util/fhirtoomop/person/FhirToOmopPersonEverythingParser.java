@@ -31,7 +31,7 @@ public class FhirToOmopPersonEverythingParser {
 	public PersonDvo getPerson() {
 		if (this.person == null) {
 			this.patient = new PatientEverythingParser(json);
-			this.person = FhirToOmopPersonParser.getPerson(patient, conn);
+			this.person = new FhirToOmopPersonParser(patient, conn).getPerson();
 		}
 		return this.person;
 	}
