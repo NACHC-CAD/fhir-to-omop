@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonEverythingParser;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.database.Database;
 
@@ -23,9 +24,8 @@ public class FhirToOmopVisitOccurrenceParserIntegrationTest {
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
 			PatientEverythingParser patient = TestParams.getPatientEverything();
-			FhirToOmopVisitOccurrenceParser parser = new FhirToOmopVisitOccurrenceParser();
-			List<VisitOccurrenceDvo> visitList = parser.getVisitOccurencesList(patient);
-			log.info("Got " + visitList.size() + " visits");
+			FhirToOmopPersonEverythingParser omopParser = new FhirToOmopPersonEverythingParser(patient, conn);
+			List<VisitOccurrenceDvo> visitList = omopParser.getVisitOccurrenceList();
 			assertTrue(visitList.size() == 10);
 		} finally {
 			Database.close(conn);
