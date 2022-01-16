@@ -47,18 +47,18 @@ public class BundleParser {
 		return types;
 	}
 
-	public Patient getPatient() {
+	public <T extends Resource> T getResourceForType(T type) {
+		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {
 			Resource resource = entry.getResource();
-			String type = resource.getClass().getName();
-			if (resource instanceof Patient) {
-				return (Patient) resource;
+			if (resource.getClass().equals(type.getClass())) {
+				return (T) resource;
 			}
 		}
 		return null;
 	}
-
+	
 	public <T extends Resource> List<T> getResourceListForType(T type) {
 		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
@@ -37,7 +38,7 @@ public class PatientEverythingParser {
 		this.jsonString = bundleJson;
 		this.fhirBundle = FhirJsonParser.parse(bundleJson, Bundle.class);
 		this.bundle = new BundleParser(bundleJson);
-		this.patient = new PatientParser(bundle.getPatient());
+		this.patient = new PatientParser(bundle.getResourceForType(new Patient()));
 	}
 
 	// ---
