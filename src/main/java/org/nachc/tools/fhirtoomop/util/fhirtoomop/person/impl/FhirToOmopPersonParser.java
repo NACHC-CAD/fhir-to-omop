@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
+package org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl;
 
 import java.sql.Connection;
 
@@ -14,19 +14,7 @@ import org.nachc.tools.fhirtoomop.util.mapping.RaceMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 
-/**
- * 
- * This is the class that turns a FHIR Patient/$everything resource into an OMOP
- * Person data value object (dvo).
- *
- */
-
 public class FhirToOmopPersonParser {
-
-	public static PersonDvo getPerson(String json, Connection conn) {
-		PatientEverythingParser patient = new PatientEverythingParser(json);
-		return getPerson(patient, conn);
-	}
 
 	public static PersonDvo getPerson(PatientEverythingParser personEverything, Connection conn) {
 		PersonDvo dvo = new PersonDvo();

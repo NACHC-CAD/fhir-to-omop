@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonEverythingParser;
 import org.nachc.tools.fhirtoomop.util.omop.datafactory.OmopConceptFactory;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
@@ -29,7 +29,8 @@ public class FhirToOmopPersonParserIntegrationTest {
 		try {
 			// get the test data and create the parser
 			String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
-			PersonDvo person = FhirToOmopPersonParser.getPerson(json, conn);
+			FhirToOmopPersonEverythingParser parser = new FhirToOmopPersonEverythingParser(json, conn);
+			PersonDvo person = parser.getPerson();
 			// person id
 			int id = person.getPersonId();
 			log.info("PersonId: " + id);
