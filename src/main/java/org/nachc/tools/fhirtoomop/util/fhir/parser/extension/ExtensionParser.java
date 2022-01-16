@@ -57,4 +57,12 @@ public class ExtensionParser {
 		}
 	}
 
+	public String getAsPipeDelimited() {
+		String rtn = "";
+		rtn += getCode() + "|";
+		rtn += getDisplay() + "|";
+		rtn += getSystem();
+		return rtn;
+	}
+	
 }

@@ -45,12 +45,18 @@ public class FhirToOmopPersonParserIntegrationTest {
 			String raceFromOmop = raceDvo.getConceptName();
 			log.info("raceFromOmop: " + raceFromOmop);
 			assertTrue(raceFromOmop.equals("White"));
+			String raceFromSource = person.getRaceSourceValue();
+			log.info("raceFromSource: " + raceFromSource);
+			assertTrue(raceFromSource.equals("2106-3|White|urn:oid:2.16.840.1.113883.6.238"));
 			// ethnicity
 			Integer ethId = person.getEthnicityConceptId();
 			log.info("Got eth_id: " + ethId);
 			ConceptDvo ethDvo = OmopConceptFactory.getConcept(ethId, conn);
 			log.info("ethFromOmop: " + ethDvo.getConceptName());
 			assertTrue("Not Hispanic or Latino".equals(ethDvo.getConceptName()));
+			String ethFromSource = person.getEthnicitySourceValue();
+			log.info("ethFromSource: " + ethFromSource);
+			assertTrue(ethFromSource.equals("2186-5|Not Hispanic or Latino|urn:oid:2.16.840.1.113883.6.238"));
 		} finally {
 			Database.close(conn);
 		}

@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 import java.sql.Connection;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.coding.CodingParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
@@ -49,6 +50,7 @@ public class FhirToOmopPersonParser {
 				if(race != null) {
 					Integer raceId = race.getConceptId();
 					dvo.setRaceConceptId(raceId);
+					dvo.setRaceSourceValue(CodingParser.getAsPipeDelimited(patient.getRace()));
 				}
 			}
 		}
@@ -63,6 +65,7 @@ public class FhirToOmopPersonParser {
 				if(eth != null) {
 					Integer ethId = eth.getConceptId();
 					dvo.setEthnicityConceptId(ethId);
+					dvo.setEthnicitySourceValue(CodingParser.getAsPipeDelimited(patient.getEthnicity()));
 				}
 			}
 		}

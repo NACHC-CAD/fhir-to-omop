@@ -32,7 +32,7 @@ public class PatientParser {
 		Coding rtn = ex.getCoding();
 		return rtn;
 	}
-	
+
 	//
 	// methods for extensions
 	//
@@ -55,6 +55,12 @@ public class PatientParser {
 			}
 		}
 		return null;
+	}
+
+	public String getExtensionAsPipeDelimited(String url) {
+		ExtensionParser ex = getExtension(url);
+		String rtn = ex.getAsPipeDelimited();
+		return rtn;
 	}
 
 }
