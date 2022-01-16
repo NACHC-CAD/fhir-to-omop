@@ -1,14 +1,28 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.encounter;
 
+import java.util.Date;
+
 import org.hl7.fhir.dstu3.model.Encounter;
 
 public class EncounterParser {
 
+	//
+	// instance variables
+	//
+	
 	private Encounter enc;
 
+	//
+	// constructor
+	//
+	
 	public EncounterParser(Encounter enc) {
 		this.enc = enc;
 	}
+	
+	//
+	// id stuff
+	//
 	
 	public String getEncounterId() {
 		return this.enc.getId();
@@ -34,4 +48,16 @@ public class EncounterParser {
 		return rtn;
 	}
 
+	//
+	// dates
+	//
+	
+	public Date getStartDate() {
+		return this.enc.getPeriod().getStart();
+	}
+
+	public Date getEndDate() {
+		return this.enc.getPeriod().getEnd();
+	}
+	
 }

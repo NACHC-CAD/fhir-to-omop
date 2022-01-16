@@ -2,11 +2,13 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,7 +26,7 @@ public class B_PatientEverythingParserEncounterIntegrationTest {
 		assertTrue(listSize == 10);
 		// get and test a single encounter
 		EncounterParser enc = encounterList.get(0);
-		// test encounter ids
+		// get encounter ids
 		String encounterId = enc.getEncounterId();
 		log.info("encounterIdQual: " + encounterId);
 		assertTrue(encounterId.equals("Encounter/051b0d30-03d3-4d6d-a070-f8d363ef277f/_history/MTU1NDgxMjczNjQ3Nzk3NjAwMA"));
@@ -34,6 +36,16 @@ public class B_PatientEverythingParserEncounterIntegrationTest {
 		String encounterIdUncAndQual = enc.getEncounterIdUncAndQual();
 		log.info("encounterIdUncAndQual: " + encounterIdUncAndQual);
 		assertTrue(encounterIdUncAndQual.equals("051b0d30-03d3-4d6d-a070-f8d363ef277f|Encounter/051b0d30-03d3-4d6d-a070-f8d363ef277f/_history/MTU1NDgxMjczNjQ3Nzk3NjAwMA"));
+		// get encounter date
+		Date startDate = enc.getStartDate();
+		String startDateString = TimeUtil.format(startDate, "yyyy-MM-dd");
+		log.info("startDate: " + startDateString);
+		assertTrue("2009-01-10".equals(startDateString));
+		Date endDate = enc.getEndDate();
+		String endDateString = TimeUtil.format(endDate, "yyyy-MM-dd");
+		log.info("endDate: " + endDateString);
+		assertTrue("2009-01-10".equals(endDateString));
+		// done
 		log.info("Done.");
 	}
 
