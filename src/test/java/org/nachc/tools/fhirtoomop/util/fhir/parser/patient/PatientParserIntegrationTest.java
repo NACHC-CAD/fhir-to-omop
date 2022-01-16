@@ -61,6 +61,7 @@ public class PatientParserIntegrationTest {
 		assertTrue(birthDateString.equals("1991-02-10"));
 		log.info("Got birth year: " + birthYear);
 		assertTrue(birthYear == 1991);
+		// TODO: GET STARTED ON ENCOUNTER
 		// done
 		log.info("Done.");
 	}

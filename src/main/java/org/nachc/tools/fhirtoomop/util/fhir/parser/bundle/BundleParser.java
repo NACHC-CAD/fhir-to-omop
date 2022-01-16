@@ -5,11 +5,10 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
-
-import com.nach.core.util.fhir.parser.FhirJsonParser;
-
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
+
+import com.nach.core.util.fhir.parser.FhirJsonParser;
 
 public class BundleParser {
 
@@ -58,6 +57,18 @@ public class BundleParser {
 			}
 		}
 		return null;
+	}
+
+	public <T extends Resource> List<T> getResourceListForType(T type) {
+		List<T> rtn = new ArrayList<T>();
+		List<BundleEntryComponent> entries = bundle.getEntry();
+		for (BundleEntryComponent entry : entries) {
+			Resource resource = entry.getResource();
+			if (resource.getClass().equals(type)) {
+				rtn.add((T) resource);
+			}
+		}
+		return rtn;
 	}
 
 }
