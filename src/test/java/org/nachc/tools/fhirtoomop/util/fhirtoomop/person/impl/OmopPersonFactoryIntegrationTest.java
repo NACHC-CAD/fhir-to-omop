@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.omop.datafactory.OmopConceptFactory;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
@@ -16,8 +16,15 @@ import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * This test creates an OMOP PersonDvo and populates it from a Patient
+ * $everything string from Synthea.
+ *
+ */
+
 @Slf4j
-public class FhirToOmopPersonParserIntegrationTest {
+public class OmopPersonFactoryIntegrationTest {
 
 	@Test
 	public void shouldGetOmopPerson() {
@@ -27,10 +34,10 @@ public class FhirToOmopPersonParserIntegrationTest {
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		log.info("Got connection");
 		try {
-			// get the test data and create the parser
+			// get the test data and create the dvo using the factory
 			String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
-			FhirToOmopPersonEverythingParser parser = new FhirToOmopPersonEverythingParser(json, conn);
-			PersonDvo person = parser.getPerson();
+			OmopPersonEverythingFactory personEverythingFactory = new OmopPersonEverythingFactory(json, conn);
+			PersonDvo person = personEverythingFactory.getPerson();
 			// person id
 			int id = person.getPersonId();
 			log.info("PersonId: " + id);
@@ -74,5 +81,5 @@ public class FhirToOmopPersonParserIntegrationTest {
 		// done
 		log.info("Done.");
 	}
-	
+
 }

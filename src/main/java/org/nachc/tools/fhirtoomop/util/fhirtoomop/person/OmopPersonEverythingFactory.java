@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.FhirToOmopPersonParser;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.FhirToOmopVisitOccurrenceParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
@@ -16,7 +16,7 @@ import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
  *
  */
 
-public class FhirToOmopPersonEverythingParser {
+public class OmopPersonEverythingFactory {
 
 	//
 	// instance variables
@@ -36,12 +36,12 @@ public class FhirToOmopPersonEverythingParser {
 	// constructors
 	//
 	
-	public FhirToOmopPersonEverythingParser(PatientEverythingParser patientEverything, Connection conn) {
+	public OmopPersonEverythingFactory(PatientEverythingParser patientEverything, Connection conn) {
 		this.conn = conn;
 		this.patientEverything = patientEverything;
 	}
 
-	public FhirToOmopPersonEverythingParser(String json, Connection conn) {
+	public OmopPersonEverythingFactory(String json, Connection conn) {
 		this.json = json;
 		this.conn = conn;
 		this.patientEverything = new PatientEverythingParser(json);
@@ -61,14 +61,14 @@ public class FhirToOmopPersonEverythingParser {
 	
 	public PersonDvo getPerson() {
 		if(this.person == null) {
-			this.person = new FhirToOmopPersonParser(patientEverything, conn).getPerson();
+			this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
 		}
 		return this.person;
 	}
 
 	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
 		if(this.visitOccurrenceList == null) {
-			FhirToOmopVisitOccurrenceParser visitParser = new FhirToOmopVisitOccurrenceParser(this);
+			OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this);
 			this.visitOccurrenceList = visitParser.getVisitOccurencesList();
 		}
 		return this.visitOccurrenceList;

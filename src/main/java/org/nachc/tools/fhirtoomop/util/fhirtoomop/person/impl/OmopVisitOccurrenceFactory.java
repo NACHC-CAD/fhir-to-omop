@@ -6,15 +6,15 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.FhirToOmopPersonEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
-public class FhirToOmopVisitOccurrenceParser {
+public class OmopVisitOccurrenceFactory {
 
-	public FhirToOmopPersonEverythingParser omopPersonEverything;
+	public OmopPersonEverythingFactory omopPersonEverything;
 	
-	public FhirToOmopVisitOccurrenceParser(FhirToOmopPersonEverythingParser omopPersonEverything) {
+	public OmopVisitOccurrenceFactory(OmopPersonEverythingFactory omopPersonEverything) {
 		this.omopPersonEverything = omopPersonEverything;
 	}
 	

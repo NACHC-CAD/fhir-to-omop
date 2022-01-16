@@ -14,7 +14,7 @@ import org.nachc.tools.fhirtoomop.util.mapping.RaceMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 
-public class FhirToOmopPersonParser {
+public class OmopPersonFactory {
 
 	private PatientEverythingParser patientEverything;
 	
@@ -22,7 +22,7 @@ public class FhirToOmopPersonParser {
 	
 	private Connection conn;
 
-	public FhirToOmopPersonParser(PatientEverythingParser personEverything, Connection conn) {
+	public OmopPersonFactory(PatientEverythingParser personEverything, Connection conn) {
 		this.patientEverything = personEverything;
 		this.conn = conn;
 		this.personDvo = initPerson();
