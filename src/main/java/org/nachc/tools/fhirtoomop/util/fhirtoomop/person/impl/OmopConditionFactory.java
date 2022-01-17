@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
@@ -36,18 +37,24 @@ public class OmopConditionFactory {
 	//
 
 	public List<ConditionOccurrenceDvo> getConditionList() {
-		PatientEverythingParser fhirPatient = this.omopPersonEverything.getFhirPatientEverything();
+		PatientEverythingParser fhirPatientEverything = this.omopPersonEverything.getFhirPatientEverything();
+		Integer personId = this.omopPersonEverything.getPerson().getPersonId();
 		List<ConditionOccurrenceDvo> rtn = new ArrayList<ConditionOccurrenceDvo>();
-		List<ConditionParser> conList = fhirPatient.getConditionList();
+		List<ConditionParser> conList = fhirPatientEverything.getConditionList();
+		Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
+		id--;
 		for (ConditionParser con : conList) {
+			id++;
 			ConditionOccurrenceDvo dvo = new ConditionOccurrenceDvo();
-			Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
+			dvo.setPersonId(personId);
 			dvo.setConditionOccurrenceId(id);
 			dvo.setConditionStartDate(con.getStartDate());
 			dvo.setConditionEndDate(con.getEndDate());
 			dvo.setConditionSourceValue(con.getCode());
 			ConceptDvo conceptDvo = ConditionMapping.mapFhirCodingToOmopStandardConcept(con.getCoding(), conn);
 			dvo.setConditionConceptId(conceptDvo == null ? null : conceptDvo.getConceptId());
+			// TODO: (JEG) Hardcoding this to EHR encounter diagnosis for now
+			dvo.setConditionTypeConceptId(32020);
 			rtn.add(dvo);
 		}
 		return rtn;
