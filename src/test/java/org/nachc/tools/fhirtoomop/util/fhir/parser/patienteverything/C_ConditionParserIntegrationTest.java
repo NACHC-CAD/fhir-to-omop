@@ -2,11 +2,13 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,6 +25,10 @@ public class C_ConditionParserIntegrationTest {
 		assertTrue(conditionList.size() == 5);
 		// test a condition
 		ConditionParser con = conditionList.get(0);
+		// condition id
+		String conditionId = con.getConditionId();
+		log.info("conditionId: " + conditionId);
+		assertTrue(conditionId.equals("Condition/25b86d4b-5d09-47c6-9446-b93b067e63ec/_history/MTU1NDgxMjczNjQ2MTc2OTAwMA"));
 		// condition code
 		String conCode = con.getCode();
 		log.info(conCode);
@@ -35,6 +41,21 @@ public class C_ConditionParserIntegrationTest {
 		String conDisplay = con.getDisplay();
 		log.info(conDisplay);
 		assertTrue(conDisplay.equals("Acute bacterial sinusitis (disorder)"));
+		// condition start date
+		Date startDate = con.getStartDate();
+		String startDateString = TimeUtil.format(startDate);
+		log.info("startDate: " + startDateString);
+		assertTrue(startDateString.equals("2009-01-10"));
+		// condition end date
+		Date endDate = con.getEndDate();
+		String endDateString = TimeUtil.format(endDate);
+		log.info("endDate: " + endDateString);
+		assertTrue(endDateString.equals("2009-01-31"));
+		// asserted date
+		Date assertedDate = con.getAssertedDate();
+		String assertedDateString = TimeUtil.format(assertedDate);
+		log.info("assertedDate: " + assertedDateString);
+		assertTrue(assertedDateString.equals("2009-01-10"));
 		// done
 		log.info("Done.");
 	}
