@@ -26,9 +26,14 @@ public class TestParams {
 	public static File getTestOutFile(String fileName) {
 		return new File(getTestOutputDir(), fileName);
 	}
+
+	public static String getPersonEverythingJson() {
+		String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
+		return json;
+	}
 	
 	public static PatientEverythingParser getPatientEverything() {
-		String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
+		String json = getPersonEverythingJson();
 		PatientEverythingParser everything = new PatientEverythingParser(json);
 		return everything;
 	}
