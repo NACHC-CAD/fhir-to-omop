@@ -59,7 +59,7 @@ public class OmopPersonFactory {
 				if (race != null) {
 					Integer raceId = race.getConceptId();
 					dvo.setRaceConceptId(raceId);
-					dvo.setRaceSourceValue(CodingParser.getAsPipeDelimited(patient.getRace()));
+					dvo.setRaceSourceValue(code);
 				}
 			}
 		}
@@ -74,7 +74,7 @@ public class OmopPersonFactory {
 				if (eth != null) {
 					Integer ethId = eth.getConceptId();
 					dvo.setEthnicityConceptId(ethId);
-					dvo.setEthnicitySourceValue(CodingParser.getAsPipeDelimited(patient.getEthnicity()));
+					dvo.setEthnicitySourceValue(code);
 				}
 			}
 		}
