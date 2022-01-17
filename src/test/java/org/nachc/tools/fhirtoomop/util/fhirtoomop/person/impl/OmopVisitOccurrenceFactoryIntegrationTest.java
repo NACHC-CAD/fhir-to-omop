@@ -46,7 +46,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 			// visitSource
 			String sourceValue = dvo.getVisitSourceValue();
 			log.info("visitSource: " + sourceValue);
-			assertTrue(sourceValue.equals("64316fcb-2a6c-4f83-a93e-becf3d9c72bb|Encounter/64316fcb-2a6c-4f83-a93e-becf3d9c72bb/_history/MTU1NDgxMjczNjUzMDU4NzAwMA"));
+			assertTrue(sourceValue.equals("64316fcb-2a6c-4f83-a93e-becf3d9c72bb"));
 			// patientId
 			Integer personId = dvo.getPersonId();
 			log.info("personId: " + personId);
