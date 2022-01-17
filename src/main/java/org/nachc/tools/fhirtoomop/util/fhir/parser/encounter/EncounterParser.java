@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.encounter;
 
 import java.util.Date;
 
+import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Encounter;
 
 public class EncounterParser {
@@ -47,6 +48,20 @@ public class EncounterParser {
 		rtn += getEncounterIdUnqualified() + "|";
 		rtn += getEncounterId();
 		return rtn;
+	}
+
+	//
+	// type
+	//
+
+	public Coding getEncounterType() {
+		// TODO: (JEG) Just getting first for now
+		try {
+			Coding rtn = this.enc.getTypeFirstRep().getCodingFirstRep();
+			return rtn;
+		} catch(NullPointerException npe) {
+			return null;
+		}
 	}
 
 	//

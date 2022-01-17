@@ -43,7 +43,10 @@ public class OmopVisitOccurrenceFactory {
 		dvo.setPersonId(person.getPersonId());
 		dvo.setVisitStartDate(enc.getStartDate());
 		dvo.setVisitEndDate(enc.getEndDate());
-		dvo.setVisitSourceValue(enc.getEncounterIdUncAndQual());
+		dvo.setVisitSourceValue(enc.getEncounterIdUnqualified());
+		// TODO: (JEG) Need to figure out what the mapping is here
+		dvo.setVisitConceptId(0);
+		dvo.setVisitTypeConceptId(0);
 		return dvo;
 	}
 
