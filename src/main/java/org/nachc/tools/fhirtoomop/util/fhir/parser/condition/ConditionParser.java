@@ -6,6 +6,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Condition;
 import org.hl7.fhir.dstu3.model.Condition.ConditionClinicalStatus;
 import org.hl7.fhir.dstu3.model.Condition.ConditionVerificationStatus;
+import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
 
 public class ConditionParser {
 
@@ -16,7 +17,7 @@ public class ConditionParser {
 	}
 
 	public String getConditionId() {
-		return this.con.getId();
+		return FhirUtil.getIdUnqualified(this.con.getId());
 	}
 	
 	public Coding getCoding() {

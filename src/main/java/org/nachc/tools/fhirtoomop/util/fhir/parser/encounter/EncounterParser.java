@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
 
 public class EncounterParser {
 
@@ -30,17 +31,7 @@ public class EncounterParser {
 	}
 
 	public String getEncounterIdUnqualified() {
-		// TODO: (JEG) There is probably a method in the HAPI API that does this more
-		// cleanly
-		String str = this.enc.getId();
-		if (str.indexOf('/') > 0) {
-			str = str.substring((str.indexOf('/') + 1), str.length());
-			if (str.indexOf('/') > 0) {
-				str = str.substring(0, str.indexOf('/'));
-				return str;
-			}
-		}
-		return this.enc.getId();
+		return FhirUtil.getIdUnqualified(this.enc.getId());
 	}
 
 	public String getEncounterIdUncAndQual() {

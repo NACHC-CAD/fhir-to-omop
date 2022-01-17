@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything;
+package org.nachc.tools.fhirtoomop.util.fhir.parser.condition;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,13 +7,13 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class C_ConditionParserIntegrationTest {
+public class ConditionParserIntegrationTest {
 
 	@Test
 	public void shouldGetConditions() {
@@ -28,7 +28,7 @@ public class C_ConditionParserIntegrationTest {
 		// condition id
 		String conditionId = con.getConditionId();
 		log.info("conditionId: " + conditionId);
-		assertTrue(conditionId.equals("Condition/25b86d4b-5d09-47c6-9446-b93b067e63ec/_history/MTU1NDgxMjczNjQ2MTc2OTAwMA"));
+		assertTrue(conditionId.equals("25b86d4b-5d09-47c6-9446-b93b067e63ec"));
 		// condition code
 		String conCode = con.getCode();
 		log.info(conCode);

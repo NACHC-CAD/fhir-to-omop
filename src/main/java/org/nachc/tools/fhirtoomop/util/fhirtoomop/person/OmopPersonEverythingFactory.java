@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopConditionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
+import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
+import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
@@ -21,7 +24,7 @@ public class OmopPersonEverythingFactory {
 	//
 	// instance variables
 	//
-	
+
 	private String json;
 
 	private Connection conn;
@@ -29,13 +32,15 @@ public class OmopPersonEverythingFactory {
 	private PatientEverythingParser patientEverything;
 
 	private PersonDvo person;
-	
+
 	private List<VisitOccurrenceDvo> visitOccurrenceList;
+
+	private List<ConditionOccurrenceDvo> conditionOccurrenceList;
 
 	//
 	// constructors
 	//
-	
+
 	public OmopPersonEverythingFactory(PatientEverythingParser patientEverything, Connection conn) {
 		this.conn = conn;
 		this.patientEverything = patientEverything;
@@ -50,28 +55,36 @@ public class OmopPersonEverythingFactory {
 	//
 	// trivial getters and setters
 	//
-	
+
 	public PatientEverythingParser getFhirPatientEverything() {
 		return this.patientEverything;
 	}
-	
+
 	//
 	// getters and setters
 	//
-	
+
 	public PersonDvo getPerson() {
-		if(this.person == null) {
+		if (this.person == null) {
 			this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
 		}
 		return this.person;
 	}
 
 	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
-		if(this.visitOccurrenceList == null) {
+		if (this.visitOccurrenceList == null) {
 			OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
 			this.visitOccurrenceList = visitParser.getVisitOccurencesList();
 		}
 		return this.visitOccurrenceList;
 	}
-	
+
+	public List<ConditionOccurrenceDvo> getConditionOccurrenceList() {
+		if (this.conditionOccurrenceList == null) {
+			OmopConditionFactory factory = new OmopConditionFactory(this, conn);
+			this.conditionOccurrenceList = factory.getConditionList();
+		}
+		return this.conditionOccurrenceList;
+	}
+
 }
