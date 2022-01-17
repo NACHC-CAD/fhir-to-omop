@@ -22,7 +22,7 @@ public class FhirToOmopIdGenerator {
 				if(rtn == null) {
 					return 1;
 				} else {
-					return rtn;
+					return rtn + 1;
 				}
 			}
 		} finally {
