@@ -55,7 +55,7 @@ public class OmopPersonFactoryIntegrationTest {
 			assertTrue(raceFromOmop.equals("White"));
 			String raceFromSource = person.getRaceSourceValue();
 			log.info("raceFromSource: " + raceFromSource);
-			assertTrue(raceFromSource.equals("2106-3|White|urn:oid:2.16.840.1.113883.6.238"));
+			assertTrue(raceFromSource.equals("2106-3"));
 			// ethnicity
 			Integer ethId = person.getEthnicityConceptId();
 			log.info("Got eth_id: " + ethId);
@@ -64,7 +64,7 @@ public class OmopPersonFactoryIntegrationTest {
 			assertTrue("Not Hispanic or Latino".equals(ethDvo.getConceptName()));
 			String ethFromSource = person.getEthnicitySourceValue();
 			log.info("ethFromSource: " + ethFromSource);
-			assertTrue(ethFromSource.equals("2186-5|Not Hispanic or Latino|urn:oid:2.16.840.1.113883.6.238"));
+			assertTrue(ethFromSource.equals("2186-5"));
 			// gender
 			Integer genderId = person.getGenderConceptId();
 			log.info("Got gender id: " + genderId);

@@ -37,7 +37,7 @@ public class OmopPersonFactory {
 		PersonDvo dvo = new PersonDvo();
 		PatientParser patient = patientEverything.getPatient();
 		// person_id
-		Integer personId = FhirToOmopIdGenerator.getId("person", "person_id");
+		Integer personId = FhirToOmopIdGenerator.getId("person", "person_id", this.conn);
 		dvo.setPersonId(personId);
 		// person_source_value
 		dvo.setPersonSourceValue(patient.getId());

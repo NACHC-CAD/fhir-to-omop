@@ -14,13 +14,16 @@ public class WriteFhirPatientToOmopIntegrationTest {
 
 	@Test
 	public void shouldWritePatientToDatabase() {
+		int numberToWrite = 3;
 		log.info("Starting test...");
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
 			log.info("Getting patient...");
 			String json = TestParams.getPersonEverythingJson();
 			log.info("Writing to database...");
-			WriteFhirPatientToOmop.exec(json, conn);
+			for(int i = 0;i<numberToWrite;i++) {
+				WriteFhirPatientToOmop.exec(json, conn);
+			}
 			log.info("Doing commit...");
 			Database.commit(conn);
 		} finally {

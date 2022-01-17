@@ -68,7 +68,7 @@ public class OmopPersonEverythingFactory {
 
 	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
 		if(this.visitOccurrenceList == null) {
-			OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this);
+			OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
 			this.visitOccurrenceList = visitParser.getVisitOccurencesList();
 		}
 		return this.visitOccurrenceList;
