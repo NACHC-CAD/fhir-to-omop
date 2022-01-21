@@ -1,5 +1,9 @@
 package org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist;
 
+import java.util.List;
+
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummarylistbundle.PatientSummaryListBundleParser;
 import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
 
 import com.nach.core.util.http.HttpRequestClient;
@@ -40,6 +44,13 @@ public class SyntheaPatientSummaryListFetcher {
 		String response = client.getResponse();
 		log.info("Response length: " + response.length());
 		return response;
+	}
+	
+	public List<PatientSummaryParser> fetchPatientSummaryParsers(int howMany) {
+		String json = this.fetchPatients(howMany);
+		PatientSummaryListBundleParser patientListParser = new PatientSummaryListBundleParser(json);
+		List<PatientSummaryParser> patientList = patientListParser.getPatientParsers();
+		return patientList;
 	}
 
 }
