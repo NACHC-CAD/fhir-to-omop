@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetAllSyntheaPatientIdsTool {
 
-	private static final int CNT = 5;
+	private static final int CNT = 1000;
 	
 	public static void main(String[] args) {
 		log.info("Getting " + CNT + " patients...");
@@ -25,12 +25,12 @@ public class GetAllSyntheaPatientIdsTool {
 			cnt++;
 			List<PatientSummaryParser> patientList = synthea.getPatients();
 			log.debug("Got " + patientList.size() + " patients");
-			File file = TestParams.getTestOutFile("/all-patient-ids/synthea-patient-ids-" + cnt + ".csv");
+			File file = TestParams.getTestOutFile("/all-patient-ids/synthea-patient-ids-" + cnt + ".txt");
 			List<String> patientIds = new ArrayList<String>();
 			for(PatientSummaryParser patient : patientList) {
 				patientIds.add(patient.getId());
 			}
-			FileUtil.writeCollection(patientIds, ",", file);
+			FileUtil.writeCollection(patientIds, "\n", file);
 			log.info("Created file: " + FileUtil.getCanonicalPath(file));
 			synthea = synthea.fetchNext(cnt);
 		}
