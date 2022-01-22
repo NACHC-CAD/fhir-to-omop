@@ -4,6 +4,7 @@ import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
 import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.http.HttpRequestClient;
+import com.nach.core.util.json.JsonUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +39,10 @@ public class SyntheaPatientEverythingFetcher {
 		log.info("Got status: " + status);
 		String response = client.getResponse();
 		log.info("Response length: " + response.length());
+		if(status != 200) {
+			log.info("DID NOT GET 200 STATUS: ");
+			log.info(JsonUtil.prettyPrint(response));
+		}
 		return response;
 	}
 
