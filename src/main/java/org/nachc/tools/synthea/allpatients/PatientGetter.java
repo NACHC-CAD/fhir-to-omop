@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
+import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -31,9 +32,11 @@ public class PatientGetter implements Runnable {
 		int cnt = 0;
 		for (String patientId : patientIds) {
 			cnt++;
-			SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
-			String json = synthea.fetchEverything(patientId, patientId);
-			FileUtil.write(json, this.outputDir);
+//			SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
+//			String json = synthea.fetchEverything(patientId, patientId);
+//			FileUtil.write(json, this.outputDir);
+			log.info("Thread " + this.threadId + " doing work...");
+			TimeUtil.sleep(10);
 			log.info("THREAD " + threadId + ": wrote " + cnt + " of " + patientIds.size() + " patients to file (" + patientId + ").");
 		}
 	}
