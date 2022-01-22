@@ -5,6 +5,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummarylistbundle.PatientSummaryListBundleParser;
 import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.http.HttpRequestClient;
 
@@ -72,32 +73,29 @@ public class SyntheaPatientSummaryListFetcher {
 	// constructor
 	//
 	
-	public SyntheaPatientSummaryListFetcher(int howMany) {
+	public SyntheaPatientSummaryListFetcher(int howMany, String token) {
 		// construct the url
 		this.url = SyntheaParams.getUrl();
-		String key = SyntheaParams.getKey();
 		url += "/Patient?";
 		url += "_count=" + howMany;
-		url += "&apikey=" + key;
 		log.debug("URL: " + url);
-		this.fetchPatients(howMany);
+		this.init(howMany, token);
 	}
 
-	private SyntheaPatientSummaryListFetcher(int howMany, String url) {
-		String key = SyntheaParams.getKey();
+	private SyntheaPatientSummaryListFetcher(int howMany, String url, String token) {
 		this.url = url;
-		this.url += "&apikey=" + key;
 		log.debug("URL: " + url);
-		this.fetchPatients(howMany);
+		this.init(howMany, token);
 	}
 	
 	//
 	// method to get the patients from synthea
 	//
 	
-	private String fetchPatients(int howMany) {
+	private String init(int howMany, String token) {
 		// make the http request and get the response (json)
 		this.client = new HttpRequestClient(url);
+		SyntheaOauth.addHeaders(client, token);
 		client.doGet();
 		int status = client.getStatusCode();
 		log.debug("Got status: " + status);
@@ -110,12 +108,12 @@ public class SyntheaPatientSummaryListFetcher {
 		return json;
 	}
 	
-	public SyntheaPatientSummaryListFetcher fetchNext(int howMany) {
+	public SyntheaPatientSummaryListFetcher fetchNext(int howMany, String token) {
 		String nextUrl = this.getNextUrl();
 		if(nextUrl == null) {
 			return null;
 		}
-		SyntheaPatientSummaryListFetcher rtn = new SyntheaPatientSummaryListFetcher(howMany, nextUrl);
+		SyntheaPatientSummaryListFetcher rtn = new SyntheaPatientSummaryListFetcher(howMany, nextUrl, token);
 		return rtn;
 	}
 	

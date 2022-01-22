@@ -20,7 +20,7 @@ public class SyntheaParams {
 		return PROPS.getProperty("app-id");
 	}
 
-	public static String getKey() {
+	public static String getKeyForToken() {
 		return PROPS.getProperty("key");
 	}
 

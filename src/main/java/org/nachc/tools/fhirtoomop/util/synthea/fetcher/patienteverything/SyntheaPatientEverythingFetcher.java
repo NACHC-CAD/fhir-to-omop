@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything;
 
 import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.http.HttpRequestClient;
 
@@ -26,13 +27,12 @@ public class SyntheaPatientEverythingFetcher {
 		return this.client.getStatusCode();
 	}
 
-	public String fetchEverything(String patientId) {
+	public String fetchEverything(String patientId, String token) {
 		String url = SyntheaParams.getUrl();
-		String key = SyntheaParams.getKey();
 		url += "/Patient/" + patientId + "/$everything?";
-		url += "apikey=" + key;
 		log.info("URL: " + url);
 		this.client = new HttpRequestClient(url);
+		SyntheaOauth.addHeaders(client, token);
 		client.doGet();
 		int status = client.getStatusCode();
 		log.info("Got status: " + status);

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist.SyntheaPatientSummaryListFetcher;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.json.JsonUtil;
 
@@ -15,8 +16,10 @@ public class A_GetSinglePatientSummaryIntegrationTest {
 	@Test
 	public void shouldGetPatients() {
 		log.info("Starting test..");
+		log.info("Getting token...");
+		String token = SyntheaOauth.fetchToken();
 		log.info("Getting patient from synthea...");
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(1);
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(1, token);
 		String response = synthea.getJson();
 		log.info("Got response: \n" + JsonUtil.prettyPrint(response));
 		log.info("Status code: " + synthea.getStatusCode());

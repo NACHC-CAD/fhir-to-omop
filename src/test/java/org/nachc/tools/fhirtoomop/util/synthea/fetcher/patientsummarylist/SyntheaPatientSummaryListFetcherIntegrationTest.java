@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +18,9 @@ public class SyntheaPatientSummaryListFetcherIntegrationTest {
 	@Test
 	public void shouldFetchPatients() {
 		// get patients from synthea
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
+		log.info("Getting token...");
+		String token = SyntheaOauth.fetchToken();
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT, token);
 		List<PatientSummaryParser> patientList = synthea.getPatients();
 		log.info("Got " + patientList.size() + " patients.");
 		for (PatientSummaryParser parser : patientList) {
@@ -32,7 +35,7 @@ public class SyntheaPatientSummaryListFetcherIntegrationTest {
 		log.info("Got next url: \n" + nextUrl);
 		assertTrue(nextUrl.startsWith("https://syntheticmass.mitre.org/v1/fhir/Patient/?"));
 		// get the next set of patients
-		synthea = synthea.fetchNext(CNT);
+		synthea = synthea.fetchNext(CNT, token);
 		List<PatientSummaryParser> nextPatientList = synthea.getPatients();
 		log.info("Got " + nextPatientList.size() + " patients.");
 		for (PatientSummaryParser parser : nextPatientList) {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.json.JsonUtil;
@@ -20,7 +21,9 @@ public class SyntheaPatientSummaryListFetcherWriteToFileIntegrationTest {
 	@Test
 	public void shouldWriteFile() {
 		log.info("Starting test...");
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
+		log.info("Getting token...");
+		String token = SyntheaOauth.fetchToken();
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT, token);
 		List<PatientSummaryParser> patientList = synthea.getPatients();
 		log.info("Got " + patientList.size() + " patients");
 		File file = TestParams.getTestOutFile("patient-list.json");

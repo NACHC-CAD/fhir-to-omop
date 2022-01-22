@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.json.JsonUtil;
@@ -20,13 +21,16 @@ public class C_GetEverythingForSinglePatientIntegrationTest {
 	@Test
 	public void shouldGetPatient() {
 		log.info("Starting test...");
+		// get the oauth token
+		log.info("Getting token...");
+		String token = SyntheaOauth.fetchToken();
 		// get a patient id
-		String patientId = PatientIdFetcher.getASinglePatientId();
+		String patientId = PatientIdFetcher.getASinglePatientId(token);
 		log.info("Got patient: " + patientId);
 		log.info("Getting everything...");
 		// get everything for that patient from synthea
 		SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
-		String everythingJson = synthea.fetchEverything(patientId);
+		String everythingJson = synthea.fetchEverything(patientId, token);
 		log.info("Status: " + synthea.getStatusCode());
 		log.info("Got response: \n" + JsonUtil.prettyPrint(everythingJson) + "\n\n");
 		log.info("Status: " + synthea.getStatusCode());

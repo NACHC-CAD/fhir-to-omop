@@ -7,6 +7,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist.SyntheaPatientSummaryListFetcher;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -19,7 +20,9 @@ public class GetAllSyntheaPatientIdsTool {
 	
 	public static void main(String[] args) {
 		log.info("Getting " + CNT + " patients...");
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
+		log.info("Getting token...");
+		String token = SyntheaOauth.fetchToken();
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT, token);
 		int cnt = 0;
 		while(synthea != null) {
 			cnt++;
@@ -32,7 +35,7 @@ public class GetAllSyntheaPatientIdsTool {
 			}
 			FileUtil.writeCollection(patientIds, "\n", file);
 			log.info("Created file: " + FileUtil.getCanonicalPath(file));
-			synthea = synthea.fetchNext(cnt);
+			synthea = synthea.fetchNext(cnt, token);
 		}
 		log.info("Done.");
 	}
