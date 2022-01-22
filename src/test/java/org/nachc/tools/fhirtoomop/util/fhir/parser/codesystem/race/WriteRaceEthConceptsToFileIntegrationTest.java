@@ -3,7 +3,7 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.codesystem.race;
 import java.io.File;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -15,7 +15,7 @@ public class WriteRaceEthConceptsToFileIntegrationTest {
 	@Test
 	public void shouldWriteFile() {
 		log.info("Starting test...");
-		File dir = TestParams.getTestOutputDir();
+		File dir = AppParams.getTestOutputDir();
 		File file = FileUtil.getFile("/fhir/terminology/uscore/CodeSystem-cdcrec.json");
 		String json = FileUtil.getAsString(file);
 		RaceEthnicityParser parser = new RaceEthnicityParser(json);

@@ -7,10 +7,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.TimeUtil;
@@ -33,7 +33,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
 			// get the visit occurrences
-			PatientEverythingParser patient = TestParams.getPatientEverything();
+			PatientEverythingParser patient = AppParams.getPatientEverything();
 			OmopPersonEverythingFactory omopParser = new OmopPersonEverythingFactory(patient, conn);
 			List<VisitOccurrenceDvo> visitList = omopParser.getVisitOccurrenceList();
 			assertTrue(visitList.size() == 10);

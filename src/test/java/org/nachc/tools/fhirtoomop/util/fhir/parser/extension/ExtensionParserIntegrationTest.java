@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.unittesttool.params.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ public class ExtensionParserIntegrationTest {
 	public void shouldParseExtension() {
 		log.info("Starting test...");
 		// get the extension to test
-		PatientParser patient = TestParams.getPatient();
+		PatientParser patient = AppParams.getPatient();
 		List<ExtensionParser> extensions = patient.getExtensions();
 		ExtensionParser ex = extensions.get(0);
 		// get the url

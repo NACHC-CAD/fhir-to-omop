@@ -2,13 +2,12 @@ package org.nachc.tools.fhirtoomop.unittestintegrationtest.synthea.basicqueries;
 
 import static org.junit.Assert.assertTrue;
 
-import org.hl7.fhir.dstu3.model.Patient;
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.unittesttool.synthea.patient.PatientIdFetcher;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
+import org.nachc.tools.synthea.patient.PatientIdFetcher;
 
 import lombok.extern.slf4j.Slf4j;
 

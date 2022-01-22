@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.unittesttool.synthea.patient;
+package org.nachc.tools.synthea.patient;
 
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
