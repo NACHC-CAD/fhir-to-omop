@@ -35,6 +35,17 @@ public class GetAllSyntheaPatientIdsTool {
 			}
 			FileUtil.writeCollection(patientIds, "\n", file);
 			log.info("Created file: " + FileUtil.getCanonicalPath(file));
+			if(cnt % 100 == 0) {
+				String msg = "Getting new Token";
+				String newToken = SyntheaOauth.fetchToken();
+				msg += "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+				msg += "\nGenerating new token";
+				msg += "\nOLD: " + token;
+				msg += "\nNEW: " + newToken;
+				msg += "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+				log.info(msg);
+				token = newToken;
+			}
 			synthea = synthea.fetchNext(cnt, token);
 		}
 		log.info("Done.");
