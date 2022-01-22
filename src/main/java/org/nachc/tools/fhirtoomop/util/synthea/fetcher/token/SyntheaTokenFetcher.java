@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.synthea.fetcher.token;
 import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
 
 import com.nach.core.util.http.HttpRequestClient;
+import com.nach.core.util.parser.oauth.OAuthTokenResponseParser;
 
 public class SyntheaTokenFetcher {
 
@@ -16,7 +17,9 @@ public class SyntheaTokenFetcher {
 		http.addHeader("Accept", "application/json");
 		http.addHeader("Content-Type", "application/json");
 		http.doPost(msg);
-		String rtn = http.getResponse();
+		String response = http.getResponse();
+		OAuthTokenResponseParser parser = new OAuthTokenResponseParser(response);
+		String rtn = parser.getToken();
 		return rtn;
 	}
 
