@@ -93,19 +93,32 @@ public class SyntheaPatientSummaryListFetcher {
 	//
 	
 	private String init(int howMany, String token) {
-		// make the http request and get the response (json)
-		this.client = new HttpRequestClient(url);
-		SyntheaOauth.addHeaders(client, token);
-		client.doGet();
-		int status = client.getStatusCode();
-		log.debug("Got status: " + status);
-		this.json = client.getResponse();
-		log.debug("Response length: " + json.length());
-		// create the patient list
-		this.patientListParser = new PatientSummaryListBundleParser(json);
-		this.patientList = patientListParser.getPatientParsers();
-		this.nextUrl = patientListParser.getNextUrl();
-		return json;
+		try {
+			// make the http request and get the response (json)
+			this.client = new HttpRequestClient(url);
+			SyntheaOauth.addHeaders(client, token);
+			client.doGet();
+			int status = client.getStatusCode();
+			log.debug("Got status: " + status);
+			this.json = client.getResponse();
+			log.debug("Response length: " + json.length());
+			// create the patient list
+			log.info("URL: /n" + url);
+			this.patientListParser = new PatientSummaryListBundleParser(json);
+			this.patientList = patientListParser.getPatientParsers();
+			this.nextUrl = patientListParser.getNextUrl();
+			return json;
+		} catch(Exception exp) {
+			String msg = "";
+			msg += "-----------------------------------------------------------------------------------";
+			msg += "AN EXCEPTION OCCURED, THIS IS LIKELY A TIMEOUT ERROR FROM SYNTHEA, RETRYING...";
+			msg += "URL: \n" + url;
+			msg += "Response: \n" + json;
+			msg += "RETRYING NOW...";
+			msg += "-----------------------------------------------------------------------------------";
+			log.info(msg);
+			return init(howMany, token);
+		}
 	}
 	
 	public SyntheaPatientSummaryListFetcher fetchNext(int howMany, String token) {
