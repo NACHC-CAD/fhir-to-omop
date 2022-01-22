@@ -16,8 +16,8 @@ public class SyntheaPatientSummaryListFetcherIntegrationTest {
 
 	@Test
 	public void shouldFetchPatients() {
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher();
-		List<PatientSummaryParser> patientList = synthea.fetchPatientSummaryParsers(CNT);
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
+		List<PatientSummaryParser> patientList = synthea.getPatients();
 		log.info("Got " + patientList.size() + " patients.");
 		for (PatientSummaryParser parser : patientList) {
 			String patientId = parser.getId();

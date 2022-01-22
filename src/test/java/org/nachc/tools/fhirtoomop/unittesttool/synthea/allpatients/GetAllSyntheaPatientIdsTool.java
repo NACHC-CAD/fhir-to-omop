@@ -14,8 +14,8 @@ public class GetAllSyntheaPatientIdsTool {
 	
 	public static void main(String[] args) {
 		log.info("Getting " + CNT + " patients...");
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher();
-		List<PatientSummaryParser> patientList = synthea.fetchPatientSummaryParsers(CNT);
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
+		List<PatientSummaryParser> patientList = synthea.getPatients();
 		log.info("Got " + patientList.size() + " patients");
 		
 		log.info("Done.");

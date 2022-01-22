@@ -8,7 +8,7 @@ import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patientsummarylist.Synthe
 public class PatientIdFetcher {
 
 	public static String getASinglePatientId() {
-		String patientJson = new SyntheaPatientSummaryListFetcher().fetchPatients(1);
+		String patientJson = new SyntheaPatientSummaryListFetcher(1).getJson();
 		Patient fhirPatient = new PatientSummaryListBundleParser(patientJson).getPatients().get(0);
 		PatientSummaryParser patient = new PatientSummaryParser(fhirPatient);
 		String patientId = patient.getId();

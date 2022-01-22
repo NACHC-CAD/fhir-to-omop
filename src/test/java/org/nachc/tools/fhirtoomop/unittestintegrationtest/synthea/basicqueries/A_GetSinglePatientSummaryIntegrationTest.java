@@ -16,8 +16,8 @@ public class A_GetSinglePatientSummaryIntegrationTest {
 	public void shouldGetPatients() {
 		log.info("Starting test..");
 		log.info("Getting patient from synthea...");
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(); 
-		String response = synthea.fetchPatients(1);
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(1);
+		String response = synthea.getJson();
 		log.info("Got response: \n" + JsonUtil.prettyPrint(response));
 		log.info("Status code: " + synthea.getStatusCode());
 		assertTrue(synthea.getStatusCode() == 200);

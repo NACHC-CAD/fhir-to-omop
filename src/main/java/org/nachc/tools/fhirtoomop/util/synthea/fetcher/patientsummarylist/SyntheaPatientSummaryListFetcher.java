@@ -20,37 +20,79 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SyntheaPatientSummaryListFetcher {
 
+	//
+	// instance variables
+	//
+	
 	private HttpRequestClient client;
+	
+	private String url;
+	
+	private String json;
 
+	private PatientSummaryListBundleParser patientListParser;
+	
+	private List<PatientSummaryParser> patientList;
+
+	//
+	// getters
+	//
+	
 	public HttpRequestClient getClient() {
 		return this.client;
 	}
 
+	public String getUrl() {
+		return this.url;
+	}
+	
+	public String getJson() {
+		return this.json;
+	}
+	
+	public PatientSummaryListBundleParser getParser() {
+		return this.patientListParser;
+	}
+	
+	public List<PatientSummaryParser> getPatients() {
+		return this.patientList;
+	}
+	
 	public int getStatusCode() {
 		return this.client.getStatusCode();
 	}
 
-	public String fetchPatients(int howMany) {
-		String url = SyntheaParams.getUrl();
+	//
+	// constructor
+	//
+	
+	public SyntheaPatientSummaryListFetcher(int howMany) {
+		this.fetchPatients(howMany);
+	}
+	
+	//
+	// method to get the patients from synthea
+	//
+	
+	private String fetchPatients(int howMany) {
+		// construct the url
+		this.url = SyntheaParams.getUrl();
 		String key = SyntheaParams.getKey();
 		url += "/Patient?";
 		url += "_count=" + howMany;
 		url += "&apikey=" + key;
 		log.info("URL: " + url);
+		// make the http request and get the response (json)
 		this.client = new HttpRequestClient(url);
 		client.doGet();
 		int status = client.getStatusCode();
 		log.info("Got status: " + status);
-		String response = client.getResponse();
-		log.info("Response length: " + response.length());
-		return response;
+		this.json = client.getResponse();
+		log.info("Response length: " + json.length());
+		// create the patient list
+		this.patientListParser = new PatientSummaryListBundleParser(json);
+		this.patientList = patientListParser.getPatientParsers();
+		return json;
 	}
 	
-	public List<PatientSummaryParser> fetchPatientSummaryParsers(int howMany) {
-		String json = this.fetchPatients(howMany);
-		PatientSummaryListBundleParser patientListParser = new PatientSummaryListBundleParser(json);
-		List<PatientSummaryParser> patientList = patientListParser.getPatientParsers();
-		return patientList;
-	}
-
 }
