@@ -8,7 +8,7 @@ import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
@@ -21,12 +21,34 @@ public class PatientSummaryListBundleParser {
 	private String jsonString;
 
 	private Bundle bundle;
+	
+	private BundleParser bundleParser;
+	
+	private String nextUrl;
 
 	public PatientSummaryListBundleParser(String bundleJson) {
 		this.jsonString = bundleJson;
 		this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
+		this.bundleParser = new BundleParser(bundle);
+		this.nextUrl = bundleParser.getNextUrl();
 	}
 
+	//
+	// trivial getters and setters
+	//
+	
+	public String getJsonString() {
+		return this.jsonString;
+	}
+	
+	public String getNextUrl() {
+		return this.nextUrl;
+	}
+
+	//
+	// implementation
+	//
+	
 	public List<Patient> getPatients() {
 		List<Patient> patients = new ArrayList<Patient>();
 		List<BundleEntryComponent> entries = bundle.getEntry();

@@ -33,6 +33,8 @@ public class SyntheaPatientSummaryListFetcher {
 	private PatientSummaryListBundleParser patientListParser;
 	
 	private List<PatientSummaryParser> patientList;
+	
+	private String nextUrl;
 
 	//
 	// getters
@@ -44,6 +46,10 @@ public class SyntheaPatientSummaryListFetcher {
 
 	public String getUrl() {
 		return this.url;
+	}
+	
+	public String getNextUrl() {
+		return this.nextUrl;
 	}
 	
 	public String getJson() {
@@ -67,6 +73,21 @@ public class SyntheaPatientSummaryListFetcher {
 	//
 	
 	public SyntheaPatientSummaryListFetcher(int howMany) {
+		// construct the url
+		this.url = SyntheaParams.getUrl();
+		String key = SyntheaParams.getKey();
+		url += "/Patient?";
+		url += "_count=" + howMany;
+		url += "&apikey=" + key;
+		log.info("URL: " + url);
+		this.fetchPatients(howMany);
+	}
+
+	private SyntheaPatientSummaryListFetcher(int howMany, String url) {
+		String key = SyntheaParams.getKey();
+		this.url = url;
+		this.url += "&apikey=" + key;
+		log.info("URL: " + url);
 		this.fetchPatients(howMany);
 	}
 	
@@ -75,13 +96,6 @@ public class SyntheaPatientSummaryListFetcher {
 	//
 	
 	private String fetchPatients(int howMany) {
-		// construct the url
-		this.url = SyntheaParams.getUrl();
-		String key = SyntheaParams.getKey();
-		url += "/Patient?";
-		url += "_count=" + howMany;
-		url += "&apikey=" + key;
-		log.info("URL: " + url);
 		// make the http request and get the response (json)
 		this.client = new HttpRequestClient(url);
 		client.doGet();
@@ -92,7 +106,14 @@ public class SyntheaPatientSummaryListFetcher {
 		// create the patient list
 		this.patientListParser = new PatientSummaryListBundleParser(json);
 		this.patientList = patientListParser.getPatientParsers();
+		this.nextUrl = patientListParser.getNextUrl();
 		return json;
+	}
+	
+	public SyntheaPatientSummaryListFetcher fetchNext(int howMany) {
+		String nextUrl = this.getNextUrl();
+		SyntheaPatientSummaryListFetcher rtn = new SyntheaPatientSummaryListFetcher(howMany, nextUrl);
+		return rtn;
 	}
 	
 }

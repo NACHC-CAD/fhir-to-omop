@@ -14,7 +14,6 @@ public class FhirUtil {
 			}
 		}
 		return id;
-		
 	}
 	
 }

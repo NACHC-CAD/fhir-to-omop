@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.Bundle.BundleLinkComponent;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
 
@@ -21,7 +22,7 @@ public class BundleParser {
 	private Bundle bundle;
 
 	//
-	// constructor
+	// constructor(s)
 	//
 
 	public BundleParser(String bundleJson) {
@@ -30,6 +31,10 @@ public class BundleParser {
 		this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
 	}
 
+	public BundleParser(Bundle bundle) {
+		this.bundle = bundle;
+	}
+	
 	// ---
 	//
 	// implementation
@@ -71,4 +76,20 @@ public class BundleParser {
 		return rtn;
 	}
 
+	public List<BundleLinkComponent> getLinks() {
+		return this.bundle.getLink();
+	}
+	
+	public String getNextUrl() {
+		List<BundleLinkComponent> linkList = this.getLinks();
+		for(BundleLinkComponent link : linkList) {
+			String rel = link.getRelation();
+			if("next".equals(rel)) {
+				String url = link.getUrl();
+				return url;
+			}
+		}
+		return null;
+	}
+	
 }

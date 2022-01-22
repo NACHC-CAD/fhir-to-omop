@@ -16,6 +16,7 @@ public class SyntheaPatientSummaryListFetcherIntegrationTest {
 
 	@Test
 	public void shouldFetchPatients() {
+		// get patients from synthea
 		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT);
 		List<PatientSummaryParser> patientList = synthea.getPatients();
 		log.info("Got " + patientList.size() + " patients.");
@@ -25,6 +26,21 @@ public class SyntheaPatientSummaryListFetcherIntegrationTest {
 			assertTrue(patientId != null);
 		}
 		log.info("Got " + patientList.size() + " patients.");
+		assertTrue(patientList.size() == CNT);
+		// get the next url
+		String nextUrl = synthea.getNextUrl();
+		log.info("Got next url: \n" + nextUrl);
+		assertTrue(nextUrl.startsWith("https://syntheticmass.mitre.org/v1/fhir/Patient/?"));
+		// get the next set of patients
+		synthea = synthea.fetchNext(CNT);
+		List<PatientSummaryParser> nextPatientList = synthea.getPatients();
+		log.info("Got " + nextPatientList.size() + " patients.");
+		for (PatientSummaryParser parser : nextPatientList) {
+			String patientId = parser.getId();
+			log.info("\t" + patientId);
+			assertTrue(patientId != null);
+		}
+		log.info("Got " + nextPatientList.size() + " patients.");
 		assertTrue(patientList.size() == CNT);
 		log.info("Done.");
 	}
