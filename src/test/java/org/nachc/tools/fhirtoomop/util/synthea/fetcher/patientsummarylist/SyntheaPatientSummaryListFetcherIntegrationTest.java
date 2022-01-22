@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SyntheaPatientSummaryListFetcherIntegrationTest {
 
-	private static final int CNT = 5;
+	private static final int CNT = 1000;
 
 	@Test
 	public void shouldFetchPatients() {

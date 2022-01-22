@@ -82,6 +82,9 @@ public class BundleParser {
 	
 	public String getNextUrl() {
 		List<BundleLinkComponent> linkList = this.getLinks();
+		if(linkList == null) {
+			return null;
+		}
 		for(BundleLinkComponent link : linkList) {
 			String rel = link.getRelation();
 			if("next".equals(rel)) {

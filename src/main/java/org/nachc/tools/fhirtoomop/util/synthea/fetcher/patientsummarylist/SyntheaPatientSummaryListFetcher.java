@@ -79,7 +79,7 @@ public class SyntheaPatientSummaryListFetcher {
 		url += "/Patient?";
 		url += "_count=" + howMany;
 		url += "&apikey=" + key;
-		log.info("URL: " + url);
+		log.debug("URL: " + url);
 		this.fetchPatients(howMany);
 	}
 
@@ -87,7 +87,7 @@ public class SyntheaPatientSummaryListFetcher {
 		String key = SyntheaParams.getKey();
 		this.url = url;
 		this.url += "&apikey=" + key;
-		log.info("URL: " + url);
+		log.debug("URL: " + url);
 		this.fetchPatients(howMany);
 	}
 	
@@ -100,9 +100,9 @@ public class SyntheaPatientSummaryListFetcher {
 		this.client = new HttpRequestClient(url);
 		client.doGet();
 		int status = client.getStatusCode();
-		log.info("Got status: " + status);
+		log.debug("Got status: " + status);
 		this.json = client.getResponse();
-		log.info("Response length: " + json.length());
+		log.debug("Response length: " + json.length());
 		// create the patient list
 		this.patientListParser = new PatientSummaryListBundleParser(json);
 		this.patientList = patientListParser.getPatientParsers();
@@ -112,6 +112,9 @@ public class SyntheaPatientSummaryListFetcher {
 	
 	public SyntheaPatientSummaryListFetcher fetchNext(int howMany) {
 		String nextUrl = this.getNextUrl();
+		if(nextUrl == null) {
+			return null;
+		}
 		SyntheaPatientSummaryListFetcher rtn = new SyntheaPatientSummaryListFetcher(howMany, nextUrl);
 		return rtn;
 	}
