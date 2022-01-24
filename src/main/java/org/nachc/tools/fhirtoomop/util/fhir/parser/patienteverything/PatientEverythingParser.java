@@ -12,6 +12,7 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
@@ -54,7 +55,7 @@ public class PatientEverythingParser {
 	//
 	// trivial getters and setters
 	//
-	
+
 	public PatientParser getPatient() {
 		return this.patientParser;
 	}
@@ -62,16 +63,16 @@ public class PatientEverythingParser {
 	//
 	// get a list of the types found in this resource
 	//
-	
+
 	public List<String> getResourceTypes() {
 		return bundleParser.getResourceTypes();
 	}
 
 	//
-	// getters for lists of resources 
+	// getters for lists of resources
 	// TODO: (JEG) Make these generic
 	//
-	
+
 	public List<EncounterParser> getEncounterList() {
 		List<EncounterParser> rtn = new ArrayList<EncounterParser>();
 		List<Encounter> encounterList = this.bundleParser.getResourceListForType(new Encounter());
@@ -81,25 +82,51 @@ public class PatientEverythingParser {
 		}
 		return rtn;
 	}
-	
+
 	public List<ConditionParser> getConditionList() {
 		List<ConditionParser> rtn = new ArrayList<ConditionParser>();
 		List<Condition> conditionList = this.bundleParser.getResourceListForType(new Condition());
-		for(Condition con : conditionList) {
+		for (Condition con : conditionList) {
 			ConditionParser parser = new ConditionParser(con);
 			rtn.add(parser);
 		}
 		return rtn;
 	}
 
+	//
+	// observation stuff
+	//
+
 	public List<ObservationParser> getObservationList() {
+		return this.getObservationList(null);
+	}
+
+	public List<ObservationParser> getObservationList(ObservationType type) {
 		List<ObservationParser> rtn = new ArrayList<ObservationParser>();
 		List<Observation> observationList = this.bundleParser.getResourceListForType(new Observation());
-		for(Observation obs : observationList) {
+		for (Observation obs : observationList) {
 			ObservationParser parser = new ObservationParser(obs);
-			rtn.add(parser);
+			if (type == null) {
+				rtn.add(parser);
+			} else {
+				if (type == parser.getObservationType()) {
+					rtn.add(parser);
+				}
+			}
 		}
 		return rtn;
 	}
-	
+
+	public List<ObservationParser> getLabList() {
+		return this.getObservationList(ObservationType.LABORATORY);
+	}
+
+	public List<ObservationParser> getVitalsList() {
+		return this.getObservationList(ObservationType.VITAL_SIGNS);
+	}
+
+	public List<ObservationParser> getSurveyList() {
+		return this.getObservationList(ObservationType.SURVEY);
+	}
+
 }

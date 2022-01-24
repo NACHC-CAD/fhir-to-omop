@@ -4,6 +4,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Quantity;
 import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 
 import com.ibm.icu.util.StringTokenizer;
 
@@ -55,6 +56,30 @@ public class ObservationParser {
 			return null;
 		}
 	}
+	
+	public String getCategoryCode() {
+		try {
+			return getCategory().getCode();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+
+	public String getCategorySystem() {
+		try {
+			return getCategory().getSystem();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+
+	public String getCategoryDisplay() {
+		try {
+			return getCategory().getDisplay();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
 
 	public Coding getCode() {
 		try {
@@ -80,4 +105,23 @@ public class ObservationParser {
 		}
 	}
 
+	public ObservationType getObservationType() {
+		try {
+			Coding coding = this.getCategory();
+			if("laboratory".equalsIgnoreCase(coding.getCode())) {
+				return ObservationType.LABORATORY;
+			} else if("vital-signs".equalsIgnoreCase(coding.getCode())) {
+				return ObservationType.VITAL_SIGNS;
+			} else if("survey".equalsIgnoreCase(coding.getCode())) {
+				return ObservationType.SURVEY;
+			} else {
+				return ObservationType.OTHER;
+			}
+		} catch(Exception exp) {
+			return ObservationType.OTHER;
+		}
+
+	}
+	
+	
 }

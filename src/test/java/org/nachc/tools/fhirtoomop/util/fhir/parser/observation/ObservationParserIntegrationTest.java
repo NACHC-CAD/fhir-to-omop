@@ -33,6 +33,7 @@ public class ObservationParserIntegrationTest {
 			log.info("\tObservation ID: " + id);
 			assertTrue(id != null && id.length() > 5);
 		}
+		log.info("Got " + obsList.size() + " observations.");
 		// encounter id
 		log.info("ENCOUNTER IDS:");
 		for (ObservationParser obs : obsList) {
@@ -49,7 +50,30 @@ public class ObservationParserIntegrationTest {
 			String catCode = catCoding.getCode();
 			log.info("\tCATEGORY: " + StringUtils.rightPad(catCode, 12) + "\t" + catSystem + "\t" + catDisplay);
 		}
-		log.info("Got " + obsList.size() + " observations.");
+		// labs
+		List<ObservationParser> labs = patient.getLabList();
+		assertTrue(labs.size() == 15);
+		log.info("Got " + labs.size() + " labs");
+		for(ObservationParser obs : labs) {
+			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
+		}
+		log.info("Got " + labs.size() + " labs");
+		// surveys
+		List<ObservationParser> surveys = patient.getSurveyList();
+		log.info("Got " + surveys.size() + " surveys");
+		assertTrue(surveys.size() == 5);
+		for(ObservationParser obs : surveys) {
+			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
+		}
+		log.info("Got " + surveys.size() + " surveys");
+		// vitals
+		List<ObservationParser> vitals = patient.getVitalsList();
+		log.info("Got " + vitals.size() + " vitals");
+		assertTrue(vitals.size() == 25);
+		for(ObservationParser obs : vitals) {
+			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
+		}
+		log.info("Got " + vitals.size() + " vitals");
 		log.info("Done.");
 	}
 
