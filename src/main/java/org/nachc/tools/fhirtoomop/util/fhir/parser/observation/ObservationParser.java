@@ -4,6 +4,8 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Observation;
 import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
 
+import com.ibm.icu.util.StringTokenizer;
+
 public class ObservationParser {
 
 	//
@@ -20,14 +22,29 @@ public class ObservationParser {
 		this.obs = obs;
 	}
 
-	//
-	// id
-	//
-
 	public String getId() {
 		return FhirUtil.getIdUnqualified(this.obs.getId());
 	}
 
+	public String getEncounterId() {
+		try {
+			String str = this.obs.getContext().getReference();
+			if(str.indexOf("/") > 0) {
+				StringTokenizer tokenizer = new StringTokenizer(str, "/");
+				String type = tokenizer.nextToken();
+				String val = tokenizer.nextToken();
+				if("encounter".equalsIgnoreCase(type) == false) {
+					return null;
+				} else {
+					return val;
+				}
+			}
+			return str;
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
 	public Coding getCategory() {
 		try {
 			// TODO: (JEG) Just getting first here (might need to be expanded for other use cases)

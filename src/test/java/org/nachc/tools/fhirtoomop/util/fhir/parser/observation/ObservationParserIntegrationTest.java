@@ -26,12 +26,20 @@ public class ObservationParserIntegrationTest {
 		List<ObservationParser> obsList = patient.getObservationList();
 		log.info("Got " + obsList.size() + " observations.");
 		assertTrue(obsList.size() == 45);
+		// observation id
 		for (ObservationParser obs : obsList) {
 			String id = obs.getId();
 			// id
-			log.info("\t" + id);
+			log.info("\tObservation ID: " + id);
 			assertTrue(id != null && id.length() > 5);
 		}
+		// encounter id
+		log.info("ENCOUNTER IDS:");
+		for (ObservationParser obs : obsList) {
+			String encounterId = obs.getEncounterId();
+			log.info("\tEncounter ID: " + encounterId);
+		}
+		// observation category
 		log.info("CATEGORIES:");
 		for (ObservationParser obs : obsList) {
 			// category
@@ -39,7 +47,7 @@ public class ObservationParserIntegrationTest {
 			String catDisplay = catCoding.getDisplay();
 			String catSystem = catCoding.getSystem();
 			String catCode = catCoding.getCode();
-			log.info("\t" + StringUtils.rightPad(catCode, 12) + "\t" + catSystem + "\t" + catDisplay);
+			log.info("\tCATEGORY: " + StringUtils.rightPad(catCode, 12) + "\t" + catSystem + "\t" + catDisplay);
 		}
 		log.info("Got " + obsList.size() + " observations.");
 		log.info("Done.");
