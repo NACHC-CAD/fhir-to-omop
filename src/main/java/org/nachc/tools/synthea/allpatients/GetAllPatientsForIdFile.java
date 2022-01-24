@@ -37,10 +37,6 @@ public class GetAllPatientsForIdFile {
 
 	public void getPatients() {
 		log.info("Staring test...");
-		// delete the existing output file
-		log.info("Deleting existing out file: " + FileUtil.getCanonicalPath(outDir));
-		FileUtil.rmdir(outDir);
-		FileUtil.mkdirs(outDir);
 		// get the test file
 		List<String> patientIds = FileUtil.getAsList(file);
 		log.info("Got " + patientIds.size() + " patientIds (showing first 10)");
@@ -76,8 +72,7 @@ public class GetAllPatientsForIdFile {
 				log.error("* * *EXCEPTION THROWN JOINING THREAD * * *");
 			}
 		}
-		// done
-		log.info("Done.");
+		log.info("Done running threads...");
 	}
 
 }

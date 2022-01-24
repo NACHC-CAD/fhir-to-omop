@@ -19,7 +19,7 @@ public class PatientGetterIntegrationTest {
 
 	private static final String OUT_FILE_DIR = "/patientids/out";
 	
-	private static final int PATIENTS_PER_THREAD = 10;
+	private static final int PATIENTS_PER_THREAD = 1;
 
 	private List<PatientGetter> getters = new ArrayList<PatientGetter>();
 	

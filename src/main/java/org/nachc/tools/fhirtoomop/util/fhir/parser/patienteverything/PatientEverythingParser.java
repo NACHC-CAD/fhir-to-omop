@@ -6,10 +6,12 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Condition;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
@@ -65,6 +67,11 @@ public class PatientEverythingParser {
 		return bundleParser.getResourceTypes();
 	}
 
+	//
+	// getters for lists of resources 
+	// TODO: (JEG) Make these generic
+	//
+	
 	public List<EncounterParser> getEncounterList() {
 		List<EncounterParser> rtn = new ArrayList<EncounterParser>();
 		List<Encounter> encounterList = this.bundleParser.getResourceListForType(new Encounter());
@@ -85,4 +92,14 @@ public class PatientEverythingParser {
 		return rtn;
 	}
 
+	public List<ObservationParser> getObservationList() {
+		List<ObservationParser> rtn = new ArrayList<ObservationParser>();
+		List<Observation> observationList = this.bundleParser.getResourceListForType(new Observation());
+		for(Observation obs : observationList) {
+			ObservationParser parser = new ObservationParser(obs);
+			rtn.add(parser);
+		}
+		return rtn;
+	}
+	
 }
