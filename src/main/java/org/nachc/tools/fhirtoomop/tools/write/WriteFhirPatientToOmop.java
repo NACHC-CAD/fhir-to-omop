@@ -20,7 +20,7 @@ public class WriteFhirPatientToOmop {
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(patientEverythingParser, conn);
 		writePatient(personEverything, conn);
-		writeEncounters(personEverything, conn);
+		writeVisitOccurrence(personEverything, conn);
 		writeConditionOccurrences(personEverything, conn);
 	}
 
@@ -29,7 +29,7 @@ public class WriteFhirPatientToOmop {
 		Dao.insert(dvo, conn);
 	}
 
-	private static void writeEncounters(OmopPersonEverythingFactory person, Connection conn) {
+	private static void writeVisitOccurrence(OmopPersonEverythingFactory person, Connection conn) {
 		List<VisitOccurrenceDvo> visitList = person.getVisitOccurrenceList();
 		for (VisitOccurrenceDvo dvo : visitList) {
 			Dao.insert(dvo, conn);
