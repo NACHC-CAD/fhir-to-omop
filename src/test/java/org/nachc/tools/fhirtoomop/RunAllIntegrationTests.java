@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllTablesManualTest;
 
 import com.googlecode.junittoolbox.SuiteClasses;
 import com.googlecode.junittoolbox.WildcardPatternSuite;
@@ -18,6 +19,8 @@ public class RunAllIntegrationTests {
 	public static void setup() {
 		log.info("***********************************************************");
 		log.info("Starting set up");
+		log.info("TRUNCATING ALL DATA TABLES IN THE SYNTHEA SCHEMA (PRESERVING CONCEPT TABLES)");
+		TruncateAllTablesManualTest.main(null);
 		log.info("Done with set up");
 		log.info("***********************************************************");
 	}
