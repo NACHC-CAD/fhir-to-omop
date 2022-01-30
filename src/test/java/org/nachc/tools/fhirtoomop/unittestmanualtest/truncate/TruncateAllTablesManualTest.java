@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.unittestmanualtest.db.mysql;
+package org.nachc.tools.fhirtoomop.unittestmanualtest.truncate;
 
 import java.sql.Connection;
 import java.util.Arrays;
@@ -33,6 +33,7 @@ public class TruncateAllTablesManualTest {
 		try {
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
 			MySqlTruncateTablesUtil.truncateTables(tableNames, conn);
+			Database.commit(conn);
 		} finally {
 			Database.close(conn);
 		}

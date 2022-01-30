@@ -41,10 +41,8 @@ public class OmopConditionFactory {
 		Integer personId = this.omopPersonEverything.getPerson().getPersonId();
 		List<ConditionOccurrenceDvo> rtn = new ArrayList<ConditionOccurrenceDvo>();
 		List<ConditionParser> conList = fhirPatientEverything.getConditionList();
-		Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
-		id--;
 		for (ConditionParser con : conList) {
-			id++;
+			Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
 			ConditionOccurrenceDvo dvo = new ConditionOccurrenceDvo();
 			dvo.setPersonId(personId);
 			dvo.setConditionOccurrenceId(id);
