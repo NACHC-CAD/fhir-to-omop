@@ -63,6 +63,9 @@ public class OmopPersonFactory {
 				}
 			}
 		}
+		if(dvo.getRaceConceptId() == null) {
+			dvo.setRaceConceptId(0);
+		}
 	}
 
 	private void mapEthnicity(PatientParser patient, PersonDvo dvo, Connection conn) {
@@ -78,6 +81,9 @@ public class OmopPersonFactory {
 				}
 			}
 		}
+		if(dvo.getEthnicityConceptId() == null) {
+			dvo.setEthnicityConceptId(0);
+		}
 	}
 
 	private void mapGender(PatientParser patient, PersonDvo dvo, Connection conn) {
@@ -85,6 +91,9 @@ public class OmopPersonFactory {
 		Integer genderId = GenderMapping.getOmopConceptForFhirCode(gender);
 		dvo.setGenderConceptId(genderId);
 		dvo.setGenderSourceValue(gender.toCode());
+		if(dvo.getGenderConceptId() == null) {
+			dvo.setGenderConceptId(0);
+		}
 	}
 
 	private void mapBirthDay(PatientParser patient, PersonDvo dvo, Connection conn) {

@@ -50,7 +50,7 @@ public class OmopConditionFactory {
 			dvo.setConditionEndDate(con.getEndDate());
 			dvo.setConditionSourceValue(con.getCode());
 			ConceptDvo conceptDvo = ConditionMapping.mapFhirCodingToOmopStandardConcept(con.getCoding(), conn);
-			dvo.setConditionConceptId(conceptDvo == null ? null : conceptDvo.getConceptId());
+			dvo.setConditionConceptId(conceptDvo == null ? 0 : conceptDvo.getConceptId());
 			// TODO: (JEG) Hardcoding this to EHR encounter diagnosis for now
 			dvo.setConditionTypeConceptId(32020);
 			rtn.add(dvo);
