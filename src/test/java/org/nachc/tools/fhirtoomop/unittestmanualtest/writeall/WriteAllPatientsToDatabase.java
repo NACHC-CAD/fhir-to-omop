@@ -33,8 +33,10 @@ public class WriteAllPatientsToDatabase {
 			File[] files = dir.listFiles();
 			log.info("Creating threads...");
 			// create the threads
+			int cnt = 0;
 			for(File file : files) {
-				WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(file, conn);
+				cnt++;
+				WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(file, conn, cnt);
 				Thread thread = new Thread(runnable);
 				threadList.add(thread);
 			}
