@@ -2,27 +2,38 @@ package org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.MedicationRequest;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
+
+import com.ibm.icu.util.StringTokenizer;
 
 public class MedicationRequestParser {
 
 	//
 	// instance variables
 	//
-	
+
 	private MedicationRequest medicationRequest;
 
 	//
 	// constructor
 	//
-	
+
 	public MedicationRequestParser(MedicationRequest medicationRequest) {
 		this.medicationRequest = medicationRequest;
 	}
 
 	//
+	// trivial getters
+	//
+
+	public MedicationRequest getMedicationRequest() {
+		return medicationRequest;
+	}
+
+	//
 	// medication
 	//
-	
+
 	public Coding getMedication() {
 		try {
 			return this.medicationRequest.getMedicationCodeableConcept().getCoding().get(0);
@@ -34,26 +45,67 @@ public class MedicationRequestParser {
 	public String getMedicationCode() {
 		try {
 			return getMedication().getCode();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
-	
+
 	public String getMedicationSystem() {
 		try {
 			return getMedication().getSystem();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
-		
+
 	}
-	
+
 	public String getMedicationDisplay() {
 		try {
 			return getMedication().getDisplay();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
-	
+
+	//
+	// status
+	//
+
+	public String getStatus() {
+		try {
+			return this.medicationRequest.getStatusElement().getValueAsString();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// intent
+	//
+
+	public String getIntent() {
+		try {
+			return this.medicationRequest.getIntentElement().getValueAsString();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// encounter
+	//
+
+	public String getEncounterId() {
+		try {
+			String ref = this.medicationRequest.getContext().getReference();
+			if(ref.indexOf('/') < 0) {
+				return ref;
+			} else {
+				return ref.split("/")[1];
+			}
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 }

@@ -72,7 +72,6 @@ public class PatientEverythingParser {
 
 	//
 	// getters for lists of resources
-	// TODO: (JEG) Make these generic
 	//
 
 	public List<EncounterParser> getEncounterList() {
@@ -85,6 +84,20 @@ public class PatientEverythingParser {
 		return rtn;
 	}
 
+	public EncounterParser getEncounter(String encounterId) {
+		if(encounterId == null) {
+			return null;
+		} else {
+			List<EncounterParser> encList = this.getEncounterList();
+			for(EncounterParser enc : encList) {
+				if(encounterId.equals(enc.getEncounterId())) {
+					return enc;
+				}
+			}
+			return null;
+		}
+	}
+	
 	public List<ConditionParser> getConditionList() {
 		List<ConditionParser> rtn = new ArrayList<ConditionParser>();
 		List<Condition> conditionList = this.bundleParser.getResourceListForType(new Condition());

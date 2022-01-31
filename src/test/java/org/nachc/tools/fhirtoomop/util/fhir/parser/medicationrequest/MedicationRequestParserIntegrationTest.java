@@ -30,7 +30,16 @@ public class MedicationRequestParserIntegrationTest {
 			log.info("\tSystem:  " + medReq.getMedicationSystem());
 			log.info("\tCode:    " + medReq.getMedicationCode());
 			log.info("\tDisplay: " + medReq.getMedicationDisplay());
-			// status
+			assertTrue(medReq.getMedicationSystem() != null);
+			assertTrue(medReq.getMedicationCode() != null);
+			assertTrue(medReq.getMedicationDisplay() != null);
+			// status and intent
+			log.info("Status: " + medReq.getStatus());
+			assertTrue(medReq.getStatus() != null);
+			log.info("Intent: " + medReq.getIntent());
+			assertTrue(medReq.getIntent() != null);
+			// encounter id
+			log.info("Encounter ID: " + medReq.getEncounterId());
 		}
 		log.info("Done.");
 	}
