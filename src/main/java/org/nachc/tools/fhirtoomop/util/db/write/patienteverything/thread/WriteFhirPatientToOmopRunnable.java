@@ -1,9 +1,9 @@
-package org.nachc.tools.fhirtoomop.tools.write.thread;
+package org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread;
 
 import java.io.File;
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.write.WriteFhirPatientToOmop;
+import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 
 import com.nach.core.util.file.FileUtil;

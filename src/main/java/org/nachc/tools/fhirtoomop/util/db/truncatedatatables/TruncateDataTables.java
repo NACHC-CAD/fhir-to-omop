@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.db.mysql.util;
+package org.nachc.tools.fhirtoomop.util.db.truncatedatatables;
 
 import java.sql.Connection;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class MySqlTruncateTablesUtil {
+public class TruncateDataTables {
 
 	public static void truncateTables(List<String> tableNames, Connection conn) {
 		try {

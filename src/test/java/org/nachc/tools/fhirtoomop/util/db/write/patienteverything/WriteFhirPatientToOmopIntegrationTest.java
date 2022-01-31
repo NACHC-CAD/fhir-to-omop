@@ -1,9 +1,10 @@
-package org.nachc.tools.fhirtoomop.tools.write;
+package org.nachc.tools.fhirtoomop.util.db.write.patienteverything;
 
 import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
