@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class B_PatientEverythingParserEncounterIntegrationTest {
 	public void shouldGetEncounters() {
 		log.info("Starting test...");
 		// get the test patient $everything and the encounters
-		PatientEverythingParser patient = AppParams.getPatientEverything();
+		PatientEverythingParser patient = TestParams.getPatientEverything();
 		List<EncounterParser> encounterList = patient.getEncounterList();
 		int listSize = encounterList.size();
 		log.info("Got " + listSize + " encounters");

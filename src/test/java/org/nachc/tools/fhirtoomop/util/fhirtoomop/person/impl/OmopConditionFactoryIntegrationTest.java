@@ -6,9 +6,9 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.yaorma.database.Database;
 
@@ -22,7 +22,7 @@ public class OmopConditionFactoryIntegrationTest {
 		log.info("Starting test...");
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
-			String json = AppParams.getPersonEverythingJson();
+			String json = TestParams.getPersonEverythingJson();
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(json, conn);
 			List<ConditionOccurrenceDvo> conditionList = person.getConditionOccurrenceList();
 			log.info("Got " + conditionList.size() + " conditions.");

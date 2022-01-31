@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class EncounterParserIntegrationTest {
 	@Test
 	public void shouldGetEncounter() {
 		log.info("Starting test...");
-		PatientEverythingParser parser = AppParams.getPatientEverything();
+		PatientEverythingParser parser = TestParams.getPatientEverything();
 		List<EncounterParser> encounterList = parser.getEncounterList();
 		// get and test a single encounter
 		EncounterParser enc = encounterList.get(0);

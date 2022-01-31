@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class ConditionParserIntegrationTest {
 	@Test
 	public void shouldGetConditions() {
 		log.info("Starting test...");
-		PatientEverythingParser patientEverythingParser = AppParams.getPatientEverything();
+		PatientEverythingParser patientEverythingParser = TestParams.getPatientEverything();
 		// get the condition list
 		List<ConditionParser> conditionList = patientEverythingParser.getConditionList();
 		log.info("Got " + conditionList.size() + " conditions.");

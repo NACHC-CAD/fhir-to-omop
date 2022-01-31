@@ -6,11 +6,13 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Condition;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.hl7.fhir.dstu3.model.MedicationRequest;
 import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest.MedicationRequestParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
@@ -127,6 +129,20 @@ public class PatientEverythingParser {
 
 	public List<ObservationParser> getSurveyList() {
 		return this.getObservationList(ObservationType.SURVEY);
+	}
+
+	//
+	// medication request
+	//
+
+	public List<MedicationRequestParser> getMedicationRequestList() {
+		List<MedicationRequestParser> rtn = new ArrayList<MedicationRequestParser>();
+		List<MedicationRequest> medicationRequestList = this.bundleParser.getResourceListForType(new MedicationRequest());
+		for(MedicationRequest medReq : medicationRequestList) {
+			MedicationRequestParser parser = new MedicationRequestParser(medReq);
+			rtn.add(parser);
+		}
+		return rtn;
 	}
 
 }

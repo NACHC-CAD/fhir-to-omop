@@ -27,19 +27,4 @@ public class AppParams {
 		return new File(getTestOutputDir(), fileName);
 	}
 
-	public static String getPersonEverythingJson() {
-		String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
-		return json;
-	}
-
-	public static PatientEverythingParser getPatientEverything() {
-		String json = getPersonEverythingJson();
-		PatientEverythingParser everything = new PatientEverythingParser(json);
-		return everything;
-	}
-
-	public static PatientParser getPatient() {
-		return getPatientEverything().getPatient();
-	}
-
 }

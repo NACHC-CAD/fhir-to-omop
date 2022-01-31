@@ -7,8 +7,8 @@ import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ public class ObservationParserIntegrationTest {
 
 	@Test
 	public void shouldParseObservtion() {
-		PatientEverythingParser patient = AppParams.getPatientEverything();
+		PatientEverythingParser patient = TestParams.getPatientEverything();
 		List<String> types = patient.getResourceTypes();
 		log.info("Got " + types.size() + " types");
 		for (String type : types) {
@@ -54,7 +54,7 @@ public class ObservationParserIntegrationTest {
 		List<ObservationParser> labs = patient.getLabList();
 		assertTrue(labs.size() == 15);
 		log.info("Got " + labs.size() + " labs");
-		for(ObservationParser obs : labs) {
+		for (ObservationParser obs : labs) {
 			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
 		}
 		log.info("Got " + labs.size() + " labs");
@@ -62,7 +62,7 @@ public class ObservationParserIntegrationTest {
 		List<ObservationParser> surveys = patient.getSurveyList();
 		log.info("Got " + surveys.size() + " surveys");
 		assertTrue(surveys.size() == 5);
-		for(ObservationParser obs : surveys) {
+		for (ObservationParser obs : surveys) {
 			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
 		}
 		log.info("Got " + surveys.size() + " surveys");
@@ -70,7 +70,7 @@ public class ObservationParserIntegrationTest {
 		List<ObservationParser> vitals = patient.getVitalsList();
 		log.info("Got " + vitals.size() + " vitals");
 		assertTrue(vitals.size() == 25);
-		for(ObservationParser obs : vitals) {
+		for (ObservationParser obs : vitals) {
 			log.info("\t" + obs.getCategoryCode() + "\t" + obs.getCategorySystem() + "\t" + obs.getCategoryDisplay());
 		}
 		log.info("Got " + vitals.size() + " vitals");
