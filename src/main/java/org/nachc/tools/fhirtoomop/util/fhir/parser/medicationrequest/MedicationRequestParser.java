@@ -12,13 +12,16 @@ public class MedicationRequestParser {
 	// instance variables
 	//
 
+	private PatientEverythingParser patient;
+	
 	private MedicationRequest medicationRequest;
 
 	//
 	// constructor
 	//
 
-	public MedicationRequestParser(MedicationRequest medicationRequest) {
+	public MedicationRequestParser(MedicationRequest medicationRequest, PatientEverythingParser patient) {
+		this.patient = patient;
 		this.medicationRequest = medicationRequest;
 	}
 
@@ -108,4 +111,16 @@ public class MedicationRequestParser {
 		}
 	}
 
+	//
+	// patient
+	//
+	
+	public String getPatientId() {
+		try {
+			return this.patient.getPatient().getId();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
 }

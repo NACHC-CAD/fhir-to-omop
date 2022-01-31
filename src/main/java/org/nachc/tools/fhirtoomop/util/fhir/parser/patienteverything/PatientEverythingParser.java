@@ -152,7 +152,7 @@ public class PatientEverythingParser {
 		List<MedicationRequestParser> rtn = new ArrayList<MedicationRequestParser>();
 		List<MedicationRequest> medicationRequestList = this.bundleParser.getResourceListForType(new MedicationRequest());
 		for(MedicationRequest medReq : medicationRequestList) {
-			MedicationRequestParser parser = new MedicationRequestParser(medReq);
+			MedicationRequestParser parser = new MedicationRequestParser(medReq, this);
 			rtn.add(parser);
 		}
 		return rtn;
