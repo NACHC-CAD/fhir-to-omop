@@ -185,6 +185,30 @@ public class ObservationParser {
 		}
 	}
 
+	public String getValueCodingSystem() {
+		try {
+			return this.obs.getValueCodeableConcept().getCodingFirstRep().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getValueCodingCode() {
+		try {
+			return this.obs.getValueCodeableConcept().getCodingFirstRep().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getValueCodingDisplay() {
+		try {
+			return this.obs.getValueCodeableConcept().getCodingFirstRep().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 	//
 	// value quantity
 	//

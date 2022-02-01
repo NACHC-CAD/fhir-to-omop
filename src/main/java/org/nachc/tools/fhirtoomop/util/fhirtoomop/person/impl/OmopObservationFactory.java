@@ -14,18 +14,18 @@ import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 
 public class OmopObservationFactory {
 
-	private OmopPersonEverythingFactory person;
+	private OmopPersonEverythingFactory omopPersonEverything;
 	
 	private Connection conn;
 	
 	public OmopObservationFactory(OmopPersonEverythingFactory person, Connection conn) {
-		this.person = person;
+		this.omopPersonEverything = person;
 		this.conn = conn;
 	}
 	
 	public List<ObservationDvo> getObservationList() {
 		List<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
-		List<ObservationParser> obsList = this.person.getFhirPatientEverything().getObservationList();
+		List<ObservationParser> obsList = this.omopPersonEverything.getFhirPatientEverything().getObservationList();
 		for(ObservationParser obs : obsList) {
 			ObservationDvo dvo = getObservation(obs);
 			rtn.add(dvo);
@@ -37,11 +37,24 @@ public class OmopObservationFactory {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
 		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
+		// person
+		Integer omopPatientId = this.omopPersonEverything.getOmopPatientId();
+		dvo.setPersonId(omopPatientId);
 		// observation concept id
 		Coding obsCoding = obs.getObservationCode();
-		ConceptDvo conceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
-		Integer obsConceptId = conceptDvo == null ? 0 : conceptDvo.getConceptId();
+		ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
+		Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
 		dvo.setObservationConceptId(obsConceptId);
+		// date
+		dvo.setObservationDate(obs.getStartDate());
+		// type
+		dvo.setObservationTypeConceptId(0);
+		// value as coding
+		Coding valueCoding = obs.getValueCoding();
+		ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
+		Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
+		dvo.setValueAsConceptId(valueConceptId);
+		// value as string
 		return dvo;
 	}
 

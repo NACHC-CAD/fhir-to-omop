@@ -29,6 +29,11 @@ public class OmopObservationFactoryIntegrationTest {
 			List<ObservationDvo> obsList = person.getObservationList();
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 45);
+			// show all obs
+			log.info("\tID\tCONCEPT_ID\tSTRING\tNUMBER");
+			for(ObservationDvo dvo : obsList) {
+				log.info("\t" + dvo.getObservationId() + "\t" + dvo.getValueAsConceptId() + "\t" + dvo.getValueAsString() + "\t" + dvo.getValueAsNumber());
+			}
 			// test a single dvo
 			ObservationDvo dvo = obsList.get(0);
 			log.info("obsId: " + dvo.getObservationId());
