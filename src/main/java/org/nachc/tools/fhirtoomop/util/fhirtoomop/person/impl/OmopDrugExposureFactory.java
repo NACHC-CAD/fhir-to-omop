@@ -58,6 +58,8 @@ public class OmopDrugExposureFactory {
 		String fhirEncounterId = medReq.getEncounterId();
 		Integer omopVisitId = this.omopPersonEverything.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
+		// drug concept id
+		
 		return dvo;
 	}
 

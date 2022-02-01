@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
-import org.nachc.tools.fhirtoomop.util.mapping.ConditionMapping;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 
@@ -49,7 +48,7 @@ public class OmopConditionFactory {
 			dvo.setConditionStartDate(con.getStartDate());
 			dvo.setConditionEndDate(con.getEndDate());
 			dvo.setConditionSourceValue(con.getCode());
-			ConceptDvo conceptDvo = ConditionMapping.mapFhirCodingToOmopStandardConcept(con.getCoding(), conn);
+			ConceptDvo conceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(con.getCoding(), conn);
 			dvo.setConditionConceptId(conceptDvo == null ? 0 : conceptDvo.getConceptId());
 			// TODO: (JEG) Hardcoding this to EHR encounter diagnosis for now
 			dvo.setConditionTypeConceptId(32020);

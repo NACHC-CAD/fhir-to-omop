@@ -1,25 +1,29 @@
-package org.nachc.tools.fhirtoomop.util.mapping;
+package org.nachc.tools.fhirtoomop.util.mapping.impl;
 
 import java.sql.Connection;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.yaorma.dao.Dao;
 
-import lombok.extern.slf4j.Slf4j;
+public class FhirToOmopConceptMapper {
 
-@Slf4j
-public class ConditionMapping {
+	public static ConceptDvo getOmopConceptForFhirCoding(Coding coding, Connection conn) {
+		ConceptDvo dvo = null;
+		dvo = getStandardConcept(coding, conn);
+		return dvo;
+	}
 
-	public static ConceptDvo mapFhirCodingToOmopStandardConcept(Coding coding, Connection conn) {
+	private static ConceptDvo getStandardConcept(Coding coding, Connection conn) {
 		if (coding == null || coding.getCode() == null || coding.getSystem() == null) {
 			return null;
 		} else {
 			String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
 			String system = coding.getSystem();
-			system = getOmopSystemForFhirSystem(system);
-			if(system == null) {
+			system = SystemMapping.getOmopSystemForFhirSystem(system);
+			if (system == null) {
 				return null;
 			}
 			String conceptCode = coding.getCode();
@@ -30,15 +34,6 @@ public class ConditionMapping {
 			} else {
 				return null;
 			}
-		}
-	}
-
-	public static String getOmopSystemForFhirSystem(String system) {
-		if ("http://snomed.info/sct".equals(system)) {
-			return "SNOMED";
-		} else {
-			log.warn("WARNING: UNKNON SYSTEM FOR CONDITION: " + system);
-			return null;
 		}
 	}
 
