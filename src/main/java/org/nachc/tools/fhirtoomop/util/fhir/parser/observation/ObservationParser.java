@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.observation;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.hl7.fhir.dstu3.model.Coding;
@@ -17,7 +18,7 @@ public class ObservationParser {
 	//
 
 	private Observation obs;
-	
+
 	private PatientEverythingParser patient;
 
 	//
@@ -36,7 +37,7 @@ public class ObservationParser {
 	//
 	// category
 	//
-	
+
 	public Coding getCategory() {
 		try {
 			// TODO: (JEG) Just getting first here (might need to be expanded for other use
@@ -46,11 +47,11 @@ public class ObservationParser {
 			return null;
 		}
 	}
-	
+
 	public String getCategoryCode() {
 		try {
 			return getCategory().getCode();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -58,7 +59,7 @@ public class ObservationParser {
 	public String getCategorySystem() {
 		try {
 			return getCategory().getSystem();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -66,7 +67,7 @@ public class ObservationParser {
 	public String getCategoryDisplay() {
 		try {
 			return getCategory().getDisplay();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -74,16 +75,16 @@ public class ObservationParser {
 	public ObservationType getObservationType() {
 		try {
 			Coding coding = this.getCategory();
-			if("laboratory".equalsIgnoreCase(coding.getCode())) {
+			if ("laboratory".equalsIgnoreCase(coding.getCode())) {
 				return ObservationType.LABORATORY;
-			} else if("vital-signs".equalsIgnoreCase(coding.getCode())) {
+			} else if ("vital-signs".equalsIgnoreCase(coding.getCode())) {
 				return ObservationType.VITAL_SIGNS;
-			} else if("survey".equalsIgnoreCase(coding.getCode())) {
+			} else if ("survey".equalsIgnoreCase(coding.getCode())) {
 				return ObservationType.SURVEY;
 			} else {
 				return ObservationType.OTHER;
 			}
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return ObservationType.OTHER;
 		}
 	}
@@ -91,11 +92,11 @@ public class ObservationParser {
 	//
 	// encounter
 	//
-	
+
 	public String getEncounterId() {
 		try {
 			String ref = this.obs.getContext().getReference();
-			if(ref.indexOf('/') < 0) {
+			if (ref.indexOf('/') < 0) {
 				return ref;
 			} else {
 				return ref.split("/")[1];
@@ -108,25 +109,25 @@ public class ObservationParser {
 	//
 	// patient
 	//
-	
+
 	public String getPatientId() {
 		try {
 			return this.patient.getPatient().getId();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
-	
+
 	//
 	// start date
 	//
-	
+
 	public Date getStartDate() {
 		try {
 			String encounterId = this.getEncounterId();
 			EncounterParser enc = this.patient.getEncounter(encounterId);
 			return enc.getStartDate();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -134,7 +135,7 @@ public class ObservationParser {
 	//
 	// observation code (what observation is this)
 	//
-	
+
 	public Coding getObservationCode() {
 		try {
 			return this.obs.getCode().getCodingFirstRep();
@@ -172,11 +173,11 @@ public class ObservationParser {
 	// VALUES (There are several types of Observations)
 	//
 	// -----------------------------------
-	
+
 	//
 	// value coding
 	//
-	
+
 	public Coding getValueCoding() {
 		try {
 			return this.obs.getValueCodeableConcept().getCodingFirstRep();
@@ -212,10 +213,20 @@ public class ObservationParser {
 	//
 	// value quantity
 	//
-	
+
 	public Quantity getValueQuantity() {
 		try {
 			return obs.getValueQuantity();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getValueAsNumber() {
+		try {
+			Quantity q = getValueQuantity();
+			BigDecimal bd = q.getValue();
+			return bd.toString();
 		} catch (Exception exp) {
 			return null;
 		}

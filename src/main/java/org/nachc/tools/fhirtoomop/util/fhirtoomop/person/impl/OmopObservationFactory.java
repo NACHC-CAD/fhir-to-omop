@@ -45,6 +45,7 @@ public class OmopObservationFactory {
 		ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
 		Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
 		dvo.setObservationConceptId(obsConceptId);
+		dvo.setObservationSourceValue(obs.getId());
 		// date
 		dvo.setObservationDate(obs.getStartDate());
 		// type
@@ -54,7 +55,8 @@ public class OmopObservationFactory {
 		ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
 		Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
 		dvo.setValueAsConceptId(valueConceptId);
-		// value as string
+		// value as number
+		dvo.setValueAsNumber(obs.getValueAsNumber());
 		return dvo;
 	}
 

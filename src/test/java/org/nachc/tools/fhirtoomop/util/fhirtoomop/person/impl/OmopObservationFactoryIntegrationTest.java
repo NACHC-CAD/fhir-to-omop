@@ -35,11 +35,15 @@ public class OmopObservationFactoryIntegrationTest {
 				log.info("\t" + dvo.getObservationId() + "\t" + dvo.getValueAsConceptId() + "\t" + dvo.getValueAsString() + "\t" + dvo.getValueAsNumber());
 			}
 			// test a single dvo
-			ObservationDvo dvo = obsList.get(0);
+			ObservationDvo dvo;
+			dvo = obsList.get(0);
 			log.info("obsId: " + dvo.getObservationId());
 			assertTrue(dvo.getObservationId() != null);
 			log.info("obsConceptId: " + dvo.getObservationConceptId());
 			assertTrue(43055141 == dvo.getObservationConceptId());
+			// get the 14th dvo (it has a value that is not a coding or number)
+			dvo = obsList.get(15);
+			log.info("Got obs 15: " + dvo.getObservationSourceValue());
 		} finally {
 			Database.close(conn);
 		}
