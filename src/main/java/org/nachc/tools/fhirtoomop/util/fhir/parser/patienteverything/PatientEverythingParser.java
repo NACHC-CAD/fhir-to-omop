@@ -120,7 +120,7 @@ public class PatientEverythingParser {
 		List<ObservationParser> rtn = new ArrayList<ObservationParser>();
 		List<Observation> observationList = this.bundleParser.getResourceListForType(new Observation());
 		for (Observation obs : observationList) {
-			ObservationParser parser = new ObservationParser(obs);
+			ObservationParser parser = new ObservationParser(obs, this);
 			if (type == null) {
 				rtn.add(parser);
 			} else {

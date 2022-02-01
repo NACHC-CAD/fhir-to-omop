@@ -1,12 +1,14 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.observation;
 
+import java.util.Date;
+
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Quantity;
 import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
-
-import com.ibm.icu.util.StringTokenizer;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 
 public class ObservationParser {
 
@@ -15,36 +17,20 @@ public class ObservationParser {
 	//
 
 	private Observation obs;
+	
+	private PatientEverythingParser patient;
 
 	//
 	// constructor
 	//
 
-	public ObservationParser(Observation obs) {
+	public ObservationParser(Observation obs, PatientEverythingParser patient) {
 		this.obs = obs;
+		this.patient = patient;
 	}
 
 	public String getId() {
 		return FhirUtil.getIdUnqualified(this.obs.getId());
-	}
-
-	public String getEncounterId() {
-		try {
-			String str = this.obs.getContext().getReference();
-			if (str.indexOf("/") > 0) {
-				StringTokenizer tokenizer = new StringTokenizer(str, "/");
-				String type = tokenizer.nextToken();
-				String val = tokenizer.nextToken();
-				if ("encounter".equalsIgnoreCase(type) == false) {
-					return null;
-				} else {
-					return val;
-				}
-			}
-			return str;
-		} catch (Exception exp) {
-			return null;
-		}
 	}
 
 	public Coding getCategory() {
@@ -120,8 +106,49 @@ public class ObservationParser {
 		} catch(Exception exp) {
 			return ObservationType.OTHER;
 		}
+	}
 
+	//
+	// encounter
+	//
+	
+	public String getEncounterId() {
+		try {
+			String ref = this.obs.getContext().getReference();
+			if(ref.indexOf('/') < 0) {
+				return ref;
+			} else {
+				return ref.split("/")[1];
+			}
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// patient
+	//
+	
+	public String getPatientId() {
+		try {
+			return this.patient.getPatient().getId();
+		} catch(Exception exp) {
+			return null;
+		}
 	}
 	
+	//
+	// start date
+	//
 	
+	public Date getStartDate() {
+		try {
+			String encounterId = this.getEncounterId();
+			EncounterParser enc = this.patient.getEncounter(encounterId);
+			return enc.getStartDate();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+
 }

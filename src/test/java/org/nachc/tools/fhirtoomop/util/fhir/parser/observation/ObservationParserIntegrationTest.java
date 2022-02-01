@@ -75,6 +75,16 @@ public class ObservationParserIntegrationTest {
 		}
 		log.info("Got " + vitals.size() + " vitals");
 		log.info("Done.");
+		// test single obs
+		log.info("Testing single obs...");
+		ObservationParser obs = obsList.get(0);
+		log.info("patientId:   " + obs.getPatientId());
+		assertTrue("6f7acde5-db81-4361-82cf-886893a3280c".equals(obs.getPatientId()));
+		log.info("encounterId: " + obs.getEncounterId());
+		assertTrue("2a0e0f6c-493f-4c5b-bf89-5f98aee24f21".equals(obs.getEncounterId()));
+		log.info("startDate:   " + obs.getStartDate());
+		assertTrue(obs.getStartDate() != null);
+		log.info("Done.");
 	}
 
 }
