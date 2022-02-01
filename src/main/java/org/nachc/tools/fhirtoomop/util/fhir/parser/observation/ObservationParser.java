@@ -33,6 +33,10 @@ public class ObservationParser {
 		return FhirUtil.getIdUnqualified(this.obs.getId());
 	}
 
+	//
+	// category
+	//
+	
 	public Coding getCategory() {
 		try {
 			// TODO: (JEG) Just getting first here (might need to be expanded for other use
@@ -63,30 +67,6 @@ public class ObservationParser {
 		try {
 			return getCategory().getDisplay();
 		} catch(Exception exp) {
-			return null;
-		}
-	}
-
-	public Coding getCode() {
-		try {
-			return this.obs.getCode().getCodingFirstRep();
-		} catch (Exception exp) {
-			return null;
-		}
-	}
-
-	public Coding getValueCoding() {
-		try {
-			return this.obs.getValueCodeableConcept().getCodingFirstRep();
-		} catch (Exception exp) {
-			return null;
-		}
-	}
-
-	public Quantity getValueQuantity() {
-		try {
-			return obs.getValueQuantity();
-		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -147,6 +127,72 @@ public class ObservationParser {
 			EncounterParser enc = this.patient.getEncounter(encounterId);
 			return enc.getStartDate();
 		} catch(Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// observation code (what observation is this)
+	//
+	
+	public Coding getObservationCode() {
+		try {
+			return this.obs.getCode().getCodingFirstRep();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getObservationCodeSystem() {
+		try {
+			return this.obs.getCode().getCodingFirstRep().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getObservationCodeCode() {
+		try {
+			return this.obs.getCode().getCodingFirstRep().getCode();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getObservationCodeDisplay() {
+		try {
+			return this.obs.getCode().getCodingFirstRep().getDisplay();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	// -----------------------------------
+	//
+	// VALUES (There are several types of Observations)
+	//
+	// -----------------------------------
+	
+	//
+	// value coding
+	//
+	
+	public Coding getValueCoding() {
+		try {
+			return this.obs.getValueCodeableConcept().getCodingFirstRep();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// value quantity
+	//
+	
+	public Quantity getValueQuantity() {
+		try {
+			return obs.getValueQuantity();
+		} catch (Exception exp) {
 			return null;
 		}
 	}

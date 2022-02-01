@@ -23,13 +23,18 @@ public class OmopObservationFactoryIntegrationTest {
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
 			log.info("Starting test...");
+			// get the person and get the list
 			PatientEverythingParser patient = TestParams.getPatientEverything();
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
 			List<ObservationDvo> obsList = person.getObservationList();
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 45);
+			// test a single dvo
 			ObservationDvo dvo = obsList.get(0);
 			log.info("obsId: " + dvo.getObservationId());
+			assertTrue(dvo.getObservationId() != null);
+			log.info("obsConceptId: " + dvo.getObservationConceptId());
+			assertTrue(43055141 == dvo.getObservationConceptId());
 		} finally {
 			Database.close(conn);
 		}

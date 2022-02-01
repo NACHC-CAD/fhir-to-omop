@@ -12,6 +12,8 @@ public class SystemMapping {
 			return "SNOMED";
 		} else if("http://www.nlm.nih.gov/research/umls/rxnorm".equals(system)) {
 			return "RxNorm";
+		} else if("http://loinc.org".equals(system)) {
+			return "LOINC";
 		} else {
 			log.warn("WARNING: UNKNON SYSTEM: " + system);
 			return null;
