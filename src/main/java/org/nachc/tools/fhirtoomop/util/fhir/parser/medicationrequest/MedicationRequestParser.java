@@ -1,10 +1,11 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest;
 
+import java.util.Date;
+
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.MedicationRequest;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-
-import com.ibm.icu.util.StringTokenizer;
 
 public class MedicationRequestParser {
 
@@ -118,6 +119,20 @@ public class MedicationRequestParser {
 	public String getPatientId() {
 		try {
 			return this.patient.getPatient().getId();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	//
+	// start date
+	//
+	
+	public Date getStartDate() {
+		try {
+			String encounterId = this.getEncounterId();
+			EncounterParser enc = this.patient.getEncounter(encounterId);
+			return enc.getStartDate();
 		} catch(Exception exp) {
 			return null;
 		}

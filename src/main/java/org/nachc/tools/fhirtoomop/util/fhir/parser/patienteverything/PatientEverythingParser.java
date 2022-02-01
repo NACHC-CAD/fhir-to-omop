@@ -90,7 +90,7 @@ public class PatientEverythingParser {
 		} else {
 			List<EncounterParser> encList = this.getEncounterList();
 			for(EncounterParser enc : encList) {
-				if(encounterId.equals(enc.getEncounterId())) {
+				if(encounterId.equals(enc.getEncounterIdUnqualified())) {
 					return enc;
 				}
 			}

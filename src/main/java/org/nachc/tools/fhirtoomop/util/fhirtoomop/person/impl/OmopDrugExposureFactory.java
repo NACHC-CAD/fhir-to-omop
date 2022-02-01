@@ -67,6 +67,11 @@ public class OmopDrugExposureFactory {
 		if(conceptDvo != null) {
 			dvo.setDrugConceptId(conceptDvo.getConceptId());
 		}
+		// drug type
+		dvo.setDrugTypeConceptId(0);
+		// start date
+		dvo.setDrugExposureStartDate(medReq.getStartDate());
+		dvo.setDrugExposureEndDate(medReq.getStartDate());
 		return dvo;
 	}
 

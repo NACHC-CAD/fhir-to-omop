@@ -40,6 +40,8 @@ public class MedicationRequestParserIntegrationTest {
 			assertTrue(medReq.getIntent() != null);
 			// encounter id
 			log.info("Encounter ID: " + medReq.getEncounterId());
+			// start date
+			log.info("Start date: " + medReq.getStartDate());
 		}
 		log.info("Done.");
 	}

@@ -6,6 +6,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
+import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.dao.Dao;
@@ -22,6 +23,7 @@ public class WriteFhirPatientToOmop {
 		writePatient(personEverything, conn);
 		writeVisitOccurrence(personEverything, conn);
 		writeConditionOccurrences(personEverything, conn);
+		writeDrugExposures(personEverything, conn);
 	}
 
 	private static void writePatient(OmopPersonEverythingFactory person, Connection conn) {
@@ -39,6 +41,13 @@ public class WriteFhirPatientToOmop {
 	private static void writeConditionOccurrences(OmopPersonEverythingFactory person, Connection conn) {
 		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
 		for(ConditionOccurrenceDvo dvo : conList) {
+			Dao.insert(dvo, conn);
+		}
+	}
+	
+	private static void writeDrugExposures(OmopPersonEverythingFactory person, Connection conn) {
+		List<DrugExposureDvo> drugExposureList = person.getDrugExposureList();
+		for(DrugExposureDvo dvo : drugExposureList) {
 			Dao.insert(dvo, conn);
 		}
 	}
