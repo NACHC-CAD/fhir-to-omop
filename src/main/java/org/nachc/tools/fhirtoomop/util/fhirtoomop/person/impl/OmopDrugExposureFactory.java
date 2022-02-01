@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest.MedicationRequestParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
+import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 
 public class OmopDrugExposureFactory {
@@ -59,7 +62,11 @@ public class OmopDrugExposureFactory {
 		Integer omopVisitId = this.omopPersonEverything.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
 		// drug concept id
-		
+		Coding medicationCoding = medReq.getMedication();
+		ConceptDvo conceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(medicationCoding, conn);
+		if(conceptDvo != null) {
+			dvo.setDrugConceptId(conceptDvo.getConceptId());
+		}
 		return dvo;
 	}
 

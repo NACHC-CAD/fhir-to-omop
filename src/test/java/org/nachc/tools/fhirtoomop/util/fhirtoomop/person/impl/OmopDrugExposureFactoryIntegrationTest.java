@@ -1,5 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl;
 
+import static org.junit.Assert.assertTrue;
+
 import java.sql.Connection;
 import java.util.List;
 
@@ -25,13 +27,19 @@ public class OmopDrugExposureFactoryIntegrationTest {
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
 			List<DrugExposureDvo> dvoList = person.getDrugExposureList();
 			log.info("Got " + dvoList.size() + " drug exposures");
+			assertTrue(dvoList.size() == 2);
 			int cnt = 0;
-			for(DrugExposureDvo dvo : dvoList) {
+			for (DrugExposureDvo dvo : dvoList) {
 				cnt++;
 				log.info("Drug Exposure " + cnt + " of " + dvoList.size());
 				log.info("\tdrugExposureId:  " + dvo.getDrugExposureId());
+				assertTrue(dvo.getDrugExposureId() != null);
 				log.info("\tpersonId:        " + dvo.getPersonId());
+				assertTrue(dvo.getPersonId() != null);
 				log.info("\tvisitOccurenceId:" + dvo.getVisitOccurrenceId());
+				assertTrue(dvo.getVisitOccurrenceId() != null);
+				log.info("drugConceptId:     " + dvo.getDrugConceptId());
+				assertTrue(dvo.getDrugConceptId() == 1713671 || dvo.getDrugConceptId() == 19081453);
 			}
 		} finally {
 			Database.close(conn);
