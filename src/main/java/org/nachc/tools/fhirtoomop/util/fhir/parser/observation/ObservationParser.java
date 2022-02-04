@@ -1,13 +1,17 @@
 package org.nachc.tools.fhirtoomop.util.fhir.parser.observation;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Observation;
+import org.hl7.fhir.dstu3.model.Observation.ObservationComponentComponent;
 import org.hl7.fhir.dstu3.model.Quantity;
 import org.nachc.tools.fhirtoomop.util.fhir.general.FhirUtil;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.ObservationComponentParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 
@@ -29,6 +33,42 @@ public class ObservationParser {
 		this.obs = obs;
 		this.patient = patient;
 	}
+
+	/**
+	 * 
+	 * A single FHIR observation can represent multiple measurements.
+	 * 
+	 */
+
+	public boolean isMultipart() {
+		if(this.getComponents().size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	//
+	// component
+	//
+
+	public List<ObservationComponentParser> getComponents() {
+		try {
+			ArrayList<ObservationComponentParser> rtn = new ArrayList<ObservationComponentParser>();
+			List<ObservationComponentComponent> componentList = this.obs.getComponent();
+			for (ObservationComponentComponent comp : componentList) {
+				ObservationComponentParser parser = new ObservationComponentParser(comp);
+				rtn.add(parser);
+			}
+			return rtn;
+		} catch (Exception exp) {
+			return new ArrayList<ObservationComponentParser>();
+		}
+	}
+
+	//
+	// id
+	//
 
 	public String getId() {
 		return FhirUtil.getIdUnqualified(this.obs.getId());
