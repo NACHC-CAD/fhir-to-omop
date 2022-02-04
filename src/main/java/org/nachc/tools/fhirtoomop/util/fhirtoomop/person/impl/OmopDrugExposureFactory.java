@@ -66,6 +66,8 @@ public class OmopDrugExposureFactory {
 		ConceptDvo conceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(medicationCoding, conn);
 		if(conceptDvo != null) {
 			dvo.setDrugConceptId(conceptDvo.getConceptId());
+		} else {
+			dvo.setDrugConceptId(0);
 		}
 		// drug type
 		dvo.setDrugTypeConceptId(0);
