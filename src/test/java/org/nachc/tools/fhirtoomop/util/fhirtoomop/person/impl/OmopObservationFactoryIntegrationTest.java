@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoHelper;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.database.Database;
 
@@ -28,11 +29,12 @@ public class OmopObservationFactoryIntegrationTest {
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
 			List<ObservationDvo> obsList = person.getObservationList();
 			log.info("Got " + obsList.size() + " observations.");
-//			assertTrue(obsList.size() == 45);
+			assertTrue(obsList.size() == 50);
 			// show all obs
-			log.info("\tID\tCONCEPT_ID\tSTRING\tNUMBER");
+			log.info("\t" + ObservationDvoHelper.getFixedWithHeaderRow());
 			for(ObservationDvo dvo : obsList) {
-				log.info("\t" + dvo.getObservationId() + "\t" + dvo.getValueAsConceptId() + "\t" + dvo.getValueAsString() + "\t" + dvo.getValueAsNumber());
+				ObservationDvoHelper helper = new ObservationDvoHelper(dvo, conn);
+				log.info("\t" + helper.getAsFixedWidthString());
 			}
 			// test a single dvo
 			ObservationDvo dvo;
@@ -40,7 +42,7 @@ public class OmopObservationFactoryIntegrationTest {
 			log.info("obsId: " + dvo.getObservationId());
 			assertTrue(dvo.getObservationId() != null);
 			log.info("obsConceptId: " + dvo.getObservationConceptId());
-//			assertTrue(43055141 == dvo.getObservationConceptId());
+			assertTrue(43055141 == dvo.getObservationConceptId());
 			// get the 14th dvo (it has a value that is not a coding or number)
 			dvo = obsList.get(15);
 			log.info("Got obs 15: " + dvo.getObservationSourceValue());
