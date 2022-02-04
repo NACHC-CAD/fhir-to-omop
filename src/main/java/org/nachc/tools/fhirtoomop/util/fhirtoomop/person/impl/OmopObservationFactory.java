@@ -13,6 +13,9 @@ import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class OmopObservationFactory {
 
 	private OmopPersonEverythingFactory omopPersonEverything;
@@ -69,7 +72,13 @@ public class OmopObservationFactory {
 		ArrayList<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
 		for(ObservationComponentParser comp : comps) {
 			// get the values out of the comp
-			ObservationDvo dvo = getSingleObservation(obs);
+			ObservationDvo dvo = getSingleObservation(obs, false);
+			// observation concept id
+			Coding obsCoding = comp.getObservationCode();
+			ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
+			Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
+			dvo.setObservationConceptId(obsConceptId);
+			dvo.setObservationSourceValue(obs.getId());
 			// value as coding
 			Coding valueCoding = comp.getValueCoding();
 			ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
@@ -78,6 +87,10 @@ public class OmopObservationFactory {
 			// value as number
 			dvo.setValueAsNumber(comp.getValueAsNumber());
 			rtn.add(dvo);
+			if(dvo.getObservationConceptId() == 0) {
+				String display = comp.getObservationCodeDisplay();
+				log.warn("COULD NOT MAP OBSERVATION TO CONCEPT: " + display);
+			}
 		}
 		return rtn;
 	}
@@ -86,7 +99,12 @@ public class OmopObservationFactory {
 	// method to get a single observation
 	//
 	
+
 	private ObservationDvo getSingleObservation(ObservationParser obs) {
+		return getSingleObservation(obs, true);
+	}
+	
+	private ObservationDvo getSingleObservation(ObservationParser obs, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
 		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
@@ -110,6 +128,10 @@ public class OmopObservationFactory {
 		dvo.setValueAsConceptId(valueConceptId);
 		// value as number
 		dvo.setValueAsNumber(obs.getValueAsNumber());
+		if(isSingle == true && dvo.getObservationConceptId() == 0) {
+			String display = obs.getObservationCodeDisplay();
+			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
+		}
 		return dvo;
 	}
 

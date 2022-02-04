@@ -14,13 +14,42 @@ public class ObservationComponentParser {
 		this.comp = comp;
 	}
 
-	public Coding getCoding() {
+	//
+	// observation code (what observation is this)
+	//
+
+	public Coding getObservationCode() {
 		try {
-			return this.comp.getCode().getCoding().get(0);
-		} catch(Exception exp) {
+			return this.comp.getCode().getCodingFirstRep();
+		} catch (Exception exp) {
 			return null;
 		}
 	}
+
+	public String getObservationCodeSystem() {
+		try {
+			return this.comp.getCode().getCodingFirstRep().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getObservationCodeCode() {
+		try {
+			return this.comp.getCode().getCodingFirstRep().getCode();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getObservationCodeDisplay() {
+		try {
+			return this.comp.getCode().getCodingFirstRep().getDisplay();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 	
 	// -----------------------------------
 	//
