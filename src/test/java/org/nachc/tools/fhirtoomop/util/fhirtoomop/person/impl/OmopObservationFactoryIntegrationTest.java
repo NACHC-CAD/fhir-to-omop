@@ -10,7 +10,7 @@ import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoHelper;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.database.Database;
 
@@ -27,13 +27,13 @@ public class OmopObservationFactoryIntegrationTest {
 			// get the person and get the list
 			PatientEverythingParser patient = TestParams.getPatientEverything();
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
-			List<ObservationDvoHelper> obsList = person.getObservationList();
+			List<ObservationDvoProxy> obsList = person.getObservationList();
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 50);
 			// show all obs
-			log.info("\t" + ObservationDvoHelper.getFixedWithHeaderRow());
-			for (ObservationDvoHelper helper : obsList) {
-				log.info("\t" + helper.getAsFixedWidthString());
+			log.info("\t" + ObservationDvoProxy.getFixedWithHeaderRow());
+			for (ObservationDvoProxy proxy : obsList) {
+				log.info("\t" + proxy.getAsFixedWidthString());
 			}
 			// test a single dvo
 			ObservationDvo dvo;

@@ -7,7 +7,7 @@ import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.dao.Dao;
 
-public class ObservationDvoHelper {
+public class ObservationDvoProxy {
 
 	//
 	// instance variables
@@ -21,7 +21,7 @@ public class ObservationDvoHelper {
 	// constructor
 	//
 
-	public ObservationDvoHelper(ObservationDvo dvo, Connection conn) {
+	public ObservationDvoProxy(ObservationDvo dvo, Connection conn) {
 		this.dvo = dvo;
 		this.observationConceptDvo = Dao.find(new ConceptDvo(), "concept_id", dvo.getObservationConceptId() + "", conn);
 	}

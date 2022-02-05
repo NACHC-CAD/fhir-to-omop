@@ -9,7 +9,7 @@ import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopDrugExposureFa
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoHelper;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
@@ -40,7 +40,7 @@ public class OmopPersonEverythingFactory {
 
 	private List<ConditionOccurrenceDvo> conditionOccurrenceList;
 
-	private List<ObservationDvoHelper> observationList;
+	private List<ObservationDvoProxy> observationList;
 
 	private List<DrugExposureDvo> drugExposureList;
 
@@ -94,7 +94,7 @@ public class OmopPersonEverythingFactory {
 		return this.conditionOccurrenceList;
 	}
 
-	public List<ObservationDvoHelper> getObservationList() {
+	public List<ObservationDvoProxy> getObservationList() {
 		if (this.observationList == null) {
 			OmopObservationFactory factory = new OmopObservationFactory(this, conn);
 			this.observationList = factory.getObservationList();
