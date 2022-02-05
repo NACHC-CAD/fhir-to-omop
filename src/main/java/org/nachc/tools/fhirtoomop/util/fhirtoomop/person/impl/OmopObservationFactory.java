@@ -122,9 +122,18 @@ public class OmopObservationFactory {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 			// for some reason synthea uses curly brackets instead of brackets
 			if(unitsConceptDvo == null) {
-				unitsCode = unitsCode.replace('{', '[');
-				unitsCode = unitsCode.replace('}', ']');
-				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
+				String mod = unitsCode;
+				mod = mod.replace("{", "[");
+				mod = mod.replace("}", "]");
+				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+			}
+			// this is for concept_id 9117
+			if(unitsConceptDvo == null) {
+				String mod = unitsCode;
+				mod = mod.replace("{", "");
+				mod = mod.replace("}", "");
+				mod = mod.replace('_', '.');
+				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 			}
 			if(unitsConceptDvo != null) {
 				dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
