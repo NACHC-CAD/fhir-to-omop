@@ -135,6 +135,11 @@ public class OmopObservationFactory {
 				mod = mod.replace('_', '.');
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 			}
+			// this is for mmHg
+			if(unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
+				String mod = "mm[Hg]";
+				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+			}			
 			if(unitsConceptDvo != null) {
 				dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 			}
@@ -199,6 +204,19 @@ public class OmopObservationFactory {
 					unitsCode = unitsCode.replace('}', ']');
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 				}
+				// this is for concept_id 9117
+				if(unitsConceptDvo == null) {
+					String mod = unitsCode;
+					mod = mod.replace("{", "");
+					mod = mod.replace("}", "");
+					mod = mod.replace('_', '.');
+					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+				}
+				// this is for mmHg
+				if(unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
+					String mod = "mm[Hg]";
+					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+				}			
 				if(unitsConceptDvo != null) {
 					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 				}

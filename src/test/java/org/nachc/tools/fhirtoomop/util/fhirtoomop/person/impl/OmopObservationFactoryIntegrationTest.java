@@ -28,6 +28,8 @@ public class OmopObservationFactoryIntegrationTest {
 			PatientEverythingParser patient = TestParams.getPatientEverything();
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
 			List<ObservationDvoProxy> obsList = person.getObservationList();
+			String patientId = person.getFhirPatientEverything().getPatient().getId();
+			log.info("Patient ID: " + patientId);
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 50);
 			// show all obs
