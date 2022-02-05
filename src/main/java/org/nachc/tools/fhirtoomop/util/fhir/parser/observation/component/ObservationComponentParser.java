@@ -93,6 +93,36 @@ public class ObservationComponentParser {
 		}
 	}
 
+	// -----------------------------------
+	//
+	// UNITS (There are several types of Observations)
+	//
+	// -----------------------------------
+
+	public String getUnitsCodingSystem() {
+		try {
+			return comp.getValueQuantity().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getUnitsCodingCode() {
+		try {
+			return comp.getValueQuantity().getCode();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getUnitsCodingDisplay() {
+		try {
+			return comp.getValueQuantity().getUnit();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 	//
 	// value quantity
 	//

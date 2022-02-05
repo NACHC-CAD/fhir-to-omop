@@ -14,6 +14,8 @@ public class SystemMapping {
 			return "RxNorm";
 		} else if("http://loinc.org".equals(system)) {
 			return "LOINC";
+		} else if("http://unitsofmeasure.org".equals(system)) {
+			return "UCUM";
 		} else {
 			log.warn("WARNING: UNKNON SYSTEM: " + system);
 			return null;

@@ -41,13 +41,13 @@ public class ObservationParser {
 	 */
 
 	public boolean isMultipart() {
-		if(this.getComponents().size() > 0) {
+		if (this.getComponents().size() > 0) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	//
 	// component
 	//
@@ -267,6 +267,36 @@ public class ObservationParser {
 			Quantity q = getValueQuantity();
 			BigDecimal bd = q.getValue();
 			return bd.toString();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	// -----------------------------------
+	//
+	// UNITS (There are several types of Observations)
+	//
+	// -----------------------------------
+
+	public String getUnitsCodingSystem() {
+		try {
+			return obs.getValueQuantity().getSystem();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getUnitsCodingCode() {
+		try {
+			return obs.getValueQuantity().getCode();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	public String getUnitsCodingDisplay() {
+		try {
+			return obs.getValueQuantity().getUnit();
 		} catch (Exception exp) {
 			return null;
 		}
