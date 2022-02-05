@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs;
 import java.sql.Connection;
 
 import org.apache.commons.lang.StringUtils;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.dao.Dao;
@@ -15,12 +16,14 @@ public class ObservationDvoProxy {
 
 	private ObservationDvo dvo;
 
+	private ObservationType observationType;
+
 	private ConceptDvo observationConceptDvo;
-	
+
 	private ConceptDvo valueConceptDvo;
-	
+
 	private ConceptDvo valueUnitsConceptDvo;
-	
+
 	private ObservationValueType valueType;
 
 	//
@@ -35,13 +38,13 @@ public class ObservationDvoProxy {
 	}
 
 	private ConceptDvo getConceptDvo(Integer conceptId, Connection conn) {
-		if(conceptId == null) {
+		if (conceptId == null) {
 			return null;
 		} else {
-			return  Dao.find(new ConceptDvo(), "concept_id", conceptId + "", conn);
+			return Dao.find(new ConceptDvo(), "concept_id", conceptId + "", conn);
 		}
 	}
-	
+
 	//
 	// trivial getters
 	//
@@ -50,10 +53,14 @@ public class ObservationDvoProxy {
 		return dvo;
 	}
 
+	public ObservationType getObservationType() {
+		return observationType;
+	}
+
 	public ConceptDvo getObservationConceptDvo() {
 		return observationConceptDvo;
 	}
-	
+
 	public ObservationValueType getValueType() {
 		return this.valueType;
 	}
@@ -65,11 +72,15 @@ public class ObservationDvoProxy {
 	//
 	// trivial setters
 	//
-	
+
+	public void setObservationType(ObservationType observationType) {
+		this.observationType = observationType;
+	}
+
 	public void setObservationValueType(ObservationValueType valueType) {
 		this.valueType = valueType;
 	}
-	
+
 	//
 	// implementation
 	//
@@ -83,7 +94,7 @@ public class ObservationDvoProxy {
 	}
 
 	public String getUnitsAsString() {
-		if(this.valueUnitsConceptDvo != null) {
+		if (this.valueUnitsConceptDvo != null) {
 			ConceptDvo dvo = this.valueUnitsConceptDvo;
 			String rtn = "";
 			rtn += dvo.getConceptName();
@@ -93,13 +104,13 @@ public class ObservationDvoProxy {
 			return dvo.getUnitSourceValue();
 		}
 	}
-	
+
 	//
 	// method to get value as string
 	//
 
 	public String getValueAsString() {
-		if(this.getValueType() == ObservationValueType.CODED) {
+		if (this.getValueType() == ObservationValueType.CODED) {
 			String rtn = "";
 			rtn += this.valueConceptDvo.getConceptName();
 			rtn += "(" + this.valueConceptDvo.getVocabularyId() + "|" + this.valueConceptDvo.getConceptCode() + ")";
@@ -123,6 +134,7 @@ public class ObservationDvoProxy {
 
 	public static String getFixedWithHeaderRow() {
 		String rtn = "";
+		rtn += rpad("OBSERVATION_TYPE", 16);
 		rtn += rpad("OBSERVATION_ID", 16);
 		rtn += rpad("OBS_CONCEPT_ID", 16);
 		rtn += rpad("VALUE_TYPE", 16);
@@ -134,7 +146,9 @@ public class ObservationDvoProxy {
 
 	public String getAsFixedWidthString() {
 		String rtn = "";
+		rtn += rpad(this.getObservationType(), 16);
 		rtn += rpad(dvo.getObservationId(), 16);
+		rtn += rpad(this.getObservationType(), 16);
 		rtn += rpad(dvo.getObservationConceptId(), 16);
 		rtn += rpad(this.getValueType(), 16);
 		rtn += rpad(this.getValueAsString(), 64);
@@ -144,8 +158,8 @@ public class ObservationDvoProxy {
 	}
 
 	private static String rpad(Object obj, int len) {
-		String str = obj == null? "" : obj.toString();
-		if(str.length() > len) {
+		String str = obj == null ? "" : obj.toString();
+		if (str.length() > len) {
 			str = str.substring(0, (len - 4));
 			str += "...";
 		}

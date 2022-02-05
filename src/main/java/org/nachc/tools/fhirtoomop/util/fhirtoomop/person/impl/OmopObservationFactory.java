@@ -146,7 +146,9 @@ public class OmopObservationFactory {
 		}
 		// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)
 		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
-		// set the type
+		// set the observation type
+		proxy.setObservationType(parser.getObservationType());
+		// set the value type
 		if(parser.getValueCoding() != null) {
 			proxy.setObservationValueType(ObservationValueType.CODED);
 		} else if(parser.getValueAsNumber() != null) {
@@ -223,7 +225,9 @@ public class OmopObservationFactory {
 			}
 			// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)
 			ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
-			// set the type
+			// set the observation type
+			proxy.setObservationType(obs.getObservationType());
+			// set the value type
 			if(comp.getValueCoding() != null) {
 				proxy.setObservationValueType(ObservationValueType.CODED);
 			} else if(comp.getValueAsNumber() != null) {
