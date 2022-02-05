@@ -16,6 +16,8 @@ public class ObservationDvoProxy {
 	private ObservationDvo dvo;
 
 	private ConceptDvo observationConceptDvo;
+	
+	private ObservationValueType valueType;
 
 	//
 	// constructor
@@ -37,7 +39,19 @@ public class ObservationDvoProxy {
 	public ConceptDvo getObservationConceptDvo() {
 		return observationConceptDvo;
 	}
+	
+	public ObservationValueType getValueType() {
+		return this.valueType;
+	}
 
+	//
+	// trivial setters
+	//
+	
+	public void setObservationValueType(ObservationValueType valueType) {
+		this.valueType = valueType;
+	}
+	
 	//
 	// implementation
 	//
@@ -68,6 +82,7 @@ public class ObservationDvoProxy {
 		String rtn = "";
 		rtn += rpad("OBSERVATION_ID", 16);
 		rtn += rpad("OBS_CONCEPT_ID", 16);
+		rtn += rpad("VALUE_TYPE", 16);
 		rtn += rpad("OBS_NAME", 24);
 		return rtn;
 	}
@@ -76,6 +91,7 @@ public class ObservationDvoProxy {
 		String rtn = "";
 		rtn += rpad(dvo.getObservationId(), 16);
 		rtn += rpad(dvo.getObservationConceptId(), 16);
+		rtn += rpad(this.getValueType(), 16);
 		rtn += rpad(this.getName(), 24);
 		return rtn;
 	}

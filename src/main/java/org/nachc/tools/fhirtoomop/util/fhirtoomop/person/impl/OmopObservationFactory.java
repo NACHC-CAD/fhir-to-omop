@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.Observa
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationValueType;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
@@ -107,7 +108,7 @@ public class OmopObservationFactory {
 		return getSingleObservation(obs, true);
 	}
 
-	private ObservationDvoProxy getSingleObservation(ObservationParser obs, boolean isSingle) {
+	private ObservationDvoProxy getSingleObservation(ObservationParser parser, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
 		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
@@ -115,35 +116,40 @@ public class OmopObservationFactory {
 		Integer omopPatientId = this.omopPersonEverything.getOmopPatientId();
 		dvo.setPersonId(omopPatientId);
 		// observation concept id
-		Coding obsCoding = obs.getObservationCode();
+		Coding obsCoding = parser.getObservationCode();
 		ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
 		Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
 		dvo.setObservationConceptId(obsConceptId);
-		dvo.setObservationSourceValue(obs.getId());
+		dvo.setObservationSourceValue(parser.getId());
 		// date
-		dvo.setObservationDate(obs.getStartDate());
+		dvo.setObservationDate(parser.getStartDate());
 		// type
 		dvo.setObservationTypeConceptId(0);
 		// value as coding
-		Coding valueCoding = obs.getValueCoding();
+		Coding valueCoding = parser.getValueCoding();
 		ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
 		Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
 		dvo.setValueAsConceptId(valueConceptId);
 		// value as number
-		dvo.setValueAsNumber(obs.getValueAsNumber());
+		dvo.setValueAsNumber(parser.getValueAsNumber());
 		// get additional data for single observation (this is pulled multiple times for multivalue obs)
+		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
 		if (isSingle == true) {
 			// log a warning if we couldn't get what kind of observation this is
 			if(dvo.getObservationConceptId() == 0) {
-				String display = obs.getObservationCodeDisplay();
+				String display = parser.getObservationCodeDisplay();
 				log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
 			}
 			// set the type
-			if(obs.getValueCoding() != null) {
-				
+			if(parser.getValueCoding() != null) {
+				proxy.setObservationValueType(ObservationValueType.CODED);
+			} else if(parser.getValueAsNumber() != null) {
+				proxy.setObservationValueType(ObservationValueType.QUANTITY);
+			} else {
+				proxy.setObservationValueType(ObservationValueType.STRING);
 			}
 		}
-		return new ObservationDvoProxy(dvo, conn);
+		return proxy;
 	}
 
 }
