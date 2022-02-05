@@ -134,13 +134,13 @@ public class ObservationDvoProxy {
 
 	public static String getFixedWithHeaderRow() {
 		String rtn = "";
-		rtn += rpad("OBSERVATION_TYPE", 16);
-		rtn += rpad("OBSERVATION_ID", 16);
-		rtn += rpad("OBS_CONCEPT_ID", 16);
-		rtn += rpad("VALUE_TYPE", 16);
-		rtn += rpad("VALUE_AS_STRING", 64);
-		rtn += rpad("UNITS", 64);
-		rtn += rpad("OBS_NAME", 64);
+		rtn += rpad("OBS_TYPE ", 16);
+		rtn += rpad("OBSERVATION_ID ", 16);
+		rtn += rpad("OBS_CONCEPT_ID ", 16);
+		rtn += rpad("VALUE_TYPE ", 16);
+		rtn += rpad("VALUE_AS_STRING ", 64);
+		rtn += rpad("UNITS ", 64);
+		rtn += rpad("OBS_NAME ", 64);
 		return rtn;
 	}
 
@@ -159,7 +159,7 @@ public class ObservationDvoProxy {
 
 	private static String rpad(Object obj, int len) {
 		String str = obj == null ? "" : obj.toString();
-		if (str.length() > len) {
+		if (str.length() >= len) {
 			str = str.substring(0, (len - 4));
 			str += "...";
 		}
