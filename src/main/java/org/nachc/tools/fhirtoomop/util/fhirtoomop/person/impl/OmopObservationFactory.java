@@ -74,10 +74,10 @@ public class OmopObservationFactory {
 	private List<ObservationDvoProxy> getMultipleObservations(ObservationParser obs) {
 		List<ObservationComponentParser> comps = obs.getComponents();
 		ArrayList<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
+		// process each component to create a new observation
 		for (ObservationComponentParser comp : comps) {
 			// get the values out of the comp
-			ObservationDvoProxy proxy = getSingleObservation(obs, false);
-			ObservationDvo dvo = proxy.getDvo();
+			ObservationDvo dvo = getSingleObservation(obs, false);
 			// observation concept id
 			Coding obsCoding = comp.getObservationCode();
 			ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
@@ -91,11 +91,23 @@ public class OmopObservationFactory {
 			dvo.setValueAsConceptId(valueConceptId);
 			// value as number
 			dvo.setValueAsNumber(comp.getValueAsNumber());
-			rtn.add(new ObservationDvoProxy(dvo, conn));
+			// display warning if we couldn't get what kind of observation this is
 			if (dvo.getObservationConceptId() == 0) {
 				String display = comp.getObservationCodeDisplay();
 				log.warn("COULD NOT MAP OBSERVATION TO CONCEPT: " + display);
 			}
+			// create the proxy
+			ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
+			// set the type
+			if(comp.getValueCoding() != null) {
+				proxy.setObservationValueType(ObservationValueType.CODED);
+			} else if(comp.getValueAsNumber() != null) {
+				proxy.setObservationValueType(ObservationValueType.QUANTITY);
+			} else {
+				proxy.setObservationValueType(ObservationValueType.STRING);
+			}
+			// add the obs to the return collection
+			rtn.add(proxy);
 		}
 		return rtn;
 	}
@@ -104,11 +116,27 @@ public class OmopObservationFactory {
 	// method to get a single observation
 	//
 
-	private ObservationDvoProxy getSingleObservation(ObservationParser obs) {
-		return getSingleObservation(obs, true);
+	private ObservationDvoProxy getSingleObservation(ObservationParser parser) {
+		ObservationDvo dvo = getSingleObservation(parser, true);
+		// log a warning if we couldn't get what kind of observation this is
+		if(dvo.getObservationConceptId() == 0) {
+			String display = parser.getObservationCodeDisplay();
+			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
+		}
+		// create the proxy
+		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
+		// set the type
+		if(parser.getValueCoding() != null) {
+			proxy.setObservationValueType(ObservationValueType.CODED);
+		} else if(parser.getValueAsNumber() != null) {
+			proxy.setObservationValueType(ObservationValueType.QUANTITY);
+		} else {
+			proxy.setObservationValueType(ObservationValueType.STRING);
+		}
+		return proxy;
 	}
 
-	private ObservationDvoProxy getSingleObservation(ObservationParser parser, boolean isSingle) {
+	private ObservationDvo getSingleObservation(ObservationParser parser, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
 		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
@@ -132,24 +160,7 @@ public class OmopObservationFactory {
 		dvo.setValueAsConceptId(valueConceptId);
 		// value as number
 		dvo.setValueAsNumber(parser.getValueAsNumber());
-		// get additional data for single observation (this is pulled multiple times for multivalue obs)
-		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
-		if (isSingle == true) {
-			// log a warning if we couldn't get what kind of observation this is
-			if(dvo.getObservationConceptId() == 0) {
-				String display = parser.getObservationCodeDisplay();
-				log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
-			}
-			// set the type
-			if(parser.getValueCoding() != null) {
-				proxy.setObservationValueType(ObservationValueType.CODED);
-			} else if(parser.getValueAsNumber() != null) {
-				proxy.setObservationValueType(ObservationValueType.QUANTITY);
-			} else {
-				proxy.setObservationValueType(ObservationValueType.STRING);
-			}
-		}
-		return proxy;
+		return dvo;
 	}
 
 }
