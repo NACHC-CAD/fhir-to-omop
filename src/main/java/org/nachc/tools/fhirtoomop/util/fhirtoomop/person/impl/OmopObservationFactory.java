@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.ObservationComponentParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoHelper;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
@@ -19,23 +20,24 @@ import lombok.extern.slf4j.Slf4j;
 public class OmopObservationFactory {
 
 	private OmopPersonEverythingFactory omopPersonEverything;
-	
+
 	private Connection conn;
-	
+
 	public OmopObservationFactory(OmopPersonEverythingFactory person, Connection conn) {
 		this.omopPersonEverything = person;
 		this.conn = conn;
 	}
+
 	/**
 	 * 
-	 * Get all observations for a given person.  
+	 * Get all observations for a given person.
 	 * 
 	 */
-	public List<ObservationDvo> getObservationList() {
-		List<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
+	public List<ObservationDvoHelper> getObservationList() {
+		List<ObservationDvoHelper> rtn = new ArrayList<ObservationDvoHelper>();
 		List<ObservationParser> obsList = this.omopPersonEverything.getFhirPatientEverything().getObservationList();
-		for(ObservationParser obs : obsList) {
-			List<ObservationDvo> dvoList = getObservationsForSingleFhirObservation(obs);
+		for (ObservationParser obs : obsList) {
+			List<ObservationDvoHelper> dvoList = getObservationsForSingleFhirObservation(obs);
 			rtn.addAll(dvoList);
 		}
 		return rtn;
@@ -44,35 +46,37 @@ public class OmopObservationFactory {
 	//
 	// is the fhir observation one or multiple observations
 	//
-	
+
 	private boolean isMultipleObservations(ObservationParser obs) {
 		return obs.isMultipart();
 	}
-	
+
 	//
-	// method to get omop observation(s) for fhir observation (fhir obs can have multiple omop obs, e.g. blood pressure)
+	// method to get omop observation(s) for fhir observation (fhir obs can have
+	// multiple omop obs, e.g. blood pressure)
 	//
-	
-	public List<ObservationDvo> getObservationsForSingleFhirObservation(ObservationParser obs) {
-		if(isMultipleObservations(obs)) {
+
+	public List<ObservationDvoHelper> getObservationsForSingleFhirObservation(ObservationParser obs) {
+		if (isMultipleObservations(obs)) {
 			return getMultipleObservations(obs);
 		} else {
-			ArrayList<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
+			ArrayList<ObservationDvoHelper> rtn = new ArrayList<ObservationDvoHelper>();
 			rtn.add(getSingleObservation(obs));
 			return rtn;
 		}
 	}
-	
+
 	//
 	// method to get observations where multiple observations exist
 	//
-	
-	private List<ObservationDvo> getMultipleObservations(ObservationParser obs) {
+
+	private List<ObservationDvoHelper> getMultipleObservations(ObservationParser obs) {
 		List<ObservationComponentParser> comps = obs.getComponents();
-		ArrayList<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
-		for(ObservationComponentParser comp : comps) {
+		ArrayList<ObservationDvoHelper> rtn = new ArrayList<ObservationDvoHelper>();
+		for (ObservationComponentParser comp : comps) {
 			// get the values out of the comp
-			ObservationDvo dvo = getSingleObservation(obs, false);
+			ObservationDvoHelper helper = getSingleObservation(obs, false);
+			ObservationDvo dvo = helper.getDvo();
 			// observation concept id
 			Coding obsCoding = comp.getObservationCode();
 			ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
@@ -86,25 +90,24 @@ public class OmopObservationFactory {
 			dvo.setValueAsConceptId(valueConceptId);
 			// value as number
 			dvo.setValueAsNumber(comp.getValueAsNumber());
-			rtn.add(dvo);
-			if(dvo.getObservationConceptId() == 0) {
+			rtn.add(new ObservationDvoHelper(dvo, conn));
+			if (dvo.getObservationConceptId() == 0) {
 				String display = comp.getObservationCodeDisplay();
 				log.warn("COULD NOT MAP OBSERVATION TO CONCEPT: " + display);
 			}
 		}
 		return rtn;
 	}
-	
+
 	//
 	// method to get a single observation
 	//
-	
 
-	private ObservationDvo getSingleObservation(ObservationParser obs) {
+	private ObservationDvoHelper getSingleObservation(ObservationParser obs) {
 		return getSingleObservation(obs, true);
 	}
-	
-	private ObservationDvo getSingleObservation(ObservationParser obs, boolean isSingle) {
+
+	private ObservationDvoHelper getSingleObservation(ObservationParser obs, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
 		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
@@ -128,11 +131,19 @@ public class OmopObservationFactory {
 		dvo.setValueAsConceptId(valueConceptId);
 		// value as number
 		dvo.setValueAsNumber(obs.getValueAsNumber());
-		if(isSingle == true && dvo.getObservationConceptId() == 0) {
-			String display = obs.getObservationCodeDisplay();
-			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
+		// get additional data for single observation (this is pulled multiple times for multivalue obs)
+		if (isSingle == true) {
+			// log a warning if we couldn't get what kind of observation this is
+			if(dvo.getObservationConceptId() == 0) {
+				String display = obs.getObservationCodeDisplay();
+				log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
+			}
+			// set the type
+			if(obs.getValueCoding() != null) {
+				
+			}
 		}
-		return dvo;
+		return new ObservationDvoHelper(dvo, conn);
 	}
 
 }

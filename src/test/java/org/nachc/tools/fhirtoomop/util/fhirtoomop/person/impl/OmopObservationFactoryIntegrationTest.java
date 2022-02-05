@@ -27,24 +27,23 @@ public class OmopObservationFactoryIntegrationTest {
 			// get the person and get the list
 			PatientEverythingParser patient = TestParams.getPatientEverything();
 			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
-			List<ObservationDvo> obsList = person.getObservationList();
+			List<ObservationDvoHelper> obsList = person.getObservationList();
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 50);
 			// show all obs
 			log.info("\t" + ObservationDvoHelper.getFixedWithHeaderRow());
-			for(ObservationDvo dvo : obsList) {
-				ObservationDvoHelper helper = new ObservationDvoHelper(dvo, conn);
+			for (ObservationDvoHelper helper : obsList) {
 				log.info("\t" + helper.getAsFixedWidthString());
 			}
 			// test a single dvo
 			ObservationDvo dvo;
-			dvo = obsList.get(0);
+			dvo = obsList.get(0).getDvo();
 			log.info("obsId: " + dvo.getObservationId());
 			assertTrue(dvo.getObservationId() != null);
 			log.info("obsConceptId: " + dvo.getObservationConceptId());
 			assertTrue(43055141 == dvo.getObservationConceptId());
 			// get the 14th dvo (it has a value that is not a coding or number)
-			dvo = obsList.get(6);
+			dvo = obsList.get(6).getDvo();
 			log.info("Got obs 6: " + dvo.getObservationSourceValue());
 		} finally {
 			Database.close(conn);

@@ -3,16 +3,15 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 import java.sql.Connection;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopConditionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopDrugExposureFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoHelper;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
-import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
@@ -40,9 +39,9 @@ public class OmopPersonEverythingFactory {
 	private List<VisitOccurrenceDvo> visitOccurrenceList;
 
 	private List<ConditionOccurrenceDvo> conditionOccurrenceList;
-	
-	private List<ObservationDvo> observationList;
-	
+
+	private List<ObservationDvoHelper> observationList;
+
 	private List<DrugExposureDvo> drugExposureList;
 
 	//
@@ -94,9 +93,9 @@ public class OmopPersonEverythingFactory {
 		}
 		return this.conditionOccurrenceList;
 	}
-	
-	public List<ObservationDvo> getObservationList() {
-		if(this.observationList == null) {
+
+	public List<ObservationDvoHelper> getObservationList() {
+		if (this.observationList == null) {
 			OmopObservationFactory factory = new OmopObservationFactory(this, conn);
 			this.observationList = factory.getObservationList();
 		}
@@ -104,13 +103,13 @@ public class OmopPersonEverythingFactory {
 	}
 
 	public List<DrugExposureDvo> getDrugExposureList() {
-		if(this.drugExposureList == null) {
+		if (this.drugExposureList == null) {
 			OmopDrugExposureFactory factory = new OmopDrugExposureFactory(this, conn);
 			this.drugExposureList = factory.getDrugExposureList();
 		}
 		return this.drugExposureList;
 	}
-	
+
 	//
 	// convenience methods to get ids
 	//
@@ -121,9 +120,9 @@ public class OmopPersonEverythingFactory {
 
 	public Integer getOmopEncounterId(String fhirEncounterId) {
 		List<VisitOccurrenceDvo> visitList = this.getVisitOccurrenceList();
-		for(VisitOccurrenceDvo dvo : visitList) {
+		for (VisitOccurrenceDvo dvo : visitList) {
 			String sourceId = dvo.getVisitSourceValue();
-			if(sourceId != null && sourceId.equals(fhirEncounterId)) {
+			if (sourceId != null && sourceId.equals(fhirEncounterId)) {
 				return dvo.getVisitOccurrenceId();
 			}
 		}
