@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.db.write.patienteverything;
 import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread.WriteFhirPatientToOmopRunnable;
@@ -17,7 +18,7 @@ public class WriteAllFilesToOmop {
 
 	/**
 	 * 
-	 * Writes all files in the given directory to the omop database.  
+	 * Writes all files in the given directory to the omop database.
 	 * 
 	 */
 	public void exec(File dir, Connection conn) {
@@ -25,9 +26,14 @@ public class WriteAllFilesToOmop {
 		exec(files, conn);
 	}
 
+	public static void exec(ArrayList<File> files, Connection conn) {
+		File[] array = (File[])files.toArray();
+		exec(files, conn);
+	}
+
 	/**
 	 * 
-	 * Writes all the given files to the omop database.  
+	 * Writes all the given files to the omop database.
 	 * 
 	 */
 	public void exec(File[] files, Connection conn) {

@@ -16,7 +16,8 @@ public class DatatableList {
 			"observation",
 			"condition_occurrence",
 			"visit_occurrence",
-			"person"
+			"person",
+			"fhir_resource"
 	};
 
 	public static String[] getDatatableArray() {
