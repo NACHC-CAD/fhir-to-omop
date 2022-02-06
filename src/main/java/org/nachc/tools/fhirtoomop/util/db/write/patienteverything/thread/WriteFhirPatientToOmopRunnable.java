@@ -33,17 +33,17 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 	@Override
 	public void run() {
 		try {
-			log.info("Reading file (thread " + this.id + ")");
+			log.info("Reading file (thread " + this.id + "): " + FileUtil.getCanonicalPath(file));
 			this.json = FileUtil.getAsString(file);
 			this.parser = new PatientEverythingParser(json);
 			log.info("Writing to database (thread " + this.id + ")");
 			WriteFhirPatientToOmop.exec(this.parser, this.conn);
-			log.info("Done writing (thread " + this.id + "): " + FileUtil.getCanonicalPath(file));
-		} catch(RuntimeException exp) {
+		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
-			if(cause instanceof DataFormatException) {
+			if (cause instanceof DataFormatException) {
 				log.warn("! ! ! EXCEPTION THROWN TRING TO WRITE PATIENT ! ! !");
-				log.warn("This is generally expected for the data files we are using.");				
+				log.warn("File: " + FileUtil.getCanonicalPath(file));
+				log.warn("This is generally expected for the data files we are using.");
 			} else {
 				new RuntimeException(exp);
 			}

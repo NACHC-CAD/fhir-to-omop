@@ -29,30 +29,42 @@ public class PopulateFromFiles {
 			log.info("Truncating tables...");
 			TruncateDataTables.truncateTables(tableNames, conn);
 			log.info("Writing all files...");
-			writeAllFiles(dir, conn);
+			List<Connection> connList = getConnections();
+			writeAllFiles(dir, connList);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	private static void writeAllFiles(File dir, Connection conn) {
+	private static void writeAllFiles(File dir, List<Connection> connList) {
 		File[] fileList = dir.listFiles();
 		ArrayList<File> filesToWrite = new ArrayList<File>();
 		int cnt = 0;
 		for (int i = 0; i < fileList.length; i++) {
 			filesToWrite.add(fileList[i]);
 			if (i % MAX_THREADS == 0 && i != 0) {
-				new WriteAllFilesToOmop().exec(filesToWrite, conn);
-				Database.commit(conn);
+				new WriteAllFilesToOmop().exec(filesToWrite, connList);
+				for (Connection conn : connList) {
+					Database.commit(conn);
+				}
 				cnt++;
 				filesToWrite = new ArrayList<File>();
 				logMsg(i, cnt);
 			}
 		}
-		if(filesToWrite.size() > 0) {
-			new WriteAllFilesToOmop().exec(filesToWrite, conn);
+		if (filesToWrite.size() > 0) {
+			new WriteAllFilesToOmop().exec(filesToWrite, connList);
 		}
+	}
+
+	private static List<Connection> getConnections() {
+		ArrayList<Connection> rtn = new ArrayList<Connection>();
+		for (int i = 0; i < 10; i++) {
+			Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+			rtn.add(conn);
+		}
+		return rtn;
 	}
 
 	private static void logMsg(int i, int cnt) {
@@ -64,5 +76,5 @@ public class PopulateFromFiles {
 		msg += "\n------------------------------------------------\n\n\n";
 		log.info(msg);
 	}
-	
+
 }

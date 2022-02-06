@@ -13,6 +13,7 @@ import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.dao.Dao;
+import org.yaorma.database.Database;
 
 public class WriteFhirPatientToOmop {
 
@@ -30,6 +31,7 @@ public class WriteFhirPatientToOmop {
 		writeDrugExposures(personEverything, conn);
 		writeObservations(personEverything, conn);
 		writeMeasurements(personEverything, conn);
+		Database.commit(conn);
 	}
 
 	private static void writeFhirResources(OmopPersonEverythingFactory person, Connection conn) {

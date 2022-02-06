@@ -4,7 +4,6 @@ import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread.WriteFhirPatientToOmopRunnable;
@@ -32,17 +31,24 @@ public class WriteAllFilesToOmop {
 		exec(list, conn);
 	}
 
+	public void exec(List<File> files, Connection conn) {
+		ArrayList<Connection> connList = new ArrayList<Connection>();
+		connList.add(conn);
+		exec(files, connList);
+	}
 	/**
 	 * 
 	 * Writes all the given files to the omop database.
 	 * 
 	 */
-	public void exec(List<File> files, Connection conn) {
+	public void exec(List<File> files, List<Connection> connList) {
 		// create the threads
 		log.info("Creating threads...");
 		int cnt = 0;
 		for (File file : files) {
 			cnt++;
+			int connToUse = cnt % connList.size();
+			Connection conn = connList.get(connToUse);
 			WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(file, conn, cnt);
 			Thread thread = new Thread(runnable);
 			threadList.add(thread);
@@ -61,7 +67,9 @@ public class WriteAllFilesToOmop {
 			}
 		}
 		log.info("Doing commit...");
-		Database.commit(conn);
+		for(Connection conn : connList) {
+			Database.commit(conn);
+		}
 		log.info("Done running threads!");
 	}
 
