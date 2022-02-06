@@ -30,8 +30,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "domain_concept_id_1",
-        "fact_id_1",
         "domain_concept_id_2",
+        "fact_id_1",
         "fact_id_2",
         "relationship_concept_id"
     };
@@ -49,8 +49,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "domainConceptId1",
-        "factId1",
         "domainConceptId2",
+        "factId1",
         "factId2",
         "relationshipConceptId"
     };
@@ -61,8 +61,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "DomainConceptId1",
-        "FactId1",
         "DomainConceptId2",
+        "FactId1",
         "FactId2",
         "RelationshipConceptId"
     };
@@ -76,9 +76,9 @@ public class FactRelationshipDvo implements Dvo {
     
     private Integer domainConceptId1;
     
-    private Integer factId1;
-    
     private Integer domainConceptId2;
+    
+    private Integer factId1;
     
     private Integer factId2;
     
@@ -104,16 +104,6 @@ public class FactRelationshipDvo implements Dvo {
         return this.domainConceptId1;
     }
     
-    // factId1
-    
-    public void setFactId1(Integer val) {
-        this.factId1 = val;
-    }
-    
-    public Integer getFactId1() {
-        return this.factId1;
-    }
-    
     // domainConceptId2
     
     public void setDomainConceptId2(Integer val) {
@@ -122,6 +112,16 @@ public class FactRelationshipDvo implements Dvo {
     
     public Integer getDomainConceptId2() {
         return this.domainConceptId2;
+    }
+    
+    // factId1
+    
+    public void setFactId1(Integer val) {
+        this.factId1 = val;
+    }
+    
+    public Integer getFactId1() {
+        return this.factId1;
     }
     
     // factId2

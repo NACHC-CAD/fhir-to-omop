@@ -29,20 +29,20 @@ public class NoteNlpDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "note_nlp_id",
-        "note_id",
-        "section_concept_id",
-        "snippet",
-        "offset",
         "lexical_variant",
-        "note_nlp_concept_id",
-        "note_nlp_source_concept_id",
-        "nlp_system",
         "nlp_date",
         "nlp_datetime",
+        "nlp_system",
+        "note_id",
+        "note_nlp_concept_id",
+        "note_nlp_id",
+        "note_nlp_source_concept_id",
+        "offset",
+        "section_concept_id",
+        "snippet",
         "term_exists",
-        "term_temporal",
-        "term_modifiers"
+        "term_modifiers",
+        "term_temporal"
     };
     
     //
@@ -58,20 +58,20 @@ public class NoteNlpDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "noteNlpId",
-        "noteId",
-        "sectionConceptId",
-        "snippet",
-        "offset",
         "lexicalVariant",
-        "noteNlpConceptId",
-        "noteNlpSourceConceptId",
-        "nlpSystem",
         "nlpDate",
         "nlpDatetime",
+        "nlpSystem",
+        "noteId",
+        "noteNlpConceptId",
+        "noteNlpId",
+        "noteNlpSourceConceptId",
+        "offset",
+        "sectionConceptId",
+        "snippet",
         "termExists",
-        "termTemporal",
-        "termModifiers"
+        "termModifiers",
+        "termTemporal"
     };
     
     //
@@ -79,20 +79,20 @@ public class NoteNlpDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "NoteNlpId",
-        "NoteId",
-        "SectionConceptId",
-        "Snippet",
-        "Offset",
         "LexicalVariant",
-        "NoteNlpConceptId",
-        "NoteNlpSourceConceptId",
-        "NlpSystem",
         "NlpDate",
         "NlpDatetime",
+        "NlpSystem",
+        "NoteId",
+        "NoteNlpConceptId",
+        "NoteNlpId",
+        "NoteNlpSourceConceptId",
+        "Offset",
+        "SectionConceptId",
+        "Snippet",
         "TermExists",
-        "TermTemporal",
-        "TermModifiers"
+        "TermModifiers",
+        "TermTemporal"
     };
     
     
@@ -102,33 +102,33 @@ public class NoteNlpDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer noteNlpId;
-    
-    private Integer noteId;
-    
-    private Integer sectionConceptId;
-    
-    private String snippet;
-    
-    private String offset;
-    
     private String lexicalVariant;
-    
-    private Integer noteNlpConceptId;
-    
-    private Integer noteNlpSourceConceptId;
-    
-    private String nlpSystem;
     
     private Date nlpDate;
     
     private String nlpDatetime;
     
+    private String nlpSystem;
+    
+    private Integer noteId;
+    
+    private Integer noteNlpConceptId;
+    
+    private Integer noteNlpId;
+    
+    private Integer noteNlpSourceConceptId;
+    
+    private String offset;
+    
+    private Integer sectionConceptId;
+    
+    private String snippet;
+    
     private String termExists;
     
-    private String termTemporal;
-    
     private String termModifiers;
+    
+    private String termTemporal;
     
     private ConceptDvo noteNlpConceptDvo;
     
@@ -140,56 +140,6 @@ public class NoteNlpDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // noteNlpId
-    
-    public void setNoteNlpId(Integer val) {
-        this.noteNlpId = val;
-    }
-    
-    public Integer getNoteNlpId() {
-        return this.noteNlpId;
-    }
-    
-    // noteId
-    
-    public void setNoteId(Integer val) {
-        this.noteId = val;
-    }
-    
-    public Integer getNoteId() {
-        return this.noteId;
-    }
-    
-    // sectionConceptId
-    
-    public void setSectionConceptId(Integer val) {
-        this.sectionConceptId = val;
-    }
-    
-    public Integer getSectionConceptId() {
-        return this.sectionConceptId;
-    }
-    
-    // snippet
-    
-    public void setSnippet(String val) {
-        this.snippet = val;
-    }
-    
-    public String getSnippet() {
-        return this.snippet;
-    }
-    
-    // offset
-    
-    public void setOffset(String val) {
-        this.offset = val;
-    }
-    
-    public String getOffset() {
-        return this.offset;
-    }
-    
     // lexicalVariant
     
     public void setLexicalVariant(String val) {
@@ -198,36 +148,6 @@ public class NoteNlpDvo implements Dvo {
     
     public String getLexicalVariant() {
         return this.lexicalVariant;
-    }
-    
-    // noteNlpConceptId
-    
-    public void setNoteNlpConceptId(Integer val) {
-        this.noteNlpConceptId = val;
-    }
-    
-    public Integer getNoteNlpConceptId() {
-        return this.noteNlpConceptId;
-    }
-    
-    // noteNlpSourceConceptId
-    
-    public void setNoteNlpSourceConceptId(Integer val) {
-        this.noteNlpSourceConceptId = val;
-    }
-    
-    public Integer getNoteNlpSourceConceptId() {
-        return this.noteNlpSourceConceptId;
-    }
-    
-    // nlpSystem
-    
-    public void setNlpSystem(String val) {
-        this.nlpSystem = val;
-    }
-    
-    public String getNlpSystem() {
-        return this.nlpSystem;
     }
     
     // nlpDate
@@ -250,6 +170,86 @@ public class NoteNlpDvo implements Dvo {
         return this.nlpDatetime;
     }
     
+    // nlpSystem
+    
+    public void setNlpSystem(String val) {
+        this.nlpSystem = val;
+    }
+    
+    public String getNlpSystem() {
+        return this.nlpSystem;
+    }
+    
+    // noteId
+    
+    public void setNoteId(Integer val) {
+        this.noteId = val;
+    }
+    
+    public Integer getNoteId() {
+        return this.noteId;
+    }
+    
+    // noteNlpConceptId
+    
+    public void setNoteNlpConceptId(Integer val) {
+        this.noteNlpConceptId = val;
+    }
+    
+    public Integer getNoteNlpConceptId() {
+        return this.noteNlpConceptId;
+    }
+    
+    // noteNlpId
+    
+    public void setNoteNlpId(Integer val) {
+        this.noteNlpId = val;
+    }
+    
+    public Integer getNoteNlpId() {
+        return this.noteNlpId;
+    }
+    
+    // noteNlpSourceConceptId
+    
+    public void setNoteNlpSourceConceptId(Integer val) {
+        this.noteNlpSourceConceptId = val;
+    }
+    
+    public Integer getNoteNlpSourceConceptId() {
+        return this.noteNlpSourceConceptId;
+    }
+    
+    // offset
+    
+    public void setOffset(String val) {
+        this.offset = val;
+    }
+    
+    public String getOffset() {
+        return this.offset;
+    }
+    
+    // sectionConceptId
+    
+    public void setSectionConceptId(Integer val) {
+        this.sectionConceptId = val;
+    }
+    
+    public Integer getSectionConceptId() {
+        return this.sectionConceptId;
+    }
+    
+    // snippet
+    
+    public void setSnippet(String val) {
+        this.snippet = val;
+    }
+    
+    public String getSnippet() {
+        return this.snippet;
+    }
+    
     // termExists
     
     public void setTermExists(String val) {
@@ -260,16 +260,6 @@ public class NoteNlpDvo implements Dvo {
         return this.termExists;
     }
     
-    // termTemporal
-    
-    public void setTermTemporal(String val) {
-        this.termTemporal = val;
-    }
-    
-    public String getTermTemporal() {
-        return this.termTemporal;
-    }
-    
     // termModifiers
     
     public void setTermModifiers(String val) {
@@ -278,6 +268,16 @@ public class NoteNlpDvo implements Dvo {
     
     public String getTermModifiers() {
         return this.termModifiers;
+    }
+    
+    // termTemporal
+    
+    public void setTermTemporal(String val) {
+        this.termTemporal = val;
+    }
+    
+    public String getTermTemporal() {
+        return this.termTemporal;
     }
     
     // noteNlpConceptDvo

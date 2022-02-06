@@ -29,19 +29,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "care_site_id",
+        "dea",
+        "gender_concept_id",
+        "gender_source_concept_id",
+        "gender_source_value",
+        "npi",
         "provider_id",
         "provider_name",
-        "npi",
-        "dea",
-        "specialty_concept_id",
-        "care_site_id",
-        "year_of_birth",
-        "gender_concept_id",
         "provider_source_value",
-        "specialty_source_value",
+        "specialty_concept_id",
         "specialty_source_concept_id",
-        "gender_source_value",
-        "gender_source_concept_id"
+        "specialty_source_value",
+        "year_of_birth"
     };
     
     //
@@ -57,19 +57,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "careSiteId",
+        "dea",
+        "genderConceptId",
+        "genderSourceConceptId",
+        "genderSourceValue",
+        "npi",
         "providerId",
         "providerName",
-        "npi",
-        "dea",
-        "specialtyConceptId",
-        "careSiteId",
-        "yearOfBirth",
-        "genderConceptId",
         "providerSourceValue",
-        "specialtySourceValue",
+        "specialtyConceptId",
         "specialtySourceConceptId",
-        "genderSourceValue",
-        "genderSourceConceptId"
+        "specialtySourceValue",
+        "yearOfBirth"
     };
     
     //
@@ -77,19 +77,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "CareSiteId",
+        "Dea",
+        "GenderConceptId",
+        "GenderSourceConceptId",
+        "GenderSourceValue",
+        "Npi",
         "ProviderId",
         "ProviderName",
-        "Npi",
-        "Dea",
-        "SpecialtyConceptId",
-        "CareSiteId",
-        "YearOfBirth",
-        "GenderConceptId",
         "ProviderSourceValue",
-        "SpecialtySourceValue",
+        "SpecialtyConceptId",
         "SpecialtySourceConceptId",
-        "GenderSourceValue",
-        "GenderSourceConceptId"
+        "SpecialtySourceValue",
+        "YearOfBirth"
     };
     
     
@@ -99,31 +99,31 @@ public class ProviderDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer careSiteId;
+    
+    private String dea;
+    
+    private Integer genderConceptId;
+    
+    private Integer genderSourceConceptId;
+    
+    private String genderSourceValue;
+    
+    private String npi;
+    
     private Integer providerId;
     
     private String providerName;
     
-    private String npi;
-    
-    private String dea;
+    private String providerSourceValue;
     
     private Integer specialtyConceptId;
     
-    private Integer careSiteId;
-    
-    private Integer yearOfBirth;
-    
-    private Integer genderConceptId;
-    
-    private String providerSourceValue;
+    private Integer specialtySourceConceptId;
     
     private String specialtySourceValue;
     
-    private Integer specialtySourceConceptId;
-    
-    private String genderSourceValue;
-    
-    private Integer genderSourceConceptId;
+    private Integer yearOfBirth;
     
     private CareSiteDvo careSiteDvo;
     
@@ -135,29 +135,89 @@ public class ProviderDvo implements Dvo {
     
     private ConceptDvo specialtySourceConceptDvo;
     
-    private ArrayList<PersonDvo> personProviderList = new ArrayList<PersonDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceProviderList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailProviderList = new ArrayList<VisitDetailDvo>();
-    
     private ArrayList<ConditionOccurrenceDvo> conditionOccurrenceProviderList = new ArrayList<ConditionOccurrenceDvo>();
-    
-    private ArrayList<DrugExposureDvo> drugExposureProviderList = new ArrayList<DrugExposureDvo>();
-    
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProviderList = new ArrayList<ProcedureOccurrenceDvo>();
     
     private ArrayList<DeviceExposureDvo> deviceExposureProviderList = new ArrayList<DeviceExposureDvo>();
     
+    private ArrayList<DrugExposureDvo> drugExposureProviderList = new ArrayList<DrugExposureDvo>();
+    
     private ArrayList<MeasurementDvo> measurementProviderList = new ArrayList<MeasurementDvo>();
+    
+    private ArrayList<NoteDvo> noteProviderList = new ArrayList<NoteDvo>();
     
     private ArrayList<ObservationDvo> observationProviderList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<NoteDvo> noteProviderList = new ArrayList<NoteDvo>();
+    private ArrayList<PersonDvo> personProviderList = new ArrayList<PersonDvo>();
+    
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProviderList = new ArrayList<ProcedureOccurrenceDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailProviderList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceProviderList = new ArrayList<VisitOccurrenceDvo>();
     
     //
     // trivial getters and setters
     //
+    
+    // careSiteId
+    
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
+    }
+    
+    public Integer getCareSiteId() {
+        return this.careSiteId;
+    }
+    
+    // dea
+    
+    public void setDea(String val) {
+        this.dea = val;
+    }
+    
+    public String getDea() {
+        return this.dea;
+    }
+    
+    // genderConceptId
+    
+    public void setGenderConceptId(Integer val) {
+        this.genderConceptId = val;
+    }
+    
+    public Integer getGenderConceptId() {
+        return this.genderConceptId;
+    }
+    
+    // genderSourceConceptId
+    
+    public void setGenderSourceConceptId(Integer val) {
+        this.genderSourceConceptId = val;
+    }
+    
+    public Integer getGenderSourceConceptId() {
+        return this.genderSourceConceptId;
+    }
+    
+    // genderSourceValue
+    
+    public void setGenderSourceValue(String val) {
+        this.genderSourceValue = val;
+    }
+    
+    public String getGenderSourceValue() {
+        return this.genderSourceValue;
+    }
+    
+    // npi
+    
+    public void setNpi(String val) {
+        this.npi = val;
+    }
+    
+    public String getNpi() {
+        return this.npi;
+    }
     
     // providerId
     
@@ -179,24 +239,14 @@ public class ProviderDvo implements Dvo {
         return this.providerName;
     }
     
-    // npi
+    // providerSourceValue
     
-    public void setNpi(String val) {
-        this.npi = val;
+    public void setProviderSourceValue(String val) {
+        this.providerSourceValue = val;
     }
     
-    public String getNpi() {
-        return this.npi;
-    }
-    
-    // dea
-    
-    public void setDea(String val) {
-        this.dea = val;
-    }
-    
-    public String getDea() {
-        return this.dea;
+    public String getProviderSourceValue() {
+        return this.providerSourceValue;
     }
     
     // specialtyConceptId
@@ -209,44 +259,14 @@ public class ProviderDvo implements Dvo {
         return this.specialtyConceptId;
     }
     
-    // careSiteId
+    // specialtySourceConceptId
     
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
+    public void setSpecialtySourceConceptId(Integer val) {
+        this.specialtySourceConceptId = val;
     }
     
-    public Integer getCareSiteId() {
-        return this.careSiteId;
-    }
-    
-    // yearOfBirth
-    
-    public void setYearOfBirth(Integer val) {
-        this.yearOfBirth = val;
-    }
-    
-    public Integer getYearOfBirth() {
-        return this.yearOfBirth;
-    }
-    
-    // genderConceptId
-    
-    public void setGenderConceptId(Integer val) {
-        this.genderConceptId = val;
-    }
-    
-    public Integer getGenderConceptId() {
-        return this.genderConceptId;
-    }
-    
-    // providerSourceValue
-    
-    public void setProviderSourceValue(String val) {
-        this.providerSourceValue = val;
-    }
-    
-    public String getProviderSourceValue() {
-        return this.providerSourceValue;
+    public Integer getSpecialtySourceConceptId() {
+        return this.specialtySourceConceptId;
     }
     
     // specialtySourceValue
@@ -259,34 +279,14 @@ public class ProviderDvo implements Dvo {
         return this.specialtySourceValue;
     }
     
-    // specialtySourceConceptId
+    // yearOfBirth
     
-    public void setSpecialtySourceConceptId(Integer val) {
-        this.specialtySourceConceptId = val;
+    public void setYearOfBirth(Integer val) {
+        this.yearOfBirth = val;
     }
     
-    public Integer getSpecialtySourceConceptId() {
-        return this.specialtySourceConceptId;
-    }
-    
-    // genderSourceValue
-    
-    public void setGenderSourceValue(String val) {
-        this.genderSourceValue = val;
-    }
-    
-    public String getGenderSourceValue() {
-        return this.genderSourceValue;
-    }
-    
-    // genderSourceConceptId
-    
-    public void setGenderSourceConceptId(Integer val) {
-        this.genderSourceConceptId = val;
-    }
-    
-    public Integer getGenderSourceConceptId() {
-        return this.genderSourceConceptId;
+    public Integer getYearOfBirth() {
+        return this.yearOfBirth;
     }
     
     // careSiteDvo
@@ -339,52 +339,12 @@ public class ProviderDvo implements Dvo {
         return this.specialtySourceConceptDvo;
     }
     
-    public ArrayList<PersonDvo> getPersonProviderList() {
-        return personProviderList;
-    }
-    
-    public void setPersonProviderList(ArrayList<PersonDvo> list) {
-        this.personProviderList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceProviderList() {
-        return visitOccurrenceProviderList;
-    }
-    
-    public void setVisitOccurrenceProviderList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceProviderList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailProviderList() {
-        return visitDetailProviderList;
-    }
-    
-    public void setVisitDetailProviderList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailProviderList = list;
-    }
-    
     public ArrayList<ConditionOccurrenceDvo> getConditionOccurrenceProviderList() {
         return conditionOccurrenceProviderList;
     }
     
     public void setConditionOccurrenceProviderList(ArrayList<ConditionOccurrenceDvo> list) {
         this.conditionOccurrenceProviderList = list;
-    }
-    
-    public ArrayList<DrugExposureDvo> getDrugExposureProviderList() {
-        return drugExposureProviderList;
-    }
-    
-    public void setDrugExposureProviderList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureProviderList = list;
-    }
-    
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProviderList() {
-        return procedureOccurrenceProviderList;
-    }
-    
-    public void setProcedureOccurrenceProviderList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceProviderList = list;
     }
     
     public ArrayList<DeviceExposureDvo> getDeviceExposureProviderList() {
@@ -395,12 +355,28 @@ public class ProviderDvo implements Dvo {
         this.deviceExposureProviderList = list;
     }
     
+    public ArrayList<DrugExposureDvo> getDrugExposureProviderList() {
+        return drugExposureProviderList;
+    }
+    
+    public void setDrugExposureProviderList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureProviderList = list;
+    }
+    
     public ArrayList<MeasurementDvo> getMeasurementProviderList() {
         return measurementProviderList;
     }
     
     public void setMeasurementProviderList(ArrayList<MeasurementDvo> list) {
         this.measurementProviderList = list;
+    }
+    
+    public ArrayList<NoteDvo> getNoteProviderList() {
+        return noteProviderList;
+    }
+    
+    public void setNoteProviderList(ArrayList<NoteDvo> list) {
+        this.noteProviderList = list;
     }
     
     public ArrayList<ObservationDvo> getObservationProviderList() {
@@ -411,12 +387,36 @@ public class ProviderDvo implements Dvo {
         this.observationProviderList = list;
     }
     
-    public ArrayList<NoteDvo> getNoteProviderList() {
-        return noteProviderList;
+    public ArrayList<PersonDvo> getPersonProviderList() {
+        return personProviderList;
     }
     
-    public void setNoteProviderList(ArrayList<NoteDvo> list) {
-        this.noteProviderList = list;
+    public void setPersonProviderList(ArrayList<PersonDvo> list) {
+        this.personProviderList = list;
+    }
+    
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProviderList() {
+        return procedureOccurrenceProviderList;
+    }
+    
+    public void setProcedureOccurrenceProviderList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceProviderList = list;
+    }
+    
+    public ArrayList<VisitDetailDvo> getVisitDetailProviderList() {
+        return visitDetailProviderList;
+    }
+    
+    public void setVisitDetailProviderList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailProviderList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceProviderList() {
+        return visitOccurrenceProviderList;
+    }
+    
+    public void setVisitOccurrenceProviderList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceProviderList = list;
     }
     
     //

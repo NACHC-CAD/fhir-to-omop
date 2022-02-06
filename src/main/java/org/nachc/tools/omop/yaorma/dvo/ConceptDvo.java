@@ -29,16 +29,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "concept_class_id",
+        "concept_code",
         "concept_id",
         "concept_name",
         "domain_id",
-        "vocabulary_id",
-        "concept_class_id",
+        "invalid_reason",
         "standard_concept",
-        "concept_code",
-        "valid_start_date",
         "valid_end_date",
-        "invalid_reason"
+        "valid_start_date",
+        "vocabulary_id"
     };
     
     //
@@ -54,16 +54,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "conceptClassId",
+        "conceptCode",
         "conceptId",
         "conceptName",
         "domainId",
-        "vocabularyId",
-        "conceptClassId",
+        "invalidReason",
         "standardConcept",
-        "conceptCode",
-        "validStartDate",
         "validEndDate",
-        "invalidReason"
+        "validStartDate",
+        "vocabularyId"
     };
     
     //
@@ -71,16 +71,16 @@ public class ConceptDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "ConceptClassId",
+        "ConceptCode",
         "ConceptId",
         "ConceptName",
         "DomainId",
-        "VocabularyId",
-        "ConceptClassId",
+        "InvalidReason",
         "StandardConcept",
-        "ConceptCode",
-        "ValidStartDate",
         "ValidEndDate",
-        "InvalidReason"
+        "ValidStartDate",
+        "VocabularyId"
     };
     
     
@@ -90,59 +90,45 @@ public class ConceptDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String conceptClassId;
+    
+    private String conceptCode;
+    
     private Integer conceptId;
     
     private String conceptName;
     
     private String domainId;
     
-    private String vocabularyId;
-    
-    private String conceptClassId;
+    private String invalidReason;
     
     private String standardConcept;
     
-    private String conceptCode;
+    private Date validEndDate;
     
     private Date validStartDate;
     
-    private Date validEndDate;
+    private String vocabularyId;
     
-    private String invalidReason;
+    private ArrayList<CareSiteDvo> careSitePlaceOfServiceConceptList = new ArrayList<CareSiteDvo>();
     
-    private ArrayList<PersonDvo> personGenderConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<CdmSourceDvo> cdmSourceCdmVersionConceptList = new ArrayList<CdmSourceDvo>();
     
-    private ArrayList<PersonDvo> personRaceConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<CohortDefinitionDvo> cohortDefinitionDefinitionTypeConceptList = new ArrayList<CohortDefinitionDvo>();
     
-    private ArrayList<PersonDvo> personEthnicityConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<CohortDefinitionDvo> cohortDefinitionSubjectConceptList = new ArrayList<CohortDefinitionDvo>();
     
-    private ArrayList<PersonDvo> personGenderSourceConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<ConceptAncestorDvo> conceptAncestorAncestorConceptList = new ArrayList<ConceptAncestorDvo>();
     
-    private ArrayList<PersonDvo> personRaceSourceConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<ConceptAncestorDvo> conceptAncestorDescendantConceptList = new ArrayList<ConceptAncestorDvo>();
     
-    private ArrayList<PersonDvo> personEthnicitySourceConceptList = new ArrayList<PersonDvo>();
+    private ArrayList<ConceptClassDvo> conceptClassConceptClassConceptList = new ArrayList<ConceptClassDvo>();
     
-    private ArrayList<ObservationPeriodDvo> observationPeriodPeriodTypeConceptList = new ArrayList<ObservationPeriodDvo>();
+    private ArrayList<ConceptSynonymDvo> conceptSynonymConceptList = new ArrayList<ConceptSynonymDvo>();
     
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitConceptList = new ArrayList<VisitOccurrenceDvo>();
+    private ArrayList<ConceptSynonymDvo> conceptSynonymLanguageConceptList = new ArrayList<ConceptSynonymDvo>();
     
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitTypeConceptList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitSourceConceptList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceAdmittedFromConceptList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceDischargedToConceptList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailVisitDetailConceptList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailVisitDetailTypeConceptList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailVisitDetailSourceConceptList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailAdmittedFromConceptList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailDischargedToConceptList = new ArrayList<VisitDetailDvo>();
+    private ArrayList<ConditionEraDvo> conditionEraConditionConceptList = new ArrayList<ConditionEraDvo>();
     
     private ArrayList<ConditionOccurrenceDvo> conditionOccurrenceConditionConceptList = new ArrayList<ConditionOccurrenceDvo>();
     
@@ -152,21 +138,19 @@ public class ConceptDvo implements Dvo {
     
     private ArrayList<ConditionOccurrenceDvo> conditionOccurrenceConditionSourceConceptList = new ArrayList<ConditionOccurrenceDvo>();
     
-    private ArrayList<DrugExposureDvo> drugExposureDrugConceptList = new ArrayList<DrugExposureDvo>();
+    private ArrayList<CostDvo> costCostTypeConceptList = new ArrayList<CostDvo>();
     
-    private ArrayList<DrugExposureDvo> drugExposureDrugTypeConceptList = new ArrayList<DrugExposureDvo>();
+    private ArrayList<CostDvo> costCurrencyConceptList = new ArrayList<CostDvo>();
     
-    private ArrayList<DrugExposureDvo> drugExposureRouteConceptList = new ArrayList<DrugExposureDvo>();
+    private ArrayList<CostDvo> costRevenueCodeConceptList = new ArrayList<CostDvo>();
     
-    private ArrayList<DrugExposureDvo> drugExposureDrugSourceConceptList = new ArrayList<DrugExposureDvo>();
+    private ArrayList<CostDvo> costDrgConceptList = new ArrayList<CostDvo>();
     
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureConceptList = new ArrayList<ProcedureOccurrenceDvo>();
+    private ArrayList<DeathDvo> deathDeathTypeConceptList = new ArrayList<DeathDvo>();
     
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureTypeConceptList = new ArrayList<ProcedureOccurrenceDvo>();
+    private ArrayList<DeathDvo> deathCauseConceptList = new ArrayList<DeathDvo>();
     
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceModifierConceptList = new ArrayList<ProcedureOccurrenceDvo>();
-    
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureSourceConceptList = new ArrayList<ProcedureOccurrenceDvo>();
+    private ArrayList<DeathDvo> deathCauseSourceConceptList = new ArrayList<DeathDvo>();
     
     private ArrayList<DeviceExposureDvo> deviceExposureDeviceConceptList = new ArrayList<DeviceExposureDvo>();
     
@@ -177,6 +161,50 @@ public class ConceptDvo implements Dvo {
     private ArrayList<DeviceExposureDvo> deviceExposureUnitConceptList = new ArrayList<DeviceExposureDvo>();
     
     private ArrayList<DeviceExposureDvo> deviceExposureUnitSourceConceptList = new ArrayList<DeviceExposureDvo>();
+    
+    private ArrayList<DomainDvo> domainDomainConceptList = new ArrayList<DomainDvo>();
+    
+    private ArrayList<DoseEraDvo> doseEraDrugConceptList = new ArrayList<DoseEraDvo>();
+    
+    private ArrayList<DoseEraDvo> doseEraUnitConceptList = new ArrayList<DoseEraDvo>();
+    
+    private ArrayList<DrugEraDvo> drugEraDrugConceptList = new ArrayList<DrugEraDvo>();
+    
+    private ArrayList<DrugExposureDvo> drugExposureDrugConceptList = new ArrayList<DrugExposureDvo>();
+    
+    private ArrayList<DrugExposureDvo> drugExposureDrugTypeConceptList = new ArrayList<DrugExposureDvo>();
+    
+    private ArrayList<DrugExposureDvo> drugExposureRouteConceptList = new ArrayList<DrugExposureDvo>();
+    
+    private ArrayList<DrugExposureDvo> drugExposureDrugSourceConceptList = new ArrayList<DrugExposureDvo>();
+    
+    private ArrayList<DrugStrengthDvo> drugStrengthDrugConceptList = new ArrayList<DrugStrengthDvo>();
+    
+    private ArrayList<DrugStrengthDvo> drugStrengthIngredientConceptList = new ArrayList<DrugStrengthDvo>();
+    
+    private ArrayList<DrugStrengthDvo> drugStrengthAmountUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    
+    private ArrayList<DrugStrengthDvo> drugStrengthNumeratorUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    
+    private ArrayList<DrugStrengthDvo> drugStrengthDenominatorUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    
+    private ArrayList<EpisodeDvo> episodeEpisodeConceptList = new ArrayList<EpisodeDvo>();
+    
+    private ArrayList<EpisodeDvo> episodeEpisodeObjectConceptList = new ArrayList<EpisodeDvo>();
+    
+    private ArrayList<EpisodeDvo> episodeEpisodeTypeConceptList = new ArrayList<EpisodeDvo>();
+    
+    private ArrayList<EpisodeDvo> episodeEpisodeSourceConceptList = new ArrayList<EpisodeDvo>();
+    
+    private ArrayList<EpisodeEventDvo> episodeEventEpisodeEventFieldConceptList = new ArrayList<EpisodeEventDvo>();
+    
+    private ArrayList<FactRelationshipDvo> factRelationshipDomainConceptId1List = new ArrayList<FactRelationshipDvo>();
+    
+    private ArrayList<FactRelationshipDvo> factRelationshipDomainConceptId2List = new ArrayList<FactRelationshipDvo>();
+    
+    private ArrayList<FactRelationshipDvo> factRelationshipRelationshipConceptList = new ArrayList<FactRelationshipDvo>();
+    
+    private ArrayList<LocationDvo> locationCountryConceptList = new ArrayList<LocationDvo>();
     
     private ArrayList<MeasurementDvo> measurementMeasurementConceptList = new ArrayList<MeasurementDvo>();
     
@@ -194,25 +222,11 @@ public class ConceptDvo implements Dvo {
     
     private ArrayList<MeasurementDvo> measurementMeasEventFieldConceptList = new ArrayList<MeasurementDvo>();
     
-    private ArrayList<ObservationDvo> observationObservationConceptList = new ArrayList<ObservationDvo>();
+    private ArrayList<MetadataDvo> metadataMetadataConceptList = new ArrayList<MetadataDvo>();
     
-    private ArrayList<ObservationDvo> observationObservationTypeConceptList = new ArrayList<ObservationDvo>();
+    private ArrayList<MetadataDvo> metadataMetadataTypeConceptList = new ArrayList<MetadataDvo>();
     
-    private ArrayList<ObservationDvo> observationValueAsConceptList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<ObservationDvo> observationQualifierConceptList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<ObservationDvo> observationUnitConceptList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<ObservationDvo> observationObservationSourceConceptList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<ObservationDvo> observationObsEventFieldConceptList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<DeathDvo> deathDeathTypeConceptList = new ArrayList<DeathDvo>();
-    
-    private ArrayList<DeathDvo> deathCauseConceptList = new ArrayList<DeathDvo>();
-    
-    private ArrayList<DeathDvo> deathCauseSourceConceptList = new ArrayList<DeathDvo>();
+    private ArrayList<MetadataDvo> metadataValueAsConceptList = new ArrayList<MetadataDvo>();
     
     private ArrayList<NoteDvo> noteNoteTypeConceptList = new ArrayList<NoteDvo>();
     
@@ -230,33 +244,21 @@ public class ConceptDvo implements Dvo {
     
     private ArrayList<NoteNlpDvo> noteNlpNoteNlpSourceConceptList = new ArrayList<NoteNlpDvo>();
     
-    private ArrayList<SpecimenDvo> specimenSpecimenConceptList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationObservationConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<SpecimenDvo> specimenSpecimenTypeConceptList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationObservationTypeConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<SpecimenDvo> specimenUnitConceptList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationValueAsConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<SpecimenDvo> specimenAnatomicSiteConceptList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationQualifierConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<SpecimenDvo> specimenDiseaseStatusConceptList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationUnitConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<FactRelationshipDvo> factRelationshipDomainConceptId1List = new ArrayList<FactRelationshipDvo>();
+    private ArrayList<ObservationDvo> observationObservationSourceConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<FactRelationshipDvo> factRelationshipDomainConceptId2List = new ArrayList<FactRelationshipDvo>();
+    private ArrayList<ObservationDvo> observationObsEventFieldConceptList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<FactRelationshipDvo> factRelationshipRelationshipConceptList = new ArrayList<FactRelationshipDvo>();
-    
-    private ArrayList<LocationDvo> locationCountryConceptList = new ArrayList<LocationDvo>();
-    
-    private ArrayList<CareSiteDvo> careSitePlaceOfServiceConceptList = new ArrayList<CareSiteDvo>();
-    
-    private ArrayList<ProviderDvo> providerSpecialtyConceptList = new ArrayList<ProviderDvo>();
-    
-    private ArrayList<ProviderDvo> providerGenderConceptList = new ArrayList<ProviderDvo>();
-    
-    private ArrayList<ProviderDvo> providerSpecialtySourceConceptList = new ArrayList<ProviderDvo>();
-    
-    private ArrayList<ProviderDvo> providerGenderSourceConceptList = new ArrayList<ProviderDvo>();
+    private ArrayList<ObservationPeriodDvo> observationPeriodPeriodTypeConceptList = new ArrayList<ObservationPeriodDvo>();
     
     private ArrayList<PayerPlanPeriodDvo> payerPlanPeriodPayerConceptList = new ArrayList<PayerPlanPeriodDvo>();
     
@@ -274,75 +276,93 @@ public class ConceptDvo implements Dvo {
     
     private ArrayList<PayerPlanPeriodDvo> payerPlanPeriodStopReasonSourceConceptList = new ArrayList<PayerPlanPeriodDvo>();
     
-    private ArrayList<CostDvo> costCostTypeConceptList = new ArrayList<CostDvo>();
+    private ArrayList<PersonDvo> personGenderConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<CostDvo> costCurrencyConceptList = new ArrayList<CostDvo>();
+    private ArrayList<PersonDvo> personRaceConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<CostDvo> costRevenueCodeConceptList = new ArrayList<CostDvo>();
+    private ArrayList<PersonDvo> personEthnicityConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<CostDvo> costDrgConceptList = new ArrayList<CostDvo>();
+    private ArrayList<PersonDvo> personGenderSourceConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<DrugEraDvo> drugEraDrugConceptList = new ArrayList<DrugEraDvo>();
+    private ArrayList<PersonDvo> personRaceSourceConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<DoseEraDvo> doseEraDrugConceptList = new ArrayList<DoseEraDvo>();
+    private ArrayList<PersonDvo> personEthnicitySourceConceptList = new ArrayList<PersonDvo>();
     
-    private ArrayList<DoseEraDvo> doseEraUnitConceptList = new ArrayList<DoseEraDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureConceptList = new ArrayList<ProcedureOccurrenceDvo>();
     
-    private ArrayList<ConditionEraDvo> conditionEraConditionConceptList = new ArrayList<ConditionEraDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureTypeConceptList = new ArrayList<ProcedureOccurrenceDvo>();
     
-    private ArrayList<EpisodeDvo> episodeEpisodeConceptList = new ArrayList<EpisodeDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceModifierConceptList = new ArrayList<ProcedureOccurrenceDvo>();
     
-    private ArrayList<EpisodeDvo> episodeEpisodeObjectConceptList = new ArrayList<EpisodeDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProcedureSourceConceptList = new ArrayList<ProcedureOccurrenceDvo>();
     
-    private ArrayList<EpisodeDvo> episodeEpisodeTypeConceptList = new ArrayList<EpisodeDvo>();
+    private ArrayList<ProviderDvo> providerSpecialtyConceptList = new ArrayList<ProviderDvo>();
     
-    private ArrayList<EpisodeDvo> episodeEpisodeSourceConceptList = new ArrayList<EpisodeDvo>();
+    private ArrayList<ProviderDvo> providerGenderConceptList = new ArrayList<ProviderDvo>();
     
-    private ArrayList<EpisodeEventDvo> episodeEventEpisodeEventFieldConceptList = new ArrayList<EpisodeEventDvo>();
+    private ArrayList<ProviderDvo> providerSpecialtySourceConceptList = new ArrayList<ProviderDvo>();
     
-    private ArrayList<MetadataDvo> metadataMetadataConceptList = new ArrayList<MetadataDvo>();
-    
-    private ArrayList<MetadataDvo> metadataMetadataTypeConceptList = new ArrayList<MetadataDvo>();
-    
-    private ArrayList<MetadataDvo> metadataValueAsConceptList = new ArrayList<MetadataDvo>();
-    
-    private ArrayList<CdmSourceDvo> cdmSourceCdmVersionConceptList = new ArrayList<CdmSourceDvo>();
-    
-    private ArrayList<DomainDvo> domainDomainConceptList = new ArrayList<DomainDvo>();
-    
-    private ArrayList<ConceptClassDvo> conceptClassConceptClassConceptList = new ArrayList<ConceptClassDvo>();
+    private ArrayList<ProviderDvo> providerGenderSourceConceptList = new ArrayList<ProviderDvo>();
     
     private ArrayList<RelationshipDvo> relationshipRelationshipConceptList = new ArrayList<RelationshipDvo>();
-    
-    private ArrayList<ConceptSynonymDvo> conceptSynonymConceptList = new ArrayList<ConceptSynonymDvo>();
-    
-    private ArrayList<ConceptSynonymDvo> conceptSynonymLanguageConceptList = new ArrayList<ConceptSynonymDvo>();
-    
-    private ArrayList<ConceptAncestorDvo> conceptAncestorAncestorConceptList = new ArrayList<ConceptAncestorDvo>();
-    
-    private ArrayList<ConceptAncestorDvo> conceptAncestorDescendantConceptList = new ArrayList<ConceptAncestorDvo>();
     
     private ArrayList<SourceToConceptMapDvo> sourceToConceptMapSourceConceptList = new ArrayList<SourceToConceptMapDvo>();
     
     private ArrayList<SourceToConceptMapDvo> sourceToConceptMapTargetConceptList = new ArrayList<SourceToConceptMapDvo>();
     
-    private ArrayList<DrugStrengthDvo> drugStrengthDrugConceptList = new ArrayList<DrugStrengthDvo>();
+    private ArrayList<SpecimenDvo> specimenSpecimenConceptList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<DrugStrengthDvo> drugStrengthIngredientConceptList = new ArrayList<DrugStrengthDvo>();
+    private ArrayList<SpecimenDvo> specimenSpecimenTypeConceptList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<DrugStrengthDvo> drugStrengthAmountUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    private ArrayList<SpecimenDvo> specimenUnitConceptList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<DrugStrengthDvo> drugStrengthNumeratorUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    private ArrayList<SpecimenDvo> specimenAnatomicSiteConceptList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<DrugStrengthDvo> drugStrengthDenominatorUnitConceptList = new ArrayList<DrugStrengthDvo>();
+    private ArrayList<SpecimenDvo> specimenDiseaseStatusConceptList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<CohortDefinitionDvo> cohortDefinitionDefinitionTypeConceptList = new ArrayList<CohortDefinitionDvo>();
+    private ArrayList<VisitDetailDvo> visitDetailVisitDetailConceptList = new ArrayList<VisitDetailDvo>();
     
-    private ArrayList<CohortDefinitionDvo> cohortDefinitionSubjectConceptList = new ArrayList<CohortDefinitionDvo>();
+    private ArrayList<VisitDetailDvo> visitDetailVisitDetailTypeConceptList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailVisitDetailSourceConceptList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailAdmittedFromConceptList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailDischargedToConceptList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitConceptList = new ArrayList<VisitOccurrenceDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitTypeConceptList = new ArrayList<VisitOccurrenceDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceVisitSourceConceptList = new ArrayList<VisitOccurrenceDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceAdmittedFromConceptList = new ArrayList<VisitOccurrenceDvo>();
+    
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceDischargedToConceptList = new ArrayList<VisitOccurrenceDvo>();
     
     //
     // trivial getters and setters
     //
+    
+    // conceptClassId
+    
+    public void setConceptClassId(String val) {
+        this.conceptClassId = val;
+    }
+    
+    public String getConceptClassId() {
+        return this.conceptClassId;
+    }
+    
+    // conceptCode
+    
+    public void setConceptCode(String val) {
+        this.conceptCode = val;
+    }
+    
+    public String getConceptCode() {
+        return this.conceptCode;
+    }
     
     // conceptId
     
@@ -374,24 +394,14 @@ public class ConceptDvo implements Dvo {
         return this.domainId;
     }
     
-    // vocabularyId
+    // invalidReason
     
-    public void setVocabularyId(String val) {
-        this.vocabularyId = val;
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
     }
     
-    public String getVocabularyId() {
-        return this.vocabularyId;
-    }
-    
-    // conceptClassId
-    
-    public void setConceptClassId(String val) {
-        this.conceptClassId = val;
-    }
-    
-    public String getConceptClassId() {
-        return this.conceptClassId;
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     // standardConcept
@@ -404,14 +414,14 @@ public class ConceptDvo implements Dvo {
         return this.standardConcept;
     }
     
-    // conceptCode
+    // validEndDate
     
-    public void setConceptCode(String val) {
-        this.conceptCode = val;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public String getConceptCode() {
-        return this.conceptCode;
+    public Date getValidEndDate() {
+        return this.validEndDate;
     }
     
     // validStartDate
@@ -424,160 +434,94 @@ public class ConceptDvo implements Dvo {
         return this.validStartDate;
     }
     
-    // validEndDate
+    // vocabularyId
     
-    public void setValidEndDate(Date val) {
-        this.validEndDate = val;
+    public void setVocabularyId(String val) {
+        this.vocabularyId = val;
     }
     
-    public Date getValidEndDate() {
-        return this.validEndDate;
+    public String getVocabularyId() {
+        return this.vocabularyId;
     }
     
-    // invalidReason
-    
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
+    public ArrayList<CareSiteDvo> getCareSitePlaceOfServiceConceptList() {
+        return careSitePlaceOfServiceConceptList;
     }
     
-    public String getInvalidReason() {
-        return this.invalidReason;
+    public void setCareSitePlaceOfServiceConceptList(ArrayList<CareSiteDvo> list) {
+        this.careSitePlaceOfServiceConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonGenderConceptList() {
-        return personGenderConceptList;
+    public ArrayList<CdmSourceDvo> getCdmSourceCdmVersionConceptList() {
+        return cdmSourceCdmVersionConceptList;
     }
     
-    public void setPersonGenderConceptList(ArrayList<PersonDvo> list) {
-        this.personGenderConceptList = list;
+    public void setCdmSourceCdmVersionConceptList(ArrayList<CdmSourceDvo> list) {
+        this.cdmSourceCdmVersionConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonRaceConceptList() {
-        return personRaceConceptList;
+    public ArrayList<CohortDefinitionDvo> getCohortDefinitionDefinitionTypeConceptList() {
+        return cohortDefinitionDefinitionTypeConceptList;
     }
     
-    public void setPersonRaceConceptList(ArrayList<PersonDvo> list) {
-        this.personRaceConceptList = list;
+    public void setCohortDefinitionDefinitionTypeConceptList(ArrayList<CohortDefinitionDvo> list) {
+        this.cohortDefinitionDefinitionTypeConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonEthnicityConceptList() {
-        return personEthnicityConceptList;
+    public ArrayList<CohortDefinitionDvo> getCohortDefinitionSubjectConceptList() {
+        return cohortDefinitionSubjectConceptList;
     }
     
-    public void setPersonEthnicityConceptList(ArrayList<PersonDvo> list) {
-        this.personEthnicityConceptList = list;
+    public void setCohortDefinitionSubjectConceptList(ArrayList<CohortDefinitionDvo> list) {
+        this.cohortDefinitionSubjectConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonGenderSourceConceptList() {
-        return personGenderSourceConceptList;
+    public ArrayList<ConceptAncestorDvo> getConceptAncestorAncestorConceptList() {
+        return conceptAncestorAncestorConceptList;
     }
     
-    public void setPersonGenderSourceConceptList(ArrayList<PersonDvo> list) {
-        this.personGenderSourceConceptList = list;
+    public void setConceptAncestorAncestorConceptList(ArrayList<ConceptAncestorDvo> list) {
+        this.conceptAncestorAncestorConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonRaceSourceConceptList() {
-        return personRaceSourceConceptList;
+    public ArrayList<ConceptAncestorDvo> getConceptAncestorDescendantConceptList() {
+        return conceptAncestorDescendantConceptList;
     }
     
-    public void setPersonRaceSourceConceptList(ArrayList<PersonDvo> list) {
-        this.personRaceSourceConceptList = list;
+    public void setConceptAncestorDescendantConceptList(ArrayList<ConceptAncestorDvo> list) {
+        this.conceptAncestorDescendantConceptList = list;
     }
     
-    public ArrayList<PersonDvo> getPersonEthnicitySourceConceptList() {
-        return personEthnicitySourceConceptList;
+    public ArrayList<ConceptClassDvo> getConceptClassConceptClassConceptList() {
+        return conceptClassConceptClassConceptList;
     }
     
-    public void setPersonEthnicitySourceConceptList(ArrayList<PersonDvo> list) {
-        this.personEthnicitySourceConceptList = list;
+    public void setConceptClassConceptClassConceptList(ArrayList<ConceptClassDvo> list) {
+        this.conceptClassConceptClassConceptList = list;
     }
     
-    public ArrayList<ObservationPeriodDvo> getObservationPeriodPeriodTypeConceptList() {
-        return observationPeriodPeriodTypeConceptList;
+    public ArrayList<ConceptSynonymDvo> getConceptSynonymConceptList() {
+        return conceptSynonymConceptList;
     }
     
-    public void setObservationPeriodPeriodTypeConceptList(ArrayList<ObservationPeriodDvo> list) {
-        this.observationPeriodPeriodTypeConceptList = list;
+    public void setConceptSynonymConceptList(ArrayList<ConceptSynonymDvo> list) {
+        this.conceptSynonymConceptList = list;
     }
     
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitConceptList() {
-        return visitOccurrenceVisitConceptList;
+    public ArrayList<ConceptSynonymDvo> getConceptSynonymLanguageConceptList() {
+        return conceptSynonymLanguageConceptList;
     }
     
-    public void setVisitOccurrenceVisitConceptList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceVisitConceptList = list;
+    public void setConceptSynonymLanguageConceptList(ArrayList<ConceptSynonymDvo> list) {
+        this.conceptSynonymLanguageConceptList = list;
     }
     
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitTypeConceptList() {
-        return visitOccurrenceVisitTypeConceptList;
+    public ArrayList<ConditionEraDvo> getConditionEraConditionConceptList() {
+        return conditionEraConditionConceptList;
     }
     
-    public void setVisitOccurrenceVisitTypeConceptList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceVisitTypeConceptList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitSourceConceptList() {
-        return visitOccurrenceVisitSourceConceptList;
-    }
-    
-    public void setVisitOccurrenceVisitSourceConceptList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceVisitSourceConceptList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceAdmittedFromConceptList() {
-        return visitOccurrenceAdmittedFromConceptList;
-    }
-    
-    public void setVisitOccurrenceAdmittedFromConceptList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceAdmittedFromConceptList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceDischargedToConceptList() {
-        return visitOccurrenceDischargedToConceptList;
-    }
-    
-    public void setVisitOccurrenceDischargedToConceptList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceDischargedToConceptList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailConceptList() {
-        return visitDetailVisitDetailConceptList;
-    }
-    
-    public void setVisitDetailVisitDetailConceptList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailVisitDetailConceptList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailTypeConceptList() {
-        return visitDetailVisitDetailTypeConceptList;
-    }
-    
-    public void setVisitDetailVisitDetailTypeConceptList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailVisitDetailTypeConceptList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailSourceConceptList() {
-        return visitDetailVisitDetailSourceConceptList;
-    }
-    
-    public void setVisitDetailVisitDetailSourceConceptList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailVisitDetailSourceConceptList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailAdmittedFromConceptList() {
-        return visitDetailAdmittedFromConceptList;
-    }
-    
-    public void setVisitDetailAdmittedFromConceptList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailAdmittedFromConceptList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailDischargedToConceptList() {
-        return visitDetailDischargedToConceptList;
-    }
-    
-    public void setVisitDetailDischargedToConceptList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailDischargedToConceptList = list;
+    public void setConditionEraConditionConceptList(ArrayList<ConditionEraDvo> list) {
+        this.conditionEraConditionConceptList = list;
     }
     
     public ArrayList<ConditionOccurrenceDvo> getConditionOccurrenceConditionConceptList() {
@@ -612,68 +556,60 @@ public class ConceptDvo implements Dvo {
         this.conditionOccurrenceConditionSourceConceptList = list;
     }
     
-    public ArrayList<DrugExposureDvo> getDrugExposureDrugConceptList() {
-        return drugExposureDrugConceptList;
+    public ArrayList<CostDvo> getCostCostTypeConceptList() {
+        return costCostTypeConceptList;
     }
     
-    public void setDrugExposureDrugConceptList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureDrugConceptList = list;
+    public void setCostCostTypeConceptList(ArrayList<CostDvo> list) {
+        this.costCostTypeConceptList = list;
     }
     
-    public ArrayList<DrugExposureDvo> getDrugExposureDrugTypeConceptList() {
-        return drugExposureDrugTypeConceptList;
+    public ArrayList<CostDvo> getCostCurrencyConceptList() {
+        return costCurrencyConceptList;
     }
     
-    public void setDrugExposureDrugTypeConceptList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureDrugTypeConceptList = list;
+    public void setCostCurrencyConceptList(ArrayList<CostDvo> list) {
+        this.costCurrencyConceptList = list;
     }
     
-    public ArrayList<DrugExposureDvo> getDrugExposureRouteConceptList() {
-        return drugExposureRouteConceptList;
+    public ArrayList<CostDvo> getCostRevenueCodeConceptList() {
+        return costRevenueCodeConceptList;
     }
     
-    public void setDrugExposureRouteConceptList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureRouteConceptList = list;
+    public void setCostRevenueCodeConceptList(ArrayList<CostDvo> list) {
+        this.costRevenueCodeConceptList = list;
     }
     
-    public ArrayList<DrugExposureDvo> getDrugExposureDrugSourceConceptList() {
-        return drugExposureDrugSourceConceptList;
+    public ArrayList<CostDvo> getCostDrgConceptList() {
+        return costDrgConceptList;
     }
     
-    public void setDrugExposureDrugSourceConceptList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureDrugSourceConceptList = list;
+    public void setCostDrgConceptList(ArrayList<CostDvo> list) {
+        this.costDrgConceptList = list;
     }
     
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureConceptList() {
-        return procedureOccurrenceProcedureConceptList;
+    public ArrayList<DeathDvo> getDeathDeathTypeConceptList() {
+        return deathDeathTypeConceptList;
     }
     
-    public void setProcedureOccurrenceProcedureConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceProcedureConceptList = list;
+    public void setDeathDeathTypeConceptList(ArrayList<DeathDvo> list) {
+        this.deathDeathTypeConceptList = list;
     }
     
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureTypeConceptList() {
-        return procedureOccurrenceProcedureTypeConceptList;
+    public ArrayList<DeathDvo> getDeathCauseConceptList() {
+        return deathCauseConceptList;
     }
     
-    public void setProcedureOccurrenceProcedureTypeConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceProcedureTypeConceptList = list;
+    public void setDeathCauseConceptList(ArrayList<DeathDvo> list) {
+        this.deathCauseConceptList = list;
     }
     
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceModifierConceptList() {
-        return procedureOccurrenceModifierConceptList;
+    public ArrayList<DeathDvo> getDeathCauseSourceConceptList() {
+        return deathCauseSourceConceptList;
     }
     
-    public void setProcedureOccurrenceModifierConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceModifierConceptList = list;
-    }
-    
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureSourceConceptList() {
-        return procedureOccurrenceProcedureSourceConceptList;
-    }
-    
-    public void setProcedureOccurrenceProcedureSourceConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceProcedureSourceConceptList = list;
+    public void setDeathCauseSourceConceptList(ArrayList<DeathDvo> list) {
+        this.deathCauseSourceConceptList = list;
     }
     
     public ArrayList<DeviceExposureDvo> getDeviceExposureDeviceConceptList() {
@@ -714,6 +650,182 @@ public class ConceptDvo implements Dvo {
     
     public void setDeviceExposureUnitSourceConceptList(ArrayList<DeviceExposureDvo> list) {
         this.deviceExposureUnitSourceConceptList = list;
+    }
+    
+    public ArrayList<DomainDvo> getDomainDomainConceptList() {
+        return domainDomainConceptList;
+    }
+    
+    public void setDomainDomainConceptList(ArrayList<DomainDvo> list) {
+        this.domainDomainConceptList = list;
+    }
+    
+    public ArrayList<DoseEraDvo> getDoseEraDrugConceptList() {
+        return doseEraDrugConceptList;
+    }
+    
+    public void setDoseEraDrugConceptList(ArrayList<DoseEraDvo> list) {
+        this.doseEraDrugConceptList = list;
+    }
+    
+    public ArrayList<DoseEraDvo> getDoseEraUnitConceptList() {
+        return doseEraUnitConceptList;
+    }
+    
+    public void setDoseEraUnitConceptList(ArrayList<DoseEraDvo> list) {
+        this.doseEraUnitConceptList = list;
+    }
+    
+    public ArrayList<DrugEraDvo> getDrugEraDrugConceptList() {
+        return drugEraDrugConceptList;
+    }
+    
+    public void setDrugEraDrugConceptList(ArrayList<DrugEraDvo> list) {
+        this.drugEraDrugConceptList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposureDrugConceptList() {
+        return drugExposureDrugConceptList;
+    }
+    
+    public void setDrugExposureDrugConceptList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureDrugConceptList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposureDrugTypeConceptList() {
+        return drugExposureDrugTypeConceptList;
+    }
+    
+    public void setDrugExposureDrugTypeConceptList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureDrugTypeConceptList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposureRouteConceptList() {
+        return drugExposureRouteConceptList;
+    }
+    
+    public void setDrugExposureRouteConceptList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureRouteConceptList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposureDrugSourceConceptList() {
+        return drugExposureDrugSourceConceptList;
+    }
+    
+    public void setDrugExposureDrugSourceConceptList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureDrugSourceConceptList = list;
+    }
+    
+    public ArrayList<DrugStrengthDvo> getDrugStrengthDrugConceptList() {
+        return drugStrengthDrugConceptList;
+    }
+    
+    public void setDrugStrengthDrugConceptList(ArrayList<DrugStrengthDvo> list) {
+        this.drugStrengthDrugConceptList = list;
+    }
+    
+    public ArrayList<DrugStrengthDvo> getDrugStrengthIngredientConceptList() {
+        return drugStrengthIngredientConceptList;
+    }
+    
+    public void setDrugStrengthIngredientConceptList(ArrayList<DrugStrengthDvo> list) {
+        this.drugStrengthIngredientConceptList = list;
+    }
+    
+    public ArrayList<DrugStrengthDvo> getDrugStrengthAmountUnitConceptList() {
+        return drugStrengthAmountUnitConceptList;
+    }
+    
+    public void setDrugStrengthAmountUnitConceptList(ArrayList<DrugStrengthDvo> list) {
+        this.drugStrengthAmountUnitConceptList = list;
+    }
+    
+    public ArrayList<DrugStrengthDvo> getDrugStrengthNumeratorUnitConceptList() {
+        return drugStrengthNumeratorUnitConceptList;
+    }
+    
+    public void setDrugStrengthNumeratorUnitConceptList(ArrayList<DrugStrengthDvo> list) {
+        this.drugStrengthNumeratorUnitConceptList = list;
+    }
+    
+    public ArrayList<DrugStrengthDvo> getDrugStrengthDenominatorUnitConceptList() {
+        return drugStrengthDenominatorUnitConceptList;
+    }
+    
+    public void setDrugStrengthDenominatorUnitConceptList(ArrayList<DrugStrengthDvo> list) {
+        this.drugStrengthDenominatorUnitConceptList = list;
+    }
+    
+    public ArrayList<EpisodeDvo> getEpisodeEpisodeConceptList() {
+        return episodeEpisodeConceptList;
+    }
+    
+    public void setEpisodeEpisodeConceptList(ArrayList<EpisodeDvo> list) {
+        this.episodeEpisodeConceptList = list;
+    }
+    
+    public ArrayList<EpisodeDvo> getEpisodeEpisodeObjectConceptList() {
+        return episodeEpisodeObjectConceptList;
+    }
+    
+    public void setEpisodeEpisodeObjectConceptList(ArrayList<EpisodeDvo> list) {
+        this.episodeEpisodeObjectConceptList = list;
+    }
+    
+    public ArrayList<EpisodeDvo> getEpisodeEpisodeTypeConceptList() {
+        return episodeEpisodeTypeConceptList;
+    }
+    
+    public void setEpisodeEpisodeTypeConceptList(ArrayList<EpisodeDvo> list) {
+        this.episodeEpisodeTypeConceptList = list;
+    }
+    
+    public ArrayList<EpisodeDvo> getEpisodeEpisodeSourceConceptList() {
+        return episodeEpisodeSourceConceptList;
+    }
+    
+    public void setEpisodeEpisodeSourceConceptList(ArrayList<EpisodeDvo> list) {
+        this.episodeEpisodeSourceConceptList = list;
+    }
+    
+    public ArrayList<EpisodeEventDvo> getEpisodeEventEpisodeEventFieldConceptList() {
+        return episodeEventEpisodeEventFieldConceptList;
+    }
+    
+    public void setEpisodeEventEpisodeEventFieldConceptList(ArrayList<EpisodeEventDvo> list) {
+        this.episodeEventEpisodeEventFieldConceptList = list;
+    }
+    
+    public ArrayList<FactRelationshipDvo> getFactRelationshipDomainConceptId1List() {
+        return factRelationshipDomainConceptId1List;
+    }
+    
+    public void setFactRelationshipDomainConceptId1List(ArrayList<FactRelationshipDvo> list) {
+        this.factRelationshipDomainConceptId1List = list;
+    }
+    
+    public ArrayList<FactRelationshipDvo> getFactRelationshipDomainConceptId2List() {
+        return factRelationshipDomainConceptId2List;
+    }
+    
+    public void setFactRelationshipDomainConceptId2List(ArrayList<FactRelationshipDvo> list) {
+        this.factRelationshipDomainConceptId2List = list;
+    }
+    
+    public ArrayList<FactRelationshipDvo> getFactRelationshipRelationshipConceptList() {
+        return factRelationshipRelationshipConceptList;
+    }
+    
+    public void setFactRelationshipRelationshipConceptList(ArrayList<FactRelationshipDvo> list) {
+        this.factRelationshipRelationshipConceptList = list;
+    }
+    
+    public ArrayList<LocationDvo> getLocationCountryConceptList() {
+        return locationCountryConceptList;
+    }
+    
+    public void setLocationCountryConceptList(ArrayList<LocationDvo> list) {
+        this.locationCountryConceptList = list;
     }
     
     public ArrayList<MeasurementDvo> getMeasurementMeasurementConceptList() {
@@ -780,84 +892,28 @@ public class ConceptDvo implements Dvo {
         this.measurementMeasEventFieldConceptList = list;
     }
     
-    public ArrayList<ObservationDvo> getObservationObservationConceptList() {
-        return observationObservationConceptList;
+    public ArrayList<MetadataDvo> getMetadataMetadataConceptList() {
+        return metadataMetadataConceptList;
     }
     
-    public void setObservationObservationConceptList(ArrayList<ObservationDvo> list) {
-        this.observationObservationConceptList = list;
+    public void setMetadataMetadataConceptList(ArrayList<MetadataDvo> list) {
+        this.metadataMetadataConceptList = list;
     }
     
-    public ArrayList<ObservationDvo> getObservationObservationTypeConceptList() {
-        return observationObservationTypeConceptList;
+    public ArrayList<MetadataDvo> getMetadataMetadataTypeConceptList() {
+        return metadataMetadataTypeConceptList;
     }
     
-    public void setObservationObservationTypeConceptList(ArrayList<ObservationDvo> list) {
-        this.observationObservationTypeConceptList = list;
+    public void setMetadataMetadataTypeConceptList(ArrayList<MetadataDvo> list) {
+        this.metadataMetadataTypeConceptList = list;
     }
     
-    public ArrayList<ObservationDvo> getObservationValueAsConceptList() {
-        return observationValueAsConceptList;
+    public ArrayList<MetadataDvo> getMetadataValueAsConceptList() {
+        return metadataValueAsConceptList;
     }
     
-    public void setObservationValueAsConceptList(ArrayList<ObservationDvo> list) {
-        this.observationValueAsConceptList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationQualifierConceptList() {
-        return observationQualifierConceptList;
-    }
-    
-    public void setObservationQualifierConceptList(ArrayList<ObservationDvo> list) {
-        this.observationQualifierConceptList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationUnitConceptList() {
-        return observationUnitConceptList;
-    }
-    
-    public void setObservationUnitConceptList(ArrayList<ObservationDvo> list) {
-        this.observationUnitConceptList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationObservationSourceConceptList() {
-        return observationObservationSourceConceptList;
-    }
-    
-    public void setObservationObservationSourceConceptList(ArrayList<ObservationDvo> list) {
-        this.observationObservationSourceConceptList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationObsEventFieldConceptList() {
-        return observationObsEventFieldConceptList;
-    }
-    
-    public void setObservationObsEventFieldConceptList(ArrayList<ObservationDvo> list) {
-        this.observationObsEventFieldConceptList = list;
-    }
-    
-    public ArrayList<DeathDvo> getDeathDeathTypeConceptList() {
-        return deathDeathTypeConceptList;
-    }
-    
-    public void setDeathDeathTypeConceptList(ArrayList<DeathDvo> list) {
-        this.deathDeathTypeConceptList = list;
-    }
-    
-    public ArrayList<DeathDvo> getDeathCauseConceptList() {
-        return deathCauseConceptList;
-    }
-    
-    public void setDeathCauseConceptList(ArrayList<DeathDvo> list) {
-        this.deathCauseConceptList = list;
-    }
-    
-    public ArrayList<DeathDvo> getDeathCauseSourceConceptList() {
-        return deathCauseSourceConceptList;
-    }
-    
-    public void setDeathCauseSourceConceptList(ArrayList<DeathDvo> list) {
-        this.deathCauseSourceConceptList = list;
+    public void setMetadataValueAsConceptList(ArrayList<MetadataDvo> list) {
+        this.metadataValueAsConceptList = list;
     }
     
     public ArrayList<NoteDvo> getNoteNoteTypeConceptList() {
@@ -924,116 +980,68 @@ public class ConceptDvo implements Dvo {
         this.noteNlpNoteNlpSourceConceptList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenSpecimenConceptList() {
-        return specimenSpecimenConceptList;
+    public ArrayList<ObservationDvo> getObservationObservationConceptList() {
+        return observationObservationConceptList;
     }
     
-    public void setSpecimenSpecimenConceptList(ArrayList<SpecimenDvo> list) {
-        this.specimenSpecimenConceptList = list;
+    public void setObservationObservationConceptList(ArrayList<ObservationDvo> list) {
+        this.observationObservationConceptList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenSpecimenTypeConceptList() {
-        return specimenSpecimenTypeConceptList;
+    public ArrayList<ObservationDvo> getObservationObservationTypeConceptList() {
+        return observationObservationTypeConceptList;
     }
     
-    public void setSpecimenSpecimenTypeConceptList(ArrayList<SpecimenDvo> list) {
-        this.specimenSpecimenTypeConceptList = list;
+    public void setObservationObservationTypeConceptList(ArrayList<ObservationDvo> list) {
+        this.observationObservationTypeConceptList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenUnitConceptList() {
-        return specimenUnitConceptList;
+    public ArrayList<ObservationDvo> getObservationValueAsConceptList() {
+        return observationValueAsConceptList;
     }
     
-    public void setSpecimenUnitConceptList(ArrayList<SpecimenDvo> list) {
-        this.specimenUnitConceptList = list;
+    public void setObservationValueAsConceptList(ArrayList<ObservationDvo> list) {
+        this.observationValueAsConceptList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenAnatomicSiteConceptList() {
-        return specimenAnatomicSiteConceptList;
+    public ArrayList<ObservationDvo> getObservationQualifierConceptList() {
+        return observationQualifierConceptList;
     }
     
-    public void setSpecimenAnatomicSiteConceptList(ArrayList<SpecimenDvo> list) {
-        this.specimenAnatomicSiteConceptList = list;
+    public void setObservationQualifierConceptList(ArrayList<ObservationDvo> list) {
+        this.observationQualifierConceptList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenDiseaseStatusConceptList() {
-        return specimenDiseaseStatusConceptList;
+    public ArrayList<ObservationDvo> getObservationUnitConceptList() {
+        return observationUnitConceptList;
     }
     
-    public void setSpecimenDiseaseStatusConceptList(ArrayList<SpecimenDvo> list) {
-        this.specimenDiseaseStatusConceptList = list;
+    public void setObservationUnitConceptList(ArrayList<ObservationDvo> list) {
+        this.observationUnitConceptList = list;
     }
     
-    public ArrayList<FactRelationshipDvo> getFactRelationshipDomainConceptId1List() {
-        return factRelationshipDomainConceptId1List;
+    public ArrayList<ObservationDvo> getObservationObservationSourceConceptList() {
+        return observationObservationSourceConceptList;
     }
     
-    public void setFactRelationshipDomainConceptId1List(ArrayList<FactRelationshipDvo> list) {
-        this.factRelationshipDomainConceptId1List = list;
+    public void setObservationObservationSourceConceptList(ArrayList<ObservationDvo> list) {
+        this.observationObservationSourceConceptList = list;
     }
     
-    public ArrayList<FactRelationshipDvo> getFactRelationshipDomainConceptId2List() {
-        return factRelationshipDomainConceptId2List;
+    public ArrayList<ObservationDvo> getObservationObsEventFieldConceptList() {
+        return observationObsEventFieldConceptList;
     }
     
-    public void setFactRelationshipDomainConceptId2List(ArrayList<FactRelationshipDvo> list) {
-        this.factRelationshipDomainConceptId2List = list;
+    public void setObservationObsEventFieldConceptList(ArrayList<ObservationDvo> list) {
+        this.observationObsEventFieldConceptList = list;
     }
     
-    public ArrayList<FactRelationshipDvo> getFactRelationshipRelationshipConceptList() {
-        return factRelationshipRelationshipConceptList;
+    public ArrayList<ObservationPeriodDvo> getObservationPeriodPeriodTypeConceptList() {
+        return observationPeriodPeriodTypeConceptList;
     }
     
-    public void setFactRelationshipRelationshipConceptList(ArrayList<FactRelationshipDvo> list) {
-        this.factRelationshipRelationshipConceptList = list;
-    }
-    
-    public ArrayList<LocationDvo> getLocationCountryConceptList() {
-        return locationCountryConceptList;
-    }
-    
-    public void setLocationCountryConceptList(ArrayList<LocationDvo> list) {
-        this.locationCountryConceptList = list;
-    }
-    
-    public ArrayList<CareSiteDvo> getCareSitePlaceOfServiceConceptList() {
-        return careSitePlaceOfServiceConceptList;
-    }
-    
-    public void setCareSitePlaceOfServiceConceptList(ArrayList<CareSiteDvo> list) {
-        this.careSitePlaceOfServiceConceptList = list;
-    }
-    
-    public ArrayList<ProviderDvo> getProviderSpecialtyConceptList() {
-        return providerSpecialtyConceptList;
-    }
-    
-    public void setProviderSpecialtyConceptList(ArrayList<ProviderDvo> list) {
-        this.providerSpecialtyConceptList = list;
-    }
-    
-    public ArrayList<ProviderDvo> getProviderGenderConceptList() {
-        return providerGenderConceptList;
-    }
-    
-    public void setProviderGenderConceptList(ArrayList<ProviderDvo> list) {
-        this.providerGenderConceptList = list;
-    }
-    
-    public ArrayList<ProviderDvo> getProviderSpecialtySourceConceptList() {
-        return providerSpecialtySourceConceptList;
-    }
-    
-    public void setProviderSpecialtySourceConceptList(ArrayList<ProviderDvo> list) {
-        this.providerSpecialtySourceConceptList = list;
-    }
-    
-    public ArrayList<ProviderDvo> getProviderGenderSourceConceptList() {
-        return providerGenderSourceConceptList;
-    }
-    
-    public void setProviderGenderSourceConceptList(ArrayList<ProviderDvo> list) {
-        this.providerGenderSourceConceptList = list;
+    public void setObservationPeriodPeriodTypeConceptList(ArrayList<ObservationPeriodDvo> list) {
+        this.observationPeriodPeriodTypeConceptList = list;
     }
     
     public ArrayList<PayerPlanPeriodDvo> getPayerPlanPeriodPayerConceptList() {
@@ -1100,156 +1108,116 @@ public class ConceptDvo implements Dvo {
         this.payerPlanPeriodStopReasonSourceConceptList = list;
     }
     
-    public ArrayList<CostDvo> getCostCostTypeConceptList() {
-        return costCostTypeConceptList;
+    public ArrayList<PersonDvo> getPersonGenderConceptList() {
+        return personGenderConceptList;
     }
     
-    public void setCostCostTypeConceptList(ArrayList<CostDvo> list) {
-        this.costCostTypeConceptList = list;
+    public void setPersonGenderConceptList(ArrayList<PersonDvo> list) {
+        this.personGenderConceptList = list;
     }
     
-    public ArrayList<CostDvo> getCostCurrencyConceptList() {
-        return costCurrencyConceptList;
+    public ArrayList<PersonDvo> getPersonRaceConceptList() {
+        return personRaceConceptList;
     }
     
-    public void setCostCurrencyConceptList(ArrayList<CostDvo> list) {
-        this.costCurrencyConceptList = list;
+    public void setPersonRaceConceptList(ArrayList<PersonDvo> list) {
+        this.personRaceConceptList = list;
     }
     
-    public ArrayList<CostDvo> getCostRevenueCodeConceptList() {
-        return costRevenueCodeConceptList;
+    public ArrayList<PersonDvo> getPersonEthnicityConceptList() {
+        return personEthnicityConceptList;
     }
     
-    public void setCostRevenueCodeConceptList(ArrayList<CostDvo> list) {
-        this.costRevenueCodeConceptList = list;
+    public void setPersonEthnicityConceptList(ArrayList<PersonDvo> list) {
+        this.personEthnicityConceptList = list;
     }
     
-    public ArrayList<CostDvo> getCostDrgConceptList() {
-        return costDrgConceptList;
+    public ArrayList<PersonDvo> getPersonGenderSourceConceptList() {
+        return personGenderSourceConceptList;
     }
     
-    public void setCostDrgConceptList(ArrayList<CostDvo> list) {
-        this.costDrgConceptList = list;
+    public void setPersonGenderSourceConceptList(ArrayList<PersonDvo> list) {
+        this.personGenderSourceConceptList = list;
     }
     
-    public ArrayList<DrugEraDvo> getDrugEraDrugConceptList() {
-        return drugEraDrugConceptList;
+    public ArrayList<PersonDvo> getPersonRaceSourceConceptList() {
+        return personRaceSourceConceptList;
     }
     
-    public void setDrugEraDrugConceptList(ArrayList<DrugEraDvo> list) {
-        this.drugEraDrugConceptList = list;
+    public void setPersonRaceSourceConceptList(ArrayList<PersonDvo> list) {
+        this.personRaceSourceConceptList = list;
     }
     
-    public ArrayList<DoseEraDvo> getDoseEraDrugConceptList() {
-        return doseEraDrugConceptList;
+    public ArrayList<PersonDvo> getPersonEthnicitySourceConceptList() {
+        return personEthnicitySourceConceptList;
     }
     
-    public void setDoseEraDrugConceptList(ArrayList<DoseEraDvo> list) {
-        this.doseEraDrugConceptList = list;
+    public void setPersonEthnicitySourceConceptList(ArrayList<PersonDvo> list) {
+        this.personEthnicitySourceConceptList = list;
     }
     
-    public ArrayList<DoseEraDvo> getDoseEraUnitConceptList() {
-        return doseEraUnitConceptList;
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureConceptList() {
+        return procedureOccurrenceProcedureConceptList;
     }
     
-    public void setDoseEraUnitConceptList(ArrayList<DoseEraDvo> list) {
-        this.doseEraUnitConceptList = list;
+    public void setProcedureOccurrenceProcedureConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceProcedureConceptList = list;
     }
     
-    public ArrayList<ConditionEraDvo> getConditionEraConditionConceptList() {
-        return conditionEraConditionConceptList;
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureTypeConceptList() {
+        return procedureOccurrenceProcedureTypeConceptList;
     }
     
-    public void setConditionEraConditionConceptList(ArrayList<ConditionEraDvo> list) {
-        this.conditionEraConditionConceptList = list;
+    public void setProcedureOccurrenceProcedureTypeConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceProcedureTypeConceptList = list;
     }
     
-    public ArrayList<EpisodeDvo> getEpisodeEpisodeConceptList() {
-        return episodeEpisodeConceptList;
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceModifierConceptList() {
+        return procedureOccurrenceModifierConceptList;
     }
     
-    public void setEpisodeEpisodeConceptList(ArrayList<EpisodeDvo> list) {
-        this.episodeEpisodeConceptList = list;
+    public void setProcedureOccurrenceModifierConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceModifierConceptList = list;
     }
     
-    public ArrayList<EpisodeDvo> getEpisodeEpisodeObjectConceptList() {
-        return episodeEpisodeObjectConceptList;
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProcedureSourceConceptList() {
+        return procedureOccurrenceProcedureSourceConceptList;
     }
     
-    public void setEpisodeEpisodeObjectConceptList(ArrayList<EpisodeDvo> list) {
-        this.episodeEpisodeObjectConceptList = list;
+    public void setProcedureOccurrenceProcedureSourceConceptList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceProcedureSourceConceptList = list;
     }
     
-    public ArrayList<EpisodeDvo> getEpisodeEpisodeTypeConceptList() {
-        return episodeEpisodeTypeConceptList;
+    public ArrayList<ProviderDvo> getProviderSpecialtyConceptList() {
+        return providerSpecialtyConceptList;
     }
     
-    public void setEpisodeEpisodeTypeConceptList(ArrayList<EpisodeDvo> list) {
-        this.episodeEpisodeTypeConceptList = list;
+    public void setProviderSpecialtyConceptList(ArrayList<ProviderDvo> list) {
+        this.providerSpecialtyConceptList = list;
     }
     
-    public ArrayList<EpisodeDvo> getEpisodeEpisodeSourceConceptList() {
-        return episodeEpisodeSourceConceptList;
+    public ArrayList<ProviderDvo> getProviderGenderConceptList() {
+        return providerGenderConceptList;
     }
     
-    public void setEpisodeEpisodeSourceConceptList(ArrayList<EpisodeDvo> list) {
-        this.episodeEpisodeSourceConceptList = list;
+    public void setProviderGenderConceptList(ArrayList<ProviderDvo> list) {
+        this.providerGenderConceptList = list;
     }
     
-    public ArrayList<EpisodeEventDvo> getEpisodeEventEpisodeEventFieldConceptList() {
-        return episodeEventEpisodeEventFieldConceptList;
+    public ArrayList<ProviderDvo> getProviderSpecialtySourceConceptList() {
+        return providerSpecialtySourceConceptList;
     }
     
-    public void setEpisodeEventEpisodeEventFieldConceptList(ArrayList<EpisodeEventDvo> list) {
-        this.episodeEventEpisodeEventFieldConceptList = list;
+    public void setProviderSpecialtySourceConceptList(ArrayList<ProviderDvo> list) {
+        this.providerSpecialtySourceConceptList = list;
     }
     
-    public ArrayList<MetadataDvo> getMetadataMetadataConceptList() {
-        return metadataMetadataConceptList;
+    public ArrayList<ProviderDvo> getProviderGenderSourceConceptList() {
+        return providerGenderSourceConceptList;
     }
     
-    public void setMetadataMetadataConceptList(ArrayList<MetadataDvo> list) {
-        this.metadataMetadataConceptList = list;
-    }
-    
-    public ArrayList<MetadataDvo> getMetadataMetadataTypeConceptList() {
-        return metadataMetadataTypeConceptList;
-    }
-    
-    public void setMetadataMetadataTypeConceptList(ArrayList<MetadataDvo> list) {
-        this.metadataMetadataTypeConceptList = list;
-    }
-    
-    public ArrayList<MetadataDvo> getMetadataValueAsConceptList() {
-        return metadataValueAsConceptList;
-    }
-    
-    public void setMetadataValueAsConceptList(ArrayList<MetadataDvo> list) {
-        this.metadataValueAsConceptList = list;
-    }
-    
-    public ArrayList<CdmSourceDvo> getCdmSourceCdmVersionConceptList() {
-        return cdmSourceCdmVersionConceptList;
-    }
-    
-    public void setCdmSourceCdmVersionConceptList(ArrayList<CdmSourceDvo> list) {
-        this.cdmSourceCdmVersionConceptList = list;
-    }
-    
-    public ArrayList<DomainDvo> getDomainDomainConceptList() {
-        return domainDomainConceptList;
-    }
-    
-    public void setDomainDomainConceptList(ArrayList<DomainDvo> list) {
-        this.domainDomainConceptList = list;
-    }
-    
-    public ArrayList<ConceptClassDvo> getConceptClassConceptClassConceptList() {
-        return conceptClassConceptClassConceptList;
-    }
-    
-    public void setConceptClassConceptClassConceptList(ArrayList<ConceptClassDvo> list) {
-        this.conceptClassConceptClassConceptList = list;
+    public void setProviderGenderSourceConceptList(ArrayList<ProviderDvo> list) {
+        this.providerGenderSourceConceptList = list;
     }
     
     public ArrayList<RelationshipDvo> getRelationshipRelationshipConceptList() {
@@ -1258,38 +1226,6 @@ public class ConceptDvo implements Dvo {
     
     public void setRelationshipRelationshipConceptList(ArrayList<RelationshipDvo> list) {
         this.relationshipRelationshipConceptList = list;
-    }
-    
-    public ArrayList<ConceptSynonymDvo> getConceptSynonymConceptList() {
-        return conceptSynonymConceptList;
-    }
-    
-    public void setConceptSynonymConceptList(ArrayList<ConceptSynonymDvo> list) {
-        this.conceptSynonymConceptList = list;
-    }
-    
-    public ArrayList<ConceptSynonymDvo> getConceptSynonymLanguageConceptList() {
-        return conceptSynonymLanguageConceptList;
-    }
-    
-    public void setConceptSynonymLanguageConceptList(ArrayList<ConceptSynonymDvo> list) {
-        this.conceptSynonymLanguageConceptList = list;
-    }
-    
-    public ArrayList<ConceptAncestorDvo> getConceptAncestorAncestorConceptList() {
-        return conceptAncestorAncestorConceptList;
-    }
-    
-    public void setConceptAncestorAncestorConceptList(ArrayList<ConceptAncestorDvo> list) {
-        this.conceptAncestorAncestorConceptList = list;
-    }
-    
-    public ArrayList<ConceptAncestorDvo> getConceptAncestorDescendantConceptList() {
-        return conceptAncestorDescendantConceptList;
-    }
-    
-    public void setConceptAncestorDescendantConceptList(ArrayList<ConceptAncestorDvo> list) {
-        this.conceptAncestorDescendantConceptList = list;
     }
     
     public ArrayList<SourceToConceptMapDvo> getSourceToConceptMapSourceConceptList() {
@@ -1308,60 +1244,124 @@ public class ConceptDvo implements Dvo {
         this.sourceToConceptMapTargetConceptList = list;
     }
     
-    public ArrayList<DrugStrengthDvo> getDrugStrengthDrugConceptList() {
-        return drugStrengthDrugConceptList;
+    public ArrayList<SpecimenDvo> getSpecimenSpecimenConceptList() {
+        return specimenSpecimenConceptList;
     }
     
-    public void setDrugStrengthDrugConceptList(ArrayList<DrugStrengthDvo> list) {
-        this.drugStrengthDrugConceptList = list;
+    public void setSpecimenSpecimenConceptList(ArrayList<SpecimenDvo> list) {
+        this.specimenSpecimenConceptList = list;
     }
     
-    public ArrayList<DrugStrengthDvo> getDrugStrengthIngredientConceptList() {
-        return drugStrengthIngredientConceptList;
+    public ArrayList<SpecimenDvo> getSpecimenSpecimenTypeConceptList() {
+        return specimenSpecimenTypeConceptList;
     }
     
-    public void setDrugStrengthIngredientConceptList(ArrayList<DrugStrengthDvo> list) {
-        this.drugStrengthIngredientConceptList = list;
+    public void setSpecimenSpecimenTypeConceptList(ArrayList<SpecimenDvo> list) {
+        this.specimenSpecimenTypeConceptList = list;
     }
     
-    public ArrayList<DrugStrengthDvo> getDrugStrengthAmountUnitConceptList() {
-        return drugStrengthAmountUnitConceptList;
+    public ArrayList<SpecimenDvo> getSpecimenUnitConceptList() {
+        return specimenUnitConceptList;
     }
     
-    public void setDrugStrengthAmountUnitConceptList(ArrayList<DrugStrengthDvo> list) {
-        this.drugStrengthAmountUnitConceptList = list;
+    public void setSpecimenUnitConceptList(ArrayList<SpecimenDvo> list) {
+        this.specimenUnitConceptList = list;
     }
     
-    public ArrayList<DrugStrengthDvo> getDrugStrengthNumeratorUnitConceptList() {
-        return drugStrengthNumeratorUnitConceptList;
+    public ArrayList<SpecimenDvo> getSpecimenAnatomicSiteConceptList() {
+        return specimenAnatomicSiteConceptList;
     }
     
-    public void setDrugStrengthNumeratorUnitConceptList(ArrayList<DrugStrengthDvo> list) {
-        this.drugStrengthNumeratorUnitConceptList = list;
+    public void setSpecimenAnatomicSiteConceptList(ArrayList<SpecimenDvo> list) {
+        this.specimenAnatomicSiteConceptList = list;
     }
     
-    public ArrayList<DrugStrengthDvo> getDrugStrengthDenominatorUnitConceptList() {
-        return drugStrengthDenominatorUnitConceptList;
+    public ArrayList<SpecimenDvo> getSpecimenDiseaseStatusConceptList() {
+        return specimenDiseaseStatusConceptList;
     }
     
-    public void setDrugStrengthDenominatorUnitConceptList(ArrayList<DrugStrengthDvo> list) {
-        this.drugStrengthDenominatorUnitConceptList = list;
+    public void setSpecimenDiseaseStatusConceptList(ArrayList<SpecimenDvo> list) {
+        this.specimenDiseaseStatusConceptList = list;
     }
     
-    public ArrayList<CohortDefinitionDvo> getCohortDefinitionDefinitionTypeConceptList() {
-        return cohortDefinitionDefinitionTypeConceptList;
+    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailConceptList() {
+        return visitDetailVisitDetailConceptList;
     }
     
-    public void setCohortDefinitionDefinitionTypeConceptList(ArrayList<CohortDefinitionDvo> list) {
-        this.cohortDefinitionDefinitionTypeConceptList = list;
+    public void setVisitDetailVisitDetailConceptList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailVisitDetailConceptList = list;
     }
     
-    public ArrayList<CohortDefinitionDvo> getCohortDefinitionSubjectConceptList() {
-        return cohortDefinitionSubjectConceptList;
+    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailTypeConceptList() {
+        return visitDetailVisitDetailTypeConceptList;
     }
     
-    public void setCohortDefinitionSubjectConceptList(ArrayList<CohortDefinitionDvo> list) {
-        this.cohortDefinitionSubjectConceptList = list;
+    public void setVisitDetailVisitDetailTypeConceptList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailVisitDetailTypeConceptList = list;
+    }
+    
+    public ArrayList<VisitDetailDvo> getVisitDetailVisitDetailSourceConceptList() {
+        return visitDetailVisitDetailSourceConceptList;
+    }
+    
+    public void setVisitDetailVisitDetailSourceConceptList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailVisitDetailSourceConceptList = list;
+    }
+    
+    public ArrayList<VisitDetailDvo> getVisitDetailAdmittedFromConceptList() {
+        return visitDetailAdmittedFromConceptList;
+    }
+    
+    public void setVisitDetailAdmittedFromConceptList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailAdmittedFromConceptList = list;
+    }
+    
+    public ArrayList<VisitDetailDvo> getVisitDetailDischargedToConceptList() {
+        return visitDetailDischargedToConceptList;
+    }
+    
+    public void setVisitDetailDischargedToConceptList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailDischargedToConceptList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitConceptList() {
+        return visitOccurrenceVisitConceptList;
+    }
+    
+    public void setVisitOccurrenceVisitConceptList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceVisitConceptList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitTypeConceptList() {
+        return visitOccurrenceVisitTypeConceptList;
+    }
+    
+    public void setVisitOccurrenceVisitTypeConceptList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceVisitTypeConceptList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceVisitSourceConceptList() {
+        return visitOccurrenceVisitSourceConceptList;
+    }
+    
+    public void setVisitOccurrenceVisitSourceConceptList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceVisitSourceConceptList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceAdmittedFromConceptList() {
+        return visitOccurrenceAdmittedFromConceptList;
+    }
+    
+    public void setVisitOccurrenceAdmittedFromConceptList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceAdmittedFromConceptList = list;
+    }
+    
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceDischargedToConceptList() {
+        return visitOccurrenceDischargedToConceptList;
+    }
+    
+    public void setVisitOccurrenceDischargedToConceptList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceDischargedToConceptList = list;
     }
     
     //

@@ -29,12 +29,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "condition_era_id",
-        "person_id",
         "condition_concept_id",
-        "condition_era_start_date",
         "condition_era_end_date",
-        "condition_occurrence_count"
+        "condition_era_id",
+        "condition_era_start_date",
+        "condition_occurrence_count",
+        "person_id"
     };
     
     //
@@ -50,12 +50,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conditionEraId",
-        "personId",
         "conditionConceptId",
-        "conditionEraStartDate",
         "conditionEraEndDate",
-        "conditionOccurrenceCount"
+        "conditionEraId",
+        "conditionEraStartDate",
+        "conditionOccurrenceCount",
+        "personId"
     };
     
     //
@@ -63,12 +63,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConditionEraId",
-        "PersonId",
         "ConditionConceptId",
-        "ConditionEraStartDate",
         "ConditionEraEndDate",
-        "ConditionOccurrenceCount"
+        "ConditionEraId",
+        "ConditionEraStartDate",
+        "ConditionOccurrenceCount",
+        "PersonId"
     };
     
     
@@ -78,17 +78,17 @@ public class ConditionEraDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conditionEraId;
-    
-    private Integer personId;
-    
     private Integer conditionConceptId;
-    
-    private String conditionEraStartDate;
     
     private String conditionEraEndDate;
     
+    private Integer conditionEraId;
+    
+    private String conditionEraStartDate;
+    
     private Integer conditionOccurrenceCount;
+    
+    private Integer personId;
     
     private ConceptDvo conditionConceptDvo;
     
@@ -98,26 +98,6 @@ public class ConditionEraDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // conditionEraId
-    
-    public void setConditionEraId(Integer val) {
-        this.conditionEraId = val;
-    }
-    
-    public Integer getConditionEraId() {
-        return this.conditionEraId;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
     // conditionConceptId
     
     public void setConditionConceptId(Integer val) {
@@ -126,16 +106,6 @@ public class ConditionEraDvo implements Dvo {
     
     public Integer getConditionConceptId() {
         return this.conditionConceptId;
-    }
-    
-    // conditionEraStartDate
-    
-    public void setConditionEraStartDate(String val) {
-        this.conditionEraStartDate = val;
-    }
-    
-    public String getConditionEraStartDate() {
-        return this.conditionEraStartDate;
     }
     
     // conditionEraEndDate
@@ -148,6 +118,26 @@ public class ConditionEraDvo implements Dvo {
         return this.conditionEraEndDate;
     }
     
+    // conditionEraId
+    
+    public void setConditionEraId(Integer val) {
+        this.conditionEraId = val;
+    }
+    
+    public Integer getConditionEraId() {
+        return this.conditionEraId;
+    }
+    
+    // conditionEraStartDate
+    
+    public void setConditionEraStartDate(String val) {
+        this.conditionEraStartDate = val;
+    }
+    
+    public String getConditionEraStartDate() {
+        return this.conditionEraStartDate;
+    }
+    
     // conditionOccurrenceCount
     
     public void setConditionOccurrenceCount(Integer val) {
@@ -156,6 +146,16 @@ public class ConditionEraDvo implements Dvo {
     
     public Integer getConditionOccurrenceCount() {
         return this.conditionOccurrenceCount;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
     }
     
     // conditionConceptDvo

@@ -29,15 +29,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "metadata_id",
         "metadata_concept_id",
+        "metadata_date",
+        "metadata_datetime",
+        "metadata_id",
         "metadata_type_concept_id",
         "name",
-        "value_as_string",
         "value_as_concept_id",
         "value_as_number",
-        "metadata_date",
-        "metadata_datetime"
+        "value_as_string"
     };
     
     //
@@ -53,15 +53,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "metadataId",
         "metadataConceptId",
+        "metadataDate",
+        "metadataDatetime",
+        "metadataId",
         "metadataTypeConceptId",
         "name",
-        "valueAsString",
         "valueAsConceptId",
         "valueAsNumber",
-        "metadataDate",
-        "metadataDatetime"
+        "valueAsString"
     };
     
     //
@@ -69,15 +69,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "MetadataId",
         "MetadataConceptId",
+        "MetadataDate",
+        "MetadataDatetime",
+        "MetadataId",
         "MetadataTypeConceptId",
         "Name",
-        "ValueAsString",
         "ValueAsConceptId",
         "ValueAsNumber",
-        "MetadataDate",
-        "MetadataDatetime"
+        "ValueAsString"
     };
     
     
@@ -87,23 +87,23 @@ public class MetadataDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer metadataId;
-    
     private Integer metadataConceptId;
+    
+    private Date metadataDate;
+    
+    private String metadataDatetime;
+    
+    private Integer metadataId;
     
     private Integer metadataTypeConceptId;
     
     private String name;
     
-    private String valueAsString;
-    
     private Integer valueAsConceptId;
     
     private String valueAsNumber;
     
-    private Date metadataDate;
-    
-    private String metadataDatetime;
+    private String valueAsString;
     
     private ConceptDvo metadataConceptDvo;
     
@@ -115,16 +115,6 @@ public class MetadataDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // metadataId
-    
-    public void setMetadataId(Integer val) {
-        this.metadataId = val;
-    }
-    
-    public Integer getMetadataId() {
-        return this.metadataId;
-    }
-    
     // metadataConceptId
     
     public void setMetadataConceptId(Integer val) {
@@ -133,6 +123,36 @@ public class MetadataDvo implements Dvo {
     
     public Integer getMetadataConceptId() {
         return this.metadataConceptId;
+    }
+    
+    // metadataDate
+    
+    public void setMetadataDate(Date val) {
+        this.metadataDate = val;
+    }
+    
+    public Date getMetadataDate() {
+        return this.metadataDate;
+    }
+    
+    // metadataDatetime
+    
+    public void setMetadataDatetime(String val) {
+        this.metadataDatetime = val;
+    }
+    
+    public String getMetadataDatetime() {
+        return this.metadataDatetime;
+    }
+    
+    // metadataId
+    
+    public void setMetadataId(Integer val) {
+        this.metadataId = val;
+    }
+    
+    public Integer getMetadataId() {
+        return this.metadataId;
     }
     
     // metadataTypeConceptId
@@ -155,16 +175,6 @@ public class MetadataDvo implements Dvo {
         return this.name;
     }
     
-    // valueAsString
-    
-    public void setValueAsString(String val) {
-        this.valueAsString = val;
-    }
-    
-    public String getValueAsString() {
-        return this.valueAsString;
-    }
-    
     // valueAsConceptId
     
     public void setValueAsConceptId(Integer val) {
@@ -185,24 +195,14 @@ public class MetadataDvo implements Dvo {
         return this.valueAsNumber;
     }
     
-    // metadataDate
+    // valueAsString
     
-    public void setMetadataDate(Date val) {
-        this.metadataDate = val;
+    public void setValueAsString(String val) {
+        this.valueAsString = val;
     }
     
-    public Date getMetadataDate() {
-        return this.metadataDate;
-    }
-    
-    // metadataDatetime
-    
-    public void setMetadataDatetime(String val) {
-        this.metadataDatetime = val;
-    }
-    
-    public String getMetadataDatetime() {
-        return this.metadataDatetime;
+    public String getValueAsString() {
+        return this.valueAsString;
     }
     
     // metadataConceptDvo

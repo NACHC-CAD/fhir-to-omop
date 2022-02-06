@@ -29,27 +29,27 @@ public class ObservationDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "observation_id",
-        "person_id",
+        "obs_event_field_concept_id",
         "observation_concept_id",
         "observation_date",
         "observation_datetime",
+        "observation_event_id",
+        "observation_id",
+        "observation_source_concept_id",
+        "observation_source_value",
         "observation_type_concept_id",
+        "person_id",
+        "provider_id",
+        "qualifier_concept_id",
+        "qualifier_source_value",
+        "unit_concept_id",
+        "unit_source_value",
+        "value_as_concept_id",
         "value_as_number",
         "value_as_string",
-        "value_as_concept_id",
-        "qualifier_concept_id",
-        "unit_concept_id",
-        "provider_id",
-        "visit_occurrence_id",
-        "visit_detail_id",
-        "observation_source_value",
-        "observation_source_concept_id",
-        "unit_source_value",
-        "qualifier_source_value",
         "value_source_value",
-        "observation_event_id",
-        "obs_event_field_concept_id"
+        "visit_detail_id",
+        "visit_occurrence_id"
     };
     
     //
@@ -65,27 +65,27 @@ public class ObservationDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "observationId",
-        "personId",
+        "obsEventFieldConceptId",
         "observationConceptId",
         "observationDate",
         "observationDatetime",
+        "observationEventId",
+        "observationId",
+        "observationSourceConceptId",
+        "observationSourceValue",
         "observationTypeConceptId",
+        "personId",
+        "providerId",
+        "qualifierConceptId",
+        "qualifierSourceValue",
+        "unitConceptId",
+        "unitSourceValue",
+        "valueAsConceptId",
         "valueAsNumber",
         "valueAsString",
-        "valueAsConceptId",
-        "qualifierConceptId",
-        "unitConceptId",
-        "providerId",
-        "visitOccurrenceId",
-        "visitDetailId",
-        "observationSourceValue",
-        "observationSourceConceptId",
-        "unitSourceValue",
-        "qualifierSourceValue",
         "valueSourceValue",
-        "observationEventId",
-        "obsEventFieldConceptId"
+        "visitDetailId",
+        "visitOccurrenceId"
     };
     
     //
@@ -93,27 +93,27 @@ public class ObservationDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ObservationId",
-        "PersonId",
+        "ObsEventFieldConceptId",
         "ObservationConceptId",
         "ObservationDate",
         "ObservationDatetime",
+        "ObservationEventId",
+        "ObservationId",
+        "ObservationSourceConceptId",
+        "ObservationSourceValue",
         "ObservationTypeConceptId",
+        "PersonId",
+        "ProviderId",
+        "QualifierConceptId",
+        "QualifierSourceValue",
+        "UnitConceptId",
+        "UnitSourceValue",
+        "ValueAsConceptId",
         "ValueAsNumber",
         "ValueAsString",
-        "ValueAsConceptId",
-        "QualifierConceptId",
-        "UnitConceptId",
-        "ProviderId",
-        "VisitOccurrenceId",
-        "VisitDetailId",
-        "ObservationSourceValue",
-        "ObservationSourceConceptId",
-        "UnitSourceValue",
-        "QualifierSourceValue",
         "ValueSourceValue",
-        "ObservationEventId",
-        "ObsEventFieldConceptId"
+        "VisitDetailId",
+        "VisitOccurrenceId"
     };
     
     
@@ -123,9 +123,7 @@ public class ObservationDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer observationId;
-    
-    private Integer personId;
+    private Integer obsEventFieldConceptId;
     
     private Integer observationConceptId;
     
@@ -133,37 +131,39 @@ public class ObservationDvo implements Dvo {
     
     private String observationDatetime;
     
+    private String observationEventId;
+    
+    private Integer observationId;
+    
+    private Integer observationSourceConceptId;
+    
+    private String observationSourceValue;
+    
     private Integer observationTypeConceptId;
+    
+    private Integer personId;
+    
+    private Integer providerId;
+    
+    private Integer qualifierConceptId;
+    
+    private String qualifierSourceValue;
+    
+    private Integer unitConceptId;
+    
+    private String unitSourceValue;
+    
+    private Integer valueAsConceptId;
     
     private String valueAsNumber;
     
     private String valueAsString;
     
-    private Integer valueAsConceptId;
-    
-    private Integer qualifierConceptId;
-    
-    private Integer unitConceptId;
-    
-    private Integer providerId;
-    
-    private Integer visitOccurrenceId;
+    private String valueSourceValue;
     
     private Integer visitDetailId;
     
-    private String observationSourceValue;
-    
-    private Integer observationSourceConceptId;
-    
-    private String unitSourceValue;
-    
-    private String qualifierSourceValue;
-    
-    private String valueSourceValue;
-    
-    private String observationEventId;
-    
-    private Integer obsEventFieldConceptId;
+    private Integer visitOccurrenceId;
     
     private ConceptDvo observationConceptDvo;
     
@@ -191,24 +191,14 @@ public class ObservationDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // observationId
+    // obsEventFieldConceptId
     
-    public void setObservationId(Integer val) {
-        this.observationId = val;
+    public void setObsEventFieldConceptId(Integer val) {
+        this.obsEventFieldConceptId = val;
     }
     
-    public Integer getObservationId() {
-        return this.observationId;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
+    public Integer getObsEventFieldConceptId() {
+        return this.obsEventFieldConceptId;
     }
     
     // observationConceptId
@@ -241,6 +231,46 @@ public class ObservationDvo implements Dvo {
         return this.observationDatetime;
     }
     
+    // observationEventId
+    
+    public void setObservationEventId(String val) {
+        this.observationEventId = val;
+    }
+    
+    public String getObservationEventId() {
+        return this.observationEventId;
+    }
+    
+    // observationId
+    
+    public void setObservationId(Integer val) {
+        this.observationId = val;
+    }
+    
+    public Integer getObservationId() {
+        return this.observationId;
+    }
+    
+    // observationSourceConceptId
+    
+    public void setObservationSourceConceptId(Integer val) {
+        this.observationSourceConceptId = val;
+    }
+    
+    public Integer getObservationSourceConceptId() {
+        return this.observationSourceConceptId;
+    }
+    
+    // observationSourceValue
+    
+    public void setObservationSourceValue(String val) {
+        this.observationSourceValue = val;
+    }
+    
+    public String getObservationSourceValue() {
+        return this.observationSourceValue;
+    }
+    
     // observationTypeConceptId
     
     public void setObservationTypeConceptId(Integer val) {
@@ -249,6 +279,76 @@ public class ObservationDvo implements Dvo {
     
     public Integer getObservationTypeConceptId() {
         return this.observationTypeConceptId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // qualifierConceptId
+    
+    public void setQualifierConceptId(Integer val) {
+        this.qualifierConceptId = val;
+    }
+    
+    public Integer getQualifierConceptId() {
+        return this.qualifierConceptId;
+    }
+    
+    // qualifierSourceValue
+    
+    public void setQualifierSourceValue(String val) {
+        this.qualifierSourceValue = val;
+    }
+    
+    public String getQualifierSourceValue() {
+        return this.qualifierSourceValue;
+    }
+    
+    // unitConceptId
+    
+    public void setUnitConceptId(Integer val) {
+        this.unitConceptId = val;
+    }
+    
+    public Integer getUnitConceptId() {
+        return this.unitConceptId;
+    }
+    
+    // unitSourceValue
+    
+    public void setUnitSourceValue(String val) {
+        this.unitSourceValue = val;
+    }
+    
+    public String getUnitSourceValue() {
+        return this.unitSourceValue;
+    }
+    
+    // valueAsConceptId
+    
+    public void setValueAsConceptId(Integer val) {
+        this.valueAsConceptId = val;
+    }
+    
+    public Integer getValueAsConceptId() {
+        return this.valueAsConceptId;
     }
     
     // valueAsNumber
@@ -271,54 +371,14 @@ public class ObservationDvo implements Dvo {
         return this.valueAsString;
     }
     
-    // valueAsConceptId
+    // valueSourceValue
     
-    public void setValueAsConceptId(Integer val) {
-        this.valueAsConceptId = val;
+    public void setValueSourceValue(String val) {
+        this.valueSourceValue = val;
     }
     
-    public Integer getValueAsConceptId() {
-        return this.valueAsConceptId;
-    }
-    
-    // qualifierConceptId
-    
-    public void setQualifierConceptId(Integer val) {
-        this.qualifierConceptId = val;
-    }
-    
-    public Integer getQualifierConceptId() {
-        return this.qualifierConceptId;
-    }
-    
-    // unitConceptId
-    
-    public void setUnitConceptId(Integer val) {
-        this.unitConceptId = val;
-    }
-    
-    public Integer getUnitConceptId() {
-        return this.unitConceptId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // visitOccurrenceId
-    
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
-    }
-    
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
+    public String getValueSourceValue() {
+        return this.valueSourceValue;
     }
     
     // visitDetailId
@@ -331,74 +391,14 @@ public class ObservationDvo implements Dvo {
         return this.visitDetailId;
     }
     
-    // observationSourceValue
+    // visitOccurrenceId
     
-    public void setObservationSourceValue(String val) {
-        this.observationSourceValue = val;
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
     }
     
-    public String getObservationSourceValue() {
-        return this.observationSourceValue;
-    }
-    
-    // observationSourceConceptId
-    
-    public void setObservationSourceConceptId(Integer val) {
-        this.observationSourceConceptId = val;
-    }
-    
-    public Integer getObservationSourceConceptId() {
-        return this.observationSourceConceptId;
-    }
-    
-    // unitSourceValue
-    
-    public void setUnitSourceValue(String val) {
-        this.unitSourceValue = val;
-    }
-    
-    public String getUnitSourceValue() {
-        return this.unitSourceValue;
-    }
-    
-    // qualifierSourceValue
-    
-    public void setQualifierSourceValue(String val) {
-        this.qualifierSourceValue = val;
-    }
-    
-    public String getQualifierSourceValue() {
-        return this.qualifierSourceValue;
-    }
-    
-    // valueSourceValue
-    
-    public void setValueSourceValue(String val) {
-        this.valueSourceValue = val;
-    }
-    
-    public String getValueSourceValue() {
-        return this.valueSourceValue;
-    }
-    
-    // observationEventId
-    
-    public void setObservationEventId(String val) {
-        this.observationEventId = val;
-    }
-    
-    public String getObservationEventId() {
-        return this.observationEventId;
-    }
-    
-    // obsEventFieldConceptId
-    
-    public void setObsEventFieldConceptId(Integer val) {
-        this.obsEventFieldConceptId = val;
-    }
-    
-    public Integer getObsEventFieldConceptId() {
-        return this.obsEventFieldConceptId;
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
     }
     
     // observationConceptDvo

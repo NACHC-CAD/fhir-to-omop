@@ -31,9 +31,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "care_site_id",
         "care_site_name",
-        "place_of_service_concept_id",
-        "location_id",
         "care_site_source_value",
+        "location_id",
+        "place_of_service_concept_id",
         "place_of_service_source_value"
     };
     
@@ -52,9 +52,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "careSiteId",
         "careSiteName",
-        "placeOfServiceConceptId",
-        "locationId",
         "careSiteSourceValue",
+        "locationId",
+        "placeOfServiceConceptId",
         "placeOfServiceSourceValue"
     };
     
@@ -65,9 +65,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "CareSiteId",
         "CareSiteName",
-        "PlaceOfServiceConceptId",
-        "LocationId",
         "CareSiteSourceValue",
+        "LocationId",
+        "PlaceOfServiceConceptId",
         "PlaceOfServiceSourceValue"
     };
     
@@ -82,11 +82,11 @@ public class CareSiteDvo implements Dvo {
     
     private String careSiteName;
     
-    private Integer placeOfServiceConceptId;
+    private String careSiteSourceValue;
     
     private Integer locationId;
     
-    private String careSiteSourceValue;
+    private Integer placeOfServiceConceptId;
     
     private String placeOfServiceSourceValue;
     
@@ -96,11 +96,11 @@ public class CareSiteDvo implements Dvo {
     
     private ArrayList<PersonDvo> personCareSiteList = new ArrayList<PersonDvo>();
     
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceCareSiteList = new ArrayList<VisitOccurrenceDvo>();
+    private ArrayList<ProviderDvo> providerCareSiteList = new ArrayList<ProviderDvo>();
     
     private ArrayList<VisitDetailDvo> visitDetailCareSiteList = new ArrayList<VisitDetailDvo>();
     
-    private ArrayList<ProviderDvo> providerCareSiteList = new ArrayList<ProviderDvo>();
+    private ArrayList<VisitOccurrenceDvo> visitOccurrenceCareSiteList = new ArrayList<VisitOccurrenceDvo>();
     
     //
     // trivial getters and setters
@@ -126,14 +126,14 @@ public class CareSiteDvo implements Dvo {
         return this.careSiteName;
     }
     
-    // placeOfServiceConceptId
+    // careSiteSourceValue
     
-    public void setPlaceOfServiceConceptId(Integer val) {
-        this.placeOfServiceConceptId = val;
+    public void setCareSiteSourceValue(String val) {
+        this.careSiteSourceValue = val;
     }
     
-    public Integer getPlaceOfServiceConceptId() {
-        return this.placeOfServiceConceptId;
+    public String getCareSiteSourceValue() {
+        return this.careSiteSourceValue;
     }
     
     // locationId
@@ -146,14 +146,14 @@ public class CareSiteDvo implements Dvo {
         return this.locationId;
     }
     
-    // careSiteSourceValue
+    // placeOfServiceConceptId
     
-    public void setCareSiteSourceValue(String val) {
-        this.careSiteSourceValue = val;
+    public void setPlaceOfServiceConceptId(Integer val) {
+        this.placeOfServiceConceptId = val;
     }
     
-    public String getCareSiteSourceValue() {
-        return this.careSiteSourceValue;
+    public Integer getPlaceOfServiceConceptId() {
+        return this.placeOfServiceConceptId;
     }
     
     // placeOfServiceSourceValue
@@ -194,12 +194,12 @@ public class CareSiteDvo implements Dvo {
         this.personCareSiteList = list;
     }
     
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceCareSiteList() {
-        return visitOccurrenceCareSiteList;
+    public ArrayList<ProviderDvo> getProviderCareSiteList() {
+        return providerCareSiteList;
     }
     
-    public void setVisitOccurrenceCareSiteList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceCareSiteList = list;
+    public void setProviderCareSiteList(ArrayList<ProviderDvo> list) {
+        this.providerCareSiteList = list;
     }
     
     public ArrayList<VisitDetailDvo> getVisitDetailCareSiteList() {
@@ -210,12 +210,12 @@ public class CareSiteDvo implements Dvo {
         this.visitDetailCareSiteList = list;
     }
     
-    public ArrayList<ProviderDvo> getProviderCareSiteList() {
-        return providerCareSiteList;
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceCareSiteList() {
+        return visitOccurrenceCareSiteList;
     }
     
-    public void setProviderCareSiteList(ArrayList<ProviderDvo> list) {
-        this.providerCareSiteList = list;
+    public void setVisitOccurrenceCareSiteList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrenceCareSiteList = list;
     }
     
     //

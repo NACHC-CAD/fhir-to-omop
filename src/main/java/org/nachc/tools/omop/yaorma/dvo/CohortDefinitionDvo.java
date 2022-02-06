@@ -29,13 +29,13 @@ public class CohortDefinitionDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "cohort_definition_description",
         "cohort_definition_id",
         "cohort_definition_name",
-        "cohort_definition_description",
-        "definition_type_concept_id",
         "cohort_definition_syntax",
-        "subject_concept_id",
-        "cohort_initiation_date"
+        "cohort_initiation_date",
+        "definition_type_concept_id",
+        "subject_concept_id"
     };
     
     //
@@ -50,13 +50,13 @@ public class CohortDefinitionDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "cohortDefinitionDescription",
         "cohortDefinitionId",
         "cohortDefinitionName",
-        "cohortDefinitionDescription",
-        "definitionTypeConceptId",
         "cohortDefinitionSyntax",
-        "subjectConceptId",
-        "cohortInitiationDate"
+        "cohortInitiationDate",
+        "definitionTypeConceptId",
+        "subjectConceptId"
     };
     
     //
@@ -64,13 +64,13 @@ public class CohortDefinitionDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "CohortDefinitionDescription",
         "CohortDefinitionId",
         "CohortDefinitionName",
-        "CohortDefinitionDescription",
-        "DefinitionTypeConceptId",
         "CohortDefinitionSyntax",
-        "SubjectConceptId",
-        "CohortInitiationDate"
+        "CohortInitiationDate",
+        "DefinitionTypeConceptId",
+        "SubjectConceptId"
     };
     
     
@@ -80,19 +80,19 @@ public class CohortDefinitionDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String cohortDefinitionDescription;
+    
     private Integer cohortDefinitionId;
     
     private String cohortDefinitionName;
     
-    private String cohortDefinitionDescription;
+    private String cohortDefinitionSyntax;
+    
+    private Date cohortInitiationDate;
     
     private Integer definitionTypeConceptId;
     
-    private String cohortDefinitionSyntax;
-    
     private Integer subjectConceptId;
-    
-    private Date cohortInitiationDate;
     
     private CohortDvo cohortDefinitionDvo;
     
@@ -103,6 +103,16 @@ public class CohortDefinitionDvo implements Dvo {
     //
     // trivial getters and setters
     //
+    
+    // cohortDefinitionDescription
+    
+    public void setCohortDefinitionDescription(String val) {
+        this.cohortDefinitionDescription = val;
+    }
+    
+    public String getCohortDefinitionDescription() {
+        return this.cohortDefinitionDescription;
+    }
     
     // cohortDefinitionId
     
@@ -124,14 +134,24 @@ public class CohortDefinitionDvo implements Dvo {
         return this.cohortDefinitionName;
     }
     
-    // cohortDefinitionDescription
+    // cohortDefinitionSyntax
     
-    public void setCohortDefinitionDescription(String val) {
-        this.cohortDefinitionDescription = val;
+    public void setCohortDefinitionSyntax(String val) {
+        this.cohortDefinitionSyntax = val;
     }
     
-    public String getCohortDefinitionDescription() {
-        return this.cohortDefinitionDescription;
+    public String getCohortDefinitionSyntax() {
+        return this.cohortDefinitionSyntax;
+    }
+    
+    // cohortInitiationDate
+    
+    public void setCohortInitiationDate(Date val) {
+        this.cohortInitiationDate = val;
+    }
+    
+    public Date getCohortInitiationDate() {
+        return this.cohortInitiationDate;
     }
     
     // definitionTypeConceptId
@@ -144,16 +164,6 @@ public class CohortDefinitionDvo implements Dvo {
         return this.definitionTypeConceptId;
     }
     
-    // cohortDefinitionSyntax
-    
-    public void setCohortDefinitionSyntax(String val) {
-        this.cohortDefinitionSyntax = val;
-    }
-    
-    public String getCohortDefinitionSyntax() {
-        return this.cohortDefinitionSyntax;
-    }
-    
     // subjectConceptId
     
     public void setSubjectConceptId(Integer val) {
@@ -162,16 +172,6 @@ public class CohortDefinitionDvo implements Dvo {
     
     public Integer getSubjectConceptId() {
         return this.subjectConceptId;
-    }
-    
-    // cohortInitiationDate
-    
-    public void setCohortInitiationDate(Date val) {
-        this.cohortInitiationDate = val;
-    }
-    
-    public Date getCohortInitiationDate() {
-        return this.cohortInitiationDate;
     }
     
     // cohortDefinitionDvo

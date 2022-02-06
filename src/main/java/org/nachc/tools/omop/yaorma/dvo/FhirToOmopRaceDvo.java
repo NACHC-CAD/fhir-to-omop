@@ -29,15 +29,15 @@ public class FhirToOmopRaceDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "omop_code",
-        "omop_display",
-        "depth",
-        "parent_code",
-        "parent_display",
         "code",
+        "definition",
+        "depth",
         "display",
         "is_abstract",
-        "definition"
+        "omop_code",
+        "omop_display",
+        "parent_code",
+        "parent_display"
     };
     
     //
@@ -52,15 +52,15 @@ public class FhirToOmopRaceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "omopCode",
-        "omopDisplay",
-        "depth",
-        "parentCode",
-        "parentDisplay",
         "code",
+        "definition",
+        "depth",
         "display",
         "isAbstract",
-        "definition"
+        "omopCode",
+        "omopDisplay",
+        "parentCode",
+        "parentDisplay"
     };
     
     //
@@ -68,15 +68,15 @@ public class FhirToOmopRaceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "OmopCode",
-        "OmopDisplay",
-        "Depth",
-        "ParentCode",
-        "ParentDisplay",
         "Code",
+        "Definition",
+        "Depth",
         "Display",
         "IsAbstract",
-        "Definition"
+        "OmopCode",
+        "OmopDisplay",
+        "ParentCode",
+        "ParentDisplay"
     };
     
     
@@ -86,46 +86,46 @@ public class FhirToOmopRaceDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer omopCode;
+    private String code;
     
-    private String omopDisplay;
+    private String definition;
     
     private Integer depth;
-    
-    private String parentCode;
-    
-    private String parentDisplay;
-    
-    private String code;
     
     private String display;
     
     private String isAbstract;
     
-    private String definition;
+    private Integer omopCode;
+    
+    private String omopDisplay;
+    
+    private String parentCode;
+    
+    private String parentDisplay;
     
     //
     // trivial getters and setters
     //
     
-    // omopCode
+    // code
     
-    public void setOmopCode(Integer val) {
-        this.omopCode = val;
+    public void setCode(String val) {
+        this.code = val;
     }
     
-    public Integer getOmopCode() {
-        return this.omopCode;
+    public String getCode() {
+        return this.code;
     }
     
-    // omopDisplay
+    // definition
     
-    public void setOmopDisplay(String val) {
-        this.omopDisplay = val;
+    public void setDefinition(String val) {
+        this.definition = val;
     }
     
-    public String getOmopDisplay() {
-        return this.omopDisplay;
+    public String getDefinition() {
+        return this.definition;
     }
     
     // depth
@@ -136,36 +136,6 @@ public class FhirToOmopRaceDvo implements Dvo {
     
     public Integer getDepth() {
         return this.depth;
-    }
-    
-    // parentCode
-    
-    public void setParentCode(String val) {
-        this.parentCode = val;
-    }
-    
-    public String getParentCode() {
-        return this.parentCode;
-    }
-    
-    // parentDisplay
-    
-    public void setParentDisplay(String val) {
-        this.parentDisplay = val;
-    }
-    
-    public String getParentDisplay() {
-        return this.parentDisplay;
-    }
-    
-    // code
-    
-    public void setCode(String val) {
-        this.code = val;
-    }
-    
-    public String getCode() {
-        return this.code;
     }
     
     // display
@@ -188,14 +158,44 @@ public class FhirToOmopRaceDvo implements Dvo {
         return this.isAbstract;
     }
     
-    // definition
+    // omopCode
     
-    public void setDefinition(String val) {
-        this.definition = val;
+    public void setOmopCode(Integer val) {
+        this.omopCode = val;
     }
     
-    public String getDefinition() {
-        return this.definition;
+    public Integer getOmopCode() {
+        return this.omopCode;
+    }
+    
+    // omopDisplay
+    
+    public void setOmopDisplay(String val) {
+        this.omopDisplay = val;
+    }
+    
+    public String getOmopDisplay() {
+        return this.omopDisplay;
+    }
+    
+    // parentCode
+    
+    public void setParentCode(String val) {
+        this.parentCode = val;
+    }
+    
+    public String getParentCode() {
+        return this.parentCode;
+    }
+    
+    // parentDisplay
+    
+    public void setParentDisplay(String val) {
+        this.parentDisplay = val;
+    }
+    
+    public String getParentDisplay() {
+        return this.parentDisplay;
     }
     
     //

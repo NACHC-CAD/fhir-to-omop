@@ -29,9 +29,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "domain_concept_id",
         "domain_id",
-        "domain_name",
-        "domain_concept_id"
+        "domain_name"
     };
     
     //
@@ -47,9 +47,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "domainConceptId",
         "domainId",
-        "domainName",
-        "domainConceptId"
+        "domainName"
     };
     
     //
@@ -57,9 +57,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "DomainConceptId",
         "DomainId",
-        "DomainName",
-        "DomainConceptId"
+        "DomainName"
     };
     
     
@@ -69,11 +69,11 @@ public class DomainDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer domainConceptId;
+    
     private String domainId;
     
     private String domainName;
-    
-    private Integer domainConceptId;
     
     private ConceptDvo domainConceptDvo;
     
@@ -82,6 +82,16 @@ public class DomainDvo implements Dvo {
     //
     // trivial getters and setters
     //
+    
+    // domainConceptId
+    
+    public void setDomainConceptId(Integer val) {
+        this.domainConceptId = val;
+    }
+    
+    public Integer getDomainConceptId() {
+        return this.domainConceptId;
+    }
     
     // domainId
     
@@ -101,16 +111,6 @@ public class DomainDvo implements Dvo {
     
     public String getDomainName() {
         return this.domainName;
-    }
-    
-    // domainConceptId
-    
-    public void setDomainConceptId(Integer val) {
-        this.domainConceptId = val;
-    }
-    
-    public Integer getDomainConceptId() {
-        return this.domainConceptId;
     }
     
     // domainConceptDvo

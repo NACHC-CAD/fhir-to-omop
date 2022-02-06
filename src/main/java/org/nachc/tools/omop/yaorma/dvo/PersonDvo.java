@@ -29,24 +29,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "person_id",
-        "gender_concept_id",
-        "year_of_birth",
-        "month_of_birth",
-        "day_of_birth",
         "birth_datetime",
-        "race_concept_id",
-        "ethnicity_concept_id",
-        "location_id",
-        "provider_id",
         "care_site_id",
-        "person_source_value",
-        "gender_source_value",
-        "gender_source_concept_id",
-        "race_source_value",
-        "race_source_concept_id",
+        "day_of_birth",
+        "ethnicity_concept_id",
+        "ethnicity_source_concept_id",
         "ethnicity_source_value",
-        "ethnicity_source_concept_id"
+        "gender_concept_id",
+        "gender_source_concept_id",
+        "gender_source_value",
+        "location_id",
+        "month_of_birth",
+        "person_id",
+        "person_source_value",
+        "provider_id",
+        "race_concept_id",
+        "race_source_concept_id",
+        "race_source_value",
+        "year_of_birth"
     };
     
     //
@@ -62,24 +62,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "personId",
-        "genderConceptId",
-        "yearOfBirth",
-        "monthOfBirth",
-        "dayOfBirth",
         "birthDatetime",
-        "raceConceptId",
-        "ethnicityConceptId",
-        "locationId",
-        "providerId",
         "careSiteId",
-        "personSourceValue",
-        "genderSourceValue",
-        "genderSourceConceptId",
-        "raceSourceValue",
-        "raceSourceConceptId",
+        "dayOfBirth",
+        "ethnicityConceptId",
+        "ethnicitySourceConceptId",
         "ethnicitySourceValue",
-        "ethnicitySourceConceptId"
+        "genderConceptId",
+        "genderSourceConceptId",
+        "genderSourceValue",
+        "locationId",
+        "monthOfBirth",
+        "personId",
+        "personSourceValue",
+        "providerId",
+        "raceConceptId",
+        "raceSourceConceptId",
+        "raceSourceValue",
+        "yearOfBirth"
     };
     
     //
@@ -87,24 +87,24 @@ public class PersonDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "PersonId",
-        "GenderConceptId",
-        "YearOfBirth",
-        "MonthOfBirth",
-        "DayOfBirth",
         "BirthDatetime",
-        "RaceConceptId",
-        "EthnicityConceptId",
-        "LocationId",
-        "ProviderId",
         "CareSiteId",
-        "PersonSourceValue",
-        "GenderSourceValue",
-        "GenderSourceConceptId",
-        "RaceSourceValue",
-        "RaceSourceConceptId",
+        "DayOfBirth",
+        "EthnicityConceptId",
+        "EthnicitySourceConceptId",
         "EthnicitySourceValue",
-        "EthnicitySourceConceptId"
+        "GenderConceptId",
+        "GenderSourceConceptId",
+        "GenderSourceValue",
+        "LocationId",
+        "MonthOfBirth",
+        "PersonId",
+        "PersonSourceValue",
+        "ProviderId",
+        "RaceConceptId",
+        "RaceSourceConceptId",
+        "RaceSourceValue",
+        "YearOfBirth"
     };
     
     
@@ -114,41 +114,41 @@ public class PersonDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer personId;
-    
-    private Integer genderConceptId;
-    
-    private Integer yearOfBirth;
-    
-    private Integer monthOfBirth;
-    
-    private Integer dayOfBirth;
-    
     private String birthDatetime;
-    
-    private Integer raceConceptId;
-    
-    private Integer ethnicityConceptId;
-    
-    private Integer locationId;
-    
-    private Integer providerId;
     
     private Integer careSiteId;
     
-    private String personSourceValue;
+    private Integer dayOfBirth;
     
-    private String genderSourceValue;
+    private Integer ethnicityConceptId;
     
-    private Integer genderSourceConceptId;
-    
-    private String raceSourceValue;
-    
-    private Integer raceSourceConceptId;
+    private Integer ethnicitySourceConceptId;
     
     private String ethnicitySourceValue;
     
-    private Integer ethnicitySourceConceptId;
+    private Integer genderConceptId;
+    
+    private Integer genderSourceConceptId;
+    
+    private String genderSourceValue;
+    
+    private Integer locationId;
+    
+    private Integer monthOfBirth;
+    
+    private Integer personId;
+    
+    private String personSourceValue;
+    
+    private Integer providerId;
+    
+    private Integer raceConceptId;
+    
+    private Integer raceSourceConceptId;
+    
+    private String raceSourceValue;
+    
+    private Integer yearOfBirth;
     
     private CareSiteDvo careSiteDvo;
     
@@ -168,95 +168,45 @@ public class PersonDvo implements Dvo {
     
     private ConceptDvo raceSourceConceptDvo;
     
-    private ArrayList<ObservationPeriodDvo> observationPeriodPersonList = new ArrayList<ObservationPeriodDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrencePersonList = new ArrayList<VisitOccurrenceDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailPersonList = new ArrayList<VisitDetailDvo>();
+    private ArrayList<ConditionEraDvo> conditionEraPersonList = new ArrayList<ConditionEraDvo>();
     
     private ArrayList<ConditionOccurrenceDvo> conditionOccurrencePersonList = new ArrayList<ConditionOccurrenceDvo>();
     
-    private ArrayList<DrugExposureDvo> drugExposurePersonList = new ArrayList<DrugExposureDvo>();
-    
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrencePersonList = new ArrayList<ProcedureOccurrenceDvo>();
+    private ArrayList<DeathDvo> deathPersonList = new ArrayList<DeathDvo>();
     
     private ArrayList<DeviceExposureDvo> deviceExposurePersonList = new ArrayList<DeviceExposureDvo>();
     
+    private ArrayList<DoseEraDvo> doseEraPersonList = new ArrayList<DoseEraDvo>();
+    
+    private ArrayList<DrugEraDvo> drugEraPersonList = new ArrayList<DrugEraDvo>();
+    
+    private ArrayList<DrugExposureDvo> drugExposurePersonList = new ArrayList<DrugExposureDvo>();
+    
+    private ArrayList<EpisodeDvo> episodePersonList = new ArrayList<EpisodeDvo>();
+    
     private ArrayList<MeasurementDvo> measurementPersonList = new ArrayList<MeasurementDvo>();
-    
-    private ArrayList<ObservationDvo> observationPersonList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<DeathDvo> deathPersonList = new ArrayList<DeathDvo>();
     
     private ArrayList<NoteDvo> notePersonList = new ArrayList<NoteDvo>();
     
-    private ArrayList<SpecimenDvo> specimenPersonList = new ArrayList<SpecimenDvo>();
+    private ArrayList<ObservationDvo> observationPersonList = new ArrayList<ObservationDvo>();
+    
+    private ArrayList<ObservationPeriodDvo> observationPeriodPersonList = new ArrayList<ObservationPeriodDvo>();
     
     private ArrayList<PayerPlanPeriodDvo> payerPlanPeriodPayerPlanPeriodList = new ArrayList<PayerPlanPeriodDvo>();
     
     private ArrayList<PayerPlanPeriodDvo> payerPlanPeriodPersonList = new ArrayList<PayerPlanPeriodDvo>();
     
-    private ArrayList<DrugEraDvo> drugEraPersonList = new ArrayList<DrugEraDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrencePersonList = new ArrayList<ProcedureOccurrenceDvo>();
     
-    private ArrayList<DoseEraDvo> doseEraPersonList = new ArrayList<DoseEraDvo>();
+    private ArrayList<SpecimenDvo> specimenPersonList = new ArrayList<SpecimenDvo>();
     
-    private ArrayList<ConditionEraDvo> conditionEraPersonList = new ArrayList<ConditionEraDvo>();
+    private ArrayList<VisitDetailDvo> visitDetailPersonList = new ArrayList<VisitDetailDvo>();
     
-    private ArrayList<EpisodeDvo> episodePersonList = new ArrayList<EpisodeDvo>();
+    private ArrayList<VisitOccurrenceDvo> visitOccurrencePersonList = new ArrayList<VisitOccurrenceDvo>();
     
     //
     // trivial getters and setters
     //
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
-    // genderConceptId
-    
-    public void setGenderConceptId(Integer val) {
-        this.genderConceptId = val;
-    }
-    
-    public Integer getGenderConceptId() {
-        return this.genderConceptId;
-    }
-    
-    // yearOfBirth
-    
-    public void setYearOfBirth(Integer val) {
-        this.yearOfBirth = val;
-    }
-    
-    public Integer getYearOfBirth() {
-        return this.yearOfBirth;
-    }
-    
-    // monthOfBirth
-    
-    public void setMonthOfBirth(Integer val) {
-        this.monthOfBirth = val;
-    }
-    
-    public Integer getMonthOfBirth() {
-        return this.monthOfBirth;
-    }
-    
-    // dayOfBirth
-    
-    public void setDayOfBirth(Integer val) {
-        this.dayOfBirth = val;
-    }
-    
-    public Integer getDayOfBirth() {
-        return this.dayOfBirth;
-    }
     
     // birthDatetime
     
@@ -266,46 +216,6 @@ public class PersonDvo implements Dvo {
     
     public String getBirthDatetime() {
         return this.birthDatetime;
-    }
-    
-    // raceConceptId
-    
-    public void setRaceConceptId(Integer val) {
-        this.raceConceptId = val;
-    }
-    
-    public Integer getRaceConceptId() {
-        return this.raceConceptId;
-    }
-    
-    // ethnicityConceptId
-    
-    public void setEthnicityConceptId(Integer val) {
-        this.ethnicityConceptId = val;
-    }
-    
-    public Integer getEthnicityConceptId() {
-        return this.ethnicityConceptId;
-    }
-    
-    // locationId
-    
-    public void setLocationId(Integer val) {
-        this.locationId = val;
-    }
-    
-    public Integer getLocationId() {
-        return this.locationId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
     }
     
     // careSiteId
@@ -318,54 +228,34 @@ public class PersonDvo implements Dvo {
         return this.careSiteId;
     }
     
-    // personSourceValue
+    // dayOfBirth
     
-    public void setPersonSourceValue(String val) {
-        this.personSourceValue = val;
+    public void setDayOfBirth(Integer val) {
+        this.dayOfBirth = val;
     }
     
-    public String getPersonSourceValue() {
-        return this.personSourceValue;
+    public Integer getDayOfBirth() {
+        return this.dayOfBirth;
     }
     
-    // genderSourceValue
+    // ethnicityConceptId
     
-    public void setGenderSourceValue(String val) {
-        this.genderSourceValue = val;
+    public void setEthnicityConceptId(Integer val) {
+        this.ethnicityConceptId = val;
     }
     
-    public String getGenderSourceValue() {
-        return this.genderSourceValue;
+    public Integer getEthnicityConceptId() {
+        return this.ethnicityConceptId;
     }
     
-    // genderSourceConceptId
+    // ethnicitySourceConceptId
     
-    public void setGenderSourceConceptId(Integer val) {
-        this.genderSourceConceptId = val;
+    public void setEthnicitySourceConceptId(Integer val) {
+        this.ethnicitySourceConceptId = val;
     }
     
-    public Integer getGenderSourceConceptId() {
-        return this.genderSourceConceptId;
-    }
-    
-    // raceSourceValue
-    
-    public void setRaceSourceValue(String val) {
-        this.raceSourceValue = val;
-    }
-    
-    public String getRaceSourceValue() {
-        return this.raceSourceValue;
-    }
-    
-    // raceSourceConceptId
-    
-    public void setRaceSourceConceptId(Integer val) {
-        this.raceSourceConceptId = val;
-    }
-    
-    public Integer getRaceSourceConceptId() {
-        return this.raceSourceConceptId;
+    public Integer getEthnicitySourceConceptId() {
+        return this.ethnicitySourceConceptId;
     }
     
     // ethnicitySourceValue
@@ -378,14 +268,124 @@ public class PersonDvo implements Dvo {
         return this.ethnicitySourceValue;
     }
     
-    // ethnicitySourceConceptId
+    // genderConceptId
     
-    public void setEthnicitySourceConceptId(Integer val) {
-        this.ethnicitySourceConceptId = val;
+    public void setGenderConceptId(Integer val) {
+        this.genderConceptId = val;
     }
     
-    public Integer getEthnicitySourceConceptId() {
-        return this.ethnicitySourceConceptId;
+    public Integer getGenderConceptId() {
+        return this.genderConceptId;
+    }
+    
+    // genderSourceConceptId
+    
+    public void setGenderSourceConceptId(Integer val) {
+        this.genderSourceConceptId = val;
+    }
+    
+    public Integer getGenderSourceConceptId() {
+        return this.genderSourceConceptId;
+    }
+    
+    // genderSourceValue
+    
+    public void setGenderSourceValue(String val) {
+        this.genderSourceValue = val;
+    }
+    
+    public String getGenderSourceValue() {
+        return this.genderSourceValue;
+    }
+    
+    // locationId
+    
+    public void setLocationId(Integer val) {
+        this.locationId = val;
+    }
+    
+    public Integer getLocationId() {
+        return this.locationId;
+    }
+    
+    // monthOfBirth
+    
+    public void setMonthOfBirth(Integer val) {
+        this.monthOfBirth = val;
+    }
+    
+    public Integer getMonthOfBirth() {
+        return this.monthOfBirth;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // personSourceValue
+    
+    public void setPersonSourceValue(String val) {
+        this.personSourceValue = val;
+    }
+    
+    public String getPersonSourceValue() {
+        return this.personSourceValue;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // raceConceptId
+    
+    public void setRaceConceptId(Integer val) {
+        this.raceConceptId = val;
+    }
+    
+    public Integer getRaceConceptId() {
+        return this.raceConceptId;
+    }
+    
+    // raceSourceConceptId
+    
+    public void setRaceSourceConceptId(Integer val) {
+        this.raceSourceConceptId = val;
+    }
+    
+    public Integer getRaceSourceConceptId() {
+        return this.raceSourceConceptId;
+    }
+    
+    // raceSourceValue
+    
+    public void setRaceSourceValue(String val) {
+        this.raceSourceValue = val;
+    }
+    
+    public String getRaceSourceValue() {
+        return this.raceSourceValue;
+    }
+    
+    // yearOfBirth
+    
+    public void setYearOfBirth(Integer val) {
+        this.yearOfBirth = val;
+    }
+    
+    public Integer getYearOfBirth() {
+        return this.yearOfBirth;
     }
     
     // careSiteDvo
@@ -478,28 +478,12 @@ public class PersonDvo implements Dvo {
         return this.raceSourceConceptDvo;
     }
     
-    public ArrayList<ObservationPeriodDvo> getObservationPeriodPersonList() {
-        return observationPeriodPersonList;
+    public ArrayList<ConditionEraDvo> getConditionEraPersonList() {
+        return conditionEraPersonList;
     }
     
-    public void setObservationPeriodPersonList(ArrayList<ObservationPeriodDvo> list) {
-        this.observationPeriodPersonList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrencePersonList() {
-        return visitOccurrencePersonList;
-    }
-    
-    public void setVisitOccurrencePersonList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrencePersonList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailPersonList() {
-        return visitDetailPersonList;
-    }
-    
-    public void setVisitDetailPersonList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailPersonList = list;
+    public void setConditionEraPersonList(ArrayList<ConditionEraDvo> list) {
+        this.conditionEraPersonList = list;
     }
     
     public ArrayList<ConditionOccurrenceDvo> getConditionOccurrencePersonList() {
@@ -510,20 +494,12 @@ public class PersonDvo implements Dvo {
         this.conditionOccurrencePersonList = list;
     }
     
-    public ArrayList<DrugExposureDvo> getDrugExposurePersonList() {
-        return drugExposurePersonList;
+    public ArrayList<DeathDvo> getDeathPersonList() {
+        return deathPersonList;
     }
     
-    public void setDrugExposurePersonList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposurePersonList = list;
-    }
-    
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrencePersonList() {
-        return procedureOccurrencePersonList;
-    }
-    
-    public void setProcedureOccurrencePersonList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrencePersonList = list;
+    public void setDeathPersonList(ArrayList<DeathDvo> list) {
+        this.deathPersonList = list;
     }
     
     public ArrayList<DeviceExposureDvo> getDeviceExposurePersonList() {
@@ -534,28 +510,44 @@ public class PersonDvo implements Dvo {
         this.deviceExposurePersonList = list;
     }
     
+    public ArrayList<DoseEraDvo> getDoseEraPersonList() {
+        return doseEraPersonList;
+    }
+    
+    public void setDoseEraPersonList(ArrayList<DoseEraDvo> list) {
+        this.doseEraPersonList = list;
+    }
+    
+    public ArrayList<DrugEraDvo> getDrugEraPersonList() {
+        return drugEraPersonList;
+    }
+    
+    public void setDrugEraPersonList(ArrayList<DrugEraDvo> list) {
+        this.drugEraPersonList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposurePersonList() {
+        return drugExposurePersonList;
+    }
+    
+    public void setDrugExposurePersonList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposurePersonList = list;
+    }
+    
+    public ArrayList<EpisodeDvo> getEpisodePersonList() {
+        return episodePersonList;
+    }
+    
+    public void setEpisodePersonList(ArrayList<EpisodeDvo> list) {
+        this.episodePersonList = list;
+    }
+    
     public ArrayList<MeasurementDvo> getMeasurementPersonList() {
         return measurementPersonList;
     }
     
     public void setMeasurementPersonList(ArrayList<MeasurementDvo> list) {
         this.measurementPersonList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationPersonList() {
-        return observationPersonList;
-    }
-    
-    public void setObservationPersonList(ArrayList<ObservationDvo> list) {
-        this.observationPersonList = list;
-    }
-    
-    public ArrayList<DeathDvo> getDeathPersonList() {
-        return deathPersonList;
-    }
-    
-    public void setDeathPersonList(ArrayList<DeathDvo> list) {
-        this.deathPersonList = list;
     }
     
     public ArrayList<NoteDvo> getNotePersonList() {
@@ -566,12 +558,20 @@ public class PersonDvo implements Dvo {
         this.notePersonList = list;
     }
     
-    public ArrayList<SpecimenDvo> getSpecimenPersonList() {
-        return specimenPersonList;
+    public ArrayList<ObservationDvo> getObservationPersonList() {
+        return observationPersonList;
     }
     
-    public void setSpecimenPersonList(ArrayList<SpecimenDvo> list) {
-        this.specimenPersonList = list;
+    public void setObservationPersonList(ArrayList<ObservationDvo> list) {
+        this.observationPersonList = list;
+    }
+    
+    public ArrayList<ObservationPeriodDvo> getObservationPeriodPersonList() {
+        return observationPeriodPersonList;
+    }
+    
+    public void setObservationPeriodPersonList(ArrayList<ObservationPeriodDvo> list) {
+        this.observationPeriodPersonList = list;
     }
     
     public ArrayList<PayerPlanPeriodDvo> getPayerPlanPeriodPayerPlanPeriodList() {
@@ -590,36 +590,36 @@ public class PersonDvo implements Dvo {
         this.payerPlanPeriodPersonList = list;
     }
     
-    public ArrayList<DrugEraDvo> getDrugEraPersonList() {
-        return drugEraPersonList;
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrencePersonList() {
+        return procedureOccurrencePersonList;
     }
     
-    public void setDrugEraPersonList(ArrayList<DrugEraDvo> list) {
-        this.drugEraPersonList = list;
+    public void setProcedureOccurrencePersonList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrencePersonList = list;
     }
     
-    public ArrayList<DoseEraDvo> getDoseEraPersonList() {
-        return doseEraPersonList;
+    public ArrayList<SpecimenDvo> getSpecimenPersonList() {
+        return specimenPersonList;
     }
     
-    public void setDoseEraPersonList(ArrayList<DoseEraDvo> list) {
-        this.doseEraPersonList = list;
+    public void setSpecimenPersonList(ArrayList<SpecimenDvo> list) {
+        this.specimenPersonList = list;
     }
     
-    public ArrayList<ConditionEraDvo> getConditionEraPersonList() {
-        return conditionEraPersonList;
+    public ArrayList<VisitDetailDvo> getVisitDetailPersonList() {
+        return visitDetailPersonList;
     }
     
-    public void setConditionEraPersonList(ArrayList<ConditionEraDvo> list) {
-        this.conditionEraPersonList = list;
+    public void setVisitDetailPersonList(ArrayList<VisitDetailDvo> list) {
+        this.visitDetailPersonList = list;
     }
     
-    public ArrayList<EpisodeDvo> getEpisodePersonList() {
-        return episodePersonList;
+    public ArrayList<VisitOccurrenceDvo> getVisitOccurrencePersonList() {
+        return visitOccurrencePersonList;
     }
     
-    public void setEpisodePersonList(ArrayList<EpisodeDvo> list) {
-        this.episodePersonList = list;
+    public void setVisitOccurrencePersonList(ArrayList<VisitOccurrenceDvo> list) {
+        this.visitOccurrencePersonList = list;
     }
     
     //

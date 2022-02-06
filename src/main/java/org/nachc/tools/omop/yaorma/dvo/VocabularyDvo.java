@@ -29,11 +29,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "vocabulary_concept_id",
         "vocabulary_id",
         "vocabulary_name",
         "vocabulary_reference",
-        "vocabulary_version",
-        "vocabulary_concept_id"
+        "vocabulary_version"
     };
     
     //
@@ -49,11 +49,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "vocabularyConceptId",
         "vocabularyId",
         "vocabularyName",
         "vocabularyReference",
-        "vocabularyVersion",
-        "vocabularyConceptId"
+        "vocabularyVersion"
     };
     
     //
@@ -61,11 +61,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "VocabularyConceptId",
         "VocabularyId",
         "VocabularyName",
         "VocabularyReference",
-        "VocabularyVersion",
-        "VocabularyConceptId"
+        "VocabularyVersion"
     };
     
     
@@ -75,6 +75,8 @@ public class VocabularyDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer vocabularyConceptId;
+    
     private String vocabularyId;
     
     private String vocabularyName;
@@ -83,13 +85,21 @@ public class VocabularyDvo implements Dvo {
     
     private String vocabularyVersion;
     
-    private Integer vocabularyConceptId;
-    
     private ArrayList<SourceToConceptMapDvo> sourceToConceptMapTargetVocabularyList = new ArrayList<SourceToConceptMapDvo>();
     
     //
     // trivial getters and setters
     //
+    
+    // vocabularyConceptId
+    
+    public void setVocabularyConceptId(Integer val) {
+        this.vocabularyConceptId = val;
+    }
+    
+    public Integer getVocabularyConceptId() {
+        return this.vocabularyConceptId;
+    }
     
     // vocabularyId
     
@@ -129,16 +139,6 @@ public class VocabularyDvo implements Dvo {
     
     public String getVocabularyVersion() {
         return this.vocabularyVersion;
-    }
-    
-    // vocabularyConceptId
-    
-    public void setVocabularyConceptId(Integer val) {
-        this.vocabularyConceptId = val;
-    }
-    
-    public Integer getVocabularyConceptId() {
-        return this.vocabularyConceptId;
     }
     
     public ArrayList<SourceToConceptMapDvo> getSourceToConceptMapTargetVocabularyList() {

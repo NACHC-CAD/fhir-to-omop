@@ -29,24 +29,24 @@ public class VisitDetailDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "visit_detail_id",
-        "person_id",
-        "visit_detail_concept_id",
-        "visit_detail_start_date",
-        "visit_detail_start_datetime",
-        "visit_detail_end_date",
-        "visit_detail_end_datetime",
-        "visit_detail_type_concept_id",
-        "provider_id",
-        "care_site_id",
-        "visit_detail_source_value",
-        "visit_detail_source_concept_id",
         "admitted_from_concept_id",
         "admitted_from_source_value",
-        "discharged_to_source_value",
+        "care_site_id",
         "discharged_to_concept_id",
-        "preceding_visit_detail_id",
+        "discharged_to_source_value",
         "parent_visit_detail_id",
+        "person_id",
+        "preceding_visit_detail_id",
+        "provider_id",
+        "visit_detail_concept_id",
+        "visit_detail_end_date",
+        "visit_detail_end_datetime",
+        "visit_detail_id",
+        "visit_detail_source_concept_id",
+        "visit_detail_source_value",
+        "visit_detail_start_date",
+        "visit_detail_start_datetime",
+        "visit_detail_type_concept_id",
         "visit_occurrence_id"
     };
     
@@ -63,24 +63,24 @@ public class VisitDetailDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "visitDetailId",
-        "personId",
-        "visitDetailConceptId",
-        "visitDetailStartDate",
-        "visitDetailStartDatetime",
-        "visitDetailEndDate",
-        "visitDetailEndDatetime",
-        "visitDetailTypeConceptId",
-        "providerId",
-        "careSiteId",
-        "visitDetailSourceValue",
-        "visitDetailSourceConceptId",
         "admittedFromConceptId",
         "admittedFromSourceValue",
-        "dischargedToSourceValue",
+        "careSiteId",
         "dischargedToConceptId",
-        "precedingVisitDetailId",
+        "dischargedToSourceValue",
         "parentVisitDetailId",
+        "personId",
+        "precedingVisitDetailId",
+        "providerId",
+        "visitDetailConceptId",
+        "visitDetailEndDate",
+        "visitDetailEndDatetime",
+        "visitDetailId",
+        "visitDetailSourceConceptId",
+        "visitDetailSourceValue",
+        "visitDetailStartDate",
+        "visitDetailStartDatetime",
+        "visitDetailTypeConceptId",
         "visitOccurrenceId"
     };
     
@@ -89,24 +89,24 @@ public class VisitDetailDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "VisitDetailId",
-        "PersonId",
-        "VisitDetailConceptId",
-        "VisitDetailStartDate",
-        "VisitDetailStartDatetime",
-        "VisitDetailEndDate",
-        "VisitDetailEndDatetime",
-        "VisitDetailTypeConceptId",
-        "ProviderId",
-        "CareSiteId",
-        "VisitDetailSourceValue",
-        "VisitDetailSourceConceptId",
         "AdmittedFromConceptId",
         "AdmittedFromSourceValue",
-        "DischargedToSourceValue",
+        "CareSiteId",
         "DischargedToConceptId",
-        "PrecedingVisitDetailId",
+        "DischargedToSourceValue",
         "ParentVisitDetailId",
+        "PersonId",
+        "PrecedingVisitDetailId",
+        "ProviderId",
+        "VisitDetailConceptId",
+        "VisitDetailEndDate",
+        "VisitDetailEndDatetime",
+        "VisitDetailId",
+        "VisitDetailSourceConceptId",
+        "VisitDetailSourceValue",
+        "VisitDetailStartDate",
+        "VisitDetailStartDatetime",
+        "VisitDetailTypeConceptId",
         "VisitOccurrenceId"
     };
     
@@ -117,41 +117,41 @@ public class VisitDetailDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer visitDetailId;
+    private Integer admittedFromConceptId;
+    
+    private String admittedFromSourceValue;
+    
+    private Integer careSiteId;
+    
+    private Integer dischargedToConceptId;
+    
+    private String dischargedToSourceValue;
+    
+    private Integer parentVisitDetailId;
     
     private Integer personId;
     
+    private Integer precedingVisitDetailId;
+    
+    private Integer providerId;
+    
     private Integer visitDetailConceptId;
-    
-    private Date visitDetailStartDate;
-    
-    private String visitDetailStartDatetime;
     
     private Date visitDetailEndDate;
     
     private String visitDetailEndDatetime;
     
-    private Integer visitDetailTypeConceptId;
-    
-    private Integer providerId;
-    
-    private Integer careSiteId;
-    
-    private String visitDetailSourceValue;
+    private Integer visitDetailId;
     
     private Integer visitDetailSourceConceptId;
     
-    private Integer admittedFromConceptId;
+    private String visitDetailSourceValue;
     
-    private String admittedFromSourceValue;
+    private Date visitDetailStartDate;
     
-    private String dischargedToSourceValue;
+    private String visitDetailStartDatetime;
     
-    private Integer dischargedToConceptId;
-    
-    private Integer precedingVisitDetailId;
-    
-    private Integer parentVisitDetailId;
+    private Integer visitDetailTypeConceptId;
     
     private Integer visitOccurrenceId;
     
@@ -177,36 +177,86 @@ public class VisitDetailDvo implements Dvo {
     
     private VisitOccurrenceDvo visitOccurrenceDvo;
     
-    private ArrayList<VisitDetailDvo> visitDetailPrecedingVisitDetailList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailParentVisitDetailList = new ArrayList<VisitDetailDvo>();
-    
     private ArrayList<ConditionOccurrenceDvo> conditionOccurrenceVisitDetailList = new ArrayList<ConditionOccurrenceDvo>();
-    
-    private ArrayList<DrugExposureDvo> drugExposureVisitDetailList = new ArrayList<DrugExposureDvo>();
-    
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceVisitDetailList = new ArrayList<ProcedureOccurrenceDvo>();
     
     private ArrayList<DeviceExposureDvo> deviceExposureVisitDetailList = new ArrayList<DeviceExposureDvo>();
     
+    private ArrayList<DrugExposureDvo> drugExposureVisitDetailList = new ArrayList<DrugExposureDvo>();
+    
     private ArrayList<MeasurementDvo> measurementVisitDetailList = new ArrayList<MeasurementDvo>();
+    
+    private ArrayList<NoteDvo> noteVisitDetailList = new ArrayList<NoteDvo>();
     
     private ArrayList<ObservationDvo> observationVisitDetailList = new ArrayList<ObservationDvo>();
     
-    private ArrayList<NoteDvo> noteVisitDetailList = new ArrayList<NoteDvo>();
+    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceVisitDetailList = new ArrayList<ProcedureOccurrenceDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailPrecedingVisitDetailList = new ArrayList<VisitDetailDvo>();
+    
+    private ArrayList<VisitDetailDvo> visitDetailParentVisitDetailList = new ArrayList<VisitDetailDvo>();
     
     //
     // trivial getters and setters
     //
     
-    // visitDetailId
+    // admittedFromConceptId
     
-    public void setVisitDetailId(Integer val) {
-        this.visitDetailId = val;
+    public void setAdmittedFromConceptId(Integer val) {
+        this.admittedFromConceptId = val;
     }
     
-    public Integer getVisitDetailId() {
-        return this.visitDetailId;
+    public Integer getAdmittedFromConceptId() {
+        return this.admittedFromConceptId;
+    }
+    
+    // admittedFromSourceValue
+    
+    public void setAdmittedFromSourceValue(String val) {
+        this.admittedFromSourceValue = val;
+    }
+    
+    public String getAdmittedFromSourceValue() {
+        return this.admittedFromSourceValue;
+    }
+    
+    // careSiteId
+    
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
+    }
+    
+    public Integer getCareSiteId() {
+        return this.careSiteId;
+    }
+    
+    // dischargedToConceptId
+    
+    public void setDischargedToConceptId(Integer val) {
+        this.dischargedToConceptId = val;
+    }
+    
+    public Integer getDischargedToConceptId() {
+        return this.dischargedToConceptId;
+    }
+    
+    // dischargedToSourceValue
+    
+    public void setDischargedToSourceValue(String val) {
+        this.dischargedToSourceValue = val;
+    }
+    
+    public String getDischargedToSourceValue() {
+        return this.dischargedToSourceValue;
+    }
+    
+    // parentVisitDetailId
+    
+    public void setParentVisitDetailId(Integer val) {
+        this.parentVisitDetailId = val;
+    }
+    
+    public Integer getParentVisitDetailId() {
+        return this.parentVisitDetailId;
     }
     
     // personId
@@ -219,6 +269,26 @@ public class VisitDetailDvo implements Dvo {
         return this.personId;
     }
     
+    // precedingVisitDetailId
+    
+    public void setPrecedingVisitDetailId(Integer val) {
+        this.precedingVisitDetailId = val;
+    }
+    
+    public Integer getPrecedingVisitDetailId() {
+        return this.precedingVisitDetailId;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
     // visitDetailConceptId
     
     public void setVisitDetailConceptId(Integer val) {
@@ -227,26 +297,6 @@ public class VisitDetailDvo implements Dvo {
     
     public Integer getVisitDetailConceptId() {
         return this.visitDetailConceptId;
-    }
-    
-    // visitDetailStartDate
-    
-    public void setVisitDetailStartDate(Date val) {
-        this.visitDetailStartDate = val;
-    }
-    
-    public Date getVisitDetailStartDate() {
-        return this.visitDetailStartDate;
-    }
-    
-    // visitDetailStartDatetime
-    
-    public void setVisitDetailStartDatetime(String val) {
-        this.visitDetailStartDatetime = val;
-    }
-    
-    public String getVisitDetailStartDatetime() {
-        return this.visitDetailStartDatetime;
     }
     
     // visitDetailEndDate
@@ -269,44 +319,14 @@ public class VisitDetailDvo implements Dvo {
         return this.visitDetailEndDatetime;
     }
     
-    // visitDetailTypeConceptId
+    // visitDetailId
     
-    public void setVisitDetailTypeConceptId(Integer val) {
-        this.visitDetailTypeConceptId = val;
+    public void setVisitDetailId(Integer val) {
+        this.visitDetailId = val;
     }
     
-    public Integer getVisitDetailTypeConceptId() {
-        return this.visitDetailTypeConceptId;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // careSiteId
-    
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
-    }
-    
-    public Integer getCareSiteId() {
-        return this.careSiteId;
-    }
-    
-    // visitDetailSourceValue
-    
-    public void setVisitDetailSourceValue(String val) {
-        this.visitDetailSourceValue = val;
-    }
-    
-    public String getVisitDetailSourceValue() {
-        return this.visitDetailSourceValue;
+    public Integer getVisitDetailId() {
+        return this.visitDetailId;
     }
     
     // visitDetailSourceConceptId
@@ -319,64 +339,44 @@ public class VisitDetailDvo implements Dvo {
         return this.visitDetailSourceConceptId;
     }
     
-    // admittedFromConceptId
+    // visitDetailSourceValue
     
-    public void setAdmittedFromConceptId(Integer val) {
-        this.admittedFromConceptId = val;
+    public void setVisitDetailSourceValue(String val) {
+        this.visitDetailSourceValue = val;
     }
     
-    public Integer getAdmittedFromConceptId() {
-        return this.admittedFromConceptId;
+    public String getVisitDetailSourceValue() {
+        return this.visitDetailSourceValue;
     }
     
-    // admittedFromSourceValue
+    // visitDetailStartDate
     
-    public void setAdmittedFromSourceValue(String val) {
-        this.admittedFromSourceValue = val;
+    public void setVisitDetailStartDate(Date val) {
+        this.visitDetailStartDate = val;
     }
     
-    public String getAdmittedFromSourceValue() {
-        return this.admittedFromSourceValue;
+    public Date getVisitDetailStartDate() {
+        return this.visitDetailStartDate;
     }
     
-    // dischargedToSourceValue
+    // visitDetailStartDatetime
     
-    public void setDischargedToSourceValue(String val) {
-        this.dischargedToSourceValue = val;
+    public void setVisitDetailStartDatetime(String val) {
+        this.visitDetailStartDatetime = val;
     }
     
-    public String getDischargedToSourceValue() {
-        return this.dischargedToSourceValue;
+    public String getVisitDetailStartDatetime() {
+        return this.visitDetailStartDatetime;
     }
     
-    // dischargedToConceptId
+    // visitDetailTypeConceptId
     
-    public void setDischargedToConceptId(Integer val) {
-        this.dischargedToConceptId = val;
+    public void setVisitDetailTypeConceptId(Integer val) {
+        this.visitDetailTypeConceptId = val;
     }
     
-    public Integer getDischargedToConceptId() {
-        return this.dischargedToConceptId;
-    }
-    
-    // precedingVisitDetailId
-    
-    public void setPrecedingVisitDetailId(Integer val) {
-        this.precedingVisitDetailId = val;
-    }
-    
-    public Integer getPrecedingVisitDetailId() {
-        return this.precedingVisitDetailId;
-    }
-    
-    // parentVisitDetailId
-    
-    public void setParentVisitDetailId(Integer val) {
-        this.parentVisitDetailId = val;
-    }
-    
-    public Integer getParentVisitDetailId() {
-        return this.parentVisitDetailId;
+    public Integer getVisitDetailTypeConceptId() {
+        return this.visitDetailTypeConceptId;
     }
     
     // visitOccurrenceId
@@ -499,6 +499,62 @@ public class VisitDetailDvo implements Dvo {
         return this.visitOccurrenceDvo;
     }
     
+    public ArrayList<ConditionOccurrenceDvo> getConditionOccurrenceVisitDetailList() {
+        return conditionOccurrenceVisitDetailList;
+    }
+    
+    public void setConditionOccurrenceVisitDetailList(ArrayList<ConditionOccurrenceDvo> list) {
+        this.conditionOccurrenceVisitDetailList = list;
+    }
+    
+    public ArrayList<DeviceExposureDvo> getDeviceExposureVisitDetailList() {
+        return deviceExposureVisitDetailList;
+    }
+    
+    public void setDeviceExposureVisitDetailList(ArrayList<DeviceExposureDvo> list) {
+        this.deviceExposureVisitDetailList = list;
+    }
+    
+    public ArrayList<DrugExposureDvo> getDrugExposureVisitDetailList() {
+        return drugExposureVisitDetailList;
+    }
+    
+    public void setDrugExposureVisitDetailList(ArrayList<DrugExposureDvo> list) {
+        this.drugExposureVisitDetailList = list;
+    }
+    
+    public ArrayList<MeasurementDvo> getMeasurementVisitDetailList() {
+        return measurementVisitDetailList;
+    }
+    
+    public void setMeasurementVisitDetailList(ArrayList<MeasurementDvo> list) {
+        this.measurementVisitDetailList = list;
+    }
+    
+    public ArrayList<NoteDvo> getNoteVisitDetailList() {
+        return noteVisitDetailList;
+    }
+    
+    public void setNoteVisitDetailList(ArrayList<NoteDvo> list) {
+        this.noteVisitDetailList = list;
+    }
+    
+    public ArrayList<ObservationDvo> getObservationVisitDetailList() {
+        return observationVisitDetailList;
+    }
+    
+    public void setObservationVisitDetailList(ArrayList<ObservationDvo> list) {
+        this.observationVisitDetailList = list;
+    }
+    
+    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceVisitDetailList() {
+        return procedureOccurrenceVisitDetailList;
+    }
+    
+    public void setProcedureOccurrenceVisitDetailList(ArrayList<ProcedureOccurrenceDvo> list) {
+        this.procedureOccurrenceVisitDetailList = list;
+    }
+    
     public ArrayList<VisitDetailDvo> getVisitDetailPrecedingVisitDetailList() {
         return visitDetailPrecedingVisitDetailList;
     }
@@ -513,62 +569,6 @@ public class VisitDetailDvo implements Dvo {
     
     public void setVisitDetailParentVisitDetailList(ArrayList<VisitDetailDvo> list) {
         this.visitDetailParentVisitDetailList = list;
-    }
-    
-    public ArrayList<ConditionOccurrenceDvo> getConditionOccurrenceVisitDetailList() {
-        return conditionOccurrenceVisitDetailList;
-    }
-    
-    public void setConditionOccurrenceVisitDetailList(ArrayList<ConditionOccurrenceDvo> list) {
-        this.conditionOccurrenceVisitDetailList = list;
-    }
-    
-    public ArrayList<DrugExposureDvo> getDrugExposureVisitDetailList() {
-        return drugExposureVisitDetailList;
-    }
-    
-    public void setDrugExposureVisitDetailList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureVisitDetailList = list;
-    }
-    
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceVisitDetailList() {
-        return procedureOccurrenceVisitDetailList;
-    }
-    
-    public void setProcedureOccurrenceVisitDetailList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceVisitDetailList = list;
-    }
-    
-    public ArrayList<DeviceExposureDvo> getDeviceExposureVisitDetailList() {
-        return deviceExposureVisitDetailList;
-    }
-    
-    public void setDeviceExposureVisitDetailList(ArrayList<DeviceExposureDvo> list) {
-        this.deviceExposureVisitDetailList = list;
-    }
-    
-    public ArrayList<MeasurementDvo> getMeasurementVisitDetailList() {
-        return measurementVisitDetailList;
-    }
-    
-    public void setMeasurementVisitDetailList(ArrayList<MeasurementDvo> list) {
-        this.measurementVisitDetailList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationVisitDetailList() {
-        return observationVisitDetailList;
-    }
-    
-    public void setObservationVisitDetailList(ArrayList<ObservationDvo> list) {
-        this.observationVisitDetailList = list;
-    }
-    
-    public ArrayList<NoteDvo> getNoteVisitDetailList() {
-        return noteVisitDetailList;
-    }
-    
-    public void setNoteVisitDetailList(ArrayList<NoteDvo> list) {
-        this.noteVisitDetailList = list;
     }
     
     //

@@ -29,21 +29,21 @@ public class SpecimenDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "specimen_id",
+        "anatomic_site_concept_id",
+        "anatomic_site_source_value",
+        "disease_status_concept_id",
+        "disease_status_source_value",
         "person_id",
+        "quantity",
         "specimen_concept_id",
-        "specimen_type_concept_id",
         "specimen_date",
         "specimen_datetime",
-        "quantity",
-        "unit_concept_id",
-        "anatomic_site_concept_id",
-        "disease_status_concept_id",
+        "specimen_id",
         "specimen_source_id",
         "specimen_source_value",
-        "unit_source_value",
-        "anatomic_site_source_value",
-        "disease_status_source_value"
+        "specimen_type_concept_id",
+        "unit_concept_id",
+        "unit_source_value"
     };
     
     //
@@ -59,21 +59,21 @@ public class SpecimenDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "specimenId",
+        "anatomicSiteConceptId",
+        "anatomicSiteSourceValue",
+        "diseaseStatusConceptId",
+        "diseaseStatusSourceValue",
         "personId",
+        "quantity",
         "specimenConceptId",
-        "specimenTypeConceptId",
         "specimenDate",
         "specimenDatetime",
-        "quantity",
-        "unitConceptId",
-        "anatomicSiteConceptId",
-        "diseaseStatusConceptId",
+        "specimenId",
         "specimenSourceId",
         "specimenSourceValue",
-        "unitSourceValue",
-        "anatomicSiteSourceValue",
-        "diseaseStatusSourceValue"
+        "specimenTypeConceptId",
+        "unitConceptId",
+        "unitSourceValue"
     };
     
     //
@@ -81,21 +81,21 @@ public class SpecimenDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "SpecimenId",
+        "AnatomicSiteConceptId",
+        "AnatomicSiteSourceValue",
+        "DiseaseStatusConceptId",
+        "DiseaseStatusSourceValue",
         "PersonId",
+        "Quantity",
         "SpecimenConceptId",
-        "SpecimenTypeConceptId",
         "SpecimenDate",
         "SpecimenDatetime",
-        "Quantity",
-        "UnitConceptId",
-        "AnatomicSiteConceptId",
-        "DiseaseStatusConceptId",
+        "SpecimenId",
         "SpecimenSourceId",
         "SpecimenSourceValue",
-        "UnitSourceValue",
-        "AnatomicSiteSourceValue",
-        "DiseaseStatusSourceValue"
+        "SpecimenTypeConceptId",
+        "UnitConceptId",
+        "UnitSourceValue"
     };
     
     
@@ -105,35 +105,35 @@ public class SpecimenDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer specimenId;
+    private Integer anatomicSiteConceptId;
+    
+    private String anatomicSiteSourceValue;
+    
+    private Integer diseaseStatusConceptId;
+    
+    private String diseaseStatusSourceValue;
     
     private Integer personId;
     
-    private Integer specimenConceptId;
+    private String quantity;
     
-    private Integer specimenTypeConceptId;
+    private Integer specimenConceptId;
     
     private Date specimenDate;
     
     private String specimenDatetime;
     
-    private String quantity;
-    
-    private Integer unitConceptId;
-    
-    private Integer anatomicSiteConceptId;
-    
-    private Integer diseaseStatusConceptId;
+    private Integer specimenId;
     
     private String specimenSourceId;
     
     private String specimenSourceValue;
     
+    private Integer specimenTypeConceptId;
+    
+    private Integer unitConceptId;
+    
     private String unitSourceValue;
-    
-    private String anatomicSiteSourceValue;
-    
-    private String diseaseStatusSourceValue;
     
     private ConceptDvo anatomicSiteConceptDvo;
     
@@ -151,14 +151,44 @@ public class SpecimenDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // specimenId
+    // anatomicSiteConceptId
     
-    public void setSpecimenId(Integer val) {
-        this.specimenId = val;
+    public void setAnatomicSiteConceptId(Integer val) {
+        this.anatomicSiteConceptId = val;
     }
     
-    public Integer getSpecimenId() {
-        return this.specimenId;
+    public Integer getAnatomicSiteConceptId() {
+        return this.anatomicSiteConceptId;
+    }
+    
+    // anatomicSiteSourceValue
+    
+    public void setAnatomicSiteSourceValue(String val) {
+        this.anatomicSiteSourceValue = val;
+    }
+    
+    public String getAnatomicSiteSourceValue() {
+        return this.anatomicSiteSourceValue;
+    }
+    
+    // diseaseStatusConceptId
+    
+    public void setDiseaseStatusConceptId(Integer val) {
+        this.diseaseStatusConceptId = val;
+    }
+    
+    public Integer getDiseaseStatusConceptId() {
+        return this.diseaseStatusConceptId;
+    }
+    
+    // diseaseStatusSourceValue
+    
+    public void setDiseaseStatusSourceValue(String val) {
+        this.diseaseStatusSourceValue = val;
+    }
+    
+    public String getDiseaseStatusSourceValue() {
+        return this.diseaseStatusSourceValue;
     }
     
     // personId
@@ -171,6 +201,16 @@ public class SpecimenDvo implements Dvo {
         return this.personId;
     }
     
+    // quantity
+    
+    public void setQuantity(String val) {
+        this.quantity = val;
+    }
+    
+    public String getQuantity() {
+        return this.quantity;
+    }
+    
     // specimenConceptId
     
     public void setSpecimenConceptId(Integer val) {
@@ -179,16 +219,6 @@ public class SpecimenDvo implements Dvo {
     
     public Integer getSpecimenConceptId() {
         return this.specimenConceptId;
-    }
-    
-    // specimenTypeConceptId
-    
-    public void setSpecimenTypeConceptId(Integer val) {
-        this.specimenTypeConceptId = val;
-    }
-    
-    public Integer getSpecimenTypeConceptId() {
-        return this.specimenTypeConceptId;
     }
     
     // specimenDate
@@ -211,44 +241,14 @@ public class SpecimenDvo implements Dvo {
         return this.specimenDatetime;
     }
     
-    // quantity
+    // specimenId
     
-    public void setQuantity(String val) {
-        this.quantity = val;
+    public void setSpecimenId(Integer val) {
+        this.specimenId = val;
     }
     
-    public String getQuantity() {
-        return this.quantity;
-    }
-    
-    // unitConceptId
-    
-    public void setUnitConceptId(Integer val) {
-        this.unitConceptId = val;
-    }
-    
-    public Integer getUnitConceptId() {
-        return this.unitConceptId;
-    }
-    
-    // anatomicSiteConceptId
-    
-    public void setAnatomicSiteConceptId(Integer val) {
-        this.anatomicSiteConceptId = val;
-    }
-    
-    public Integer getAnatomicSiteConceptId() {
-        return this.anatomicSiteConceptId;
-    }
-    
-    // diseaseStatusConceptId
-    
-    public void setDiseaseStatusConceptId(Integer val) {
-        this.diseaseStatusConceptId = val;
-    }
-    
-    public Integer getDiseaseStatusConceptId() {
-        return this.diseaseStatusConceptId;
+    public Integer getSpecimenId() {
+        return this.specimenId;
     }
     
     // specimenSourceId
@@ -271,6 +271,26 @@ public class SpecimenDvo implements Dvo {
         return this.specimenSourceValue;
     }
     
+    // specimenTypeConceptId
+    
+    public void setSpecimenTypeConceptId(Integer val) {
+        this.specimenTypeConceptId = val;
+    }
+    
+    public Integer getSpecimenTypeConceptId() {
+        return this.specimenTypeConceptId;
+    }
+    
+    // unitConceptId
+    
+    public void setUnitConceptId(Integer val) {
+        this.unitConceptId = val;
+    }
+    
+    public Integer getUnitConceptId() {
+        return this.unitConceptId;
+    }
+    
     // unitSourceValue
     
     public void setUnitSourceValue(String val) {
@@ -279,26 +299,6 @@ public class SpecimenDvo implements Dvo {
     
     public String getUnitSourceValue() {
         return this.unitSourceValue;
-    }
-    
-    // anatomicSiteSourceValue
-    
-    public void setAnatomicSiteSourceValue(String val) {
-        this.anatomicSiteSourceValue = val;
-    }
-    
-    public String getAnatomicSiteSourceValue() {
-        return this.anatomicSiteSourceValue;
-    }
-    
-    // diseaseStatusSourceValue
-    
-    public void setDiseaseStatusSourceValue(String val) {
-        this.diseaseStatusSourceValue = val;
-    }
-    
-    public String getDiseaseStatusSourceValue() {
-        return this.diseaseStatusSourceValue;
     }
     
     // anatomicSiteConceptDvo

@@ -29,22 +29,22 @@ public class ConditionOccurrenceDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "condition_occurrence_id",
-        "person_id",
         "condition_concept_id",
-        "condition_start_date",
-        "condition_start_datetime",
         "condition_end_date",
         "condition_end_datetime",
-        "condition_type_concept_id",
-        "condition_status_concept_id",
-        "stop_reason",
-        "provider_id",
-        "visit_occurrence_id",
-        "visit_detail_id",
-        "condition_source_value",
+        "condition_occurrence_id",
         "condition_source_concept_id",
-        "condition_status_source_value"
+        "condition_source_value",
+        "condition_start_date",
+        "condition_start_datetime",
+        "condition_status_concept_id",
+        "condition_status_source_value",
+        "condition_type_concept_id",
+        "person_id",
+        "provider_id",
+        "stop_reason",
+        "visit_detail_id",
+        "visit_occurrence_id"
     };
     
     //
@@ -60,22 +60,22 @@ public class ConditionOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conditionOccurrenceId",
-        "personId",
         "conditionConceptId",
-        "conditionStartDate",
-        "conditionStartDatetime",
         "conditionEndDate",
         "conditionEndDatetime",
-        "conditionTypeConceptId",
-        "conditionStatusConceptId",
-        "stopReason",
-        "providerId",
-        "visitOccurrenceId",
-        "visitDetailId",
-        "conditionSourceValue",
+        "conditionOccurrenceId",
         "conditionSourceConceptId",
-        "conditionStatusSourceValue"
+        "conditionSourceValue",
+        "conditionStartDate",
+        "conditionStartDatetime",
+        "conditionStatusConceptId",
+        "conditionStatusSourceValue",
+        "conditionTypeConceptId",
+        "personId",
+        "providerId",
+        "stopReason",
+        "visitDetailId",
+        "visitOccurrenceId"
     };
     
     //
@@ -83,22 +83,22 @@ public class ConditionOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConditionOccurrenceId",
-        "PersonId",
         "ConditionConceptId",
-        "ConditionStartDate",
-        "ConditionStartDatetime",
         "ConditionEndDate",
         "ConditionEndDatetime",
-        "ConditionTypeConceptId",
-        "ConditionStatusConceptId",
-        "StopReason",
-        "ProviderId",
-        "VisitOccurrenceId",
-        "VisitDetailId",
-        "ConditionSourceValue",
+        "ConditionOccurrenceId",
         "ConditionSourceConceptId",
-        "ConditionStatusSourceValue"
+        "ConditionSourceValue",
+        "ConditionStartDate",
+        "ConditionStartDatetime",
+        "ConditionStatusConceptId",
+        "ConditionStatusSourceValue",
+        "ConditionTypeConceptId",
+        "PersonId",
+        "ProviderId",
+        "StopReason",
+        "VisitDetailId",
+        "VisitOccurrenceId"
     };
     
     
@@ -108,37 +108,37 @@ public class ConditionOccurrenceDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conditionOccurrenceId;
-    
-    private Integer personId;
-    
     private Integer conditionConceptId;
-    
-    private Date conditionStartDate;
-    
-    private String conditionStartDatetime;
     
     private Date conditionEndDate;
     
     private String conditionEndDatetime;
     
-    private Integer conditionTypeConceptId;
-    
-    private Integer conditionStatusConceptId;
-    
-    private String stopReason;
-    
-    private Integer providerId;
-    
-    private Integer visitOccurrenceId;
-    
-    private Integer visitDetailId;
-    
-    private String conditionSourceValue;
+    private Integer conditionOccurrenceId;
     
     private Integer conditionSourceConceptId;
     
+    private String conditionSourceValue;
+    
+    private Date conditionStartDate;
+    
+    private String conditionStartDatetime;
+    
+    private Integer conditionStatusConceptId;
+    
     private String conditionStatusSourceValue;
+    
+    private Integer conditionTypeConceptId;
+    
+    private Integer personId;
+    
+    private Integer providerId;
+    
+    private String stopReason;
+    
+    private Integer visitDetailId;
+    
+    private Integer visitOccurrenceId;
     
     private ConceptDvo conditionConceptDvo;
     
@@ -160,26 +160,6 @@ public class ConditionOccurrenceDvo implements Dvo {
     // trivial getters and setters
     //
     
-    // conditionOccurrenceId
-    
-    public void setConditionOccurrenceId(Integer val) {
-        this.conditionOccurrenceId = val;
-    }
-    
-    public Integer getConditionOccurrenceId() {
-        return this.conditionOccurrenceId;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
     // conditionConceptId
     
     public void setConditionConceptId(Integer val) {
@@ -188,26 +168,6 @@ public class ConditionOccurrenceDvo implements Dvo {
     
     public Integer getConditionConceptId() {
         return this.conditionConceptId;
-    }
-    
-    // conditionStartDate
-    
-    public void setConditionStartDate(Date val) {
-        this.conditionStartDate = val;
-    }
-    
-    public Date getConditionStartDate() {
-        return this.conditionStartDate;
-    }
-    
-    // conditionStartDatetime
-    
-    public void setConditionStartDatetime(String val) {
-        this.conditionStartDatetime = val;
-    }
-    
-    public String getConditionStartDatetime() {
-        return this.conditionStartDatetime;
     }
     
     // conditionEndDate
@@ -230,74 +190,14 @@ public class ConditionOccurrenceDvo implements Dvo {
         return this.conditionEndDatetime;
     }
     
-    // conditionTypeConceptId
+    // conditionOccurrenceId
     
-    public void setConditionTypeConceptId(Integer val) {
-        this.conditionTypeConceptId = val;
+    public void setConditionOccurrenceId(Integer val) {
+        this.conditionOccurrenceId = val;
     }
     
-    public Integer getConditionTypeConceptId() {
-        return this.conditionTypeConceptId;
-    }
-    
-    // conditionStatusConceptId
-    
-    public void setConditionStatusConceptId(Integer val) {
-        this.conditionStatusConceptId = val;
-    }
-    
-    public Integer getConditionStatusConceptId() {
-        return this.conditionStatusConceptId;
-    }
-    
-    // stopReason
-    
-    public void setStopReason(String val) {
-        this.stopReason = val;
-    }
-    
-    public String getStopReason() {
-        return this.stopReason;
-    }
-    
-    // providerId
-    
-    public void setProviderId(Integer val) {
-        this.providerId = val;
-    }
-    
-    public Integer getProviderId() {
-        return this.providerId;
-    }
-    
-    // visitOccurrenceId
-    
-    public void setVisitOccurrenceId(Integer val) {
-        this.visitOccurrenceId = val;
-    }
-    
-    public Integer getVisitOccurrenceId() {
-        return this.visitOccurrenceId;
-    }
-    
-    // visitDetailId
-    
-    public void setVisitDetailId(Integer val) {
-        this.visitDetailId = val;
-    }
-    
-    public Integer getVisitDetailId() {
-        return this.visitDetailId;
-    }
-    
-    // conditionSourceValue
-    
-    public void setConditionSourceValue(String val) {
-        this.conditionSourceValue = val;
-    }
-    
-    public String getConditionSourceValue() {
-        return this.conditionSourceValue;
+    public Integer getConditionOccurrenceId() {
+        return this.conditionOccurrenceId;
     }
     
     // conditionSourceConceptId
@@ -310,6 +210,46 @@ public class ConditionOccurrenceDvo implements Dvo {
         return this.conditionSourceConceptId;
     }
     
+    // conditionSourceValue
+    
+    public void setConditionSourceValue(String val) {
+        this.conditionSourceValue = val;
+    }
+    
+    public String getConditionSourceValue() {
+        return this.conditionSourceValue;
+    }
+    
+    // conditionStartDate
+    
+    public void setConditionStartDate(Date val) {
+        this.conditionStartDate = val;
+    }
+    
+    public Date getConditionStartDate() {
+        return this.conditionStartDate;
+    }
+    
+    // conditionStartDatetime
+    
+    public void setConditionStartDatetime(String val) {
+        this.conditionStartDatetime = val;
+    }
+    
+    public String getConditionStartDatetime() {
+        return this.conditionStartDatetime;
+    }
+    
+    // conditionStatusConceptId
+    
+    public void setConditionStatusConceptId(Integer val) {
+        this.conditionStatusConceptId = val;
+    }
+    
+    public Integer getConditionStatusConceptId() {
+        return this.conditionStatusConceptId;
+    }
+    
     // conditionStatusSourceValue
     
     public void setConditionStatusSourceValue(String val) {
@@ -318,6 +258,66 @@ public class ConditionOccurrenceDvo implements Dvo {
     
     public String getConditionStatusSourceValue() {
         return this.conditionStatusSourceValue;
+    }
+    
+    // conditionTypeConceptId
+    
+    public void setConditionTypeConceptId(Integer val) {
+        this.conditionTypeConceptId = val;
+    }
+    
+    public Integer getConditionTypeConceptId() {
+        return this.conditionTypeConceptId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // providerId
+    
+    public void setProviderId(Integer val) {
+        this.providerId = val;
+    }
+    
+    public Integer getProviderId() {
+        return this.providerId;
+    }
+    
+    // stopReason
+    
+    public void setStopReason(String val) {
+        this.stopReason = val;
+    }
+    
+    public String getStopReason() {
+        return this.stopReason;
+    }
+    
+    // visitDetailId
+    
+    public void setVisitDetailId(Integer val) {
+        this.visitDetailId = val;
+    }
+    
+    public Integer getVisitDetailId() {
+        return this.visitDetailId;
+    }
+    
+    // visitOccurrenceId
+    
+    public void setVisitOccurrenceId(Integer val) {
+        this.visitOccurrenceId = val;
+    }
+    
+    public Integer getVisitOccurrenceId() {
+        return this.visitOccurrenceId;
     }
     
     // conditionConceptDvo

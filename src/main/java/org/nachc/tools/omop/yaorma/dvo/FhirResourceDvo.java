@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for concept_class
+// Data Value Object (DVO) for fhir_resource
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -10,13 +10,13 @@ import java.util.Date;
 
 import org.yaorma.dvo.Dvo;
 
-public class ConceptClassDvo implements Dvo {
+public class FhirResourceDvo implements Dvo {
 
     //
     // tableName
     //
     
-    public static final String TABLE_NAME = "concept_class";
+    public static final String TABLE_NAME = "fhir_resource";
     
     //
     // schemaName
@@ -29,9 +29,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "concept_class_concept_id",
-        "concept_class_id",
-        "concept_class_name"
+        "patient_id",
+        "resource_name",
+        "resource_type"
     };
     
     //
@@ -39,7 +39,6 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "concept_class_id"
     };
     
     //
@@ -47,9 +46,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conceptClassConceptId",
-        "conceptClassId",
-        "conceptClassName"
+        "patientId",
+        "resourceName",
+        "resourceType"
     };
     
     //
@@ -57,9 +56,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConceptClassConceptId",
-        "ConceptClassId",
-        "ConceptClassName"
+        "PatientId",
+        "ResourceName",
+        "ResourceType"
     };
     
     
@@ -69,56 +68,44 @@ public class ConceptClassDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conceptClassConceptId;
+    private String patientId;
     
-    private String conceptClassId;
+    private String resourceName;
     
-    private String conceptClassName;
-    
-    private ConceptDvo conceptClassConceptDvo;
+    private String resourceType;
     
     //
     // trivial getters and setters
     //
     
-    // conceptClassConceptId
+    // patientId
     
-    public void setConceptClassConceptId(Integer val) {
-        this.conceptClassConceptId = val;
+    public void setPatientId(String val) {
+        this.patientId = val;
     }
     
-    public Integer getConceptClassConceptId() {
-        return this.conceptClassConceptId;
+    public String getPatientId() {
+        return this.patientId;
     }
     
-    // conceptClassId
+    // resourceName
     
-    public void setConceptClassId(String val) {
-        this.conceptClassId = val;
+    public void setResourceName(String val) {
+        this.resourceName = val;
     }
     
-    public String getConceptClassId() {
-        return this.conceptClassId;
+    public String getResourceName() {
+        return this.resourceName;
     }
     
-    // conceptClassName
+    // resourceType
     
-    public void setConceptClassName(String val) {
-        this.conceptClassName = val;
+    public void setResourceType(String val) {
+        this.resourceType = val;
     }
     
-    public String getConceptClassName() {
-        return this.conceptClassName;
-    }
-    
-    // conceptClassConceptDvo
-    
-    public void setConceptClassConceptDvo(ConceptDvo dvo) {
-        this.conceptClassConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getConceptClassConceptDvo() {
-        return this.conceptClassConceptDvo;
+    public String getResourceType() {
+        return this.resourceType;
     }
     
     //
@@ -167,7 +154,6 @@ public class ConceptClassDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getConceptClassId()  == null ? null: getConceptClassId() + ""
         };
         return rtn;
     }

@@ -29,9 +29,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "episode_event_field_concept_id",
         "episode_id",
-        "event_id",
-        "episode_event_field_concept_id"
+        "event_id"
     };
     
     //
@@ -46,9 +46,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "episodeEventFieldConceptId",
         "episodeId",
-        "eventId",
-        "episodeEventFieldConceptId"
+        "eventId"
     };
     
     //
@@ -56,9 +56,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "EpisodeEventFieldConceptId",
         "EpisodeId",
-        "EventId",
-        "EpisodeEventFieldConceptId"
+        "EventId"
     };
     
     
@@ -68,11 +68,11 @@ public class EpisodeEventDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer episodeEventFieldConceptId;
+    
     private String episodeId;
     
     private String eventId;
-    
-    private Integer episodeEventFieldConceptId;
     
     private ConceptDvo episodeEventFieldConceptDvo;
     
@@ -81,6 +81,16 @@ public class EpisodeEventDvo implements Dvo {
     //
     // trivial getters and setters
     //
+    
+    // episodeEventFieldConceptId
+    
+    public void setEpisodeEventFieldConceptId(Integer val) {
+        this.episodeEventFieldConceptId = val;
+    }
+    
+    public Integer getEpisodeEventFieldConceptId() {
+        return this.episodeEventFieldConceptId;
+    }
     
     // episodeId
     
@@ -100,16 +110,6 @@ public class EpisodeEventDvo implements Dvo {
     
     public String getEventId() {
         return this.eventId;
-    }
-    
-    // episodeEventFieldConceptId
-    
-    public void setEpisodeEventFieldConceptId(Integer val) {
-        this.episodeEventFieldConceptId = val;
-    }
-    
-    public Integer getEpisodeEventFieldConceptId() {
-        return this.episodeEventFieldConceptId;
     }
     
     // episodeEventFieldConceptDvo
