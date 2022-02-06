@@ -46,6 +46,7 @@ public class PopulateFromFiles {
 				WriteAllFilesToOmop.exec(filesToWrite, conn);
 				cnt++;
 				filesToWrite = new ArrayList<File>();
+				logMsg(i, cnt);
 			}
 		}
 		if(filesToWrite.size() > 0) {
