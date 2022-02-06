@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.Observa
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationOrMeasurement;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationValueType;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -74,7 +75,7 @@ public class OmopObservationFactory {
 	// called by both get single and get multiple to get the values common to both
 	//
 	// ---------------------------------
-	
+
 	private ObservationDvo getSingleObservation(ObservationParser parser, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
@@ -104,7 +105,7 @@ public class OmopObservationFactory {
 	private ObservationDvoProxy getSingleObservation(ObservationParser parser) {
 		ObservationDvo dvo = getSingleObservation(parser, true);
 		// log a warning if we couldn't get what kind of observation this is
-		if(dvo.getObservationConceptId() == 0) {
+		if (dvo.getObservationConceptId() == 0) {
 			String display = parser.getObservationCodeDisplay();
 			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
 		}
@@ -118,17 +119,17 @@ public class OmopObservationFactory {
 		// units
 		String unitsSystem = parser.getUnitsCodingSystem();
 		String unitsCode = parser.getUnitsCodingCode();
-		if(unitsSystem != null && unitsCode != null) {
+		if (unitsSystem != null && unitsCode != null) {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 			// for some reason synthea uses curly brackets instead of brackets
-			if(unitsConceptDvo == null) {
+			if (unitsConceptDvo == null) {
 				String mod = unitsCode;
 				mod = mod.replace("{", "[");
 				mod = mod.replace("}", "]");
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 			}
 			// this is for concept_id 9117
-			if(unitsConceptDvo == null) {
+			if (unitsConceptDvo == null) {
 				String mod = unitsCode;
 				mod = mod.replace("{", "");
 				mod = mod.replace("}", "");
@@ -136,11 +137,11 @@ public class OmopObservationFactory {
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 			}
 			// this is for mmHg
-			if(unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
+			if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
 				String mod = "mm[Hg]";
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-			}			
-			if(unitsConceptDvo != null) {
+			}
+			if (unitsConceptDvo != null) {
 				dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 			}
 		}
@@ -148,10 +149,22 @@ public class OmopObservationFactory {
 		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
 		// set the observation type
 		proxy.setObservationType(parser.getObservationType());
+		// set obs or meas
+		switch (proxy.getObservationType()) {
+		case LABORATORY:
+			proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
+			break;
+		case VITAL_SIGNS:
+			proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
+			break;
+		default:
+			proxy.setObservationOrMeasurement(ObservationOrMeasurement.OBSERVATION);
+			break;
+		}
 		// set the value type
-		if(parser.getValueCoding() != null) {
+		if (parser.getValueCoding() != null) {
 			proxy.setObservationValueType(ObservationValueType.CODED);
-		} else if(parser.getValueAsNumber() != null) {
+		} else if (parser.getValueAsNumber() != null) {
 			proxy.setObservationValueType(ObservationValueType.QUANTITY);
 		} else {
 			proxy.setObservationValueType(ObservationValueType.STRING);
@@ -198,16 +211,16 @@ public class OmopObservationFactory {
 			// units
 			String unitsSystem = comp.getUnitsCodingSystem();
 			String unitsCode = comp.getUnitsCodingCode();
-			if(unitsSystem != null && unitsCode != null) {
+			if (unitsSystem != null && unitsCode != null) {
 				ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 				// for some reason synthea uses curly brackets instead of brackets
-				if(unitsConceptDvo == null) {
+				if (unitsConceptDvo == null) {
 					unitsCode = unitsCode.replace('{', '[');
 					unitsCode = unitsCode.replace('}', ']');
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 				}
 				// this is for concept_id 9117
-				if(unitsConceptDvo == null) {
+				if (unitsConceptDvo == null) {
 					String mod = unitsCode;
 					mod = mod.replace("{", "");
 					mod = mod.replace("}", "");
@@ -215,11 +228,11 @@ public class OmopObservationFactory {
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 				}
 				// this is for mmHg
-				if(unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
+				if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
 					String mod = "mm[Hg]";
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-				}			
-				if(unitsConceptDvo != null) {
+				}
+				if (unitsConceptDvo != null) {
 					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 				}
 			}
@@ -227,10 +240,22 @@ public class OmopObservationFactory {
 			ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
 			// set the observation type
 			proxy.setObservationType(obs.getObservationType());
+			// set obs or meas
+			switch (proxy.getObservationType()) {
+			case LABORATORY:
+				proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
+				break;
+			case VITAL_SIGNS:
+				proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
+				break;
+			default:
+				proxy.setObservationOrMeasurement(ObservationOrMeasurement.OBSERVATION);
+				break;
+			}
 			// set the value type
-			if(comp.getValueCoding() != null) {
+			if (comp.getValueCoding() != null) {
 				proxy.setObservationValueType(ObservationValueType.CODED);
-			} else if(comp.getValueAsNumber() != null) {
+			} else if (comp.getValueAsNumber() != null) {
 				proxy.setObservationValueType(ObservationValueType.QUANTITY);
 			} else {
 				proxy.setObservationValueType(ObservationValueType.STRING);

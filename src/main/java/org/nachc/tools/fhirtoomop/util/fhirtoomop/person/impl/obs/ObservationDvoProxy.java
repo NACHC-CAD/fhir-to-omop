@@ -26,6 +26,8 @@ public class ObservationDvoProxy {
 
 	private ObservationValueType valueType;
 
+	private ObservationOrMeasurement observationOrMeasurement;
+	
 	//
 	// constructor
 	//
@@ -69,6 +71,10 @@ public class ObservationDvoProxy {
 		return valueUnitsConceptDvo;
 	}
 
+	public ObservationOrMeasurement getObservationOrMeasurement() {
+		return observationOrMeasurement;
+	}
+
 	//
 	// trivial setters
 	//
@@ -79,6 +85,10 @@ public class ObservationDvoProxy {
 
 	public void setObservationValueType(ObservationValueType valueType) {
 		this.valueType = valueType;
+	}
+
+	public void setObservationOrMeasurement(ObservationOrMeasurement observationOrMeasurement) {
+		this.observationOrMeasurement = observationOrMeasurement;
 	}
 
 	//
@@ -134,6 +144,7 @@ public class ObservationDvoProxy {
 
 	public static String getFixedWithHeaderRow() {
 		String rtn = "";
+		rtn += rpad("OBS_MEAS", 16);
 		rtn += rpad("OBS_TYPE ", 16);
 		rtn += rpad("OBSERVATION_ID ", 16);
 		rtn += rpad("OBS_CONCEPT_ID ", 16);
@@ -146,6 +157,7 @@ public class ObservationDvoProxy {
 
 	public String getAsFixedWidthString() {
 		String rtn = "";
+		rtn += rpad(this.getObservationOrMeasurement(), 16);
 		rtn += rpad(this.getObservationType(), 16);
 		rtn += rpad(dvo.getObservationId(), 16);
 		rtn += rpad(this.getObservationType(), 16);
