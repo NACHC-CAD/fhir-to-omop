@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.db.write.patienteverything.dir;
+package org.nachc.tools.fhirtoomop.util.db.write.patienteverything;
 
 import java.io.File;
 import java.sql.Connection;
@@ -11,12 +11,26 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WriteAllPatientsInDirToOmopUtil {
+public class WriteAllFilesToOmop {
 
 	private List<Thread> threadList = new ArrayList<Thread>();
 
+	/**
+	 * 
+	 * Writes all files in the given directory to the omop database.  
+	 * 
+	 */
 	public void exec(File dir, Connection conn) {
 		File[] files = dir.listFiles();
+		exec(files, conn);
+	}
+
+	/**
+	 * 
+	 * Writes all the given files to the omop database.  
+	 * 
+	 */
+	public void exec(File[] files, Connection conn) {
 		// create the threads
 		log.info("Creating threads...");
 		int cnt = 0;

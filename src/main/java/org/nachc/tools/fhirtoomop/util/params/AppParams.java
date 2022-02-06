@@ -27,4 +27,10 @@ public class AppParams {
 		return new File(getTestOutputDir(), fileName);
 	}
 
+	public static File getFullSetOfSyntheaPatientsDir() {
+		String fileName = PROPS.getProperty("fullSetOfSyntheaPatientsDir");
+		File file = new File(fileName);
+		return file;
+	}
+	
 }

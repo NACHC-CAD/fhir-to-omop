@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllDataTablesManualTest;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.dir.WriteAllPatientsInDirToOmopUtil;
+import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteAllFilesToOmop;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
 
@@ -34,7 +34,7 @@ public class WriteAllPatientsToDatabaseForSingleDirectory {
 			log.info("Writing patients...");
 			Timer timer = new Timer();
 			timer.start();
-			new WriteAllPatientsInDirToOmopUtil().exec(file, conn);
+			new WriteAllFilesToOmop().exec(file, conn);
 			timer.stop();
 			log.info("Start:   " + timer.getStartAsString());
 			log.info("Stop:    " + timer.getStopAsString());

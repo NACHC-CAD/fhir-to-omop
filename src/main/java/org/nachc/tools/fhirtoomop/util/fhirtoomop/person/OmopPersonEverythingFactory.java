@@ -7,6 +7,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopConditionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopDrugExposureFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopMeasurementFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
@@ -14,6 +15,7 @@ import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvo
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationOrMeasurement;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
+import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
@@ -117,12 +119,13 @@ public class OmopPersonEverythingFactory {
 		return this.observationList;
 	}
 
-	public List<ObservationDvoProxy> getMeasurementList() {
+	public List<MeasurementDvo> getMeasurementList() {
 		List<ObservationDvoProxy> allObs = this.getFhirObservationList();
-		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
+		List<MeasurementDvo> rtn = new ArrayList<MeasurementDvo>();
 		for (ObservationDvoProxy proxy : allObs) {
 			if (proxy.getObservationOrMeasurement() == ObservationOrMeasurement.MEASUREMENT) {
-				rtn.add(proxy);
+				MeasurementDvo meas = OmopMeasurementFactory.getMeasurement(proxy);
+				rtn.add(meas);
 			}
 		}
 		return rtn;
