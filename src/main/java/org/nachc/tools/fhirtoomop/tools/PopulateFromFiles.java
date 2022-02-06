@@ -43,14 +43,15 @@ public class PopulateFromFiles {
 		for (int i = 0; i < fileList.length; i++) {
 			filesToWrite.add(fileList[i]);
 			if (i % MAX_THREADS == 0 && i != 0) {
-				WriteAllFilesToOmop.exec(filesToWrite, conn);
+				new WriteAllFilesToOmop().exec(filesToWrite, conn);
+				Database.commit(conn);
 				cnt++;
 				filesToWrite = new ArrayList<File>();
 				logMsg(i, cnt);
 			}
 		}
 		if(filesToWrite.size() > 0) {
-			WriteAllFilesToOmop.exec(filesToWrite, conn);
+			new WriteAllFilesToOmop().exec(filesToWrite, conn);
 		}
 	}
 
