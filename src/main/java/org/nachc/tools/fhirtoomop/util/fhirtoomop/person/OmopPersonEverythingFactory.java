@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
@@ -10,8 +11,10 @@ import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFac
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationOrMeasurement;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
+import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
@@ -94,7 +97,19 @@ public class OmopPersonEverythingFactory {
 		return this.conditionOccurrenceList;
 	}
 
-	public List<ObservationDvoProxy> getObservationList() {
+	public List<DrugExposureDvo> getDrugExposureList() {
+		if (this.drugExposureList == null) {
+			OmopDrugExposureFactory factory = new OmopDrugExposureFactory(this, conn);
+			this.drugExposureList = factory.getDrugExposureList();
+		}
+		return this.drugExposureList;
+	}
+
+	//
+	// observation stuff
+	//
+
+	public List<ObservationDvoProxy> getFhirObservationList() {
 		if (this.observationList == null) {
 			OmopObservationFactory factory = new OmopObservationFactory(this, conn);
 			this.observationList = factory.getObservationList();
@@ -102,12 +117,26 @@ public class OmopPersonEverythingFactory {
 		return this.observationList;
 	}
 
-	public List<DrugExposureDvo> getDrugExposureList() {
-		if (this.drugExposureList == null) {
-			OmopDrugExposureFactory factory = new OmopDrugExposureFactory(this, conn);
-			this.drugExposureList = factory.getDrugExposureList();
+	public List<ObservationDvoProxy> getMeasurementList() {
+		List<ObservationDvoProxy> allObs = this.getFhirObservationList();
+		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
+		for (ObservationDvoProxy proxy : allObs) {
+			if (proxy.getObservationOrMeasurement() == ObservationOrMeasurement.MEASUREMENT) {
+				rtn.add(proxy);
+			}
 		}
-		return this.drugExposureList;
+		return rtn;
+	}
+
+	public List<ObservationDvo> getObservationList() {
+		List<ObservationDvoProxy> allObs = this.getFhirObservationList();
+		List<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
+		for (ObservationDvoProxy proxy : allObs) {
+			if (proxy.getObservationOrMeasurement() == ObservationOrMeasurement.OBSERVATION) {
+				rtn.add(proxy.getDvo());
+			}
+		}
+		return rtn;
 	}
 
 	//
