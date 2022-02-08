@@ -14,7 +14,7 @@ public class ConvertAllTablesInSchemaToMyIsamTool {
 	private static final String SCHEMA = "synthe_omop";
 	
 	public static void main(String[] args) {
-		log.info("CONVERTING TABLES TO MYISAM")
+		log.info("CONVERTING TABLES TO MYISAM");
 		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
 			new ConvertAllTablesToMyIsam().exec(SCHEMA, conn);
