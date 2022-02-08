@@ -6,7 +6,7 @@ import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.mysql.util.ConvertAllTablesToMyIsam;
 import org.yaorma.database.Database;
 
-public class ConvertAllTablesInSchemaToIsamTool {
+public class ConvertAllTablesInSchemaToMyIsamTool {
 
 	private static final String SCHEMA = "synthe_omop";
 	

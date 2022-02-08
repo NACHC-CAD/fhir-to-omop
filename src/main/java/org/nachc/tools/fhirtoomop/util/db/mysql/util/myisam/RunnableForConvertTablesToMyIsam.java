@@ -5,6 +5,9 @@ import java.sql.Connection;
 import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class RunnableForConvertTablesToMyIsam implements Runnable {
 
 	private String schemaName;
@@ -23,6 +26,7 @@ public class RunnableForConvertTablesToMyIsam implements Runnable {
 	public void run() {
 		try {
 			String sqlString = "alter table " + schemaName + "." + tableName + " ENGINE = MyISAM";
+			log.info(sqlString);
 			Database.update(sqlString, conn);
 		} finally {
 			Database.close(conn);
