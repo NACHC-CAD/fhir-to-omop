@@ -28,6 +28,7 @@ public class RunnableForConvertTablesToMyIsam implements Runnable {
 			String sqlString = "alter table " + schemaName + "." + tableName + " ENGINE = MyISAM";
 			log.info(sqlString);
 			Database.update(sqlString, conn);
+			log.info("Done with " + tableName);
 		} finally {
 			Database.close(conn);
 		}
