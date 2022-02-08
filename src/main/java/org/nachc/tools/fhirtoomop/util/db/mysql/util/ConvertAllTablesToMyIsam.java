@@ -16,6 +16,7 @@ public class ConvertAllTablesToMyIsam {
 
 	public void exec(String schemaName, Connection conn) {
 		Data data = GetTablesForSchema.exec(schemaName, conn);
+		log.info("Got " + data.size() + " records.");
 		for (Row row : data) {
 			String tableName = row.get("tableName");
 			RunnableForConvertTablesToMyIsam run = new RunnableForConvertTablesToMyIsam(schemaName, tableName);
