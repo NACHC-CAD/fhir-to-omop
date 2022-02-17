@@ -56,7 +56,8 @@ public class WriteAllFilesToOmop {
 		}
 		// start the threads
 		log.info("Starting threads...");
-		log.warn("THE APPLICATION HANGS HERE FOR SEVERAL MINUTES");
+		log.warn("THE APPLICATION HANGS HERE FOR SEVERAL MINUTES (You'll see some other output from threads that are finishing up below before it actually hangs)");
+		log.warn("\n\n\nBE PATIENT...\n\n\n");
 		for (Thread thread : threadList) {
 			thread.start();
 		}
