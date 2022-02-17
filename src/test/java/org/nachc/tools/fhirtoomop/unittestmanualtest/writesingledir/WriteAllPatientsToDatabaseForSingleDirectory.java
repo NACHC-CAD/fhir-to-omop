@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllDataTablesManualTest;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteAllFilesToOmop;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
@@ -24,7 +24,7 @@ public class WriteAllPatientsToDatabaseForSingleDirectory {
 
 	public static void main(String[] args) {
 		log.info("Getting connection...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting file...");
 			File file = FileUtil.getFile(DIR_NAME);
@@ -41,7 +41,7 @@ public class WriteAllPatientsToDatabaseForSingleDirectory {
 			log.info("Elapsed: " + timer.getElapsedString());
 		} finally {
 			log.info("closing database...");
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

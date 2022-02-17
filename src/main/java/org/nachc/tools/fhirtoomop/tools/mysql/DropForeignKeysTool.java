@@ -2,7 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.mysql;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.mysql.util.DeleteAllForeignKeysForSchema;
 import org.yaorma.database.Database;
 
@@ -15,11 +15,11 @@ public class DropForeignKeysTool {
 
 	public static void main(String[] args) {
 		log.info("Dropping all foreign keys for " + SCHEMA_NAME);
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			DeleteAllForeignKeysForSchema.exec(SCHEMA_NAME, conn);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

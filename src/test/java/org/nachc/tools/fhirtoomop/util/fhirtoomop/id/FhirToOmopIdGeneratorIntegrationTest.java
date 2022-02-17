@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.InsertSinglePatient;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class FhirToOmopIdGeneratorIntegrationTest {
 
 	@Test
 	public void shouldGetId() {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Starting test...");
 			Integer originalId = FhirToOmopIdGenerator.getId("person", "person_id", conn);
@@ -45,7 +45,7 @@ public class FhirToOmopIdGeneratorIntegrationTest {
 			log.info("newestId:   " + newestId);
 			assertTrue(newId > originalId && newestId > newId);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

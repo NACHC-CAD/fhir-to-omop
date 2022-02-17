@@ -3,7 +3,7 @@ package org.nachc.tools.fhirtoomop.util.db.mysql.util;
 import java.sql.Connection;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -16,7 +16,7 @@ public class GetTablesForSchemaIntegrationTest {
 	@Test
 	public void shouldGetTables() {
 		log.info("Starting test...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting tables...");
 			String schemaName = "information_schema";
@@ -26,7 +26,7 @@ public class GetTablesForSchemaIntegrationTest {
 				log.info("\t" + row.get("tableSchema") + "." + row.get("tableName"));
 			}
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

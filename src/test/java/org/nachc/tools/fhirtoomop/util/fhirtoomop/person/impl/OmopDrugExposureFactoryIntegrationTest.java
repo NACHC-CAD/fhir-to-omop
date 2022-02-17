@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
@@ -20,7 +20,7 @@ public class OmopDrugExposureFactoryIntegrationTest {
 
 	@Test
 	public void shouldCreateDvo() {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Starting test...");
 			PatientEverythingParser patient = TestParams.getPatientEverything();
@@ -42,7 +42,7 @@ public class OmopDrugExposureFactoryIntegrationTest {
 				assertTrue(dvo.getDrugConceptId() == 1713671 || dvo.getDrugConceptId() == 19081453);
 			}
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

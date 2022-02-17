@@ -5,8 +5,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteAllFilesToOmop;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -20,7 +20,7 @@ public class PopulateFromFiles {
 	private static final int MAX_THREADS = 1000;
 
 	public static void main(String[] args) {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting files...");
 			File dir = AppParams.getFullSetOfSyntheaPatientsDir();
@@ -32,7 +32,7 @@ public class PopulateFromFiles {
 			List<Connection> connList = getConnections();
 			writeAllFiles(dir, connList);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}
@@ -61,7 +61,7 @@ public class PopulateFromFiles {
 	private static List<Connection> getConnections() {
 		ArrayList<Connection> rtn = new ArrayList<Connection>();
 		for (int i = 0; i < 10; i++) {
-			Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+			Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 			rtn.add(conn);
 		}
 		return rtn;

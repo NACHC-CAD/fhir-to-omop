@@ -2,7 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.mysql;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.mysql.util.ConvertAllTablesToMyIsam;
 import org.yaorma.database.Database;
 
@@ -15,11 +15,11 @@ public class ConvertAllTablesInSchemaToMyIsamTool {
 	
 	public static void main(String[] args) {
 		log.info("CONVERTING TABLES TO MYISAM");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			new ConvertAllTablesToMyIsam().exec(SCHEMA, conn);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

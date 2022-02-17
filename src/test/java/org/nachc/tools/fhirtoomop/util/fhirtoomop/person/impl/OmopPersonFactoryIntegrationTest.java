@@ -5,7 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.sql.Connection;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.omop.datafactory.OmopConceptFactory;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -31,7 +31,7 @@ public class OmopPersonFactoryIntegrationTest {
 		log.info("Starting test...");
 		// get a connection
 		log.info("Getting connection...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		log.info("Got connection");
 		try {
 			// get the test data and create the dvo using the factory
@@ -76,7 +76,7 @@ public class OmopPersonFactoryIntegrationTest {
 			Integer birthYear = person.getYearOfBirth();
 			log.info("Got birth year: " + birthYear);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		// done
 		log.info("Done.");

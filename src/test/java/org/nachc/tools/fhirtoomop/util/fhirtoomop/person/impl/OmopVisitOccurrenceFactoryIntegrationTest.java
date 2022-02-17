@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
@@ -30,7 +30,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 	@Test
 	public void shouldGetVisitOccurrences() {
 		log.info("Starting test...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			// get the visit occurrences
 			PatientEverythingParser patient = TestParams.getPatientEverything();
@@ -62,7 +62,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 			log.info("endDate:   " + endDateString);
 			assertTrue(endDateString.equals("2018-09-21"));
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

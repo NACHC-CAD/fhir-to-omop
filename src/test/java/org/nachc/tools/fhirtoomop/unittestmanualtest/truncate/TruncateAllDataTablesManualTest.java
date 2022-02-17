@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -20,7 +20,7 @@ public class TruncateAllDataTablesManualTest {
 	private static final String[] TABLE_NAMES = DatatableList.getDatatableArray();
 	
 	public static void main(String[] args) {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			String schemaName = "synthea_omop";
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
@@ -32,7 +32,7 @@ public class TruncateAllDataTablesManualTest {
 				log.info("\t" + row.get("rowCount") + "\t" + row.get("tableName"));
 			}
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

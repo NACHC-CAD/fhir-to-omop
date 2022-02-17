@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ public class WriteFhirPatientToOmopIntegrationTest {
 	public void shouldWritePatientToDatabase() {
 		int numberToWrite = 3;
 		log.info("Starting test...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting patient...");
 			String json = TestParams.getPersonEverythingJson();
@@ -28,7 +28,7 @@ public class WriteFhirPatientToOmopIntegrationTest {
 			Database.commit(conn);
 		} finally {
 			log.info("Closing connection...");
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

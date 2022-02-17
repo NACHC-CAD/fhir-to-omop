@@ -3,7 +3,7 @@ package org.nachc.tools.omop.orm.ormgenerator;
 import java.io.File;
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.codeGenerator.generateOrmForSchema.GenerateOrmForSchema;
 
 import com.nach.core.util.file.FileUtil;
@@ -18,7 +18,7 @@ public class GenerateOrm {
 	}
 
 	public static void generateDvos() {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			String schemaName = "synthea_omop";
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
@@ -29,7 +29,7 @@ public class GenerateOrm {
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 	}
 

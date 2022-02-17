@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 
@@ -21,13 +21,13 @@ public class GetCountsForDataTablesInSchemaIntegrationTest {
 	@Test
 	public void shouldGetCounts() {
 		log.info("Starting test...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			Data data = GetCountsForAllTablesInSchema.getCountsForTables(SCHEMA_NAME, TABLES, conn);
 			log.info("Got " + data.size() + " records");
 		} finally {
 			log.info("Closing database");
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

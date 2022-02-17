@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteAllFilesToOmop;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -26,7 +26,7 @@ public class WriteAllFilesToOmopIntegrationTest {
 	@Test
 	public void shouldWritePatients() {
 		log.info("Starting test...");
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			// get the current number of records
 			log.info("Record count before test: ");
@@ -49,7 +49,7 @@ public class WriteAllFilesToOmopIntegrationTest {
 			log.info("added   " + added);
 			assertTrue(added == NUMBER_OF_PATIENTS_TO_CREATE);
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

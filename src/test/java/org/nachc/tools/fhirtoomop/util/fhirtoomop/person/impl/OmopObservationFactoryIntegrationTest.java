@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
-import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
@@ -21,7 +21,7 @@ public class OmopObservationFactoryIntegrationTest {
 
 	@Test
 	public void shouldGetDvo() {
-		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Starting test...");
 			// get the person and get the list
@@ -48,7 +48,7 @@ public class OmopObservationFactoryIntegrationTest {
 			dvo = obsList.get(6).getDvo();
 			log.info("Got obs 6: " + dvo.getObservationSourceValue());
 		} finally {
-			MySqlDatabaseConnectionFactory.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}
