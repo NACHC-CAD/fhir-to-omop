@@ -25,7 +25,7 @@ public class GetIndexesForTableIntegrationTest {
 				log.info("\t" + row.get("seqInIndex") + "\t" + row.get("comment") + "\t" + row.get("columnName"));
 			}
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

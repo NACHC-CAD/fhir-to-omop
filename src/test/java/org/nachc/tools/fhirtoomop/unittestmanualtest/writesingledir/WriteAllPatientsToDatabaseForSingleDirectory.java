@@ -41,7 +41,7 @@ public class WriteAllPatientsToDatabaseForSingleDirectory {
 			log.info("Elapsed: " + timer.getElapsedString());
 		} finally {
 			log.info("closing database...");
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

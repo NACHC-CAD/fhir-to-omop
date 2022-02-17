@@ -76,7 +76,7 @@ public class OmopPersonFactoryIntegrationTest {
 			Integer birthYear = person.getYearOfBirth();
 			log.info("Got birth year: " + birthYear);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		// done
 		log.info("Done.");

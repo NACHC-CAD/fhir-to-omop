@@ -19,7 +19,7 @@ public class DropForeignKeysTool {
 		try {
 			DeleteAllForeignKeysForSchema.exec(SCHEMA_NAME, conn);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

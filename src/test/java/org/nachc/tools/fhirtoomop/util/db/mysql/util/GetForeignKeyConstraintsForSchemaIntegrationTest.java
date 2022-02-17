@@ -26,7 +26,7 @@ public class GetForeignKeyConstraintsForSchemaIntegrationTest {
 				log.info("\t" + row.get("tableSchema") + "\t" + row.get("tableName") + "\t" + row.get("constraintName"));
 			}
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

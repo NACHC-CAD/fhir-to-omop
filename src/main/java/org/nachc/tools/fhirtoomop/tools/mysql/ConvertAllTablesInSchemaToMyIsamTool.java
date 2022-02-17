@@ -19,7 +19,7 @@ public class ConvertAllTablesInSchemaToMyIsamTool {
 		try {
 			new ConvertAllTablesToMyIsam().exec(SCHEMA, conn);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

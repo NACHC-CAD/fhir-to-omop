@@ -27,7 +27,7 @@ public class GetCountsForDataTablesInSchemaIntegrationTest {
 			log.info("Got " + data.size() + " records");
 		} finally {
 			log.info("Closing database");
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

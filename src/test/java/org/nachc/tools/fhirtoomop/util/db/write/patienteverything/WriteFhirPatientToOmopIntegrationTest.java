@@ -28,7 +28,7 @@ public class WriteFhirPatientToOmopIntegrationTest {
 			Database.commit(conn);
 		} finally {
 			log.info("Closing connection...");
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

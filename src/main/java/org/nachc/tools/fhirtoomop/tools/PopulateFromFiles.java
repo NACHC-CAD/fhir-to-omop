@@ -32,7 +32,7 @@ public class PopulateFromFiles {
 			List<Connection> connList = getConnections();
 			writeAllFiles(dir, connList);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

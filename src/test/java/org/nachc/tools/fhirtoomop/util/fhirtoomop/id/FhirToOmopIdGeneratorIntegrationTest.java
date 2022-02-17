@@ -45,7 +45,7 @@ public class FhirToOmopIdGeneratorIntegrationTest {
 			log.info("newestId:   " + newestId);
 			assertTrue(newId > originalId && newestId > newId);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

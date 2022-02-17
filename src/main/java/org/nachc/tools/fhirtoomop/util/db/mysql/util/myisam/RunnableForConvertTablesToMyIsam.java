@@ -24,13 +24,15 @@ public class RunnableForConvertTablesToMyIsam implements Runnable {
 	
 	@Override
 	public void run() {
+		String sqlString = "alter table " + schemaName + "." + tableName + " ENGINE = MyISAM";
 		try {
-			String sqlString = "alter table " + schemaName + "." + tableName + " ENGINE = MyISAM";
 			log.info(sqlString);
 			Database.update(sqlString, conn);
 			log.info("Done with " + tableName);
+		} catch(Exception exp) {
+			log.info("COULD NOT EXECUTE SQL: \n\n" + sqlString + "\n\n");;
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 	}
 

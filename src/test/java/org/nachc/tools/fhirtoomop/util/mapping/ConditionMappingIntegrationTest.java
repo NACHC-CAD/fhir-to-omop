@@ -30,7 +30,7 @@ public class ConditionMappingIntegrationTest {
 			log.info("name: " + dvo.getConceptName());
 			assertTrue(dvo.getConceptId() == 4294548);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

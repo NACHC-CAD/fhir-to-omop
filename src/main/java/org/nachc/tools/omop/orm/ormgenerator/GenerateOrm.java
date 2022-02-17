@@ -18,8 +18,8 @@ public class GenerateOrm {
 	}
 
 	public static void generateDvos() {
+		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 		try {
-			Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
 			String schemaName = "synthea_omop";
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/main/java/org/nachc/tools/omop/yaorma/dvo");
@@ -28,6 +28,8 @@ public class GenerateOrm {
 			log.info("Done with generate dvos.");
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
+		} finally {
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 	}
 

@@ -36,6 +36,7 @@ public class WriteAllFilesToOmop {
 		connList.add(conn);
 		exec(files, connList);
 	}
+
 	/**
 	 * 
 	 * Writes all the given files to the omop database.
@@ -55,6 +56,7 @@ public class WriteAllFilesToOmop {
 		}
 		// start the threads
 		log.info("Starting threads...");
+		log.warn("THE APPLICATION HANGS HERE FOR SEVERAL MINUTES");
 		for (Thread thread : threadList) {
 			thread.start();
 		}
@@ -67,7 +69,7 @@ public class WriteAllFilesToOmop {
 			}
 		}
 		log.info("Doing commit...");
-		for(Connection conn : connList) {
+		for (Connection conn : connList) {
 			Database.commit(conn);
 		}
 		log.info("Done running threads!");

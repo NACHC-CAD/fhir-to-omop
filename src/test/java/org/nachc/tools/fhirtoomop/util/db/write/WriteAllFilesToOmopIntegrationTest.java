@@ -49,7 +49,7 @@ public class WriteAllFilesToOmopIntegrationTest {
 			log.info("added   " + added);
 			assertTrue(added == NUMBER_OF_PATIENTS_TO_CREATE);
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

@@ -42,7 +42,7 @@ public class OmopDrugExposureFactoryIntegrationTest {
 				assertTrue(dvo.getDrugConceptId() == 1713671 || dvo.getDrugConceptId() == 19081453);
 			}
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

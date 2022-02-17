@@ -26,7 +26,7 @@ public class GetTablesForSchemaIntegrationTest {
 				log.info("\t" + row.get("tableSchema") + "." + row.get("tableName"));
 			}
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

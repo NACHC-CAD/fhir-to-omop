@@ -33,11 +33,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 	@Override
 	public void run() {
 		try {
-			log.info("Reading file (thread " + this.id + "): " + FileUtil.getCanonicalPath(file));
 			this.json = FileUtil.getAsString(file);
 			this.parser = new PatientEverythingParser(json);
-			log.info("Writing to database (thread " + this.id + ")");
 			WriteFhirPatientToOmop.exec(this.parser, this.conn);
+			log.info("DONE:  Writing to database (thread " + this.id + ")");
 		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
 			if (cause instanceof DataFormatException) {

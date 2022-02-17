@@ -1,10 +1,18 @@
 package org.nachc.tools.fhirtoomop;
 
+import java.sql.Connection;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllDataTablesManualTest;
 import org.nachc.tools.fhirtoomop.unittestmanualtest.writesingledir.WriteAllPatientsToDatabaseForSingleDirectory;
+import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
+import org.nachc.tools.fhirtoomop.util.db.mysql.MySqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
+import org.yaorma.database.Data;
+import org.yaorma.database.Database;
+import org.yaorma.database.Row;
 import org.yaorma.util.time.Timer;
 
 import com.googlecode.junittoolbox.SuiteClasses;
@@ -32,8 +40,23 @@ public class RunAllIntegrationTests {
 
 	@AfterClass
 	public static void cleanup() {
+		log.info("UNCLOSED CONNECTIONS AFTER TESTS: " + MySqlDatabaseConnectionFactory.getConnectionCount());
+		log.info("TRUNCATING DATA TABLES...");
+		TruncateAllDataTablesManualTest.main(null);
 		log.info("WRITING PATIENTS TO DATABASE...");
 		WriteAllPatientsToDatabaseForSingleDirectory.main(null);
+		String schemaName = "synthea_omop";
+		Connection conn = MySqlDatabaseConnectionFactory.getSyntheaConnection();
+		try {
+			Data data = GetCountsForAllTablesInSchema.getCountsForSchema(schemaName, conn);
+			log.info("\tcnt\ttable_name");
+			for(Row row : data) {
+				log.info("\t" + row.get("rowCount") + "\t" + row.get("tableName"));
+			}
+		} finally {
+			MySqlDatabaseConnectionFactory.close(conn);
+		}
+		log.info("UNCLOSED CONNECTIONS AFTER CLEANUP: " + MySqlDatabaseConnectionFactory.getConnectionCount());
 		log.info("Done writing patients to database.");
 		log.info("");
 		log.info("");

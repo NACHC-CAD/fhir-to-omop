@@ -34,7 +34,7 @@ public class OmopConditionFactoryIntegrationTest {
 			log.info("sourceValue: " + dvo.getConditionSourceValue());
 			log.info("conceptId:   " + dvo.getConditionConceptId());
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

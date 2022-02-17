@@ -23,7 +23,7 @@ public class FhirToOmopConceptMapperIntegrationTest {
 			log.info("Got dvo: " + dvo.getConceptName());
 		} finally {
 			log.info("Closing connection");
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

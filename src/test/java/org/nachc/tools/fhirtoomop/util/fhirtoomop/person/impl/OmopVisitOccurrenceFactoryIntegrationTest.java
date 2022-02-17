@@ -62,7 +62,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 			log.info("endDate:   " + endDateString);
 			assertTrue(endDateString.equals("2018-09-21"));
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}

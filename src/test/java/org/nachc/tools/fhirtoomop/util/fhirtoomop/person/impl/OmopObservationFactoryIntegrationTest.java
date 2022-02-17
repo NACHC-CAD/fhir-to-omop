@@ -48,7 +48,7 @@ public class OmopObservationFactoryIntegrationTest {
 			dvo = obsList.get(6).getDvo();
 			log.info("Got obs 6: " + dvo.getObservationSourceValue());
 		} finally {
-			Database.close(conn);
+			MySqlDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}
