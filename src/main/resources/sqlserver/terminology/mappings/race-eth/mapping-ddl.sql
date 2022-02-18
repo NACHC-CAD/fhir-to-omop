@@ -10,7 +10,7 @@ create table fhir_to_omop_race (
 	parent_display varchar(255),
 	code varchar(50),
 	display varchar(255),
-	is_abstract boolean,
+	is_abstract bit,
 	definition varchar(1024)
 );
 
@@ -24,8 +24,9 @@ create table fhir_to_omop_ethnicity (
 	parent_display varchar(255),
 	code varchar(50),
 	display varchar(255),
-	is_abstract boolean,
+	is_abstract bit,
 	definition varchar(1024)
 );
+
 
 

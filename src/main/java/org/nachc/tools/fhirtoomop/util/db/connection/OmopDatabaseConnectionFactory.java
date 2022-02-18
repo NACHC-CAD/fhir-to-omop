@@ -23,6 +23,7 @@ public class OmopDatabaseConnectionFactory {
 			if(schema.trim().endsWith(".dbo")) {
 				schema = schema.substring(0, schema.indexOf(".dbo"));
 			}
+			// get the connection
 			log.info("Using schema name: " + schema);
 			String url = MySqlAuthParams.getUrl();
 			String uid = MySqlAuthParams.getUid();
@@ -32,12 +33,19 @@ public class OmopDatabaseConnectionFactory {
 			log.info("URL: " + url);
 			log.info("UID: " + uid);
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
-			conn.setAutoCommit(true);
+			// set auto commit
+			conn.setAutoCommit(false);
+			// set the schema
 			String sqlString = "use " + schema;
 			log.info("Setting database:\n" + sqlString);
 			Database.update(sqlString, conn);
+			// turn off constraints
+			log.info("TURNING OFF CONSTRAINTS");
+			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"", conn);
+			// track the open connections
 			conns.add(conn);
 			log.info("OPEN CONNECTIONS: " + conns.size());
+			// done
 			return conn;
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);

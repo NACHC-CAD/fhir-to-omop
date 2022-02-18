@@ -22,7 +22,7 @@ public class DrugEraDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop";
+    public static final String SCHEMA_NAME = "synthea_omop.dbo";
     
     //
     // columnNames
