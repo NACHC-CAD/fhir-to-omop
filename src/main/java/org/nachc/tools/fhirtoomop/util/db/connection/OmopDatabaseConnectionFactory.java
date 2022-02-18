@@ -24,10 +24,7 @@ public class OmopDatabaseConnectionFactory {
 			String uid = MySqlAuthParams.getUid();
 			String pwd = MySqlAuthParams.getPwd();
 			url = url + ";databaseName=" + schema;
-//			url = url + ";user=" + uid;
-//			url = url + ";password=" + pwd;
 			url = url +";encrypt=false";
-//			url = url + "?rewriteBatchedStatements=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 			log.info("URL: " + url);
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
 			conn.setAutoCommit(true);
