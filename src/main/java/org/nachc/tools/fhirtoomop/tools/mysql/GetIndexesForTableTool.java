@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.mysql.util.GetIndexesForTable;
+import org.nachc.tools.fhirtoomop.util.params.MySqlAuthParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -13,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetIndexesForTableTool {
 
-	private static final String SCHEMA = "synthea_omop";
+	private static final String SCHEMA = MySqlAuthParams.syntheaDb();
 	
 	private static final String TABLE = "visit_occurrence";
 

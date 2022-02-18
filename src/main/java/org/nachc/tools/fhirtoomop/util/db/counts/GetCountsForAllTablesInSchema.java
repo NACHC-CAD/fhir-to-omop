@@ -28,7 +28,7 @@ public class GetCountsForAllTablesInSchema {
 		Data data = new Data();
 		for (String tableName : tableNames) {
 			log.info("Getting counts for: " + schemaName + "." + tableName);
-			String sqlString = "select '" + schemaName + "." + tableName + "' as table_name, count(*) as row_count from " + tableName + "\n";
+			String sqlString = "select '" + schemaName + "." + tableName + "' as table_name, count(*) as row_count from " + schemaName + "." + tableName + "\n";
 			log.info(sqlString);
 			Data dataForTable = Database.query(sqlString, conn);
 			log.info("CNT = " + dataForTable.get(0).get("rowCount"));

@@ -24,4 +24,12 @@ public class MySqlAuthParams {
 		return PROPS.getProperty("syntheaDb");
 	}
 
+	public static String syntheaSchema() {
+		String rtn = PROPS.getProperty("syntheaDb");
+		if(rtn.trim().endsWith(".dbo")) {
+			rtn = rtn.trim().substring(0,rtn.trim().indexOf(".dbo"));
+		}
+		return rtn;
+	}
+
 }

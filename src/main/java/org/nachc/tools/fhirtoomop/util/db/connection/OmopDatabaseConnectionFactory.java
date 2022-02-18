@@ -20,6 +20,10 @@ public class OmopDatabaseConnectionFactory {
 
 	private static Connection connect(String schema) {
 		try {
+			if(schema.trim().endsWith(".dbo")) {
+				schema = schema.substring(0, schema.indexOf(".dbo"));
+			}
+			log.info("Using schema name: " + schema);
 			String url = MySqlAuthParams.getUrl();
 			String uid = MySqlAuthParams.getUid();
 			String pwd = MySqlAuthParams.getPwd();
