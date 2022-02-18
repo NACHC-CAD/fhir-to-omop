@@ -26,8 +26,12 @@ public class OmopDatabaseConnectionFactory {
 			url = url + ";databaseName=" + schema;
 			url = url +";encrypt=false";
 			log.info("URL: " + url);
+			log.info("UID: " + uid);
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
 			conn.setAutoCommit(true);
+			String sqlString = "use " + schema;
+			log.info("Setting database:\n" + sqlString);
+			Database.update(sqlString, conn);
 			conns.add(conn);
 			log.info("OPEN CONNECTIONS: " + conns.size());
 			return conn;

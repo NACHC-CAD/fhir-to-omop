@@ -12,16 +12,17 @@ public class TruncateDataTables {
 
 	public static void truncateTables(List<String> tableNames, Connection conn) {
 		try {
-			Database.update("set foreign_key_checks = 0", conn);
-			log.info("FOREIGN_KEY_CHECKS SET TO 0");
+			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"", conn);
+			log.info("FOREIGN KEYS DISABLED");
 			for(String tableName : tableNames) {
 				String sqlString = "truncate table " + tableName;
+				log.info(sqlString);
 				Database.update(sqlString, conn);
 				log.info("TRUNCATED TABLE: " + tableName);
 			}
 		} finally {
-			Database.update("set foreign_key_checks = 1", conn);
-			log.info("FOREIGN_KEY_CHECKS SET TO 1");
+			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all\"", conn);
+			log.info("FOREIGN KEYS ENABLED");
 		}
 	}
 	
