@@ -6,6 +6,9 @@ import java.util.HashMap;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class FhirToOmopIdGenerator {
 
 	private static HashMap<String, Integer> keys = new HashMap<String, Integer>();

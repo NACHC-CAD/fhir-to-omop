@@ -4,11 +4,19 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.yaorma.dao.Dao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class FhirToOmopConceptMapper {
+
+	//
+	// passthrough method
+	//
 
 	public static ConceptDvo getOmopConceptForFhirCoding(Coding coding, Connection conn) {
 		if (coding == null || coding.getCode() == null || coding.getSystem() == null) {
@@ -16,21 +24,34 @@ public class FhirToOmopConceptMapper {
 		} else {
 			String system = coding.getSystem();
 			String code = coding.getCode();
-			return getOmopConceptForFhirCoding(system,  code, conn);
+			return getOmopConceptForFhirCoding(system, code, conn);
 		}
 	}
-	
-	
+
 	public static ConceptDvo getOmopConceptForFhirCoding(String system, String code, Connection conn) {
 		if (system == null || code == null) {
 			return null;
 		} else {
 			ConceptDvo dvo = null;
+			// look for concept in cache
+			dvo = ConceptCache.get(system, code);
+			if (dvo != null) {
+				return dvo;
+			}
 			// look for a standard concept
 			dvo = getStandardConcept(system, code, conn);
+			if (dvo != null) {
+				ConceptCache.add(system, code, dvo);
+				return dvo;
+			}
 			// look for a mapping to a standard concept
-			if(dvo == null) {
-				dvo = getStandardConceptFromMapping(system, code, conn);
+			dvo = getStandardConceptFromMapping(system, code, conn);
+			if(dvo != null) {
+				ConceptCache.add(system, code, dvo);
+			} else {
+				ConceptDvo zeroDvo = new ConceptDvo();
+				zeroDvo.setConceptId(0);
+				ConceptCache.add(system, code, zeroDvo);
 			}
 			return dvo;
 		}
@@ -40,7 +61,7 @@ public class FhirToOmopConceptMapper {
 		if (system == null || conceptCode == null) {
 			return null;
 		} else {
-			String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
+			String sqlString = "select concept_id from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
 			system = SystemMapping.getOmopSystemForFhirSystem(system);
 			if (system == null) {
 				return null;
@@ -54,7 +75,7 @@ public class FhirToOmopConceptMapper {
 			}
 		}
 	}
-	
+
 	private static ConceptDvo getStandardConceptFromMapping(String system, String conceptCode, Connection conn) {
 		String sqlString = "";
 		sqlString += "select \n";
@@ -70,7 +91,11 @@ public class FhirToOmopConceptMapper {
 		sqlString += "	and con2.standard_concept = 'S' \n";
 		system = SystemMapping.getOmopSystemForFhirSystem(system);
 		String[] params = { system, conceptCode };
+		log.debug("\n\n" + sqlString + "\n\n");
+		log.debug("Getting concept...");
+		log.debug(system + "\t" + conceptCode);
 		List<ConceptDvo> list = Dao.findListBySql(new ConceptDvo(), sqlString, params, conn);
+		log.debug("GOT IT");
 		if (list.size() > 0) {
 			return list.get(0);
 		} else {

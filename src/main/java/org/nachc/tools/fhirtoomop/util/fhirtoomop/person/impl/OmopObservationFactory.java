@@ -13,6 +13,7 @@ import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvo
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationOrMeasurement;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationValueType;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 
@@ -39,7 +40,10 @@ public class OmopObservationFactory {
 		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
 		List<ObservationParser> obsList = this.omopPersonEverything.getFhirPatientEverything().getObservationList();
 		for (ObservationParser obs : obsList) {
+			log.debug("Getting...");
+			// JEG: THIS IS DEFINITELY THE PROBLEM
 			List<ObservationDvoProxy> dvoList = getObservationsForSingleFhirObservation(obs);
+			log.debug("GOT");
 			rtn.addAll(dvoList);
 		}
 		return rtn;
@@ -59,13 +63,13 @@ public class OmopObservationFactory {
 	//
 
 	public List<ObservationDvoProxy> getObservationsForSingleFhirObservation(ObservationParser obs) {
+		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
 		if (isMultipleObservations(obs)) {
-			return getMultipleObservations(obs);
+			rtn = getMultipleObservations(obs);
 		} else {
-			ArrayList<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
 			rtn.add(getSingleObservation(obs));
-			return rtn;
 		}
+		return rtn;
 	}
 
 	// ---------------------------------
@@ -105,7 +109,7 @@ public class OmopObservationFactory {
 	private ObservationDvoProxy getSingleObservation(ObservationParser parser) {
 		ObservationDvo dvo = getSingleObservation(parser, true);
 		// log a warning if we couldn't get what kind of observation this is
-		if (dvo.getObservationConceptId() == 0) {
+		if (dvo != null && (dvo.getObservationConceptId() == null || dvo.getObservationConceptId() == 0)) {
 			String display = parser.getObservationCodeDisplay();
 			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
 		}
@@ -127,6 +131,9 @@ public class OmopObservationFactory {
 				mod = mod.replace("{", "[");
 				mod = mod.replace("}", "]");
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+				if (unitsConceptDvo != null) {
+					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				}
 			}
 			// this is for concept_id 9117
 			if (unitsConceptDvo == null) {
@@ -135,14 +142,26 @@ public class OmopObservationFactory {
 				mod = mod.replace("}", "");
 				mod = mod.replace('_', '.');
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+				if (unitsConceptDvo != null) {
+					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				}
 			}
 			// this is for mmHg
 			if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
 				String mod = "mm[Hg]";
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+				if (unitsConceptDvo != null) {
+					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				}
 			}
+			ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
 			if (unitsConceptDvo != null) {
 				dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
+				ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+			} else {
+				ConceptDvo zeroConcept = new ConceptDvo();
+				zeroConcept.setConceptId(0);
+				ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
 			}
 		}
 		// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)
@@ -218,6 +237,9 @@ public class OmopObservationFactory {
 					unitsCode = unitsCode.replace('{', '[');
 					unitsCode = unitsCode.replace('}', ']');
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
+					if (unitsConceptDvo != null) {
+						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					}
 				}
 				// this is for concept_id 9117
 				if (unitsConceptDvo == null) {
@@ -226,14 +248,25 @@ public class OmopObservationFactory {
 					mod = mod.replace("}", "");
 					mod = mod.replace('_', '.');
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+					if (unitsConceptDvo != null) {
+						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					}
 				}
 				// this is for mmHg
 				if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
 					String mod = "mm[Hg]";
 					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
+					if (unitsConceptDvo != null) {
+						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					}
 				}
 				if (unitsConceptDvo != null) {
 					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
+					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				} else {
+					ConceptDvo zeroConcept = new ConceptDvo();
+					zeroConcept.setConceptId(0);
+					ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
 				}
 			}
 			// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)

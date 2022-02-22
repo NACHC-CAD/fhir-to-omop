@@ -40,8 +40,8 @@ public class OmopDatabaseConnectionFactory {
 			log.info("Setting database:\n" + sqlString);
 			Database.update(sqlString, conn);
 			// turn off constraints
-			log.info("TURNING OFF CONSTRAINTS");
-			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"", conn);
+//			log.info("TURNING OFF CONSTRAINTS");
+//			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"", conn);
 			// track the open connections
 			conns.add(conn);
 			log.info("OPEN CONNECTIONS: " + conns.size());

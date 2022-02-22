@@ -15,6 +15,9 @@ import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.dao.Dao;
 import org.yaorma.database.Database;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class WriteFhirPatientToOmop {
 
 	public static void exec(String patientEverythingJson, Connection conn) {
@@ -24,13 +27,21 @@ public class WriteFhirPatientToOmop {
 
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(patientEverythingParser, conn);
-		writeFhirResources(personEverything, conn);
+		// TODO: JEG UNCOMMENT THIS !!!
+//		writeFhirResources(personEverything, conn);
+		log.info("writing patient");
 		writePatient(personEverything, conn);
+		log.info("writing visit occurrence");
 		writeVisitOccurrence(personEverything, conn);
+		log.info("writing condition occurrence");
 		writeConditionOccurrences(personEverything, conn);
+		log.info("writing drug exposures");
 		writeDrugExposures(personEverything, conn);
+		log.info("writing observations");
 		writeObservations(personEverything, conn);
+		log.info("writing measurements");
 		writeMeasurements(personEverything, conn);
+		log.info("doing commit");
 		Database.commit(conn);
 	}
 
@@ -85,10 +96,13 @@ public class WriteFhirPatientToOmop {
 	}
 
 	private static void writeObservations(OmopPersonEverythingFactory person, Connection conn) {
+		log.info("Doing read...");
 		List<ObservationDvo> observationList = person.getObservationList();
+		log.info("Doing write...");
 		for (ObservationDvo dvo : observationList) {
 			Dao.insert(dvo, conn);
 		}
+		log.info("DONE");
 	}
 
 }
