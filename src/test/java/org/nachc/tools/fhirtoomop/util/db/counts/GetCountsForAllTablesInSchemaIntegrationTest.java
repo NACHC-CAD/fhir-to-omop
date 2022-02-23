@@ -10,8 +10,6 @@ import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
 
-import com.nach.core.util.string.StringUtil;
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -24,8 +22,8 @@ public class GetCountsForAllTablesInSchemaIntegrationTest {
 			String schemaName = MySqlAuthParams.getSyntheaSchema();
 			Data data = GetCountsForAllTablesInSchema.getCountsForSchema(schemaName, conn);
 			log.info("Got data for " + data.size() + " tables.");
-			for(Row row : data) {
-				String rowCount = StringUtils.rightPad(row.get("rowCount"),12);
+			for (Row row : data) {
+				String rowCount = StringUtils.rightPad(row.get("rowCount"), 12);
 				log.info("\t" + rowCount + row.get("tableName"));
 			}
 		} finally {
