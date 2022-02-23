@@ -27,21 +27,20 @@ public class WriteFhirPatientToOmop {
 
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(patientEverythingParser, conn);
-		// TODO: JEG UNCOMMENT THIS !!!
-//		writeFhirResources(personEverything, conn);
-		log.info("writing patient");
+		writeFhirResources(personEverything, conn);
+		log.debug("writing patient");
 		writePatient(personEverything, conn);
-		log.info("writing visit occurrence");
+		log.debug("writing visit occurrence");
 		writeVisitOccurrence(personEverything, conn);
-		log.info("writing condition occurrence");
+		log.debug("writing condition occurrence");
 		writeConditionOccurrences(personEverything, conn);
-		log.info("writing drug exposures");
+		log.debug("writing drug exposures");
 		writeDrugExposures(personEverything, conn);
-		log.info("writing observations");
+		log.debug("writing observations");
 		writeObservations(personEverything, conn);
-		log.info("writing measurements");
+		log.debug("writing measurements");
 		writeMeasurements(personEverything, conn);
-		log.info("doing commit");
+		log.debug("doing commit");
 		Database.commit(conn);
 	}
 
@@ -96,13 +95,13 @@ public class WriteFhirPatientToOmop {
 	}
 
 	private static void writeObservations(OmopPersonEverythingFactory person, Connection conn) {
-		log.info("Doing read...");
+		log.debug("Doing read...");
 		List<ObservationDvo> observationList = person.getObservationList();
-		log.info("Doing write...");
+		log.debug("Doing write...");
 		for (ObservationDvo dvo : observationList) {
 			Dao.insert(dvo, conn);
 		}
-		log.info("DONE");
+		log.debug("DONE");
 	}
 
 }

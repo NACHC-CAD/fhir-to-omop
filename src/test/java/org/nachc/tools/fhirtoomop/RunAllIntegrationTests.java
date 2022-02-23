@@ -33,8 +33,10 @@ public class RunAllIntegrationTests {
 		TIMER.start();
 		log.info("***********************************************************");
 		log.info("Starting set up");
+		log.info("***********************************************************");
 		log.info("TRUNCATING ALL DATA TABLES IN THE SYNTHEA SCHEMA (PRESERVING CONCEPT TABLES)");
 		TruncateAllDataTablesManualTest.main(null);
+		log.info("***********************************************************");
 		log.info("Done with set up");
 		log.info("***********************************************************");
 	}
