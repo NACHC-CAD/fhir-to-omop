@@ -46,7 +46,7 @@ public class RunAllIntegrationTests {
 		TruncateAllDataTablesManualTest.main(null);
 		log.info("WRITING PATIENTS TO DATABASE...");
 		WriteAllPatientsToDatabaseForSingleDirectory.main(null);
-		String schemaName = MySqlAuthParams.syntheaDb();
+		String schemaName = MySqlAuthParams.getSyntheaDb();
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			Data data = GetCountsForAllTablesInSchema.getCountsForSchema(schemaName, conn);

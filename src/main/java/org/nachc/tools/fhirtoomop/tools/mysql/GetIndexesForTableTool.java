@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetIndexesForTableTool {
 
-	private static final String SCHEMA = MySqlAuthParams.syntheaDb();
+	private static final String SCHEMA = MySqlAuthParams.getSyntheaDb();
 	
 	private static final String TABLE = "visit_occurrence";
 

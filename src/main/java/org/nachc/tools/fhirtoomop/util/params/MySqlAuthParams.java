@@ -20,16 +20,29 @@ public class MySqlAuthParams {
 		return PROPS.getProperty("pwd");
 	}
 
-	public static String syntheaDb() {
+	public static String getSyntheaDb() {
 		return PROPS.getProperty("syntheaDb");
 	}
 
-	public static String syntheaSchema() {
+	public static String getSyntheaSchema() {
 		String rtn = PROPS.getProperty("syntheaDb");
-		if(rtn.trim().endsWith(".dbo")) {
-			rtn = rtn.trim().substring(0,rtn.trim().indexOf(".dbo"));
+		return rtn;
+	}
+	
+	public static String getCatalogPart(String schemaName) {
+		String rtn = schemaName;
+		if(rtn.indexOf(".") > 0) {
+			rtn = rtn.trim().substring(0,rtn.trim().indexOf("."));
 		}
 		return rtn;
 	}
 
+	public static String getSchemaPart(String schemaName) {
+		String rtn = schemaName;
+		if(rtn.indexOf(".") > 0) {
+			rtn = rtn.trim().substring(rtn.indexOf(".") + 1, rtn.length());
+		}
+		return rtn;
+	}
+	
 }

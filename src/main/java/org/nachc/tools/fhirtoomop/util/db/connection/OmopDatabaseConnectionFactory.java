@@ -15,7 +15,7 @@ public class OmopDatabaseConnectionFactory {
 	private static ArrayList<Connection> conns = new ArrayList<Connection>();
 	
 	public static Connection getOmopConnection() {
-		return connect(MySqlAuthParams.syntheaDb());
+		return connect(MySqlAuthParams.getSyntheaDb());
 	}
 
 	private static Connection connect(String schema) {

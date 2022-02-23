@@ -29,8 +29,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 			}
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
-			String schemaName = MySqlAuthParams.syntheaDb();
-			Database.update("use " + schemaName, conn);
+			String schemaName = MySqlAuthParams.getSyntheaDb();
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

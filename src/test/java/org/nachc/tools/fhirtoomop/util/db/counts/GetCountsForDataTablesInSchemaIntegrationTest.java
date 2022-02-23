@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetCountsForDataTablesInSchemaIntegrationTest {
 	
-	private static final String SCHEMA_NAME = MySqlAuthParams.syntheaDb();
+	private static final String SCHEMA_NAME = MySqlAuthParams.getSyntheaDb();
 	
 	private static final List<String> TABLES = DatatableList.getDatatableList();
 

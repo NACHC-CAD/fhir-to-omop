@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DropForeignKeysTool {
 
-	private static final String SCHEMA_NAME = MySqlAuthParams.syntheaDb();
+	private static final String SCHEMA_NAME = MySqlAuthParams.getSyntheaDb();
 
 	public static void main(String[] args) {
 		log.info("Dropping all foreign keys for " + SCHEMA_NAME);

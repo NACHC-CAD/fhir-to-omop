@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetForeignKeyConstraintsForSchemaIntegrationTest {
 
-	private static final String SCHEMA_NAME = MySqlAuthParams.syntheaDb();
+	private static final String SCHEMA_NAME = MySqlAuthParams.getSyntheaDb();
 
 	@Test
 	public void shouldGetForeignKeys() {

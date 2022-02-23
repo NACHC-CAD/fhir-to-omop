@@ -19,7 +19,7 @@ public class GetIndexesForTableIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Starting test...");
-			String schemaName = MySqlAuthParams.syntheaDb();
+			String schemaName = MySqlAuthParams.getSyntheaDb();
 			String tableName = "visit_occurrence";
 			Data data = GetIndexesForTable.exec(schemaName, tableName, conn);
 			for(Row row : data) {
