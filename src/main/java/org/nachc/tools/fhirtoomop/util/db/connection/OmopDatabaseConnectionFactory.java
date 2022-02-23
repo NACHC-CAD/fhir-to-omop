@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-import org.nachc.tools.fhirtoomop.util.params.MySqlAuthParams;
+import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +15,7 @@ public class OmopDatabaseConnectionFactory {
 	private static ArrayList<Connection> conns = new ArrayList<Connection>();
 	
 	public static Connection getOmopConnection() {
-		return connect(MySqlAuthParams.getSyntheaDb());
+		return connect(AppConnectionParams.getSyntheaDb());
 	}
 
 	private static Connection connect(String schema) {
@@ -25,9 +25,9 @@ public class OmopDatabaseConnectionFactory {
 			}
 			// get the connection
 			log.info("Using schema name: " + schema);
-			String url = MySqlAuthParams.getUrl();
-			String uid = MySqlAuthParams.getUid();
-			String pwd = MySqlAuthParams.getPwd();
+			String url = AppConnectionParams.getUrl();
+			String uid = AppConnectionParams.getUid();
+			String pwd = AppConnectionParams.getPwd();
 			url = url + ";databaseName=" + schema;
 			url = url +";encrypt=false";
 			log.info("URL: " + url);
@@ -54,9 +54,9 @@ public class OmopDatabaseConnectionFactory {
 
 	private static Connection connectToMySql(String schema) {
 		try {
-			String url = MySqlAuthParams.getUrl();
-			String uid = MySqlAuthParams.getUid();
-			String pwd = MySqlAuthParams.getPwd();
+			String url = AppConnectionParams.getUrl();
+			String uid = AppConnectionParams.getUid();
+			String pwd = AppConnectionParams.getPwd();
 			url = url + "/" + schema;
 			url = url + "?rewriteBatchedStatements=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 			log.info("URL: " + url);

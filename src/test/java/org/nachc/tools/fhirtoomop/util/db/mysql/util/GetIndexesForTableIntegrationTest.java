@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.MySqlAuthParams;
+import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -19,7 +19,7 @@ public class GetIndexesForTableIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Starting test...");
-			String schemaName = MySqlAuthParams.getSyntheaDb();
+			String schemaName = AppConnectionParams.getSyntheaDb();
 			String tableName = "visit_occurrence";
 			Data data = GetIndexesForTable.exec(schemaName, tableName, conn);
 			for(Row row : data) {

@@ -8,7 +8,7 @@ import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFacto
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
-import org.nachc.tools.fhirtoomop.util.params.MySqlAuthParams;
+import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -23,7 +23,7 @@ public class TruncateAllDataTablesManualTest {
 	public static void main(String[] args) {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = MySqlAuthParams.getSyntheaDb();
+			String schemaName = AppConnectionParams.getSyntheaDb();
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
 			TruncateDataTables.truncateTables(tableNames, conn);
 			Database.commit(conn);

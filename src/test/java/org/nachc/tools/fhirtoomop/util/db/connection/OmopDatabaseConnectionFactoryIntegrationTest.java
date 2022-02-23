@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.MySqlAuthParams;
+import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -29,7 +29,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 			}
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
-			String schemaName = MySqlAuthParams.getSyntheaDb();
+			String schemaName = AppConnectionParams.getSyntheaDb();
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

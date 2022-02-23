@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import com.nach.core.util.props.PropertiesUtil;
 
-public class MySqlAuthParams {
+public class AppConnectionParams {
 
 	public static final Properties PROPS = PropertiesUtil.getAsProperties("auth/mysql-auth.properties");
 
