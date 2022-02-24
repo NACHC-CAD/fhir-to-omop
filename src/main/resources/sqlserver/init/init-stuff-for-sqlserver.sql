@@ -13,6 +13,4 @@ exec sp_addrolemember N'db_datareader', N'synthea_omop_user';
 
 exec sp_addrolemember N'db_datawriter', N'synthea_omop_user';
 
-go
-
 select * from sys.sysusers where name = 'synthea_omop';
