@@ -8,5 +8,3 @@ exec sp_addrolemember N'db_datareader', N'omop_test_user';
 exec sp_addrolemember N'db_datawriter', N'omop_test_user';
 
 select * from sys.sysusers where name = 'omop_test_user';
-
-
