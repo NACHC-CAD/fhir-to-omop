@@ -1,5 +1,9 @@
 package org.nachc.tools.fhirtoomop.tools.build;
 
+import java.sql.Connection;
+
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -14,10 +18,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class CreateOmopInstance {
+public class CreateOmopInstanceTool {
 
 	public static void main(String[] args) {
-		
+		log.info("Creating OMOP instance...");
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		log.info("Creating tables...");
+		log.info("Done.");
 	}
 	
 }

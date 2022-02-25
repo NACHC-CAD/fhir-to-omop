@@ -13,14 +13,26 @@ import lombok.extern.slf4j.Slf4j;
 public class OmopDatabaseConnectionFactory {
 
 	private static ArrayList<Connection> conns = new ArrayList<Connection>();
-	
+
+	public static Connection getBootstrapConnection() {
+		try {
+//			String url = "jdbc:sqlserver://LAPTOP-K0O3MVMP;databaseName=master;integratedSecurity=true";
+			String url = "jdbc:sqlserver://LAPTOP-K0O3MVMP;databaseName=master;integratedSecurity=true;encrypt=false";
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+
+	}
+
 	public static Connection getOmopConnection() {
 		return connect(AppConnectionParams.getSyntheaDb());
 	}
 
 	private static Connection connect(String schema) {
 		try {
-			if(schema.trim().endsWith(".dbo")) {
+			if (schema.trim().endsWith(".dbo")) {
 				schema = schema.substring(0, schema.indexOf(".dbo"));
 			}
 			// get the connection
@@ -29,7 +41,7 @@ public class OmopDatabaseConnectionFactory {
 			String uid = AppConnectionParams.getUid();
 			String pwd = AppConnectionParams.getPwd();
 			url = url + ";databaseName=" + schema;
-			url = url +";encrypt=false";
+			url = url + ";encrypt=false";
 			log.info("URL: " + url);
 			log.info("UID: " + uid);
 			Connection conn = DriverManager.getConnection(url, uid, pwd);
@@ -39,9 +51,6 @@ public class OmopDatabaseConnectionFactory {
 			String sqlString = "use " + schema;
 			log.info("Setting database:\n" + sqlString);
 			Database.update(sqlString, conn);
-			// turn off constraints
-//			log.info("TURNING OFF CONSTRAINTS");
-//			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? NOCHECK CONSTRAINT all\"", conn);
 			// track the open connections
 			conns.add(conn);
 			log.info("OPEN CONNECTIONS: " + conns.size());
@@ -75,9 +84,9 @@ public class OmopDatabaseConnectionFactory {
 		conns.remove(conn);
 		log.info("OPEN CONNECTIONS: " + conns.size());
 	}
-	
+
 	public static int getConnectionCount() {
 		return conns.size();
 	}
-	
+
 }

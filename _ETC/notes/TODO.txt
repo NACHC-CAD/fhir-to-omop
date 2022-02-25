@@ -1,0 +1,1 @@
+Follow up on omo-map.xlsx (unofficial mapping of systems from fhir to omop)
