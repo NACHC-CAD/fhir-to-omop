@@ -8,6 +8,10 @@ public class AppConnectionParams {
 
 	public static final Properties PROPS = PropertiesUtil.getAsProperties("auth/mysql-auth.properties");
 
+	public static String getBootstrapUrl() {
+		return PROPS.getProperty("bootstrapUrl");
+	}
+	
 	public static String getUrl() {
 		return PROPS.getProperty("url");
 	}

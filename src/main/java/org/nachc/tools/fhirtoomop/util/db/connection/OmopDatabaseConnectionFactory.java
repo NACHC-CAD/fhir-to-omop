@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 
 import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +17,8 @@ public class OmopDatabaseConnectionFactory {
 
 	public static Connection getBootstrapConnection() {
 		try {
-//			String url = "jdbc:sqlserver://LAPTOP-K0O3MVMP;databaseName=master;integratedSecurity=true";
-			String url = "jdbc:sqlserver://LAPTOP-K0O3MVMP;databaseName=master;integratedSecurity=true;encrypt=false";
+//			String url = "jdbc:sqlserver://localhost;databaseName=master;integratedSecurity=true;encrypt=false";
+			String url = AppConnectionParams.getBootstrapUrl();
 			Connection conn = DriverManager.getConnection(url);
 			return conn;
 		} catch (Exception exp) {
