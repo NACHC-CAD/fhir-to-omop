@@ -17,7 +17,6 @@ public class OmopDatabaseConnectionFactory {
 
 	public static Connection getBootstrapConnection() {
 		try {
-//			String url = "jdbc:sqlserver://localhost;databaseName=master;integratedSecurity=true;encrypt=false";
 			String url = AppConnectionParams.getBootstrapUrl();
 			Connection conn = DriverManager.getConnection(url);
 			return conn;
