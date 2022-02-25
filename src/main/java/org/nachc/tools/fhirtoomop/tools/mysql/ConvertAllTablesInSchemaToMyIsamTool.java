@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ConvertAllTablesInSchemaToMyIsamTool {
 
-	private static final String SCHEMA = AppConnectionParams.getSyntheaDb();
+	private static final String SCHEMA = AppConnectionParams.getFullyQualifiedDbName();
 	
 	public static void main(String[] args) {
 		log.info("CONVERTING TABLES TO MYISAM");

@@ -27,7 +27,7 @@ public class OmopDatabaseConnectionFactory {
 	}
 
 	public static Connection getOmopConnection() {
-		return connect(AppConnectionParams.getSyntheaDb());
+		return connect(AppConnectionParams.getFullyQualifiedDbName());
 	}
 
 	private static Connection connect(String schema) {

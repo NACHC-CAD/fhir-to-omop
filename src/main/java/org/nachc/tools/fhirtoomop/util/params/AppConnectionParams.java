@@ -24,15 +24,15 @@ public class AppConnectionParams {
 		return PROPS.getProperty("pwd");
 	}
 
-	public static String getSyntheaDb() {
+	public static String getFullyQualifiedDbName() {
 		return PROPS.getProperty("syntheaDb");
 	}
 
-	public static String getSyntheaSchema() {
+	public static String getDbName() {
 		String rtn = PROPS.getProperty("syntheaDb");
-		return rtn;
+		return getCatalogPart(rtn);
 	}
-	
+
 	public static String getCatalogPart(String schemaName) {
 		String rtn = schemaName;
 		if(rtn.indexOf(".") > 0) {

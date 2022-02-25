@@ -29,7 +29,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 			}
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
-			String schemaName = AppConnectionParams.getSyntheaDb();
+			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

@@ -14,7 +14,7 @@ public class BurnEverythingToTheGround {
 
 	public static void exec(Connection conn) {
 		// drop the database
-		String databaseName = AppConnectionParams.getSyntheaSchema();
+		String databaseName = AppConnectionParams.getFullyQualifiedDbName();
 		databaseName = AppConnectionParams.getCatalogPart(databaseName);
 		log.warn("DROPPING DATABASE: " + databaseName);
 		Database.update("use master", conn);

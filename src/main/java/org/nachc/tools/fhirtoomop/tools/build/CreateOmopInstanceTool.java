@@ -2,7 +2,12 @@ package org.nachc.tools.fhirtoomop.tools.build;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,10 +26,36 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateOmopInstanceTool {
 
 	public static void main(String[] args) {
-		log.info("Creating OMOP instance...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
-		log.info("Creating tables...");
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			// delete the existing instance
+			logMsg("BURNING EVERYTHING TO THE GROUND");
+			BurnEverythingToTheGround.exec(conn);
+			// create the new database
+			logMsg("CREATING DATABASE");
+			log.info("Creating OMOP instance...");
+			CreateDatabase.exec(conn);
+			// create the user
+			logMsg("CREATING USER");
+			CreateDatabaseUser.exec(conn);
+			// create the tables
+			logMsg("CREATING TABLES");
+			CreateDatabaseTables.exec(conn);
+		} finally {
+			Database.close(conn);
+		}
+		logMsg("DONE");
 		log.info("Done.");
 	}
-	
+
+	private static void logMsg(String msg) {
+		String logMsg = "";
+		logMsg += "\n\n\n";
+		logMsg += "\n-----------------------------------------------------------";
+		logMsg += "\n! ! ! " + msg + " ! ! ! ";
+		logMsg += "\n-----------------------------------------------------------";
+		logMsg += "\n\n\n";
+		log.info(logMsg);
+	}
+
 }

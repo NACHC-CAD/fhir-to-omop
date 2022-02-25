@@ -1,7 +1,5 @@
 --sql server CDM DDL Specification for OMOP Common Data Model 5.4
 
-use synthea_omop;
-
 --HINT DISTRIBUTE ON KEY (person_id)
 CREATE TABLE PERSON (
 			person_id integer NOT NULL,

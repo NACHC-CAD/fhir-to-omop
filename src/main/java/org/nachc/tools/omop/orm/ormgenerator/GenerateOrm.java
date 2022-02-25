@@ -21,7 +21,7 @@ public class GenerateOrm {
 	public static void generateDvos() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = AppConnectionParams.getSyntheaSchema();
+			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/main/java/org/nachc/tools/omop/yaorma/dvo");
 			FileUtil.clearContents(destDir);

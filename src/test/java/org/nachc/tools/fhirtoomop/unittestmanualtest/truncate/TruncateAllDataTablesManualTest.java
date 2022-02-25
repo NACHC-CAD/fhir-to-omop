@@ -23,7 +23,7 @@ public class TruncateAllDataTablesManualTest {
 	public static void main(String[] args) {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = AppConnectionParams.getSyntheaDb();
+			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
 			TruncateDataTables.truncateTables(tableNames, conn);
 			Database.commit(conn);

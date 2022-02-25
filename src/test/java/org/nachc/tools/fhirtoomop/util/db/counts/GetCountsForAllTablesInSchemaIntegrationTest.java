@@ -19,7 +19,7 @@ public class GetCountsForAllTablesInSchemaIntegrationTest {
 	public void shouldGetCounts() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = AppConnectionParams.getSyntheaSchema();
+			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
 			Data data = GetCountsForAllTablesInSchema.getCountsForSchema(schemaName, conn);
 			log.info("Got data for " + data.size() + " tables.");
 			for (Row row : data) {

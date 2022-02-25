@@ -20,7 +20,7 @@ public class A_InsertSinglePatientIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			// get the params
-			String schemaName = AppConnectionParams.getSyntheaSchema();
+			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
 			String tableName = "person";
 			int personCount;
 			// get the patient count
