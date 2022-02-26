@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -35,8 +36,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		try {
 			this.json = FileUtil.getAsString(file);
 			this.parser = new PatientEverythingParser(json);
-			WriteFhirPatientToOmop.exec(this.parser, this.conn);
-			log.info("DONE:  Writing to database (thread " + this.id + ")");
+			OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(this.parser, this.conn);
+			log.info("DONE: Parsing fhir resource (" + this.id + ")\t" + this.file.getName());
+			WriteFhirPatientToOmop.exec(personEverything, this.conn);
+			log.info("DONE:  Writing to database (thread " + this.id + ")\t" + this.file.getName());
 		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
 			if (cause instanceof DataFormatException) {

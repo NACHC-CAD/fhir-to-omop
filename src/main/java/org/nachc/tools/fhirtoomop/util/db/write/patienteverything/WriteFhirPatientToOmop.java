@@ -27,6 +27,10 @@ public class WriteFhirPatientToOmop {
 
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(patientEverythingParser, conn);
+		exec(personEverything, conn);
+	}
+
+	public static void exec(OmopPersonEverythingFactory personEverything, Connection conn) {
 		writeFhirResources(personEverything, conn);
 		writePatient(personEverything, conn);
 		writeVisitOccurrence(personEverything, conn);
