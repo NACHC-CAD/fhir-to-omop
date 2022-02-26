@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PopulateFromFiles {
 
-	private static final int MAX_THREADS = 1000;
+	private static final int MAX_THREADS = 2000;
 
 	public static void main(String[] args) {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
