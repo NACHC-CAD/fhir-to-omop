@@ -28,6 +28,7 @@ public class PopulateFromFiles {
 			List<String> tableNames = DatatableList.getDatatableList();
 			log.info("Truncating tables...");
 			TruncateDataTables.truncateTables(tableNames, conn);
+			Database.commit(conn);
 			log.info("Writing all files...");
 			List<Connection> connList = getConnections();
 			writeAllFiles(dir, connList);
