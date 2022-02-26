@@ -43,11 +43,15 @@ public class WriteAllFilesToOmop {
 	 * 
 	 */
 	public void exec(List<File> files, List<Connection> connList) {
+		log.info("USING " + connList.size() + " CONNECTIONS.");
 		// create the threads
 		log.info("Creating threads...");
 		int cnt = 0;
 		for (File file : files) {
 			cnt++;
+			if(cnt % 100 == 0) {
+				log.info("Creating thread " + cnt + " of " + files.size());
+			}
 			int connToUse = cnt % connList.size();
 			Connection conn = connList.get(connToUse);
 			WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(file, conn, cnt);

@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
@@ -50,7 +51,9 @@ public class CreateOmopInstanceTool {
 			// load terminology
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(conn);
-//			LoadTerminology.exec(conn);
+			LoadTerminology.exec(conn);
+			// create the indexes
+			CreateDatabaseIndexes.exec(conn);
 		} finally {
 			log.info("Closing database connection...");
 			Database.close(conn);

@@ -27,16 +27,14 @@ public class WriteFhirPatientToOmop {
 
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(patientEverythingParser, conn);
-		log.debug("writing patient");
-//		writeFhirResources(personEverything, conn);
+		writeFhirResources(personEverything, conn);
 		writePatient(personEverything, conn);
-//		writeVisitOccurrence(personEverything, conn);
-//		writeConditionOccurrences(personEverything, conn);
-//		writeDrugExposures(personEverything, conn);
-//		writeObservations(personEverything, conn);
-//		writeMeasurements(personEverything, conn);
+		writeVisitOccurrence(personEverything, conn);
+		writeConditionOccurrences(personEverything, conn);
+		writeDrugExposures(personEverything, conn);
+		writeObservations(personEverything, conn);
+		writeMeasurements(personEverything, conn);
 		Database.commit(conn);
-		log.debug("committed");
 	}
 
 	private static void writeFhirResources(OmopPersonEverythingFactory person, Connection conn) {
