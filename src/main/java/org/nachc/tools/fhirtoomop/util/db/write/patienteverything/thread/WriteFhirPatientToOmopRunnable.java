@@ -44,7 +44,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 				log.warn("File: " + FileUtil.getCanonicalPath(file));
 				log.warn("This is generally expected for the data files we are using.");
 			} else {
-				new RuntimeException(exp);
+				throw new RuntimeException(exp);
 			}
 		}
 	}

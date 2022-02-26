@@ -14,12 +14,16 @@ public class CreateDatabaseUser {
 		String db = AppConnectionParams.getDbName();
 		String uid = AppConnectionParams.getUid();
 		String pwd = AppConnectionParams.getPwd();
+		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);
+		// create the log in
 		log.info("Creating login: " + uid);
-		Database.update("create login "+uid+" with password = '" + pwd + "'", conn);
+		Database.update("create login " + uid + " with password = '" + pwd + "'", conn);
+		// create the user
 		log.info("Creating user: " + uid);
-		Database.update("create user " + uid + " for login omop_test_user with default_schema = omop_test", conn);
+		Database.update("create user " + uid + " for login " + uid + " with default_schema = " + db, conn);
+		// create privileges
 		log.info("Adding privileges...");
 		Database.update("exec sp_addrolemember N'db_accessadmin', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_backupoperator', N'" + uid + "'", conn);

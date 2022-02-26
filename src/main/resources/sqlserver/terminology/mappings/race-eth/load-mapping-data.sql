@@ -1,5 +1,3 @@
-use synthea_omop;
-
 truncate table fhir_to_omop_race;
 
 bulk insert fhir_to_omop_race 

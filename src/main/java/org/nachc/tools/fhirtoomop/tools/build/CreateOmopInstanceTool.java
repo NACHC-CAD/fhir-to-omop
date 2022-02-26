@@ -6,6 +6,10 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
@@ -41,8 +45,16 @@ public class CreateOmopInstanceTool {
 			// create the tables
 			logMsg("CREATING TABLES");
 			CreateDatabaseTables.exec(conn);
+			CreateFhirResoureTables.exec(conn);
+			CreateMappingTables.exec(conn);
+			// load terminology
+			logMsg("LOADING TERMINOLOGY");
+			LoadMappingTables.exec(conn);
+//			LoadTerminology.exec(conn);
 		} finally {
+			log.info("Closing database connection...");
 			Database.close(conn);
+			log.info("Database closed");
 		}
 		logMsg("DONE");
 		log.info("Done.");

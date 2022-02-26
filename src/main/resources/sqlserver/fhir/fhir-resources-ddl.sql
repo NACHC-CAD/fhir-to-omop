@@ -1,5 +1,3 @@
-use synthea_omop;
-
 drop table if exists fhir_resource;
 
 create table fhir_resource (

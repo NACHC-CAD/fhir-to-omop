@@ -1,5 +1,3 @@
-use synthea_omop;
-
 alter table fhir_resource add index fhir_resource_name_pat (
     resource_name,
 	patient_id

@@ -1,5 +1,3 @@
-use synthea_omop;
-
 drop table if exists fhir_to_omop_race;
 
 create table fhir_to_omop_race (
