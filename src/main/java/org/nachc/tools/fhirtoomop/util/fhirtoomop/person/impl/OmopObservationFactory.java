@@ -161,6 +161,7 @@ public class OmopObservationFactory {
 			} else {
 				ConceptDvo zeroConcept = new ConceptDvo();
 				zeroConcept.setConceptId(0);
+				dvo.setUnitConceptId(zeroConcept.getConceptId());
 				ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
 			}
 		}
@@ -266,6 +267,7 @@ public class OmopObservationFactory {
 				} else {
 					ConceptDvo zeroConcept = new ConceptDvo();
 					zeroConcept.setConceptId(0);
+					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 					ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
 				}
 			}

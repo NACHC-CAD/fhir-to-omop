@@ -10,7 +10,7 @@ import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 
 public class ConceptCache {
 
-	private static final int SIZE = 10000;
+	private static final int SIZE = 100000;
 
 	private static HashMap<CacheKey, ConceptDvo> concepts = new HashMap<CacheKey, ConceptDvo>();
 
