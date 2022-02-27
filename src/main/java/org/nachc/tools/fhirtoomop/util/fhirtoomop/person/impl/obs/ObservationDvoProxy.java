@@ -3,11 +3,23 @@ package org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs;
 import java.sql.Connection;
 
 import org.apache.commons.lang.StringUtils;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.dao.Dao;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * There's additional information required to (for example) decided if a FHIR
+ * Observation is and OMOP Measurement or and OMOP Observation.
+ * 
+ * This class encapsulates that additional information.  
+ *
+ */
+
+@Slf4j
 public class ObservationDvoProxy {
 
 	//
@@ -27,16 +39,24 @@ public class ObservationDvoProxy {
 	private ObservationValueType valueType;
 
 	private ObservationOrMeasurement observationOrMeasurement;
-	
+
 	//
 	// constructor
 	//
 
-	public ObservationDvoProxy(ObservationDvo dvo, Connection conn) {
+	public ObservationDvoProxy(ObservationDvo dvo, ObservationParser parser, Connection conn) {
 		this.dvo = dvo;
+		this.observationType = parser.getObservationType();
+		this.setObservationOrMeasurement();
+		this.setValueType(parser);
 		this.observationConceptDvo = getConceptDvo(dvo.getObservationConceptId(), conn);
 		this.valueConceptDvo = getConceptDvo(dvo.getValueAsConceptId(), conn);
 		this.valueUnitsConceptDvo = getConceptDvo(dvo.getUnitConceptId(), conn);
+		// log a warning if we did not get an observation concept (this shouldn't ever happen, TODO: (JEG) maybe should be an exception)
+		if (dvo != null && (dvo.getObservationConceptId() == null || dvo.getObservationConceptId() == 0)) {
+			String display = parser.getObservationCodeDisplay();
+			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
+		}
 	}
 
 	private ConceptDvo getConceptDvo(Integer conceptId, Connection conn) {
@@ -47,10 +67,58 @@ public class ObservationDvoProxy {
 		}
 	}
 
+	private void setObservationOrMeasurement() {
+		switch (this.observationType) {
+		case LABORATORY:
+			this.observationOrMeasurement = ObservationOrMeasurement.MEASUREMENT;
+			break;
+		case VITAL_SIGNS:
+			this.observationOrMeasurement = ObservationOrMeasurement.MEASUREMENT;
+			break;
+		default:
+			this.observationOrMeasurement = ObservationOrMeasurement.OBSERVATION;
+			break;
+		}
+	}
+
+	private void setValueType(ObservationParser parser) {
+		// set the value type
+		if (parser.getValueCoding() != null) {
+			this.valueType = ObservationValueType.CODED;
+		} else if (parser.getValueAsNumber() != null) {
+			this.valueType = ObservationValueType.QUANTITY;
+		} else {
+			this.valueType = ObservationValueType.STRING;
+		}
+
+	}
+
+	// -----------------
 	//
-	// trivial getters
+	// all methods past here are trivial
+	//
+	// -----------------
+
+	//
+	// getters
 	//
 
+	public Integer getObservationId() {
+		try {
+			return this.dvo.getObservationId();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	public String getObservationIdString() {
+		if(this.getObservationId() == null) {
+			return null;
+		} else {
+			return this.getObservationId() + "";
+		}
+	}
+	
 	public ObservationDvo getDvo() {
 		return dvo;
 	}
@@ -76,23 +144,7 @@ public class ObservationDvoProxy {
 	}
 
 	//
-	// trivial setters
-	//
-
-	public void setObservationType(ObservationType observationType) {
-		this.observationType = observationType;
-	}
-
-	public void setObservationValueType(ObservationValueType valueType) {
-		this.valueType = valueType;
-	}
-
-	public void setObservationOrMeasurement(ObservationOrMeasurement observationOrMeasurement) {
-		this.observationOrMeasurement = observationOrMeasurement;
-	}
-
-	//
-	// implementation
+	// string manipulation methods
 	//
 
 	public String getName() {
@@ -147,6 +199,7 @@ public class ObservationDvoProxy {
 		rtn += rpad("OBS_MEAS", 16);
 		rtn += rpad("OBS_TYPE ", 16);
 		rtn += rpad("OBSERVATION_ID ", 16);
+		rtn += rpad("PARENT_ID ", 16);
 		rtn += rpad("OBS_CONCEPT_ID ", 16);
 		rtn += rpad("VALUE_TYPE ", 16);
 		rtn += rpad("VALUE_AS_STRING ", 64);
@@ -160,7 +213,7 @@ public class ObservationDvoProxy {
 		rtn += rpad(this.getObservationOrMeasurement(), 16);
 		rtn += rpad(this.getObservationType(), 16);
 		rtn += rpad(dvo.getObservationId(), 16);
-		rtn += rpad(this.getObservationType(), 16);
+		rtn += rpad(dvo.getObservationEventId(), 16);
 		rtn += rpad(dvo.getObservationConceptId(), 16);
 		rtn += rpad(this.getValueType(), 16);
 		rtn += rpad(this.getValueAsString(), 64);

@@ -80,8 +80,7 @@ public class ObservationParser {
 
 	public Coding getCategory() {
 		try {
-			// TODO: (JEG) Just getting first here (might need to be expanded for other use
-			// cases)
+			// TODO: (JEG) Just getting first here (might need to be expanded for other use cases)
 			return this.obs.getCategory().get(0).getCodingFirstRep();
 		} catch (Exception exp) {
 			return null;
@@ -268,6 +267,18 @@ public class ObservationParser {
 			BigDecimal bd = q.getValue();
 			return bd.toString();
 		} catch (Exception exp) {
+			return null;
+		}
+	}
+	
+	//
+	// value string
+	//
+	
+	public String getValueAsString() {
+		try {
+			return obs.getValueStringType().getValue();
+		} catch(Exception exp) {
 			return null;
 		}
 	}

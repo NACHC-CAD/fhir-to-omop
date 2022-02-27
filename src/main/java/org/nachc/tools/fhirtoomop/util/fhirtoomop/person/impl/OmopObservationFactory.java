@@ -22,10 +22,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OmopObservationFactory {
 
+	//
+	// instance variables
+	//
+	
 	private OmopPersonEverythingFactory omopPersonEverything;
 
 	private Connection conn;
 
+	//
+	// constructor
+	//
+	
 	public OmopObservationFactory(OmopPersonEverythingFactory person, Connection conn) {
 		this.omopPersonEverything = person;
 		this.conn = conn;
@@ -41,8 +49,7 @@ public class OmopObservationFactory {
 		List<ObservationParser> obsList = this.omopPersonEverything.getFhirPatientEverything().getObservationList();
 		for (ObservationParser obs : obsList) {
 			log.debug("Getting...");
-			// JEG: THIS IS DEFINITELY THE PROBLEM
-			List<ObservationDvoProxy> dvoList = getObservationsForSingleFhirObservation(obs);
+			List<ObservationDvoProxy> dvoList = getOmopObservationListForFhirObservation(obs);
 			log.debug("GOT");
 			rtn.addAll(dvoList);
 		}
@@ -50,52 +57,23 @@ public class OmopObservationFactory {
 	}
 
 	//
-	// is the fhir observation one or multiple observations
+	// implementation
 	//
-
-	private boolean isMultipleObservations(ObservationParser obs) {
-		return obs.isMultipart();
-	}
-
-	//
-	// method to get omop observation(s) for fhir observation (fhir obs can have
-	// multiple omop obs, e.g. blood pressure)
-	//
-
-	public List<ObservationDvoProxy> getObservationsForSingleFhirObservation(ObservationParser obs) {
+	
+	private List<ObservationDvoProxy> getOmopObservationListForFhirObservation(ObservationParser obs) {
 		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
-		if (isMultipleObservations(obs)) {
-			rtn = getMultipleObservations(obs);
-		} else {
+		if (isMultipleObservations(obs) == false) {
+			// get for single observation
 			rtn.add(getSingleObservation(obs));
+		} else {
+			// get for multi-part observation
+			rtn = getMultipleObservations(obs);
 		}
 		return rtn;
 	}
 
-	// ---------------------------------
-	//
-	// COMMON
-	//
-	// called by both get single and get multiple to get the values common to both
-	//
-	// ---------------------------------
-
-	private ObservationDvo getSingleObservation(ObservationParser parser, boolean isSingle) {
-		ObservationDvo dvo = new ObservationDvo();
-		// observation id
-		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
-		// person
-		Integer omopPatientId = this.omopPersonEverything.getOmopPatientId();
-		dvo.setPersonId(omopPatientId);
-		// observation concept id
-		Coding obsCoding = parser.getObservationCode();
-		ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
-		Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
-		dvo.setObservationConceptId(obsConceptId);
-		dvo.setObservationSourceValue(parser.getId());
-		// date
-		dvo.setObservationDate(parser.getStartDate());
-		return dvo;
+	private boolean isMultipleObservations(ObservationParser obs) {
+		return obs.isMultipart();
 	}
 
 	// ---------------------------------
@@ -107,12 +85,13 @@ public class OmopObservationFactory {
 	// ---------------------------------
 
 	private ObservationDvoProxy getSingleObservation(ObservationParser parser) {
-		ObservationDvo dvo = getSingleObservation(parser, true);
-		// log a warning if we couldn't get what kind of observation this is
-		if (dvo != null && (dvo.getObservationConceptId() == null || dvo.getObservationConceptId() == 0)) {
-			String display = parser.getObservationCodeDisplay();
-			log.warn("COULD NOT GET CONCEPT FOR OBSERVATION: " + display);
-		}
+		ObservationDvo dvo = getBasicInformation(parser, true);
+		// observation concept id
+		Coding obsCoding = parser.getObservationCode();
+		ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
+		Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
+		dvo.setObservationConceptId(obsConceptId);
+		dvo.setObservationSourceValue(parser.getId());
 		// value as coding
 		Coding valueCoding = parser.getValueCoding();
 		ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
@@ -120,10 +99,73 @@ public class OmopObservationFactory {
 		dvo.setValueAsConceptId(valueConceptId);
 		// value as number
 		dvo.setValueAsNumber(parser.getValueAsNumber());
+		// value as string
+		dvo.setValueAsString(parser.getValueAsString());
 		// units
 		String unitsSystem = parser.getUnitsCodingSystem();
 		String unitsCode = parser.getUnitsCodingCode();
-		if (unitsSystem != null && unitsCode != null) {
+		ConceptDvo unitsConcept = getUnits(unitsSystem, unitsCode, conn);
+		dvo.setUnitConceptId(unitsConcept.getConceptId());
+		// type
+		dvo.setObservationTypeConceptId(0);
+		// create the proxy and return it
+		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, parser, conn);
+		return proxy;
+	}
+	
+	private List<ObservationDvoProxy> getMultipleObservations(ObservationParser parser) {
+		// create the return array and add the original concept as a parent concept
+		ArrayList<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
+		ObservationDvoProxy parent = getSingleObservation(parser);
+		rtn.add(parent);
+		// process each component to create a new observation
+		List<ObservationComponentParser> comps = parser.getComponents();
+		for (ObservationComponentParser comp : comps) {
+			// get the values out of the comp
+			ObservationDvo dvo = getBasicInformation(parser, false);
+			// observation concept id
+			Coding obsCoding = comp.getObservationCode();
+			ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
+			Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
+			dvo.setObservationConceptId(obsConceptId);
+			dvo.setObservationSourceValue(parser.getId());
+			// value as coding
+			Coding valueCoding = comp.getValueCoding();
+			ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
+			Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
+			dvo.setValueAsConceptId(valueConceptId);
+			// value as number
+			dvo.setValueAsNumber(comp.getValueAsNumber());
+			// value as string
+			dvo.setValueAsString(comp.getValueAsString());
+			// set the parent id
+			dvo.setObservationEventId(parent.getObservationIdString());
+			// create the proxy and add it to the return
+			ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, parser, conn);
+			rtn.add(proxy);
+		}
+		return rtn;
+	}
+
+	private ObservationDvo getBasicInformation(ObservationParser parser, boolean isSingle) {
+		ObservationDvo dvo = new ObservationDvo();
+		// observation id
+		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
+		// person
+		Integer omopPatientId = this.omopPersonEverything.getOmopPatientId();
+		dvo.setPersonId(omopPatientId);
+		// date
+		dvo.setObservationDate(parser.getStartDate());
+		return dvo;
+	}
+	
+	private ConceptDvo getUnits(String unitsSystem, String unitsCode, Connection conn) {
+		if (unitsSystem == null || unitsCode == null) {
+			ConceptDvo unitsConceptDvo = new ConceptDvo();
+			unitsConceptDvo.setConceptId(0);
+			ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);			
+			return unitsConceptDvo;
+		} else {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 			// for some reason synthea uses curly brackets instead of brackets
 			if (unitsConceptDvo == null) {
@@ -156,152 +198,14 @@ public class OmopObservationFactory {
 			}
 			ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
 			if (unitsConceptDvo != null) {
-				dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
 				ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
 			} else {
-				ConceptDvo zeroConcept = new ConceptDvo();
-				zeroConcept.setConceptId(0);
-				dvo.setUnitConceptId(zeroConcept.getConceptId());
-				ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
+				unitsConceptDvo = new ConceptDvo();
+				unitsConceptDvo.setConceptId(0);
+				ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
 			}
+			return unitsConceptDvo;
 		}
-		// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)
-		ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
-		// set the observation type
-		proxy.setObservationType(parser.getObservationType());
-		// set obs or meas
-		switch (proxy.getObservationType()) {
-		case LABORATORY:
-			proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
-			break;
-		case VITAL_SIGNS:
-			proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
-			break;
-		default:
-			proxy.setObservationOrMeasurement(ObservationOrMeasurement.OBSERVATION);
-			break;
-		}
-		// set the value type
-		if (parser.getValueCoding() != null) {
-			proxy.setObservationValueType(ObservationValueType.CODED);
-		} else if (parser.getValueAsNumber() != null) {
-			proxy.setObservationValueType(ObservationValueType.QUANTITY);
-		} else {
-			proxy.setObservationValueType(ObservationValueType.STRING);
-		}
-		// type
-		dvo.setObservationTypeConceptId(0);
-		// done
-		return proxy;
 	}
-
-	// ---------------------------------
-	//
-	// MULITIPLE
-	//
-	// method to get observations where multiple observations exist
-	//
-	// ---------------------------------
-
 	
-	private List<ObservationDvoProxy> getMultipleObservations(ObservationParser obs) {
-		List<ObservationComponentParser> comps = obs.getComponents();
-		ArrayList<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
-		// process each component to create a new observation
-		for (ObservationComponentParser comp : comps) {
-			// get the values out of the comp
-			ObservationDvo dvo = getSingleObservation(obs, false);
-			// observation concept id
-			Coding obsCoding = comp.getObservationCode();
-			ConceptDvo obsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(obsCoding, conn);
-			Integer obsConceptId = obsConceptDvo == null ? 0 : obsConceptDvo.getConceptId();
-			dvo.setObservationConceptId(obsConceptId);
-			dvo.setObservationSourceValue(obs.getId());
-			// value as coding
-			Coding valueCoding = comp.getValueCoding();
-			ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
-			Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
-			dvo.setValueAsConceptId(valueConceptId);
-			// value as number
-			dvo.setValueAsNumber(comp.getValueAsNumber());
-			// display warning if we couldn't get what kind of observation this is
-			if (dvo.getObservationConceptId() == 0) {
-				String display = comp.getObservationCodeDisplay();
-				log.warn("COULD NOT MAP OBSERVATION TO CONCEPT: " + display);
-			}
-			// units
-			String unitsSystem = comp.getUnitsCodingSystem();
-			String unitsCode = comp.getUnitsCodingCode();
-			if (unitsSystem != null && unitsCode != null) {
-				ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
-				// for some reason synthea uses curly brackets instead of brackets
-				if (unitsConceptDvo == null) {
-					unitsCode = unitsCode.replace('{', '[');
-					unitsCode = unitsCode.replace('}', ']');
-					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
-					if (unitsConceptDvo != null) {
-						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
-					}
-				}
-				// this is for concept_id 9117
-				if (unitsConceptDvo == null) {
-					String mod = unitsCode;
-					mod = mod.replace("{", "");
-					mod = mod.replace("}", "");
-					mod = mod.replace('_', '.');
-					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-					if (unitsConceptDvo != null) {
-						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
-					}
-				}
-				// this is for mmHg
-				if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
-					String mod = "mm[Hg]";
-					unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-					if (unitsConceptDvo != null) {
-						ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
-					}
-				}
-				if (unitsConceptDvo != null) {
-					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
-					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
-				} else {
-					ConceptDvo zeroConcept = new ConceptDvo();
-					zeroConcept.setConceptId(0);
-					dvo.setUnitConceptId(unitsConceptDvo.getConceptId());
-					ConceptCache.add(unitsSystem, unitsCode, zeroConcept);
-				}
-			}
-			// CREATE THE PROXY (ALL CONCEPTS NEED TO BE SET BEFORE THIS IS CALLED)
-			ObservationDvoProxy proxy = new ObservationDvoProxy(dvo, conn);
-			// set the observation type
-			proxy.setObservationType(obs.getObservationType());
-			// set obs or meas
-			switch (proxy.getObservationType()) {
-			case LABORATORY:
-				proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
-				break;
-			case VITAL_SIGNS:
-				proxy.setObservationOrMeasurement(ObservationOrMeasurement.MEASUREMENT);
-				break;
-			default:
-				proxy.setObservationOrMeasurement(ObservationOrMeasurement.OBSERVATION);
-				break;
-			}
-			// set the value type
-			if (comp.getValueCoding() != null) {
-				proxy.setObservationValueType(ObservationValueType.CODED);
-			} else if (comp.getValueAsNumber() != null) {
-				proxy.setObservationValueType(ObservationValueType.QUANTITY);
-			} else {
-				proxy.setObservationValueType(ObservationValueType.STRING);
-			}
-			// type
-			dvo.setObservationTypeConceptId(0);
-			// add the obs to the return collection
-			rtn.add(proxy);
-		}
-		return rtn;
-	}
-
 }

@@ -144,5 +144,17 @@ public class ObservationComponentParser {
 			return null;
 		}
 	}
+	
+	//
+	// value string
+	//
+	
+	public String getValueAsString() {
+		try {
+			return comp.getValueStringType().getValue();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
 
 }
