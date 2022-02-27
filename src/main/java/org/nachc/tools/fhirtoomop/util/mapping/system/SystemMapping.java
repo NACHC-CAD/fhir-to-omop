@@ -18,7 +18,13 @@ public class SystemMapping {
 			return "UCUM";
 		} else {
 			log.warn("WARNING: UNKNON SYSTEM: " + system);
-			return null;
+			if(system == null) {
+				system = "<NULL>";
+			}
+			if(system.length() > 20) {
+				system = system.substring(20);
+			}
+			return system;
 		}
 	}
 

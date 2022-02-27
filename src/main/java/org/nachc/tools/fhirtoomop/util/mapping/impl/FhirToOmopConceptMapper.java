@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.yaorma.dao.Dao;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -46,14 +48,20 @@ public class FhirToOmopConceptMapper {
 			}
 			// look for a mapping to a standard concept
 			dvo = getStandardConceptFromMapping(system, code, conn);
+			if (dvo != null) {
+				ConceptCache.add(system, code, dvo);
+				return dvo;
+			}
+			// look for a non-standard concept
+			dvo = getNonStandardConcept(system, code, conn);
 			if(dvo != null) {
 				ConceptCache.add(system, code, dvo);
-			} else {
-				ConceptDvo zeroDvo = new ConceptDvo();
-				zeroDvo.setConceptId(0);
-				ConceptCache.add(system, code, zeroDvo);
+				return dvo;
 			}
-			return dvo;
+			// create a new concept with id > 1B
+			ConceptDvo newConceptDvo = addTempConcept(system, code, conn);
+			ConceptCache.add(system, code, newConceptDvo);
+			return newConceptDvo;
 		}
 	}
 
@@ -101,6 +109,48 @@ public class FhirToOmopConceptMapper {
 		} else {
 			return null;
 		}
+	}
+
+	private static ConceptDvo getNonStandardConcept(String system, String conceptCode, Connection conn) {
+		if (system == null || conceptCode == null) {
+			return null;
+		} else {
+			String sqlString = "select concept_id from concept where vocabulary_id = ? and concept_code = ?";
+			system = SystemMapping.getOmopSystemForFhirSystem(system);
+			if (system == null) {
+				return null;
+			}
+			String[] params = { system, conceptCode };
+			List<ConceptDvo> list = Dao.findListBySql(new ConceptDvo(), sqlString, params, conn);
+			if (list.size() > 0) {
+				return list.get(0);
+			} else {
+				return null;
+			}
+		}
+	}
+
+	private static ConceptDvo addTempConcept(String system, String code, Connection conn) {
+		system = SystemMapping.getOmopSystemForFhirSystem(system);
+		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id", conn);
+		if (id <= 1000000000) {
+			id = 1000000001;
+		}
+		ConceptDvo dvo = new ConceptDvo();
+		dvo.setConceptId(id);
+		dvo.setVocabularyId(system);
+		dvo.setConceptCode(code);
+		// TODO: FIX THIS (This is a place holder for now)
+		dvo.setDomainId("Measurement");
+		dvo.setConceptClassId("Clinical Observation");
+		dvo.setConceptName(code);
+		dvo.setValidEndDate(TimeUtil.getDateForYyyy_Mm_Dd("1995-08-09"));
+		dvo.setValidStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1942-08-01"));
+		Dao.insert(dvo, conn);
+		log.info("+++++++++++++++++++++");
+		log.info("New concept created: (" + system + ")\t" + code + "\t");
+		log.info("+++++++++++++++++++++");
+		return dvo;
 	}
 
 }
