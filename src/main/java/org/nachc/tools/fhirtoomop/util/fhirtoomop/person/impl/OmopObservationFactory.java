@@ -138,6 +138,13 @@ public class OmopObservationFactory {
 			dvo.setValueAsNumber(comp.getValueAsNumber());
 			// value as string
 			dvo.setValueAsString(comp.getValueAsString());
+			// units
+			String unitsSystem = comp.getUnitsCodingSystem();
+			String unitsCode = comp.getUnitsCodingCode();
+			ConceptDvo unitsConcept = getUnits(unitsSystem, unitsCode, conn);
+			dvo.setUnitConceptId(unitsConcept.getConceptId());
+			// type
+			dvo.setObservationTypeConceptId(0);
 			// set the parent id
 			dvo.setObservationEventId(parent.getObservationIdString());
 			// create the proxy and add it to the return

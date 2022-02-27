@@ -37,7 +37,7 @@ public class OmopObservationFactoryIntegrationTest {
 				log.info("\t" + proxy.getAsFixedWidthString());
 			}
 			log.info("Got " + obsList.size() + " observations.");
-			assertTrue(obsList.size() == 50);
+			assertTrue(obsList.size() == 55);
 			// test a single dvo
 			ObservationDvo dvo;
 			dvo = obsList.get(0).getDvo();
