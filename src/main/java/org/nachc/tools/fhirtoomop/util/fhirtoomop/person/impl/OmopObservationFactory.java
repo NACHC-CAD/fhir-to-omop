@@ -203,6 +203,7 @@ public class OmopObservationFactory {
 	//
 	// ---------------------------------
 
+	
 	private List<ObservationDvoProxy> getMultipleObservations(ObservationParser obs) {
 		List<ObservationComponentParser> comps = obs.getComponents();
 		ArrayList<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
