@@ -79,9 +79,9 @@ public class RunAllIntegrationTests {
 		msg += "\n\n\n";
 		msg += "\n---------------";
 		msg += "\nYour instance has been created with the following parameters:  ";
-		msg += "\nDatbase:\t" + AppConnectionParams.getDbName();
-		msg += "\nUsername:\t" + AppConnectionParams.getUid();
-		msg += "\nPassword\t" + AppConnectionParams.getPwd();
+		msg += "\nDatbase:   " + AppConnectionParams.getDbName();
+		msg += "\nUsername:  " + AppConnectionParams.getUid();
+		msg += "\nPassword   " + AppConnectionParams.getPwd();
 		msg += "\nYour welcome :)";
 		msg += "\n---------------";
 		msg += "\n\n\n";
