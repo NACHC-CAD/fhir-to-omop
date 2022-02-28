@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome to The NACHC-CAD/fhir-to-omop Documentation
 
 You can use the [editor on GitHub](https://github.com/NACHC-CAD/fhir-to-omop/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
