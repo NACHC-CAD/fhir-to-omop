@@ -74,6 +74,7 @@ public class CreateOmopInstanceTool {
 		msg += "\nYour welcome :)";
 		msg += "\n---------------";
 		msg += "\n\n\n";
+		log.info(msg);
 		log.info("Done.");
 	}
 

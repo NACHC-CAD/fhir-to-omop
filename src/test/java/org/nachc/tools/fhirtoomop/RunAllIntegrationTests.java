@@ -11,6 +11,7 @@ import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFacto
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
 import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -74,6 +75,17 @@ public class RunAllIntegrationTests {
 		log.info("Start:   " + TIMER.getStartAsString());
 		log.info("Stop:    " + TIMER.getStopAsString());
 		log.info("Elapsed: " + TIMER.getElapsedString());
+		String msg = "";
+		msg += "\n\n\n";
+		msg += "\n---------------";
+		msg += "\nYour instance has been created with the following parameters:  ";
+		msg += "\nDatbase:\t" + AppConnectionParams.getDbName();
+		msg += "\nUsername:\t" + AppConnectionParams.getUid();
+		msg += "\nPassword\t" + AppConnectionParams.getPwd();
+		msg += "\nYour welcome :)";
+		msg += "\n---------------";
+		msg += "\n\n\n";
+		log.info(msg);
 		log.info("Done.");
 	}
 
