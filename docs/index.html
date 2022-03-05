@@ -30,106 +30,46 @@
 						
 						<!-- 
 						*
-						* background drop down 
+						* getting started drop down
 						*
 						*-->
 						
 						<li class="dropdown">
-							<!-- background menu -->
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
-								<span class="fas fa-landmark"></span>&nbsp;Background&nbsp;<span class="caret"></span>
+								<span class="fas fa-landmark"></span>&nbsp;Getting Started&nbsp;<span class="caret"></span>
 							</a>
-							<!-- background menu items -->
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="background.html">Model Background</a></li>
-								<li><a href="cdmRefreshProcess.html">CDM Refresh Process</a></li>
-								<li><a href="vocabulary.html">How the Vocabulary is Built</a></li>
+								<li><a href="background.html">Instant OMOP</a></li>
+								<li><a href="cdmRefreshProcess.html">FHIR to OMOP Quickstart Guide</a></li>
+								<li><a href="vocabulary.html">Synthea to OMOP Quickstart Guide</a></li>
 							</ul>
 						</li>
-
+		
 						<!-- 
 						*
-						* conventions drop down 
+						* architecture and design drop down
 						*
 						*-->
-
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"> <span
-								class="fas fa-list-alt"></span> Conventions <span class="caret"></span>
-						</a>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
+								<span class="fas fa-landmark"></span>&nbsp;Architecture and Design&nbsp;<span class="caret"></span>
+							</a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="dataModelConventions.html">General
-										Conventions</a></li>
-								<li><a href="ehrObsPeriods.html">Observation Periods for
-										EHR Data</a></li>
-								<li><a href="cdmPrivacy.html">Patient Privacy and OMOP</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"> <span
-								class="fas fa-history"></span> CDM Versions <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="cdm30.html">CDM v3.0</a></li>
-								<li><a href="cdm60.html">CDM v6.0</a></li>
-								<li><a href="cdm53.html">CDM v5.3</a></li>
-								<li class="dropdown-submenu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-expanded="false">NEW CDM v5.4</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="cdm54.html">CDM v5.4</a></li>
-										<li><a href="cdm54Changes.html">Changes from CDM v5.3</a>
-										</li>
-									</ul></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"> <span
-								class="fas fa-plus-square"></span> Proposals <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a
-									href="https://github.com/OHDSI/CommonDataModel/issues?q=is%3Aopen+is%3Aissue+label%3AProposal">Under
-										Review</a></li>
-								<li class="dropdown-submenu"><a href="#"
-									class="dropdown-toggle" data-toggle="dropdown" role="button"
-									aria-expanded="false">Accepted</a>
-									<ul class="dropdown-menu" role="menu">
-										<li><a
-											href="https://github.com/OHDSI/CommonDataModel/issues/252">Region_concept_id</a>
-										</li>
-									</ul></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"> <span
-								class="fas fa-question"></span> How to <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="download.html">Download the DDL</a></li>
-								<li><a href="cdmRPackage.html">Use the CDM R Package</a></li>
-								<li><a href="drug_dose.html">Calculate Drug Dose</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"> <span
-								class="fas fa-life-ring"></span> Support <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="faq.html">FAQ</a></li>
-								<li><a href="sqlScripts.html">SQL Scripts</a></li>
-								<li><a href="contribute.html">Ask a Question</a></li>
-							</ul></li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="https://github.com/OHDSI/CommonDataModel"> <span
-								class="fas fa-github"></span>
-	
-						</a></li>
+								<li><a href="background.html">Overview of System Architecture and Design</a></li>
+							</ul>
+						</li>
+		
+					<!-- end of drop downs -->	
 					</ul>
 				</div>
-				<!--/.nav-collapse -->
+				<!-- end navbar -->
 			</div>
-			<!--/.container -->
+			<!-- end container -->
 		</div>
-		<!--/.navbar -->
-		
+		<!-- end navbar -->
+
+	<!-- contents of splash page --> 
 	<h1>NACHC fhir-to-omop: Tools and utilities for FHIR and OMOP</h1>
 	Welcome to the NACHC fhir-to-omop documentation.  This is currently a work in progress.  Please let us know if you have any questions, issues, or haikus you would like to share with us.
 	The best way to get in touch with us is to <a target="issues" href="https://github.com/NACHC-CAD/fhir-to-omop/issues">open a github issue</a> for this project.  

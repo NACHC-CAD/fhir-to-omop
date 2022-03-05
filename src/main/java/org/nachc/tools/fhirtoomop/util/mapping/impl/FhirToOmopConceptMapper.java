@@ -41,18 +41,21 @@ public class FhirToOmopConceptMapper {
 				return dvo;
 			}
 			// look for a standard concept
+			log.info("looking for standard concept: " + system + "\t" + code);
 			dvo = getStandardConcept(system, code, conn);
 			if (dvo != null) {
 				ConceptCache.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a mapping to a standard concept
+			log.info("looking for mapped concept: " + system + "\t" + code);
 			dvo = getStandardConceptFromMapping(system, code, conn);
 			if (dvo != null) {
 				ConceptCache.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a non-standard concept
+			log.info("looking for non-standard concept: " + system + "\t" + code);
 			dvo = getNonStandardConcept(system, code, conn);
 			if(dvo != null) {
 				ConceptCache.add(system, code, dvo);
