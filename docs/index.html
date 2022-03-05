@@ -4,87 +4,32 @@
 		<!-- include lib code -->
 		<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("./pages/_header/header.html");</script>
+		<!-- add included pages here -->
 		<script>
-			$("#headerInclude").load("./pages/_header/header.html");
+			$(function() {$("#navbarInclude").load("pages/_header/navbar.html");});			
 		</script>
 	</head>
 
 	<body>
-	<div class="container-fluid main-container">
-		<!-- navbar -->
-		<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-			<div class="container">
-				<!-- "home" button -->
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">
-						<div>
-							<img src="./images/cdm/ohdsi16x16.png"></img>&nbsp;NACHC fhir-to-omop
-						</div>
-					</a>
-				</div>
-	
-				<div id="navbar" class="navbar-collapse collapse">
-					<!--  drop down lists -->
-					<ul class="nav navbar-nav">
-						<li><a href="index.html"><span class="fas fa-home"></span></a></li>
-						
-						<!-- 
-						*
-						* getting started drop down
-						*
-						*-->
-						
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
-								<span class="fas fa-landmark"></span>&nbsp;Getting Started&nbsp;<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="pages/main-menu-pages/instant-omop/start-here/StartHere.html">Start Here (Install Instructions)</a></li>
-								<li><a href="background.html">Instant OMOP</a></li>
-								<li><a href="cdmRefreshProcess.html">FHIR to OMOP Quickstart Guide</a></li>
-								<li><a href="vocabulary.html">Synthea to OMOP Quickstart Guide</a></li>
-							</ul>
-						</li>
-		
-						<!-- 
-						*
-						* architecture and design drop down
-						*
-						*-->
-						
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 
-								<span class="fas fa-landmark"></span>&nbsp;Architecture and Design&nbsp;<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="background.html">Overview of System Architecture and Design</a></li>
-							</ul>
-						</li>
-		
-					<!-- end of drop downs -->	
-					</ul>
-				</div>
-				<!-- end navbar -->
-			</div>
-			<!-- end container -->
-		</div>
-		<!-- end navbar -->
-
-	<!-- contents of splash page --> 
-	<h1>NACHC fhir-to-omop: Tools and utilities for FHIR and OMOP</h1>
-	Welcome to the NACHC fhir-to-omop documentation.  This is currently a work in progress.  Please let us know if you have any questions, issues, or haikus you would like to share with us.
-	The best way to get in touch with us is to <a target="issues" href="https://github.com/NACHC-CAD/fhir-to-omop/issues">open a github issue</a> for this project.  
-	<br/>
-	We also try to attend the OHDSI Weekly meeting and we try to follow the <a target="forum" href="https://forums.ohdsi.org/c/implementers">OHDSI Developers Forum</a>.
-	<br/>
-	<br/>
-	<br/>
-		
-	</div>	
-		
+		<div class="container-fluid main-container">
+			
+			<!-- navbar -->
+			<div id="navbarInclude"></div> 
+			
+			<!-- contents of splash page --> 
+			<h1>NACHC fhir-to-omop: Tools and utilities for FHIR and OMOP</h1>
+			Welcome to the NACHC fhir-to-omop documentation.  This is currently a work in progress.  Please let us know if you have any questions, issues, or haikus you would like to share with us.
+			The best way to get in touch with us is to <a target="issues" href="https://github.com/NACHC-CAD/fhir-to-omop/issues">open a github issue</a> for this project.  
+			<br/>
+			We also try to attend the OHDSI Weekly meeting and we try to follow the <a target="forum" href="https://forums.ohdsi.org/c/implementers">OHDSI Developers Forum</a>.
+			<br/><br/><br/>
+			
+		<!-- end main container -->	
+		</div>			
 	</body>
 	
 </html>
 	
-	
+
 	
