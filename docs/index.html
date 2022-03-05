@@ -1,12 +1,23 @@
 <html>
 	
+	<head>
+		<!-- include lib code -->
+		<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("pages/_header/header.html");</script>
+		<!-- add included pages here -->
+		<script>
+			$(function() {$("#navbarInclude").load("pages/_header/navbar.html");});			
+		</script>
+	</head>
+
 
 	<h2>This is version 0.0.1 of the documentation</h2>
 	<h2>Last Updated: 2022-03-05 (15:07)</h2>
 	<a href="foo/index.html">THIS IS A LINK TO FOO</a><br/>
 	<a href="/foo/index.html">THIS IS A LINK TO FOO</a><br/>
 	<a href="./foo/index.html">THIS IS A LINK TO FOO</a><br/>
-
+	<h2>ADDED HEAD</h2>
 
 	
 </html>
