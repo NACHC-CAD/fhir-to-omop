@@ -1,1 +1,32 @@
-THIS IS THE START HERE PAGE
+<html>
+	
+	<head>
+		<!-- include lib code -->
+		<script src="/site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/pages/_header/header.html");</script>
+		<!-- add included pages here -->
+		<script>
+			$(function() {$("#navbarInclude").load("/pages/_header/navbar.html");});			
+		</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+			
+			<!-- navbar -->
+			<div id="navbarInclude"></div> 
+			
+			<!-- contents of splash page --> 
+			<h1>NACHC fhir-to-omop Start Here: How to download, install, and get started with the NACHC fhir-to-omop tools</h1>
+
+			<br/><br/><br/>
+			
+		<!-- end main container -->	
+		</div>			
+	</body>
+	
+</html>
+	
+
+	
