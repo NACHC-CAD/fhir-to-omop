@@ -1,10 +1,25 @@
 
 	<head>
+
+	<script>
+		alert("HIDING!!!");
+		$("body,html").css("overflow","hidden");
+		alert("SHOWING DIV");
+		$("#mainPageSplashScreen").show();
+		alert("MOVING ON");
+		
+		$(document).ready(function() {
+			alert("READY");
+		    $('#body').show();
+		    $('#mainPageSplashScreen').hide();
+		});
+	</script>
+
 	<meta charset="utf-8" />
 	<meta name="generator" content="pandoc" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-	<title>index.utf8</title>
+	<title>NACHC fhir-to-omop</title>
 	
 	<script src="/fhir-to-omop/site_libs/header-attrs-2.6/header-attrs.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -308,19 +323,6 @@
 		#mainPageSplashScreen {position: fixed; height: 100px; width: 100px; top:0; left: 0; background: #000; z-index:9999;}	
 	</style>
 
-	<script>
-		alert("HIDING");
-		$("body,html").css("overflow","hidden");
-		alert("SHOWING DIV");
-		$("#mainPageSplashScreen").show();
-		alert("MOVING ON");
-		
-		$(document).ready(function() {
-			alert("READY");
-		    $('#body').show();
-		    $('#mainPageSplashScreen').hide();
-		});
-	</script>
 
 	</head>
 
