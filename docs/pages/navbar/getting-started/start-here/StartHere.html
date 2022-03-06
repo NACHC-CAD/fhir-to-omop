@@ -9,11 +9,48 @@
 
 	<body>
 		<div class="container-fluid main-container">
-			THIS IS THE START HERE PAGE (USING HEADER)
-			
+
+			<!-- navbar -->
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<!-- introduction -->
+			<h1>Start Here: Installing and First Steps with fhir-to-omop Tools</h1>
+			<p>
+				This page will show you the steps to install and get started with fhir-to-omop.  <br/><br/>
+				Getting started with fhir-to-omop means different things to different users.  
+				The fhir-to-omop project includes several tools including utilities to download FHIR resources from a FHIR server in a highly paralleized and scalable way, tools for converting FHIR to OMOP, tools for writing data to OMOP, as well as several other tools and utilities.  
+				We suggest looking at the <a href="/fhir-to-omop/pages/tools/fhir-to-omop-tools-and-utilities/FhirToOmopToolsAndUtilities.html">fhir-to-omop Tools and Utilities</a> page for the functionality you are interested in.  
+			</p>
 			
+			<!-- prerequsites -->
+			<h1>Prerequisites</h1>
+			<p>
+				There are only three prerequisites for the entire suite of fhir-to-omop tools: An installation of Git used to download fhir-to-omop,
+				an installation of Microsoft Sql Server used as the database to host the OMOP instance we will be creating, and a download of the terminology tables from <a href="">Atlas</a>.
+				It is also helpful to have Microsoft Sql Server Management Studio (MSSM) installed.  Instructions for each are in the pages shown below
+				<ul>
+					<li><a href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallGit.html">Install Git</a></li>
+					<li><a href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallMsSqlServer.html">Install Microsoft Sql Server</a></li>
+					<li><a href="/fhir-to-omop/pages/navbar/getting-started/start-here/DownloadTerminology.html">Download the OMOP Terminology to be used for your OMOP instance</a></li>
+				</ul>
+			</p>			
+			
+			<h1>Download and Install fhir-to-omop</h1>
+			<p>
+				The fhir-to-omop tools can be downloaded and installed by simply checking out the fhir-to-omop project from github using the following.
+				<code>
+					git clone https://github.com/NACHC-CAD/fhir-to-omop
+				</code>
+				Then switch to the tag you want to use as shown below (kind of, you definitely do NOT want the primordial branch)
+				<code>
+					git checkout tags/primordial
+				</code>
+				<img src="/fhir-to-omop/pages/navbar/getting-started/start-here/git.png" />
+				This project uses tags like v0.0.0. You probably want the most recent tag.  You can find the most recent tag by going to <a href="https://github.com/NACHC-CAD/fhir-to-omop">https://github.com/NACHC-CAD/fhir-to-omop</a>
+				<br/>
+				<img src="/fhir-to-omop/pages/navbar/getting-started/start-here/select-tag.png" />
+			</p>
 		</div>
 	</body>
 
