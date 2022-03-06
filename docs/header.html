@@ -309,9 +309,12 @@
 	</style>
 
 	<script>
-		alert("NOT HIDING");
-
-	
+		alert("HIDING");
+		$("body,html").css("overflow","hidden");
+		alert("SHOWING DIV");
+		$("#mainPageSplashScreen").show();
+		alert("MOVING ON");
+		
 		$(document).ready(function() {
 			alert("READY");
 		    $('#body').show();
