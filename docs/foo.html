@@ -7,15 +7,20 @@
 
 		<div id="mainPageSplashScreen" class="mainPageSplashScreen"></div>
 		<!-- show the splash screen -->
+		<script src="/fhir-to-omop/docs/site_libs/jquery-1.11.3/jquery.min.js"></script>
 		<script>
 			$("html","body").style("display:none")
 		</script>
 
 		<!-- include lib code -->
-		<script src="/fhir-to-omop/site_libs/jquery-1.11.3/jquery.min.js"></script>
 		<div id="headerInclude"></div>
-		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+		<script>$("#headerInclude").load("/fhir-to-omop/docs/header.html");</script>
 	</head>
+
+	<body>
+		<div id="navbarInclude"></div>
+		<script>$("#navbarInclude").load("/fhir-to-omop/docs/navbar.html");</script>
+	</body>
 
 </html>
 
