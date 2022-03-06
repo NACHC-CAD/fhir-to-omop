@@ -1,0 +1,22 @@
+<html>
+
+	<head>
+		<style>
+			html { visibility:hidden; }
+		</style>
+
+		<div id="mainPageSplashScreen" class="mainPageSplashScreen"></div>
+		<!-- show the splash screen -->
+		<script>
+			$("html","body").style("display:none")
+		</script>
+
+		<!-- include lib code -->
+		<script src="/fhir-to-omop/site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+</html>
+
+

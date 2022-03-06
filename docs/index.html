@@ -1,8 +1,18 @@
 <html>
 	
 	<head>
+		<style>
+			html { visibility:hidden; }
+		</style>
 		<!-- include lib code -->
 		<script src="/fhir-to-omop/site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<script>
+			alert("using html version");
+			$(document).ready(function() {
+				alert("doing ready");
+				document.getElementsByTagName("html")[0].style.visibility = "visible";
+			});
+		</script>
 		<div id="headerInclude"></div>
 		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
 	</head>
