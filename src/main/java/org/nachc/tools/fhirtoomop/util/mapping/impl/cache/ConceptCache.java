@@ -16,7 +16,7 @@ public class ConceptCache {
 
 	private static Queue<CacheKey> queue = new LinkedList<CacheKey>();
 
-	public static ConceptDvo get(String system, String code) {
+	public static synchronized ConceptDvo get(String system, String code) {
 		if (system == null || code == null) {
 			return null;
 		} else {
@@ -27,7 +27,7 @@ public class ConceptCache {
 		}
 	}
 
-	public static void add(String system, String code, ConceptDvo dvo) {
+	public static synchronized void add(String system, String code, ConceptDvo dvo) {
 		if (concepts.size() >= SIZE) {
 			CacheKey key = queue.poll();
 			concepts.remove(key);
