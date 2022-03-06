@@ -305,30 +305,23 @@
 	</script>
 
 	<style>
-		#mainPageSplashScreen {position: fixed; height: 200px; width: 200px; top:0; left: 0; background:ffffff; z-index:9999;}	
+		#mainPageSplashScreen {position: fixed; height: 100px; width: 100px; top:0; left: 0; background: #000; z-index:9999;}	
 	</style>
 
 	<script>
-	/*
-	alert("FOO")
-	$(document).ready(function() {
-		alert("READY");
-	    $("body,html").show();
-	    $("#mainPageSplashScreen").hide();
-	});
-	// we want load
-	$(window).load(function() {
-		alert("LOAD");
-	    $("body,html").show();
-	    $("#mainPageSplashScreen").hide();
-	});
-	*/
+		alert("HIDING");
+		$("body,html").css("overflow","hidden");
+	
+		$(document).ready(function() {
+			alert("READY");
+		    $('#body').show();
+		    $('#mainPageSplashScreen').hide();
+		});
 	</script>
 
 	</head>
 
-	<div id="mainPageSplashScreen" class="mainPageSplashScreen">ADDED LOAD FUNCTION</div>
-
+	<div id="mainPageSplashScreen" class="mainPageSplashScreen"></div>
 
 	<div class="footer">
 		<p>
