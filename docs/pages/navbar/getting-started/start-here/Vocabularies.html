@@ -1,0 +1,453 @@
+<html>
+	
+	<head>
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Vocabularies used for testing and development of fhir-to-omop</h1>
+			<p>
+			The vocabularies listed below were used to create and test the fhir-to-omop tools. The were downloaded from Athena sometime before March 6, 2022.  
+			</p>
+
+			<!-- vocabularies table -->
+			<table>
+			  <tr>
+			    <td>vocabulary_id</td>
+			    <td>vocabulary_name</td>
+			    <td>vocabulary_reference</td>
+			    <td>vocabulary_version</td>
+			    <td>vocabulary_concept_id</td>
+			  </tr>
+			  <tr>
+			    <td>ABMS</td>
+			    <td>Provider Specialty (American Board of Medical Specialties)</td>
+			    <td>http://www.abms.org/member-boards/specialty-subspecialty-certificates</td>
+			    <td>2018-06-26 ABMS</td>
+			    <td>45756746</td>
+			  </tr>
+			  <tr>
+			    <td>ATC</td>
+			    <td>WHO Anatomic Therapeutic Chemical Classification</td>
+			    <td>http://www.whocc.no/atc_ddd_index/</td>
+			    <td>RxNorm 20200504</td>
+			    <td>44819117</td>
+			  </tr>
+			  <tr>
+			    <td>CDM</td>
+			    <td>OMOP Common DataModel</td>
+			    <td>https://github.com/OHDSI/CommonDataModel</td>
+			    <td>CDM v6.0.2</td>
+			    <td>32485</td>
+			  </tr>
+			  <tr>
+			    <td>CMS Place of Service</td>
+			    <td>Place of Service Codes for Professional Claims (CMS)</td>
+			    <td>http://www.cms.gov/Medicare/Medicare-Fee-for-Service-Payment/PhysicianFeeSched/downloads//Website_POS_database.pdf</td>
+			    <td>1/11/2009</td>
+			    <td>44819110</td>
+			  </tr>
+			  <tr>
+			    <td>Cohort Type</td>
+			    <td>OMOP Cohort Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819234</td>
+			  </tr>
+			  <tr>
+			    <td>Concept Class</td>
+			    <td>OMOP Concept Class</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819233</td>
+			  </tr>
+			  <tr>
+			    <td>Condition Status</td>
+			    <td>OMOP Condition Status</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32887</td>
+			  </tr>
+			  <tr>
+			    <td>Condition Type</td>
+			    <td>OMOP Condition Occurrence Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819127</td>
+			  </tr>
+			  <tr>
+			    <td>Cost</td>
+			    <td>OMOP Cost</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>581457</td>
+			  </tr>
+			  <tr>
+			    <td>Cost Type</td>
+			    <td>OMOP Cost Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>5029</td>
+			  </tr>
+			  <tr>
+			    <td>CPT4</td>
+			    <td>Current Procedural Terminology version 4 (AMA)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html</td>
+			    <td>2020 Release</td>
+			    <td>44819100</td>
+			  </tr>
+			  <tr>
+			    <td>Currency</td>
+			    <td>International Currency Symbol (ISO 4217)</td>
+			    <td>http://www.iso.org/iso/home/standards/currency_codes.htm</td>
+			    <td>2008</td>
+			    <td>44819153</td>
+			  </tr>
+			  <tr>
+			    <td>Death Type</td>
+			    <td>OMOP Death Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819135</td>
+			  </tr>
+			  <tr>
+			    <td>Device Type</td>
+			    <td>OMOP Device Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819151</td>
+			  </tr>
+			  <tr>
+			    <td>Domain</td>
+			    <td>OMOP Domain</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819147</td>
+			  </tr>
+			  <tr>
+			    <td>Drug Type</td>
+			    <td>OMOP Drug Exposure Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819126</td>
+			  </tr>
+			  <tr>
+			    <td>Episode</td>
+			    <td>OMOP Episode</td>
+			    <td>OMOP generated</td>
+			    <td>Episode 20201014</td>
+			    <td>32523</td>
+			  </tr>
+			  <tr>
+			    <td>Ethnicity</td>
+			    <td>OMOP Ethnicity</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819134</td>
+			  </tr>
+			  <tr>
+			    <td>Gender</td>
+			    <td>OMOP Gender</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819108</td>
+			  </tr>
+			  <tr>
+			    <td>HCPCS</td>
+			    <td>Healthcare Common Procedure Coding System (CMS)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html</td>
+			    <td>2020 Alpha Numeric HCPCS File</td>
+			    <td>44819101</td>
+			  </tr>
+			  <tr>
+			    <td>ICD10CM</td>
+			    <td>International Classification of Diseases, Tenth Revision, Clinical Modification (NCHS)</td>
+			    <td>http://www.cdc.gov/nchs/icd/icd10cm.htm</td>
+			    <td>ICD10CM FY2021 code descriptions</td>
+			    <td>44819098</td>
+			  </tr>
+			  <tr>
+			    <td>ICD9CM</td>
+			    <td>International Classification of Diseases, Ninth Revision, Clinical Modification, Volume 1 and 2 (NCHS)</td>
+			    <td>http://www.cms.gov/Medicare/Coding/ICD9ProviderDiagnosticCodes/codes.html</td>
+			    <td>ICD9CM v32 master descriptions</td>
+			    <td>5046</td>
+			  </tr>
+			  <tr>
+			    <td>Korean Revenue Code</td>
+			    <td>Korean Revenue Code</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32724</td>
+			  </tr>
+			  <tr>
+			    <td>LOINC</td>
+			    <td>Logical Observation Identifiers Names and Codes (Regenstrief Institute)</td>
+			    <td>http://loinc.org/downloads/loinc</td>
+			    <td>2.69</td>
+			    <td>44819102</td>
+			  </tr>
+			  <tr>
+			    <td>Meas Type</td>
+			    <td>OMOP Measurement Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819152</td>
+			  </tr>
+			  <tr>
+			    <td>Medicare Specialty</td>
+			    <td>Medicare provider/supplier specialty codes (CMS)</td>
+			    <td>http://www.cms.gov/Medicare/Provider-Enrollment-and-Certification/MedicareProviderSupEnroll/Taxonomy.html</td>
+			    <td>2018-06-26 Specialty</td>
+			    <td>44819138</td>
+			  </tr>
+			  <tr>
+			    <td>MEDRT</td>
+			    <td>Medication Reference Terminology MED-RT (VA)</td>
+			    <td>https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=MED-RT</td>
+			    <td>MED-RT 2018-09-04</td>
+			    <td>32537</td>
+			  </tr>
+			  <tr>
+			    <td>Metadata</td>
+			    <td>Metadata</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32675</td>
+			  </tr>
+			  <tr>
+			    <td>NDC</td>
+			    <td>National Drug Code (FDA and manufacturers)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html, http://www.fda.gov/downloads/Drugs/DevelopmentApprovalProcess/UCM070838.zip</td>
+			    <td>NDC 20210829</td>
+			    <td>44819105</td>
+			  </tr>
+			  <tr>
+			    <td>NDFRT</td>
+			    <td>National Drug File - Reference Terminology (VA)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html</td>
+			    <td>RXNORM 2018-08-12</td>
+			    <td>44819103</td>
+			  </tr>
+			  <tr>
+			    <td>None</td>
+			    <td>OMOP Standardized Vocabularies</td>
+			    <td>OMOP generated</td>
+			    <td>v5.0 02-SEP-21</td>
+			    <td>44819096</td>
+			  </tr>
+			  <tr>
+			    <td>Note Type</td>
+			    <td>OMOP Note Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819146</td>
+			  </tr>
+			  <tr>
+			    <td>NUCC</td>
+			    <td>National Uniform Claim Committee Health Care Provider Taxonomy Code Set (NUCC)</td>
+			    <td>http://www.nucc.org/index.php?option=com_content&view=article&id=107&Itemid=132</td>
+			    <td>2018-06-26 NUCC</td>
+			    <td>44819137</td>
+			  </tr>
+			  <tr>
+			    <td>Obs Period Type</td>
+			    <td>OMOP Observation Period Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819149</td>
+			  </tr>
+			  <tr>
+			    <td>Observation Type</td>
+			    <td>OMOP Observation Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819129</td>
+			  </tr>
+			  <tr>
+			    <td>OMOP Extension</td>
+			    <td>OMOP Extension (OHDSI)</td>
+			    <td>OMOP generated</td>
+			    <td>OMOP Extension 20210901</td>
+			    <td>32758</td>
+			  </tr>
+			  <tr>
+			    <td>OSM</td>
+			    <td>OpenStreetMap</td>
+			    <td>https://www.openstreetmap.org/copyright/en, https://wambachers-osm.website/boundaries/</td>
+			    <td>OSM Release 2019-02-21</td>
+			    <td>32541</td>
+			  </tr>
+			  <tr>
+			    <td>Plan</td>
+			    <td>Health Plan - contract to administer healthcare transactions by the payer, facilitated by the sponsor</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32471</td>
+			  </tr>
+			  <tr>
+			    <td>Plan Stop Reason</td>
+			    <td>Plan Stop Reason - Reason for termination of the Health Plan</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32474</td>
+			  </tr>
+			  <tr>
+			    <td>Procedure Type</td>
+			    <td>OMOP Procedure Occurrence Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819128</td>
+			  </tr>
+			  <tr>
+			    <td>Race</td>
+			    <td>Race and Ethnicity Code Set (USBC)</td>
+			    <td>http://www.cdc.gov/nchs/data/dvs/Race_Ethnicity_CodeSet.pdf</td>
+			    <td>Version 1.0</td>
+			    <td>44819109</td>
+			  </tr>
+			  <tr>
+			    <td>Relationship</td>
+			    <td>OMOP Relationship</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819235</td>
+			  </tr>
+			  <tr>
+			    <td>Revenue Code</td>
+			    <td>UB04/CMS1450 Revenue Codes (CMS)</td>
+			    <td>http://www.mpca.net/?page=ERC_finance</td>
+			    <td>2010 Release</td>
+			    <td>44819133</td>
+			  </tr>
+			  <tr>
+			    <td>RxNorm</td>
+			    <td>RxNorm (NLM)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/rxnorm/docs/rxnormfiles.html</td>
+			    <td>RxNorm 20210802</td>
+			    <td>44819104</td>
+			  </tr>
+			  <tr>
+			    <td>RxNorm Extension</td>
+			    <td>RxNorm Extension (OHDSI)</td>
+			    <td>OMOP generated</td>
+			    <td>RxNorm Extension 2021-08-17</td>
+			    <td>252</td>
+			  </tr>
+			  <tr>
+			    <td>SNOMED</td>
+			    <td>Systematic Nomenclature of Medicine - Clinical Terms (IHTSDO)</td>
+			    <td>http://www.nlm.nih.gov/research/umls/licensedcontent/umlsknowledgesources.html</td>
+			    <td>2020-07-31 SNOMED CT International Edition; 2020-09-01 SNOMED CT US Edition; 2020-10-28 SNOMED CT UK Edition</td>
+			    <td>44819097</td>
+			  </tr>
+			  <tr>
+			    <td>SOPT</td>
+			    <td>Source of Payment Typology (PHDSC)</td>
+			    <td>https://www.nahdo.org/sopt</td>
+			    <td>SOPT Version 9.2</td>
+			    <td>32473</td>
+			  </tr>
+			  <tr>
+			    <td>SPL</td>
+			    <td>Structured Product Labeling (FDA)</td>
+			    <td>http://www.fda.gov/Drugs/InformationOnDrugs/ucm142438.htm</td>
+			    <td>NDC 20210829</td>
+			    <td>44819140</td>
+			  </tr>
+			  <tr>
+			    <td>Sponsor</td>
+			    <td>Sponsor - institution or individual financing healthcare transactions</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>32472</td>
+			  </tr>
+			  <tr>
+			    <td>Type Concept</td>
+			    <td>OMOP Type Concept</td>
+			    <td>OMOP generated</td>
+			    <td>Type Concept 20210212</td>
+			    <td>32808</td>
+			  </tr>
+			  <tr>
+			    <td>UB04 Point of Origin</td>
+			    <td>UB04 Claim Source Inpatient Admission Code (CMS)</td>
+			    <td>https://www.resdac.org/cms-data/variables/Claim-Source-Inpatient-Admission-Code</td>
+			    <td>NULL</td>
+			    <td>32045</td>
+			  </tr>
+			  <tr>
+			    <td>UB04 Pri Typ of Adm</td>
+			    <td>UB04 Claim Inpatient Admission Type Code (CMS)</td>
+			    <td>https://www.resdac.org/cms-data/variables/Claim-Inpatient-Admission-Type-Code</td>
+			    <td>NULL</td>
+			    <td>32046</td>
+			  </tr>
+			  <tr>
+			    <td>UB04 Pt dis status</td>
+			    <td>UB04 Patient Discharge Status Code (CMS)</td>
+			    <td>https://www.resdac.org/cms-data/variables/patient-discharge-status-code</td>
+			    <td>NULL</td>
+			    <td>32047</td>
+			  </tr>
+			  <tr>
+			    <td>UB04 Typ bill</td>
+			    <td>UB04 Type of Bill - Institutional (USHIK)</td>
+			    <td>https://ushik.ahrq.gov/ViewItemDetails?&system=apcd&itemKey=196987000</td>
+			    <td>NULL</td>
+			    <td>32044</td>
+			  </tr>
+			  <tr>
+			    <td>UCUM</td>
+			    <td>Unified Code for Units of Measure (Regenstrief Institute)</td>
+			    <td>http://aurora.regenstrief.org/~ucum/ucum.html#section-Alphabetic-Index</td>
+			    <td>Version 1.8.2</td>
+			    <td>44819107</td>
+			  </tr>
+			  <tr>
+			    <td>US Census</td>
+			    <td>United States Census Bureau</td>
+			    <td>https://www.census.gov/geo/maps-data/data/tiger-cart-boundary.html</td>
+			    <td>US Census 2017 Release</td>
+			    <td>32570</td>
+			  </tr>
+			  <tr>
+			    <td>Visit</td>
+			    <td>OMOP Visit</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819119</td>
+			  </tr>
+			  <tr>
+			    <td>Visit Type</td>
+			    <td>OMOP Visit Type</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819150</td>
+			  </tr>
+			  <tr>
+			    <td>Vocabulary</td>
+			    <td>OMOP Vocabulary</td>
+			    <td>OMOP generated</td>
+			    <td>NULL</td>
+			    <td>44819232</td>
+			  </tr>
+			</table>
+
+		</div>
+	</body>
+</html>
+
+
+
+
+
