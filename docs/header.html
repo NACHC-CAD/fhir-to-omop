@@ -305,7 +305,7 @@
 	</script>
 
 	<style>
-		#mainPageSplashScreen {position: fixed; height: 200px; width: 200px; top:0; left: 0; background:green; z-index:9999;}	
+		#mainPageSplashScreen {position: fixed; height: 200px; width: 200px; top:0; left: 0; background:ffffff; z-index:9999;}	
 	</style>
 
 	<script>
@@ -314,14 +314,15 @@
 	    $("body,html").show();
 	    $("#mainPageSplashScreen").hide();
 	});
-	$(document).load(function() {
+	// we want load
+	$(window).load(function() {
 		alert("load");
 	    $("body,html").show();
 	    $("#mainPageSplashScreen").hide();
 	});
 	</script>
 
-	<div id="mainPageSplashScreen" class="mainPageSplashScreen">MOVED DIV TO HEAD</div>
+	<div id="mainPageSplashScreen" class="mainPageSplashScreen">ADDED LOAD FUNCTION</div>
 
 	</head>
 
