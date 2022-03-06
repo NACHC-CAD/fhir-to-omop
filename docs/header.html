@@ -304,7 +304,20 @@
 		$(".main-container").append("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>")
 	</script>
 
+	<style>
+		#mainPageSplashScreen {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #000; z-index:9999;}	
+	</style>
+
+	<script>
+	$(window).on('load', function() {
+		$("#mainPageSplashScreen").hide();
+	});		
+	</script>
+
 	</head>
+
+	<div id="mainPageSplashScreen" class="mainPageSplashScreen"></div>
+
 
 	<div class="footer">
 		<p>
