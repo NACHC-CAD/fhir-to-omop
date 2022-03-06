@@ -309,23 +309,25 @@
 	</style>
 
 	<script>
-	alert("foo")
+	alert("FOO")
 	$(document).ready(function() {
-		alert("ready");
+		alert("READY");
 	    $("body,html").show();
 	    $("#mainPageSplashScreen").hide();
 	});
 	// we want load
 	$(window).load(function() {
-		alert("load");
+		alert("LOAD");
 	    $("body,html").show();
 	    $("#mainPageSplashScreen").hide();
 	});
 	</script>
 
-	<div id="mainPageSplashScreen" class="mainPageSplashScreen">ADDED LOAD FUNCTION</div>
-
 	</head>
+
+	<body>
+		<div id="mainPageSplashScreen" class="mainPageSplashScreen">ADDED LOAD FUNCTION</div>
+	</body>
 
 	<div class="footer">
 		<p>
