@@ -305,16 +305,17 @@
 	</script>
 
 	<style>
-		#mainPageSplashScreen {position: fixed; height: 100px; width: 100px; top:0; left: 0; background: #000; z-index:9999;}	
+		#mainPageSplashScreen {position: fixed; height: 100px; width: 100px; top:0; left: 0; background: #d3d3d3; z-index:9999;}	
 	</style>
 
 	<script>
-	$alert("STARTING SCRIPT");
-	$(window).on("load", function() {
-		alert("here");
-		$("#mainPageSplashScreen").hide();
-		alert("done");
-	});		
+		alert("HIDING");
+		$("body,html").css("overflow","hidden");
+	
+		$(document).ready(function() {
+		    $("body,html").show();
+		    $('#mainPageSplashScreen').hide();
+		});
 	</script>
 
 	</head>
