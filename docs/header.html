@@ -305,20 +305,25 @@
 	</script>
 
 	<style>
-		#mainPageSplashScreen {position: fixed; height: 100%; width: 100%; top:0; left: 0; background: #d3d3d3; z-index:9999;}	
+		#mainPageSplashScreen {position: fixed; height: 100px; width: 100px; top:0; left: 0; background:green; z-index:9999;}	
 	</style>
 
 	<script>
-		$(document).ready(function() {
-			alert("ready");
-		    $("body,html").show();
-		    $("#mainPageSplashScreen").hide();
-		});
+	$(document).ready(function() {
+		alert("ready");
+	    $("body,html").show();
+	    $("#mainPageSplashScreen").hide();
+	});
+	$(document).load(function() {
+		alert("load");
+	    $("body,html").show();
+	    $("#mainPageSplashScreen").hide();
+	});
 	</script>
 
 	</head>
 
-	<div id="mainPageSplashScreen" class="mainPageSplashScreen"></div>
+	<div id="mainPageSplashScreen" class="mainPageSplashScreen">LOADING</div>
 
 	<div class="footer">
 		<p>
