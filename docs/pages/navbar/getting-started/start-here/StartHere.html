@@ -28,12 +28,25 @@
 			<!-- prerequsites -->
 			<h1>Prerequisites</h1>
 			<p>
-				There are only four prerequisites for the entire suite of fhir-to-omop tools: Java, An installation of Git used to download fhir-to-omop,
-				an installation of Microsoft Sql Server used as the database to host the OMOP instance we will be creating, and a download of the terminology tables from <a target="athena" href="https://athena.ohdsi.org/vocabulary/list">OHDSI Athena</a>.
-				It is also helpful to have Microsoft Sql Server Management Studio (MSSM) installed. 
-				It is also useful to have an integrated development environment (IDE).  
-				I prefer <a target="eclipse" href="https://www.eclipse.org/">Eclipse</a> 
-				(because I'm older than the mountains... at least I'm not using emaccs, because I'm younger than the trees).   
+				The following resources are required for the fhir-to-omop tool suite.   
+				<ol>
+					<li>A UMLS Account (secure.login.gov): Some of the terminologies used in OMOP require a UMLS account.  </li>
+					<li>An OHDSI Athena account: Athena will be used to download the terminologies we will add to our OHDSI implementation</li>
+					<li>Java: fhir-to-omop is a suite of Java applications.</li>
+					<li>Git: Git used to download fhir-to-omop</li>
+					<li>
+						MS Sql Server:
+						An installation of Microsoft Sql Server used as the database to host the OMOP instance we will be creating, and a download of the terminology tables from <a target="athena" href="https://athena.ohdsi.org/vocabulary/list">OHDSI Athena</a>.
+						It is also helpful to have Microsoft Sql Server Management Studio (MSSM) installed. 
+					</li>
+					<li>
+						Eclipse (or other IDE):
+						It is also useful to have an integrated development environment (IDE).  
+						I prefer <a target="eclipse" href="https://www.eclipse.org/">Eclipse</a> 
+						(because I'm older than the mountains... at least I'm not using emaccs, because I'm younger than the trees).   
+					</li>
+				</ol>
+				
 				Instructions for each are in the pages shown below.
 				<ul>
 					<li><a href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallGit.html">Install Java</a></li>
