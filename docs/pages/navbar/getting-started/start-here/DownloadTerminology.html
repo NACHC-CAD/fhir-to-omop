@@ -1,1 +1,53 @@
-THIS IS DOWNLOAD TERMINOLOGY
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Downloading the OMOP Terminology Tables Data</h1>
+			The OMOP terminology tables include the vocabulary, concept, concept_ancestor, etc. tables that define the terminologies used by your OMOP instance.  
+			These tables can be populated from files that are downloaded from <a target="athena" href="https://athena.ohdsi.org/vocabulary/list">OHDSI Athena</a>.
+			Before you can download the files you'll need to get an account.    
+			
+			<h1>Get an Athena account</h1>
+			To get an Athena account go to the <a target="athena" haref="https://athena.ohdsi.org/auth/login">Athena Login page</a> and select the registration option. 
+			Then, provide the requested information as shown in the screen shots below.   
+			<br/>
+			<img width=400px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-create-account.PNG" />
+			<br/><br/>
+			<img width=400px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-create-account-form.PNG" />
+			
+			<h1>Download Terminology Data from Athena</h1>
+			After <a target="athena" haref="https://athena.ohdsi.org/auth/login">Loging into Athena</a>, go to the Download page by selecting Download option in the upper right hand corner of the screen.  
+			The terminologies used as part of a basic standard install are selected.  
+			The fhir-to-omop tools were built using the preselected tables with the addition of the following two terminologies.
+			<ul>
+				<li>NDFRT: The National Drug File - Reference Terminology (VA)<li>
+				<li>MEDRT: Medication Reference Terminology MED-RT (VA)<li>
+			</ul>
+			<br/>
+			<img width=400px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-download.PNG" />
+			<br/>
+			After submitting the request for the download you will receive an email with instructions on how to download the vocabulary package you've created.  
+			You can also retrieve the vocabulary package you just created as well as other packages you've created from the <a target="athena" href="https://athena.ohdsi.org/vocabulary/download-history">Download History Page</a>
+			<br/>
+			<img width=400px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-download.PNG" />
+
+		</div>
+	</body>
+</html>
+
+
+
