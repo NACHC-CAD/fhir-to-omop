@@ -9,8 +9,8 @@ public class CreateDatabase {
 
 	public static void exec(Connection conn) {
 		String databaseName = AppConnectionParams.getDbName();
-		String sqlString = "create database " + databaseName;
-		Database.update(sqlString, conn);
+		Database.update("create database " + databaseName, conn);
+		Database.update("create database " + databaseName + "_dqd_results", conn);
 	}
 	
 }
