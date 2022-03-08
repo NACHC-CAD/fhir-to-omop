@@ -170,7 +170,7 @@ public class OmopObservationFactory {
 		if (unitsSystem == null || unitsCode == null) {
 			ConceptDvo unitsConceptDvo = new ConceptDvo();
 			unitsConceptDvo.setConceptId(0);
-			ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);			
+			ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);			
 			return unitsConceptDvo;
 		} else {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
@@ -181,7 +181,7 @@ public class OmopObservationFactory {
 				mod = mod.replace("}", "]");
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 				if (unitsConceptDvo != null) {
-					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 				}
 			}
 			// this is for concept_id 9117
@@ -192,7 +192,7 @@ public class OmopObservationFactory {
 				mod = mod.replace('_', '.');
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 				if (unitsConceptDvo != null) {
-					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 				}
 			}
 			// this is for mmHg
@@ -200,16 +200,16 @@ public class OmopObservationFactory {
 				String mod = "mm[Hg]";
 				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
 				if (unitsConceptDvo != null) {
-					ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 				}
 			}
-			ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+			ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 			if (unitsConceptDvo != null) {
-				ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 			} else {
 				unitsConceptDvo = new ConceptDvo();
 				unitsConceptDvo.setConceptId(0);
-				ConceptCache.add(unitsSystem, unitsCode, unitsConceptDvo);
+				ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 			}
 			return unitsConceptDvo;
 		}

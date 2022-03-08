@@ -36,7 +36,7 @@ public class FhirToOmopConceptMapper {
 		} else {
 			ConceptDvo dvo = null;
 			// look for concept in cache
-			dvo = ConceptCache.get(system, code);
+			dvo = ConceptCache.ACTIVE_CACHE.get(system, code);
 			if (dvo != null) {
 				return dvo;
 			}
@@ -44,26 +44,26 @@ public class FhirToOmopConceptMapper {
 			log.info("looking for standard concept: " + system + "\t" + code);
 			dvo = getStandardConcept(system, code, conn);
 			if (dvo != null) {
-				ConceptCache.add(system, code, dvo);
+				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a mapping to a standard concept
 			log.info("looking for mapped concept: " + system + "\t" + code);
 			dvo = getStandardConceptFromMapping(system, code, conn);
 			if (dvo != null) {
-				ConceptCache.add(system, code, dvo);
+				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a non-standard concept
 			log.info("looking for non-standard concept: " + system + "\t" + code);
 			dvo = getNonStandardConcept(system, code, conn);
 			if(dvo != null) {
-				ConceptCache.add(system, code, dvo);
+				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
 			// create a new concept with id > 1B
 			ConceptDvo newConceptDvo = addTempConcept(system, code, conn);
-			ConceptCache.add(system, code, newConceptDvo);
+			ConceptCache.ACTIVE_CACHE.add(system, code, newConceptDvo);
 			return newConceptDvo;
 		}
 	}

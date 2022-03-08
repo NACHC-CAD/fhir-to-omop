@@ -10,22 +10,23 @@ import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 
 public class ConceptCache {
 
-	private static int SIZE = 100000;
+	public static final ConceptCache ACTIVE_CACHE = new ConceptCache();
+	
+	private int SIZE = 100000;
 
-	private static HashMap<CacheKey, ConceptDvo> concepts = new HashMap<CacheKey, ConceptDvo>();
+	private HashMap<CacheKey, ConceptDvo> concepts = new HashMap<CacheKey, ConceptDvo>();
 
-	private static Queue<CacheKey> queue = new LinkedList<CacheKey>();
+	private Queue<CacheKey> queue = new LinkedList<CacheKey>();
 
-	// TODO: Is this going to cause problems? (JEG)
-	public static void setSize(int size) {
+	public void setSize(int size) {
 		SIZE = size;
 	}
 	
-	public static int getSize() {
+	public int getSize() {
 		return SIZE;
 	}
 	
-	public static synchronized ConceptDvo get(String system, String code) {
+	public synchronized ConceptDvo get(String system, String code) {
 		if (system == null || code == null) {
 			return null;
 		} else {
@@ -36,7 +37,7 @@ public class ConceptCache {
 		}
 	}
 
-	public static synchronized void add(String system, String code, ConceptDvo dvo) {
+	public synchronized void add(String system, String code, ConceptDvo dvo) {
 		CacheKey key = new CacheKey(system, code);
 		if (concepts.size() >= SIZE) {
 			if(queue.contains(key)) {
@@ -50,7 +51,7 @@ public class ConceptCache {
 		queue.add(key);
 	}
 
-	public static String getDebugString() {
+	public String getDebugString() {
 		String msg = "";
 		msg += "id\tsystem\tcode\n";
 		Iterator<CacheKey> itr = queue.iterator();
@@ -61,4 +62,5 @@ public class ConceptCache {
 		}
 		return msg;
 	}
+
 }
