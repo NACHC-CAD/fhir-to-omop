@@ -19,6 +19,7 @@ public class BurnEverythingToTheGround {
 		log.warn("DROPPING DATABASE: " + databaseName);
 		Database.update("use master", conn);
 		Database.update("drop database if exists " + databaseName, conn);
+		Database.update("drop database if exists " + databaseName + "_dqd_results", conn);
 		log.warn("DATABASE DROPPED: " + databaseName);
 		// drop the login
 		String uid = AppConnectionParams.getUid();
