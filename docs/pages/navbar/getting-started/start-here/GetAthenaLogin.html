@@ -1,1 +1,29 @@
-THIS IS GET ATHENA LOGIN
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Get an Athena account</h1>
+			To get an Athena account go to the <a target="athena" haref="https://athena.ohdsi.org/auth/login">Athena Login page</a> and select the registration option. 
+			Then, provide the requested information as shown in the screen shots below.   
+			<br/>
+			<img align="center" width=800px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-create-account.PNG" />
+			<br/><br/>
+			<img align="center" width=800px; src="/fhir-to-omop/pages/navbar/getting-started/start-here/athena/athena-create-account-form.PNG" />
+
+		</div>
+	</body>
+</html>
