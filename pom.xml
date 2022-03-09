@@ -91,6 +91,103 @@
 	*
 	-->
 
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/fhir-to-omop</outputDirectory>
+							<!--  
+							<outputDirectory>${basedir}/target/Crunchify</outputDirectory>
+							-->
+							<resources>
+								<resource>
+									<directory>resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/fhir-to-omop/lib</outputDirectory>
+							<!--  
+							<outputDirectory>${project.build.directory}/Crunchify/lib</outputDirectory>
+							-->
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.nachc.tools.fhirtoomop.main.FhirToOmopMain</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+						</manifestEntries>
+					</archive>
+					<finalName>fhir-to-omop/fhir-to-omop</finalName>
+					<!--   
+					<finalName>Crunchify/Crunchify</finalName>
+					-->
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-surefire-plugin</artifactId>
+				  <version>3.0.0-M5</version>
+				  <configuration>
+				    <skipTests>true</skipTests>
+				  </configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+
+<!--  
 	<build>
 
 		<plugins>
@@ -106,23 +203,36 @@
 
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <id>copy-dependencies</id>
+			            <phase>prepare-package</phase>
+			            <goals>
+			                <goal>copy-dependencies</goal>
+			            </goals>
+			            <configuration>
+			                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+			                <overWriteReleases>false</overWriteReleases>
+			                <overWriteSnapshots>false</overWriteSnapshots>
+			                <overWriteIfNewer>true</overWriteIfNewer>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-jar-plugin</artifactId>
-			    <version>2.3.2</version>
 			    <configuration>
-			    	<!--  
-			        <finalName>nachc-cad-core-${build.version}</finalName>                   
-				    -->
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>org.nachc.tools.fhirtoomop.main.FhirToOmopMain</mainClass>
-						</manifest>
-					</archive>
-		          <descriptorRefs>
-		            <descriptorRef>jar-with-dependencies</descriptorRef>
-		          </descriptorRefs>
+			        <archive>
+			            <manifest>
+			                <addClasspath>true</addClasspath>
+			                <classpathPrefix>lib/</classpathPrefix>
+			                <mainClass>org.nachc.tools.fhirtoomop.main.FhirToOmopMain</mainClass>
+			            </manifest>
+			        </archive>
 			    </configuration>
-			</plugin>      
+			</plugin>
 
 			<plugin>
 				  <groupId>org.apache.maven.plugins</groupId>
@@ -135,6 +245,7 @@
 
 		</plugins>
 	</build>
+-->
     
 </project>
 

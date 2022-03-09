@@ -14,7 +14,7 @@ public class FhirToOmopMain {
 	}
 
 	private static void printZeroArgsMsg() {
-		String msg = FileUtil.getAsString("/org/nachc/tools/fhirtoomop/main/msg/zero-args-error.txt");
+		String msg = FileUtil.getAsString("/main/msg/zero-args-error.txt");
 		System.out.println(msg);
 	}
 
