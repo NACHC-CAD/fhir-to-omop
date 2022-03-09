@@ -1,0 +1,36 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Create A UMLS Account</h1>
+			Some of the terminologies used by OMOP require a UMLS account and API key.  To get a UMLS account and API key follow the steps below.  
+			<br/><br/>
+			Before you can create a UMLS account you will need an identity provider.  I'm using login.gov.  
+			To create a login.gov account follow the instructions <a target="usa" href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetUsGovLogin.html">here</a>.  
+			<br/>			
+			<h1>Create Your Account</h1>
+			Submit a request for a UMLS account from <a target="usgov" href="https://uts.nlm.nih.gov/uts/signup-login">https://uts.nlm.nih.gov/uts/signup-login/</a> 
+			and select "Sign Up".
+			<br/>
+			<img width="600px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/umls/umls-home.PNG" />
+			<br/>
+			Once your done filling out the forms you will be told it will take 3 business days for your request to be processed
+
+
+		</div>
+	</body>
+</html>
