@@ -111,7 +111,16 @@
 			    <configuration>
 			    	<!--  
 			        <finalName>nachc-cad-core-${build.version}</finalName>                   
-			    	-->
+				    -->
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>org.nachc.tools.fhirtoomop.main.FhirToOmopMain</mainClass>
+						</manifest>
+					</archive>
+		          <descriptorRefs>
+		            <descriptorRef>jar-with-dependencies</descriptorRef>
+		          </descriptorRefs>
 			    </configuration>
 			</plugin>      
 
