@@ -27,12 +27,13 @@
 			
 			<!-- prerequsites -->
 			<h1>Prerequisites</h1>
-			<p style="color:red;"><b>Note: A new UMLS licence takes 3 business days to process. Do this first ! ! !</b></p>
+			<p style="color:red;">Note: A new UMLS licence takes 3 business days to process. Do this first ! ! !</p>
 			<p>
 				The following resources are required for the fhir-to-omop tool suite.   
 				<ol>
 					<li>An identity provider. I'm using secure.login.gov. Others such as Microsoft or Google (gmail) can also be used.  
 					<li>A UMLS Account: Some of the terminologies used in OMOP require a UMLS account.  </li>
+					<li>A UMLS API Key: This is required to integrate CPT codes after the terminology has been downloaded.  </li>
 					<li>An OHDSI Athena account: Athena will be used to download the terminologies we will add to our OHDSI implementation</li>
 					<li>Java: fhir-to-omop is a suite of Java applications.</li>
 					<li>Git: Git used to download fhir-to-omop</li>
@@ -53,6 +54,7 @@
 				<ul>
 					<li><a target="usa" href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetUsGovLogin.html">Get A secure.login.gov Account</a></li>
 					<li><a target="usa" href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetAUmlsAccount.html">Get UMLS Account</a></li>					
+					<li><a target="usa" href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetAUmlsApiKey.html">Get UMLS API Key</a></li>					
 					<li><a target="athena" href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetAthenaLogin.html">Get Athena Login</a></li>
 					<li><a target="java" href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallGit.html">Install Java</a></li>
 					<li><a target="git" href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallGit.html">Install Git</a></li>
