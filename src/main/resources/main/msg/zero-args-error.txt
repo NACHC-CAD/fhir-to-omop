@@ -1,3 +1,5 @@
+
+
 # --------------
 # ERROR
 # --------------
@@ -19,4 +21,6 @@ The following options are valid:
 	run-tests
 		Run Tests will run all of the integration tests for fhir-to-omop.
 		When the tests are over your instance will be populated approximately 2,000 test patients.  		
+
+Also, make sure you have an app.properties file in your working dir (the dir your in now).  
 

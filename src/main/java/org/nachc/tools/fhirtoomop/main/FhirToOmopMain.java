@@ -1,14 +1,19 @@
 package org.nachc.tools.fhirtoomop.main;
 
+import java.io.File;
+
 import com.nach.core.util.file.FileUtil;
 
 public class FhirToOmopMain {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to fhir-to-omop");
-		if (args == null || args.length == 0) {
+		if (args == null || args.length < 2) {
 			zeroParam();
 		} else {
+			String fileName = args[1];
+			System.out.println("Using config file from here:");
+			System.out.println(fileName);
 			String name = args[0];
 			switch (name.toLowerCase()) {
 			case "say-hello":
@@ -18,10 +23,9 @@ public class FhirToOmopMain {
 				paramsExample();
 				break;
 			case "my-params": 
-				paramsExample();
+				myParams(fileName);
 				break;
 			case "instant-omop": 
-				paramsExample();
 				break;
 			case "run-tests": 
 				paramsExample();
@@ -48,8 +52,13 @@ public class FhirToOmopMain {
 		System.out.println("# -----------------8<-----------------8<-----------------8<--------------------");
 	}
 	
-	private static void myParams() {
-		System.out.println("Not implemented yet");
+	private static void myParams(String fileName) {
+		File file = new File(fileName, "app.properties");
+		String msg = FileUtil.getAsString(file);
+		System.out.println("The contents of you app.properties file is shown between the dotted lines below.\n\n");
+		System.out.println("-----------------8<-----------------8<-----------------8<--------------------\n\n");
+		System.out.println(msg);
+		System.out.println("-----------------8<-----------------8<-----------------8<--------------------");
 	}
 
 	private static void instantOmop() {

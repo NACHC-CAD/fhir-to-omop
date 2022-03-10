@@ -178,10 +178,9 @@
 			            </goals>
 			            <configuration>
 			                <tasks>
-								  
-			                    <echo>Using env.test.properties</echo>
-			                    
+			                    <echo>Copying files</echo>
 			                    <copy file="${basedir}/src/main/resources/main/bat/fhir-to-omop.bat" tofile="${basedir}/target/fhir-to-omop/fhir-to-omop.bat"/>
+			                    <copy file="${basedir}/src/main/resources/main/example-params/app.properties" tofile="${basedir}/target/fhir-to-omop/app.properties"/>
 			                    </tasks>
 			                </configuration>
 			            </execution>
