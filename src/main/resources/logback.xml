@@ -8,6 +8,8 @@
 		</encoder>
 	</appender>
 
+	<logger name="ch.qos.logback" level="ERROR" />
+
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>

@@ -6,7 +6,7 @@ import com.nach.core.util.props.PropertiesUtil;
 
 public class AppConnectionParams {
 
-	public static final Properties PROPS = PropertiesUtil.getAsProperties("auth/mysql-auth.properties");
+	public static final Properties PROPS = PropertiesUtil.getAsProperties("auth/app.properties");
 
 	public static String getBootstrapUrl() {
 		return PROPS.getProperty("bootstrapUrl");

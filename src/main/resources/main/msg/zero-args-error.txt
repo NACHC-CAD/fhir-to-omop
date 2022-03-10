@@ -3,7 +3,7 @@
 # --------------
 
 You've successfully launched the fhir-to-omop application!
-However, we need at least one parameter, the name of the module you would like to run.  
+However, we need at least one correct parameter, the name of the module you would like to run.  
 The following options are valid:
 
 	say-hello

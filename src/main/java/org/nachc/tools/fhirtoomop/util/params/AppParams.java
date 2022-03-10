@@ -11,7 +11,7 @@ import com.nach.core.util.props.PropertiesUtil;
 
 public class AppParams {
 
-	public static final Properties PROPS = PropertiesUtil.getAsProperties("app.properties");
+	public static final Properties PROPS = PropertiesUtil.getAsProperties("auth/app.properties");
 
 	public static String OUT_DIR = "/test/synthea-tools";
 
