@@ -7,8 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
+import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllDataTablesManualTest;
-import org.nachc.tools.fhirtoomop.unittestmanualtest.writesingledir.WriteAllPatientsToDatabaseForSingleDirectory;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -47,7 +47,7 @@ public class RunAllIntegrationTests {
 		log.info("TRUNCATING DATA TABLES...");
 		TruncateAllDataTablesManualTest.main(null);
 		log.info("WRITING PATIENTS TO DATABASE...");
-		WriteAllPatientsToDatabaseForSingleDirectory.main(null);
+		WriteTestPatientsToDatabase.exec();
 		String schemaName = AppParams.getFullyQualifiedDbName();
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {

@@ -32,6 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateOmopInstanceTool {
 
 	public static void main(String[] args) {
+		createOmopInstance();
+	}
+
+	public static void createOmopInstance() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			// delete the existing instance
@@ -77,7 +81,7 @@ public class CreateOmopInstanceTool {
 		log.info(msg);
 		log.info("Done.");
 	}
-
+	
 	private static void logMsg(String msg) {
 		String logMsg = "";
 		logMsg += "\n\n\n";

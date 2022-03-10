@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.mysql;
+package org.nachc.tools.fhirtoomop.util.mysql;
 
 import java.sql.Connection;
 

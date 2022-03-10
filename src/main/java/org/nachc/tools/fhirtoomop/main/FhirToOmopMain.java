@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
+import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
+import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.file.FileUtil;
@@ -35,8 +37,10 @@ public class FhirToOmopMain {
 				myParams(fileName);
 				break;
 			case "instant-omop":
+				instantOmop();
 				break;
 			case "add-test-patients":
+				addTestPatients();
 				break;
 			case "add-from-dir":
 				break;
@@ -72,9 +76,13 @@ public class FhirToOmopMain {
 	}
 
 	private static void instantOmop() {
-		System.out.println("Not implemented yet");
+		CreateOmopInstanceTool.createOmopInstance();
 	}
 
+	private static void addTestPatients() {
+		WriteTestPatientsToDatabase.exec();
+	}
+	
 	// ---
 	//
 	// error cases
