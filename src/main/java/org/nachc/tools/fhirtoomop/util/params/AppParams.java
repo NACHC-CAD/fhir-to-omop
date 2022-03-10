@@ -53,15 +53,15 @@ public class AppParams {
 		return PROPS.getProperty("url");
 	}
 
-	public static String getAppId() {
+	public static String getSyntheaAppId() {
 		return PROPS.getProperty("app-id");
 	}
 
-	public static String getKeyForToken() {
+	public static String getSyntheaKeyForToken() {
 		return PROPS.getProperty("key");
 	}
 
-	public static String getSecret() {
+	public static String getSyntheaSecret() {
 		return PROPS.getProperty("secret");
 	}
 
@@ -108,4 +108,10 @@ public class AppParams {
 		return rtn;
 	}
 
+	// umls stuff
+	
+	public static String getUmlsApiKey() {
+		return PROPS.getProperty("umls-api-key");
+	}
+	
 }

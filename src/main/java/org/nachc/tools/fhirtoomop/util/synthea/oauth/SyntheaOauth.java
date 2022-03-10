@@ -8,8 +8,8 @@ import com.nach.core.util.parser.oauth.OAuthTokenResponseParser;
 public class SyntheaOauth {
 
 	public static String fetchToken() {
-		String apiKey = AppParams.getKeyForToken();
-		String secret = AppParams.getSecret();
+		String apiKey = AppParams.getSyntheaKeyForToken();
+		String secret = AppParams.getSyntheaSecret();
 		String url = AppParams.getSyntheaOauthUrl();
 		String msg = "{ \"grantType\" : \"client_credentials\", \"scopes\" : \"user/*.read\" }";
 		HttpRequestClient http = new HttpRequestClient(url);
