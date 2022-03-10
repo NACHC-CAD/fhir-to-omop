@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 
@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetCountsForDataTablesInSchemaIntegrationTest {
 	
-	private static final String SCHEMA_NAME = AppConnectionParams.getFullyQualifiedDbName();
+	private static final String SCHEMA_NAME = AppParams.getFullyQualifiedDbName();
 	
 	private static final List<String> TABLES = DatatableList.getDatatableList();
 

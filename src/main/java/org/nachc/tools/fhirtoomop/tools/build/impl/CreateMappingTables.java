@@ -3,7 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.build.impl;
 import java.io.File;
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -16,7 +16,7 @@ public class CreateMappingTables {
 	private static final File FILE = FileUtil.getFile("/sqlserver/terminology/mappings/race-eth/mapping-ddl.sql");
 
 	public static void exec(Connection conn) {
-		String dbName = AppConnectionParams.getDbName();
+		String dbName = AppParams.getDbName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

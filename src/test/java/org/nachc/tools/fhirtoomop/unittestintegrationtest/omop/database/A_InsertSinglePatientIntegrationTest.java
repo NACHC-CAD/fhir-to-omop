@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.InsertSinglePatient;
 import org.nachc.tools.fhirtoomop.util.db.OmopDatabaseUtils;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class A_InsertSinglePatientIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			// get the params
-			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
+			String schemaName = AppParams.getFullyQualifiedDbName();
 			String tableName = "person";
 			int personCount;
 			// get the patient count

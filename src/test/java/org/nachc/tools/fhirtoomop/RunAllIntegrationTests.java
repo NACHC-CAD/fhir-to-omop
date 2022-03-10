@@ -4,16 +4,15 @@ import java.sql.Connection;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.nachc.tools.fhirtoomop.unittestmanualtest.truncate.TruncateAllDataTablesManualTest;
 import org.nachc.tools.fhirtoomop.unittestmanualtest.writesingledir.WriteAllPatientsToDatabaseForSingleDirectory;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
-import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateDataTables;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
-import org.yaorma.database.Database;
 import org.yaorma.database.Row;
 import org.yaorma.util.time.Timer;
 
@@ -28,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RunAllIntegrationTests {
 
 	private static Timer TIMER = new Timer();
-	
+
 	@BeforeClass
 	public static void setup() {
 		TIMER.start();
@@ -49,12 +48,12 @@ public class RunAllIntegrationTests {
 		TruncateAllDataTablesManualTest.main(null);
 		log.info("WRITING PATIENTS TO DATABASE...");
 		WriteAllPatientsToDatabaseForSingleDirectory.main(null);
-		String schemaName = AppConnectionParams.getFullyQualifiedDbName();
+		String schemaName = AppParams.getFullyQualifiedDbName();
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			Data data = GetCountsForAllTablesInSchema.getCountsForSchema(schemaName, conn);
 			log.info("\tcnt\ttable_name");
-			for(Row row : data) {
+			for (Row row : data) {
 				log.info("\t" + row.get("rowCount") + "\t" + row.get("tableName"));
 			}
 		} finally {
@@ -79,14 +78,24 @@ public class RunAllIntegrationTests {
 		msg += "\n\n\n";
 		msg += "\n---------------";
 		msg += "\nYour instance has been created with the following parameters:  ";
-		msg += "\nDatbase:   " + AppConnectionParams.getDbName();
-		msg += "\nUsername:  " + AppConnectionParams.getUid();
-		msg += "\nPassword   " + AppConnectionParams.getPwd();
+		msg += "\nDatbase:   " + AppParams.getDbName();
+		msg += "\nUsername:  " + AppParams.getUid();
+		msg += "\nPassword   " + AppParams.getPwd();
 		msg += "\nYour welcome :)";
 		msg += "\n---------------";
 		msg += "\n\n\n";
 		log.info(msg);
 		log.info("Done.");
+	}
+
+	public static void exec() {
+		JUnitCore junit = new JUnitCore();
+		Result result = junit.run(RunAllIntegrationTests.class);
+		System.out.println("Finished. Result: Failures: " +
+				result.getFailureCount() + ". Ignored: " +
+				result.getIgnoreCount() + ". Tests run: " +
+				result.getRunCount() + ". Time: " +
+				result.getRunTime() + "ms.");
 	}
 
 }

@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummary.PatientSummaryParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patientsummarylistbundle.PatientSummaryListBundleParser;
-import org.nachc.tools.fhirtoomop.util.params.SyntheaParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
-import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.http.HttpRequestClient;
 
@@ -78,7 +77,7 @@ public class SyntheaPatientSummaryListFetcher {
 
 	public SyntheaPatientSummaryListFetcher(int howMany, String token) {
 		// construct the url
-		this.url = SyntheaParams.getUrl();
+		this.url = AppParams.getSyntheaUrl();
 		url += "/Patient?";
 		url += "_count=" + howMany;
 		log.debug("URL: " + url);

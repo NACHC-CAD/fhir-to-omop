@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 public class GetCountsForAllTablesInSchema {
 
 	public static Data getCountsForSchema(String schemaName, Connection conn) {
-		String cat = AppConnectionParams.getCatalogPart(schemaName);
-		String sch = AppConnectionParams.getSchemaPart(schemaName);
+		String cat = AppParams.getCatalogPart(schemaName);
+		String sch = AppParams.getSchemaPart(schemaName);
 		log.info("Getting counts for: " + cat + "." + sch);
 		String sqlString = "select * from information_schema.tables where table_catalog = ? and table_schema = ?";
 		String[] params = {cat, sch};

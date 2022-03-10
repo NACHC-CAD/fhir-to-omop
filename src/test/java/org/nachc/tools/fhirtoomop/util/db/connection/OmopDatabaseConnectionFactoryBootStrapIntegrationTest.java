@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;

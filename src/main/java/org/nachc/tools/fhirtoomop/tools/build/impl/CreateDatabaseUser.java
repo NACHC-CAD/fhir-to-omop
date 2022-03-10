@@ -2,7 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.build.impl;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateDatabaseUser {
 
 	public static void exec(Connection conn) {
-		String db = AppConnectionParams.getDbName();
-		String uid = AppConnectionParams.getUid();
-		String pwd = AppConnectionParams.getPwd();
+		String db = AppParams.getDbName();
+		String uid = AppParams.getUid();
+		String pwd = AppParams.getPwd();
 		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);

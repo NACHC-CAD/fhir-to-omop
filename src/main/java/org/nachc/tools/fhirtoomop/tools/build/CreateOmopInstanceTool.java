@@ -12,7 +12,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -61,9 +61,9 @@ public class CreateOmopInstanceTool {
 			log.info("Database closed");
 		}
 		logMsg("DONE");
-		String dbName = AppConnectionParams.getDbName();
-		String uid = AppConnectionParams.getUid();
-		String pwd = AppConnectionParams.getPwd();
+		String dbName = AppParams.getDbName();
+		String uid = AppParams.getUid();
+		String pwd = AppParams.getPwd();
 		String msg = "";
 		msg += "\n\n\n";
 		msg += "\n---------------";

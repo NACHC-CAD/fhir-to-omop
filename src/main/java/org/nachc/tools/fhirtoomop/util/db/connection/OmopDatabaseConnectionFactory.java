@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
@@ -17,7 +17,7 @@ public class OmopDatabaseConnectionFactory {
 
 	public static Connection getBootstrapConnection() {
 		try {
-			String url = AppConnectionParams.getBootstrapUrl();
+			String url = AppParams.getBootstrapUrl();
 			Connection conn = DriverManager.getConnection(url);
 			return conn;
 		} catch (Exception exp) {
@@ -27,7 +27,7 @@ public class OmopDatabaseConnectionFactory {
 	}
 
 	public static Connection getOmopConnection() {
-		return connect(AppConnectionParams.getFullyQualifiedDbName());
+		return connect(AppParams.getFullyQualifiedDbName());
 	}
 
 	private static Connection connect(String schema) {
@@ -37,9 +37,9 @@ public class OmopDatabaseConnectionFactory {
 			}
 			// get the connection
 			log.info("Using schema name: " + schema);
-			String url = AppConnectionParams.getUrl();
-			String uid = AppConnectionParams.getUid();
-			String pwd = AppConnectionParams.getPwd();
+			String url = AppParams.getUrl();
+			String uid = AppParams.getUid();
+			String pwd = AppParams.getPwd();
 			url = url + ";databaseName=" + schema;
 			url = url + ";encrypt=false";
 			log.info("URL: " + url);
@@ -63,9 +63,9 @@ public class OmopDatabaseConnectionFactory {
 
 	private static Connection connectToMySql(String schema) {
 		try {
-			String url = AppConnectionParams.getUrl();
-			String uid = AppConnectionParams.getUid();
-			String pwd = AppConnectionParams.getPwd();
+			String url = AppParams.getUrl();
+			String uid = AppParams.getUid();
+			String pwd = AppParams.getPwd();
 			url = url + "/" + schema;
 			url = url + "?rewriteBatchedStatements=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 			log.info("URL: " + url);

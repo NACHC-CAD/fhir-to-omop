@@ -1,34 +1,44 @@
 package org.nachc.tools.fhirtoomop.main;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.file.FileUtil;
 
 public class FhirToOmopMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		System.out.println("Welcome to fhir-to-omop");
 		if (args == null || args.length < 2) {
 			zeroParam();
 		} else {
+			// get the config file
 			String fileName = args[1];
 			System.out.println("Using config file from here:");
 			System.out.println(fileName);
+			File file = new File(fileName, "app.properties");
+			InputStream is = new FileInputStream(file);
+			AppParams.setProps(is);
+			// run the requested task
 			String name = args[0];
 			switch (name.toLowerCase()) {
 			case "say-hello":
 				sayHello();
 				break;
-			case "params-example": 
+			case "params-example":
 				paramsExample();
 				break;
-			case "my-params": 
+			case "my-params":
 				myParams(fileName);
 				break;
-			case "instant-omop": 
+			case "instant-omop":
 				break;
-			case "run-tests": 
-				paramsExample();
+			case "add-test-patients":
+				break;
+			case "add-from-dir":
 				break;
 			default:
 				wrongParam();
@@ -41,7 +51,7 @@ public class FhirToOmopMain {
 		System.out.println("Hello World!");
 	}
 
-	private static void paramsExample() {	
+	private static void paramsExample() {
 		System.out.println("\n\nThe following is an example of a params file");
 		System.out.println("Cut and paste the section between the dotted lines and put it in a file called app.params");
 		System.out.println("Put the file in the directory you are in now.");
@@ -51,7 +61,7 @@ public class FhirToOmopMain {
 		System.out.println(msg);
 		System.out.println("# -----------------8<-----------------8<-----------------8<--------------------");
 	}
-	
+
 	private static void myParams(String fileName) {
 		File file = new File(fileName, "app.properties");
 		String msg = FileUtil.getAsString(file);
@@ -64,17 +74,13 @@ public class FhirToOmopMain {
 	private static void instantOmop() {
 		System.out.println("Not implemented yet");
 	}
-	
-	private static void runTests() {
-		System.out.println("Not implemented yet");
-	}
-	
+
 	// ---
 	//
 	// error cases
 	//
 	// ---
-	
+
 	private static void zeroParam() {
 		String msg = FileUtil.getAsString("/main/msg/zero-args-error.txt");
 		System.out.println(msg);

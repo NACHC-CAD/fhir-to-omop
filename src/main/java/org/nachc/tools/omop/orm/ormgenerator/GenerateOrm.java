@@ -4,7 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppConnectionParams;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.codeGenerator.generateOrmForSchema.GenerateOrmForSchema;
 
 import com.nach.core.util.file.FileUtil;
@@ -21,7 +21,7 @@ public class GenerateOrm {
 	public static void generateDvos() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = AppConnectionParams.getFullyQualifiedDbName();
+			String schemaName = AppParams.getFullyQualifiedDbName();
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/main/java/org/nachc/tools/omop/yaorma/dvo");
 			FileUtil.clearContents(destDir);

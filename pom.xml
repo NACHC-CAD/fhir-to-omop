@@ -91,7 +91,6 @@
 	*
 	-->
 
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -148,6 +147,8 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- create the jar file -->			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
