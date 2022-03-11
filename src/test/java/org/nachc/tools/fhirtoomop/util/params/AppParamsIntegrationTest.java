@@ -37,6 +37,8 @@ public class AppParamsIntegrationTest {
 			assertTrue(syntheaSecret.indexOf("xxxxxxxx") == 0);
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
+		} finally {
+			AppParams.resetToDefault();
 		}
 		log.info("Done.");
 	}

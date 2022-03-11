@@ -8,7 +8,9 @@ import com.nach.core.util.props.PropertiesUtil;
 
 public class AppParams {
 
-	private static Properties PROPS = PropertiesUtil.getAsProperties("auth/app.properties");
+	private static final String DEFAULT = "auth/app.properties";
+	
+	private static Properties PROPS = PropertiesUtil.getAsProperties(DEFAULT);
 
 	/**
 	 * 
@@ -16,11 +18,14 @@ public class AppParams {
 	 * properties locally
 	 * 
 	 */
-
 	public static void setProps(InputStream is) {
 		PROPS = PropertiesUtil.getAsProperties(is, "User's app.properties");
 	}
 
+	public static void resetToDefault() {
+		PROPS = PropertiesUtil.getAsProperties(DEFAULT);
+	}
+	
 	public static String OUT_DIR = "/test/synthea-tools";
 
 	// local files stuff

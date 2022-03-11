@@ -9,18 +9,15 @@ However, we need at least one correct parameter, the name of the module you woul
 The following options are valid:
 
 	say-hello
-		Say hello echos the string "Hello world!" back to the console.
+		Echo the string "Hello world!" back to the console.
 	params-example
-		Params Example displays an example of what the parameters file should look like.
+		Displays an example of what the parameters file should look like.
 	my-params
-		My Params shows the parameters that the application has found for your request.  
-		In other words, this exchos the parameters you have given the application
+		Shows the parameters that the application has found for your request.  
+		In other words, this echos the parameters you have given the application
 	instant-omop
 		Instant OMOP will build an instance of OMOP based on your app.params file.  
 		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
-	run-tests
-		Run Tests will run all of the integration tests for fhir-to-omop.
-		When the tests are over your instance will be populated approximately 2,000 test patients.  		
 
 Also, make sure you have an app.properties file in your working dir (the dir your in now).  
 
