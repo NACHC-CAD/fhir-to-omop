@@ -46,23 +46,23 @@ public class AppParams {
 	// synthea stuff
 
 	public static String getSyntheaOauthUrl() {
-		return PROPS.getProperty("oauth-url");
+		return PROPS.getProperty("synthea-oauth-url");
 	}
 
 	public static String getSyntheaUrl() {
-		return PROPS.getProperty("url");
+		return PROPS.getProperty("synthea-url");
 	}
 
 	public static String getSyntheaAppId() {
-		return PROPS.getProperty("app-id");
+		return PROPS.getProperty("synthea-app-id");
 	}
 
 	public static String getSyntheaKeyForToken() {
-		return PROPS.getProperty("key");
+		return PROPS.getProperty("synthea-key");
 	}
 
 	public static String getSyntheaSecret() {
-		return PROPS.getProperty("secret");
+		return PROPS.getProperty("synthea-secret");
 	}
 
 	// connection stuff

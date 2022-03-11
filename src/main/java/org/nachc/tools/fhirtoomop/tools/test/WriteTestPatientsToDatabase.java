@@ -22,6 +22,11 @@ public class WriteTestPatientsToDatabase {
 	}
 
 	public static void exec() {
+		exec(null);
+	}
+
+	
+	public static void exec(Integer limit) {
 		log.info("Getting connection...");
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
@@ -33,7 +38,7 @@ public class WriteTestPatientsToDatabase {
 			log.info("Writing patients...");
 			Timer timer = new Timer();
 			timer.start();
-			new WriteAllFilesToOmop().exec(file, conn);
+			new WriteAllFilesToOmop().exec(file, limit, conn);
 			timer.stop();
 			log.info("Start:   " + timer.getStartAsString());
 			log.info("Stop:    " + timer.getStopAsString());

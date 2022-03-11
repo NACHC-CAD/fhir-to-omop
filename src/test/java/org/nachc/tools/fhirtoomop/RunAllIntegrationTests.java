@@ -47,7 +47,7 @@ public class RunAllIntegrationTests {
 		log.info("TRUNCATING DATA TABLES...");
 		TruncateAllDataTablesManualTest.main(null);
 		log.info("WRITING PATIENTS TO DATABASE...");
-		WriteTestPatientsToDatabase.exec();
+		WriteTestPatientsToDatabase.exec(100);
 		String schemaName = AppParams.getFullyQualifiedDbName();
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {

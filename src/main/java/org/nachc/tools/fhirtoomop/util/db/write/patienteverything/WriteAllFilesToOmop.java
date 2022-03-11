@@ -26,6 +26,14 @@ public class WriteAllFilesToOmop {
 		exec(files, conn);
 	}
 
+	public void exec(File dir, Integer limit, Connection conn) {
+		File[] files = dir.listFiles();
+		if(limit != null && files.length > limit) {
+			files = Arrays.copyOfRange(files, 0, limit);
+		}
+		exec(files, conn);
+	}
+
 	public void exec(File[] files, Connection conn) {
 		List<File> list = Arrays.asList(files);
 		exec(list, conn);
