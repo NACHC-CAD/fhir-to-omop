@@ -114,4 +114,12 @@ public class AppParams {
 		return PROPS.getProperty("umls-api-key");
 	}
 	
+	// terminology stuff
+	
+	public static String getTerminologyRootDir() {
+		return PROPS.getProperty("terminologyRootDir");
+	}
+	
+	
+	
 }

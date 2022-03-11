@@ -1,5 +1,5 @@
 bulk insert  domain
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\DOMAIN.csv'
+from  '@terminologiesRootFolder/DOMAIN.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -9,7 +9,7 @@ with (
 
 
 bulk insert  concept
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\CONCEPT.csv'
+from  '@terminologiesRootFolder/CONCEPT.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -18,7 +18,7 @@ with (
 );
 
 bulk insert  concept_relationship
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\CONCEPT_RELATIONSHIP.csv'
+from  '@terminologiesRootFolder/CONCEPT_RELATIONSHIP.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -27,7 +27,7 @@ with (
 );
 
 bulk insert  concept_ancestor
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\CONCEPT_ANCESTOR.csv'
+from  '@terminologiesRootFolder/CONCEPT_ANCESTOR.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -36,7 +36,7 @@ with (
 );
 
 bulk insert  concept_synonym
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\CONCEPT_SYNONYM.csv'
+from  '@terminologiesRootFolder/CONCEPT_SYNONYM.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -45,7 +45,7 @@ with (
 );
 
 bulk insert  drug_strength
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\DRUG_STRENGTH.csv'
+from  '@terminologiesRootFolder/DRUG_STRENGTH.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -54,7 +54,7 @@ with (
 );
 
 bulk insert  relationship
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\RELATIONSHIP.csv'
+from  '@terminologiesRootFolder/RELATIONSHIP.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -63,7 +63,7 @@ with (
 );
 
 bulk insert  concept_class
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\CONCEPT_CLASS.csv'
+from  '@terminologiesRootFolder/CONCEPT_CLASS.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
@@ -72,7 +72,7 @@ with (
 );
 
 bulk insert  vocabulary
-from  'C:\\_WORKSPACES\\nachc\\_CURRENT\\_PROJECT\\cosmos\\omop-concepts\\vocabulary_download_v5_{9259d46c-23e7-4760-b8d6-cddd5d86be7d}_1631306538104\\VOCABULARY.csv'
+from  '@terminologiesRootFolder/VOCABULARY.csv'
 with ( 
   FIELDTERMINATOR = '\t',
 -- optionally enclosed by '"'
