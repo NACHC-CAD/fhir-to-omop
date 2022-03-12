@@ -1,1 +1,61 @@
-THIS IS DQD
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Install The OHDHSI Data Quality Dashboard (DQD)</h1>
+			<br/>
+			The instructions here will guide you through the installation of the OHDSI Data Quality Dashboard (DQD).  
+			<br/>
+			The Data Quality Dashboard is a tool written in R that can perform a number of configurable tests on your OMOP instance.  
+			More information is available at <a target="dqd" href=""></a>
+			<br/>
+			The DQD collects meta data for your instance by running an R script that generates a single JSON file.  
+			This file is then read as a web page using any browser.  
+			<br/>
+			The instructions here show how to view your DQD information using a server that is launched from R.   
+			<br/>
+			<a target="git" href="https://git-scm.com/download/win">https://git-scm.com/download/win</a> 
+			<br/>
+			<h2>Installing and Running DQD Quick Links</h2>
+			<ul>
+				<li>
+					Run the R script <a target="dqd-install" href="">here</a> to install the DQD.  
+				</li>
+				<li>
+					Run the R script <a target="dqd-install" href="">here</a> to run the DQD.  
+				</li>
+				<li>
+					Run the R script <a target="dqd-install" href="">here</a> to view the results.  
+				</li>
+			</ul>
+			<br/>
+			<h2>Install DQD</h2>
+			Running the DQD install script should look something like the following.  
+			<h2>Run DQD</h2>
+			Running the DQD script should look something like the following.  
+			<h2>View the results DQD</h2>
+			Running the DQD install Script should look something like the following. 
+			The script should automatically launch the DQD gui in your default browser.     
+			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/git/download-git.PNG" />             
+			<br/>
+			
+		</div>
+	</body>
+
+</html>
+
+
