@@ -1,0 +1,545 @@
+> install.packages("devtools")
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+--- Please select a CRAN mirror for use in this session ---
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/devtools_2.4.3.zip'
+Content type 'application/zip' length 423860 bytes (413 KB)
+downloaded 413 KB
+
+package ‘devtools’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\downloaded_packages
+> install.packages("rJava", INSTALL_opts = "--no-multiarch")
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/rJava_1.0-6.zip'
+Content type 'application/zip' length 1513770 bytes (1.4 MB)
+downloaded 1.4 MB
+
+package ‘rJava’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\downloaded_packages
+> devtools::install_github("OHDSI/DatabaseConnector", force=TRUE)
+Downloading GitHub repo OHDSI/DatabaseConnector@HEAD
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All                                              
+2: CRAN packages only                               
+3: None                                             
+4: rlang     (1.0.1        -> 1.0.2       ) [CRAN]  
+5: glue      (1.6.1        -> 1.6.2       ) [CRAN]  
+6: cli       (3.1.1        -> 3.2.0       ) [CRAN]  
+7: SqlRender (f44cc2e37... -> a3b38a930...) [GitHub]
+
+Enter one or more numbers, or an empty line to skip updates: 
+  
+  
+  
+√  checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f83441463e\OHDSI-DatabaseConnector-b3d3162/DESCRIPTION'
+
+  
+  
+  
+-  preparing 'DatabaseConnector': (684ms)
+   checking DESCRIPTION meta-information ...
+  
+   checking DESCRIPTION meta-information ... 
+  
+√  checking DESCRIPTION meta-information
+
+  
+  
+  
+-  installing the package to process help pages
+
+  
+  
+  
+-  checking for LF line-endings in source and make files and shell scripts (7.7s)
+
+  
+  
+  
+-  checking for empty or unneeded directories
+
+  
+  
+  
+-  building 'DatabaseConnector_5.0.2.tar.gz'
+
+  
+   
+
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+* installing *source* package 'DatabaseConnector' ...
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'DatabaseConnector'
+    finding HTML links ... done
+    DatabaseConnector-package               html  
+    DatabaseConnectorConnection-class       html  
+    DatabaseConnectorDbiConnection-class    html  
+    DatabaseConnectorDriver-class           html  
+    DatabaseConnectorDriver                 html  
+    DatabaseConnectorJdbcConnection-class   html  
+    DatabaseConnectorResult-class           html  
+    connect                                 html  
+    createConnectionDetails                 html  
+    createZipFile                           html  
+    dbAppendTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    finding level-2 HTML links ... done
+
+    dbClearResult-DatabaseConnectorResult-method
+                                            html  
+    dbColumnInfo-DatabaseConnectorResult-method
+                                            html  
+    dbConnect-DatabaseConnectorDriver-method
+                                            html  
+    dbCreateTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    dbDisconnect-DatabaseConnectorConnection-method
+                                            html  
+    dbExecute-DatabaseConnectorConnection-character-method
+                                            html  
+    dbExistsTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbFetch-DatabaseConnectorResult-method
+                                            html  
+    dbGetQuery-DatabaseConnectorConnection-character-method
+                                            html  
+    dbGetRowCount-DatabaseConnectorResult-method
+                                            html  
+    dbGetRowsAffected-DatabaseConnectorResult-method
+                                            html  
+    dbGetStatement-DatabaseConnectorResult-method
+                                            html  
+    dbHasCompleted-DatabaseConnectorResult-method
+                                            html  
+    dbIsValid-DatabaseConnectorDbiConnection-method
+                                            html  
+    dbIsValid-DatabaseConnectorJdbcConnection-method
+                                            html  
+    dbListFields-DatabaseConnectorConnection-character-method
+                                            html  
+    dbListTables-DatabaseConnectorConnection-method
+                                            html  
+    dbQuoteIdentifier-DatabaseConnectorConnection-character-method
+                                            html  
+    dbQuoteString-DatabaseConnectorConnection-character-method
+                                            html  
+    dbReadTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbRemoveTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbSendQuery-DatabaseConnectorDbiConnection-character-method
+                                            html  
+    dbSendQuery-DatabaseConnectorJdbcConnection-character-method
+                                            html  
+    dbSendStatement-DatabaseConnectorConnection-character-method
+                                            html  
+    dbUnloadDriver-DatabaseConnectorDriver-method
+                                            html  
+    dbWriteTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    disconnect                              html  
+    downloadJdbcDrivers                     html  
+    dropEmulatedTempTables                  html  
+    executeSql                              html  
+    existsTable                             html  
+    getAvailableJavaHeapSpace               html  
+    getTableNames                           html  
+    insertTable                             html  
+    isSqlReservedWord                       html  
+    jdbcDrivers                             html  
+    lowLevelExecuteSql                      html  
+    lowLevelQuerySql                        html  
+    lowLevelQuerySqlToAndromeda             html  
+    querySql                                html  
+    querySqlToAndromeda                     html  
+    renderTranslateExecuteSql               html  
+    renderTranslateQueryApplyBatched        html  
+    renderTranslateQuerySql                 html  
+    renderTranslateQuerySqlToAndromeda      html  
+    show-DatabaseConnectorConnection-method
+                                            html  
+    show-DatabaseConnectorDriver-method     html  
+** building package indices
+** installing vignettes
+   'Connecting.Rmd' using 'UTF-8' 
+   'Querying.Rmd' using 'UTF-8' 
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+Error: package or namespace load failed for 'DatabaseConnector':
+ .onLoad failed in loadNamespace() for 'rJava', details:
+  call: inDL(x, as.logical(local), as.logical(now), ...)
+  error: unable to load shared object 'C:/ProgramData/R/lib/rJava/libs/i386/rJava.dll':
+  LoadLibrary failure:  %1 is not a valid Win32 application.
+
+Error: loading failed
+Execution halted
+*** arch - x64
+ERROR: loading failed for 'i386'
+* removing 'C:/ProgramData/R/lib/DatabaseConnector'
+* restoring previous 'C:/ProgramData/R/lib/DatabaseConnector'
+Warning message:
+In i.p(...) :
+  installation of package ‘C:/Users/gresh/AppData/Local/Temp/RtmpM5Vbzo/file94f8610e42dd/DatabaseConnector_5.0.2.tar.gz’ had non-zero exit status
+> devtools::install_github("OHDSI/DatabaseConnector", force=TRUE)
+Downloading GitHub repo OHDSI/DatabaseConnector@HEAD
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All                                              
+2: CRAN packages only                               
+3: None                                             
+4: rlang     (1.0.1        -> 1.0.2       ) [CRAN]  
+5: glue      (1.6.1        -> 1.6.2       ) [CRAN]  
+6: cli       (3.1.1        -> 3.2.0       ) [CRAN]  
+7: SqlRender (f44cc2e37... -> a3b38a930...) [GitHub]
+
+Enter one or more numbers, or an empty line to skip updates: 1
+rlang     (1.0.1        -> 1.0.2       ) [CRAN]
+glue      (1.6.1        -> 1.6.2       ) [CRAN]
+cli       (3.1.1        -> 3.2.0       ) [CRAN]
+SqlRender (f44cc2e37... -> a3b38a930...) [GitHub]
+Installing 3 packages: rlang, glue, cli
+Installing packages into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/rlang_1.0.2.zip'
+Content type 'application/zip' length 1718905 bytes (1.6 MB)
+downloaded 1.6 MB
+
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/glue_1.6.2.zip'
+Content type 'application/zip' length 172153 bytes (168 KB)
+downloaded 168 KB
+
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/cli_3.2.0.zip'
+Content type 'application/zip' length 1257846 bytes (1.2 MB)
+downloaded 1.2 MB
+
+package ‘rlang’ successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package ‘rlang’
+Warning: restored ‘rlang’
+package ‘glue’ successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package ‘glue’
+Warning: restored ‘glue’
+package ‘cli’ successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package ‘cli’
+Warning: restored ‘cli’
+
+The downloaded binary packages are in
+        C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\downloaded_packages
+Downloading GitHub repo OHDSI/SqlRender@HEAD
+These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+1: All                          
+2: CRAN packages only           
+3: None                         
+4: rlang (1.0.1 -> 1.0.2) [CRAN]
+
+Enter one or more numbers, or an empty line to skip updates: 1
+rlang (1.0.1 -> 1.0.2) [CRAN]
+Installing 1 packages: rlang
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/rlang_1.0.2.zip'
+Content type 'application/zip' length 1718905 bytes (1.6 MB)
+downloaded 1.6 MB
+
+package ‘rlang’ successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package ‘rlang’
+Warning: restored ‘rlang’
+
+The downloaded binary packages are in
+        C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\downloaded_packages
+  
+  
+  
+   checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f8e4c77a1\OHDSI-SqlRender-a3b38a9/DESCRIPTION' ...
+  
+√  checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f8e4c77a1\OHDSI-SqlRender-a3b38a9/DESCRIPTION'
+
+  
+  
+  
+-  preparing 'SqlRender': (450ms)
+   checking DESCRIPTION meta-information ...
+  
+   checking DESCRIPTION meta-information ... 
+  
+√  checking DESCRIPTION meta-information
+
+  
+  
+  
+-  checking for LF line-endings in source and make files and shell scripts
+
+  
+  
+  
+-  checking for empty or unneeded directories
+
+  
+  
+  
+-  building 'SqlRender_1.9.0.tar.gz'
+
+  
+   
+
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+* installing *source* package 'SqlRender' ...
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'SqlRender'
+    finding HTML links ... done
+    SqlRender-package                       html  
+    camelCaseToSnakeCase                    html  
+    camelCaseToSnakeCaseNames               html  
+    camelCaseToTitleCase                    html  
+    createRWrapperForSql                    html  
+    getTempTablePrefix                      html  
+    launchSqlRenderDeveloper                html  
+    listSupportedDialects                   html  
+    loadRenderTranslateSql                  html  
+    readSql                                 html  
+    render                                  html  
+    renderSql                               html  
+    renderSqlFile                           html  
+    snakeCaseToCamelCase                    html  
+    snakeCaseToCamelCaseNames               html  
+    sparkHandleInsert                       html  
+    splitSql                                html  
+    supportsJava8                           html  
+    translate                               html  
+    translateSingleStatement                html  
+    translateSql                            html  
+    translateSqlFile                        html  
+    writeSql                                html  
+** building package indices
+** installing vignettes
+   'UsingSqlRender.Rmd' using 'UTF-8' 
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+Error: package or namespace load failed for 'SqlRender':
+ .onLoad failed in loadNamespace() for 'rJava', details:
+  call: inDL(x, as.logical(local), as.logical(now), ...)
+  error: unable to load shared object 'C:/ProgramData/R/lib/rJava/libs/i386/rJava.dll':
+  LoadLibrary failure:  %1 is not a valid Win32 application.
+
+Error: loading failed
+Execution halted
+*** arch - x64
+ERROR: loading failed for 'i386'
+* removing 'C:/ProgramData/R/lib/SqlRender'
+* restoring previous 'C:/ProgramData/R/lib/SqlRender'
+  
+  
+  
+   checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f8125c78f\OHDSI-DatabaseConnector-b3d3162/DESCRIPTION' ...
+  
+   checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f8125c78f\OHDSI-DatabaseConnector-b3d3162/DESCRIPTION' ... 
+  
+√  checking for file 'C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\remotes94f8125c78f\OHDSI-DatabaseConnector-b3d3162/DESCRIPTION'
+
+  
+  
+  
+-  preparing 'DatabaseConnector': (755ms)
+   checking DESCRIPTION meta-information ...
+  
+   checking DESCRIPTION meta-information ... 
+  
+√  checking DESCRIPTION meta-information
+
+  
+  
+  
+-  installing the package to process help pages
+
+  
+  
+  
+-  checking for LF line-endings in source and make files and shell scripts (8.4s)
+
+  
+  
+  
+-  checking for empty or unneeded directories
+
+  
+  
+  
+-  building 'DatabaseConnector_5.0.2.tar.gz'
+
+  
+   
+
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+* installing *source* package 'DatabaseConnector' ...
+** using staged installation
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+  converting help for package 'DatabaseConnector'
+    finding HTML links ... done
+    DatabaseConnector-package               html  
+    DatabaseConnectorConnection-class       html  
+    DatabaseConnectorDbiConnection-class    html  
+    DatabaseConnectorDriver-class           html  
+    DatabaseConnectorDriver                 html  
+    DatabaseConnectorJdbcConnection-class   html  
+    DatabaseConnectorResult-class           html  
+    connect                                 html  
+    createConnectionDetails                 html  
+    createZipFile                           html  
+    dbAppendTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    finding level-2 HTML links ... done
+
+    dbClearResult-DatabaseConnectorResult-method
+                                            html  
+    dbColumnInfo-DatabaseConnectorResult-method
+                                            html  
+    dbConnect-DatabaseConnectorDriver-method
+                                            html  
+    dbCreateTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    dbDisconnect-DatabaseConnectorConnection-method
+                                            html  
+    dbExecute-DatabaseConnectorConnection-character-method
+                                            html  
+    dbExistsTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbFetch-DatabaseConnectorResult-method
+                                            html  
+    dbGetQuery-DatabaseConnectorConnection-character-method
+                                            html  
+    dbGetRowCount-DatabaseConnectorResult-method
+                                            html  
+    dbGetRowsAffected-DatabaseConnectorResult-method
+                                            html  
+    dbGetStatement-DatabaseConnectorResult-method
+                                            html  
+    dbHasCompleted-DatabaseConnectorResult-method
+                                            html  
+    dbIsValid-DatabaseConnectorDbiConnection-method
+                                            html  
+    dbIsValid-DatabaseConnectorJdbcConnection-method
+                                            html  
+    dbListFields-DatabaseConnectorConnection-character-method
+                                            html  
+    dbListTables-DatabaseConnectorConnection-method
+                                            html  
+    dbQuoteIdentifier-DatabaseConnectorConnection-character-method
+                                            html  
+    dbQuoteString-DatabaseConnectorConnection-character-method
+                                            html  
+    dbReadTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbRemoveTable-DatabaseConnectorConnection-character-method
+                                            html  
+    dbSendQuery-DatabaseConnectorDbiConnection-character-method
+                                            html  
+    dbSendQuery-DatabaseConnectorJdbcConnection-character-method
+                                            html  
+    dbSendStatement-DatabaseConnectorConnection-character-method
+                                            html  
+    dbUnloadDriver-DatabaseConnectorDriver-method
+                                            html  
+    dbWriteTable-DatabaseConnectorConnection-character-data.frame-method
+                                            html  
+    disconnect                              html  
+    downloadJdbcDrivers                     html  
+    dropEmulatedTempTables                  html  
+    executeSql                              html  
+    existsTable                             html  
+    getAvailableJavaHeapSpace               html  
+    getTableNames                           html  
+    insertTable                             html  
+    isSqlReservedWord                       html  
+    jdbcDrivers                             html  
+    lowLevelExecuteSql                      html  
+    lowLevelQuerySql                        html  
+    lowLevelQuerySqlToAndromeda             html  
+    querySql                                html  
+    querySqlToAndromeda                     html  
+    renderTranslateExecuteSql               html  
+    renderTranslateQueryApplyBatched        html  
+    renderTranslateQuerySql                 html  
+    renderTranslateQuerySqlToAndromeda      html  
+    show-DatabaseConnectorConnection-method
+                                            html  
+    show-DatabaseConnectorDriver-method     html  
+** building package indices
+** installing vignettes
+   'Connecting.Rmd' using 'UTF-8' 
+   'Querying.Rmd' using 'UTF-8' 
+** testing if installed package can be loaded from temporary location
+*** arch - i386
+Error: package or namespace load failed for 'DatabaseConnector':
+ .onLoad failed in loadNamespace() for 'rJava', details:
+  call: inDL(x, as.logical(local), as.logical(now), ...)
+  error: unable to load shared object 'C:/ProgramData/R/lib/rJava/libs/i386/rJava.dll':
+  LoadLibrary failure:  %1 is not a valid Win32 application.
+
+Error: loading failed
+Execution halted
+*** arch - x64
+ERROR: loading failed for 'i386'
+* removing 'C:/ProgramData/R/lib/DatabaseConnector'
+* restoring previous 'C:/ProgramData/R/lib/DatabaseConnector'
+Warning messages:
+1: In file.copy(savedcopy, lib, recursive = TRUE) :
+  problem copying C:\ProgramData\R\lib\00LOCK\rlang\libs\x64\rlang.dll to C:\ProgramData\R\lib\rlang\libs\x64\rlang.dll: Permission denied
+2: In file.copy(savedcopy, lib, recursive = TRUE) :
+  problem copying C:\ProgramData\R\lib\00LOCK\glue\libs\x64\glue.dll to C:\ProgramData\R\lib\glue\libs\x64\glue.dll: Permission denied
+3: In file.copy(savedcopy, lib, recursive = TRUE) :
+  problem copying C:\ProgramData\R\lib\00LOCK\cli\libs\x64\cli.dll to C:\ProgramData\R\lib\cli\libs\x64\cli.dll: Permission denied
+4: In file.copy(savedcopy, lib, recursive = TRUE) :
+  problem copying C:\ProgramData\R\lib\00LOCK\rlang\libs\x64\rlang.dll to C:\ProgramData\R\lib\rlang\libs\x64\rlang.dll: Permission denied
+5: In i.p(...) :
+  installation of package ‘C:/Users/gresh/AppData/Local/Temp/RtmpM5Vbzo/file94f81be4275/SqlRender_1.9.0.tar.gz’ had non-zero exit status
+6: In i.p(...) :
+  installation of package ‘C:/Users/gresh/AppData/Local/Temp/RtmpM5Vbzo/file94f88cf1fa6/DatabaseConnector_5.0.2.tar.gz’ had non-zero exit status
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> install.packages("rJava", INSTALL_opts = "--no-multiarch")
+Installing package into ‘C:/ProgramData/R/lib’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.1/rJava_1.0-6.zip'
+Content type 'application/zip' length 1513770 bytes (1.4 MB)
+downloaded 1.4 MB
+
+package ‘rJava’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\gresh\AppData\Local\Temp\RtmpM5Vbzo\downloaded_packages
+> 

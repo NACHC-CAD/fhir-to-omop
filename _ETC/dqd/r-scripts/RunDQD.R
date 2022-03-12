@@ -4,16 +4,17 @@ outputFolder <- "C:\\test\\ohdsi\\dqd"
 
 # fill out the connection details -----------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", 
-                                                                user = "ohdsi_app_user", 
-                                                                password = "app1", 
+                                                                user = "synthea_user", 
+                                                                password = "sneeker", 
                                                                 server = "localhost", 
                                                                 port = "1433", 
                                                                 pathToDriver = pathToDriver,
                                                                 extraSettings = ";databaseName=master;integratedSecurity=true;encrypt=false")
 
-cdmDatabaseSchema <- "ohdsi.dbo" # the fully qualified database schema name of the CDM
-resultsDatabaseSchema <- "ohdsi_dqd_results.dbo" # the fully qualified database schema name of the results schema (that you can write to)
-cdmSourceName <- "OHDSI Test Database" # a human readable name for your CDM source
+
+cdmDatabaseSchema <- "synthea_omop.dbo" # the fully qualified database schema name of the CDM
+resultsDatabaseSchema <- "synthea_omop_dqd_results.dbo" # the fully qualified database schema name of the results schema (that you can write to)
+cdmSourceName <- "SYNTHEA_Test_Database" # a human readable name for your CDM source
 
 # determine how many threads (concurrent SQL sessions) to use ----------------------------------------
 numThreads <- 1 # on Redshift, 3 seems to work well
@@ -26,7 +27,7 @@ outputFolder <- outputFolder
 outputFile <- "results.json"
 
 # logging type -------------------------------------------------------------------------------------
-verboseMode <- FALSE # set to TRUE if you want to see activity written to the console
+verboseMode <- TRUE # set to TRUE if you want to see activity written to the console
 
 # write results to table? ------------------------------------------------------------------------------
 writeToTable <- TRUE # set to FALSE if you want to skip writing to a SQL table in the results schema
@@ -76,3 +77,19 @@ jsonFilePath <- ""
 DataQualityDashboard::writeJsonResultsToTable(connectionDetails = connectionDetails, 
                                               resultsDatabaseSchema = resultsDatabaseSchema, 
                                               jsonFilePath = jsonFilePath)
+
+DataQualityDashboard::viewDqDashboard(
+  jsonPath = file.path(getwd(), outputFolder, cdmSourceName, outputFile, cdmSourceName)
+)
+
+
+DataQualityDashboard::viewDqDashboard(
+  jsonPath = file.path(getwd(), outputFolder, cdmSourceName, outputFile, cdmSourceName)
+)
+
+DataQualityDashboard::viewDqDashboard(
+  jsonPath = file.path("C:\\test\\ohdsi\\dqd\\results.json")
+)
+
+
+
