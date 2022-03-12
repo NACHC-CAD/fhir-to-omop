@@ -1,8 +1,11 @@
 # ---
 #
-# Data Quality Dashboard
-#   NEED TO RUN RGUI AS ADMIN:
-#   https://stackoverflow.com/questions/55803026/r-problem-updating-rlang-when-installing-dev-version-of-a-package 
+# install-dqd.r
+#
+# This script installs the components you will need to run and view the DQD.
+# Run this script once.
+# Your output should look similar to what is shown at the link below.  
+# (also in the output folder of the directory where this script came from)
 #
 # ---
 

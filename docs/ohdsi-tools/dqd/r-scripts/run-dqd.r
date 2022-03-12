@@ -1,15 +1,38 @@
+# ---
+#
+# run-dqd.r
+#
+# Script to run the Data Quality Dashboard (DQD)
+# 
+# The output of this script is a single JSON file that can then be rendered with the run-dqd.r script 
+# to view the results as a web page in a broser.  
+# 
+# Prior to running this script you will need to download and install the jdbc driver
+# For MS Sql Server.  This is entered as the pathToDriver variable below.  
+#
+# ---
 
+# ---
+# 
+# PARAMTERS
+#
+# ---
+
+# local files
 pathToDriver <- "C:\\test\\jar\\sqlserver-jar"
 outputFolder <- "C:\\test\\ohdsi\\dqd"
 
+
+
 # fill out the connection details -----------------------------------------------------------------------
-connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = "sql server", 
-                                                                user = "synthea_user", 
-                                                                password = "sneeker", 
-                                                                server = "localhost", 
-                                                                port = "1433", 
-                                                                pathToDriver = pathToDriver,
-                                                                extraSettings = ";databaseName=master;integratedSecurity=true;encrypt=false")
+connectionDetails <- DatabaseConnector::createConnectionDetails(
+  dbms = "sql server", 
+  user = "synthea_user", 
+  password = "sneeker", 
+  server = "localhost", 
+  port = "1433", 
+  pathToDriver = pathToDriver,
+  extraSettings = ";databaseName=master;integratedSecurity=true;encrypt=false")
 
 
 cdmDatabaseSchema <- "synthea_omop.dbo" # the fully qualified database schema name of the CDM
