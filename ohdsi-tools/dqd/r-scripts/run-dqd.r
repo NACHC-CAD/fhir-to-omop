@@ -69,27 +69,15 @@ DataQualityDashboard::executeDqChecks(connectionDetails = connectionDetails,
                                       checkNames = checkNames)
 
 # inspect logs ----------------------------------------------------------------------------
-ParallelLogger::launchLogViewer(logFileName = file.path(outputFolder, cdmSourceName, 
-                                                        sprintf("log_DqDashboard_%s.txt", cdmSourceName)))
+# ParallelLogger::launchLogViewer(logFileName = file.path(outputFolder, cdmSourceName, 
+#                                                         sprintf("log_DqDashboard_%s.txt", cdmSourceName)))
 
 # (OPTIONAL) if you want to write the JSON file to the results table separately -----------------------------
-jsonFilePath <- ""
-DataQualityDashboard::writeJsonResultsToTable(connectionDetails = connectionDetails, 
-                                              resultsDatabaseSchema = resultsDatabaseSchema, 
-                                              jsonFilePath = jsonFilePath)
+# jsonFilePath <- ""
+# DataQualityDashboard::writeJsonResultsToTable(connectionDetails = connectionDetails, 
+#                                               resultsDatabaseSchema = resultsDatabaseSchema, 
+#                                               jsonFilePath = jsonFilePath)
 
-DataQualityDashboard::viewDqDashboard(
-  jsonPath = file.path(getwd(), outputFolder, cdmSourceName, outputFile, cdmSourceName)
-)
-
-
-DataQualityDashboard::viewDqDashboard(
-  jsonPath = file.path(getwd(), outputFolder, cdmSourceName, outputFile, cdmSourceName)
-)
-
-DataQualityDashboard::viewDqDashboard(
-  jsonPath = file.path("C:\\test\\ohdsi\\dqd\\results.json")
-)
 
 
 
