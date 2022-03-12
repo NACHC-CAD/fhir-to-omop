@@ -1,8 +1,14 @@
-# DataQualityDashboard::viewDqDashboard(
-#   jsonPath = file.path(getwd(), outputFolder, cdmSourceName, outputFile, cdmSourceName)
-# )
+# --- 
+#
+# Script to show the dqd web application in a browser.
+#
+# Run the init-params.r script before running this.  
+# 
+# Run the run-dqd.r script at least once before running this.  
+#
+# ---
 
-DataQualityDashboard::viewDqDashboard(
-  jsonPath = file.path("C:\\test\\ohdsi\\dqd\\results.json")
+DataQualityDashboard::viewDqDashboard (
+  jsonPath = file.path(outputFolder, outputFile)
 )
 

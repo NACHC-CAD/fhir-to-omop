@@ -16,7 +16,7 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>Install The OHDHSI Data Quality Dashboard (DQD)</h1>
+			<h1>Install, Run, and View The OHDHSI Data Quality Dashboard (DQD)</h1>
 			<br/>
 			The instructions here will guide you through the installation of the OHDSI Data Quality Dashboard (DQD).  
 			<br/>
@@ -40,23 +40,31 @@
 			<br/>
 			<ul>
 				<li>
-					Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/install-dqd.r" download>here</a> to install the DQD.  
+					install-dqd.r: Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/install-dqd.r" download>here</a> 
+					to install the DQD.  
 				</li>
 				<li>
-					Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/run-dqd.r" download>here</a> to run the DQD.  
+					init-params-for-dtq.r: Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/init-params-for-dtq.r" download>here</a> 
+					to initialize parameters to run either the DQD or to view the results.  
 				</li>
 				<li>
-					Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/view-dqd.r" download>here</a> to view the results.  
+					run-dqd.r: Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/run-dqd.r" download>here</a> 
+					to run the DQD.  
+				</li>
+				<li>
+					view-dqd.r: Run the R script <a href="../../../../ohdsi-tools/dqd/r-scripts/view-dqd.r" download>here</a> 
+					to view the results.  
 				</li>
 			</ul>
 			<br/>
-			<h2>Install DQD</h2>
-			Running the DQD install script should look something like the following.  
-			<h2>Run DQD</h2>
-			Running the DQD script should look something like the following.  
-			<h2>View the results DQD</h2>
-			Running the DQD install Script should look something like the following. 
-			The script should automatically launch the DQD gui in your default browser. 
+			<br/>
+			Run the install-dqd.r script one time to install the components required to run or view the DQD.
+			<br/>
+			<br/>
+			Run the init-params-for-dtq.r script before you run either the run-dqd.r script or the view-dqd.r script.
+			This script contains all of the parameters to run or view the DQD.  
+			This script can be edited to fit your OMOP instance.  
+			The other scripts should not need to be edited to run the scripts.  
 			<br/>    
 			<br/>
 			
