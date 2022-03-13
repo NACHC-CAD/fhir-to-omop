@@ -35,8 +35,8 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.id = id;
 		this.filePath = FileUtil.getCanonicalPath(file);
 		this.filePathShortend = filePath;
-		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
-			this.filePathShortend = filePath.substring(filePath.lastIndexOf('/') + filePath.length());
+		if(this.filePath != null && this.filePath.lastIndexOf('/') > 0) {
+			this.filePathShortend = filePath.substring((filePath.lastIndexOf('/') + 1), filePath.length());
 		}
 	}
 
@@ -46,8 +46,8 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.conn = conn;
 		this.id = id;
 		this.filePathShortend = filePath;
-		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
-			this.filePathShortend = filePath.substring(filePath.lastIndexOf('/') + filePath.length());
+		if(this.filePath != null && this.filePath.lastIndexOf('/') > 0) {
+			this.filePathShortend = filePath.substring((filePath.lastIndexOf('/') + 1), filePath.length());
 		}
 	}
 
@@ -61,10 +61,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 			// parse the json
 			this.parser = new PatientEverythingParser(json);
 			OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(this.parser, this.conn);
-			log.info("DONE: Parsing fhir resource (" + this.id + ")" + this.filePathShortend);
+			log.info("DONE: Parsing fhir resource (" + this.id + "): " + this.filePathShortend);
 			// write to the database
 			WriteFhirPatientToOmop.exec(personEverything, this.conn);
-			log.info("DONE: Writing to database (thread " + this.id + ")" + filePathShortend);
+			log.info("DONE: Writing to database (thread " + this.id + "): " + filePathShortend);
 		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
 			if (cause instanceof DataFormatException) {
