@@ -1,0 +1,72 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Documentation for fhir-to-omop Mapping</h1>
+			All of the information used to map FHIR messages to OMOP data are in the documents listed below.  
+			<br/>
+			<br/>
+			<h3>References</h3>
+			These pages are the main sources of information regarding FHIR to OMOP used to create this implementation.  
+			<br/>
+			<br/>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<th>Document&nbsp;</th>
+					<th>Description&nbsp;</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/directory.html">FHIR: Publication (Version) History</a>	
+					</td>
+					<td>
+						This is the page with links to documenation for the different versions of FHIR.   
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/STU3/Terminologies.html">FHIR: Using Codes in Resources (STU3)</a>
+					</td>
+					<td>
+						This is the main page for Terminologies for FHIR STU3.  
+						<br/>
+						Versions used for this implementation
+						<ul>
+							<li>
+								<a href="http://hl7.org/fhir/STU3/Terminologies.html">FHIR Terminology Documentation (STU3)</a>
+								<br/>
+								<a href="http://hl7.org/fhir/STU3/Terminologies.html">FHIR Terminology Documentation (Current Release)</a>
+								<br/>
+								This document has the links to the rules for mapping post coordinated terms for each of the supported terminologies.  
+								<ul>
+									<li class="li2">
+										<a href="https://build.fhir.org/snomedct.html">SNOMED CT</a>
+									</li>
+									<li class="li2">
+										<a href="https://build.fhir.org/ucum.html">UCUM</a>
+									</li>
+									
+								</ul>
+							</li>
+						</ul>						
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>
