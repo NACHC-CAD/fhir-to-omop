@@ -32,6 +32,7 @@ public class WriteTestPatientsToDatabase {
 		log.info("Getting connection...");
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
+			log.info("--------------------------");
 			log.info("Getting file...");
 			log.info("Getting files from java path:" + DIR_NAME);
 			log.info("Truncating tables...");
@@ -44,6 +45,7 @@ public class WriteTestPatientsToDatabase {
 			int cnt = 0;
 			for (String path : files) {
 				cnt++;
+				log.info("PATH: " + path);
 				String json = FileUtil.getAsString(path);
 				WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(path, json, conn, cnt);
 				Thread thread = new Thread(runnable);

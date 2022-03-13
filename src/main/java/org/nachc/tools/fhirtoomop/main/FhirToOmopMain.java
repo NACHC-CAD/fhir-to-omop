@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
+import org.nachc.tools.fhirtoomop.tools.test.ListTestPatients;
 import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
@@ -38,6 +39,12 @@ public class FhirToOmopMain {
 				break;
 			case "instant-omop":
 				instantOmop();
+				break;
+			case "list-test-patients":
+				listTestPatients();
+				break;
+			case "l":
+				listTestPatients();
 				break;
 			case "add-test-patients":
 				addTestPatients();
@@ -79,6 +86,10 @@ public class FhirToOmopMain {
 		CreateOmopInstanceTool.createOmopInstance();
 	}
 
+	private static void listTestPatients() {
+		ListTestPatients.exec();
+	}
+	
 	private static void addTestPatients() {
 		WriteTestPatientsToDatabase.exec();
 	}

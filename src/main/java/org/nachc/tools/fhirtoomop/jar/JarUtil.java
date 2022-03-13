@@ -12,11 +12,11 @@ public class JarUtil {
 	public static List<String> getResources(String path) {
 		try {
 			return new JarUtil().getResourceFiles(path);
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		}
 	}
-	
+
 	public List<String> getResourceFiles(String path) throws IOException {
 		List<String> filenames = new ArrayList<>();
 		try (InputStream in = getResourceAsStream(path); BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
@@ -37,5 +37,5 @@ public class JarUtil {
 	private ClassLoader getContextClassLoader() {
 		return Thread.currentThread().getContextClassLoader();
 	}
-	
+
 }
