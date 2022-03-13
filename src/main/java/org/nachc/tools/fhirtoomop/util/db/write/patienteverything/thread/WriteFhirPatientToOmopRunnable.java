@@ -36,7 +36,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.filePath = FileUtil.getCanonicalPath(file);
 		this.filePathShortend = filePath;
 		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
-			this.filePathShortend = filePath.substring(filePath.indexOf('/') + filePath.length());
+			this.filePathShortend = filePath.substring(filePath.lastIndexOf('/') + filePath.length());
 		}
 	}
 
@@ -47,7 +47,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.id = id;
 		this.filePathShortend = filePath;
 		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
-			this.filePathShortend = filePath.substring(filePath.indexOf('/') + filePath.length());
+			this.filePathShortend = filePath.substring(filePath.lastIndexOf('/') + filePath.length());
 		}
 	}
 
