@@ -8,17 +8,17 @@ You've successfully launched the fhir-to-omop application!
 However, we need at least one correct parameter, the name of the module you would like to run.  
 The following options are valid:
 
-	say-hello
+	say-hello (h)
 		Echo the string "Hello world!" back to the console.
-	params-example
+	params-example (p)
 		Displays an example of what the parameters file should look like.
-	my-params
+	my-params (m)
 		Shows the parameters that the application has found for your request.  
 		In other words, this echos the parameters you have given the application
-	instant-omop
+	instant-omop (i)
 		Instant OMOP will build an instance of OMOP based on your app.params file.  
 		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
-	add-test-patients
+	add-test-patients (a)
 		Adds about 1,000 test patients from synthea to your OMOP instance
 
 Also, make sure you have an app.properties file in your working dir (the dir your in now).  

@@ -22,6 +22,8 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 	private File file;
 
 	private String filePath;
+	
+	private String filePathShortend;
 
 	private String json;
 
@@ -32,6 +34,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.conn = conn;
 		this.id = id;
 		this.filePath = FileUtil.getCanonicalPath(file);
+		this.filePathShortend = filePath;
+		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
+			this.filePathShortend = filePath.substring(filePath.indexOf('/') + filePath.length());
+		}
 	}
 
 	public WriteFhirPatientToOmopRunnable(String filePath, String json, Connection conn, Integer id) {
@@ -39,6 +45,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.json = json;
 		this.conn = conn;
 		this.id = id;
+		this.filePathShortend = filePath;
+		if(this.filePath != null && this.filePath.indexOf('/') > 0) {
+			this.filePathShortend = filePath.substring(filePath.indexOf('/') + filePath.length());
+		}
 	}
 
 	@Override
@@ -51,10 +61,10 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 			// parse the json
 			this.parser = new PatientEverythingParser(json);
 			OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(this.parser, this.conn);
-			log.info("DONE: Parsing fhir resource (" + this.id + ")\t" + this.filePath);
+			log.info("DONE: Parsing fhir resource (" + this.id + ")" + this.filePathShortend);
 			// write to the database
 			WriteFhirPatientToOmop.exec(personEverything, this.conn);
-			log.info("DONE:  Writing to database (thread " + this.id + ")\t" + filePath);
+			log.info("DONE: Writing to database (thread " + this.id + ")" + filePathShortend);
 		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
 			if (cause instanceof DataFormatException) {

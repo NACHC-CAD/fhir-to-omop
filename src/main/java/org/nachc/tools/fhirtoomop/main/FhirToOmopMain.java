@@ -29,24 +29,27 @@ public class FhirToOmopMain {
 			String name = args[0];
 			switch (name.toLowerCase()) {
 			case "say-hello":
+			case "h":
 				sayHello();
 				break;
 			case "params-example":
+			case "p":
 				paramsExample();
 				break;
 			case "my-params":
+			case "m":
 				myParams(fileName);
 				break;
 			case "instant-omop":
+			case "i":
 				instantOmop();
 				break;
 			case "list-test-patients":
-				listTestPatients();
-				break;
 			case "l":
 				listTestPatients();
 				break;
 			case "add-test-patients":
+			case "a":
 				addTestPatients();
 				break;
 			case "add-from-dir":

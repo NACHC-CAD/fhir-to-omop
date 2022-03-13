@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.jar.JarUtil;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread.WriteFhirPatientToOmopRunnable;
@@ -40,7 +39,7 @@ public class WriteTestPatientsToDatabase {
 			log.info("Writing patients...");
 			Timer timer = new Timer();
 			timer.start();
-			List<String> files = JarUtil.getResources(DIR_NAME);
+			List<String> files = FileUtil.listResources(DIR_NAME, WriteTestPatientsToDatabase.class);
 			List<Thread> threadList = new ArrayList<Thread>();
 			int cnt = 0;
 			for (String path : files) {
@@ -50,7 +49,7 @@ public class WriteTestPatientsToDatabase {
 				WriteFhirPatientToOmopRunnable runnable = new WriteFhirPatientToOmopRunnable(path, json, conn, cnt);
 				Thread thread = new Thread(runnable);
 				threadList.add(thread);
-				if(limit != null && cnt >= limit) {
+				if (limit != null && cnt >= limit) {
 					break;
 				}
 			}
