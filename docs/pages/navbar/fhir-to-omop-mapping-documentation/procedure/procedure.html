@@ -1,0 +1,97 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>PROCEDURE: Mapping of FHIR Procedure Resources to OMOP Entities</h1>
+			This document details the design and decisions for implementing mapping of FHIR Procedure resources to OMOP. 
+			The following referenced were used to inform this implementation.  
+			<br/>
+			<h2>References for Procedure</h2>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td>
+						<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping.html">General Mapping Resources</a>
+					</td>
+					<td>
+						This is the fhir-to-omop documentation for general FHIR and OMOP information.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/STU3/procedure.html">
+							FHIR Procedure (STU3)
+						</a>
+					</td>
+					<td>
+						FHIR Documentation for the Procedure resource. The following version have been considered.  
+						<ul>
+							<li>
+								<a href="http://build.fhir.org/procedure.html">
+									Procedure (Current Build)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/R4/procedure.html">
+									Procedure (R4)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/STU3/procedure.html">
+									Procedure (STU3)
+								</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="https://ohdsi.github.io/CommonDataModel/cdm54.html#PROCEDURE_OCCURRENCE">
+							PROCEDURE_OCCURRENCE
+						</a>
+					</td>
+					<td>
+						This is the OMOP documentation for the PROCEDURE_OCCURRENCE table.  
+					</td>
+				</tr>
+			</table> 
+			
+			<h2>Reference Data</h2>
+			The resoures show below are used for specific use cases and examples
+			<br/>
+			<br/>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/resources/reference-data/patient-one/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">
+							Patient&nbsp;One (Download)
+						</a>
+					</td>
+					<td>
+						The fhir-to-omop Patient One. This is the Patient$everything record for patient 0000aa42-c235-4447-8389-8a2640f44466.  
+						(Click <a href="/fhir-to-omop/resources/reference-data/patient-one/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">here</a> to view in browser). 
+						This file has been pretty printed to be more human readable.  
+						The original file is available here to  
+						<a download href="/fhir-to-omop/resources/reference-data/patient-one/original/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">
+							download
+						</a>
+					</td>
+				</tr>
+			</table> 
+			
+		</div>
+	</body>
+</html>
