@@ -21,6 +21,8 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 
 	private File file;
 
+	private String filePath;
+
 	private String json;
 
 	private PatientEverythingParser parser;
@@ -29,22 +31,35 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 		this.file = file;
 		this.conn = conn;
 		this.id = id;
+		this.filePath = FileUtil.getCanonicalPath(file);
+	}
+
+	public WriteFhirPatientToOmopRunnable(String filePath, String json, Connection conn, Integer id) {
+		this.filePath = filePath;
+		this.json = json;
+		this.conn = conn;
+		this.id = id;
 	}
 
 	@Override
 	public void run() {
 		try {
-			this.json = FileUtil.getAsString(file);
+			// get the json if we only have a file
+			if (this.json == null) {
+				this.json = FileUtil.getAsString(file);
+			}
+			// parse the json
 			this.parser = new PatientEverythingParser(json);
 			OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(this.parser, this.conn);
-			log.info("DONE: Parsing fhir resource (" + this.id + ")\t" + this.file.getName());
+			log.info("DONE: Parsing fhir resource (" + this.id + ")\t" + this.filePath);
+			// write to the database
 			WriteFhirPatientToOmop.exec(personEverything, this.conn);
-			log.info("DONE:  Writing to database (thread " + this.id + ")\t" + this.file.getName());
+			log.info("DONE:  Writing to database (thread " + this.id + ")\t" + filePath);
 		} catch (RuntimeException exp) {
 			Throwable cause = exp.getCause();
 			if (cause instanceof DataFormatException) {
 				log.warn("! ! ! EXCEPTION THROWN TRING TO WRITE PATIENT ! ! !");
-				log.warn("File: " + FileUtil.getCanonicalPath(file));
+				log.warn("File: " + filePath);
 				log.warn("This is generally expected for the data files we are using.");
 			} else {
 				// TODO: (JEG) CHECK TO SEE IF THIS CODE IS REACHED (SET A BREAK POINT)
