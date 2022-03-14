@@ -1,0 +1,4525 @@
+{
+	"entry": [
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/28a6339a-68c3-48b7-aa9c-a0efebaab23e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/ca4a475d-3240-4383-b387-17e4538ca355"
+				},
+				"id": "28a6339a-68c3-48b7-aa9c-a0efebaab23e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.530926+00:00",
+					"versionId": "MTU1NDgxMjczNjUzMDkyNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-03-05T10:27:53-05:00",
+					"start": "2017-03-05T10:12:53-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6f7acde5-db81-4361-82cf-886893a3280c"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/3ebffd57-a95c-4a61-a5d1-8ada979bbea3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/2a0e0f6c-493f-4c5b-bf89-5f98aee24f21"
+				},
+				"id": "3ebffd57-a95c-4a61-a5d1-8ada979bbea3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.525580+00:00",
+					"versionId": "MTU1NDgxMjczNjUyNTU4MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-03-02T10:27:53-05:00",
+					"start": "2014-03-02T10:12:53-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6f7acde5-db81-4361-82cf-886893a3280c"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2d025465-b922-48e4-92fd-04caa31494ea",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/07f9740e-c672-4297-ad3f-e9f0baa7ff2d"
+				},
+				"id": "2d025465-b922-48e4-92fd-04caa31494ea",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.463672+00:00",
+					"versionId": "MTU1NDgxMjczNjQ2MzY3MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-10-30T21:36:32-04:00",
+					"start": "2018-10-30T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/de836e54-f616-4bc5-8230-0920ed5f3fab",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/6ccb003d-d72f-4d87-8460-ea6021f52f94"
+				},
+				"id": "de836e54-f616-4bc5-8230-0920ed5f3fab",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.456653+00:00",
+					"versionId": "MTU1NDgxMjczNjQ1NjY1MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-06-02T21:47:32-04:00",
+					"start": "2018-06-02T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ffe779a8-ae4a-403c-bcf8-fed51bd7a57e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/a9b77764-1069-478a-b229-39fabbf0475b"
+				},
+				"id": "ffe779a8-ae4a-403c-bcf8-fed51bd7a57e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.456406+00:00",
+					"versionId": "MTU1NDgxMjczNjQ1NjQwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-10-24T21:36:32-04:00",
+					"start": "2017-10-24T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/0996a29f-3df1-4964-adae-26688222f232",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/94909840-56d7-4133-bddf-54b05cd14044"
+				},
+				"id": "0996a29f-3df1-4964-adae-26688222f232",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.452231+00:00",
+					"versionId": "MTU1NDgxMjczNjQ1MjIzMTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-18T21:36:32-04:00",
+					"start": "2016-10-18T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1f3f2114-c550-4aee-8afd-255ff3401d43",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/78ed0183-1905-4a0a-9a80-eb75292e7d5f"
+				},
+				"id": "1f3f2114-c550-4aee-8afd-255ff3401d43",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.443507+00:00",
+					"versionId": "MTU1NDgxMjczNjQ0MzUwNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-10-01T21:36:32-04:00",
+					"start": "2013-10-01T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/60ab2de5-45d1-4cc4-9d96-f6d0c2bfcf35",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/58cdb354-2ea9-4ecb-9a97-b89663551772"
+				},
+				"id": "60ab2de5-45d1-4cc4-9d96-f6d0c2bfcf35",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.438102+00:00",
+					"versionId": "MTU1NDgxMjczNjQzODEwMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-09-25T21:36:32-04:00",
+					"start": "2012-09-25T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5a6c5df4-5f2b-4e3d-8c51-3e591e7541f4",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "312681000",
+							"display": "Bone density scan (procedure)",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Bone density scan (procedure)"
+				},
+				"context": {
+					"reference": "Encounter/8266f8c8-cb8d-4303-8037-c2005e72cef3"
+				},
+				"id": "5a6c5df4-5f2b-4e3d-8c51-3e591e7541f4",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.436223+00:00",
+					"versionId": "MTU1NDgxMjczNjQzNjIyMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-08-06T21:36:32-04:00",
+					"start": "2011-08-06T21:21:32-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Fracture of ankle",
+						"reference": "Condition/705ef7cb-eec5-48c5-a924-89a113342af2"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ab56bbb4-0ea9-4ad0-b938-1f748c4a9a93",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "23426006",
+							"display": "Measurement of respiratory function (procedure)",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Measurement of respiratory function (procedure)"
+				},
+				"context": {
+					"reference": "Encounter/a203c98f-6537-48b3-86f2-f4f9ded4eb32"
+				},
+				"id": "ab56bbb4-0ea9-4ad0-b938-1f748c4a9a93",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.436097+00:00",
+					"versionId": "MTU1NDgxMjczNjQzNjA5NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-02-19T20:35:32-05:00",
+					"start": "2013-02-19T20:21:32-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Acute bronchitis (disorder)",
+						"reference": "Condition/605a16f0-fdc7-4600-ad46-ef3a3903c6ec"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7a664982-ed01-44ef-9ddc-756b6e371921",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/de4afdc8-ecf0-46f7-9b54-7c15f72db396"
+				},
+				"id": "7a664982-ed01-44ef-9ddc-756b6e371921",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.435998+00:00",
+					"versionId": "MTU1NDgxMjczNjQzNTk5ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-06-03T22:04:32-04:00",
+					"start": "2013-06-03T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/67fce16d-4d02-4071-b362-f9939ca4dc40",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274474001",
+							"display": "Bone immobilization",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Bone immobilization"
+				},
+				"context": {
+					"reference": "Encounter/8266f8c8-cb8d-4303-8037-c2005e72cef3"
+				},
+				"id": "67fce16d-4d02-4071-b362-f9939ca4dc40",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.434543+00:00",
+					"versionId": "MTU1NDgxMjczNjQzNDU0MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-08-06T22:03:32-04:00",
+					"start": "2011-08-06T21:21:32-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Fracture of ankle",
+						"reference": "Condition/705ef7cb-eec5-48c5-a924-89a113342af2"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/49bda36d-3b6c-4c8e-ad92-c9805f1552f1",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "19490002",
+							"display": "Ankle X-ray",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Ankle X-ray"
+				},
+				"context": {
+					"reference": "Encounter/8266f8c8-cb8d-4303-8037-c2005e72cef3"
+				},
+				"id": "49bda36d-3b6c-4c8e-ad92-c9805f1552f1",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:36.431457+00:00",
+					"versionId": "MTU1NDgxMjczNjQzMTQ1NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-08-06T21:51:32-04:00",
+					"start": "2011-08-06T21:21:32-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/728b270d-d7de-4143-82fe-d3ccd92cebe4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/40abc5c9-948b-4be9-95c9-2a720cc32129",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "287664005",
+							"display": "Bilateral tubal ligation",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Bilateral tubal ligation"
+				},
+				"context": {
+					"reference": "Encounter/6f71fe81-2387-4e00-9a23-6cc148b29428"
+				},
+				"id": "40abc5c9-948b-4be9-95c9-2a720cc32129",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.392996+00:00",
+					"versionId": "MTU1NDgxMjczNTM5Mjk5NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-03-11T19:02:35-04:00",
+					"start": "2018-03-11T17:02:35-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c0d40f18-b514-45e6-a9a1-b1be63dd0970",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "268556000",
+							"display": "Urine screening for glucose",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine screening for glucose"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "c0d40f18-b514-45e6-a9a1-b1be63dd0970",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379300+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTMwMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5c95eede-8a66-4f24-b02b-d08a8316df68",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "5880005",
+							"display": "Physical examination following birth",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Physical examination following birth"
+				},
+				"context": {
+					"reference": "Encounter/ccbc4d14-1e92-4dc6-8a0c-4ff77a912856"
+				},
+				"id": "5c95eede-8a66-4f24-b02b-d08a8316df68",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379272+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTI3MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-03-02T16:17:35-05:00",
+					"start": "2017-03-02T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1516c207-6ebe-4bcd-a3be-437e62420870",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/30b9029a-e456-4cc0-9902-92a7de5f7d6e"
+				},
+				"id": "1516c207-6ebe-4bcd-a3be-437e62420870",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379138+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTEzODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-05T16:17:35-05:00",
+					"start": "2017-01-05T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/cbded94b-03a1-4992-9071-c34ef7f3deea",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "18946005",
+							"display": "Epidural anesthesia",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Epidural anesthesia"
+				},
+				"context": {
+					"reference": "Encounter/50498321-9130-4a81-b66f-da0de245e41f"
+				},
+				"id": "cbded94b-03a1-4992-9071-c34ef7f3deea",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379106+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTEwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-19T16:17:35-05:00",
+					"start": "2017-01-19T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/109a5ffd-3a1c-4fea-838a-9404ca789578",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "118001005",
+							"display": "Streptococcus pneumoniae group B antigen test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Streptococcus pneumoniae group B antigen test"
+				},
+				"context": {
+					"reference": "Encounter/27db69c2-502d-4cf2-9e85-ed77cbf38ab1"
+				},
+				"id": "109a5ffd-3a1c-4fea-838a-9404ca789578",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379065+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTA2NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-12-22T16:17:35-05:00",
+					"start": "2016-12-22T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/daec72a1-75c0-476d-a319-cda0c784a3be",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/27db69c2-502d-4cf2-9e85-ed77cbf38ab1"
+				},
+				"id": "daec72a1-75c0-476d-a319-cda0c784a3be",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379052+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTA1MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-12-22T16:17:35-05:00",
+					"start": "2016-12-22T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/368eaca1-2f90-43d2-a871-0621b9873740",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/7fb583af-01a1-44f6-8bb9-fd37f66c4e59"
+				},
+				"id": "368eaca1-2f90-43d2-a871-0621b9873740",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.379030+00:00",
+					"versionId": "MTU1NDgxMjczNTM3OTAzMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-09-29T17:17:35-04:00",
+					"start": "2016-09-29T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/bcb25174-57d9-4923-87bc-f16aeab25270",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "395123002",
+							"display": "Urine screening test for diabetes",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine screening test for diabetes"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "bcb25174-57d9-4923-87bc-f16aeab25270",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378907+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODkwNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a7cfb6ca-d63b-4475-91c0-c2e76d3e1b61",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/fd5d366d-26cc-4c8c-8be6-51a982326659"
+				},
+				"id": "a7cfb6ca-d63b-4475-91c0-c2e76d3e1b61",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378906+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODkwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-12T16:17:35-05:00",
+					"start": "2017-01-12T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/dcb0c970-0f1c-42f6-934d-6a977c4d7ae3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "dcb0c970-0f1c-42f6-934d-6a977c4d7ae3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378892+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODg5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d40a1790-bf6d-481f-a3bf-f46b9fc45af6",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "51116004",
+							"display": "RhD passive immunization",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "RhD passive immunization"
+				},
+				"context": {
+					"reference": "Encounter/ccbc4d14-1e92-4dc6-8a0c-4ff77a912856"
+				},
+				"id": "d40a1790-bf6d-481f-a3bf-f46b9fc45af6",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378891+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODg5MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-03-02T16:17:35-05:00",
+					"start": "2017-03-02T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/50da6832-43df-44e8-ab35-7752079aaafa",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/27db69c2-502d-4cf2-9e85-ed77cbf38ab1"
+				},
+				"id": "50da6832-43df-44e8-ab35-7752079aaafa",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378891+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODg5MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-12-22T16:17:35-05:00",
+					"start": "2016-12-22T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1e05f950-f5a4-453e-9363-d9eb4486fe91",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "171207006",
+							"display": "Depression screening",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Depression screening"
+				},
+				"context": {
+					"reference": "Encounter/ccbc4d14-1e92-4dc6-8a0c-4ff77a912856"
+				},
+				"id": "1e05f950-f5a4-453e-9363-d9eb4486fe91",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378848+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODg0ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-03-02T16:17:35-05:00",
+					"start": "2017-03-02T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/687a0e99-592f-4f1f-bec2-50efcf3bf78a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/739f3a86-9c15-47b5-b0b5-72d5062994f6"
+				},
+				"id": "687a0e99-592f-4f1f-bec2-50efcf3bf78a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378844+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODg0NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-11-24T16:17:35-05:00",
+					"start": "2016-11-24T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/807bfb1a-d7d2-4b08-96cc-e75b62c6dc2c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/08bfe31a-6fed-43e8-b2c5-90f5b02b3e77"
+				},
+				"id": "807bfb1a-d7d2-4b08-96cc-e75b62c6dc2c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378753+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODc1MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-07-07T17:17:35-04:00",
+					"start": "2016-07-07T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/eb1c34fe-b345-4926-a0bc-54634adf000b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "269828009",
+							"display": "Syphilis infection test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Syphilis infection test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "eb1c34fe-b345-4926-a0bc-54634adf000b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378728+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODcyODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/52dc2cf2-dda7-48cc-8eec-7f8f9fa0a4cd",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/7fb583af-01a1-44f6-8bb9-fd37f66c4e59"
+				},
+				"id": "52dc2cf2-dda7-48cc-8eec-7f8f9fa0a4cd",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378639+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODYzOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-09-29T17:17:35-04:00",
+					"start": "2016-09-29T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ea5645ad-2a91-4163-ae47-6380ece566ef",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/3ac045f6-73ee-42bf-ab37-a756bec003c3"
+				},
+				"id": "ea5645ad-2a91-4163-ae47-6380ece566ef",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378599+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODU5OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-08-04T17:17:35-04:00",
+					"start": "2016-08-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8748a84b-934f-4b7a-95ba-4a17bb89e663",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "8748a84b-934f-4b7a-95ba-4a17bb89e663",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378499+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODQ5OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/af668d2e-bf47-401a-ad84-6086b3947018",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "66348005",
+							"display": "Childbirth",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Childbirth"
+				},
+				"context": {
+					"reference": "Encounter/50498321-9130-4a81-b66f-da0de245e41f"
+				},
+				"id": "af668d2e-bf47-401a-ad84-6086b3947018",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378475+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODQ3NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-19T16:17:35-05:00",
+					"start": "2017-01-19T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/83dd15e1-b76c-4f42-9d48-81d01f4c458b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "104091002",
+							"display": "Hemoglobin / Hematocrit / Platelet count",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Hemoglobin / Hematocrit / Platelet count"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "83dd15e1-b76c-4f42-9d48-81d01f4c458b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.378342+00:00",
+					"versionId": "MTU1NDgxMjczNTM3ODM0MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/3ae87621-bf99-40fc-a05d-26716708defb",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "271442007",
+							"display": "Fetal anatomy study",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Fetal anatomy study"
+				},
+				"context": {
+					"reference": "Encounter/3ac045f6-73ee-42bf-ab37-a756bec003c3"
+				},
+				"id": "3ae87621-bf99-40fc-a05d-26716708defb",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.377247+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NzI0NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-08-04T17:17:35-04:00",
+					"start": "2016-08-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8cb8746a-3ea8-4d8a-bcac-bfa6699a10d3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/739f3a86-9c15-47b5-b0b5-72d5062994f6"
+				},
+				"id": "8cb8746a-3ea8-4d8a-bcac-bfa6699a10d3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.377243+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NzI0MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-11-24T16:17:35-05:00",
+					"start": "2016-11-24T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9112690b-acf2-4b94-a0a7-7edcdf7ab493",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "51116004",
+							"display": "RhD passive immunization",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "RhD passive immunization"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "9112690b-acf2-4b94-a0a7-7edcdf7ab493",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.376392+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NjM5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/84773daa-24a0-4984-9ec3-867bfda6abf5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/30b9029a-e456-4cc0-9902-92a7de5f7d6e"
+				},
+				"id": "84773daa-24a0-4984-9ec3-867bfda6abf5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.376257+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NjI1NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-05T16:17:35-05:00",
+					"start": "2017-01-05T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/02627a0f-65dc-4bca-8ae5-f4fa7458be6a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "02627a0f-65dc-4bca-8ae5-f4fa7458be6a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.376174+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NjE3NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1a6b2d34-c669-4e21-9687-895ea0c2798d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/c2e6c93c-939a-48b6-83da-87ac12b6a3b8"
+				},
+				"id": "1a6b2d34-c669-4e21-9687-895ea0c2798d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.375915+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NTkxNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-09-01T17:17:35-04:00",
+					"start": "2016-09-01T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/34d0322d-16b9-4d2f-a69f-66343c140ac5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "104326007",
+							"display": "Measurement of Varicella-zoster virus antibody",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Measurement of Varicella-zoster virus antibody"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "34d0322d-16b9-4d2f-a69f-66343c140ac5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.375914+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NTkxNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ca74c407-2156-405e-a132-95a10003e610",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "443529005",
+							"display": "Screening for chromosomal aneuploidy in prenatal amniotic fluid",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Screening for chromosomal aneuploidy in prenatal amniotic fluid"
+				},
+				"context": {
+					"reference": "Encounter/08bfe31a-6fed-43e8-b2c5-90f5b02b3e77"
+				},
+				"id": "ca74c407-2156-405e-a132-95a10003e610",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.375871+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NTg3MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-07-07T17:17:35-04:00",
+					"start": "2016-07-07T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/499d95e9-3de1-4800-906a-66bb4dca38cf",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "169673001",
+							"display": "Antenatal RhD antibody screening",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Antenatal RhD antibody screening"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "499d95e9-3de1-4800-906a-66bb4dca38cf",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374928+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDkyODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/96635b87-9323-45e6-abcb-8bffc8f4d16f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "117010004",
+							"display": "Urine culture",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine culture"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "96635b87-9323-45e6-abcb-8bffc8f4d16f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374752+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDc1MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/719e9652-7042-42fd-8302-ca7960c52f75",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "104375008",
+							"display": "Hepatitis C antibody test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Hepatitis C antibody test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "719e9652-7042-42fd-8302-ca7960c52f75",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374507+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDUwNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8c2edb07-3bd1-4399-a7fc-1451a3b7b39c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "310861008",
+							"display": "Chlamydia antigen test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Chlamydia antigen test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "8c2edb07-3bd1-4399-a7fc-1451a3b7b39c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374478+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDQ3ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/48381894-ec7c-44b7-aaea-ce670746e7ff",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/fd5d366d-26cc-4c8c-8be6-51a982326659"
+				},
+				"id": "48381894-ec7c-44b7-aaea-ce670746e7ff",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374437+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDQzNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-12T16:17:35-05:00",
+					"start": "2017-01-12T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1c0b9c84-3de8-456f-b7a1-daeb3f717923",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "169690007",
+							"display": "Rubella screening",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Rubella screening"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "1c0b9c84-3de8-456f-b7a1-daeb3f717923",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.374351+00:00",
+					"versionId": "MTU1NDgxMjczNTM3NDM1MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c1d770c3-5d92-48ca-89d6-061f21cf7dbf",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "31676001",
+							"display": "Human immunodeficiency virus antigen test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Human immunodeficiency virus antigen test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "c1d770c3-5d92-48ca-89d6-061f21cf7dbf",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373792+00:00",
+					"versionId": "MTU1NDgxMjczNTM3Mzc5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2c82272b-792f-48fd-b095-91bd53267b2a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "44608003",
+							"display": "Blood typing, RH typing",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Blood typing, RH typing"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "2c82272b-792f-48fd-b095-91bd53267b2a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373712+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzcxMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7402485a-4f56-4fe1-8bef-9936fdfd87b4",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "169230002",
+							"display": "Ultrasound scan for fetal viability",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Ultrasound scan for fetal viability"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "7402485a-4f56-4fe1-8bef-9936fdfd87b4",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373671+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzY3MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a5ecdad7-bb52-499b-9bad-3954139dbc7a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "399014008",
+							"display": "Vaccination for diphtheria, pertussis, and tetanus",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Vaccination for diphtheria, pertussis, and tetanus"
+				},
+				"context": {
+					"reference": "Encounter/fc7328b1-3fa9-4c09-9398-48a94582aa11"
+				},
+				"id": "a5ecdad7-bb52-499b-9bad-3954139dbc7a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373626+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzYyNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-10-27T17:17:35-04:00",
+					"start": "2016-10-27T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/67efcba4-0633-4640-9639-bf6d27fc82ef",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/3ac045f6-73ee-42bf-ab37-a756bec003c3"
+				},
+				"id": "67efcba4-0633-4640-9639-bf6d27fc82ef",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373624+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzYyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-08-04T17:17:35-04:00",
+					"start": "2016-08-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/313ebcd1-abb3-4634-9af4-91351694e2fb",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "47758006",
+							"display": "Hepatitis B Surface Antigen Measurement",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Hepatitis B Surface Antigen Measurement"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "313ebcd1-abb3-4634-9af4-91351694e2fb",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373563+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzU2MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/dea3c6c7-c9fa-4a94-adaf-778cde5a192d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "165829005",
+							"display": "Gonorrhea infection test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Gonorrhea infection test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "dea3c6c7-c9fa-4a94-adaf-778cde5a192d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.373422+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MzQyMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9e95204b-0e36-425d-b421-e6a9504daf82",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "275833003",
+							"display": "Alpha-fetoprotein test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Alpha-fetoprotein test"
+				},
+				"context": {
+					"reference": "Encounter/3ac045f6-73ee-42bf-ab37-a756bec003c3"
+				},
+				"id": "9e95204b-0e36-425d-b421-e6a9504daf82",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.372317+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MjMxNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-08-04T17:17:35-04:00",
+					"start": "2016-08-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b44ad3be-3ac4-46b9-ba99-baa290bc3be0",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/c2e6c93c-939a-48b6-83da-87ac12b6a3b8"
+				},
+				"id": "b44ad3be-3ac4-46b9-ba99-baa290bc3be0",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.372316+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MjMxNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-09-01T17:17:35-04:00",
+					"start": "2016-09-01T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9ad3997b-d668-430c-9204-6275ef88e4f7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "9ad3997b-d668-430c-9204-6275ef88e4f7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.372299+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MjI5OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/db272582-cc5b-43db-9fc7-808c5f988ceb",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "167271000",
+							"display": "Urine protein test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine protein test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "db272582-cc5b-43db-9fc7-808c5f988ceb",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.371740+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MTc0MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a50155bf-e0e5-4afe-b57f-ad49096e6cf8",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "28163009",
+							"display": "Skin test for tuberculosis",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Skin test for tuberculosis"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "a50155bf-e0e5-4afe-b57f-ad49096e6cf8",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.371336+00:00",
+					"versionId": "MTU1NDgxMjczNTM3MTMzNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a12a0f3e-5e5d-4a1a-affa-faa0597553ef",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/08bfe31a-6fed-43e8-b2c5-90f5b02b3e77"
+				},
+				"id": "a12a0f3e-5e5d-4a1a-affa-faa0597553ef",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.369439+00:00",
+					"versionId": "MTU1NDgxMjczNTM2OTQzOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-07-07T17:17:35-04:00",
+					"start": "2016-07-07T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/649839f5-d3c3-4b71-af30-27e483e165b7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "104091002",
+							"display": "Hemoglobin / Hematocrit / Platelet count",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Hemoglobin / Hematocrit / Platelet count"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "649839f5-d3c3-4b71-af30-27e483e165b7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.369323+00:00",
+					"versionId": "MTU1NDgxMjczNTM2OTMyMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/4f6f018e-187e-4adf-b4c0-096b81b24d5c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/634ac508-435e-4458-afe3-c3dc5716517d"
+				},
+				"id": "4f6f018e-187e-4adf-b4c0-096b81b24d5c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.369128+00:00",
+					"versionId": "MTU1NDgxMjczNTM2OTEyODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-06-19T17:17:35-04:00",
+					"start": "2014-06-19T17:02:35-04:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/1c4809e7-3946-4329-a4e0-3166e9b2494c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "5880005",
+							"display": "Physical examination of mother",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Physical examination of mother"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "1c4809e7-3946-4329-a4e0-3166e9b2494c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.368731+00:00",
+					"versionId": "MTU1NDgxMjczNTM2ODczMTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ac17a0e5-76c9-4042-bf3e-0fb5fccae3e9",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "90226004",
+							"display": "Cytopathology procedure, preparation of smear, genital source",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Cytopathology procedure, preparation of smear, genital source"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "ac17a0e5-76c9-4042-bf3e-0fb5fccae3e9",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.365724+00:00",
+					"versionId": "MTU1NDgxMjczNTM2NTcyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/af3c35fb-2aac-408c-b781-ce0559a319b5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "252160004",
+							"display": "Standard pregnancy test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Standard pregnancy test"
+				},
+				"context": {
+					"reference": "Encounter/58ec3152-7fdf-4ba5-8483-aaa3489c1618"
+				},
+				"id": "af3c35fb-2aac-408c-b781-ce0559a319b5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.365722+00:00",
+					"versionId": "MTU1NDgxMjczNTM2NTcyMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-09T17:17:35-04:00",
+					"start": "2016-06-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f412d1b-a74a-4585-aa93-e0adecf2b9b5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/48536536-6d7a-4f7e-b8ac-f46f1e9a200e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "117015009",
+							"display": "Throat culture (procedure)",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Throat culture (procedure)"
+				},
+				"context": {
+					"reference": "Encounter/44a666ab-8eaa-4eb0-b0ec-444cd304fb22"
+				},
+				"id": "48536536-6d7a-4f7e-b8ac-f46f1e9a200e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:35.364277+00:00",
+					"versionId": "MTU1NDgxMjczNTM2NDI3NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-03-05T16:17:35-05:00",
+					"start": "2016-03-05T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Streptococcal sore throat (disorder)",
+						"reference": "Condition/333c3e7c-f93b-478b-8b0e-db5e1fc1bdd2"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d8b0767b-f756-461b-b9d1-0ee981798d33",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/98772662-76aa-4f92-8dec-cd77ed464f1b"
+				},
+				"id": "d8b0767b-f756-461b-b9d1-0ee981798d33",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.370869+00:00",
+					"versionId": "MTU1NDgxMjczNDM3MDg2OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-12-12T16:17:35-05:00",
+					"start": "2013-12-12T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/cbebd935-e018-480d-8312-9801254d8c49",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/66bbdc47-b3bf-4595-aa11-c54a697bf02b"
+				},
+				"id": "cbebd935-e018-480d-8312-9801254d8c49",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.364589+00:00",
+					"versionId": "MTU1NDgxMjczNDM2NDU4OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-10-24T17:17:35-04:00",
+					"start": "2013-10-24T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/36256394-7223-4b09-a3c9-c29ac77321c5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/8080003f-af3a-4996-abaf-bae4f436a355"
+				},
+				"id": "36256394-7223-4b09-a3c9-c29ac77321c5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.347090+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NzA5MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-12-05T16:17:35-05:00",
+					"start": "2013-12-05T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e64b106d-47e6-4a7f-a6c0-412be2a34806",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "11466000",
+							"display": "Cesarean section",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Cesarean section"
+				},
+				"context": {
+					"reference": "Encounter/98772662-76aa-4f92-8dec-cd77ed464f1b"
+				},
+				"id": "e64b106d-47e6-4a7f-a6c0-412be2a34806",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346997+00:00",
+					"versionId": "MTU1NDgxMjczNDM0Njk5NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-12-12T16:17:35-05:00",
+					"start": "2013-12-12T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/fbad6fa8-5b22-4a30-a865-b4b2c6833942",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/66bbdc47-b3bf-4595-aa11-c54a697bf02b"
+				},
+				"id": "fbad6fa8-5b22-4a30-a865-b4b2c6833942",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346959+00:00",
+					"versionId": "MTU1NDgxMjczNDM0Njk1OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-10-24T17:17:35-04:00",
+					"start": "2013-10-24T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/6cf96f68-5bbc-403c-b9c7-15c17e793300",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/fc63bd8e-f531-4f31-9ebe-95cf8d78d23f"
+				},
+				"id": "6cf96f68-5bbc-403c-b9c7-15c17e793300",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346924+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjkyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-11-21T16:17:35-05:00",
+					"start": "2013-11-21T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/33e427dd-1b2d-47ea-ab14-80a5adeddc84",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/fc63bd8e-f531-4f31-9ebe-95cf8d78d23f"
+				},
+				"id": "33e427dd-1b2d-47ea-ab14-80a5adeddc84",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346897+00:00",
+					"versionId": "MTU1NDgxMjczNDM0Njg5NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-11-21T16:17:35-05:00",
+					"start": "2013-11-21T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c5fc92a3-01fd-4fc6-8686-5a2347e72617",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/0ba17a71-03c4-425c-8b60-34d571bee0a7"
+				},
+				"id": "c5fc92a3-01fd-4fc6-8686-5a2347e72617",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346656+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjY1NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-08-01T17:17:35-04:00",
+					"start": "2013-08-01T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5b51212a-177a-491e-be4d-3c7ddd191d1b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "271442007",
+							"display": "Fetal anatomy study",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Fetal anatomy study"
+				},
+				"context": {
+					"reference": "Encounter/633ff62d-dd8e-466b-a363-509ced64beb9"
+				},
+				"id": "5b51212a-177a-491e-be4d-3c7ddd191d1b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346655+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjY1NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-04T17:17:35-04:00",
+					"start": "2013-07-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ff3b59fc-5053-43fb-b798-79d33977fdb7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "169673001",
+							"display": "Antenatal RhD antibody screening",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Antenatal RhD antibody screening"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "ff3b59fc-5053-43fb-b798-79d33977fdb7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346654+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjY1NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/302fad8c-455e-4357-8d3e-4ef0f350dd31",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "275833003",
+							"display": "Alpha-fetoprotein test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Alpha-fetoprotein test"
+				},
+				"context": {
+					"reference": "Encounter/633ff62d-dd8e-466b-a363-509ced64beb9"
+				},
+				"id": "302fad8c-455e-4357-8d3e-4ef0f350dd31",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346524+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjUyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-04T17:17:35-04:00",
+					"start": "2013-07-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/180e3976-a26f-4e61-8e5b-39649d68d8b8",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "268556000",
+							"display": "Urine screening for glucose",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine screening for glucose"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "180e3976-a26f-4e61-8e5b-39649d68d8b8",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346210+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjIxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/68c3962d-5ffd-473c-8489-9255d682dbcd",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "104091002",
+							"display": "Hemoglobin / Hematocrit / Platelet count",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Hemoglobin / Hematocrit / Platelet count"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "68c3962d-5ffd-473c-8489-9255d682dbcd",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346143+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjE0MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/82737723-b35c-4906-8a50-a68fa392c89a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/1c25ad88-4804-428d-a911-7163105d10b7"
+				},
+				"id": "82737723-b35c-4906-8a50-a68fa392c89a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.346010+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NjAxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-08-29T17:17:35-04:00",
+					"start": "2013-08-29T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7c6e37e2-be52-4e93-bef3-5660d29ad0f7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "7c6e37e2-be52-4e93-bef3-5660d29ad0f7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.345880+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NTg4MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a310a3ad-5618-4a62-b557-5fa6fa9db72d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/8080003f-af3a-4996-abaf-bae4f436a355"
+				},
+				"id": "a310a3ad-5618-4a62-b557-5fa6fa9db72d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.345533+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NTUzMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-12-05T16:17:35-05:00",
+					"start": "2013-12-05T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8dfcac93-c6fc-4c92-b1fd-bceb603342b9",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "118001005",
+							"display": "Streptococcus pneumoniae group B antigen test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Streptococcus pneumoniae group B antigen test"
+				},
+				"context": {
+					"reference": "Encounter/fc63bd8e-f531-4f31-9ebe-95cf8d78d23f"
+				},
+				"id": "8dfcac93-c6fc-4c92-b1fd-bceb603342b9",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.345532+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NTUzMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-11-21T16:17:35-05:00",
+					"start": "2013-11-21T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/29d0d8fe-6a05-4484-a015-10be36c45766",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "29d0d8fe-6a05-4484-a015-10be36c45766",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.345531+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NTUzMTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/0066726f-0195-4423-b438-59ee49f3112d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/633ff62d-dd8e-466b-a363-509ced64beb9"
+				},
+				"id": "0066726f-0195-4423-b438-59ee49f3112d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.345530+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NTUzMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-04T17:17:35-04:00",
+					"start": "2013-07-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/6f874b53-3492-4f8c-882e-09c38fdaf8df",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/1c25ad88-4804-428d-a911-7163105d10b7"
+				},
+				"id": "6f874b53-3492-4f8c-882e-09c38fdaf8df",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.344155+00:00",
+					"versionId": "MTU1NDgxMjczNDM0NDE1NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-08-29T17:17:35-04:00",
+					"start": "2013-08-29T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/0681e366-7b50-4877-921d-46df0c45aeff",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "51116004",
+							"display": "RhD passive immunization",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "RhD passive immunization"
+				},
+				"context": {
+					"reference": "Encounter/1105cda8-dae6-46ab-98d2-db589f47a581"
+				},
+				"id": "0681e366-7b50-4877-921d-46df0c45aeff",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.343341+00:00",
+					"versionId": "MTU1NDgxMjczNDM0MzM0MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-01-23T16:17:35-05:00",
+					"start": "2014-01-23T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c93763d0-7f6b-4cbe-9403-6d077a454377",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/0ba17a71-03c4-425c-8b60-34d571bee0a7"
+				},
+				"id": "c93763d0-7f6b-4cbe-9403-6d077a454377",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.342257+00:00",
+					"versionId": "MTU1NDgxMjczNDM0MjI1NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-08-01T17:17:35-04:00",
+					"start": "2013-08-01T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2d45d0e4-6250-4f1f-9a15-2decf75281ae",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "171207006",
+							"display": "Depression screening",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Depression screening"
+				},
+				"context": {
+					"reference": "Encounter/1105cda8-dae6-46ab-98d2-db589f47a581"
+				},
+				"id": "2d45d0e4-6250-4f1f-9a15-2decf75281ae",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.340506+00:00",
+					"versionId": "MTU1NDgxMjczNDM0MDUwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-01-23T16:17:35-05:00",
+					"start": "2014-01-23T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8aecf604-6751-48b8-9aa4-11542f7869ac",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "5880005",
+							"display": "Physical examination following birth",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Physical examination following birth"
+				},
+				"context": {
+					"reference": "Encounter/1105cda8-dae6-46ab-98d2-db589f47a581"
+				},
+				"id": "8aecf604-6751-48b8-9aa4-11542f7869ac",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.336965+00:00",
+					"versionId": "MTU1NDgxMjczNDMzNjk2NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-01-23T16:17:35-05:00",
+					"start": "2014-01-23T16:02:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8465088c-0c0f-45f5-92aa-732b16ab60ba",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/e9bb0871-86bc-42ef-8a43-0a8e3d34d5a0"
+				},
+				"id": "8465088c-0c0f-45f5-92aa-732b16ab60ba",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.335239+00:00",
+					"versionId": "MTU1NDgxMjczNDMzNTIzOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-06-06T17:17:35-04:00",
+					"start": "2013-06-06T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8fea6786-2209-4ade-b1ae-82d9665f3fac",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274804006",
+							"display": "Evaluation of uterine fundal height",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Evaluation of uterine fundal height"
+				},
+				"context": {
+					"reference": "Encounter/e9bb0871-86bc-42ef-8a43-0a8e3d34d5a0"
+				},
+				"id": "8fea6786-2209-4ade-b1ae-82d9665f3fac",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.335108+00:00",
+					"versionId": "MTU1NDgxMjczNDMzNTEwODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-06-06T17:17:35-04:00",
+					"start": "2013-06-06T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9bf44537-afcc-4e80-ab03-de21cd19c35f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "225158009",
+							"display": "Auscultation of the fetal heart",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Auscultation of the fetal heart"
+				},
+				"context": {
+					"reference": "Encounter/633ff62d-dd8e-466b-a363-509ced64beb9"
+				},
+				"id": "9bf44537-afcc-4e80-ab03-de21cd19c35f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.334922+00:00",
+					"versionId": "MTU1NDgxMjczNDMzNDkyMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-04T17:17:35-04:00",
+					"start": "2013-07-04T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5533a1c3-02f4-49b6-8843-a691ce0c23ac",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "443529005",
+							"display": "Screening for chromosomal aneuploidy in prenatal amniotic fluid",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Screening for chromosomal aneuploidy in prenatal amniotic fluid"
+				},
+				"context": {
+					"reference": "Encounter/e9bb0871-86bc-42ef-8a43-0a8e3d34d5a0"
+				},
+				"id": "5533a1c3-02f4-49b6-8843-a691ce0c23ac",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.332839+00:00",
+					"versionId": "MTU1NDgxMjczNDMzMjgzOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-06-06T17:17:35-04:00",
+					"start": "2013-06-06T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b0b7d70d-1b6e-4427-8353-d781ac0b81d3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "399014008",
+							"display": "Vaccination for diphtheria, pertussis, and tetanus",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Vaccination for diphtheria, pertussis, and tetanus"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "b0b7d70d-1b6e-4427-8353-d781ac0b81d3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.332414+00:00",
+					"versionId": "MTU1NDgxMjczNDMzMjQxNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7dc20545-02e9-42a7-b787-d5316060ffa0",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "28163009",
+							"display": "Skin test for tuberculosis",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Skin test for tuberculosis"
+				},
+				"context": {
+					"reference": "Encounter/126b25bd-a665-45b8-b816-e37977ea9570"
+				},
+				"id": "7dc20545-02e9-42a7-b787-d5316060ffa0",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.331871+00:00",
+					"versionId": "MTU1NDgxMjczNDMzMTg3MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-05-09T17:17:35-04:00",
+					"start": "2013-05-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/4efe68c6-ce13-47bf-997a-d65a442be243",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "51116004",
+							"display": "RhD passive immunization",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "RhD passive immunization"
+				},
+				"context": {
+					"reference": "Encounter/7a049b88-70e3-497b-84b8-49f0999289bc"
+				},
+				"id": "4efe68c6-ce13-47bf-997a-d65a442be243",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.330741+00:00",
+					"versionId": "MTU1NDgxMjczNDMzMDc0MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-09-26T17:17:35-04:00",
+					"start": "2013-09-26T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/70b890a6-98fe-4b23-95dc-bfa1c60f8810",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "167271000",
+							"display": "Urine protein test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Urine protein test"
+				},
+				"context": {
+					"reference": "Encounter/126b25bd-a665-45b8-b816-e37977ea9570"
+				},
+				"id": "70b890a6-98fe-4b23-95dc-bfa1c60f8810",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.329369+00:00",
+					"versionId": "MTU1NDgxMjczNDMyOTM2OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-05-09T17:17:35-04:00",
+					"start": "2013-05-09T17:02:35-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		}
+	],
+	"link": [
+		{
+			"relation": "search",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?"
+		},
+		{
+			"relation": "next",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?&_page_token=Cjj3XKyPPv%2F%2F%2F%2F%2BABYYYDLjSGQD%2FAf%2F%2BMThkOWQ3OWUxZjIyYmNjM2M3YWZmYzc2NmRhMDU0MzkAARBkIfp7n2jesxm7OQAAAADBcFOjSCBQAFoLCWg3ctiHf%2BlPEANgjIzZpgM%3D"
+		},
+		{
+			"relation": "first",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?"
+		},
+		{
+			"relation": "self",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?"
+		}
+	],
+	"resourceType": "Bundle",
+	"total": 43665,
+	"type": "searchset"
+}

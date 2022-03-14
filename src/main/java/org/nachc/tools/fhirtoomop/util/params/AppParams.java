@@ -28,6 +28,11 @@ public class AppParams {
 	
 	public static String OUT_DIR = "/test/synthea-tools";
 
+	// passthrough method
+	public static String get(String key) {
+		return PROPS.getProperty(key);
+	}
+	
 	// local files stuff
 
 	public static String getTestOutputDirName() {

@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.build;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
@@ -53,6 +54,9 @@ public class CreateOmopInstanceTool {
 			CreateDatabaseTables.exec(conn);
 			CreateFhirResoureTables.exec(conn);
 			CreateMappingTables.exec(conn);
+			// create the cdm_source record (uses app.parameters values)
+			CreateCdmSourceRecord.exec(conn);
+			Database.commit(conn);
 			// load terminology
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(conn);

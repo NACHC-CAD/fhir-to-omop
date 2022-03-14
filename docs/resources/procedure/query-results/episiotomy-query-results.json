@@ -1,0 +1,4621 @@
+{
+	"entry": [
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d8b0767b-f756-461b-b9d1-0ee981798d33",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/98772662-76aa-4f92-8dec-cd77ed464f1b"
+				},
+				"id": "d8b0767b-f756-461b-b9d1-0ee981798d33",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:34.370869+00:00",
+					"versionId": "MTU1NDgxMjczNDM3MDg2OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-12-12T16:17:35-05:00",
+					"start": "2013-12-12T16:02:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/25ce9c7c-637f-4553-a7c1-9d04e9fb4acf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f5fb9475-f814-47a3-a2f0-a1883692b03b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5acc8bb4-2d14-4461-a560-228d96459cc3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b36c5195-4782-4cd0-9bbe-6de64dfac8ed",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/62f1245f-0aff-4b63-9eb8-cf2fea4bd9b3"
+				},
+				"id": "b36c5195-4782-4cd0-9bbe-6de64dfac8ed",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:25:31.193034+00:00",
+					"versionId": "MTU1NDgxMjczMTE5MzAzNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-12-02T03:38:28-05:00",
+					"start": "2014-12-02T03:23:28-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d2b76bf9-7a4c-4c21-bae7-35a738fe97f0"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/11530faf-3c1e-47b2-a978-14d1cf422a09"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3af8d260-1d96-4908-9c1e-bec7824ae231"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d15f5fdf-c343-4abc-9894-ad725a55cada"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/933c5ad6-11aa-4228-a5ae-72f075aa4681"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c992823e-d9ea-4cb1-b84e-22724c49235e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/25164127-a661-4cd0-b8a3-52d78b2b25bf"
+				},
+				"id": "c992823e-d9ea-4cb1-b84e-22724c49235e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:24:56.978641+00:00",
+					"versionId": "MTU1NDgxMjY5Njk3ODY0MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-08-08T04:29:02-04:00",
+					"start": "2018-08-08T04:14:02-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/80081b45-40e3-4d4b-b7bb-90917b9d5722"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2dd48080-2795-45f3-b03c-69037cd12cad"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2998101b-40d0-4c99-81dd-71e01e1263aa"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bdb1c2ed-804e-4897-b306-bfbb795c025b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/675e44f9-1077-4744-aeeb-830a12f1231d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/46eed1d9-3717-4422-b9ff-7ccdb5b01d40"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/075b41c6-1ae4-42ef-a002-a7bd96c9d304"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ffab4ff0-f68a-4bc9-8ee4-8221d42d5065"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2cd701bf-b781-493c-ab3c-30a8603015df"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/3f97f2d7-9c22-4110-a38f-d1964e98fdcc",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/7fb56de9-c2ed-4034-bf71-12d38a763c00"
+				},
+				"id": "3f97f2d7-9c22-4110-a38f-d1964e98fdcc",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:06:39.436787+00:00",
+					"versionId": "MTU1NDgxMTU5OTQzNjc4NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-14T15:17:03-04:00",
+					"start": "2013-07-14T15:02:03-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/12a0c170-4cbc-4a9b-8b99-c1e77b769c57"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/e7190189-9c85-497d-a7b5-3972ca3c0ecb"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9a6f0dd1-3c91-4a25-924a-20637e8b962c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/47bada4d-10fa-42c1-ab93-5629cf5c119b"
+				},
+				"id": "9a6f0dd1-3c91-4a25-924a-20637e8b962c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:06:30.073290+00:00",
+					"versionId": "MTU1NDgxMTU5MDA3MzI5MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-11-14T03:27:35-05:00",
+					"start": "2017-11-14T03:12:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/10c118e9-afc3-49a9-9208-56cf6eb3609a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/894bbd24-67de-4d33-a941-20a99d9d29fd"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3b76ca48-48ab-46b4-8ac6-5b81be4425cb"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/62d0f0fd-15c9-42d4-aaa2-a9fcd9c71b45"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/8975f471-a421-4b71-b045-86a4aa0e3e06"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/22b0e94a-c395-4c38-ab65-7b34084e15dc"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b29937dc-9341-4da8-940d-7771c74bc835",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/b575edbe-d5e3-4462-a96c-1a1a4942626f"
+				},
+				"id": "b29937dc-9341-4da8-940d-7771c74bc835",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:06:11.577696+00:00",
+					"versionId": "MTU1NDgxMTU3MTU3NzY5NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-05-15T09:11:39-04:00",
+					"start": "2009-05-15T08:56:39-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0717eb93-f348-4aa8-a296-fc8f596d2d63"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/4789cb34-21e9-497e-aa1a-45d7fb0ef56c"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c55a930d-b1d4-454c-a209-0afa6fcc2f0a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/38d58e8f-3089-44a9-9ba1-26f597bf22c7"
+				},
+				"id": "c55a930d-b1d4-454c-a209-0afa6fcc2f0a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:59.719212+00:00",
+					"versionId": "MTU1NDgxMTU1OTcxOTIxMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-03-22T14:20:22-04:00",
+					"start": "2013-03-22T14:05:22-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cf8dbf6d-54bb-4f7e-b0c9-ea035a77c26e"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a59e64d6-6fdd-4fc8-a6bc-b830f45815e6"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/355da3f3-e421-4a5d-87ee-1885b9f5cfbc"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8aae2646-4865-4d55-9433-f638bb17dbfe",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/b0afd747-d0e6-40bb-9747-9aa5a27d3c6c"
+				},
+				"id": "8aae2646-4865-4d55-9433-f638bb17dbfe",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:57.578422+00:00",
+					"versionId": "MTU1NDgxMTU1NzU3ODQyMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-06-15T04:46:10-04:00",
+					"start": "2018-06-15T04:31:10-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c2fc97cb-e649-41f5-9ca1-d17aeede2ac8"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/48dd0082-08a7-417e-a76c-23b739506c25"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d4a3d69c-81c3-4414-8718-747b3b465e0d"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/39d03015-c356-4a98-9e17-1442f004f10b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a0f3e9cc-e0bf-423b-bb74-bf7b08fabb16",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/31c8d15b-c839-4dd8-856e-a00e1f9c261f"
+				},
+				"id": "a0f3e9cc-e0bf-423b-bb74-bf7b08fabb16",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:47.814662+00:00",
+					"versionId": "MTU1NDgxMTU0NzgxNDY2MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-12-13T05:47:53-05:00",
+					"start": "2014-12-13T05:32:53-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9ad3a07a-d89c-48b6-9fc7-a60b376e0978"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/124f244e-c3d9-4b9a-8a98-7efcfe5039bf"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/4126e90f-3929-4d16-b4eb-9107408991bf",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/ed6115fc-0347-4ae6-8fed-5a09cba0f081"
+				},
+				"id": "4126e90f-3929-4d16-b4eb-9107408991bf",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:34.801570+00:00",
+					"versionId": "MTU1NDgxMTUzNDgwMTU3MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-08-09T00:46:58-04:00",
+					"start": "2014-08-09T00:31:58-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/954762bf-e65f-44a2-b2aa-db91ffda9cd9"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/fb3bb871-1ad2-4646-bc30-3663762bad86"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/036074c4-e298-4db4-af1d-394c135aad49"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f22a8526-363c-4d20-8110-674ae85f268c"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/918237ed-bb64-4a25-8195-3d5875435680"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/35d602a0-ba90-41ad-bfe6-6bdc240bc1d4",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/137366ff-1b1f-41a5-98c1-ceab6382b0d8"
+				},
+				"id": "35d602a0-ba90-41ad-bfe6-6bdc240bc1d4",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:25.511080+00:00",
+					"versionId": "MTU1NDgxMTUyNTUxMTA4MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "1989-10-09T11:47:06-04:00",
+					"start": "1989-10-09T11:32:06-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/14eaf38d-2ba5-44e7-a213-8213a6c05a4b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/c8958576-5aee-472e-9f2b-280fdc99db9d"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/70b4a396-be8b-4347-ba86-61772540b8a3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d9f520c2-06a0-416e-9657-66a6e5420491"
+				},
+				"id": "70b4a396-be8b-4347-ba86-61772540b8a3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:14.431510+00:00",
+					"versionId": "MTU1NDgxMTUxNDQzMTUxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-08-13T13:48:36-04:00",
+					"start": "2010-08-13T13:33:36-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1644f1d4-7e7d-4082-88f3-a4600b4fb0f1"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b1424a86-1beb-46e8-b3de-a3dcaae075f9"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2583f549-24e7-4635-b763-f6c94fe67b27"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a3173a14-ce2b-4a34-b1b4-83c2e390bc03",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/97b59dec-aa58-43be-a664-25a775c1b26c"
+				},
+				"id": "a3173a14-ce2b-4a34-b1b4-83c2e390bc03",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:09.084773+00:00",
+					"versionId": "MTU1NDgxMTUwOTA4NDc3MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-06-10T07:37:50-04:00",
+					"start": "2013-06-10T07:22:50-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/81f0eaf6-9a39-4fc4-8dbb-7969fa6fc42e"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/29067dad-3198-4f0e-8088-bdc75d69b032"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/1f040680-2951-440f-b1f5-858ac1885365"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/23c874ad-4a5a-4c60-aff5-40153dcaa5ed",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d679bb0b-8037-4f91-b0dd-8a229069cdd7"
+				},
+				"id": "23c874ad-4a5a-4c60-aff5-40153dcaa5ed",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:06.150016+00:00",
+					"versionId": "MTU1NDgxMTUwNjE1MDAxNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-09-01T03:08:40-04:00",
+					"start": "2018-09-01T02:53:40-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1c6e30a2-8f22-466f-9e01-1b1dcc661803"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a9b3323d-b7e2-4f25-ab43-3e846fc4a56a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2f6ab7df-becf-49b9-821a-efae286a7e79"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/adf83fe4-bcaf-4f7d-9ea7-468ed8ebe31a"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/28c64005-6918-4627-aec5-9fdf654516b2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a9f1a948-6150-4bc4-839e-f07828d25a52",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/821ea7ff-d909-4938-9674-421ae5eacc62"
+				},
+				"id": "a9f1a948-6150-4bc4-839e-f07828d25a52",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:05.076226+00:00",
+					"versionId": "MTU1NDgxMTUwNTA3NjIyNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-05-23T03:08:40-04:00",
+					"start": "2015-05-23T02:53:40-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1c6e30a2-8f22-466f-9e01-1b1dcc661803"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a9b3323d-b7e2-4f25-ab43-3e846fc4a56a"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/28c64005-6918-4627-aec5-9fdf654516b2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/bfe0bbe2-59ec-4163-9609-4c89bacd4a76",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/667ca293-7fb0-4b7f-8337-092388edbd70"
+				},
+				"id": "bfe0bbe2-59ec-4163-9609-4c89bacd4a76",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:03.554853+00:00",
+					"versionId": "MTU1NDgxMTUwMzU1NDg1MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-09-08T13:33:01-04:00",
+					"start": "2018-09-08T13:18:01-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/90f7efe3-d82b-4c69-bd56-8df1663e78dc"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b4337904-159d-4af9-a5b6-340c8e0821cb"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f1bb28bb-33f0-4522-992e-3b4d440c7d3d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/af68fbc4-7116-4d96-bae2-afc5d9656df3"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/d62037e4-f8f8-4be8-8191-8e11fe40cb38"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/619b5397-1842-46ab-8103-94444c53f7c7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/380fbe41-c663-4295-8055-76013d330d67"
+				},
+				"id": "619b5397-1842-46ab-8103-94444c53f7c7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:05:00.833705+00:00",
+					"versionId": "MTU1NDgxMTUwMDgzMzcwNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-04-22T02:48:12-04:00",
+					"start": "2018-04-22T02:33:12-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/8b1fba34-9dbc-47c6-97b6-cf2e9831e82a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f27fd12f-e3ac-429c-b2f2-d24fa2798703"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3b0c72e6-d6ab-4c2b-9cba-c445336dc74e"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/dc20e9ba-f224-497b-8b95-08b03d8ea86e"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/f5a41ad6-8c99-4ed3-ac6e-b4d8dba8a488",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d164e921-8595-4b3a-bfb3-7f44ac794bcf"
+				},
+				"id": "f5a41ad6-8c99-4ed3-ac6e-b4d8dba8a488",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:59.970165+00:00",
+					"versionId": "MTU1NDgxMTQ5OTk3MDE2NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-01-17T14:32:25-05:00",
+					"start": "2015-01-17T14:17:25-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/48617c6a-9f0a-4725-a22c-eacf921e284b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cd5a4a09-2ea4-411a-ba8f-b15d483cd8df"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/d0b68b4e-3ea2-4b3e-9b82-818fc6262aad"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/f4421f3e-09b8-4daf-bf53-5df5d33c29a6",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/338d05b5-37a6-4d39-bc8d-b427e636c6ce"
+				},
+				"id": "f4421f3e-09b8-4daf-bf53-5df5d33c29a6",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:59.785982+00:00",
+					"versionId": "MTU1NDgxMTQ5OTc4NTk4MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-03-31T14:43:26-04:00",
+					"start": "2011-03-31T14:28:26-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/581238ab-a9a5-4158-b6e3-b5d7ff54beb1"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/e66ff4e8-e7a7-432a-9a4b-45959a7c22bf"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/a154e0b8-3d4e-495a-9918-d72ae1a47e5d"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e7bd1165-42b5-479d-ad14-382daa0f9eba",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/0620bf4a-ceef-4741-abeb-858beadb9120"
+				},
+				"id": "e7bd1165-42b5-479d-ad14-382daa0f9eba",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:59.291704+00:00",
+					"versionId": "MTU1NDgxMTQ5OTI5MTcwNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-08-24T22:08:13-04:00",
+					"start": "2014-08-24T21:53:13-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f9053cc8-f4b0-4e81-ab7c-6a39914e319e"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/545c29e8-20cb-4012-9676-e0e9d39a18cf"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e181063b-aa23-41e2-aa5f-63f9c47c9821",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/912073fd-3c4b-4bdc-b666-2414f572b8a9"
+				},
+				"id": "e181063b-aa23-41e2-aa5f-63f9c47c9821",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:58.175353+00:00",
+					"versionId": "MTU1NDgxMTQ5ODE3NTM1MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-03T02:41:08-04:00",
+					"start": "2010-11-03T02:26:08-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/af0ae6ac-b4dd-4fde-ab54-0a81e9f76724"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/5bbf057f-e2dd-4e9f-9258-7ea84a1ebc51"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d959adeb-6d39-4b61-ae7d-4bf8d766dd68",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/220eb362-ecff-45ee-845d-ed088b9097e1"
+				},
+				"id": "d959adeb-6d39-4b61-ae7d-4bf8d766dd68",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:57.893266+00:00",
+					"versionId": "MTU1NDgxMTQ5Nzg5MzI2NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-08-24T01:26:12-04:00",
+					"start": "2012-08-24T01:11:12-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f07c0115-7cf9-4c96-8ffb-4ffc487e8de5"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c816e200-528e-4e49-8f24-13025e719e99"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/7d3fd1f0-9b64-4d71-8a64-1c45dba572fa"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/9a2f26ce-9d6c-4f38-975f-d58f0fcf736d"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/366f3512-84df-45f0-a724-02d1682c1f0f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/ae6fa8ea-365a-49f2-979d-044b0dfbc354"
+				},
+				"id": "366f3512-84df-45f0-a724-02d1682c1f0f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:56.562058+00:00",
+					"versionId": "MTU1NDgxMTQ5NjU2MjA1ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-06-16T05:23:04-04:00",
+					"start": "2009-06-16T05:08:04-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/6a1ab37f-ddd0-4469-9dd7-6dcb17314e98"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/29980106-c035-4b65-aa30-3143515d7130"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d0cb4463-7abd-439b-b063-13853d7ff570",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/1263f913-3809-4224-91ba-35dcb18c7ab1"
+				},
+				"id": "d0cb4463-7abd-439b-b063-13853d7ff570",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:56.503800+00:00",
+					"versionId": "MTU1NDgxMTQ5NjUwMzgwMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "1994-03-17T20:39:12-05:00",
+					"start": "1994-03-17T20:24:12-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/db53c3b5-9423-4345-8d77-af723f74f3f7"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c26e5466-894a-42e9-b79a-e292e3ce9262"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0f854fde-e930-4ad0-b4df-857dc58376bc"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/dc5947d9-875b-42c5-849f-757b42ca45c2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/12039aa5-d2d2-417e-96e3-e2f31cb8ba8d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/4602fe37-dade-42f4-8892-4cf7a4e9c273"
+				},
+				"id": "12039aa5-d2d2-417e-96e3-e2f31cb8ba8d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:56.112310+00:00",
+					"versionId": "MTU1NDgxMTQ5NjExMjMxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-09-24T10:36:46-04:00",
+					"start": "2015-09-24T10:21:46-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/90661a5f-7ee9-487b-a036-f086a6c16769"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a11e3652-56e6-4672-90bd-2aff41bdcd2d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d2e2059c-5dd7-494b-9ae0-6bbb57bc7d09"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/07363c9d-416f-4d9b-832c-0828728c0516"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f2ea613d-e906-4184-bc89-f1dfe8de227b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/152b3e7b-bcf4-4131-b37a-5b9b1c86c89a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3c3eb9d2-b60c-4f01-9355-3a8a86db62a6"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/7c36239a-0416-425c-b3a5-72e70322f219"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/790053da-9d90-4ef4-b0cc-f3615cdf6063"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9f776021-6dfb-4757-bd2a-8fd503fadd60"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/22643699-34c8-413d-8fd1-d5aadc9a5fe3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/4e54605c-561a-43e8-b96a-7159b7ca8fe9",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/cd1b6811-2433-40d0-8082-dd08cc16a072"
+				},
+				"id": "4e54605c-561a-43e8-b96a-7159b7ca8fe9",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:49.091088+00:00",
+					"versionId": "MTU1NDgxMTQ4OTA5MTA4ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-05-24T08:43:46-04:00",
+					"start": "2016-05-24T08:28:46-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3f99e159-686d-454b-bfe1-15252e07e368"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/55d02d80-3509-4c3d-843c-ad7c0dd168be"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0cc753ec-7680-450d-b55a-b6532f72ffd0"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/347fe564-bc56-4867-b1f9-f16b17857995",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3af05122-47e1-44bb-9ee0-03e1a13fbb2e"
+				},
+				"id": "347fe564-bc56-4867-b1f9-f16b17857995",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:43.667158+00:00",
+					"versionId": "MTU1NDgxMTQ4MzY2NzE1ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-04-04T13:46:31-04:00",
+					"start": "2010-04-04T13:31:31-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c4b295de-03bb-4eda-af5a-d4dc37a73f7f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/50c33710-18f4-42d0-ab9b-33dac38f2294"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7976de81-d1a9-4a5f-a98d-7d64ddad9661",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/9dc1f717-eedf-438e-8fb5-54218d10a468"
+				},
+				"id": "7976de81-d1a9-4a5f-a98d-7d64ddad9661",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:43.402585+00:00",
+					"versionId": "MTU1NDgxMTQ4MzQwMjU4NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-12-31T06:50:30-05:00",
+					"start": "2018-12-31T06:35:30-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/40e73750-a45a-47d4-8b22-dbbd9f427115"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a9608e35-c188-461e-9f08-ed41ebda4f8d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bf60ea6f-f200-4f3d-888f-b0b2215106d7"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/296cd74e-9d64-44ca-baed-237b3ce5d125"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a342cbda-ce16-48b2-a038-a330341a10c2",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/e6740291-5e5a-4701-82e4-fe38e68b63ec"
+				},
+				"id": "a342cbda-ce16-48b2-a038-a330341a10c2",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:43.366046+00:00",
+					"versionId": "MTU1NDgxMTQ4MzM2NjA0NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-02-21T06:50:30-05:00",
+					"start": "2011-02-21T06:35:30-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/40e73750-a45a-47d4-8b22-dbbd9f427115"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a9608e35-c188-461e-9f08-ed41ebda4f8d"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/296cd74e-9d64-44ca-baed-237b3ce5d125"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5ac9e2b3-b307-43f3-b3bf-fd44bd11a875",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/77945eba-fc51-46fb-be16-daa4e7529aee"
+				},
+				"id": "5ac9e2b3-b307-43f3-b3bf-fd44bd11a875",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:42.590903+00:00",
+					"versionId": "MTU1NDgxMTQ4MjU5MDkwMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-12-16T23:20:15-05:00",
+					"start": "2016-12-16T23:05:15-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/8d77d799-3f63-4199-b757-da868e3fd062"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c7abe892-562b-4421-b548-9adf7aa18869"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c4b70fad-34a5-4b63-9067-523f641f7938"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c2cb89df-fb7b-4d1e-b49f-ff7229a2fbfd"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/78314d2e-1ef7-414d-9709-d88bab565ddf"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1cf91be9-26c7-4289-afb4-d1c36f48bcf5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/ba05e848-a14a-4551-91a7-db161a89bcc9"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/41cbf363-640d-43ba-826a-49c71be88cf0",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f8f463ac-46e8-471a-a5cc-281fe385ff3e"
+				},
+				"id": "41cbf363-640d-43ba-826a-49c71be88cf0",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:39.318695+00:00",
+					"versionId": "MTU1NDgxMTQ3OTMxODY5NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-12-21T18:30:25-05:00",
+					"start": "2014-12-21T18:15:25-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d6028f0a-6aaf-44ae-91c6-c81ef614443d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4ffa917e-7150-4f4c-92b8-0de480f441e9"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/aac16c0c-044d-4422-8369-a6ddd68bcfbe"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/37f5d4b2-9bbe-4a51-8bdf-520cf89b0c30"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c155eaa7-b68b-4e1f-a9bc-c93f93b74c5f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/4046345c-5c58-42bf-b8b2-dd2a26d0559f"
+				},
+				"id": "c155eaa7-b68b-4e1f-a9bc-c93f93b74c5f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:39.161524+00:00",
+					"versionId": "MTU1NDgxMTQ3OTE2MTUyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-12T16:06:09-05:00",
+					"start": "2017-01-12T15:51:09-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/72e2dc19-fa87-4139-b56b-fd72c8f258c7"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/e8cea75f-b138-443c-b2d9-4f86433decfa"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/340e3e26-e1ab-43c3-8810-80d109343fe1",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3d9ba877-18d3-4c87-800f-1c01213f6b07"
+				},
+				"id": "340e3e26-e1ab-43c3-8810-80d109343fe1",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:38.710662+00:00",
+					"versionId": "MTU1NDgxMTQ3ODcxMDY2MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-01-10T17:04:24-05:00",
+					"start": "2013-01-10T16:49:24-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/60222aad-4c4d-46d7-9a85-8a5b1c066a24"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0d914eaa-11b2-4432-a32c-6165cdd7ca88"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b4831d36-6cf6-43e5-bbb7-7db4e55a2ff1",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/983f40fe-7795-42fe-9b3b-0b11c64d2a86"
+				},
+				"id": "b4831d36-6cf6-43e5-bbb7-7db4e55a2ff1",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:37.032315+00:00",
+					"versionId": "MTU1NDgxMTQ3NzAzMjMxNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-01-29T12:37:15-05:00",
+					"start": "2013-01-29T12:22:15-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/431585c2-665b-4a3c-84b7-4b03b7fc03dc"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1e2b9831-f15d-47e2-bad9-e48088fa7099"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bad51eb3-2346-49c0-8bf4-f4ce9ad69b27"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/69fbd170-fc1a-4134-b8b0-f54d412db9d6"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/f86700b6-d9e7-4b97-8ae5-450f03e6faf1",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f6188cde-5962-494f-a8ba-a75324cf1b58"
+				},
+				"id": "f86700b6-d9e7-4b97-8ae5-450f03e6faf1",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:36.970522+00:00",
+					"versionId": "MTU1NDgxMTQ3Njk3MDUyMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-16T14:51:07-04:00",
+					"start": "2013-07-16T14:36:07-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/e0252715-afeb-4994-ab27-0f933f52fbe5"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/1f1369f8-668b-480b-9491-0ea3711d05be"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/76b7e31f-1ba7-4599-8321-fb096698d44b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3144c56a-504f-4826-b22a-db6ac0dc8553"
+				},
+				"id": "76b7e31f-1ba7-4599-8321-fb096698d44b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:36.231755+00:00",
+					"versionId": "MTU1NDgxMTQ3NjIzMTc1NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2000-02-26T05:17:58-05:00",
+					"start": "2000-02-26T05:02:58-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/863cb3f3-7dfd-42bd-98de-22d92898a6a9"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/b3ced044-8424-476e-9e73-34e868d3f6d2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/9e5eebc0-795c-4788-b06b-677bdbd00d0f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/2535df4c-3e70-40a2-acb6-349b97e6424d"
+				},
+				"id": "9e5eebc0-795c-4788-b06b-677bdbd00d0f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:34.925545+00:00",
+					"versionId": "MTU1NDgxMTQ3NDkyNTU0NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-03-16T08:25:41-04:00",
+					"start": "2015-03-16T08:10:41-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/98c1814a-b6ad-4076-84db-2a5b46cb9a93"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a54497e8-8e15-4710-a836-f5b614daa2d3"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6ef76ca0-47e7-4da4-bea8-2f3356ce7fdd"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/994ab4c8-b256-4c03-80f3-718d3f38be96",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/97675f73-1f21-49cf-b41d-419094cd89e0"
+				},
+				"id": "994ab4c8-b256-4c03-80f3-718d3f38be96",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:33.352753+00:00",
+					"versionId": "MTU1NDgxMTQ3MzM1Mjc1MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-08-29T10:31:08-04:00",
+					"start": "2015-08-29T10:16:08-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bd772314-f53a-4d85-92be-18288b3f5739"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5523f81b-6d9a-4a45-b664-5a51904050cb"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f071791a-24c2-4937-b063-e5a3a0a4d42e"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/9b434fea-6ed8-4b6e-a9b2-a4f3597c91bc"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/59bdb3be-9ae0-4efb-a51e-be18b5d3d307",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/88892aa0-41d9-4d11-a6eb-5abed8326a8e"
+				},
+				"id": "59bdb3be-9ae0-4efb-a51e-be18b5d3d307",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:32.325126+00:00",
+					"versionId": "MTU1NDgxMTQ3MjMyNTEyNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-08-23T19:08:53-04:00",
+					"start": "2009-08-23T18:53:53-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/dcea2996-6c50-410a-a4a3-8468235f6941"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/a78a10ae-2924-4530-b587-184b9af545f3"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/cdefa38d-820b-406a-b95f-6b65f4567867",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/026b7581-2fce-422b-8c4a-41b466f2f5a4"
+				},
+				"id": "cdefa38d-820b-406a-b95f-6b65f4567867",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:32.294064+00:00",
+					"versionId": "MTU1NDgxMTQ3MjI5NDA2NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-12-29T09:31:08-05:00",
+					"start": "2012-12-29T09:16:08-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bd772314-f53a-4d85-92be-18288b3f5739"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/9b434fea-6ed8-4b6e-a9b2-a4f3597c91bc"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ac6881de-d1d3-4a44-819c-e5ded6469612",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/b5dc5785-0786-4ffd-8816-c5f03a4926b0"
+				},
+				"id": "ac6881de-d1d3-4a44-819c-e5ded6469612",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:31.688552+00:00",
+					"versionId": "MTU1NDgxMTQ3MTY4ODU1MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-04-05T20:06:00-04:00",
+					"start": "2014-04-05T19:51:00-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f48c4413-d3bd-4987-a52d-c11868e8e785"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0c967e15-28c0-4d2b-9c04-d1d5b8de2d70"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/08c6bd17-dc96-43cb-b848-2d6d6980f8ea"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0625b35c-ec02-4533-83db-56018007ace7"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/02fc311b-874f-4927-8bde-3025526b379c"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/563c5210-07a4-4f7f-9845-2538968fdd46"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/52e7815c-333d-45e2-b33a-058f112fa4f2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/91276f0e-f936-4315-9c11-9e6e0996f68b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/5f996083-f9e1-4170-96ab-956a2d2c114e"
+				},
+				"id": "91276f0e-f936-4315-9c11-9e6e0996f68b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:30.629609+00:00",
+					"versionId": "MTU1NDgxMTQ3MDYyOTYwOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-27T19:06:00-05:00",
+					"start": "2010-11-27T18:51:00-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f48c4413-d3bd-4987-a52d-c11868e8e785"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0c967e15-28c0-4d2b-9c04-d1d5b8de2d70"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/52e7815c-333d-45e2-b33a-058f112fa4f2"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8a85e4b9-947d-45e7-bea4-5ab5262068f7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/db8f5506-0043-4195-9ea1-0e66d5309dfc"
+				},
+				"id": "8a85e4b9-947d-45e7-bea4-5ab5262068f7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:29.723889+00:00",
+					"versionId": "MTU1NDgxMTQ2OTcyMzg4OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-03-16T06:43:43-04:00",
+					"start": "2011-03-16T06:28:43-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/43799de3-c255-4d76-a72f-4b00011efd68"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/9f021fca-bd1f-43cf-8ff4-896674cd5726"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c90aa9ab-1881-4206-b8f6-cb820a6674df",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/10fb5757-a6ff-449b-b228-481c79fc4ce4"
+				},
+				"id": "c90aa9ab-1881-4206-b8f6-cb820a6674df",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:27.448379+00:00",
+					"versionId": "MTU1NDgxMTQ2NzQ0ODM3OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-04-16T23:38:57-04:00",
+					"start": "2015-04-16T23:23:57-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3124df4c-cf08-4034-b76b-5fe52972421a"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/975ac977-1fae-4090-9c9d-1646a516f1fb"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/972c02b9-f404-4e4c-b3aa-ff62e4f7b998",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/82a85c34-af67-4909-aa3b-b3b385ea9eb6"
+				},
+				"id": "972c02b9-f404-4e4c-b3aa-ff62e4f7b998",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:27.438441+00:00",
+					"versionId": "MTU1NDgxMTQ2NzQzODQ0MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-04-17T22:52:42-04:00",
+					"start": "2010-04-17T22:37:42-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/fd137430-d73e-4fe5-9581-7ea579f81b94"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0716db49-0060-4700-ae13-6b43513a0ec1"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ca39c5d1-f512-4c26-951d-ca2f4ba1bbe3",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f057c2c9-d36a-4ab1-a376-bea2af5fdab0"
+				},
+				"id": "ca39c5d1-f512-4c26-951d-ca2f4ba1bbe3",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:26.343356+00:00",
+					"versionId": "MTU1NDgxMTQ2NjM0MzM1NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-07-04T02:15:28-04:00",
+					"start": "2015-07-04T02:00:28-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/18c165f1-311e-42bc-b575-5799825b41b3"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b4a87b8f-44b3-4774-ae9b-ba4dfb499ca8"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/016c4b9a-7076-4fda-8ae6-70369d92354e"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/015ca132-312b-4fa8-b176-089bf4c66d38"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/53959542-dd82-42a5-81e3-1eda39f665d4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d20337cd-07aa-4b5b-8e9f-7c85a118a5ec",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/871023e2-6d29-4874-a8bf-dd9b84af87e2"
+				},
+				"id": "d20337cd-07aa-4b5b-8e9f-7c85a118a5ec",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:25.118502+00:00",
+					"versionId": "MTU1NDgxMTQ2NTExODUwMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-10-30T03:12:04-04:00",
+					"start": "2015-10-30T02:57:04-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cffde34d-dd18-4fd7-a1b6-ffffec2403f0"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f4742df-9467-4ca1-926c-37819993e8c6"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b75c72cf-92ca-4001-a4f8-eded9db5f1f4"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/47ca3dc7-35e6-4158-b16b-b4eef971610b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/cae8ef12-b2f7-4e5c-9bde-fdde343441cc",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/4ba7d3c1-95b4-43c0-93b3-bb059dbd89a7"
+				},
+				"id": "cae8ef12-b2f7-4e5c-9bde-fdde343441cc",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:25.094020+00:00",
+					"versionId": "MTU1NDgxMTQ2NTA5NDAyMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-10-03T03:12:04-04:00",
+					"start": "2014-10-03T02:57:04-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cffde34d-dd18-4fd7-a1b6-ffffec2403f0"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5f4742df-9467-4ca1-926c-37819993e8c6"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/47ca3dc7-35e6-4158-b16b-b4eef971610b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/d0913177-c27a-40b5-a699-fca9bb01354e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/1f415092-69b2-40e9-a036-c414e00effb7"
+				},
+				"id": "d0913177-c27a-40b5-a699-fca9bb01354e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:25.075329+00:00",
+					"versionId": "MTU1NDgxMTQ2NTA3NTMyOTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-10-25T02:30:12-04:00",
+					"start": "2010-10-25T02:15:12-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a4ca3769-77aa-4636-a275-208d9afa5bdf"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0d48c11e-87d9-4d05-99bf-c87b08046787"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b4ba4478-9d4f-428e-9b8f-656817460206",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/51204890-3041-4f77-88a6-641a5340f4d1"
+				},
+				"id": "b4ba4478-9d4f-428e-9b8f-656817460206",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:23.960733+00:00",
+					"versionId": "MTU1NDgxMTQ2Mzk2MDczMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-12T02:12:04-05:00",
+					"start": "2010-11-12T01:57:04-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cffde34d-dd18-4fd7-a1b6-ffffec2403f0"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/47ca3dc7-35e6-4158-b16b-b4eef971610b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a7bc0274-ca56-471a-9665-da538226f51b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/b1531207-d676-4bb2-b127-b2b84f7d4fe1"
+				},
+				"id": "a7bc0274-ca56-471a-9665-da538226f51b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:23.606424+00:00",
+					"versionId": "MTU1NDgxMTQ2MzYwNjQyNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2014-08-28T17:30:46-04:00",
+					"start": "2014-08-28T17:15:46-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4eef16d4-1409-4c30-aede-d3bbf75db063"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/8edfe4e1-fc7f-403f-81d1-d832997a076d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/aa1132cb-8e73-4b03-b588-753918f15041"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/f9fe3e55-4b05-4b61-9a11-a8048405a8ec"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/43d1a525-105a-4582-b68a-a5e4256ac05c",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3d969a38-0ecd-4f65-902e-8bb6c6c76d24"
+				},
+				"id": "43d1a525-105a-4582-b68a-a5e4256ac05c",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:23.225146+00:00",
+					"versionId": "MTU1NDgxMTQ2MzIyNTE0NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-11-30T09:47:47-05:00",
+					"start": "2015-11-30T09:32:47-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5467a3e9-0180-4d51-b811-07c12666763c"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/512c115c-133d-4db0-abe8-7330f70571e0"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/4c8099c1-15f9-47c5-8be4-606e245d1ad2",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/286de6dc-e4bd-4f72-9e6d-f43ff5bdd073"
+				},
+				"id": "4c8099c1-15f9-47c5-8be4-606e245d1ad2",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:22.619336+00:00",
+					"versionId": "MTU1NDgxMTQ2MjYxOTMzNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-08-06T13:47:03-04:00",
+					"start": "2010-08-06T13:32:03-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/93d73cb5-7db6-47e9-9e43-febd3b601d95"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/839b1429-ed13-4504-b56f-7c0ef515ca08"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2b85d765-52e0-4085-869b-a049e69e0a78",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/340dc7f4-7b91-457f-aff9-cd458d2c36c1"
+				},
+				"id": "2b85d765-52e0-4085-869b-a049e69e0a78",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:20.521549+00:00",
+					"versionId": "MTU1NDgxMTQ2MDUyMTU0OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2019-01-07T07:12:59-05:00",
+					"start": "2019-01-07T06:57:59-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/283e9f03-7cf6-43e4-a602-6c510f7318e8"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f9e3dc28-afd9-42ae-b204-22607ca94b9a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2bdc8546-0ec3-48ff-aad5-8ad7fbb305c3"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cf549832-f611-4f3f-842a-8b5281bcf29b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3174e5c9-3adb-430a-91bf-80613d3a7c14"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2cc2571d-aa5a-414a-9094-b43c85c5c45c"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3e6a9e89-3e4a-42ae-b9db-43b0108fa8f4"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/de6afdab-4ae0-4ee1-9fd4-9d1c7cf2dc68"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2c182226-e3fa-4d76-b693-868b83211e1e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/b069749f-be19-4199-834c-3678e87b670d"
+				},
+				"id": "2c182226-e3fa-4d76-b693-868b83211e1e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:19.571716+00:00",
+					"versionId": "MTU1NDgxMTQ1OTU3MTcxNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-11-04T17:22:38-04:00",
+					"start": "2017-11-04T17:07:38-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/12d10baa-e27c-471d-8992-e549cc04eb0a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/56375c59-a891-4534-bc48-e2d6be80045f"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9d0ac1b2-9b3d-4df3-9763-ec1f9c16fbc2"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cd8195c0-92bf-4a34-adc1-c7b6155aea8b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/89488b8f-b1c3-4ea8-a1a8-389ac0cb6558"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/3a0a04aa-a04d-4f55-a5df-ba64aeb4463f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/9038b03d-1e82-44d8-b2eb-5f87da382c7c"
+				},
+				"id": "3a0a04aa-a04d-4f55-a5df-ba64aeb4463f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:19.035850+00:00",
+					"versionId": "MTU1NDgxMTQ1OTAzNTg1MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-05-22T04:22:48-04:00",
+					"start": "2015-05-22T04:07:48-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/424a27c2-2f9b-4c40-b19b-bb0428a9fe59"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6cf34aa9-bb22-4132-acbe-878dce08dc64"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8fbd85e7-6a62-4700-9642-8abc0234ecc7",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d075d3d3-7616-4473-9a1e-8366f30752f5"
+				},
+				"id": "8fbd85e7-6a62-4700-9642-8abc0234ecc7",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:17.928600+00:00",
+					"versionId": "MTU1NDgxMTQ1NzkyODYwMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-07-24T01:51:08-04:00",
+					"start": "2016-07-24T01:36:08-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/530e6390-f966-4199-a812-1b48af17819f"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/371cca18-3d9f-4c53-8bf4-29e5dd0f5f0b"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/4d23f643-5627-47aa-abc1-fed8a38b607c"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e17419d1-a7c0-4fdc-948d-545f43992dd0",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/6eeb9296-4cad-46b7-adb8-1440c4b6b29c"
+				},
+				"id": "e17419d1-a7c0-4fdc-948d-545f43992dd0",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:17.842593+00:00",
+					"versionId": "MTU1NDgxMTQ1Nzg0MjU5MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-03-02T08:51:40-05:00",
+					"start": "2011-03-02T08:36:40-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/eba81b38-320f-4a75-874c-51e379f900ff"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/8f2eb92e-e39d-40f9-b40e-a8b8a66563be"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e0da5e00-e420-4488-83f0-ce2f30b4aa99",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f72018ce-3881-4e0b-9f4b-ea4717576dc5"
+				},
+				"id": "e0da5e00-e420-4488-83f0-ce2f30b4aa99",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:17.744957+00:00",
+					"versionId": "MTU1NDgxMTQ1Nzc0NDk1NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-10-14T01:23:57-04:00",
+					"start": "2013-10-14T01:08:57-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d57420e7-67f1-4ec9-8520-894afbbbd02d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3ff6d2ef-41a0-4b5f-9203-5c22dc6b19bc"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/e74af683-b471-41a4-bcb5-861fad72b08f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/71cb4938-2f48-44ef-8434-1b08a541c8fe"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/aa936c13-61cc-46ce-a4e7-32f34815c02d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f77e5ebe-3b40-44c7-9002-601fe2b56013"
+				},
+				"id": "aa936c13-61cc-46ce-a4e7-32f34815c02d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:17.723890+00:00",
+					"versionId": "MTU1NDgxMTQ1NzcyMzg5MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-10-05T23:22:27-04:00",
+					"start": "2017-10-05T23:07:27-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/233cf8a2-09c6-4872-bf83-1b54d29c0e64"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/6e19fa2f-a23c-4e68-90a9-16f01410a68f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/838ccb29-619b-4ec2-b24c-ecbe81ae9614"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/23690dc0-9523-47d3-9829-7eed49d84697",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/11671217-5ba2-4d2a-a2d8-5515f9739455"
+				},
+				"id": "23690dc0-9523-47d3-9829-7eed49d84697",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:17.383805+00:00",
+					"versionId": "MTU1NDgxMTQ1NzM4MzgwNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-01-23T16:22:38-05:00",
+					"start": "2010-01-23T16:07:38-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/12d10baa-e27c-471d-8992-e549cc04eb0a"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/89488b8f-b1c3-4ea8-a1a8-389ac0cb6558"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/a1638042-0be2-4d58-8cf3-f5ffcfc8c8e5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/80aec5d2-e964-408e-8d5a-be94a1fc2a07"
+				},
+				"id": "a1638042-0be2-4d58-8cf3-f5ffcfc8c8e5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:16.709006+00:00",
+					"versionId": "MTU1NDgxMTQ1NjcwOTAwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-06-11T01:23:57-04:00",
+					"start": "2012-06-11T01:08:57-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d57420e7-67f1-4ec9-8520-894afbbbd02d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3ff6d2ef-41a0-4b5f-9203-5c22dc6b19bc"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/71cb4938-2f48-44ef-8434-1b08a541c8fe"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/bbd67862-1d4e-499f-a55b-cffd3cff8966",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/c0c2093a-a966-4ff9-9d8e-b976c65de07c"
+				},
+				"id": "bbd67862-1d4e-499f-a55b-cffd3cff8966",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:15.560203+00:00",
+					"versionId": "MTU1NDgxMTQ1NTU2MDIwMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "1984-01-25T13:36:52-05:00",
+					"start": "1984-01-25T13:21:52-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d3e27a9e-c3ad-4766-8650-b4d034e3586b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b326f8c1-541f-4869-b897-bb56a452433f"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4681cdfd-e011-422d-a024-fea05de366b2"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3ee0027e-de24-4727-b634-9d4f2cefa8e9"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2d1f1781-aab4-430c-84bd-318baf98391b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/dfad66ab-2b78-4724-aad2-8f6bdaa125d6",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/60dffab9-6041-44d3-b651-7b8adab48e9c"
+				},
+				"id": "dfad66ab-2b78-4724-aad2-8f6bdaa125d6",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:14.635991+00:00",
+					"versionId": "MTU1NDgxMTQ1NDYzNTk5MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-06-27T08:50:30-04:00",
+					"start": "2010-06-27T08:35:30-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/27bf00d1-256b-4913-994a-c533c85d19f8"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/a743bc88-d8f2-4d9b-a49b-80aa05684f4f"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/0e271447-64ac-4006-bc34-821c6f3e3352",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/edf9e6ee-1316-4d30-ab75-921f2cac85aa"
+				},
+				"id": "0e271447-64ac-4006-bc34-821c6f3e3352",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:11.893633+00:00",
+					"versionId": "MTU1NDgxMTQ1MTg5MzYzMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-04-09T22:34:15-04:00",
+					"start": "2009-04-09T22:19:15-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f7218864-09d1-40bb-a9b4-47b575083399"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/80703ab3-e8a4-44b3-95de-40e9d1b8c59e"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/61899d83-cc0e-4a00-bc79-356e84f5ef4f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/a194cfc0-5bb0-4949-aafe-ca9198949ed7"
+				},
+				"id": "61899d83-cc0e-4a00-bc79-356e84f5ef4f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:11.572931+00:00",
+					"versionId": "MTU1NDgxMTQ1MTU3MjkzMTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-10-25T01:56:58-04:00",
+					"start": "2012-10-25T01:41:58-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d14dd501-0c0f-4ec1-bab3-c0e7a3e54168"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4662f878-b5ba-450a-83dd-2b5fb59aab9f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/58bbd1c1-9539-4637-a0e3-c69ad014f659"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/6adad146-ed1a-42db-adc1-d4c3ab4e51c8",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/be33714a-6099-42fb-b72b-566b56f8d20f"
+				},
+				"id": "6adad146-ed1a-42db-adc1-d4c3ab4e51c8",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:11.327035+00:00",
+					"versionId": "MTU1NDgxMTQ1MTMyNzAzNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-06-18T00:24:34-04:00",
+					"start": "2016-06-18T00:09:34-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4e9b173e-3770-4ca9-b94d-48d945d26519"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b0a161a1-9ff7-4add-9dde-9c781088cdb8"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/07ed0255-d386-47cd-8a54-162132665b6a"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/59a65813-bcde-4504-9eab-4d94776bec88"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/03449cc2-5a14-45d5-a76a-cbc701592ead"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/afe5e8ec-daf3-42d2-957d-7b4212868eb9"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/5dd56821-8a70-4a08-ad41-819d205d0d0e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/eb1861bd-5c14-41cb-b7cb-e9944d352803"
+				},
+				"id": "5dd56821-8a70-4a08-ad41-819d205d0d0e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:11.308518+00:00",
+					"versionId": "MTU1NDgxMTQ1MTMwODUxODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-01-29T01:06:26-05:00",
+					"start": "2010-01-29T00:51:26-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/db6e0e06-7426-4935-b280-8806823868a4"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/3380db78-46e0-46ce-a1da-f3be51433894"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/53046a34-b02a-44c3-8dd0-1da81532da16",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/7f035ca8-1310-4f7c-888b-afb58bb746ca"
+				},
+				"id": "53046a34-b02a-44c3-8dd0-1da81532da16",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:10.011494+00:00",
+					"versionId": "MTU1NDgxMTQ1MDAxMTQ5NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-06T08:12:40-04:00",
+					"start": "2010-11-06T07:57:40-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b43d74d6-d04f-4a84-ada2-a3021e6cce89"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/dd74d113-4fc2-49bf-89ac-8fcb3fc38d84"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/01c7b429-aa5b-46cb-9235-2d86ab317a2d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/8f1e5449-3457-47d9-9e8d-8af19e5f1ef9"
+				},
+				"id": "01c7b429-aa5b-46cb-9235-2d86ab317a2d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:07.827981+00:00",
+					"versionId": "MTU1NDgxMTQ0NzgyNzk4MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-01-19T21:13:05-05:00",
+					"start": "2011-01-19T20:58:05-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9a3d5377-a60b-4651-8dfc-65cffc5c5d8c"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/03bf3a7e-4a3c-4c3f-8ea3-dea915960a4f"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/17af4c1f-1625-4482-8137-360fb4c97cc0"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2a38c0c4-37ce-4b26-b2cf-6e391306c0ad"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7387ca59-b851-4ebb-a7ee-9fcaac64caeb",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/9def78c6-0aff-4d71-91a9-28ccdf102c6c"
+				},
+				"id": "7387ca59-b851-4ebb-a7ee-9fcaac64caeb",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:07.097587+00:00",
+					"versionId": "MTU1NDgxMTQ0NzA5NzU4NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-07-24T05:37:12-04:00",
+					"start": "2013-07-24T05:22:12-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/129420af-4fb8-49c1-842e-35013da3cea6"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/de0f99e0-28f9-49b6-9045-6385c0743343"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/799110eb-1faf-467c-a6f3-d69b7ae820af",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/c9884bdb-4294-44ef-9820-f9466c21c8ad"
+				},
+				"id": "799110eb-1faf-467c-a6f3-d69b7ae820af",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:04.693406+00:00",
+					"versionId": "MTU1NDgxMTQ0NDY5MzQwNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-02-17T07:19:33-05:00",
+					"start": "2017-02-17T07:04:33-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/7bac314d-af00-4ae7-b0c2-82cbac4cbcf3"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9be686b1-7dad-4559-ad24-0de05685c464"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/de505338-bca7-4dea-871c-2ddcc97d024f"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/61499dda-f815-4ac3-83c8-08cac60cbb25",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/212cdb7b-f0a8-49fe-8a95-e39f6e3a328c"
+				},
+				"id": "61499dda-f815-4ac3-83c8-08cac60cbb25",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:04.470113+00:00",
+					"versionId": "MTU1NDgxMTQ0NDQ3MDExMzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-01-31T21:12:15-05:00",
+					"start": "2017-01-31T20:57:15-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/16b9c2c9-945f-4f11-9184-b7762f456ca1"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/93a72e6d-568e-4594-8bb6-33bfba2f9f32"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f9e812a6-5add-4c5d-807e-6a2e6448cb2e"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a2814e02-f00f-4ab3-9243-12c0e3065c6c"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/78254ac4-47a2-442b-bd35-08a07a24266a"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/f1792be4-91cf-42a9-b5d5-7644f6364f15",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/38da5344-1ff2-44c6-aba3-b120f9d6f5b9"
+				},
+				"id": "f1792be4-91cf-42a9-b5d5-7644f6364f15",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:04.117214+00:00",
+					"versionId": "MTU1NDgxMTQ0NDExNzIxNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-08-13T08:13:04-04:00",
+					"start": "2018-08-13T07:58:04-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b5d54520-7922-4d46-bd03-1786edf08475"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/ac46e90c-47f4-4bb6-902b-c157185eb587"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/52145068-68ca-4f32-a378-37c8f99718a9",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/6687ada2-3893-46e8-97d2-1fdab1eca220"
+				},
+				"id": "52145068-68ca-4f32-a378-37c8f99718a9",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:01.901898+00:00",
+					"versionId": "MTU1NDgxMTQ0MTkwMTg5ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-03-30T09:14:31-04:00",
+					"start": "2015-03-30T08:59:31-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/eeab67a0-e065-47f7-9544-9220b7be4c77"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a6ce64df-2cdc-479f-b1d2-39218eb775d8"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/e870b388-d6e3-4311-a5c3-4db37325d12b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/cf1f1fac-be52-4d49-af74-244d8f07c10a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/4205ac8c-73b5-437c-ac06-fbfc9affb4f2"
+				},
+				"id": "cf1f1fac-be52-4d49-af74-244d8f07c10a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:01.466210+00:00",
+					"versionId": "MTU1NDgxMTQ0MTQ2NjIxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-03-20T09:13:48-04:00",
+					"start": "2010-03-20T08:58:48-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/3795d6b3-afb5-4d3b-a104-7132e9dbd974"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/a3f4ab95-9522-4f4d-bb64-80a271c70347"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/2976f257-d2c4-452b-8a88-bdbedc4a29f9",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/5e0aad35-d0df-46f9-8bf3-6f21cd2cce28"
+				},
+				"id": "2976f257-d2c4-452b-8a88-bdbedc4a29f9",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:04:00.972296+00:00",
+					"versionId": "MTU1NDgxMTQ0MDk3MjI5NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-06-25T12:11:24-04:00",
+					"start": "2009-06-25T11:56:24-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/09a3061f-c0c9-45b1-90b9-f32291420d0f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/17bfa683-cb7d-4ac4-92b8-d7f4b24e85f4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/67330508-1184-4f64-b17b-828bde749743",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/2d90ba5e-00eb-4a33-ac4b-b290c4e0f8f7"
+				},
+				"id": "67330508-1184-4f64-b17b-828bde749743",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:59.770563+00:00",
+					"versionId": "MTU1NDgxMTQzOTc3MDU2MzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-06-14T05:34:28-04:00",
+					"start": "2015-06-14T05:19:28-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/5bb170e4-d60a-42a7-850f-138e688a248d"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/77ef789b-8ba3-49e4-902a-15fe281f604a"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/c878bca0-2674-41c7-9c60-9ed5571e933a",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/fbd1de1e-6b95-4b0b-a5a9-43b848bac3be"
+				},
+				"id": "c878bca0-2674-41c7-9c60-9ed5571e933a",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:59.614640+00:00",
+					"versionId": "MTU1NDgxMTQzOTYxNDY0MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-08-10T14:48:19-04:00",
+					"start": "2009-08-10T14:33:19-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/aff30af6-b952-4897-9977-9901e3dc0f5e"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/579af13b-b120-4b6a-942b-5ac3578b8a47"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/199590cf-0c09-49a3-be16-7cecdff7d75d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/ad5e3a19-ed60-488b-85a8-3f0636894a67"
+				},
+				"id": "199590cf-0c09-49a3-be16-7cecdff7d75d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:59.326449+00:00",
+					"versionId": "MTU1NDgxMTQzOTMyNjQ0OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2006-11-26T22:51:59-05:00",
+					"start": "2006-11-26T22:36:59-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/0c7d2f2f-91e8-453b-b02f-734f983f470d"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/d1dd7b00-cc4e-4341-9e2b-008f18513bca"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/8a2c78f4-397f-4029-8bad-c60ca858eb1f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/1551bd63-deb4-4e40-9e57-6df58605ad96"
+				},
+				"id": "8a2c78f4-397f-4029-8bad-c60ca858eb1f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:59.035744+00:00",
+					"versionId": "MTU1NDgxMTQzOTAzNTc0NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-09-04T06:34:33-04:00",
+					"start": "2009-09-04T06:19:33-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/6d6c1a48-ac87-4194-83c6-315445c677fd"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/59023153-62f5-4c3a-bad9-bdb19f1db68b"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/30f17d7f-c34a-4eeb-9782-23d806f2ed15",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/01e792ed-3084-439d-ac50-44c0ccd0f37e"
+				},
+				"id": "30f17d7f-c34a-4eeb-9782-23d806f2ed15",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:58.817234+00:00",
+					"versionId": "MTU1NDgxMTQzODgxNzIzNDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-01-20T19:15:18-05:00",
+					"start": "2013-01-20T19:00:18-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/291c0232-f40f-47d7-87d5-cc549e659484"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ea54fa30-4578-4344-915c-1b974c6fad89"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4733a172-ec76-46db-9dd6-d47b321260d8"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/053d16d1-6d53-4b76-af45-2e5f17c07185"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/649e512f-e796-42ed-a783-999685be63df",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/36c18bfc-bb5c-4231-b80b-686c57f4ac12"
+				},
+				"id": "649e512f-e796-42ed-a783-999685be63df",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:57.200272+00:00",
+					"versionId": "MTU1NDgxMTQzNzIwMDI3MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-05-17T14:38:58-04:00",
+					"start": "2012-05-17T14:23:58-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/27a953af-93f5-4a81-a434-59e51a51d78b"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4272e815-a30b-4300-b7e8-c6f144225f81"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/88a97103-7f3c-4022-ac71-277840f651cb"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/e28b94d1-b534-4660-885b-627714088284",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3e15927b-acdd-42eb-9ce0-14573a0e557e"
+				},
+				"id": "e28b94d1-b534-4660-885b-627714088284",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:56.600489+00:00",
+					"versionId": "MTU1NDgxMTQzNjYwMDQ4OTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-04-28T05:42:26-04:00",
+					"start": "2017-04-28T05:27:26-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a785f48a-5dec-4446-b5d1-4245ce09e159"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cd4a14fb-c328-4a06-abd2-f52301589ce4"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b1df3917-33f5-4192-91ae-7d301f96d598"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/354afbc1-7c44-424f-97a0-30568dd6e8c7"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/903b338a-89e0-473f-aa3f-ec66e3d75ed5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/2eda62d2-b4cb-4560-a145-1f3a37cc2a2c"
+				},
+				"id": "903b338a-89e0-473f-aa3f-ec66e3d75ed5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:56.227546+00:00",
+					"versionId": "MTU1NDgxMTQzNjIyNzU0NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-12-13T13:52:52-05:00",
+					"start": "2015-12-13T13:37:52-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/32e72f00-91e8-44a4-8383-9eb04a4e7307"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/181d027a-b4e3-43ac-a4ad-90ec9ae3a356"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/3bcecfcc-4838-4dd9-aadd-c83e7f289d78"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ddb5b1cf-c43a-4376-a590-b342395b407e",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/92e7843f-5bbe-42bb-84ea-261083e07083"
+				},
+				"id": "ddb5b1cf-c43a-4376-a590-b342395b407e",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:56.212137+00:00",
+					"versionId": "MTU1NDgxMTQzNjIxMjEzNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-09-19T05:31:41-04:00",
+					"start": "2016-09-19T05:16:41-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/b97d62d0-e0d1-4c51-a31e-6a2a58ee4bff"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/9a7516ff-0d79-495d-a095-92846ac91f5d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/e734ede9-ed25-46ab-a9ce-c26d0eb31800"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/2f3471a8-1f4e-47ff-a05e-a8f122a1e72f"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/d1d1f170-7fe4-4ebd-9161-8c52906a9444"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/54bd046c-3612-4c05-ba54-e6563e956362",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/3dacd0d0-fb15-4123-b74e-d57916d5c43d"
+				},
+				"id": "54bd046c-3612-4c05-ba54-e6563e956362",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:55.778991+00:00",
+					"versionId": "MTU1NDgxMTQzNTc3ODk5MTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-03-16T02:00:31-04:00",
+					"start": "2011-03-16T01:45:31-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/6fbbefad-9bcb-4fe2-afdd-a7fb9f1a2281"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/a1f1dce9-0393-425f-b6ab-21c4572d8ac4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/7a908700-e007-49ff-a89f-e012ce9e9e9d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/e94856e0-d09b-47cb-a32d-0c42e2f64632"
+				},
+				"id": "7a908700-e007-49ff-a89f-e012ce9e9e9d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:55.174192+00:00",
+					"versionId": "MTU1NDgxMTQzNTE3NDE5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-01-08T13:52:52-05:00",
+					"start": "2012-01-08T13:37:52-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/32e72f00-91e8-44a4-8383-9eb04a4e7307"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/3bcecfcc-4838-4dd9-aadd-c83e7f289d78"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/13651e8f-fcc2-4877-b4b9-ab6bf0922b2b",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/33f4a504-d702-4904-9f50-9beeaf04302a"
+				},
+				"id": "13651e8f-fcc2-4877-b4b9-ab6bf0922b2b",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:54.713010+00:00",
+					"versionId": "MTU1NDgxMTQzNDcxMzAxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-02-27T20:09:26-05:00",
+					"start": "2011-02-27T19:54:26-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ec4a6b8e-5653-43ce-91f2-226e5393872d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ca411041-681f-49ff-8beb-af0b62d76b46"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2ffc4e6f-a611-4b65-9e28-c4440c036a84"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/b7cb08e4-de62-4305-b1de-dab3fa6681af",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d27bb0a3-f486-42a7-ad59-d275d404e0fa"
+				},
+				"id": "b7cb08e4-de62-4305-b1de-dab3fa6681af",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:53.666510+00:00",
+					"versionId": "MTU1NDgxMTQzMzY2NjUxMDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-06-14T21:09:26-04:00",
+					"start": "2009-06-14T20:54:26-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ec4a6b8e-5653-43ce-91f2-226e5393872d"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/2ffc4e6f-a611-4b65-9e28-c4440c036a84"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/0ea30b7c-9fc8-447e-82eb-a88ab023215f",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/04d12a8c-bdba-42dc-bd93-cd91ce5d9528"
+				},
+				"id": "0ea30b7c-9fc8-447e-82eb-a88ab023215f",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:52.830208+00:00",
+					"versionId": "MTU1NDgxMTQzMjgzMDIwODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-05T09:35:02-04:00",
+					"start": "2010-11-05T09:20:02-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/fe4f9e45-5d81-432c-a555-911b4437a744"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/7db982b1-113a-4cc4-862b-addd441a13b0"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/74f50a07-2bd9-4b67-80dd-89b1063df9d4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/afed36a8-4a25-4a75-af63-ab3804969e8d",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/bf03be34-d4ea-47e0-bad6-b1c83db3d20d"
+				},
+				"id": "afed36a8-4a25-4a75-af63-ab3804969e8d",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:52.695528+00:00",
+					"versionId": "MTU1NDgxMTQzMjY5NTUyODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-01-29T10:41:24-05:00",
+					"start": "2011-01-29T10:26:24-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/a36c3222-c6b8-40e6-be80-5906a4013975"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6bf19b51-4414-4acf-8f6e-6f10767b88e9"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/815e8ac4-78a5-4a88-889a-54137813fca6",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/e2f9385c-8e12-4ed0-9219-a6654b83fe2f"
+				},
+				"id": "815e8ac4-78a5-4a88-889a-54137813fca6",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:51.767057+00:00",
+					"versionId": "MTU1NDgxMTQzMTc2NzA1NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-01-16T08:35:02-05:00",
+					"start": "2009-01-16T08:20:02-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/fe4f9e45-5d81-432c-a555-911b4437a744"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/74f50a07-2bd9-4b67-80dd-89b1063df9d4"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/f82c8555-e4d4-4284-a9d4-d8d7007a8bcd",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/f8602759-fd60-4453-8bdb-e5f28dcf25ed"
+				},
+				"id": "f82c8555-e4d4-4284-a9d4-d8d7007a8bcd",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:49.364892+00:00",
+					"versionId": "MTU1NDgxMTQyOTM2NDg5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2012-04-24T14:01:59-04:00",
+					"start": "2012-04-24T13:46:59-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1f5eba77-588f-42d4-8cf7-2724e9da1685"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/6e973a02-8852-4ef7-8e5c-98a75950f497"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/ac9b6436-d772-44cc-b8b6-73f49eecf8ec",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/1339298d-9bcb-4a7f-8a96-a7924863d102"
+				},
+				"id": "ac9b6436-d772-44cc-b8b6-73f49eecf8ec",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:48.916960+00:00",
+					"versionId": "MTU1NDgxMTQyODkxNjk2MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-03-30T21:55:16-04:00",
+					"start": "2010-03-30T21:40:16-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d575ada1-5057-4d6a-8763-6bf9bb0c7350"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/1157745c-3674-41d3-8366-13c88eca2634"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/dbb3856a-bbe6-44a2-a67a-e7fecd68292a"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/19b9ef10-372f-417f-b800-b16c172ecdf2",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/1f4ade50-1e84-46bb-8ed4-75aaa43194e7"
+				},
+				"id": "19b9ef10-372f-417f-b800-b16c172ecdf2",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:45.428136+00:00",
+					"versionId": "MTU1NDgxMTQyNTQyODEzNjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2013-08-14T19:36:25-04:00",
+					"start": "2013-08-14T19:21:25-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/4939bf48-6c97-4f37-987c-9cb5d0f5f1c9"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/80d9e7cb-b6af-4699-9da7-db5d92028034"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/ec1a5b3f-cc12-4eb8-846f-67ddc29a7c70"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/61eb05c5-2f83-416f-9fec-026a7715fcf5",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/ad02cd84-0482-4f2f-b06d-3fc846e6d6eb"
+				},
+				"id": "61eb05c5-2f83-416f-9fec-026a7715fcf5",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:45.066155+00:00",
+					"versionId": "MTU1NDgxMTQyNTA2NjE1NTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2016-01-25T03:46:52-05:00",
+					"start": "2016-01-25T03:31:52-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/440b0a79-bca3-497d-b415-1f024978cc7e"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/d7666591-5bf8-42a4-a6d6-fdae34689db8"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/b6460b52-5dae-4c9a-b5cf-3c5ad81694ec"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/57c7b219-8af2-4bf7-95a4-120e481ee0ca",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/11d4b9d0-169f-4f35-bf22-e6d7b69e23d0"
+				},
+				"id": "57c7b219-8af2-4bf7-95a4-120e481ee0ca",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:44.751638+00:00",
+					"versionId": "MTU1NDgxMTQyNDc1MTYzODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-11-22T01:48:05-05:00",
+					"start": "2009-11-22T01:33:05-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/ea804825-9e4d-4b79-a8e2-131043b4c814"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/f96231a6-4471-441b-884f-e0c6812ce43a"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/3278c657-cf44-48a0-9944-8cf151f3a769",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/d0bd67a7-8033-4269-ad95-33fb112900b6"
+				},
+				"id": "3278c657-cf44-48a0-9944-8cf151f3a769",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:44.095778+00:00",
+					"versionId": "MTU1NDgxMTQyNDA5NTc3ODAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-08-25T08:09:56-04:00",
+					"start": "2011-08-25T07:54:56-04:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f77a6536-b67d-4e34-806a-52d4d3986c28"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/cdfc1934-28eb-480c-b76e-2146aea14c4d"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/db0be009-31db-4846-9fe3-a2779b7bb722"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/197ba35b-2fc5-44a0-abfc-e2d4ba67e245"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		},
+		{
+			"fullUrl": "https://syntheticmass.mitre.org/v1/fhir/Procedure/14dd44f2-a1d0-4535-8e20-9df63c3d3451",
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "85548006",
+							"display": "Episiotomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Episiotomy"
+				},
+				"context": {
+					"reference": "Encounter/4c8e10cf-4087-4b4e-9241-465666b3cdc0"
+				},
+				"id": "14dd44f2-a1d0-4535-8e20-9df63c3d3451",
+				"meta": {
+					"lastUpdated": "2019-04-09T12:03:42.795960+00:00",
+					"versionId": "MTU1NDgxMTQyMjc5NTk2MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-01-22T09:38:22-05:00",
+					"start": "2018-01-22T09:23:22-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/c9e7251f-c3c6-4455-a831-6acc49aad7b7"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/bc90bd24-b10a-4a95-beae-438ccca1cf47"
+					},
+					{
+						"display": "Normal pregnancy",
+						"reference": "Condition/f52f1812-0909-43ac-b5f5-524fbba1ff90"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/aae598de-564f-424d-8880-071cd8b8b243"
+				}
+			},
+			"search": {
+				"mode": "match"
+			}
+		}
+	],
+	"link": [
+		{
+			"relation": "search",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?code=85548006"
+		},
+		{
+			"relation": "next",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?code=85548006&_page_token=Cjj3XKyKHv%2F%2F%2F%2F%2BABYYXvoxouAD%2FAf%2F%2BYzk3MjA5MTRmNjU5OWE1MjVjOWI4NWIyNDY5ZmJlYzcAARBkIfp7n2jesxm7OQAAAADhdVOjSAFQAFoLCfoQzBwZZ0AVEANg%2F4DakQI%3D"
+		},
+		{
+			"relation": "first",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?code=85548006"
+		},
+		{
+			"relation": "self",
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Procedure/?code=85548006"
+		}
+	],
+	"resourceType": "Bundle",
+	"total": 43665,
+	"type": "searchset"
+}
