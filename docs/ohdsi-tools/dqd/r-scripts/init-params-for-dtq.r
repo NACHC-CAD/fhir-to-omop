@@ -29,9 +29,9 @@ pathToDriver <- pathToDriver
 extraSettings <- ";databaseName=master;integratedSecurity=true;encrypt=false"
 
 # database schemas
-cdmDatabaseSchema <- "synthea_omop.dbo"                  # your omop instance
-resultsDatabaseSchema <- "synthea_omop_dqd_results.dbo"  # instance where results will be written
-cdmSourceName <- "SYNTHEA_Test_Database"                 # a human readable name for your CDM source
+cdmDatabaseSchema <- "synthea_micro.dbo"                       # your omop instance
+resultsDatabaseSchema <- "synthea_micro_dqd_results.dbo"       # instance where results will be written
+cdmSourceName <- "SYNTHEA_MICRO_Test_Database"                 # a human readable name for your CDM source
 
 # config parameters
 numThreads <- 1       # number of threads to run, 3 seems to work well on Redshift
