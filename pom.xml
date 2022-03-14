@@ -92,6 +92,7 @@
 	-->
 
 	<build>
+	
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -105,7 +106,10 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+
 		<plugins>
+
+			<!-- copy resources from the resources dir -->
 			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.6</version>
@@ -128,6 +132,8 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- include dependencies in the jar files -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -167,6 +173,7 @@
 				</configuration>
 			</plugin>
 
+			<!-- copy the bat file and the app.properties example file -->
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-antrun-plugin</artifactId>
@@ -187,7 +194,8 @@
 			            </execution>
 			        </executions>
 			</plugin>
-    			
+    		
+    		<!-- don't run the integration tests -->	
 			<plugin>
 				  <groupId>org.apache.maven.plugins</groupId>
 				  <artifactId>maven-surefire-plugin</artifactId>
