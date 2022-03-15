@@ -10,6 +10,16 @@
 	
 	<packaging>jar</packaging>
 
+
+	<repositories>
+	    <repository>
+	        <id>bedatadriven</id>
+	        <name>bedatadriven</name>
+	        <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+	    </repository>
+	</repositories>
+
+
 	<!-- 
 	*
 	* dependencies
@@ -88,6 +98,13 @@
 			<groupId>com.github.jbytecode</groupId>
 			<artifactId>RCaller</artifactId>
 			<version>3.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.renjin/renjin-script-engine -->
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>renjin-script-engine</artifactId>
+			<version>0.9.2722</version>
 		</dependency>
 
 	</dependencies>

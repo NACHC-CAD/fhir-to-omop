@@ -1,10 +1,14 @@
 package org.nachc.tools.fhirtoomop.tools.dqd;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URISyntaxException;
 
+import javax.script.ScriptEngine;
+
+import org.renjin.script.RenjinScriptEngineFactory;
+
 import com.github.rcaller.rstuff.RCaller;
-import com.github.rcaller.rstuff.RCallerOptions;
 import com.github.rcaller.rstuff.RCode;
 import com.nach.core.util.file.FileUtil;
 
@@ -31,18 +35,20 @@ public class RunDqdInitScript {
 		log.info("Done.");
 	}
 
-	public static void main(String[] args) throws IOException, URISyntaxException {
-		int[] values = {1,2,3,4,5,6};
-		String fileContent = FileUtil.getAsString(PATH);
-		RCode code = RCode.create();
-		code.addRCode(fileContent);
-		code.addIntArray("input", values);
-//		code.addRCode("result <- customMean(input)");
-		RCaller caller = RCaller.create(code, RCallerOptions.create());
-		caller.redirectROutputToStream(System.out);
-		caller.runAndReturnResult("dbms");
-		String foo = caller.getParser().getAsStringArray("dbms")[0];
-		System.out.println(foo);
+	public static void main(String[] args) throws Exception {
+		String script = FileUtil.getAsString(PATH);
+
+		RenjinScriptEngineFactory factory = new RenjinScriptEngineFactory();
+		PrintWriter writer = new PrintWriter(System.out);
+		// create a Renjin engine:
+		ScriptEngine engine = factory.getScriptEngine();
+		engine.getContext().setWriter(writer);
+		String meanScriptContent = FileUtil.getAsString(PATH);
+//		engine.put("input", values);
+		engine.eval(script);
+//		DoubleArrayVector result = (DoubleArrayVector) engine.eval("customMean(input)");
+//		return result.asReal();
+		System.out.println("Done.");
 	}
 
 }
