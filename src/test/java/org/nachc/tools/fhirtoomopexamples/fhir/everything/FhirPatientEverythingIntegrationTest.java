@@ -11,9 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FhirPatientEverythingIntegrationTest {
 
-	String URL = "https://syntheticmass.mitre.org/v1/fhir";
+	private static final String URL = "https://syntheticmass.mitre.org/v1/fhir";
 	
-	String PATIENT_ID = "6f7acde5-db81-4361-82cf-886893a3280c";
+	private static final String PATIENT_ID = "6f7acde5-db81-4361-82cf-886893a3280c";
 	
 	@Test
 	public void shouldGetPatient() {

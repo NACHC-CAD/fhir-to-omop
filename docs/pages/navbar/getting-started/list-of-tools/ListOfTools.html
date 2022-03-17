@@ -53,11 +53,39 @@
 					<th>Resource</th>
 					<th>Description</th>
 				</tr>
-				
+	
 				<!--  -->
 				<tr>
 					<td>
-						FhirPatientEverythingFetcher
+					</td>
+					<td>
+					</td>
+				</tr>
+				
+				<!-- SyntheaOauth -->
+				<tr>
+					<td>
+						FHIR: SyntheaOauth
+					</td>
+					<td>
+						<p>
+							Get an OAUTH2 token from the Synthea patient server.  
+						</p>
+						<p>
+							The SyntheaOauth tool gets an OAUTH token from the Synthea Patient server used as a reference implementation for the fhir-to-omop tool suite.  
+							There seems to be some variation in how OAUTH authentication is done from server to server.  
+							This class works for the Synthea Patient server we use here and may or may not work with other servers.  
+						</p>					
+						<p>
+							Example: The 
+						</p>
+					</td>
+				</tr>
+				
+				<!-- FHIR: FhirPatientEverythingFetcher  -->
+				<tr>
+					<td>
+						FHIR: FhirPatientEverythingFetcher
 					</td>
 					<td>
 						Get a Patient/[ID]/$everything resource from any FHIR Patient server.  
@@ -78,7 +106,7 @@
 							</ul>
 						</p>
 						<p>
-							Example: FhirPatientEverythingIntegrationTest
+							Example: 
 							The <a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/everything/FhirPatientEverythingIntegrationTest.java">FhirPatientEverythingIntegrationTest</a> 
 							gives a simplest complete example of the use of this tool.  
 						</p>
