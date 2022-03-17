@@ -25,6 +25,12 @@
 			Things like creating an entire OMOP instance including populated vocabulary tables from scratch.  
 			Things like populating an OMOP instance with the entire contents of a FHIR Patient server.  
 			
+			<h2>Utilities</h2>
+			The fhir-to-omop utilities are the building blocks of the fhir-to-omop environment.  
+			These tools can be used individually.
+			Each tool has a simplest complete example that exists as a JUnit integration test in the fhir-to-omop project.  
+			This integration test is listed at the bottom of the description for each entry in the list below.  
+			
 			<table class="table">
 				
 				<!-- header -->
@@ -39,22 +45,24 @@
 						FhirPatientEverythingFetcher
 					</td>
 					<td>
+						Get a Patient/[ID]/$everything resource from any FHIR Patient server.  
 						The FhirPatientEverythingFetcher is used to get the JSON string representing all of the information the server has for a given patient.  
+						Although it is intended to be used for any FHIR server, there does seem to be differences in the way FHIR Patient servers implement authentication.  
+						In our simplest complete example, we are using a Synthea Patient server and the SyntheaOauth tool to generate the token needed for the request.  
+						Getting an account and credentials required to get this token are described in our list of 
+						<a target="start-here" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">prerequisites</a>.
 						The tool requires three parameters
 						<ul>
 							<li>The URL of the FHIR Patient Server</li>
 							<li>The ID of the Patient</li>
-							<li>An OAUTH2 token (this can be generated for the Syntha server using the SyntheaOauth tool)</li>
+							<li>An OAUTH2 token (this can be generated for the Synthea server using the SyntheaOauth tool)</li>
 						</ul>
-						<br/><br/>
+						<br/>
 						Example: FhirPatientEverythingIntegrationTest
 						The <a href="">FhirPatientEverythingIntegrationTests</a> gives a simplest complete example of the use of this tool.  
 					</td>
 				</tr>
 			</table>
-			
-			<h2>Utilities</h2>
-			The fhir-to-omop
 			
 		</div>
 	</body>
