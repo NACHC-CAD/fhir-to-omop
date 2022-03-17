@@ -10,7 +10,7 @@ There are three target audiences for the fhir-to-omop tools
 
 1.) Using fhir-to-omop tools directly
 =================================
-These users can simple download the zip file and start using the tools from the cmd line.  Release 0.0.10 (2022-03-16) can be downloaded from <a href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.10/fhir-to-omop.zip">here</a>.  After the zip file has been downloaded, navigate to the fhir-to-omop page and run the fhir-to-omop.bat file.  You should then be presented with a list of the different tools you can run from the cmd line.  
+These users can simply download the zip file and start using the tools from the cmd line.  Release 0.0.10 (2022-03-16) can be downloaded from <a href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.10/fhir-to-omop.zip">here</a>.  After the zip file has been downloaded, navigate to the fhir-to-omop page and run the fhir-to-omop.bat file.  You should then be presented with a list of the different tools you can run from the cmd line.  
 ```
 # ----------------------------------------
 #
