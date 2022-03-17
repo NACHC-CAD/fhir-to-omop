@@ -10,8 +10,17 @@ public class AppParams {
 
 	private static final String DEFAULT = "auth/app.properties";
 	
-	private static Properties PROPS = PropertiesUtil.getAsProperties(DEFAULT);
+	private static Properties PROPS = null;
 
+	static {
+		try {
+			PROPS = PropertiesUtil.getAsProperties(DEFAULT);			
+		} catch(Exception exp) {
+			System.out.println("Could not load default properties.");
+			System.out.println("A properties file will need to be provided by the user.");
+		}
+	}
+	
 	/**
 	 * 
 	 * This method should only be used by the main class to allow the user to set

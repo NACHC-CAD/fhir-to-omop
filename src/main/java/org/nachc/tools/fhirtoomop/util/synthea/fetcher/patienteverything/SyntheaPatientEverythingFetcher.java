@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything;
 
+import org.nachc.tools.fhirtoomop.util.fhir.everything.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 
@@ -18,31 +19,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SyntheaPatientEverythingFetcher {
 
-	private HttpRequestClient client;
+	private FhirPatientEverythingFetcher fetcher;
 
+	public SyntheaPatientEverythingFetcher() {
+		this.fetcher = new FhirPatientEverythingFetcher();
+	}
+	
 	public HttpRequestClient getClient() {
-		return this.client;
+		return this.fetcher.getClient();
 	}
 
 	public int getStatusCode() {
-		return this.client.getStatusCode();
+		return this.fetcher.getClient().getStatusCode();
 	}
 
 	public String fetchEverything(String patientId, String token) {
 		String url = AppParams.getSyntheaUrl();
-		url += "/Patient/" + patientId + "/$everything?";
-		log.info("URL: " + url);
-		this.client = new HttpRequestClient(url);
-		SyntheaOauth.addHeaders(client, token);
-		client.doGet();
-		int status = client.getStatusCode();
-		log.info("Got status: " + status);
-		String response = client.getResponse();
-		log.info("Response length: " + response.length());
-		if (status != 200) {
-			log.info("DID NOT GET 200 STATUS: ");
-			log.info(JsonUtil.prettyPrint(response));
-		}
+		String response = fetcher.fetchEverything(url, patientId, token);
 		return response;
 	}
 

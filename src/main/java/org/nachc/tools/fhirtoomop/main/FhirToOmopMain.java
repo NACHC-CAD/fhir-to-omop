@@ -30,7 +30,13 @@ public class FhirToOmopMain {
 				System.out.println("Getting config file from: " + fileName);
 			}
 			File file = new File(fileName, "app.properties");
+			System.out.println("------------");
+			System.out.println("app.properties:");
+			System.out.println(FileUtil.getCanonicalPath(file));
+			System.out.println("Exists: " + file.exists());
 			InputStream is = new FileInputStream(file);
+			System.out.println("InputStream: " + is);
+			System.out.println("------------");
 			AppParams.setProps(is);
 			// run the requested task
 			String name = args[0];
