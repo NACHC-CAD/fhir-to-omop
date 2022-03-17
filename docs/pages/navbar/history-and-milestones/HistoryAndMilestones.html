@@ -1,0 +1,25 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<div id="2022-03-17"></div>
+		</div>
+		<script>
+			$("#2022-03-17").load("/fhir-to-omop/pages/navbar/history-and-milestones/reports/2022-03-17.html");
+		</script>
+	</body>
+</html>
