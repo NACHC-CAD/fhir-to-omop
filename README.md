@@ -4,6 +4,8 @@ The fhir-to-omop Project
 
 <a href="https://nachc-cad.github.io/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">Start Here (prerequisites)</a>
 
+<a download href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.10/fhir-to-omop.zip">Download the latest zip (Release 0.0.10, March 03, 2022)</a>
+
 List of fhir-to-omop Tools
 
 
