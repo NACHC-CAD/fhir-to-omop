@@ -4,7 +4,7 @@ The fhir-to-omop Project
 
 <a href="https://nachc-cad.github.io/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">Start Here (prerequisites)</a>
 
-<a download href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.10/fhir-to-omop.zip">Download the latest zip (Release 0.0.10, March 03, 2022)</a>
+<a download href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.14/fhir-to-omop-0.0.14.zip">Download the latest zip (Release 0.0.14, March 17, 2022)</a>
 
 List of fhir-to-omop Tools
 
@@ -20,7 +20,7 @@ There are three target audiences for the fhir-to-omop tools
 
 1.) Using fhir-to-omop tools directly
 =================================
-These users can simply download the zip file and start using the tools from the cmd line.  Release 0.0.10 (2022-03-16) can be downloaded from <a href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.10/fhir-to-omop.zip">here</a>.  After the zip file has been downloaded, navigate to the fhir-to-omop page and run the fhir-to-omop.bat file.  You should then be presented with a list of the different tools you can run from the cmd line.  
+These users can simply download the file and start using the tools from the cmd line.  Release 0.0.14 (2022-03-17) can be downloaded from <a href="https://github.com/NACHC-CAD/fhir-to-omop/releases/download/0.0.14/fhir-to-omop-0.0.14.zip">here</a>.  After the zip file has been downloaded, navigate to the fhir-to-omop page and run the fhir-to-omop.bat file.  You should then be presented with a list of the different tools you can run from the cmd line.  
 ```
 # ----------------------------------------
 #
@@ -72,7 +72,7 @@ The entire fhir-to-omop tool suite can be integrated into you Java project by ad
 <dependency>
 	<groupId>org.nachc.cad.tools</groupId>
 	<artifactId>fhir-to-omop</artifactId>
-	<version>0.0.10</version>
+	<version>0.0.14</version>
 </dependency>
 ```
 
@@ -82,10 +82,9 @@ The fhir-to-omop tool suite can be checked out so you can browse/edit the code a
 ```
 git clone https://github.com/NACHC-CAD/fhir-to-omop 
 cd fhir-to-omop
-git checkout tags/0.0.10
+git checkout tags/0.0.14
 ```
 
-
-Last updated Thursday March 17th, 2022
+Last updated Thursday March 17th (14:43), 2022
 
 
