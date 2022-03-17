@@ -19,6 +19,21 @@
 			<h1>List of fhir-to-omop Tools and Utilities</h1>
 			The tools an Utilities listed below are currently provided publicly under the Apache 2 license by the fhir-to-omop project.  
 			
+			<!-- configuration -->
+			<h2>Notes on Configuration and Testing</h2>
+			All of the fhir-to-omop tools are configured using a single properties file.  
+			Most of the parameters in this file are for the instance of OMOP that can be created locally by these tools.  
+			Therefore, most of the parameters are allready populated with default values.  
+			A copy of this file is provided in the root directory of the fhir-to-omop.zip file created for each distribution
+			(e.g. fhir-to-omop-0.0.14.zip).  
+			The fhir-to-omop project maintains a robust set of JUnit integration tests that can be run individually.
+			All of the Synthea tests can be run using the 
+			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopsynthea/RunAllSyntheaIntegrationTests.java">RunAllSyntheaIntegrationTests</a> class.
+			All of the OMOP tests can be run using the 
+			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/RunAllOmopIntegrationTests.java">RunAllOmopIntegrationTests</a> class.
+			The entire JUnit test suite can be run using the 
+			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/RunAllIntegrationTests.java">RunAllIntegrationTests</a> class.  
+			
 			<!-- tools -->
 			<h2>Tools</h2>
 			The fhir-to-omop tools are the more complete solutions that perform complex tasks.
@@ -46,20 +61,27 @@
 					</td>
 					<td>
 						Get a Patient/[ID]/$everything resource from any FHIR Patient server.  
-						The FhirPatientEverythingFetcher is used to get the JSON string representing all of the information the server has for a given patient.  
-						Although it is intended to be used for any FHIR server, there does seem to be differences in the way FHIR Patient servers implement authentication.  
-						In our simplest complete example, we are using a Synthea Patient server and the SyntheaOauth tool to generate the token needed for the request.  
-						Getting an account and credentials required to get this token are described in our list of 
-						<a target="start-here" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">prerequisites</a>.
-						The tool requires three parameters
-						<ul>
-							<li>The URL of the FHIR Patient Server</li>
-							<li>The ID of the Patient</li>
-							<li>An OAUTH2 token (this can be generated for the Synthea server using the SyntheaOauth tool)</li>
-						</ul>
-						<br/>
-						Example: FhirPatientEverythingIntegrationTest
-						The <a href="">FhirPatientEverythingIntegrationTests</a> gives a simplest complete example of the use of this tool.  
+						<br/><br/>
+						<p>
+							The FhirPatientEverythingFetcher is used to get the JSON string representing all of the information the server has for a given patient.  
+							Although it is intended to be used for any FHIR server, there does seem to be differences in the way FHIR Patient servers implement authentication.  
+							In our simplest complete example, we are using a Synthea Patient server and the SyntheaOauth tool to generate the token needed for the request.  
+							Getting an account and credentials required to get this token are described in our list of 
+							<a target="start-here" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">prerequisites</a>.
+						</p>
+						<p>
+							The tool requires these parameters
+							<ul>
+								<li>The URL of the FHIR Patient Server</li>
+								<li>The ID of the Patient</li>
+								<li>An OAUTH2 token (this can be generated for the Synthea server using the SyntheaOauth tool)</li>
+							</ul>
+						</p>
+						<p>
+							Example: FhirPatientEverythingIntegrationTest
+							The <a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/everything/FhirPatientEverythingIntegrationTest.java">FhirPatientEverythingIntegrationTest</a> 
+							gives a simplest complete example of the use of this tool.  
+						</p>
 					</td>
 				</tr>
 			</table>
