@@ -46,16 +46,24 @@ The following options are valid:
 Also, make sure you have an app.properties file in your working dir (the dir your in now).
 
 ```
+To run most of these command you will need to provide an app.properties file that contains information about the resources you want to connect to.  A sample app.properties file has been created that includeds everytthing required to create and populate an OMOP instance.  To run any of the above commands, simply type fhir-to-omop [option].  For example
+```
+fhir-to-omop say-hello
+```
+Or you can use the short cut version
+```
+fhir-to-omop h
+```
+
 Integrate the fhir-to-omop tools into your Java project
 =======================================================
 The entire fhir-to-omop tool suite can be integrated into you Java project by adding the following dependency to your Java Project
 ```
-		<dependency>
-			<groupId>org.nachc.cad.tools</groupId>
-			<artifactId>core</artifactId>
-			<version>0.0.10</version>
-		</dependency>
-
+<dependency>
+	<groupId>org.nachc.cad.tools</groupId>
+	<artifactId>fhir-to-omop</artifactId>
+	<version>0.0.10</version>
+</dependency>
 ```
 
 Edit and Test fhir-to-omop
@@ -65,7 +73,6 @@ The fhir-to-omop tool suite can be checked out so you can browse/edit the code a
 git clone https://github.com/NACHC-CAD/fhir-to-omop 
 cd fhir-to-omop
 git checkout tags/0.0.10
-
 ```
 
 
