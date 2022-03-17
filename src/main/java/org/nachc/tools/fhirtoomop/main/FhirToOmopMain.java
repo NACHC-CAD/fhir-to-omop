@@ -15,13 +15,20 @@ public class FhirToOmopMain {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println("Welcome to fhir-to-omop");
-		if (args == null || args.length < 2) {
+		if (args == null || args.length < 1) {
 			zeroParam();
 		} else {
 			// get the config file
-			String fileName = args[1];
-			System.out.println("Using config file from here:");
-			System.out.println(fileName);
+			String fileName = null;
+			if(args.length > 1) {
+				fileName = args[1];
+				System.out.println("Using config file from here:");
+				System.out.println(fileName);
+			} else {
+				File file = new File("./");
+				fileName = FileUtil.getCanonicalPath(file);
+				System.out.println("Getting config file from: " + fileName);
+			}
 			File file = new File(fileName, "app.properties");
 			InputStream is = new FileInputStream(file);
 			AppParams.setProps(is);
@@ -109,7 +116,7 @@ public class FhirToOmopMain {
 	}
 
 	private static void wrongParam() {
-		String msg = FileUtil.getAsString("/main/msg/wrong-param-error.txt");
+		String msg = FileUtil.getAsString("/main/msg/zero-args-error.txt");
 		System.out.println(msg);
 	}
 
