@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop;
+package org.nachc.tools;
 
 import java.sql.Connection;
 

@@ -1,4 +1,4 @@
-package org.nachc.tools.synthea.allpatients;
+package org.nachc.tools.fhirtoomopsynthea.getpatients;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
-import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
+import org.nachc.tools.synthea.allpatients.PatientGetter;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -18,11 +18,11 @@ public class PatientGetterIntegrationTest {
 	private static final String TEST_FILE_NAME = "/synthea/patientids/synthea-patient-ids-1107.txt";
 
 	private static final String OUT_FILE_DIR = "/patientids/out";
-	
+
 	private static final int PATIENTS_PER_THREAD = 1;
 
 	private List<PatientGetter> getters = new ArrayList<PatientGetter>();
-	
+
 	private List<Thread> threads = new ArrayList<Thread>();
 
 	@Test
@@ -47,7 +47,7 @@ public class PatientGetterIntegrationTest {
 		List<String> patientsForThread = new ArrayList<String>();
 		for (String patientId : patientIds) {
 			patientsForThread.add(patientId);
-			if(patientsForThread.size() == PATIENTS_PER_THREAD) {
+			if (patientsForThread.size() == PATIENTS_PER_THREAD) {
 				threadId++;
 				PatientGetter getter = new PatientGetter(patientsForThread, outDir, threadId);
 				this.getters.add(getter);
@@ -59,14 +59,14 @@ public class PatientGetterIntegrationTest {
 		}
 		// start threads
 		log.info("Starting threads...");
-		for(Thread thread : this.threads) {
+		for (Thread thread : this.threads) {
 			thread.start();
 		}
 		log.info("Running all threads...");
-		for(Thread thread : this.threads) {
+		for (Thread thread : this.threads) {
 			try {
 				thread.join();
-			} catch(Exception exp) {
+			} catch (Exception exp) {
 				log.error("* * *EXCEPTION THROWN JOINING THREAD * * *");
 			}
 		}
