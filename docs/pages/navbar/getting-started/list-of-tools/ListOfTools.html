@@ -218,6 +218,12 @@
 							(which create DVO classes under the hood).  
 						</p>
 						<p>
+							Note that this mapping requires a connection to your OMOP instance.
+							All of the concept mapping for FHIR to OMOP is done through the OmopPersonEverything class.  
+							This database connection is used to get the OHDSI concept ids from the concept table.  
+							The database connection is also used to ensure that OMOP database records get unique ids.  
+						</p>
+						<p>
 							Example: 
 							The 
 							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/omoppersoneverything/OmopPersonEverythingExampleIntegrationTest.java">
