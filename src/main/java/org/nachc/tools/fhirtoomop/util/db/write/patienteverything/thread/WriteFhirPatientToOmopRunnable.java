@@ -5,7 +5,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -60,7 +60,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 			}
 			// parse the json
 			this.parser = new PatientEverythingParser(json);
-			OmopPersonEverythingFactory personEverything = new OmopPersonEverythingFactory(this.parser, this.conn);
+			OmopPersonEverything personEverything = new OmopPersonEverything(this.parser, this.conn);
 			log.info("DONE: Parsing fhir resource (" + this.id + "): " + this.filePathShortend);
 			// write to the database
 			WriteFhirPatientToOmop.exec(personEverything, this.conn);

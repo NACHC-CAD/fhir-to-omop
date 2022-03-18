@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.yaorma.database.Database;
 
@@ -23,7 +23,7 @@ public class OmopConditionFactoryIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			String json = TestParams.getPersonEverythingJson();
-			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(json, conn);
+			OmopPersonEverything person = new OmopPersonEverything(json, conn);
 			List<ConditionOccurrenceDvo> conditionList = person.getConditionOccurrenceList();
 			log.info("Got " + conditionList.size() + " conditions.");
 			assertTrue(conditionList.size() == 5);

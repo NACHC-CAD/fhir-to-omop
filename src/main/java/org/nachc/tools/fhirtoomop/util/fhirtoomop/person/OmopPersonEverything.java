@@ -27,7 +27,7 @@ import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
  *
  */
 
-public class OmopPersonEverythingFactory {
+public class OmopPersonEverything {
 
 	//
 	// instance variables
@@ -53,15 +53,15 @@ public class OmopPersonEverythingFactory {
 	// constructors
 	//
 
-	public OmopPersonEverythingFactory(PatientEverythingParser patientEverything, Connection conn) {
-		this.conn = conn;
-		this.patientEverything = patientEverything;
-	}
-
-	public OmopPersonEverythingFactory(String json, Connection conn) {
+	public OmopPersonEverything(String json, Connection conn) {
 		this.json = json;
 		this.conn = conn;
 		this.patientEverything = new PatientEverythingParser(json);
+	}
+
+	public OmopPersonEverything(PatientEverythingParser patientEverything, Connection conn) {
+		this.conn = conn;
+		this.patientEverything = patientEverything;
 	}
 
 	//

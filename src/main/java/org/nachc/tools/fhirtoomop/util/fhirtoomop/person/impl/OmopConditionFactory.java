@@ -7,7 +7,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
@@ -18,7 +18,7 @@ public class OmopConditionFactory {
 	// instance variables
 	//
 
-	public OmopPersonEverythingFactory omopPersonEverything;
+	public OmopPersonEverything omopPersonEverything;
 
 	private Connection conn;
 
@@ -26,7 +26,7 @@ public class OmopConditionFactory {
 	// constructor
 	//
 
-	public OmopConditionFactory(OmopPersonEverythingFactory omopPersonEverything, Connection conn) {
+	public OmopConditionFactory(OmopPersonEverything omopPersonEverything, Connection conn) {
 		this.omopPersonEverything = omopPersonEverything;
 		this.conn = conn;
 	}

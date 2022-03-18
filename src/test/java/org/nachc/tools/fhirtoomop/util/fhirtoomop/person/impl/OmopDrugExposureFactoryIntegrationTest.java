@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.yaorma.database.Database;
 
@@ -24,7 +24,7 @@ public class OmopDrugExposureFactoryIntegrationTest {
 		try {
 			log.info("Starting test...");
 			PatientEverythingParser patient = TestParams.getPatientEverything();
-			OmopPersonEverythingFactory person = new OmopPersonEverythingFactory(patient, conn);
+			OmopPersonEverything person = new OmopPersonEverything(patient, conn);
 			List<DrugExposureDvo> dvoList = person.getDrugExposureList();
 			log.info("Got " + dvoList.size() + " drug exposures");
 			assertTrue(dvoList.size() == 2);

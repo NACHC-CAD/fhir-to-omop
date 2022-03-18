@@ -7,17 +7,17 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 public class OmopVisitOccurrenceFactory {
 
-	public OmopPersonEverythingFactory omopPersonEverything;
+	public OmopPersonEverything omopPersonEverything;
 
 	private Connection conn;
 
-	public OmopVisitOccurrenceFactory(OmopPersonEverythingFactory omopPersonEverything, Connection conn) {
+	public OmopVisitOccurrenceFactory(OmopPersonEverything omopPersonEverything, Connection conn) {
 		this.omopPersonEverything = omopPersonEverything;
 		this.conn = conn;
 	}

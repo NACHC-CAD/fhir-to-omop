@@ -8,7 +8,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.ObservationComponentParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationOrMeasurement;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationValueType;
@@ -26,7 +26,7 @@ public class OmopObservationFactory {
 	// instance variables
 	//
 	
-	private OmopPersonEverythingFactory omopPersonEverything;
+	private OmopPersonEverything omopPersonEverything;
 
 	private Connection conn;
 
@@ -34,7 +34,7 @@ public class OmopObservationFactory {
 	// constructor
 	//
 	
-	public OmopObservationFactory(OmopPersonEverythingFactory person, Connection conn) {
+	public OmopObservationFactory(OmopPersonEverything person, Connection conn) {
 		this.omopPersonEverything = person;
 		this.conn = conn;
 	}

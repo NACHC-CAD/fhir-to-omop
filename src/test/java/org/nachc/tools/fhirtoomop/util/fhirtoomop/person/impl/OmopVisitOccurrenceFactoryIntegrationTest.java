@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.TimeUtil;
@@ -34,7 +34,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 		try {
 			// get the visit occurrences
 			PatientEverythingParser patient = TestParams.getPatientEverything();
-			OmopPersonEverythingFactory omopParser = new OmopPersonEverythingFactory(patient, conn);
+			OmopPersonEverything omopParser = new OmopPersonEverything(patient, conn);
 			List<VisitOccurrenceDvo> visitList = omopParser.getVisitOccurrenceList();
 			assertTrue(visitList.size() == 10);
 			// get a visit occurrence to test

@@ -6,7 +6,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.fhirtoomop.util.omop.datafactory.OmopConceptFactory;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
@@ -36,7 +36,7 @@ public class OmopPersonFactoryIntegrationTest {
 		try {
 			// get the test data and create the dvo using the factory
 			String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
-			OmopPersonEverythingFactory personEverythingFactory = new OmopPersonEverythingFactory(json, conn);
+			OmopPersonEverything personEverythingFactory = new OmopPersonEverything(json, conn);
 			PersonDvo person = personEverythingFactory.getPerson();
 			// person id
 			int id = person.getPersonId();
