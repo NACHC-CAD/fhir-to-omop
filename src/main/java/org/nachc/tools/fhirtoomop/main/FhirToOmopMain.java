@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
+import org.nachc.tools.fhirtoomop.tools.populate.PopulateFromFiles;
 import org.nachc.tools.fhirtoomop.tools.test.ListTestPatients;
 import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -66,6 +67,8 @@ public class FhirToOmopMain {
 				addTestPatients();
 				break;
 			case "add-from-dir":
+			case "d":
+				addFromDir();
 				break;
 			default:
 				wrongParam();
@@ -108,6 +111,10 @@ public class FhirToOmopMain {
 	
 	private static void addTestPatients() {
 		WriteTestPatientsToDatabase.exec();
+	}
+	
+	private static void addFromDir() {
+		PopulateFromFiles.main(null);
 	}
 	
 	// ---
