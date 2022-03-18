@@ -8,6 +8,9 @@ import java.util.Properties;
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class AppParams {
 
 	private static final String DEFAULT = "auth/app.properties";
@@ -60,6 +63,7 @@ public class AppParams {
 
 	public static List<String> getFhirPatientsDirListing() {
 		String fileName = PROPS.getProperty("fhirPatientsDir");
+		log.info("Getting listing for: " + fileName);
 		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
 		return rtn;
 	}
