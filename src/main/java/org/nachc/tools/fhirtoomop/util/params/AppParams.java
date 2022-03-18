@@ -56,8 +56,8 @@ public class AppParams {
 		return new File(getTestOutputDir(), fileName);
 	}
 
-	public static File getFullSetOfSyntheaPatientsDir() {
-		String fileName = PROPS.getProperty("fullSetOfSyntheaPatientsDir");
+	public static File getFhirPatientsDir() {
+		String fileName = PROPS.getProperty("fhirPatientsDir");
 		File file = new File(fileName);
 		return file;
 	}

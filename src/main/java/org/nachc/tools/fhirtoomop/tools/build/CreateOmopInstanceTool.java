@@ -24,8 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  * the app.properties file. You will also need to provide the following files
  * (see the readme.txt files in these folders for what needs to be in each)
  * 
- * /src/main/resources/auth/app-auth.properties
- * /src/main/resources/auth/synthea-auth.properties
+ * /src/main/resources/auth/app.properties
  *
  */
 

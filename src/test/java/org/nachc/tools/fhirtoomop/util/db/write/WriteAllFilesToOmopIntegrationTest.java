@@ -33,7 +33,7 @@ public class WriteAllFilesToOmopIntegrationTest {
 			int before = getNumberOfPersonRecords(conn);
 			// get the data files and then cull out the test set
 			log.info("Getting files...");
-			File syntheaDir = TestParams.getFullSetOfSyntheaPatientsDir();
+			File syntheaDir = TestParams.getFhirPatientsDir();
 			log.info("Got dir: " + FileUtil.getCanonicalPath(syntheaDir));
 			File[] allFiles = syntheaDir.listFiles();
 			File[] files = Arrays.copyOfRange(allFiles, 0, (NUMBER_OF_PATIENTS_TO_CREATE));

@@ -18,12 +18,14 @@ import lombok.extern.slf4j.Slf4j;
 public class PopulateFromFiles {
 
 	private static final int MAX_THREADS = 2000;
+	
+	private static final int MAX_CONNS = 10;
 
 	public static void main(String[] args) {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting files...");
-			File dir = AppParams.getFullSetOfSyntheaPatientsDir();
+			File dir = AppParams.getFhirPatientsDir();
 			int cnt = 0;
 			List<String> tableNames = DatatableList.getDatatableList();
 			log.info("Truncating tables...");
@@ -61,7 +63,7 @@ public class PopulateFromFiles {
 
 	private static List<Connection> getConnections() {
 		ArrayList<Connection> rtn = new ArrayList<Connection>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < MAX_CONNS; i++) {
 			Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 			rtn.add(conn);
 		}
