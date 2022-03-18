@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.util.params;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import com.nach.core.util.file.FileUtil;
@@ -57,12 +58,10 @@ public class AppParams {
 		return new File(getTestOutputDir(), fileName);
 	}
 
-	public static File getFhirPatientsDir() {
-		// TODO: NEED TO REFACTOR THIS TO RETURN LIST
+	public static List<String> getFhirPatientsDirListing() {
 		String fileName = PROPS.getProperty("fhirPatientsDir");
-		File file = new File(fileName);
-		FileUtil.listResources(fileName, AppParams.class);
-		return file;
+		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
+		return rtn;
 	}
 
 	// synthea stuff

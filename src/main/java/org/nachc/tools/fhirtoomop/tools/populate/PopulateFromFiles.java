@@ -25,7 +25,7 @@ public class PopulateFromFiles {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
 			log.info("Getting files...");
-			File dir = AppParams.getFhirPatientsDir();
+			List<String> fileList = AppParams.getFhirPatientsDirListing();
 			int cnt = 0;
 			List<String> tableNames = DatatableList.getDatatableList();
 			log.info("Truncating tables...");
@@ -33,26 +33,25 @@ public class PopulateFromFiles {
 			Database.commit(conn);
 			log.info("Writing all files...");
 			List<Connection> connList = getConnections();
-			writeAllFiles(dir, connList);
+			writeAllFiles(fileList, connList);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	private static void writeAllFiles(File dir, List<Connection> connList) {
-		File[] fileList = dir.listFiles();
-		ArrayList<File> filesToWrite = new ArrayList<File>();
+	private static void writeAllFiles(List<String> fileList, List<Connection> connList) {
+		ArrayList<String> filesToWrite = new ArrayList<String>();
 		int cnt = 0;
-		for (int i = 0; i < fileList.length; i++) {
-			filesToWrite.add(fileList[i]);
+		for (int i = 0; i < fileList.size(); i++) {
+			filesToWrite.add(fileList.get(i));
 			if (i % MAX_THREADS == 0 && i != 0) {
 				new WriteAllFilesToOmop().exec(filesToWrite, connList);
 				for (Connection conn : connList) {
 					Database.commit(conn);
 				}
 				cnt++;
-				filesToWrite = new ArrayList<File>();
+				filesToWrite = new ArrayList<String>();
 				logMsg(i, cnt);
 			}
 		}

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.sql.Connection;
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
@@ -33,13 +34,11 @@ public class WriteAllFilesToOmopIntegrationTest {
 			int before = getNumberOfPersonRecords(conn);
 			// get the data files and then cull out the test set
 			log.info("Getting files...");
-			File syntheaDir = TestParams.getFhirPatientsDir();
-			log.info("Got dir: " + FileUtil.getCanonicalPath(syntheaDir));
-			File[] allFiles = syntheaDir.listFiles();
-			File[] files = Arrays.copyOfRange(allFiles, 0, (NUMBER_OF_PATIENTS_TO_CREATE));
-			log.info("Got " + allFiles.length + " file.");
+			List<String> allFiles = TestParams.getFhirPatientsDirListing();
+			List<String> files = allFiles.subList(0, NUMBER_OF_PATIENTS_TO_CREATE);
+			log.info("Got " + allFiles.size() + " files.");
 			// write the files to the database
-			log.info("Writing " + files.length + " files.");
+			log.info("Writing " + files.size() + " files.");
 			new WriteAllFilesToOmop().exec(files, conn);
 			// assert that they got there
 			int after = getNumberOfPersonRecords(conn);

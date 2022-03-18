@@ -19,7 +19,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 
 	private Connection conn;
 
-	private File file;
+	private String file;
 
 	private String filePath;
 	
@@ -29,7 +29,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 
 	private PatientEverythingParser parser;
 
-	public WriteFhirPatientToOmopRunnable(File file, Connection conn, Integer id) {
+	public WriteFhirPatientToOmopRunnable(String file, Connection conn, Integer id) {
 		this.file = file;
 		this.conn = conn;
 		this.id = id;

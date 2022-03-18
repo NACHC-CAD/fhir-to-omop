@@ -9,6 +9,8 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread.WriteFhirPatientToOmopRunnable;
 import org.yaorma.database.Database;
 
+import com.nach.core.util.file.FileUtil;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,25 +23,25 @@ public class WriteAllFilesToOmop {
 	 * Writes all files in the given directory to the omop database.
 	 * 
 	 */
-	public void exec(File dir, Connection conn) {
-		File[] files = dir.listFiles();
+	public void exec(String dir, Connection conn) {
+		List<String> files = FileUtil.listResources(dir, getClass());
 		exec(files, conn);
 	}
 
-	public void exec(File dir, Integer limit, Connection conn) {
-		File[] files = dir.listFiles();
-		if(limit != null && files.length > limit) {
-			files = Arrays.copyOfRange(files, 0, limit);
+	public void exec(String dir, Integer limit, Connection conn) {
+		List<String> files = FileUtil.listResources(dir, getClass());
+		if(limit != null && files.size() > limit) {
+			files = files.subList(0, limit);
 		}
 		exec(files, conn);
 	}
 
-	public void exec(File[] files, Connection conn) {
-		List<File> list = Arrays.asList(files);
+	public void exec(String[] files, Connection conn) {
+		List<String> list = Arrays.asList(files);
 		exec(list, conn);
 	}
 
-	public void exec(List<File> files, Connection conn) {
+	public void exec(List<String> files, Connection conn) {
 		ArrayList<Connection> connList = new ArrayList<Connection>();
 		connList.add(conn);
 		exec(files, connList);
@@ -50,12 +52,12 @@ public class WriteAllFilesToOmop {
 	 * Writes all the given files to the omop database.
 	 * 
 	 */
-	public void exec(List<File> files, List<Connection> connList) {
+	public void exec(List<String> files, List<Connection> connList) {
 		log.info("USING " + connList.size() + " CONNECTIONS.");
 		// create the threads
 		log.info("Creating threads...");
 		int cnt = 0;
-		for (File file : files) {
+		for (String file : files) {
 			cnt++;
 			if(cnt % 100 == 0) {
 				log.info("Creating thread " + cnt + " of " + files.size());
