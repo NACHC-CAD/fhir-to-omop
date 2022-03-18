@@ -49,10 +49,28 @@
 				here
 			</a>, however there are a few key features that should be noted here.  
 			<table class="table">
+				
+				<!-- header -->
 				<tr>
 					<th>Element</th>
 					<th>Description</th>
 				</tr>
+
+				<!-- authentication -->
+				<tr>
+					<td>
+						Authentication and Application Parameters
+					</td>
+					<td>
+						All authentication tokens and other configurable parameters are storred in the app.properties file.  
+						A (mostly) working example of this file is included in the root of the folder of the zip file that is used by application users.  
+						For full functionality you will need to provide your UMLS and Synthea keys.  
+						Developers can add an app.properties file to the fhir-to-omop/src/main/resources/auth folder.
+						This file is excluded from our repository explicitly in .gitignore and is explicitly removed as part of the deploy build.  
+					</td>
+				</tr>
+
+				<!-- data value objects -->
 				<tr>
 					<td>
 						Data&nbsp;Value&nbsp;Objects (DVOs)
@@ -74,6 +92,15 @@
 						</p>
 					</td>
 				</tr>
+				
+				<!-- blank row deliberately included to give bottom line -->
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+				
 			</table>
 			
 			<!-- tools -->
@@ -96,14 +123,6 @@
 					<th>Description</th>
 				</tr>
 	
-				<!--  -->
-				<tr>
-					<td>
-					</td>
-					<td>
-					</td>
-				</tr>
-				
 				<!-- SyntheaOauth -->
 				<tr>
 					<td>
@@ -160,6 +179,44 @@
 						</p>
 					</td>
 				</tr>
+				
+				<!--  -->
+				<tr>
+					<td>
+						FHIR-TO-OMOP:
+						OmopPersonEverythingFactory&nbsp;and
+						OmopPersonEverything
+					</td>
+					<td>
+						<p>
+							The intersection between FHIR and OMOP is completely encapsulated in the OmopPersonEverything class,
+							which is created by the OmopPersonEverythingFactory class.
+							The OmopPersonEverything is constructed using and FHIR /Person/$everything resource.
+							The OmopPersonEverything then provides this resources as collections of DVOs that exactly map to OMOP tables.  
+							These DVO objects can then be used to directly write data to the data base using the Dao class.
+							These DVO objects can also be used to otherwise represent the data as CDM structures 
+							(e.g. by writing the data to CSV files that represent the CDM tables).  
+							Details for the OmopPersonEverything and OmopPersonEverythingFactory are listed in the Utilities section below.  
+						</p>
+						<p>
+							Example: 
+							The 
+							<a target="_blank" href="">
+								OmopPersonEverythingExampleIntegrationTest
+							</a> 
+							class gives a simplest complete example of the use of this tool.  
+						</p>					
+					</td>
+				</tr>
+				
+				<!-- blank row deliberately included to give bottom line -->
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+
 			</table>
 			
 		</div>
