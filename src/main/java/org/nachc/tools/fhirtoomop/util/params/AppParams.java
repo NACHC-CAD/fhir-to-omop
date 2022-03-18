@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
 
 public class AppParams {
@@ -57,8 +58,10 @@ public class AppParams {
 	}
 
 	public static File getFhirPatientsDir() {
+		// TODO: NEED TO REFACTOR THIS TO RETURN LIST
 		String fileName = PROPS.getProperty("fhirPatientsDir");
 		File file = new File(fileName);
+		FileUtil.listResources(fileName, AppParams.class);
 		return file;
 	}
 
