@@ -234,6 +234,29 @@
 					</td>
 				</tr>
 				
+				<!-- WriteFhirPatientToOmop -->
+				<tr>
+					<td>
+						OMOP:
+						WriteFhirPatientToOmop
+					</td>
+					<td>
+						The WriteFhirPatientToOmop tool uses the OmopPersonEverything class to get the patient information as OMOP DVOs and then inserts these DVOs into the database.  
+						The primary use case for this tool takes as parameters simply:
+						<ul>
+							<li>JSON representation of the FHIR /Patient/[ID]/$everything resource</li>
+							<li>A connection to the OMOP database instance</li>
+						</ul>
+						<p>
+							Example: The
+							<a href="">
+								OmopInsertPersonExampleIntegrationTest
+							</a> 
+							class gives a simplest complete example of the use of this tool.  
+						</p>
+					</td>
+				</tr>
+				
 				<!-- blank row deliberately included to give bottom line -->
 				<tr>
 					<td>
