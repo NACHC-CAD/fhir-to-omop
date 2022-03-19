@@ -8,6 +8,7 @@ You've successfully launched the fhir-to-omop application!
 However, we need at least one correct parameter, the name of the module you would like to run.  
 The following options are valid:
 
+	// --- testing and validation
 	say-hello (h)
 		Echo the string "Hello world!" back to the console.
 	params-example (p)
@@ -15,6 +16,8 @@ The following options are valid:
 	my-params (m)
 		Shows the parameters that the application has found for your request.  
 		In other words, this echos the parameters you have given the application
+
+	// --- omop stuff
 	instant-omop (i)
 		Instant OMOP will build an instance of OMOP based on your app.params file.  
 		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
@@ -23,6 +26,10 @@ The following options are valid:
 	add-from-dir (d)
 		Add all of the patients from the dir in the app.properties file
 		All of the files in the directory should be /Patient/[ID]/$everything resources represented as JSON
+	
+	// --- synthea stuff
+	get-synthea-patient-ids (sid)
+		Get 2500 patient ids from synthea
 
 Also, make sure you have an app.properties file in your working dir (the dir your in now).  
 

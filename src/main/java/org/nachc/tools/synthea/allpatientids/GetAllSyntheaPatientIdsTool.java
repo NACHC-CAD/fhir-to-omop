@@ -18,10 +18,6 @@ public class GetAllSyntheaPatientIdsTool {
 
 	private static final int PATIENTS_PER_FILE = 1000;
 
-	public static void main(String[] args) {
-		exec(null);
-	}
-
 	public static void exec(Integer max) {
 		log.info("Deleting and recreating fhirPatientIdDir");
 		File fhirPatientIdDir = AppParams.getFhirPatientIdDir();

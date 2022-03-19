@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.tools.populate.PopulateFromFiles;
 import org.nachc.tools.fhirtoomop.tools.test.ListTestPatients;
 import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.nachc.tools.synthea.allpatientids.GetAllSyntheaPatientIdsTool;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -42,9 +43,10 @@ public class FhirToOmopMain {
 			// run the requested task
 			String name = args[0];
 			switch (name.toLowerCase()) {
+			// tests and validations
 			case "say-hello":
 			case "h":
-				sayHello();
+				System.out.println("Hello World!");
 				break;
 			case "params-example":
 			case "p":
@@ -54,31 +56,32 @@ public class FhirToOmopMain {
 			case "m":
 				myParams(fileName);
 				break;
+			// omop stuff
 			case "instant-omop":
 			case "i":
-				instantOmop();
+				CreateOmopInstanceTool.createOmopInstance();
 				break;
 			case "list-test-patients":
 			case "l":
-				listTestPatients();
+				ListTestPatients.exec();
 				break;
 			case "add-test-patients":
 			case "a":
-				addTestPatients();
+				WriteTestPatientsToDatabase.exec();
 				break;
 			case "add-from-dir":
 			case "d":
-				addFromDir();
+				PopulateFromFiles.main(null);
 				break;
+			// synthea stuff
+			case "get-synthea-patient-ids":
+			case "sid":
+				GetAllSyntheaPatientIdsTool.exec(2500);
 			default:
 				wrongParam();
 				break;
 			}
 		}
-	}
-
-	private static void sayHello() {
-		System.out.println("Hello World!");
 	}
 
 	private static void paramsExample() {
@@ -101,22 +104,6 @@ public class FhirToOmopMain {
 		System.out.println("-----------------8<-----------------8<-----------------8<--------------------");
 	}
 
-	private static void instantOmop() {
-		CreateOmopInstanceTool.createOmopInstance();
-	}
-
-	private static void listTestPatients() {
-		ListTestPatients.exec();
-	}
-	
-	private static void addTestPatients() {
-		WriteTestPatientsToDatabase.exec();
-	}
-	
-	private static void addFromDir() {
-		PopulateFromFiles.main(null);
-	}
-	
 	// ---
 	//
 	// error cases
