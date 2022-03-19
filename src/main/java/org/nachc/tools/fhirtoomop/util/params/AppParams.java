@@ -83,11 +83,11 @@ public class AppParams {
 	// synthea stuff
 
 	public static String getSyntheaOauthUrl() {
-		return PROPS.getProperty("synthea-oauth-url");
+		return PROPS.getProperty("fhir-server-oauth-url");
 	}
 
 	public static String getSyntheaUrl() {
-		return PROPS.getProperty("synthea-url");
+		return PROPS.getProperty("fhir-server-url");
 	}
 
 	public static String getSyntheaAppId() {
