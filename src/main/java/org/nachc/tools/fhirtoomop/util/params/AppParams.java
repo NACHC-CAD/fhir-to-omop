@@ -40,9 +40,6 @@ public class AppParams {
 		PROPS = PropertiesUtil.getAsProperties(DEFAULT);
 	}
 	
-	// TODO: FIX THIS (JEG)
-	public static String OUT_DIR = "/test/synthea-tools";
-
 	// passthrough method
 	public static String get(String key) {
 		return PROPS.getProperty(key);
@@ -55,12 +52,19 @@ public class AppParams {
 	}
 
 	public static File getTestOutputDir() {
-		return new File(OUT_DIR);
+		String dirName = PROPS.getProperty("testOutputDir");
+		return new File(dirName);
+	}
+
+	public static File getFhirPatientIdDir() {
+		String dirName = PROPS.getProperty("fhirPatientIdDir");
+		return new File(dirName);
 	}
 
 	public static File getTestOutFile(String fileName) {
 		return new File(getTestOutputDir(), fileName);
 	}
+	
 
 	public static String getFhirPatientsDirName() {
 		String fileName = PROPS.getProperty("fhirPatientsDir");

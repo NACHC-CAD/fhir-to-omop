@@ -34,3 +34,7 @@ hs_err_pid*
 
 # logical link created for http-server
 /_ETC/http-server/fhir-to-omop
+
+# test output files
+/patient-ids-test
+

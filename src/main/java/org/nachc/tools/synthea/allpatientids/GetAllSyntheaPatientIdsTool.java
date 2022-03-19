@@ -16,21 +16,36 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetAllSyntheaPatientIdsTool {
 
-	private static final int CNT = 1000;
+	private static final int PATIENTS_PER_FILE = 1000;
 
 	public static void main(String[] args) {
-		log.info("Getting " + CNT + " patients...");
+		exec(null);
+	}
+
+	public static void exec(Integer max) {
+		log.info("Deleting and recreating fhirPatientIdDir");
+		File fhirPatientIdDir = AppParams.getFhirPatientIdDir();
+		FileUtil.rmdir(fhirPatientIdDir);
+		FileUtil.mkdirs(fhirPatientIdDir);
+		log.info("Getting " + PATIENTS_PER_FILE + " patients...");
 		log.info("Getting token...");
 		String token = SyntheaOauth.fetchToken();
-		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(CNT, token);
+		SyntheaPatientSummaryListFetcher synthea = new SyntheaPatientSummaryListFetcher(PATIENTS_PER_FILE, token);
 		int cnt = 0;
+		int totalPatients = 0;
+		boolean done = false;
 		while (synthea != null) {
 			cnt++;
 			List<PatientSummaryParser> patientList = synthea.getPatients();
 			log.debug("Got " + patientList.size() + " patients");
-			File file = AppParams.getTestOutFile("/all-patient-ids/synthea-patient-ids-" + cnt + ".txt");
+			File file = new File(fhirPatientIdDir,"synthea-patient-ids-" + cnt + ".txt");
 			List<String> patientIds = new ArrayList<String>();
 			for (PatientSummaryParser patient : patientList) {
+				totalPatients++;
+				if(max != null && totalPatients > max) {
+					done = true;
+					break;
+				}
 				patientIds.add(patient.getId());
 			}
 			FileUtil.writeCollection(patientIds, "\n", file);
@@ -45,6 +60,9 @@ public class GetAllSyntheaPatientIdsTool {
 				msg += "\n++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
 				log.info(msg);
 				token = newToken;
+			}
+			if(done == true) {
+				break;
 			}
 			synthea = synthea.fetchNext(cnt, token);
 		}
