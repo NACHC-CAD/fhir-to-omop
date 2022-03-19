@@ -22,16 +22,16 @@ public class PatientGetter implements Runnable {
 	private static Timer TIMER;
 
 	private static synchronized String getToken() {
-		if (TIMER != null) {
-			log.info("Elapsed: " + TIMER.getTimeSinceStart());
-		}
 		if (TOKEN == null || TIMER == null || TIMER.getElapsed() > TOKEN_TIMEOUT) {
+			log.info("------------------------");
 			log.info("REFRESING TIMER");
 			TIMER = new Timer();
 			log.info("REFRESHING TOKEN...");
+			log.info("------------------------");
 			TOKEN = SyntheaOauth.fetchToken();
 			log.info("Got new token.");
 		}
+		log.info("Elapsed: " + TIMER.getTimeSinceStart());
 		return TOKEN;
 	}
 
@@ -54,14 +54,9 @@ public class PatientGetter implements Runnable {
 		for (String patientId : patientIds) {
 			log.info("Thread " + this.threadId + " getting patient...");
 			cnt++;
-			SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
 			String token = getToken();
-			String json = synthea.fetchEverything(patientId, token);
-			String guid = GuidFactory.getGuid();
-			String fileName = patientId + "_" + guid + ".json";
-			File file = new File(outputDir, fileName);
-			FileUtil.write(json, file);
-			log.info("THREAD " + threadId + ": wrote " + cnt + " of " + patientIds.size() + " patients to file (" + patientId + "). " + FileUtil.getCanonicalPath(file));
+			new WriteFhirPatientToFile().exec(patientId, token, outputDir);
+			log.info("THREAD " + threadId + ": wrote " + cnt + " of " + patientIds.size() + " patients to file (" + patientId + "). " + outputDir);
 		}
 	}
 
