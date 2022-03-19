@@ -190,6 +190,56 @@
 						</p>
 					</td>
 				</tr>
+
+				<!-- get list of patients -->				
+				<tr>
+					<td>
+						FHIR:&nbsp;GetAllPatientIdsTool
+					</td>
+					<td>
+						<p>
+							Get a list of all of the IDs for all of the patients on a FHIR server.
+						</p>
+						<p>
+							Before you can ask for a patient, you'll need to know what patients exist on a server.  
+							This tool can be used to fetch the entire list of patients that exist on a server.
+							The ids will be written to a list of files with 1000 patient ids each.
+							The files are written to the dir specified in the app.properties file as fhirPatientIdDir.
+							This utility gets all of its parameters from the app.properties file.  
+							The test example below uses Synthea as a test patient server.  
+							To run the test you will need to get Synthea credentials as describe in the 
+							<a target="getting-started2" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">
+								Getting Started
+							</a> document.  
+							The following parameters are used by this tool
+							<ul>
+								<li>
+									fhirPatientIdDir=The directory where the files will be written
+								</li>
+								<li>
+									The Example shown below uses the following parameters
+									<ul>
+										<li>
+											synthea-oauth-url=https://syntheticmass.mitre.org/oauth2/accesstoken
+										</li>
+										<li>
+											synthea-url=https://syntheticmass.mitre.org/v1/fhir
+										</li>
+										<li>
+											synthea-app-id=your-app-id
+										</li>
+										<li>
+											synthea-key=your-synthea-key
+										</li>
+										<li>
+											synthea-secret=your-synthea-key
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</p>
+					</td>
+				</tr>
 				
 				<!-- FHIR: FhirPatientEverythingFetcher  -->
 				<tr>

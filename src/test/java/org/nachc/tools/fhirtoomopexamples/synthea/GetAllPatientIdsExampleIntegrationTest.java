@@ -1,7 +1,7 @@
 package org.nachc.tools.fhirtoomopexamples.synthea;
 
 import org.junit.Test;
-import org.nachc.tools.synthea.allpatientids.GetAllSyntheaPatientIdsTool;
+import org.nachc.tools.synthea.allpatientids.GetAllPatientIdsTool;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +13,7 @@ public class GetAllPatientIdsExampleIntegrationTest {
 	@Test
 	public void shouldGetPatientIds() {
 		log.info("Starting test...");
-		GetAllSyntheaPatientIdsTool.exec(MAX_PATIENTS_TO_GET);
+		GetAllPatientIdsTool.exec(MAX_PATIENTS_TO_GET);
 		log.info("Done.");
 	}
 	

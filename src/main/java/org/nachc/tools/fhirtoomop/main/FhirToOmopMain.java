@@ -9,7 +9,7 @@ import org.nachc.tools.fhirtoomop.tools.populate.PopulateFromFiles;
 import org.nachc.tools.fhirtoomop.tools.test.ListTestPatients;
 import org.nachc.tools.fhirtoomop.tools.test.WriteTestPatientsToDatabase;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
-import org.nachc.tools.synthea.allpatientids.GetAllSyntheaPatientIdsTool;
+import org.nachc.tools.synthea.allpatientids.GetAllPatientIdsTool;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -76,7 +76,7 @@ public class FhirToOmopMain {
 			// synthea stuff
 			case "get-synthea-patient-ids":
 			case "sid":
-				GetAllSyntheaPatientIdsTool.exec(2500);
+				GetAllPatientIdsTool.exec(2500);
 				break;
 			default:
 				wrongParam();
