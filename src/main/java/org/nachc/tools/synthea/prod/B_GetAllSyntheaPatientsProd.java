@@ -22,7 +22,7 @@ public class B_GetAllSyntheaPatientsProd {
 		FileUtil.rmdir(PATIENT_DIR);
 		FileUtil.mkdirs(PATIENT_DIR);
 		timer.start();
-		GetAllPatientsForDir.getPatients(PATIENT_ID_DIR, PATIENT_DIR, 1);
+		GetAllPatientsForDir.getPatients(PATIENT_ID_DIR, PATIENT_DIR, 10);
 		timer.stop();
 		log.info("----------------------------");
 		log.info("Time elapsed: " + timer.getElapsedString());

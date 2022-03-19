@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetAllPatientsForDir {
 
-	private static int MAX_ACTIVE = 10;
+	private static int MAX_ACTIVE = 100;
 	
 	private static ArrayList<GetAllPatientsForIdFile> waiting = new ArrayList<GetAllPatientsForIdFile>();
 

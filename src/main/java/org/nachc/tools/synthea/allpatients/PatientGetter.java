@@ -23,6 +23,9 @@ public class PatientGetter implements Runnable {
 
 	private static synchronized String getToken() {
 		if (TOKEN == null || TIMER == null || TIMER.getElapsed() > TOKEN_TIMEOUT) {
+			if(TIMER != null) {
+				log.info("Elapsed: " + TIMER.getTimeSinceStart());
+			}
 			log.info("------------------------");
 			log.info("REFRESING TIMER");
 			TIMER = new Timer();
@@ -31,7 +34,6 @@ public class PatientGetter implements Runnable {
 			TOKEN = SyntheaOauth.fetchToken();
 			log.info("Got new token.");
 		}
-		log.info("Elapsed: " + TIMER.getTimeSinceStart());
 		return TOKEN;
 	}
 
