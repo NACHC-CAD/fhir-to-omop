@@ -18,6 +18,12 @@ public class GetAllPatientIdsTool {
 
 	private static final int PATIENTS_PER_FILE = 1000;
 
+	public static void exec() {
+		exec(null);
+	}
+
+	// TODO: MAKE AppParams optional
+	
 	public static void exec(Integer max) {
 		log.info("Deleting and recreating fhirPatientIdDir");
 		File fhirPatientIdDir = AppParams.getFhirPatientIdDir();
