@@ -15,13 +15,12 @@ public class WriteRaceEthConceptsToFileIntegrationTest {
 	@Test
 	public void shouldWriteFile() {
 		log.info("Starting test...");
-		File dir = AppParams.getTestOutputDir();
 		File file = FileUtil.getFile("/fhir/terminology/uscore/CodeSystem-cdcrec.json");
 		String json = FileUtil.getAsString(file);
 		RaceEthnicityParser parser = new RaceEthnicityParser(json);
-		parser.writeRaceToFile(new File(dir, "RaceAndEthnicityCDC-Race.csv"));
-		parser.writeEthToFile(new File(dir, "RaceAndEthnicityCDC-Eth.csv"));
-		parser.writeToFile(new File(dir, "RaceAndEthnicityCDC-Everything.csv"));
+		parser.writeRaceToFile(AppParams.getTestOutFile("RaceAndEthnicityCDC-Race.csv"));
+		parser.writeEthToFile(AppParams.getTestOutFile("RaceAndEthnicityCDC-Eth.csv"));
+		parser.writeToFile(AppParams.getTestOutFile("RaceAndEthnicityCDC-Everything.csv"));
 		log.info("Done.");
 	}
 

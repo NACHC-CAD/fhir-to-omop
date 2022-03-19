@@ -23,8 +23,7 @@ public class GetAllPatientsForIdFileIntegrationTest {
 	public void shouldGetPatients() {
 		log.info("Staring test...");
 		// delete the existing output file
-		File outDir = AppParams.getTestOutputDir();
-		outDir = new File(outDir, OUT_FILE_DIR);
+		File outDir = AppParams.getTestOutFile(OUT_FILE_DIR);
 		// delete the existing output file
 		log.info("Deleting existing out file: " + FileUtil.getCanonicalPath(outDir));
 		FileUtil.rmdir(outDir);

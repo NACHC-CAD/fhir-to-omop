@@ -72,6 +72,7 @@ public class GetAllPatientsForIdFile {
 				log.error("* * *EXCEPTION THROWN JOINING THREAD * * *");
 			}
 		}
+		GetAllPatientsForDir.done(this);
 		log.info("Done running threads...");
 	}
 

@@ -16,17 +16,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetAllPatientIdsTool {
 
-	private static final int PATIENTS_PER_FILE = 1000;
+	private static final int PATIENTS_PER_FILE = 100;
 
 	public static void exec() {
 		exec(null);
 	}
 
-	// TODO: MAKE AppParams optional
-	
 	public static void exec(Integer max) {
-		log.info("Deleting and recreating fhirPatientIdDir");
 		File fhirPatientIdDir = AppParams.getFhirPatientIdDir();
+		exec(fhirPatientIdDir, max);
+	}
+	
+	public static void exec(File fhirPatientIdDir, Integer max) {
+		log.info("Deleting and recreating fhirPatientIdDir");
 		FileUtil.rmdir(fhirPatientIdDir);
 		FileUtil.mkdirs(fhirPatientIdDir);
 		log.info("Getting " + PATIENTS_PER_FILE + " patients...");

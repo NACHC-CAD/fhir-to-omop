@@ -14,18 +14,18 @@ import lombok.extern.slf4j.Slf4j;
 public class AppParams {
 
 	private static final String DEFAULT = "auth/app.properties";
-	
+
 	private static Properties PROPS = null;
 
 	static {
 		try {
-			PROPS = PropertiesUtil.getAsProperties(DEFAULT);			
-		} catch(Exception exp) {
+			PROPS = PropertiesUtil.getAsProperties(DEFAULT);
+		} catch (Exception exp) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
 		}
 	}
-	
+
 	/**
 	 * 
 	 * This method should only be used by the main class to allow the user to set
@@ -39,38 +39,24 @@ public class AppParams {
 	public static void resetToDefault() {
 		PROPS = PropertiesUtil.getAsProperties(DEFAULT);
 	}
-	
+
 	// passthrough method
 	public static String get(String key) {
 		return PROPS.getProperty(key);
 	}
-	
+
 	// local files stuff
-
-	public static String getTestOutputDirName() {
-		return PROPS.getProperty("testOutputDir");
-	}
-
-	public static File getTestOutputDir() {
-		String dirName = PROPS.getProperty("testOutputDir");
-		return new File(dirName);
-	}
 
 	public static File getFhirPatientIdDir() {
 		String dirName = PROPS.getProperty("fhirPatientIdDir");
 		return new File(dirName);
 	}
 
-	public static File getTestOutFile(String fileName) {
-		return new File(getTestOutputDir(), fileName);
-	}
-	
-
 	public static String getFhirPatientsDirName() {
 		String fileName = PROPS.getProperty("fhirPatientsDir");
 		return fileName;
 	}
-	
+
 	public static List<String> getFhirPatientsDirListing() {
 		String fileName = getFhirPatientsDirName();
 		log.info("+++++++++++++++++++++++++++++");
@@ -78,6 +64,15 @@ public class AppParams {
 		log.info("+++++++++++++++++++++++++++++");
 		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
 		return rtn;
+	}
+
+	//
+	// create a test output file
+	//
+
+	public static File getTestOutFile(String fileName) {
+		String dirName = PROPS.getProperty("testOutputDir");
+		return new File(dirName, fileName);
 	}
 
 	// synthea stuff
@@ -146,17 +141,29 @@ public class AppParams {
 	}
 
 	// umls stuff
-	
+
 	public static String getUmlsApiKey() {
 		return PROPS.getProperty("umls-api-key");
 	}
-	
+
 	// terminology stuff
-	
+
 	public static String getTerminologyRootDir() {
 		return PROPS.getProperty("terminologyRootDir");
 	}
-	
-	
-	
+
+	// dirs for a production run
+
+	public static File getPatientIdsDir_PROD() {
+		String dirName = PROPS.getProperty("fhirPatientIdDir_PROD");
+		File file = new File(dirName);
+		return file;
+	}
+
+	public static File getPatientDir_PROD() {
+		String dirName = PROPS.getProperty("fhirPatientsDir_PROD");
+		File file = new File(dirName);
+		return file;
+	}
+
 }
