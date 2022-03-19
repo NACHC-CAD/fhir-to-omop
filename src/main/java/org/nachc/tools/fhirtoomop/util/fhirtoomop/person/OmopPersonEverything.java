@@ -54,14 +54,26 @@ public class OmopPersonEverything {
 	//
 
 	public OmopPersonEverything(String json, Connection conn) {
-		this.json = json;
-		this.conn = conn;
-		this.patientEverything = new PatientEverythingParser(json);
+		this(new PatientEverythingParser(json), conn);
 	}
 
 	public OmopPersonEverything(PatientEverythingParser patientEverything, Connection conn) {
 		this.conn = conn;
 		this.patientEverything = patientEverything;
+		// person
+		this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
+		// visit
+		OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
+		this.visitOccurrenceList = visitParser.getVisitOccurencesList();
+		// condition
+		OmopConditionFactory conditionFactory = new OmopConditionFactory(this, conn);
+		this.conditionOccurrenceList = conditionFactory.getConditionList();
+		// drug exposure
+		OmopDrugExposureFactory drugExpFactory = new OmopDrugExposureFactory(this, conn);
+		this.drugExposureList = drugExpFactory.getDrugExposureList();
+		// obs
+		OmopObservationFactory obsFactory = new OmopObservationFactory(this, conn);
+		this.observationList = obsFactory.getObservationList();
 	}
 
 	//
@@ -77,47 +89,28 @@ public class OmopPersonEverything {
 	//
 
 	public PersonDvo getPerson() {
-		if (this.person == null) {
-			this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
-		}
 		return this.person;
 	}
 
 	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
-		if (this.visitOccurrenceList == null) {
-			OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
-			this.visitOccurrenceList = visitParser.getVisitOccurencesList();
-		}
 		return this.visitOccurrenceList;
 	}
 
 	public List<ConditionOccurrenceDvo> getConditionOccurrenceList() {
-		if (this.conditionOccurrenceList == null) {
-			OmopConditionFactory factory = new OmopConditionFactory(this, conn);
-			this.conditionOccurrenceList = factory.getConditionList();
-		}
 		return this.conditionOccurrenceList;
 	}
 
 	public List<DrugExposureDvo> getDrugExposureList() {
-		if (this.drugExposureList == null) {
-			OmopDrugExposureFactory factory = new OmopDrugExposureFactory(this, conn);
-			this.drugExposureList = factory.getDrugExposureList();
-		}
 		return this.drugExposureList;
+	}
+
+	public List<ObservationDvoProxy> getFhirObservationList() {
+		return this.observationList;
 	}
 
 	//
 	// observation stuff
 	//
-
-	public List<ObservationDvoProxy> getFhirObservationList() {
-		if (this.observationList == null) {
-			OmopObservationFactory factory = new OmopObservationFactory(this, conn);
-			this.observationList = factory.getObservationList();
-		}
-		return this.observationList;
-	}
 
 	public List<MeasurementDvo> getMeasurementList() {
 		List<ObservationDvoProxy> allObs = this.getFhirObservationList();

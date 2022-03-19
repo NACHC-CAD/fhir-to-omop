@@ -1,0 +1,40 @@
+package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.nach.core.util.file.FileUtil;
+
+public class OmopPersonEverythingFactory {
+
+	public static OmopPersonEverything makePerson(List<String> files, Connection conn) {
+		String firstPageFileName = getFirstPageFileName(files);
+		String firstPageJson = FileUtil.getAsString(firstPageFileName);
+		OmopPersonEverything rtn = new OmopPersonEverything(firstPageJson, conn);
+		return rtn;
+	}
+
+	private static String getFirstPageFileName(List<String> fileNameList) {
+		for (String filePath : fileNameList) {
+			String fileName = getFileName(filePath);
+			if (fileName.startsWith("0_")) {
+				fileNameList.remove(filePath);
+				return filePath;
+			}
+		}
+		return null;
+	}
+
+	private static String getFileName(String path) {
+		int start = path.lastIndexOf('\\');
+		if (start < 0) {
+			start = path.lastIndexOf('/');
+		}
+		if (start < 0) {
+			start = 0;
+		}
+		String rtn = path.substring(start + 1, path.length());
+		return rtn;
+	}
+
+}
