@@ -64,6 +64,13 @@
 
 	<dependencies>
 		
+		<!-- CORE NACHC FRAMEWORK STUFF -->
+		<dependency>
+			<groupId>org.nachc.cad.tools</groupId>
+			<artifactId>core</artifactId>
+			<version>0.0.11</version>
+		</dependency>
+
 		<!-- 
 		*
 		* BASIC TOOLS
@@ -120,13 +127,6 @@
 		    <groupId>com.microsoft.sqlserver</groupId>
 		    <artifactId>mssql-jdbc</artifactId>
 		    <version>10.2.0.jre8</version>
-		</dependency>
-
-		<!-- CORE NACHC FRAMEWORK STUFF -->
-		<dependency>
-			<groupId>org.nachc.cad.tools</groupId>
-			<artifactId>core</artifactId>
-			<version>0.0.10</version>
 		</dependency>
 
 		<!-- CALL R FROM JAVA: https://mvnrepository.com/artifact/org.rosuda/jri -->

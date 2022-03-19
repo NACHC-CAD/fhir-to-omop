@@ -1,9 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.db.write.patienteverything;
 
-import java.io.File;
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread.WriteFhirPatientToOmopRunnable;
@@ -18,40 +16,12 @@ public class WriteAllFilesToOmop {
 
 	private List<Thread> threadList = new ArrayList<Thread>();
 
-	/**
-	 * 
-	 * Writes all files in the given directory to the omop database.
-	 * 
-	 */
-	public void exec(String dir, Connection conn) {
-		List<String> files = FileUtil.listResources(dir, getClass());
-		exec(files, conn);
-	}
-
-	public void exec(String dir, Integer limit, Connection conn) {
-		List<String> files = FileUtil.listResources(dir, getClass());
-		if(limit != null && files.size() > limit) {
-			files = files.subList(0, limit);
-		}
-		exec(files, conn);
-	}
-
-	public void exec(String[] files, Connection conn) {
-		List<String> list = Arrays.asList(files);
-		exec(list, conn);
-	}
-
 	public void exec(List<String> files, Connection conn) {
 		ArrayList<Connection> connList = new ArrayList<Connection>();
 		connList.add(conn);
 		exec(files, connList);
 	}
 
-	/**
-	 * 
-	 * Writes all the given files to the omop database.
-	 * 
-	 */
 	public void exec(List<String> files, List<Connection> connList) {
 		log.info("USING " + connList.size() + " CONNECTIONS.");
 		// create the threads
@@ -59,7 +29,7 @@ public class WriteAllFilesToOmop {
 		int cnt = 0;
 		for (String file : files) {
 			cnt++;
-			if(cnt % 100 == 0) {
+			if (cnt % 100 == 0) {
 				log.info("Creating thread " + cnt + " of " + files.size());
 			}
 			int connToUse = cnt % connList.size();

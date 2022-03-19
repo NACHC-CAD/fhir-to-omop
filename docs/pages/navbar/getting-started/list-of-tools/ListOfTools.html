@@ -110,6 +110,50 @@
 			Things like creating an entire OMOP instance including populated vocabulary tables from scratch.  
 			Things like populating an OMOP instance with the entire contents of a FHIR Patient server.  
 			
+			<table class="table">
+
+				<!-- header -->
+				<tr>
+					<th>Resource</th>
+					<th>Description</th>
+				</tr>
+	
+				<!-- populate from files -->
+				<tr>
+					<td>
+						OMOP:&nbsp;PopulateFromFiles
+					</td>
+					<td>
+						<p>
+							Write a set of FHIR patients to OMOP
+						</p>
+						<p>
+							The PopulateFromFiles tool will write all of the FHIR /Patient/[ID]/$everything JSON files from a given directory to an OMOP database instance.  
+							This tool is completely configured from the app.properties file.  
+							The fhirPatientsDir parameter in this file can be set to point to a directory on your local machine
+							(e.g. D:\\NACHC\\SYNTHEA\\_DEV\\test-set-10).
+							Note, this tool does expect the backslash charater to be escaped (i.e. use \\ for \).  
+						</p>
+						<p>
+							Example: The 
+							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/omop/PopulateFromFilesExampleIntegrationTest.java">
+								SyntheaOauthIntegrationTest
+							</a> class gives a simplest complete example of the use of this tool.  
+						</p>
+					</td>
+				</tr>
+
+				<!-- blank row deliberately included to give bottom line -->
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+
+				
+			</table>
+			
 			<h2>Utilities</h2>
 			The fhir-to-omop utilities are the building blocks of the fhir-to-omop environment.  
 			These tools can be used individually.
@@ -127,7 +171,7 @@
 				<!-- SyntheaOauth -->
 				<tr>
 					<td>
-						FHIR: SyntheaOauth
+						FHIR:&nbsp;SyntheaOauth
 					</td>
 					<td>
 						<p>
@@ -150,7 +194,7 @@
 				<!-- FHIR: FhirPatientEverythingFetcher  -->
 				<tr>
 					<td>
-						FHIR: FhirPatientEverythingFetcher
+						FHIR:&nbsp;FhirPatientEverythingFetcher
 					</td>
 					<td>
 						Get a Patient/[ID]/$everything resource from any FHIR Patient server.  
@@ -183,19 +227,22 @@
 				
 				<tr>
 					<td>
-						FHIR:
-						GetASingleSyntheaPatient
+						FHIR:&nbsp;GetASingleSyntheaPatient
 					</td>
-					<td><p>
-						The GetASingleSyntheaPatient tool gets a single patient as a FHIR json string.  
-						This patient is loaded from a file that was created by fetching the /Patient/[ID\/$everything resource from Synthea.  
-						This tools is used throughout the JUnit testing code for this project.  
+					<td>
+						<p>
+							Get a single patient from Synthea.  
 						</p>
 						<p>
-						Example: The  
-						<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/synthea/GatASingleSyntheaPatientExampleIntegrationTest.java">
-							GatASingleSyntheaPatientExampleIntegrationTest
-						</a> represents the simplest complete example of this tool.  
+							The GetASingleSyntheaPatient tool gets a single patient as a FHIR json string.  
+							This patient is loaded from a file that was created by fetching the /Patient/[ID\/$everything resource from Synthea.  
+							This tools is used throughout the JUnit testing code for this project.  
+						</p>
+						<p>
+							Example: The  
+							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/synthea/GatASingleSyntheaPatientExampleIntegrationTest.java">
+								GatASingleSyntheaPatientExampleIntegrationTest
+							</a> represents the simplest complete example of this tool.  
 						</p>
 					</td>
 				</tr>
@@ -203,10 +250,13 @@
 				<!-- fhir-to-omop -->
 				<tr>
 					<td>
-						FHIR-TO-OMOP:
+						FHIR-TO-OMOP:<br/>
 						OmopPersonEverything
 					</td>
 					<td>
+						<p>
+							Convert a single FHIR Patient into a series of OMOP Common Data Model entities.  
+						</p>
 						<p>
 							The intersection between FHIR and OMOP is completely encapsulated in the OmopPersonEverything class.
 							The OmopPersonEverything is constructed using and FHIR /Person/[ID]/$everything resource.
@@ -237,10 +287,12 @@
 				<!-- WriteFhirPatientToOmop -->
 				<tr>
 					<td>
-						OMOP:
-						WriteFhirPatientToOmop
+						OMOP:&nbsp;WriteFhirPatientToOmop
 					</td>
 					<td>
+						<p>
+							Write a single FHIR patient to an OMOP database instance.  
+						</p>
 						The WriteFhirPatientToOmop tool uses the OmopPersonEverything class to get the patient information as OMOP DVOs and then inserts these DVOs into the database.  
 						The primary use case for this tool takes as parameters simply:
 						<ul>

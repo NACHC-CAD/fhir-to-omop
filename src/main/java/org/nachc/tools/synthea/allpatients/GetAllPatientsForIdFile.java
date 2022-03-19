@@ -40,7 +40,7 @@ public class GetAllPatientsForIdFile {
 		// get the test file
 		List<String> patientIds = FileUtil.getAsList(file);
 		log.info("Got " + patientIds.size() + " patientIds (showing first 10)");
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10 || i >= patientIds.size(); i++) {
 			log.info("\t" + patientIds.get(i));
 		}
 		// make a new thread for every 10 files
