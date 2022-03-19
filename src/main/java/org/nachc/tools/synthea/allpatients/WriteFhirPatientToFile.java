@@ -3,7 +3,6 @@ package org.nachc.tools.synthea.allpatients;
 import java.io.File;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
-import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.util.synthea.fetcher.patienteverything.SyntheaPatientEverythingNextFetcher;
 
@@ -15,31 +14,35 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteFhirPatientToFile {
 
+	private int cnt = 0;
+
 	public void exec(String patientId, String token, File outputDir) {
 		SyntheaPatientEverythingFetcher synthea = new SyntheaPatientEverythingFetcher();
 		String json = synthea.fetchEverything(patientId, token);
 		String guid = GuidFactory.getGuid();
-		String fileName = patientId + "_" + guid + ".json";
-		File file = new File(outputDir, fileName);
+		String fileName = cnt + "_" + patientId + "_" + guid + ".json";
+		File patientDir = new File(outputDir, patientId);
+		File file = new File(patientDir, fileName);
 		FileUtil.write(json, file);
 		log.info("File Created: " + FileUtil.getCanonicalPath(file));
-		getNext(json, patientId, token, outputDir);
+		getNext(json, patientId, token, patientDir);
 	}
 
 	private void getNext(String json, String patientId, String token, File outputDir) {
+		cnt++;
 		BundleParser parser = new BundleParser(json);
 		String nextUrl = parser.getNextUrl();
-		if(nextUrl != null) {
+		if (nextUrl != null) {
 			log.info("Getting next: " + nextUrl);
 			SyntheaPatientEverythingNextFetcher synthea = new SyntheaPatientEverythingNextFetcher();
 			String nextJson = synthea.fetchNext(nextUrl, token);
 			String guid = GuidFactory.getGuid();
-			String fileName = patientId + "_" + guid + ".json";
+			String fileName = cnt + "_" + patientId + "_" + guid + ".json";
 			File file = new File(outputDir, fileName);
 			FileUtil.write(nextJson, file);
 			log.info("File Created: " + FileUtil.getCanonicalPath(file));
 			getNext(nextJson, patientId, token, outputDir);
 		}
 	}
-	
+
 }

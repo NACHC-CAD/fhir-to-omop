@@ -11,6 +11,9 @@ import org.hl7.fhir.dstu3.model.Resource;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class BundleParser {
 
 	//
@@ -26,9 +29,14 @@ public class BundleParser {
 	//
 
 	public BundleParser(String bundleJson) {
-		// TODO: (JEG) Should probably do some validation here
-		this.jsonString = bundleJson;
-		this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
+		try {
+			// TODO: (JEG) Should probably do some validation here
+			this.jsonString = bundleJson;
+			this.bundle = FhirJsonParser.parse(bundleJson, Bundle.class);
+		} catch(Exception exp) {
+			log.error("ERROR PARSING BUNDLE: \n\n" + bundleJson);
+			throw new RuntimeException(exp);
+		}
 	}
 
 	public BundleParser(Bundle bundle) {
