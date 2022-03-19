@@ -77,6 +77,7 @@ public class FhirToOmopMain {
 			case "get-synthea-patient-ids":
 			case "sid":
 				GetAllSyntheaPatientIdsTool.exec(2500);
+				break;
 			default:
 				wrongParam();
 				break;
