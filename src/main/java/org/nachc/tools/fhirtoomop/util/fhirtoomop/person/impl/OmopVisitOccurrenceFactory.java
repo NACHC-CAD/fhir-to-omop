@@ -22,8 +22,8 @@ public class OmopVisitOccurrenceFactory {
 		this.conn = conn;
 	}
 
-	public List<VisitOccurrenceDvo> getVisitOccurencesList() {
-		PatientEverythingParser fhirPatient = omopPersonEverything.getFhirPatientEverything();
+	public List<VisitOccurrenceDvo> getVisitOccurencesList(PatientEverythingParser fhirPatient) {
+//		PatientEverythingParser fhirPatient = omopPersonEverything.getFhirPatientEverything();
 		PersonDvo person = omopPersonEverything.getPerson();
 		List<VisitOccurrenceDvo> rtn = new ArrayList<VisitOccurrenceDvo>();
 		List<EncounterParser> encounterList = fhirPatient.getEncounterList();

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.report.LogOmopPersonReport;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -14,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OmopPersonEverythingFactoryIntegrationTest {
 
-	private static final String TEST_SRC = "/synthea/patients/synthea-test-patients/test-set-03/00eac556-25e7-4a0d-a5e1-06895ea6f6b3";
+	private static final String TEST_SRC = "/synthea/patients/synthea-test-patients/test-set-04/5acc8bb4-2d14-4461-a560-228d96459cc3";
 	
 	@Test
 	public void shouldMakeAPerson() {
@@ -29,6 +30,9 @@ public class OmopPersonEverythingFactoryIntegrationTest {
 			}
 			// create the person
 			OmopPersonEverything person = OmopPersonEverythingFactory.makePerson(fileList, conn);
+			// echo the data
+			log.info("Got a person: ");
+			LogOmopPersonReport.log(person);
 			log.info("Done.");
 		} finally {
 			Database.close(conn);

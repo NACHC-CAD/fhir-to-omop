@@ -64,7 +64,7 @@ public class OmopPersonEverything {
 		this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
 		// visit
 		OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
-		this.visitOccurrenceList = visitParser.getVisitOccurencesList();
+		this.visitOccurrenceList = visitParser.getVisitOccurencesList(getFhirPatientEverything());
 		// condition
 		OmopConditionFactory conditionFactory = new OmopConditionFactory(this, conn);
 		this.conditionOccurrenceList = conditionFactory.getConditionList();
