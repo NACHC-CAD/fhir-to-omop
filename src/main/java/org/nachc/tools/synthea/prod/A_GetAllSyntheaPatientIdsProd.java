@@ -9,7 +9,7 @@ import com.nach.core.util.file.FileUtil;
 
 public class A_GetAllSyntheaPatientIdsProd {
 
-	private static Integer LIMIT = 100000;
+	private static Integer LIMIT = 2500;
 
 	private static File PATIENT_ID_DIR = AppParams.getPatientIdsDir_PROD();
 

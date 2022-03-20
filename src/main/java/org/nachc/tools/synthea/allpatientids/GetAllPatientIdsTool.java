@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GetAllPatientIdsTool {
 
-	private static final int PATIENTS_PER_FILE = 1000;
+	private static final int PATIENTS_PER_FILE = 100;
 
 	public static void exec() {
 		exec(null);
