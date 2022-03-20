@@ -16,9 +16,11 @@ public class OmopPersonEverythingUpdater {
 
 	public static void addPage(OmopPersonEverything person, String pageFileName, Connection conn) {
 		log.info("Adding page");
+		// get the data from the file and create the fhir parser
 		String json = FileUtil.getAsString(pageFileName);
 		PatientEverythingParser fhirPatient = new PatientEverythingParser(json);
 		log.info("Got patient from: " + pageFileName);
+		// add visits
 		addVisits(person, fhirPatient, conn);
 		log.info("Done adding page.");
 	}
@@ -30,4 +32,6 @@ public class OmopPersonEverythingUpdater {
 		person.getVisitOccurrenceList().addAll(list);
 	}
 
+	
+	
 }
