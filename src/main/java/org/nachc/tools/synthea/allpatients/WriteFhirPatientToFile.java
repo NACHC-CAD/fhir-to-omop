@@ -35,6 +35,10 @@ public class WriteFhirPatientToFile {
 				TimeUtil.sleep(60);
 				log.info("\t" + i + " MINUTES OF 5");
 			}
+			log.info("Getting a new token...");
+			log.info("Old token: " + token);
+			token = SyntheaOauth.fetchToken();
+			log.info("New token: " + token);
 			exec(patientId, token, outputDir, numberOfAttempts + 1);
 		}
 		String guid = GuidFactory.getGuid();
