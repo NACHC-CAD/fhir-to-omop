@@ -19,6 +19,8 @@ public class GetAllPatientsForIdFile {
 
 	private File file;
 	
+	private String token;
+	
 	private File outDir;
 	
 	private int patientsPerThread;
@@ -33,6 +35,14 @@ public class GetAllPatientsForIdFile {
 		this.patientsPerThread = patientsPerThread;
 		this.getters = new ArrayList<PatientGetter>();
 		this.threads = new ArrayList<Thread>();
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public void getPatients() {
@@ -51,7 +61,7 @@ public class GetAllPatientsForIdFile {
 			patientsForThread.add(patientId);
 			if (patientsForThread.size() == patientsPerThread) {
 				threadId++;
-				PatientGetter getter = new PatientGetter(patientsForThread, outDir, threadId);
+				PatientGetter getter = new PatientGetter(patientsForThread, token, outDir, threadId);
 				this.getters.add(getter);
 				Thread thread = new Thread(getter);
 				this.threads.add(thread);

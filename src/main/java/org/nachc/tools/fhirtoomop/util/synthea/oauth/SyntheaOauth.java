@@ -11,6 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 public class SyntheaOauth {
 
 	public static String fetchToken() {
+		log.info("***********************************");
+		log.info("***********************************");
+		log.info("***********************************");
+		log.info("Getting token...");
 		String apiKey = AppParams.getSyntheaKeyForToken();
 		String secret = AppParams.getSyntheaSecret();
 		String url = AppParams.getSyntheaOauthUrl();
@@ -25,6 +29,10 @@ public class SyntheaOauth {
 		log.info("Response: \n" + response);
 		OAuthTokenResponseParser parser = new OAuthTokenResponseParser(response);
 		String rtn = parser.getToken();
+		log.info("Got token: " + rtn);
+		log.info("***********************************");
+		log.info("***********************************");
+		log.info("***********************************");
 		return rtn;
 	}
 

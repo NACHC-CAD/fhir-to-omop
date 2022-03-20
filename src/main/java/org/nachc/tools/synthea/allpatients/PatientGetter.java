@@ -15,38 +15,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PatientGetter implements Runnable {
 
-	private static double TOKEN_TIMEOUT = (10 * 60);
-
-	private static String TOKEN;
-
-	private static Timer TIMER;
-
-	private static synchronized String getToken() {
-		if (TOKEN == null || TIMER == null || TIMER.getElapsed() > TOKEN_TIMEOUT) {
-			if(TIMER != null) {
-				log.info("Elapsed: " + TIMER.getTimeSinceStart());
-			}
-			log.info("------------------------");
-			log.info("REFRESING TIMER");
-			TIMER = new Timer();
-			log.info("REFRESHING TOKEN...");
-			log.info("------------------------");
-			TOKEN = SyntheaOauth.fetchToken();
-			log.info("Got new token.");
-		}
-		return TOKEN;
-	}
-
 	private List<String> patientIds;
+
+	private String token;
+	
+	private File outputDir;
 
 	private int threadId;
 
-	private File outputDir;
-
-	public PatientGetter(List<String> patientIds, File outputDir, int threadId) {
+	public PatientGetter(List<String> patientIds, String token, File outputDir, int threadId) {
 		this.patientIds = patientIds;
-		this.threadId = threadId;
+		this.token = token;
 		this.outputDir = outputDir;
+		this.threadId = threadId;
 	}
 
 	@Override
@@ -56,7 +37,6 @@ public class PatientGetter implements Runnable {
 		for (String patientId : patientIds) {
 			log.info("Thread " + this.threadId + " getting patient...");
 			cnt++;
-			String token = getToken();
 			new WriteFhirPatientToFile().exec(patientId, token, outputDir);
 			log.info("THREAD " + threadId + ": wrote " + cnt + " of " + patientIds.size() + " patients to file (" + patientId + "). " + outputDir);
 		}

@@ -23,8 +23,7 @@ public class GetAllPatientsForDir {
 	private static ArrayList<Thread> threads = new ArrayList<Thread>();
 
 	public static void getPatients(File rootDir, File outDir, int patientsPerThread) {
-		log.info("Staring test...");
-		// delete the existing output file
+		log.info("Getting patients");
 		File[] fileList = rootDir.listFiles();
 		log.info("Done getting patients for dir: " + FileUtil.getCanonicalPath(rootDir));
 		// put all of the files in the waiting queue

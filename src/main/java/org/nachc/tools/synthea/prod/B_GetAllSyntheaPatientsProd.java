@@ -18,6 +18,7 @@ public class B_GetAllSyntheaPatientsProd {
 	private static File PATIENT_DIR = AppParams.getPatientDir_PROD();
 	
 	public static void main(String[] args) {
+		log.info("Starting download of patients");
 		Timer timer = new Timer();
 		FileUtil.rmdir(PATIENT_DIR);
 		FileUtil.mkdirs(PATIENT_DIR);

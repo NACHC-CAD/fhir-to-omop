@@ -28,18 +28,7 @@ public class WriteFhirPatientToFile {
 		String json = synthea.fetchEverything(patientId, token);
 		int statusCode = synthea.getStatusCode();
 		if (statusCode == 401) {
-			log.info("ATTEMPT " + numberOfAttempts);
-			log.error("GOT 401 RESPONSE: \n" + json);
-			log.error("SLEEPING FOR 5 MINUTES AND THEN RETRYING...");
-			for (int i = 1; i <= 5; i++) {
-				TimeUtil.sleep(60);
-				log.info("\t" + i + " MINUTES OF 5");
-			}
-			log.info("Getting a new token...");
-			log.info("Old token: " + token);
-			token = SyntheaOauth.fetchToken();
-			log.info("New token: " + token);
-			exec(patientId, token, outputDir, numberOfAttempts + 1);
+			// TODO: JEG
 		}
 		String guid = GuidFactory.getGuid();
 		String fileName = cnt + "_" + patientId + "_" + guid + ".json";
@@ -60,18 +49,7 @@ public class WriteFhirPatientToFile {
 			String nextJson = synthea.fetchNext(nextUrl, token);
 			int statusCode = synthea.getStatusCode();
 			if (statusCode == 401) {
-				log.info("ATTEMPT " + numberOfAttempts);
-				log.error("GOT 401 RESPONSE: \n" + nextJson);
-				log.error("SLEEPING FOR 5 MINUTES AND THEN RETRYING...");
-				for (int i = 1; i <= 5; i++) {
-					TimeUtil.sleep(60);
-					log.info("\t" + i + " MINUTES OF 5");
-				}
-				log.info("Getting a new token...");
-				log.info("Old token: " + token);
-				token = SyntheaOauth.fetchToken();
-				log.info("New token: " + token);
-				getNext(json, patientId, token, outputDir, numberOfAttempts + 1);
+				// TODO: JEG
 			}
 			String guid = GuidFactory.getGuid();
 			String fileName = cnt + "_" + patientId + "_" + guid + ".json";

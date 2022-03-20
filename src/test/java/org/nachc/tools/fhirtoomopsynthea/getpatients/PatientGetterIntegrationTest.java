@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 import org.nachc.tools.synthea.allpatients.PatientGetter;
 
 import com.nach.core.util.file.FileUtil;
@@ -44,11 +45,12 @@ public class PatientGetterIntegrationTest {
 		log.info("Creating threads...");
 		int threadId = 0;
 		List<String> patientsForThread = new ArrayList<String>();
+		String token = SyntheaOauth.fetchToken();
 		for (String patientId : patientIds) {
 			patientsForThread.add(patientId);
 			if (patientsForThread.size() == PATIENTS_PER_THREAD) {
 				threadId++;
-				PatientGetter getter = new PatientGetter(patientsForThread, outDir, threadId);
+				PatientGetter getter = new PatientGetter(patientsForThread, token, outDir, threadId);
 				this.getters.add(getter);
 				Thread thread = new Thread(getter);
 				this.threads.add(thread);

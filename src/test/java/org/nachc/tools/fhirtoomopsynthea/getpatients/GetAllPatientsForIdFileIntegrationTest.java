@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.nachc.tools.fhirtoomop.util.synthea.oauth.SyntheaOauth;
 import org.nachc.tools.synthea.allpatients.GetAllPatientsForIdFile;
 
 import com.nach.core.util.file.FileUtil;
@@ -30,8 +31,11 @@ public class GetAllPatientsForIdFileIntegrationTest {
 		FileUtil.mkdirs(outDir);
 		// get the test file
 		File file = FileUtil.getFile(TEST_FILE_NAME);
+		// get a token
+		String token = SyntheaOauth.fetchToken();
 		// get the patients
 		GetAllPatientsForIdFile getter = new GetAllPatientsForIdFile(file, outDir, PATIENTS_PER_THREAD);
+		getter.setToken(token);
 		log.info("Getting patients...");
 		getter.getPatients();
 		log.info("Done.");
