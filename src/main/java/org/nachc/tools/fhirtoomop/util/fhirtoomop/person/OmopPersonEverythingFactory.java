@@ -5,12 +5,21 @@ import java.util.List;
 
 import com.nach.core.util.file.FileUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class OmopPersonEverythingFactory {
 
 	public static OmopPersonEverything makePerson(List<String> files, Connection conn) {
 		String firstPageFileName = getFirstPageFileName(files);
 		String firstPageJson = FileUtil.getAsString(firstPageFileName);
 		OmopPersonEverything rtn = new OmopPersonEverything(firstPageJson, conn);
+		int cnt = 0;
+		for(String str : files) {
+			cnt++;
+			log.info("ADDING PAGE " + cnt + " OF " + files.size());
+			OmopPersonEverythingUpdater.addPage(rtn, str, conn);
+		}
 		return rtn;
 	}
 
