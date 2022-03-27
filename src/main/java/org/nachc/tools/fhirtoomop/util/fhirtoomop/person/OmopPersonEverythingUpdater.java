@@ -6,7 +6,9 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopConditionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopDrugExposureFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
@@ -27,8 +29,8 @@ public class OmopPersonEverythingUpdater {
 		// add stuff
 		addVisits(person, fhirPatient, conn);
 		addConditions(person, fhirPatient, conn);
-		log.info("\n" + json + "\n");
 		addDrugs(person, fhirPatient, conn);
+		addObs(person, fhirPatient, conn);
 		log.info("Done adding page.");
 	}
 
@@ -53,7 +55,11 @@ public class OmopPersonEverythingUpdater {
 		person.getDrugExposureList().addAll(list);
 	}
 
-	
-	
-	
+	private static void addObs(OmopPersonEverything person, PatientEverythingParser fhirPatient, Connection conn) {
+		OmopObservationFactory factory = new OmopObservationFactory(person, conn);
+		List<ObservationDvoProxy> list = factory.getObservationList(fhirPatient);
+		log.info("Adding " + list.size() + " drugs");
+		person.getObservationProxyList().addAll(list);
+	}
+
 }

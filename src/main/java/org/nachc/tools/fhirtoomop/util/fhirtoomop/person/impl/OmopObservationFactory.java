@@ -7,6 +7,7 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.component.ObservationComponentParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
@@ -45,8 +46,18 @@ public class OmopObservationFactory {
 	 * 
 	 */
 	public List<ObservationDvoProxy> getObservationList() {
+		return getObservationList(this.omopPersonEverything.getFhirPatientEverything());
+	}
+
+		
+	/**
+	 * 
+	 * Get all observations for a given person.
+	 * 
+	 */
+	public List<ObservationDvoProxy> getObservationList(PatientEverythingParser src) {
 		List<ObservationDvoProxy> rtn = new ArrayList<ObservationDvoProxy>();
-		List<ObservationParser> obsList = this.omopPersonEverything.getFhirPatientEverything().getObservationList();
+		List<ObservationParser> obsList = src.getObservationList();
 		for (ObservationParser obs : obsList) {
 			log.debug("Getting...");
 			List<ObservationDvoProxy> dvoList = getOmopObservationListForFhirObservation(obs);

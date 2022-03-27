@@ -112,6 +112,10 @@ public class OmopPersonEverything {
 	// observation stuff
 	//
 
+	public List<ObservationDvoProxy> getObservationProxyList() {
+		return this.observationList;
+	}
+	
 	public List<MeasurementDvo> getMeasurementList() {
 		List<ObservationDvoProxy> allObs = this.getFhirObservationList();
 		List<MeasurementDvo> rtn = new ArrayList<MeasurementDvo>();
