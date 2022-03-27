@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
+import org.nachc.tools.fhirtoomop.util.fhir.everything.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest.MedicationRequestParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
@@ -19,7 +21,7 @@ public class OmopDrugExposureFactory {
 	//
 
 	private OmopPersonEverything omopPersonEverything;
-
+	
 	private Connection conn;
 
 	//
@@ -36,8 +38,13 @@ public class OmopDrugExposureFactory {
 	//
 
 	public List<DrugExposureDvo> getDrugExposureList() {
+		return getDrugExposureList(omopPersonEverything.getFhirPatientEverything());
+	}
+
+	
+	public List<DrugExposureDvo> getDrugExposureList(PatientEverythingParser src) {
 		List<DrugExposureDvo> rtn = new ArrayList<DrugExposureDvo>();
-		List<MedicationRequestParser> medReqList = omopPersonEverything.getFhirPatientEverything().getMedicationRequestList();
+		List<MedicationRequestParser> medReqList = src.getMedicationRequestList();
 		for (MedicationRequestParser medReq : medReqList) {
 			DrugExposureDvo dvo = this.getDrugExposureDvo(medReq);
 			rtn.add(dvo);

@@ -27,6 +27,7 @@ public class OmopPersonEverythingUpdater {
 		// add stuff
 		addVisits(person, fhirPatient, conn);
 		addConditions(person, fhirPatient, conn);
+		log.info("\n" + json + "\n");
 		addDrugs(person, fhirPatient, conn);
 		log.info("Done adding page.");
 	}
@@ -40,14 +41,14 @@ public class OmopPersonEverythingUpdater {
 
 	private static void addConditions(OmopPersonEverything person, PatientEverythingParser fhirPatient, Connection conn) {
 		OmopConditionFactory factory = new OmopConditionFactory(person, conn);
-		List<ConditionOccurrenceDvo> list = factory.getConditionList();
+		List<ConditionOccurrenceDvo> list = factory.getConditionList(fhirPatient);
 		log.info("Adding " + list.size() + " conditions");
 		person.getConditionOccurrenceList().addAll(list);
 	}
 
 	private static void addDrugs(OmopPersonEverything person, PatientEverythingParser fhirPatient, Connection conn) {
 		OmopDrugExposureFactory factory = new OmopDrugExposureFactory(person, conn);
-		List<DrugExposureDvo> list = factory.getDrugExposureList();
+		List<DrugExposureDvo> list = factory.getDrugExposureList(fhirPatient);
 		log.info("Adding " + list.size() + " drugs");
 		person.getDrugExposureList().addAll(list);
 	}

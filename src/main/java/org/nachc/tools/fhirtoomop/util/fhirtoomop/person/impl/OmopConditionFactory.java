@@ -36,7 +36,11 @@ public class OmopConditionFactory {
 	//
 
 	public List<ConditionOccurrenceDvo> getConditionList() {
-		PatientEverythingParser fhirPatientEverything = this.omopPersonEverything.getFhirPatientEverything();
+		return getConditionList(this.omopPersonEverything.getFhirPatientEverything());
+	}
+
+	
+	public List<ConditionOccurrenceDvo> getConditionList(PatientEverythingParser fhirPatientEverything) {
 		Integer personId = this.omopPersonEverything.getPerson().getPersonId();
 		List<ConditionOccurrenceDvo> rtn = new ArrayList<ConditionOccurrenceDvo>();
 		List<ConditionParser> conList = fhirPatientEverything.getConditionList();

@@ -23,7 +23,6 @@ public class OmopVisitOccurrenceFactory {
 	}
 
 	public List<VisitOccurrenceDvo> getVisitOccurencesList(PatientEverythingParser fhirPatient) {
-//		PatientEverythingParser fhirPatient = omopPersonEverything.getFhirPatientEverything();
 		PersonDvo person = omopPersonEverything.getPerson();
 		List<VisitOccurrenceDvo> rtn = new ArrayList<VisitOccurrenceDvo>();
 		List<EncounterParser> encounterList = fhirPatient.getEncounterList();

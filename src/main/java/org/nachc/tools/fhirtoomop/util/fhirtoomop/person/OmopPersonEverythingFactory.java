@@ -11,10 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 public class OmopPersonEverythingFactory {
 
 	public static OmopPersonEverything makePerson(List<String> files, Connection conn) {
+		// create the person based on the first file
 		String firstPageFileName = getFirstPageFileName(files);
 		String firstPageJson = FileUtil.getAsString(firstPageFileName);
 		OmopPersonEverything rtn = new OmopPersonEverything(firstPageJson, conn);
 		int cnt = 0;
+		// add the subsequent pages
 		for(String str : files) {
 			cnt++;
 			log.info("ADDING PAGE " + cnt + " OF " + files.size());
