@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BundleParserIntegrationTest {
 
-	private static final String FILE_PATH = "/fhir/bundle/0_5acc8bb4-2d14-4461-a560-228d96459cc3_8a37ef8f-098c-438a-a50c-8210f1ce5a4f.json";
-	
+	private static final String FILE_PATH = "/test/fhir/test-patient-01/5acc8bb4-2d14-4461-a560-228d96459cc3/0_5acc8bb4-2d14-4461-a560-228d96459cc3_8a37ef8f-098c-438a-a50c-8210f1ce5a4f.json";
+
 	private static final String NEXT_URL = "https://syntheticmass.mitre.org/v1/fhir/Patient/5acc8bb4-2d14-4461-a560-228d96459cc3/$everything?_count=100&page_token=CoIBcHJvamVjdHMvc3ludGhlYS9sb2NhdGlvbnMvdXMtY2VudHJhbDEvZGF0YXNldHMvMjAxOTAyL2ZoaXJTdG9yZXMvc3ludGhldGljLW1hc3MvZmhpci9QYXRpZW50LzVhY2M4YmI0LTJkMTQtNDQ2MS1hNTYwLTIyOGQ5NjQ1OWNjMyBk";
 	
 	@Test
