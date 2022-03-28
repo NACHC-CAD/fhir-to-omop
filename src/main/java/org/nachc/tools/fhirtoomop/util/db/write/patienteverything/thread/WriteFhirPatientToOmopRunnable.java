@@ -2,10 +2,12 @@ package org.nachc.tools.fhirtoomop.util.db.write.patienteverything.thread;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -54,13 +56,8 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 	@Override
 	public void run() {
 		try {
-			// get the json if we only have a file
-			if (this.json == null) {
-				this.json = FileUtil.getAsString(file);
-			}
-			// parse the json
-			this.parser = new PatientEverythingParser(json);
-			OmopPersonEverything personEverything = new OmopPersonEverything(this.parser, this.conn);
+			List<String> fileList = FileUtil.listResources(this.file, getClass());
+			OmopPersonEverything personEverything = OmopPersonEverythingFactory.makePerson(fileList, conn);
 			log.info("DONE: Parsing fhir resource (" + this.id + "): " + this.filePathShortend);
 			// write to the database
 			WriteFhirPatientToOmop.exec(personEverything, this.conn);
