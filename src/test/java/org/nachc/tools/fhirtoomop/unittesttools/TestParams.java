@@ -12,6 +12,10 @@ import com.nach.core.util.file.FileUtil;
 
 public class TestParams extends AppParams {
 
+	//
+	// TODO: WE SHOULDN'T BE USING SINGLE PATIENT FILE ANY WHERE, THIS SHOULD GET FIXED (JEG)
+	//
+	
 	public static String getPersonEverythingJson() {
 		String json = FileUtil.getAsString("/fhir/patient/everything/everything-patient.json");
 		return json;
