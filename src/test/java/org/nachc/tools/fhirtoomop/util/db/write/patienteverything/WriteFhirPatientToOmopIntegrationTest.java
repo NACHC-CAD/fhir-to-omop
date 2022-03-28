@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteFhirPatientToOmopIntegrationTest {
 
-	private static final String DIR = "/synthea/patients/test-set-04";
+	private static final String DIR = "/synthea/patients/synthea-test-patients/test-set-04";
 	
 	@Test
 	public void shouldWritePatientToDatabase() {
