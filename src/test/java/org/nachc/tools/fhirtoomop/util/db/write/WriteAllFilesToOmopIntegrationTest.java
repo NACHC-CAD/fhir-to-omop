@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteAllFilesToOmopIntegrationTest {
 
-	private static final int NUMBER_OF_PATIENTS_TO_CREATE = 10;
+	private static final int NUMBER_OF_PATIENTS_TO_CREATE = 4;
 
 	@Test
 	public void shouldWritePatients() {

@@ -20,15 +20,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteFhirPatientToOmop {
 
+	/*
 	public static void exec(String patientEverythingJson, Connection conn) {
 		PatientEverythingParser parser = new PatientEverythingParser(patientEverythingJson);
 		exec(parser, conn);
 	}
+	*/
 
+	/*
 	public static void exec(PatientEverythingParser patientEverythingParser, Connection conn) {
 		OmopPersonEverything personEverything = new OmopPersonEverything(patientEverythingParser, conn);
 		exec(personEverything, conn);
 	}
+	*/
 
 	public static void exec(OmopPersonEverything personEverything, Connection conn) {
 		writeFhirResources(personEverything, conn);

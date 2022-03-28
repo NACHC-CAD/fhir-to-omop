@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.db.write.patienteverything;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
@@ -8,27 +9,25 @@ import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFacto
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
 
+import com.nach.core.util.file.FileUtil;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WriteFhirPatientToOmopIntegrationTest {
 
-	public static final int NUMBER_TO_WRITE = 100;
+	private static final String DIR = "/synthea/patients/test-set-04";
 	
 	@Test
 	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
-		Timer timer = new Timer();
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Timer timer = new Timer();
 		try {
-			log.info("Getting patient...");
-			String json = TestParams.getPersonEverythingJson();
 			log.info("Writing to database...");
+			List<String> files = FileUtil.listResources(DIR, getClass());
 			timer.start();
-			for (int i = 0; i < NUMBER_TO_WRITE; i++) {
-				WriteFhirPatientToOmop.exec(json, conn);
-				log.info("Done writing patient " + (i+1) + " of " + NUMBER_TO_WRITE);
-			}
+			new WriteAllFilesToOmop().exec(files, conn);
 			timer.stop();
 			log.info("Doing commit...");
 			Database.commit(conn);

@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.unittesttools.fhir.synthea.patient.GetASingleSyntheaPatient;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
@@ -23,10 +25,10 @@ public class OmopPersonEverythingExampleIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		log.info("Got connection");
 		try {
-			String jsonString = GetASingleSyntheaPatient.getAsJson();
-			OmopPersonEverything omopPersonEverything = new OmopPersonEverything(jsonString, conn);
+			List<String> patient = TestParams.getTestPatientAsFileList();
+			OmopPersonEverything person = OmopPersonEverythingFactory.makePerson(patient, conn);
 			log.info("Got person");
-			echoDetails(omopPersonEverything);
+			echoDetails(person);
 		} finally {
 			Database.close(conn);
 		}

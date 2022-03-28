@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.yaorma.database.Database;
@@ -25,8 +26,8 @@ public class OmopObservationFactoryIntegrationTest {
 		try {
 			log.info("Starting test...");
 			// get the person and get the list
-			PatientEverythingParser patient = TestParams.getPatientEverything();
-			OmopPersonEverything person = new OmopPersonEverything(patient, conn);
+			List<String> patient = TestParams.getTestPatientAsFileList();
+			OmopPersonEverything person = OmopPersonEverythingFactory.makePerson(patient, conn);
 			List<ObservationDvoProxy> obsList = person.getFhirObservationList();
 			String patientId = person.getPatientId();
 			log.info("Patient ID: " + patientId);

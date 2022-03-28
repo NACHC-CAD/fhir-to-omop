@@ -1,12 +1,15 @@
 package org.nachc.tools.fhirtoomopexamples.fhir.omoppersoneverything;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.unittesttools.fhir.synthea.patient.GetASingleSyntheaPatient;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.write.patienteverything.WriteFhirPatientToOmop;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverything;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.OmopPersonEverythingFactory;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +24,8 @@ public class OmopInsertPersonExampleIntegrationTest {
 		log.info("Got connection");
 		try {
 			// the the json string for our test patient
-			String json = GetASingleSyntheaPatient.getAsJson();
-			log.info("Got json");
-			// create the OmopPersonEverything object
-			OmopPersonEverything person = new OmopPersonEverything(json, conn);
+			List<String> patient = TestParams.getTestPatientAsFileList();
+			OmopPersonEverything person = OmopPersonEverythingFactory.makePerson(patient, conn);
 			log.info("Got person");
 			// write the person to the database
 			WriteFhirPatientToOmop.exec(person, conn);

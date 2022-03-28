@@ -53,11 +53,11 @@ public class OmopPersonEverything {
 	// constructors
 	//
 
-	public OmopPersonEverything(String json, Connection conn) {
+	protected OmopPersonEverything(String json, Connection conn) {
 		this(new PatientEverythingParser(json), conn);
 	}
 
-	public OmopPersonEverything(PatientEverythingParser patientEverything, Connection conn) {
+	protected OmopPersonEverything(PatientEverythingParser patientEverything, Connection conn) {
 		this.conn = conn;
 		// person
 		this.person = new OmopPersonFactory(patientEverything, conn).getPerson();

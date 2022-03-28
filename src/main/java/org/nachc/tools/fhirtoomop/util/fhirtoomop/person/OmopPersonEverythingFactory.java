@@ -22,6 +22,9 @@ public class OmopPersonEverythingFactory {
 	}
 
 	private static String getFirstPageFileName(List<String> fileNameList) {
+		if(fileNameList != null && fileNameList.size() == 1) {
+			return fileNameList.get(0);
+		}
 		for (String filePath : fileNameList) {
 			String fileName = getFileName(filePath);
 			if (fileName.startsWith("0_")) {
