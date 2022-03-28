@@ -55,11 +55,19 @@ public class PatientEverythingParser {
 	// ---
 
 	//
-	// trivial getters and setters
+	// getters and setters
 	//
 
 	public PatientParser getPatient() {
 		return this.patientParser;
+	}
+
+	public String getPatientId() {
+		try {
+			return this.patientParser.getId();
+		} catch(Exception exp) {
+			return null;
+		}
 	}
 
 	//

@@ -34,11 +34,6 @@ public class OmopConditionFactory {
 	//
 	// implementation
 	//
-
-	public List<ConditionOccurrenceDvo> getConditionList() {
-		return getConditionList(this.omopPersonEverything.getFhirPatientEverything());
-	}
-
 	
 	public List<ConditionOccurrenceDvo> getConditionList(PatientEverythingParser fhirPatientEverything) {
 		Integer personId = this.omopPersonEverything.getPerson().getPersonId();

@@ -17,6 +17,7 @@ import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
+import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,16 +41,6 @@ public class OmopObservationFactory {
 		this.conn = conn;
 	}
 
-	/**
-	 * 
-	 * Get all observations for a given person.
-	 * 
-	 */
-	public List<ObservationDvoProxy> getObservationList() {
-		return getObservationList(this.omopPersonEverything.getFhirPatientEverything());
-	}
-
-		
 	/**
 	 * 
 	 * Get all observations for a given person.
@@ -174,6 +165,11 @@ public class OmopObservationFactory {
 		dvo.setPersonId(omopPatientId);
 		// date
 		dvo.setObservationDate(parser.getStartDate());
+		if(dvo.getObservationDate() == null) {
+			String encounterId = parser.getEncounterId();
+			VisitOccurrenceDvo visitDvo = this.omopPersonEverything.getVisitOccurrenceByFhirId(encounterId);
+			dvo.setObservationDate(visitDvo.getVisitStartDate());
+		}
 		return dvo;
 	}
 	

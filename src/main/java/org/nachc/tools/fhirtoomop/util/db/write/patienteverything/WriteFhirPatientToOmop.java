@@ -42,9 +42,8 @@ public class WriteFhirPatientToOmop {
 	}
 
 	private static void writeFhirResources(OmopPersonEverything person, Connection conn) {
-		PatientEverythingParser patient = person.getFhirPatientEverything();
-		String patientId = patient.getPatient().getId();
-		List<String> resourceList = patient.getResourceTypes();
+		String patientId = person.getPatientId();
+		List<String> resourceList = person.getResourceList();
 		for (String fhirResource : resourceList) {
 			String resourceName = null;
 			if (fhirResource != null && fhirResource.lastIndexOf(".") > 0) {

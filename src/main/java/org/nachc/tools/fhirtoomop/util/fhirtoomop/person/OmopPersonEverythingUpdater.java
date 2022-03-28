@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.fhirtoomop.person;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEverythingParser;
@@ -20,18 +21,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OmopPersonEverythingUpdater {
 
-	public static void addPage(OmopPersonEverything person, String pageFileName, Connection conn) {
+	public static void addPages(OmopPersonEverything person, List<String> pageFileNames, Connection conn) {
 		log.info("Adding page");
 		// get the data from the file and create the fhir parser
-		String json = FileUtil.getAsString(pageFileName);
-		PatientEverythingParser fhirPatient = new PatientEverythingParser(json);
-		log.info("Got patient from: " + pageFileName);
-		// add stuff
-		addVisits(person, fhirPatient, conn);
-		addConditions(person, fhirPatient, conn);
-		addDrugs(person, fhirPatient, conn);
-		addObs(person, fhirPatient, conn);
-		log.info("Done adding page.");
+		List<PatientEverythingParser> fhirPatientList = person.getFhirPatientEverythingList();
+		for (String pageFileName : pageFileNames) {
+			String json = FileUtil.getAsString(pageFileName);
+			PatientEverythingParser fhirPatient = new PatientEverythingParser(json);
+			log.info("Got patient from: " + pageFileName);
+			fhirPatientList.add(fhirPatient);
+		}
+		for(PatientEverythingParser fhirPatient : fhirPatientList) {
+			addVisits(person, fhirPatient, conn);
+		}
+		for(PatientEverythingParser fhirPatient : fhirPatientList) {
+			addConditions(person, fhirPatient, conn);
+		}
+		for(PatientEverythingParser fhirPatient : fhirPatientList) {
+			addDrugs(person, fhirPatient, conn);
+		}
+		for(PatientEverythingParser fhirPatient : fhirPatientList) {
+			addObs(person, fhirPatient, conn);
+		}
+		log.info("Done adding pages.");
 	}
 
 	private static void addVisits(OmopPersonEverything person, PatientEverythingParser fhirPatient, Connection conn) {

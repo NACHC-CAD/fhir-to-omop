@@ -16,12 +16,8 @@ public class OmopPersonEverythingFactory {
 		String firstPageJson = FileUtil.getAsString(firstPageFileName);
 		OmopPersonEverything rtn = new OmopPersonEverything(firstPageJson, conn);
 		int cnt = 0;
-		// add the subsequent pages
-		for(String str : files) {
-			cnt++;
-			log.info("ADDING PAGE " + cnt + " OF " + files.size());
-			OmopPersonEverythingUpdater.addPage(rtn, str, conn);
-		}
+		// add all the pages
+		OmopPersonEverythingUpdater.addPages(rtn, files, conn);
 		return rtn;
 	}
 
@@ -29,7 +25,6 @@ public class OmopPersonEverythingFactory {
 		for (String filePath : fileNameList) {
 			String fileName = getFileName(filePath);
 			if (fileName.startsWith("0_")) {
-				fileNameList.remove(filePath);
 				return filePath;
 			}
 		}

@@ -35,7 +35,12 @@ public class WriteAllFilesToOmopIntegrationTest {
 			// get the data files and then cull out the test set
 			log.info("Getting files...");
 			List<String> allFiles = TestParams.getFhirPatientsDirListing();
-			List<String> files = allFiles.subList(0, NUMBER_OF_PATIENTS_TO_CREATE);
+			List<String> files = null;
+			if(allFiles.size() > NUMBER_OF_PATIENTS_TO_CREATE) {
+				files = allFiles.subList(0, NUMBER_OF_PATIENTS_TO_CREATE);
+			} else {
+				files = allFiles;
+			}
 			log.info("Got " + allFiles.size() + " files.");
 			// write the files to the database
 			log.info("Writing " + files.size() + " files.");

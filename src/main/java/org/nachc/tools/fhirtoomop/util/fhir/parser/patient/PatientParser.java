@@ -23,8 +23,12 @@ public class PatientParser {
 	}
 
 	public String getId() {
-		String patientId = patient.getIdElement().getIdPart();
-		return patientId;
+		try {
+			String patientId = patient.getIdElement().getIdPart();
+			return patientId;
+		} catch(Exception exp) {
+			return null;
+		}
 	}
 
 	public Coding getRace() {

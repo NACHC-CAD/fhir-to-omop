@@ -37,11 +37,6 @@ public class OmopDrugExposureFactory {
 	// method to get all of the medication dvos
 	//
 
-	public List<DrugExposureDvo> getDrugExposureList() {
-		return getDrugExposureList(omopPersonEverything.getFhirPatientEverything());
-	}
-
-	
 	public List<DrugExposureDvo> getDrugExposureList(PatientEverythingParser src) {
 		List<DrugExposureDvo> rtn = new ArrayList<DrugExposureDvo>();
 		List<MedicationRequestParser> medReqList = src.getMedicationRequestList();

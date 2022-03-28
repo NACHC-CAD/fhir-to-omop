@@ -37,17 +37,17 @@ public class OmopPersonEverything {
 
 	private Connection conn;
 
-	private PatientEverythingParser patientEverything;
-
 	private PersonDvo person;
 
-	private List<VisitOccurrenceDvo> visitOccurrenceList;
+	private List<PatientEverythingParser> patientEverythingList = new ArrayList<PatientEverythingParser>();
 
-	private List<ConditionOccurrenceDvo> conditionOccurrenceList;
+	private List<VisitOccurrenceDvo> visitOccurrenceList = new ArrayList<VisitOccurrenceDvo>();
 
-	private List<ObservationDvoProxy> observationList;
+	private List<ConditionOccurrenceDvo> conditionOccurrenceList = new ArrayList<ConditionOccurrenceDvo>();
 
-	private List<DrugExposureDvo> drugExposureList;
+	private List<ObservationDvoProxy> observationList = new ArrayList<ObservationDvoProxy>();
+
+	private List<DrugExposureDvo> drugExposureList = new ArrayList<DrugExposureDvo>();
 
 	//
 	// constructors
@@ -59,9 +59,9 @@ public class OmopPersonEverything {
 
 	public OmopPersonEverything(PatientEverythingParser patientEverything, Connection conn) {
 		this.conn = conn;
-		this.patientEverything = patientEverything;
 		// person
 		this.person = new OmopPersonFactory(patientEverything, conn).getPerson();
+		/*
 		// visit
 		OmopVisitOccurrenceFactory visitParser = new OmopVisitOccurrenceFactory(this, conn);
 		this.visitOccurrenceList = visitParser.getVisitOccurencesList(getFhirPatientEverything());
@@ -74,26 +74,55 @@ public class OmopPersonEverything {
 		// obs
 		OmopObservationFactory obsFactory = new OmopObservationFactory(this, conn);
 		this.observationList = obsFactory.getObservationList();
+		*/
 	}
 
 	//
 	// trivial getters and setters
 	//
 
-	public PatientEverythingParser getFhirPatientEverything() {
-		return this.patientEverything;
+	public List<PatientEverythingParser> getFhirPatientEverythingList() {
+		return this.patientEverythingList;
 	}
 
 	//
 	// getters and setters
 	//
 
+	public List<String> getResourceList() {
+		List<String> rtn = new ArrayList<String>();
+		for(PatientEverythingParser patient : this.patientEverythingList) {
+			List<String> resourceList = patient.getResourceTypes();
+			rtn.addAll(resourceList);
+		}
+		return rtn;
+	}
+	
+	public String getPatientId() {
+		for(PatientEverythingParser parser : this.patientEverythingList) {
+			String rtn = parser.getPatient().getId();
+			if(rtn != null) {
+				return rtn;
+			}
+		}
+		return null;
+	}
+	
 	public PersonDvo getPerson() {
 		return this.person;
 	}
 
 	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
 		return this.visitOccurrenceList;
+	}
+
+	public VisitOccurrenceDvo getVisitOccurrenceByFhirId(String fhirId) {
+		for(VisitOccurrenceDvo dvo : this.visitOccurrenceList) {
+			if(fhirId != null && fhirId.equals(dvo.getVisitSourceValue())) {
+				return dvo;
+			}
+		}
+		return null;
 	}
 
 	public List<ConditionOccurrenceDvo> getConditionOccurrenceList() {
