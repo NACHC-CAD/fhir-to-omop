@@ -81,6 +81,10 @@ public class OmopDrugExposureFactory {
 		// start date
 		dvo.setDrugExposureStartDate(medReq.getStartDate());
 		dvo.setDrugExposureEndDate(medReq.getStartDate());
+		if(medReq.getStartDate() == null) {
+			dvo.setDrugExposureStartDate(medReq.getMedicationRequest().getAuthoredOn());
+			dvo.setDrugExposureEndDate(medReq.getMedicationRequest().getAuthoredOn());
+		}
 		return dvo;
 	}
 
