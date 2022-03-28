@@ -8,10 +8,12 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.patienteverything.PatientEver
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopConditionFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopDrugExposureFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopObservationFactory;
+import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopProcedureFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.OmopVisitOccurrenceFactory;
 import org.nachc.tools.fhirtoomop.util.fhirtoomop.person.impl.obs.ObservationDvoProxy;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
+import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 import com.nach.core.util.file.FileUtil;
@@ -22,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 public class OmopPersonEverythingUpdater {
 
 	public static void addPages(OmopPersonEverything person, List<String> pageFileNames, Connection conn) {
-		log.info("Adding page");
+		log.info("Adding pages");
 		// get the data from the file and create the fhir parser
 		List<PatientEverythingParser> fhirPatientList = person.getFhirPatientEverythingList();
 		for (String pageFileName : pageFileNames) {
@@ -42,6 +44,9 @@ public class OmopPersonEverythingUpdater {
 		}
 		for(PatientEverythingParser fhirPatient : fhirPatientList) {
 			addObs(person, fhirPatient, conn);
+		}
+		for(PatientEverythingParser fhirPatient : fhirPatientList) {
+			addProc(person, fhirPatient, conn);
 		}
 		log.info("Done adding pages.");
 	}
@@ -72,6 +77,13 @@ public class OmopPersonEverythingUpdater {
 		List<ObservationDvoProxy> list = factory.getObservationList(fhirPatient);
 		log.info("Adding " + list.size() + " drugs");
 		person.getObservationProxyList().addAll(list);
+	}
+
+	private static void addProc(OmopPersonEverything person, PatientEverythingParser fhirPatient, Connection conn) {
+		OmopProcedureFactory factory = new OmopProcedureFactory(person, conn);
+		List<ProcedureOccurrenceDvo> list = factory.getProcedureOccurrenceList(fhirPatient);
+		log.info("Adding " + list.size() + " procs");
+		person.getProcedureOccurrenceList().addAll(list);
 	}
 
 }

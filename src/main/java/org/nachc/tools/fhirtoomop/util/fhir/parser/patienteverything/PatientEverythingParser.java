@@ -9,6 +9,7 @@ import org.hl7.fhir.dstu3.model.Encounter;
 import org.hl7.fhir.dstu3.model.MedicationRequest;
 import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Patient;
+import org.hl7.fhir.dstu3.model.Procedure;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.encounter.EncounterParser;
@@ -16,6 +17,7 @@ import org.nachc.tools.fhirtoomop.util.fhir.parser.medicationrequest.MedicationR
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.observation.enumerations.ObservationType;
 import org.nachc.tools.fhirtoomop.util.fhir.parser.patient.PatientParser;
+import org.nachc.tools.fhirtoomop.util.fhir.parser.procedure.ProcedureParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
 
@@ -65,7 +67,7 @@ public class PatientEverythingParser {
 	public String getPatientId() {
 		try {
 			return this.patientParser.getId();
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			return null;
 		}
 	}
@@ -93,24 +95,34 @@ public class PatientEverythingParser {
 	}
 
 	public EncounterParser getEncounter(String encounterId) {
-		if(encounterId == null) {
+		if (encounterId == null) {
 			return null;
 		} else {
 			List<EncounterParser> encList = this.getEncounterList();
-			for(EncounterParser enc : encList) {
-				if(encounterId.equals(enc.getEncounterIdUnqualified())) {
+			for (EncounterParser enc : encList) {
+				if (encounterId.equals(enc.getEncounterIdUnqualified())) {
 					return enc;
 				}
 			}
 			return null;
 		}
 	}
-	
+
 	public List<ConditionParser> getConditionList() {
 		List<ConditionParser> rtn = new ArrayList<ConditionParser>();
 		List<Condition> conditionList = this.bundleParser.getResourceListForType(new Condition());
 		for (Condition con : conditionList) {
 			ConditionParser parser = new ConditionParser(con);
+			rtn.add(parser);
+		}
+		return rtn;
+	}
+
+	public List<ProcedureParser> getProcedureList() {
+		List<ProcedureParser> rtn = new ArrayList<ProcedureParser>();
+		List<Procedure> procedureList = this.bundleParser.getResourceListForType(new Procedure());
+		for (Procedure proc : procedureList) {
+			ProcedureParser parser = new ProcedureParser(proc);
 			rtn.add(parser);
 		}
 		return rtn;
@@ -159,7 +171,7 @@ public class PatientEverythingParser {
 	public List<MedicationRequestParser> getMedicationRequestList() {
 		List<MedicationRequestParser> rtn = new ArrayList<MedicationRequestParser>();
 		List<MedicationRequest> medicationRequestList = this.bundleParser.getResourceListForType(new MedicationRequest());
-		for(MedicationRequest medReq : medicationRequestList) {
+		for (MedicationRequest medReq : medicationRequestList) {
 			MedicationRequestParser parser = new MedicationRequestParser(medReq, this);
 			rtn.add(parser);
 		}

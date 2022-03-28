@@ -18,6 +18,7 @@ import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
+import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 /**
@@ -48,6 +49,8 @@ public class OmopPersonEverything {
 	private List<ObservationDvoProxy> observationList = new ArrayList<ObservationDvoProxy>();
 
 	private List<DrugExposureDvo> drugExposureList = new ArrayList<DrugExposureDvo>();
+	
+	private List<ProcedureOccurrenceDvo> procedureOccurrenceList = new ArrayList<ProcedureOccurrenceDvo>();
 
 	//
 	// constructors
@@ -85,8 +88,32 @@ public class OmopPersonEverything {
 		return this.patientEverythingList;
 	}
 
+	public PersonDvo getPerson() {
+		return this.person;
+	}
+
+	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
+		return this.visitOccurrenceList;
+	}
+
+	public List<ConditionOccurrenceDvo> getConditionOccurrenceList() {
+		return this.conditionOccurrenceList;
+	}
+
+	public List<DrugExposureDvo> getDrugExposureList() {
+		return this.drugExposureList;
+	}
+
+	public List<ObservationDvoProxy> getFhirObservationList() {
+		return this.observationList;
+	}
+
+	public List<ProcedureOccurrenceDvo> getProcedureOccurrenceList() {
+		return this.procedureOccurrenceList;
+	}
+	
 	//
-	// getters and setters
+	// other getters and setters
 	//
 
 	public List<String> getResourceList() {
@@ -108,14 +135,6 @@ public class OmopPersonEverything {
 		return null;
 	}
 	
-	public PersonDvo getPerson() {
-		return this.person;
-	}
-
-	public List<VisitOccurrenceDvo> getVisitOccurrenceList() {
-		return this.visitOccurrenceList;
-	}
-
 	public VisitOccurrenceDvo getVisitOccurrenceByFhirId(String fhirId) {
 		for(VisitOccurrenceDvo dvo : this.visitOccurrenceList) {
 			if(fhirId != null && fhirId.equals(dvo.getVisitSourceValue())) {
@@ -123,18 +142,6 @@ public class OmopPersonEverything {
 			}
 		}
 		return null;
-	}
-
-	public List<ConditionOccurrenceDvo> getConditionOccurrenceList() {
-		return this.conditionOccurrenceList;
-	}
-
-	public List<DrugExposureDvo> getDrugExposureList() {
-		return this.drugExposureList;
-	}
-
-	public List<ObservationDvoProxy> getFhirObservationList() {
-		return this.observationList;
 	}
 
 	//

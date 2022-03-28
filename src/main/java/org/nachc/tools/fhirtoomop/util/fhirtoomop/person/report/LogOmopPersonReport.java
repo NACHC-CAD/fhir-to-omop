@@ -8,6 +8,7 @@ import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
+import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,7 @@ public class LogOmopPersonReport {
 		logDrugs(person);
 		logMeasurements(person);
 		logObservations(person);
+		logProcs(person);
 	}
 
 	private static void logPerson(OmopPersonEverything person) {
@@ -53,6 +55,11 @@ public class LogOmopPersonReport {
 	private static void logDrugs(OmopPersonEverything person) {
 		List<DrugExposureDvo> list = person.getDrugExposureList();
 		log.info("Got " + list.size() + " Drugs");
+	}
+	
+	private static void logProcs(OmopPersonEverything person) {
+		List<ProcedureOccurrenceDvo> list = person.getProcedureOccurrenceList();
+		log.info("Got " + list.size() + " Procs.");
 	}
 
 }

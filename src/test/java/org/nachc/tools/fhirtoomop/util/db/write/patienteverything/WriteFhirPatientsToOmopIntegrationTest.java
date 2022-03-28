@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.junit.Test;
-import org.nachc.tools.fhirtoomop.unittesttools.TestParams;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
@@ -14,10 +13,10 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WriteFhirPatientToOmopIntegrationTest {
+public class WriteFhirPatientsToOmopIntegrationTest {
 
 	private static final String DIR = "/synthea/patients/synthea-test-patients/test-set-04";
-	
+
 	@Test
 	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
