@@ -125,6 +125,28 @@ public class PatientParser {
 		}
 	}
 
+	public Integer getBirthMonth() {
+		Date date = this.getBirthDate();
+		if (date != null) {
+			String yearString = TimeUtil.format(date, "MM");
+			Integer rtn = StringUtil.parseInt(yearString);
+			return rtn;
+		} else {
+			return null;
+		}
+	}
+
+	public Integer getBirthDay() {
+		Date date = this.getBirthDate();
+		if (date != null) {
+			String yearString = TimeUtil.format(date, "dd");
+			Integer rtn = StringUtil.parseInt(yearString);
+			return rtn;
+		} else {
+			return null;
+		}
+	}
+
 	//
 	// methods for extensions
 	//
