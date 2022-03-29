@@ -130,9 +130,14 @@ public class MedicationRequestParser {
 
 	public Date getStartDate() {
 		try {
-			String encounterId = this.getEncounterId();
-			EncounterParser enc = this.patient.getEncounter(encounterId);
-			return enc.getStartDate();
+			Date date = this.medicationRequest.getAuthoredOn();
+			if(date != null) {
+				return date;
+			} else {
+				String encounterId = this.getEncounterId();
+				EncounterParser enc = this.patient.getEncounter(encounterId);
+				return enc.getStartDate();
+			}
 		} catch (Exception exp) {
 			return null;
 		}
