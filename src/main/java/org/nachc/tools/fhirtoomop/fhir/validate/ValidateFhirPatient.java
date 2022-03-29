@@ -33,6 +33,7 @@ public class ValidateFhirPatient {
 		log.info("Got " + pat.getEncounterList().size() + " encounters.");
 		log.info("Got " + pat.getConditionList().size() + " conditions.");
 		log.info("Got " + pat.getMedicationRequestList().size() + " medication requests.");
+		log.info("Got " + pat.getObservationList().size() + " observations.");
 		err.addAll(new ValidatePatient(pat.getPatient()).validate().getErr());
 		log.debug("--- VALIDATIONS ---");
 		err.addAll(ValidateEncounter.validate(pat.getEncounterList()));

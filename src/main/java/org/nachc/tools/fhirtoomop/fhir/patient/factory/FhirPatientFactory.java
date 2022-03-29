@@ -6,11 +6,13 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Condition;
 import org.hl7.fhir.dstu3.model.Encounter;
 import org.hl7.fhir.dstu3.model.MedicationRequest;
+import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.medicationrequest.MedicationRequestParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 
@@ -30,10 +32,12 @@ public class FhirPatientFactory {
 
 	public FhirPatient buildFhirPatient() {
 		FhirPatient rtn = new FhirPatient();
+		buildResourceTypes(rtn);
 		buildPatient(rtn);
 		buildEncounterList(rtn);
 		buildConditionList(rtn);
 		buildMedicationList(rtn);
+		buildObservationList(rtn);
 		return rtn;
 	}
 
@@ -43,6 +47,12 @@ public class FhirPatientFactory {
 	//
 	// ---
 
+	private void buildResourceTypes(FhirPatient rtn) {
+		for(BundleParser parser : this.bundleParserList) {
+			rtn.getResourceTypes().addAll(parser.getResourceTypes());
+		}
+	}
+	
 	private void buildPatient(FhirPatient rtn) {
 		for (BundleParser parser : this.bundleParserList) {
 			Patient patient = parser.getResourceForType(Patient.class);
@@ -79,5 +89,14 @@ public class FhirPatientFactory {
 			}
 		}
 	}
-
+	
+	private void buildObservationList(FhirPatient rtn) {
+		for(BundleParser parser : this.bundleParserList) {
+			List<Observation> list = parser.getResourceListForType(Observation.class);
+			for(Observation obs : list) {
+				rtn.getObservationList().add(new ObservationParser(obs, rtn));
+			}
+		}
+	}
+	
 }
