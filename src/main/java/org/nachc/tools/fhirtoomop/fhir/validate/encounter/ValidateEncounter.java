@@ -14,6 +14,14 @@ public class ValidateEncounter {
 
 	private List<String> err = new ArrayList<String>();
 
+	public static List<String> validate(List<EncounterParser> list) {
+		ArrayList<String> err = new ArrayList<String>();
+		for(EncounterParser enc : list) {
+			err.addAll(new ValidateEncounter(enc).validate().getErr());
+		}
+		return err;
+	}
+	
 	public ValidateEncounter(EncounterParser encounterParser) {
 		this.enc = encounterParser;
 	}

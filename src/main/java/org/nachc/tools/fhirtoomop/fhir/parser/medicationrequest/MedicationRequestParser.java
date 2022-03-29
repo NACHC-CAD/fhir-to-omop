@@ -6,6 +6,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.MedicationRequest;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.util.id.FhirUtil;
 
 public class MedicationRequestParser {
 
@@ -38,6 +39,14 @@ public class MedicationRequestParser {
 	// medication
 	//
 
+	public String getMedicationRequestId() {
+		try {
+			return FhirUtil.getIdUnqualified(this.medicationRequest.getId());
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
 	public Coding getMedication() {
 		try {
 			return this.medicationRequest.getMedicationCodeableConcept().getCoding().get(0);

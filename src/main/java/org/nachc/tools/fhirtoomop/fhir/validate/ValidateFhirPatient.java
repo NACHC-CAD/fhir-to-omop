@@ -6,6 +6,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.validate.encounter.ValidateEncounter;
+import org.nachc.tools.fhirtoomop.fhir.validate.medicationrequest.ValidateMedicationRequest;
 import org.nachc.tools.fhirtoomop.fhir.validate.patient.ValidatePatient;
 
 import lombok.extern.slf4j.Slf4j;
@@ -31,12 +32,12 @@ public class ValidateFhirPatient {
 		}
 		log.info("Got " + pat.getEncounterList().size() + " encounters.");
 		log.info("Got " + pat.getConditionList().size() + " conditions.");
+		log.info("Got " + pat.getMedicationRequestList().size() + " medication requests.");
 		err.addAll(new ValidatePatient(pat.getPatient()).validate().getErr());
-		log.debug("--- ENCOUNTERS ---");
-		for(EncounterParser enc : pat.getEncounterList()) {
-			err.addAll(new ValidateEncounter(enc).validate().getErr());
-		}
-		log.debug("--- END ENCOUNTERS ---");
+		log.debug("--- VALIDATIONS ---");
+		err.addAll(ValidateEncounter.validate(pat.getEncounterList()));
+		err.addAll(ValidateMedicationRequest.validate(pat.getMedicationRequestList()));
+		log.debug("--- END VALIDATIONS ---");
 		logErr();
 		return this;
 	}
