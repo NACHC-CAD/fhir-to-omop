@@ -31,7 +31,7 @@ public class ValidatePatient {
 		log.info("Patient: (race) " + pat.getRaceStr());
 		log.info("Patient: (eth)  " + pat.getEthnicityStr());
 		if (pat.getId() == null) {
-			err.add("id is null");
+			err.add("Patient: id is null");
 		}
 		return this;
 	}
