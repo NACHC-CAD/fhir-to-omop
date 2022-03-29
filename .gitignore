@@ -23,7 +23,7 @@
 hs_err_pid*
 
 /target/
-/src/main/resources/auth/
+# /src/main/resources/auth/
 .classpath
 .project
 /.settings/
