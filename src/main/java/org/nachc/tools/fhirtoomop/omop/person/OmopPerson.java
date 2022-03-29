@@ -41,4 +41,15 @@ public class OmopPerson {
 
 	private List<ProcedureOccurrenceDvo> procedureOccurrenceList = new ArrayList<ProcedureOccurrenceDvo>();
 
+	public Integer getOmopEncounterId(String fhirEncounterId) {
+		List<VisitOccurrenceDvo> visitList = this.getVisitOccurrenceList();
+		for (VisitOccurrenceDvo dvo : visitList) {
+			String sourceId = dvo.getVisitSourceValue();
+			if (sourceId != null && sourceId.equals(fhirEncounterId)) {
+				return dvo.getVisitOccurrenceId();
+			}
+		}
+		return null;
+	}
+
 }
