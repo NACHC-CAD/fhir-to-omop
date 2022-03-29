@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Condition;
 import org.hl7.fhir.dstu3.model.Encounter;
+import org.hl7.fhir.dstu3.model.MedicationRequest;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.medicationrequest.MedicationRequestParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 
@@ -31,6 +33,7 @@ public class FhirPatientFactory {
 		buildPatient(rtn);
 		buildEncounterList(rtn);
 		buildConditionList(rtn);
+		buildMedicationList(rtn);
 		return rtn;
 	}
 
@@ -64,6 +67,15 @@ public class FhirPatientFactory {
 			List<Condition> list = parser.getResourceListForType(Condition.class);
 			for (Condition con : list) {
 				rtn.getConditionList().add(new ConditionParser(con));
+			}
+		}
+	}
+
+	private void buildMedicationList(FhirPatient rtn) {
+		for (BundleParser parser : this.bundleParserList) {
+			List<MedicationRequest> list = parser.getResourceListForType(MedicationRequest.class);
+			for (MedicationRequest med : list) {
+				rtn.getMedicationRequestList().add(new MedicationRequestParser(med, rtn));
 			}
 		}
 	}

@@ -32,11 +32,11 @@ public class ValidateFhirPatient {
 		log.info("Got " + pat.getEncounterList().size() + " encounters.");
 		log.info("Got " + pat.getConditionList().size() + " conditions.");
 		err.addAll(new ValidatePatient(pat.getPatient()).validate().getErr());
-		log.info("--- ENCOUNTERS ---");
+		log.debug("--- ENCOUNTERS ---");
 		for(EncounterParser enc : pat.getEncounterList()) {
 			err.addAll(new ValidateEncounter(enc).validate().getErr());
 		}
-		log.info("--- END ENCOUNTERS ---");
+		log.debug("--- END ENCOUNTERS ---");
 		logErr();
 		return this;
 	}

@@ -36,9 +36,9 @@ public class ValidateEncounter {
 		if(enc.getEndDate() == null) {
 			err.add("Encounter: end date is null");
 		}
-		log.info("Encounter: (id)        " + enc.getEncounterId());
-		log.info("Encounter: (startDate) " + enc.getStartDate());
-		log.info("Encounter: (endDate)   " + enc.getEndDate());
+		log.debug("Encounter: (id)        " + enc.getEncounterId());
+		log.debug("Encounter: (startDate) " + enc.getStartDate());
+		log.debug("Encounter: (endDate)   " + enc.getEndDate());
 		return this;
 	}
 	
