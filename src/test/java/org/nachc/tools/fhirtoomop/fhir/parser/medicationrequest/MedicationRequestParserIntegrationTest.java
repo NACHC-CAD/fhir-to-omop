@@ -55,6 +55,7 @@ public class MedicationRequestParserIntegrationTest {
 			log.info("Encounter ID: " + medReq.getEncounterId());
 			// start date
 			log.info("Start date: " + medReq.getStartDate());
+			assertTrue(medReq.getStartDate() != null);
 		}
 		log.info("Done.");
 	}

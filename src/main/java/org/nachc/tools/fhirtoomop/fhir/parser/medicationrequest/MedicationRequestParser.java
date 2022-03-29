@@ -131,7 +131,7 @@ public class MedicationRequestParser {
 	public Date getStartDate() {
 		try {
 			Date date = this.medicationRequest.getAuthoredOn();
-			if(date != null) {
+			if (date != null) {
 				return date;
 			} else {
 				String encounterId = this.getEncounterId();

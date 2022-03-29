@@ -29,10 +29,10 @@ public class EncounterParserIntegrationTest {
 		// get and test a single encounter
 		EncounterParser enc = new EncounterParser(encounterList.get(0));
 		// get encounter ids
-		String encounterId = enc.getEncounterId();
+		String encounterId = enc.getEncounterIdFullyQualified();
 		log.info("encounterIdQual: " + encounterId);
 		assertTrue(encounterId.equals("Encounter/08bfe31a-6fed-43e8-b2c5-90f5b02b3e77/_history/MTU1NDgxMjczNTM4NzAxMDAwMA"));
-		String encounterIdUnc = enc.getEncounterIdUnqualified();
+		String encounterIdUnc = enc.getEncounterId();
 		log.info("encounterIdUnc:  " + encounterIdUnc);
 		assertTrue(encounterIdUnc.equals("08bfe31a-6fed-43e8-b2c5-90f5b02b3e77"));
 		String encounterIdUncAndQual = enc.getEncounterIdUncAndQual();

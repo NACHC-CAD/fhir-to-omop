@@ -27,17 +27,17 @@ public class EncounterParser {
 	//
 
 	public String getEncounterId() {
-		return this.enc.getId();
+		return FhirUtil.getIdUnqualified(this.enc.getId());
 	}
 
-	public String getEncounterIdUnqualified() {
-		return FhirUtil.getIdUnqualified(this.enc.getId());
+	public String getEncounterIdFullyQualified() {
+		return this.enc.getId();
 	}
 
 	public String getEncounterIdUncAndQual() {
 		String rtn = "";
-		rtn += getEncounterIdUnqualified() + "|";
-		rtn += getEncounterId();
+		rtn += getEncounterId() + "|";
+		rtn += getEncounterIdFullyQualified();
 		return rtn;
 	}
 
