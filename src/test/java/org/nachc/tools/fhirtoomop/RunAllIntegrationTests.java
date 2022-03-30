@@ -50,12 +50,12 @@ public class RunAllIntegrationTests {
 		log.info("* * *");
 		log.info("***********************************************************");
 		log.info("");
-		log.info("");
 		TIMER.stop();
 		log.info("Start:   " + TIMER.getStartAsString());
 		log.info("Stop:    " + TIMER.getStopAsString());
 		log.info("Elapsed: " + TIMER.getElapsedString());
 		log.info("There are now " + patientCount + " patients in your OMOP database.");
+		log.info("");
 		log.info("Done.");
 	}
 
