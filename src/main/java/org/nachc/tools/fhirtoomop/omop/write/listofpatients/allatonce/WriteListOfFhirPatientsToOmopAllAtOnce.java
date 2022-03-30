@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.omop.write.listofpatients;
+package org.nachc.tools.fhirtoomop.omop.write.listofpatients.allatonce;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -13,6 +13,9 @@ import lombok.extern.slf4j.Slf4j;
  * 
  * Writes a list of fhir patients to omop database. Each patient gets its own
  * thread. All thread logic (e.g. joining back together) is contained within.
+ * 
+ * This should be considered an internal class (i.e. shouldn't be called
+ * directly). This is used by WriteListOfFhirPatientsToOmop. Use that instead.
  *
  */
 @Slf4j

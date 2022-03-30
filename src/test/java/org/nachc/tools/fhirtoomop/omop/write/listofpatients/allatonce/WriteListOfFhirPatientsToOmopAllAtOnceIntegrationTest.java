@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.omop.write.listofpatients;
+package org.nachc.tools.fhirtoomop.omop.write.listofpatients.allatonce;
 
 import static org.junit.Assert.assertTrue;
 
