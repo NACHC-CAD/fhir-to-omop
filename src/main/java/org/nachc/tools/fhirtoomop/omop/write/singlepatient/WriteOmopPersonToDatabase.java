@@ -10,6 +10,7 @@ import org.nachc.tools.omop.yaorma.dvo.FhirResourceDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
+import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.dao.Dao;
 import org.yaorma.database.Database;
@@ -17,16 +18,17 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WriteFhirPatientToOmop {
+public class WriteOmopPersonToDatabase {
 
-	public static void exec(OmopPerson personEverything, Connection conn) {
-		writeFhirResources(personEverything, conn);
-		writePatient(personEverything, conn);
-		writeVisitOccurrence(personEverything, conn);
-		writeConditionOccurrences(personEverything, conn);
-		writeDrugExposures(personEverything, conn);
-		writeObservations(personEverything, conn);
-		writeMeasurements(personEverything, conn);
+	public static void exec(OmopPerson omopPerson, Connection conn) {
+		writeFhirResources(omopPerson, conn);
+		writePatient(omopPerson, conn);
+		writeVisitOccurrence(omopPerson, conn);
+		writeConditionOccurrences(omopPerson, conn);
+		writeDrugExposures(omopPerson, conn);
+		writeObservations(omopPerson, conn);
+		writeMeasurements(omopPerson, conn);
+		writeProcedures(omopPerson, conn);
 		Database.commit(conn);
 	}
 
@@ -75,6 +77,13 @@ public class WriteFhirPatientToOmop {
 	private static void writeMeasurements(OmopPerson person, Connection conn) {
 		List<MeasurementDvo> measList = person.getMeasurementList();
 		for (MeasurementDvo dvo : measList) {
+			Dao.insert(dvo, conn);
+		}
+	}
+
+	private static void writeProcedures(OmopPerson person, Connection conn) {
+		List<ProcedureOccurrenceDvo> list = person.getProcedureOccurrenceList();
+		for (ProcedureOccurrenceDvo dvo : list) {
 			Dao.insert(dvo, conn);
 		}
 	}
