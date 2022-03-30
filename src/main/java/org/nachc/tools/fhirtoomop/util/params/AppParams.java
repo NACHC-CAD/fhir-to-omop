@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
+import com.nach.core.util.string.StringUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,58 +44,6 @@ public class AppParams {
 	// passthrough method
 	public static String get(String key) {
 		return PROPS.getProperty(key);
-	}
-
-	// local files stuff
-
-	public static File getFhirPatientIdDir() {
-		String dirName = PROPS.getProperty("fhirPatientIdDir");
-		return new File(dirName);
-	}
-
-	public static String getFhirPatientsDirName() {
-		String fileName = PROPS.getProperty("fhirPatientsDir");
-		return fileName;
-	}
-
-	public static List<String> getFhirPatientsDirListing() {
-		String fileName = getFhirPatientsDirName();
-		log.info("+++++++++++++++++++++++++++++");
-		log.info("Getting listing for: " + fileName);
-		log.info("+++++++++++++++++++++++++++++");
-		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
-		return rtn;
-	}
-
-	//
-	// create a test output file
-	//
-
-	public static File getTestOutFile(String fileName) {
-		String dirName = PROPS.getProperty("testOutputDir");
-		return new File(dirName, fileName);
-	}
-
-	// synthea stuff
-
-	public static String getSyntheaOauthUrl() {
-		return PROPS.getProperty("fhir-server-oauth-url");
-	}
-
-	public static String getSyntheaUrl() {
-		return PROPS.getProperty("fhir-server-url");
-	}
-
-	public static String getSyntheaAppId() {
-		return PROPS.getProperty("synthea-app-id");
-	}
-
-	public static String getSyntheaKeyForToken() {
-		return PROPS.getProperty("synthea-key");
-	}
-
-	public static String getSyntheaSecret() {
-		return PROPS.getProperty("synthea-secret");
 	}
 
 	// connection stuff
@@ -140,16 +89,98 @@ public class AppParams {
 		return rtn;
 	}
 
-	// umls stuff
-
-	public static String getUmlsApiKey() {
-		return PROPS.getProperty("umls-api-key");
-	}
-
 	// terminology stuff
 
 	public static String getTerminologyRootDir() {
 		return PROPS.getProperty("terminologyRootDir");
+	}
+
+	// ---
+	//
+	// upload files stuff
+	//
+	// ---
+
+	// directory where fhir patients live
+	public static String getFhirPatientsDirName() {
+		String fileName = PROPS.getProperty("fhirPatientsDir");
+		return fileName;
+	}
+	
+	// max number of connections to use for upload
+	public static int getMaxNumberOfConnectionsForUpload() {
+		String str = PROPS.getProperty("maxNumberOfConnectionsForUpload");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
+	}
+	
+	// max number of threads to use for upload
+	public static int getMaxNumberOfThreadsForUpload() {
+		String str = PROPS.getProperty("maxNumberOfThreadsForUpload");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
+	}
+	
+	// cache size
+	public static int getConceptCacheSize() {
+		String str = PROPS.getProperty("conceptCacheSize");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
+	}
+	
+/*	
+
+	// local files stuff
+
+	public static File getFhirPatientIdDir() {
+		String dirName = PROPS.getProperty("fhirPatientIdDir");
+		return new File(dirName);
+	}
+
+	public static List<String> getFhirPatientsDirListing() {
+		String fileName = getFhirPatientsDirName();
+		log.info("+++++++++++++++++++++++++++++");
+		log.info("Getting listing for: " + fileName);
+		log.info("+++++++++++++++++++++++++++++");
+		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
+		return rtn;
+	}
+
+	//
+	// create a test output file
+	//
+
+	public static File getTestOutFile(String fileName) {
+		String dirName = PROPS.getProperty("testOutputDir");
+		return new File(dirName, fileName);
+	}
+
+	// synthea stuff
+
+	public static String getSyntheaOauthUrl() {
+		return PROPS.getProperty("fhir-server-oauth-url");
+	}
+
+	public static String getSyntheaUrl() {
+		return PROPS.getProperty("fhir-server-url");
+	}
+
+	public static String getSyntheaAppId() {
+		return PROPS.getProperty("synthea-app-id");
+	}
+
+	public static String getSyntheaKeyForToken() {
+		return PROPS.getProperty("synthea-key");
+	}
+
+	public static String getSyntheaSecret() {
+		return PROPS.getProperty("synthea-secret");
+	}
+
+	// umls stuff
+
+	public static String getUmlsApiKey() {
+		return PROPS.getProperty("umls-api-key");
 	}
 
 	// dirs for a production run
@@ -165,5 +196,6 @@ public class AppParams {
 		File file = new File(dirName);
 		return file;
 	}
+*/
 
 }

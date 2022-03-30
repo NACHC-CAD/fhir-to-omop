@@ -41,21 +41,18 @@ public class FhirToOmopConceptMapper {
 				return dvo;
 			}
 			// look for a standard concept
-			log.info("looking for standard concept: " + system + "\t" + code);
 			dvo = getStandardConcept(system, code, conn);
 			if (dvo != null) {
 				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a mapping to a standard concept
-			log.info("looking for mapped concept: " + system + "\t" + code);
 			dvo = getStandardConceptFromMapping(system, code, conn);
 			if (dvo != null) {
 				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
 			// look for a non-standard concept
-			log.info("looking for non-standard concept: " + system + "\t" + code);
 			dvo = getNonStandardConcept(system, code, conn);
 			if(dvo != null) {
 				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
@@ -72,6 +69,11 @@ public class FhirToOmopConceptMapper {
 		if (system == null || conceptCode == null) {
 			return null;
 		} else {
+			ConceptDvo dvoFromCache = ConceptCache.ACTIVE_CACHE.get(system, conceptCode);
+			if (dvoFromCache != null) {
+				return dvoFromCache;
+			}
+			log.info("looking for standard concept: " + system + "\t" + conceptCode);
 			String sqlString = "select concept_id from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
 			system = SystemMapping.getOmopSystemForFhirSystem(system);
 			if (system == null) {
@@ -88,6 +90,11 @@ public class FhirToOmopConceptMapper {
 	}
 
 	private static ConceptDvo getStandardConceptFromMapping(String system, String conceptCode, Connection conn) {
+		ConceptDvo dvoFromCache = ConceptCache.ACTIVE_CACHE.get(system, conceptCode);
+		if (dvoFromCache != null) {
+			return dvoFromCache;
+		}
+		log.info("looking for mapped concept: " + system + "\t" + conceptCode);
 		String sqlString = "";
 		sqlString += "select \n";
 		sqlString += "	con2.* \n";
@@ -115,6 +122,11 @@ public class FhirToOmopConceptMapper {
 	}
 
 	private static ConceptDvo getNonStandardConcept(String system, String conceptCode, Connection conn) {
+		ConceptDvo dvoFromCache = ConceptCache.ACTIVE_CACHE.get(system, conceptCode);
+		if (dvoFromCache != null) {
+			return dvoFromCache;
+		}
+		log.info("looking for non-standard concept: " + system + "\t" + conceptCode);
 		if (system == null || conceptCode == null) {
 			return null;
 		} else {
@@ -136,8 +148,8 @@ public class FhirToOmopConceptMapper {
 	private static ConceptDvo addTempConcept(String system, String code, Connection conn) {
 		system = SystemMapping.getOmopSystemForFhirSystem(system);
 		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id", conn);
-		if (id <= 1000000000) {
-			id = 1000000001;
+		if (id <= 2000000000) {
+			id = 2000000001;
 		}
 		ConceptDvo dvo = new ConceptDvo();
 		dvo.setConceptId(id);

@@ -6,13 +6,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class ConceptCache {
 
 	public static final ConceptCache ACTIVE_CACHE = new ConceptCache();
 	
-	private int SIZE = 100000;
+	private int SIZE = AppParams.getConceptCacheSize();
 
 	private HashMap<CacheKey, ConceptDvo> concepts = new HashMap<CacheKey, ConceptDvo>();
 
