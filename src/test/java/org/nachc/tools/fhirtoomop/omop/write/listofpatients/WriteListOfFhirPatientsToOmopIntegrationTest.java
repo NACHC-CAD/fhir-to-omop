@@ -1,8 +1,9 @@
-package org.nachc.tools.fhirtoomop.omop.write.listofpatients.allatonce;
+package org.nachc.tools.fhirtoomop.omop.write.listofpatients;
 
 import static org.junit.Assert.assertTrue;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -15,9 +16,13 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WriteListOfFhirPatientsToOmopAllAtOnceIntegrationTest {
+public class WriteListOfFhirPatientsToOmopIntegrationTest {
 
-	private static final String DIR_PATH = "/test/fhir/test-sets/test-set-10";
+	private static final String DIR_PATH = "/test/fhir/test-sets/test-set-100";
+
+	private static final int MAX_CONNS = 10;
+
+	private static final int MAX_THREADS = 50;
 
 	@Test
 	public void shouldWritePatientsToDatabase() {
@@ -25,17 +30,16 @@ public class WriteListOfFhirPatientsToOmopAllAtOnceIntegrationTest {
 		List<String> patientList = FileUtil.listResources(DIR_PATH, getClass());
 		// get a connection
 		log.info("Getting connection...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		List<Connection> connList = getConnections();
 		log.info("Got connection");
 		try {
-			int before = Database.count("person", conn);
+			int before = Database.count("person", connList.get(0));
 			log.info("before: " + before);
 			Timer timer = new Timer();
 			timer.start();
-			WriteListOfFhirPatientsToOmopAllAtOnce writer = new WriteListOfFhirPatientsToOmopAllAtOnce();
-			writer.exec(patientList, conn);
+			WriteListOfFhirPatientsToOmop.exec(patientList, connList, MAX_THREADS);
 			timer.stop();
-			int after = Database.count("person", conn);
+			int after = Database.count("person", connList.get(0));
 			log.info("before: " + before);
 			log.info("after:  " + after);
 			log.info("-------------");
@@ -45,9 +49,18 @@ public class WriteListOfFhirPatientsToOmopAllAtOnceIntegrationTest {
 			log.info("-------------");
 			assertTrue(after > before);
 		} finally {
-			OmopDatabaseConnectionFactory.close(conn);
+			for(Connection conn : connList) {
+				OmopDatabaseConnectionFactory.close(conn);
+			}
 		}
-
+		log.info("Done.");
 	}
 
+	private List<Connection> getConnections() {
+		List<Connection> rtn = new ArrayList<Connection>();
+		for (int i = 0; i < MAX_CONNS; i++) {
+			rtn.add(OmopDatabaseConnectionFactory.getOmopConnection());
+		}
+		return rtn;
+	}
 }

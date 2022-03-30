@@ -18,12 +18,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteListOfFhirPatientsToOmop {
 
-	public static void writeAllFiles(List<String> fileList, List<Connection> connList, int MAX_THREADS) {
+	public static void exec(List<String> fileList, List<Connection> connList, int maxThreads) {
 		ArrayList<String> filesToWrite = new ArrayList<String>();
 		int cnt = 0;
 		for (int i = 0; i < fileList.size(); i++) {
 			filesToWrite.add(fileList.get(i));
-			if (i % MAX_THREADS == 0 && i != 0) {
+			if (i % maxThreads == 0 && i != 0) {
 				new WriteListOfFhirPatientsToOmopAllAtOnce().exec(filesToWrite, connList);
 				for (Connection conn : connList) {
 					Database.commit(conn);
