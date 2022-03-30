@@ -28,7 +28,7 @@ public class OmopPerson {
 
 	private PersonDvo person;
 
-	private List<FhirPatient> patientEverythingList = new ArrayList<FhirPatient>();
+	private List<FhirPatient> fhirPatientList = new ArrayList<FhirPatient>();
 
 	private List<VisitOccurrenceDvo> visitOccurrenceList = new ArrayList<VisitOccurrenceDvo>();
 
@@ -41,7 +41,22 @@ public class OmopPerson {
 	private List<DrugExposureDvo> drugExposureList = new ArrayList<DrugExposureDvo>();
 
 	private List<ProcedureOccurrenceDvo> procedureOccurrenceList = new ArrayList<ProcedureOccurrenceDvo>();
+	
+	private List<String> resourceList = new ArrayList<String>();
 
+	public String getPatientId() {
+		try {
+			Integer id = this.person.getPersonId();
+			if(id != null) {
+				return id + "";
+			} else {
+				return null;
+			}
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
 	public Integer getOmopEncounterId(String fhirEncounterId) {
 		List<VisitOccurrenceDvo> visitList = this.getVisitOccurrenceList();
 		for (VisitOccurrenceDvo dvo : visitList) {

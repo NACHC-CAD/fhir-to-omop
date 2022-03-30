@@ -14,7 +14,7 @@ public class MedicationRequestParser {
 	// instance variables
 	//
 
-	private FhirPatient patient;
+	private FhirPatient fhirPatient;
 
 	private MedicationRequest medicationRequest;
 
@@ -22,8 +22,8 @@ public class MedicationRequestParser {
 	// constructor
 	//
 
-	public MedicationRequestParser(MedicationRequest medicationRequest, FhirPatient patient) {
-		this.patient = patient;
+	public MedicationRequestParser(MedicationRequest medicationRequest, FhirPatient fhirPatient) {
+		this.fhirPatient = fhirPatient;
 		this.medicationRequest = medicationRequest;
 	}
 
@@ -127,7 +127,7 @@ public class MedicationRequestParser {
 
 	public String getPatientId() {
 		try {
-			return this.patient.getPatient().getId();
+			return this.fhirPatient.getPatient().getId();
 		} catch (Exception exp) {
 			return null;
 		}
@@ -144,7 +144,7 @@ public class MedicationRequestParser {
 				return date;
 			} else {
 				String encounterId = this.getEncounterId();
-				EncounterParser enc = this.patient.getEncounter(encounterId);
+				EncounterParser enc = this.fhirPatient.getEncounter(encounterId);
 				return enc.getStartDate();
 			}
 		} catch (Exception exp) {

@@ -8,6 +8,8 @@ import org.nachc.tools.fhirtoomop.omop.person.factory.builder.condition.OmopCond
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.drugexposure.OmopDrugExposureBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.OmopObservationBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.person.OmopPersonBuilder;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.procedure.OmopProcedureBuilder;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.resource.OmopFhirResourceBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.visitoccurrence.OmopVisitOccurrenceBuilder;
 
 public class OmopPersonFactory {
@@ -19,6 +21,8 @@ public class OmopPersonFactory {
 		new OmopConditionOccurrenceBuilder(fhirPatient, rtn, conn).build();
 		new OmopDrugExposureBuilder(fhirPatient, rtn, conn).build();
 		new OmopObservationBuilder(fhirPatient, rtn, conn).build();
+		new OmopProcedureBuilder(fhirPatient, rtn, conn).build();
+		new OmopFhirResourceBuilder(fhirPatient, rtn, conn).build();
 		return rtn;
 	}
 

@@ -18,6 +18,35 @@ public class ProcedureParser {
 		this.fhirPatient = fhirPatient;
 	}
 
+	//
+	// encounter
+	//
+
+	public String getEncounterId() {
+		try {
+			String ref = this.proc.getContext().getReference();
+			if (ref.indexOf('/') < 0) {
+				return ref;
+			} else {
+				return ref.split("/")[1];
+			}
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
+	//
+	// patient
+	//
+
+	public String getPatientId() {
+		try {
+			return this.fhirPatient.getPatient().getId();
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 	public String getProcedureId() {
 		return FhirUtil.getIdUnqualified(this.proc.getId());
 	}
