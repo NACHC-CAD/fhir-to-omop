@@ -36,7 +36,7 @@ public class OmopProcedureBuilderIntegrationTest {
 			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
 			List<ProcedureOccurrenceDvo> list = omopPerson.getProcedureOccurrenceList();
 			log.info("Got " + list.size() + " procedures.");
-			assertTrue(list.size() == 94);
+			assertTrue(list.size() == 91);
 			List<MeasurementDvo> measList = omopPerson.getMeasurementList();
 			log.info("Got " + measList.size() + " measurements.");
 			assertTrue(measList.size() == 116);

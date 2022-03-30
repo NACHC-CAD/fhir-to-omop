@@ -39,7 +39,7 @@ public class OmopObservationBuilderIntegrationTest {
 			String patientId = person.getPerson().getPersonSourceValue();
 			log.info("Patient ID: " + patientId);
 			log.info("Got " + obsList.size() + " observations.");
-			assertTrue(obsList.size() == 3);
+			assertTrue(obsList.size() == 6);
 			log.info("Got " + measList.size() + " measurements.");
 			assertTrue(measList.size() == 116);
 			// test a single dvo

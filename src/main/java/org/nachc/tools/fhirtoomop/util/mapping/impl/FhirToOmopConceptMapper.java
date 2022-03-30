@@ -130,7 +130,7 @@ public class FhirToOmopConceptMapper {
 		if (system == null || conceptCode == null) {
 			return null;
 		} else {
-			String sqlString = "select concept_id from concept where vocabulary_id = ? and concept_code = ?";
+			String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ?";
 			system = SystemMapping.getOmopSystemForFhirSystem(system);
 			if (system == null) {
 				return null;

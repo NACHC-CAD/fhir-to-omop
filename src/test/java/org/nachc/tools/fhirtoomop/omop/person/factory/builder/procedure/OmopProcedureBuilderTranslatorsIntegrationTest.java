@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate;
+package org.nachc.tools.fhirtoomop.omop.person.factory.builder.procedure;
 
 import static org.junit.Assert.assertTrue;
 
@@ -20,7 +20,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OmopMeasurementFromProcedureBuilderIntegrationTest {
+public class OmopProcedureBuilderTranslatorsIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/use-cases/measurement-as-proc/0a2a950e-59b0-4669-8007-a505a3f14cbc";
 
@@ -38,6 +38,14 @@ public class OmopMeasurementFromProcedureBuilderIntegrationTest {
 			int before = Database.count("person", conn);
 			log.info("before: " + before);
 			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
+			log.info("Got " + omopPerson.getProcedureOccurrenceList().size() + " procedures");
+			log.info("Got " + omopPerson.getObservationList().size() + " observations");
+			log.info("Got " + omopPerson.getMeasurementList().size() + " measurements");
+			log.info("Got " + omopPerson.getConditionOccurrenceList().size() + " conditions");
+			assertTrue(omopPerson.getProcedureOccurrenceList().size() == 6);
+			assertTrue(omopPerson.getObservationList().size() == 13);
+			assertTrue(omopPerson.getMeasurementList().size() == 182);
+			assertTrue(omopPerson.getConditionOccurrenceList().size() == 9);
 			WriteOmopPersonToDatabase.exec(omopPerson, conn);
 			Database.commit(conn);
 			int after = Database.count("person", conn);

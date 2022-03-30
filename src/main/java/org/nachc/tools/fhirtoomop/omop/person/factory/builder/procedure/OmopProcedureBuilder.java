@@ -8,11 +8,15 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
-import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopMeasurementFromProcedureBuilder;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.condition.translate.OmopConditionFromProcedure;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopMeasurementFromProcedure;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopObservationFromProcedure;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
+import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
+import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 
 public class OmopProcedureBuilder {
@@ -25,9 +29,9 @@ public class OmopProcedureBuilder {
 
 	private List<MeasurementDvo> measurementList = new ArrayList<MeasurementDvo>();
 
-	private List<ProcedureOccurrenceDvo> conditionList = new ArrayList<ProcedureOccurrenceDvo>();
+	private List<ObservationDvo> observationList = new ArrayList<ObservationDvo>();
 
-	private List<ProcedureOccurrenceDvo> observationList = new ArrayList<ProcedureOccurrenceDvo>();
+	private List<ConditionOccurrenceDvo> conditionList = new ArrayList<ConditionOccurrenceDvo>();
 
 	private Connection conn;
 
@@ -44,6 +48,8 @@ public class OmopProcedureBuilder {
 		}
 		this.omopPerson.getProcedureOccurrenceList().addAll(this.procedureList);
 		this.omopPerson.getMeasurementList().addAll(this.measurementList);
+		this.omopPerson.getObservationList().addAll(this.observationList);
+		this.omopPerson.getConditionOccurrenceList().addAll(this.conditionList);
 	}
 
 	private void addProcedureOccurenceDvo(ProcedureParser proc) {
@@ -54,6 +60,12 @@ public class OmopProcedureBuilder {
 			addAsProcedure(proc, null);
 		} else if ("Measurement".equals(procConcept.getDomainId())) {
 			addAsMeasurement(proc, procConcept);
+		} else if ("Observation".equals(procConcept.getDomainId())) {
+			addAsObservation(proc, procConcept);
+		} else if ("Condition".equals(procConcept.getDomainId())) {
+			addAsCondition(proc, procConcept);
+		} else if ("Procedure".equals(procConcept.getDomainId())) {
+			addAsProcedure(proc, procConcept);
 		} else {
 			addAsProcedure(proc, procConcept);
 		}
@@ -72,7 +84,7 @@ public class OmopProcedureBuilder {
 		Integer omopVisitId = this.omopPerson.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
 		// procedure concept id
-		if(procConcept != null) {
+		if (procConcept != null) {
 			dvo.setProcedureConceptId(procConcept.getConceptId());
 		} else {
 			dvo.setProcedureConceptId(0);
@@ -86,8 +98,18 @@ public class OmopProcedureBuilder {
 	}
 
 	private void addAsMeasurement(ProcedureParser proc, ConceptDvo procConcept) {
-		MeasurementDvo dvo = new OmopMeasurementFromProcedureBuilder(fhirPatient, proc, procConcept, omopPerson, conn).build();
+		MeasurementDvo dvo = new OmopMeasurementFromProcedure(fhirPatient, proc, procConcept, omopPerson, conn).build();
 		this.measurementList.add(dvo);
+	}
+
+	private void addAsObservation(ProcedureParser proc, ConceptDvo procConcept) {
+		ObservationDvo dvo = new OmopObservationFromProcedure(fhirPatient, proc, procConcept, omopPerson, conn).build();
+		this.observationList.add(dvo);
+	}
+
+	private void addAsCondition(ProcedureParser proc, ConceptDvo procConcept) {
+		ConditionOccurrenceDvo dvo = new OmopConditionFromProcedure(fhirPatient, proc, procConcept, omopPerson, conn).build();
+		this.conditionList.add(dvo);
 	}
 
 }

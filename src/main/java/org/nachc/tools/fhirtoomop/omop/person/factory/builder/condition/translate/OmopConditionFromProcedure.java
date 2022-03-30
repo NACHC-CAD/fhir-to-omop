@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate;
+package org.nachc.tools.fhirtoomop.omop.person.factory.builder.condition.translate;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -9,10 +9,11 @@ import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
+import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 
-public class OmopMeasurementFromProcedureBuilder {
+public class OmopConditionFromProcedure {
 
 	//
 	// instance variables
@@ -38,7 +39,7 @@ public class OmopMeasurementFromProcedureBuilder {
 	// constructor
 	//
 
-	public OmopMeasurementFromProcedureBuilder(FhirPatient fhirPatient, ProcedureParser parser, ConceptDvo conceptDvo, OmopPerson omopPerson, Connection conn) {
+	public OmopConditionFromProcedure(FhirPatient fhirPatient, ProcedureParser parser, ConceptDvo conceptDvo, OmopPerson omopPerson, Connection conn) {
 		this.fhirPatient = fhirPatient;
 		this.parser = parser;
 		this.conceptDvo = conceptDvo;
@@ -46,14 +47,15 @@ public class OmopMeasurementFromProcedureBuilder {
 		this.conn = conn;
 	}
 
-	public MeasurementDvo build() {
-		MeasurementDvo dvo = new MeasurementDvo();
+	public ConditionOccurrenceDvo build() {
+		ConditionOccurrenceDvo dvo = new ConditionOccurrenceDvo();
 		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id", conn);
-		dvo.setMeasurementId(measurementId);
+		dvo.setConditionOccurrenceId(measurementId);
 		dvo.setPersonId(omopPerson.getPersonId());
-		dvo.setMeasurementConceptId(conceptDvo.getConceptId());
-		dvo.setMeasurementDate(parser.getStartDate());
-		dvo.setMeasurementTypeConceptId(0);
+		dvo.setConditionConceptId(conceptDvo.getConceptId());
+		dvo.setConditionStartDate(parser.getStartDate());
+		dvo.setConditionEndDate(parser.getEndDate());
+		dvo.setConditionTypeConceptId(0);
 		String fhirEncounterId = parser.getEncounterId();
 		Integer omopVisitId = this.omopPerson.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
