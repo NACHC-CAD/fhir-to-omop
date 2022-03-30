@@ -44,7 +44,16 @@ public class OmopPerson {
 	
 	private List<String> resourceList = new ArrayList<String>();
 
-	public String getPatientId() {
+	public Integer getPersonId() {
+		try {
+			Integer id = this.person.getPersonId();
+			return id;
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	public String getPersonIdStr() {
 		try {
 			Integer id = this.person.getPersonId();
 			if(id != null) {

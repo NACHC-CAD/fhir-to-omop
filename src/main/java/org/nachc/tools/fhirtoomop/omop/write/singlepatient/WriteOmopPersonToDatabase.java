@@ -33,7 +33,7 @@ public class WriteOmopPersonToDatabase {
 	}
 
 	private static void writeFhirResources(OmopPerson person, Connection conn) {
-		String patientId = person.getPatientId();
+		String patientId = person.getPersonIdStr();
 		List<String> resourceList = person.getResourceList();
 		for (String fhirResource : resourceList) {
 			String resourceName = null;

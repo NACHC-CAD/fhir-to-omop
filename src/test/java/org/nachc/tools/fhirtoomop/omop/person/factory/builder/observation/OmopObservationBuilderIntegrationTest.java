@@ -41,7 +41,7 @@ public class OmopObservationBuilderIntegrationTest {
 			log.info("Got " + obsList.size() + " observations.");
 			assertTrue(obsList.size() == 3);
 			log.info("Got " + measList.size() + " measurements.");
-			assertTrue(measList.size() == 55);
+			assertTrue(measList.size() == 116);
 			// test a single dvo
 			ObservationDvo dvo;
 			dvo = obsList.get(0);

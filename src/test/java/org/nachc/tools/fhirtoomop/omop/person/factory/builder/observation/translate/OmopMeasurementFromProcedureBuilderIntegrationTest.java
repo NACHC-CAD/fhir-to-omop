@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.omop.person.factory.builder.procedure;
+package org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate;
 
 import static org.junit.Assert.assertTrue;
 
@@ -10,22 +10,24 @@ import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
+import org.nachc.tools.fhirtoomop.omop.write.singlepatient.WriteOmopPersonToDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
-import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
+import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OmopProcedureBuilderIntegrationTest {
+public class OmopMeasurementFromProcedureBuilderIntegrationTest {
 
-	private static final String DIR_PATH = "/test/fhir/test-patient-01/5acc8bb4-2d14-4461-a560-228d96459cc3";
+	private static final String DIR_PATH = "/test/fhir/use-cases/measurement-as-proc/0a2a950e-59b0-4669-8007-a505a3f14cbc";
 
 	@Test
-	public void shouldCreateDvo() {
+	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
+		TruncateAllDataTables.exec();
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFhirPatient();
 		// get a connection
@@ -33,15 +35,19 @@ public class OmopProcedureBuilderIntegrationTest {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		log.info("Got connection");
 		try {
+			int before = Database.count("person", conn);
+			log.info("before: " + before);
 			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
-			List<ProcedureOccurrenceDvo> list = omopPerson.getProcedureOccurrenceList();
-			log.info("Got " + list.size() + " procedures.");
-			assertTrue(list.size() == 94);
-			List<MeasurementDvo> measList = omopPerson.getMeasurementList();
-			log.info("Got " + measList.size() + " measurements.");
-			assertTrue(measList.size() == 116);
+			WriteOmopPersonToDatabase.exec(omopPerson, conn);
+			Database.commit(conn);
+			int after = Database.count("person", conn);
+			log.info("before: " + before);
+			log.info("after: " + after);
+			assertTrue(after > before);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
+		log.info("Done.");
 	}
+
 }

@@ -74,7 +74,7 @@ public class FhirToOmopConceptMapper {
 				return dvoFromCache;
 			}
 			log.info("looking for standard concept: " + system + "\t" + conceptCode);
-			String sqlString = "select concept_id from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
+			String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'";
 			system = SystemMapping.getOmopSystemForFhirSystem(system);
 			if (system == null) {
 				return null;

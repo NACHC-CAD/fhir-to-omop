@@ -249,9 +249,11 @@ public class OmopObservationBuilder {
 		}
 	}
 	
+	// TODO: MOVE THIS TO A CONVERTER CLASS (JEG)
 	private MeasurementDvo getMeasurement(ObservationDvo obs) {
 		MeasurementDvo dvo = new MeasurementDvo();
-		dvo.setMeasurementId(obs.getObservationId());
+		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id", conn);
+		dvo.setMeasurementId(measurementId);
 		dvo.setPersonId(obs.getPersonId());
 		dvo.setMeasurementConceptId(obs.getObservationConceptId());
 		dvo.setMeasurementDate(obs.getObservationDate());
