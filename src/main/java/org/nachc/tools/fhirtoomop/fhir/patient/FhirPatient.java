@@ -12,6 +12,7 @@ import org.nachc.tools.fhirtoomop.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.component.ObservationComponentParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.type.ObservationType;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,6 +32,8 @@ public class FhirPatient {
 	private List<MedicationRequestParser> medicationRequestList = new ArrayList<MedicationRequestParser>();
 	
 	private List<ObservationParser> observationList = new ArrayList<ObservationParser>();
+	
+	private List<ProcedureParser> procedureList = new ArrayList<ProcedureParser>();
 	
 	//
 	// observation methods

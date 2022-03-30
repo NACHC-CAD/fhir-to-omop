@@ -18,7 +18,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OmopConditionFactoryIntegrationTest {
+public class OmopConditionBuilderIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/test-patient-01/5acc8bb4-2d14-4461-a560-228d96459cc3";
 

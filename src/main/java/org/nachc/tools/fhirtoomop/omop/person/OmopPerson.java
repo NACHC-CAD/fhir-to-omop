@@ -6,6 +6,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
+import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
@@ -35,7 +36,7 @@ public class OmopPerson {
 
 	private List<ObservationDvo> observationList = new ArrayList<ObservationDvo>();
 
-	private List<ObservationDvo> measurementList = new ArrayList<ObservationDvo>();
+	private List<MeasurementDvo> measurementList = new ArrayList<MeasurementDvo>();
 
 	private List<DrugExposureDvo> drugExposureList = new ArrayList<DrugExposureDvo>();
 
@@ -47,6 +48,15 @@ public class OmopPerson {
 			String sourceId = dvo.getVisitSourceValue();
 			if (sourceId != null && sourceId.equals(fhirEncounterId)) {
 				return dvo.getVisitOccurrenceId();
+			}
+		}
+		return null;
+	}
+
+	public VisitOccurrenceDvo getVisitOccurrenceByFhirId(String fhirId) {
+		for (VisitOccurrenceDvo dvo : this.visitOccurrenceList) {
+			if (fhirId != null && fhirId.equals(dvo.getVisitSourceValue())) {
+				return dvo;
 			}
 		}
 		return null;
