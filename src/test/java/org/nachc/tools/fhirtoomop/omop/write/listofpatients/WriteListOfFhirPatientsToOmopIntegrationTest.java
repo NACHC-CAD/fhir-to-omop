@@ -26,6 +26,10 @@ public class WriteListOfFhirPatientsToOmopIntegrationTest {
 
 	@Test
 	public void shouldWritePatientsToDatabase() {
+		writePatientsToDatabase();
+	}
+
+	public void writePatientsToDatabase() {
 		log.info("Starting test...");
 		List<String> patientList = FileUtil.listResources(DIR_PATH, getClass());
 		// get a connection
@@ -46,6 +50,8 @@ public class WriteListOfFhirPatientsToOmopIntegrationTest {
 			log.info("start:   " + timer.getStartAsString());
 			log.info("stop:    " + timer.getStopAsString());
 			log.info("elapsed: " + timer.getElapsedString());
+			log.info("-------------");
+			log.info("Your database schmea now has " + after + " patients.");
 			log.info("-------------");
 			assertTrue(after > before);
 		} finally {

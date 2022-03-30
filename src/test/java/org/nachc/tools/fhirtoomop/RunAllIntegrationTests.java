@@ -5,6 +5,9 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
+import org.nachc.tools.fhirtoomop.omop.write.listofpatients.WriteListOfFhirPatientsToOmopIntegrationTest;
+import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.util.time.Timer;
 
 import com.googlecode.junittoolbox.SuiteClasses;
@@ -34,6 +37,13 @@ public class RunAllIntegrationTests {
 	public static void cleanup() {
 		log.info("");
 		log.info("");
+		log.info("Truncating data tables...");
+		TruncateAllDataTables.exec();
+		log.info("Populating with 100 patients...");
+		new WriteListOfFhirPatientsToOmopIntegrationTest().writePatientsToDatabase();
+		int patientCount = GetCountForTable.exec("person");
+		log.info("");
+		log.info("");
 		log.info("***********************************************************");
 		log.info("* * * ");
 		log.info("* * * Done with integration tests.");
@@ -45,6 +55,7 @@ public class RunAllIntegrationTests {
 		log.info("Start:   " + TIMER.getStartAsString());
 		log.info("Stop:    " + TIMER.getStopAsString());
 		log.info("Elapsed: " + TIMER.getElapsedString());
+		log.info("There are now " + patientCount + " patients in your OMOP database.");
 		log.info("Done.");
 	}
 
