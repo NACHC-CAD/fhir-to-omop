@@ -1,11 +1,8 @@
 package org.nachc.tools.fhirtoomop.util.params;
 
-import java.io.File;
 import java.io.InputStream;
-import java.util.List;
 import java.util.Properties;
 
-import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
 import com.nach.core.util.string.StringUtil;
 
@@ -106,96 +103,101 @@ public class AppParams {
 		String fileName = PROPS.getProperty("fhirPatientsDir");
 		return fileName;
 	}
-	
+
 	// max number of connections to use for upload
 	public static int getMaxNumberOfConnectionsForUpload() {
 		String str = PROPS.getProperty("maxNumberOfConnectionsForUpload");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
-	
+
 	// max number of threads to use for upload
 	public static int getMaxNumberOfThreadsForUpload() {
 		String str = PROPS.getProperty("maxNumberOfThreadsForUpload");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
-	
+
 	// cache size
 	public static int getConceptCacheSize() {
 		String str = PROPS.getProperty("conceptCacheSize");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
-	
-/*	
 
-	// local files stuff
+	// ---
+	//
+	// Download files stuff
+	//
+	// ---
 
-	public static File getFhirPatientIdDir() {
-		String dirName = PROPS.getProperty("fhirPatientIdDir");
-		return new File(dirName);
-	}
-
-	public static List<String> getFhirPatientsDirListing() {
-		String fileName = getFhirPatientsDirName();
-		log.info("+++++++++++++++++++++++++++++");
-		log.info("Getting listing for: " + fileName);
-		log.info("+++++++++++++++++++++++++++++");
-		List<String> rtn = FileUtil.listResources(fileName, AppParams.class);
+	public static int getDownloadNumberOfPatientsPerThread() {
+		String str = PROPS.getProperty("downloadNumberOfPatientsPerThread");
+		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
-	//
-	// create a test output file
-	//
-
-	public static File getTestOutFile(String fileName) {
-		String dirName = PROPS.getProperty("testOutputDir");
-		return new File(dirName, fileName);
+	public static int getDownloadMaxNumberOfActiveWorkers() {
+		String str = PROPS.getProperty("downloadMaxNumberOfActiveWorkers");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
 	}
 
-	// synthea stuff
-
-	public static String getSyntheaOauthUrl() {
-		return PROPS.getProperty("fhir-server-oauth-url");
+	public static int getDownloadNumberOfPatientsPerWorker() {
+		String str = PROPS.getProperty("downloadNumberOfPatientsPerWorker");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
 	}
 
-	public static String getSyntheaUrl() {
-		return PROPS.getProperty("fhir-server-url");
-	}
-
-	public static String getSyntheaAppId() {
-		return PROPS.getProperty("synthea-app-id");
-	}
-
-	public static String getSyntheaKeyForToken() {
-		return PROPS.getProperty("synthea-key");
-	}
-
-	public static String getSyntheaSecret() {
-		return PROPS.getProperty("synthea-secret");
-	}
-
-	// umls stuff
-
-	public static String getUmlsApiKey() {
-		return PROPS.getProperty("umls-api-key");
-	}
-
-	// dirs for a production run
-
-	public static File getPatientIdsDir_PROD() {
-		String dirName = PROPS.getProperty("fhirPatientIdDir_PROD");
-		File file = new File(dirName);
-		return file;
-	}
-
-	public static File getPatientDir_PROD() {
-		String dirName = PROPS.getProperty("fhirPatientsDir_PROD");
-		File file = new File(dirName);
-		return file;
-	}
-*/
+	/*
+	 * 
+	 * // local files stuff
+	 * 
+	 * public static File getFhirPatientIdDir() { String dirName =
+	 * PROPS.getProperty("fhirPatientIdDir"); return new File(dirName); }
+	 * 
+	 * public static List<String> getFhirPatientsDirListing() { String fileName =
+	 * getFhirPatientsDirName(); log.info("+++++++++++++++++++++++++++++");
+	 * log.info("Getting listing for: " + fileName);
+	 * log.info("+++++++++++++++++++++++++++++"); List<String> rtn =
+	 * FileUtil.listResources(fileName, AppParams.class); return rtn; }
+	 * 
+	 * // // create a test output file //
+	 * 
+	 * public static File getTestOutFile(String fileName) { String dirName =
+	 * PROPS.getProperty("testOutputDir"); return new File(dirName, fileName); }
+	 * 
+	 * // synthea stuff
+	 * 
+	 * public static String getSyntheaOauthUrl() { return
+	 * PROPS.getProperty("fhir-server-oauth-url"); }
+	 * 
+	 * public static String getSyntheaUrl() { return
+	 * PROPS.getProperty("fhir-server-url"); }
+	 * 
+	 * public static String getSyntheaAppId() { return
+	 * PROPS.getProperty("synthea-app-id"); }
+	 * 
+	 * public static String getSyntheaKeyForToken() { return
+	 * PROPS.getProperty("synthea-key"); }
+	 * 
+	 * public static String getSyntheaSecret() { return
+	 * PROPS.getProperty("synthea-secret"); }
+	 * 
+	 * // umls stuff
+	 * 
+	 * public static String getUmlsApiKey() { return
+	 * PROPS.getProperty("umls-api-key"); }
+	 * 
+	 * // dirs for a production run
+	 * 
+	 * public static File getPatientIdsDir_PROD() { String dirName =
+	 * PROPS.getProperty("fhirPatientIdDir_PROD"); File file = new File(dirName);
+	 * return file; }
+	 * 
+	 * public static File getPatientDir_PROD() { String dirName =
+	 * PROPS.getProperty("fhirPatientsDir_PROD"); File file = new File(dirName);
+	 * return file; }
+	 */
 
 }
