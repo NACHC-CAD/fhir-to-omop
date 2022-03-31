@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.util.server.auth.HttpClientAuthenticator;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.http.HttpRequestClient;
@@ -19,16 +20,35 @@ public class FhirServerAuthenticatorIntegrationTest {
 		log.info("Starting test..");
 		String url = AppParams.get("fhirPatientServerUrl");
 		url = url + "/Patient";
-		HttpRequestClient client = new HttpRequestClient(url);
-		FhirServerAuthenticator.addAuthentication(client);
+		// auth after init and after refresh
+		HttpRequestClient client;
+		String response;
+		BundleParser bundle;
+		String nextUrl;
+		// auth after init
+		client = new HttpRequestClient(url);
+		FhirServerAuthenticator.auth(client);
 		client.doGet();
-		String response = client.getResponse();
+		response = client.getResponse();
 		response = JsonUtil.prettyPrint(response);
 		log.info("Got response: \n" + response);
-		BundleParser bundle = new BundleParser(response);
-		String nextUrl = bundle.getNextUrl();
+		bundle = new BundleParser(response);
+		nextUrl = bundle.getNextUrl();
 		log.info("Got next url: " + nextUrl);
 		assertTrue(nextUrl != null);
+		// auth after refresh
+		FhirServerAuthenticator.refresh();
+		client = new HttpRequestClient(url);
+		FhirServerAuthenticator.auth(client);
+		client.doGet();
+		response = client.getResponse();
+		response = JsonUtil.prettyPrint(response);
+		log.info("Got response: \n" + response);
+		bundle = new BundleParser(response);
+		nextUrl = bundle.getNextUrl();
+		log.info("Got next url: " + nextUrl);
+		assertTrue(nextUrl != null);
+		// done
 		log.info("Done.");
 	}
 

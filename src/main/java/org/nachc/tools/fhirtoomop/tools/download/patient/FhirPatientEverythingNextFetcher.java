@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.download.patient;
 
+import org.nachc.tools.fhirtoomop.fhir.util.server.auth.HttpClientAuthenticator;
 import org.nachc.tools.fhirtoomop.tools.download.authenticate.FhirServerAuthenticator;
 
 import com.nach.core.util.http.HttpRequestClient;
@@ -23,7 +24,7 @@ public class FhirPatientEverythingNextFetcher {
 	public String fetchNext(String nextUrl) {
 		log.info("URL: " + nextUrl);
 		this.client = new HttpRequestClient(nextUrl);
-		FhirServerAuthenticator.addAuthentication(client);
+		FhirServerAuthenticator.auth(client);
 		client.doGet();
 		int status = client.getStatusCode();
 		log.info("Got status: " + status);

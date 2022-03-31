@@ -11,9 +11,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HeaderTokenAuthenticator implements HttpClientAuthenticator {
 
+	private String token;
+
+	@Override
+	public void init() {
+		this.token = fetchToken();
+	}
+
+	@Override
+	public void refresh() {
+		this.token = fetchToken();
+	}
+
 	@Override
 	public void addAuth(HttpRequestClient client) {
-		String token = fetchToken();
 		addHeaders(client, token);
 	}
 
@@ -24,7 +35,7 @@ public class HeaderTokenAuthenticator implements HttpClientAuthenticator {
 		log.info("Getting token...");
 		String apiKey = AppParams.get("headerTokenAuthenticatorApiKey");
 		String secret = AppParams.get("headerTokenAuthenticatorSecret");
-		String url =  AppParams.get("headerTokenAuthenticatorUrl");
+		String url = AppParams.get("headerTokenAuthenticatorUrl");
 		String msg = "{ \"grantType\" : \"client_credentials\", \"scopes\" : \"user/*.read\" }";
 		HttpRequestClient http = new HttpRequestClient(url);
 		http.addBasicAuthentication(apiKey, secret);
