@@ -59,7 +59,7 @@
 				</tr>
 				<tr>
 					<td>
-						<a href="https://ohdsi.github.io/CommonDataModel/cdm54.html#PROCEDURE_OCCURRENCE">
+						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#PROCEDURE_OCCURRENCE">
 							PROCEDURE_OCCURRENCE
 						</a>
 					</td>
@@ -76,22 +76,59 @@
 			<table class="table table-condensed table-hover">
 				<tr>
 					<td>
-						<a download href="/fhir-to-omop/resources/reference-data/patient-one/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">
-							Patient&nbsp;One (Download)
+						<a target="github" href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/resources/test/fhir/use-cases/measurement-as-proc/0a2a950e-59b0-4669-8007-a505a3f14cbc">
+							0a2a950e-59b0-4669-8007-a505a3f14cbc
 						</a>
 					</td>
 					<td>
-						The fhir-to-omop Patient One. This is the Patient$everything record for patient 0000aa42-c235-4447-8389-8a2640f44466.  
-						(Click <a href="/fhir-to-omop/resources/reference-data/patient-one/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">here</a> to view in browser). 
-						This file has been pretty printed to be more human readable.  
-						The original file is available here to  
-						<a download href="/fhir-to-omop/resources/reference-data/patient-one/original/0000aa42-c235-4447-8389-8a2640f44466_9ffd987f-50cc-4818-b6b8-ea0de2f885d6.json">
-							download
-						</a>
+						This patient has examples of FHIR Procedure resources, 
+						and specifically has examples of Procedure resources that use codes other than procedure codes
+						(e.g. Measurement, Observation, and Condition).
+						The set of files in this folder represent the full set of FHIR resources for the synthmass patient 0a2a950e-59b0-4669-8007-a505a3f14cbc.
 					</td>
 				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
 			</table> 
-			
+
+			<h2>Mapping Details</h2>
+			<p>
+				OMOP procedure records are mapped from FHIR Procedure resources. 
+				Attribute level details of how FHIR Procedure resources are parsed are in the 
+				<a target="parser" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/procedure/ProcedureParser.java">
+					OmopProcedureBuilder
+				</a>
+				class.
+			</p>
+			<p>
+				Attribute level details of how the parser is mapped to OMOP records are in the 
+				<a target="builder" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/procedure/OmopProcedureBuilder.java">
+					OmopProcedureBuilder
+				</a>
+				class.
+			</p>
+			<p>
+				We have found FHIR Procedure resources using codes that are not procedure codes.
+				These codes include codes for Measurements, Observations, and Conditions.
+				The OMOP Data Quality Dashboard (DQD) tests indicated all records in the procedure table should have a procedure_concept_id
+				that mapps to a concept that is in the Procedure domain (i.e. domain_id = "Procedure").
+				Therefore, when Procedure FHIR resources are found that have a coding that is for a Measurement, Observation, or Condition
+				these FHIR procedures are not written to the OMOP procedure table but are respetively written to the
+				measurement, observation_occurrence, or condition tables.  
+				The code for this is also in the 
+				<a target="builder" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/procedure/OmopProcedureBuilder.java">
+					OmopProcedureBuilder
+				</a>
+				class.
+				DQD results before and after making these distinctions are shown below.  				
+			</p>
+			<h3>Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the OMOP procedure table</h3>
+			<img border="2" src="./img/procedure-fail.PNG" />
+			<h3>Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the procedure, measurement, observation, and condition_occurrence tables</h3>
+			<img border="2" src="./img/procedure-pass.PNG" />
+					
 		</div>
 	</body>
 </html>
