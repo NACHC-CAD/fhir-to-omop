@@ -7,6 +7,53 @@
 		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
 		<div id="headerInclude"></div>
 		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.js"></script>
+		<script>
+		    function arrayToTable(tableData) {
+		        var table = $('<table class="table table-striped table-bordered table-sm" cellspacing="0"></table>');
+				var header = $('<thead></thead>')
+				var body = $('<tbody></tbody>')
+				table.append(header);
+				table.append(body);
+		        $(tableData).each(function (i, rowData) {
+		            var row = $('<tr></tr>');
+		            $(rowData).each(function (j, cellData) {
+		            	if(i == 0) {
+			                row.append($('<th>'+cellData+'</th>'));		            		
+		            	} else  {
+			                row.append($('<td>'+cellData+'</td>'));
+		            	}
+		            	
+		            });
+		            if(i == 0) {
+			            header.append(row);		            	
+		            } else {
+			            body.append(row);
+		            }
+		        });
+		        return table;
+		    }
+		
+		    $.ajax({
+		        type: "GET",
+		        url: "./data/fhir-procs-with-other-codes.csv",
+		        success: function (data) {
+		            $('#proc-table').append(arrayToTable(Papa.parse(data).data));
+		            $('#bottom-spacer').append("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>")
+		        }
+		    });
+
+		    $(document).ready(function () {
+		    	  $('#proc-table').DataTable({
+		    	    "scrollY": "50vh",
+		    	    "scrollCollapse": true,
+		    	  });
+		    	  $('.dataTables_length').addClass('bs-select');
+		    	});
+		    
+		</script>
+
 	</head>
 
 	<body>
@@ -20,7 +67,7 @@
 			This document details the design and decisions for implementing mapping of FHIR Procedure resources to OMOP. 
 			The following referenced were used to inform this implementation.  
 			<br/>
-			<h2>References for Procedure</h2>
+			<h3>References for Procedure</h3>
 			<table class="table table-condensed table-hover">
 				<tr>
 					<td>
@@ -67,9 +114,14 @@
 						This is the OMOP documentation for the PROCEDURE_OCCURRENCE table.  
 					</td>
 				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
 			</table> 
+			<br/>
 			
-			<h2>Reference Data</h2>
+			<h3>Reference Data</h3>
 			The resoures show below are used for specific use cases and examples
 			<br/>
 			<br/>
@@ -92,8 +144,9 @@
 					<td></td>
 				</tr>
 			</table> 
+			<br/>
 
-			<h2>Mapping Details</h2>
+			<h3>Mapping Details</h3>
 			<p>
 				OMOP procedure records are mapped from FHIR Procedure resources. 
 				Attribute level details of how FHIR Procedure resources are parsed are in the 
@@ -124,11 +177,39 @@
 				class.
 				DQD results before and after making these distinctions are shown below.  				
 			</p>
+			<br/>
+			
 			<h3>Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the OMOP procedure table</h3>
+			<p>
+				Prior to mapping FHIR Procedure resources to Measurement, Observation, Condition, and Procedure 
+				the following results were obtainded after running the DQD.  
+			</p>
 			<img border="2" src="./img/procedure-fail.PNG" />
+			<br/>
+			<br/>
+			
 			<h3>Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the procedure, measurement, observation, and condition_occurrence tables</h3>
+			<p>
+				After mapping FHIR Procedure resources to Measurement, Observation, Condition, and Procedure 
+				all tests for Procedure are passing.
+			</p>
 			<img border="2" src="./img/procedure-pass.PNG" />
-					
+			<br/>
+			<br/>
+			
+			<h3>Examples of FHIR Procedure resources that have non-procedure codings</h3>
+			<p>
+				The following is a list of FHIR resources found to have non-procedure codings 
+				(i.e. domain_id should be "Procedure" and is not).
+				The person_source_code shown is the ID for the patient found on synthmass.  
+				Click 
+				<a download href="./data/fhir-procs-with-other-codes-ext-list.csv">
+					here
+				</a> 
+				to download the larger list.  
+			</p>
+			<div id="proc-table"><p></p></div>
+			<div id="bottom-spacer"></div>
 		</div>
 	</body>
 </html>
