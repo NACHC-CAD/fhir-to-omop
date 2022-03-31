@@ -42,7 +42,7 @@ public class WriteFhirPatientToOmopRunnable implements Runnable {
 	public void run() {
 		try {
 			List<String> fileList = FileUtil.listResources(this.file, getClass());
-			FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFhirPatient();
+			FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
 			OmopPerson personEverything = new OmopPersonFactory().build(fhirPatient, conn);
 			log.info("DONE: Parsing fhir resource (" + this.id + "): " + this.filePathShortend);
 			// write to the database

@@ -35,7 +35,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 	public void shouldGetVisitOccurrences() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFhirPatient();
+		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
 		// get a connection
 		log.info("Getting connection...");
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();

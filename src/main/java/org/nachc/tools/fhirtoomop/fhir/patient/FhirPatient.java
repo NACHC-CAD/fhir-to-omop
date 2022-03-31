@@ -86,6 +86,17 @@ public class FhirPatient {
 	}
 	
 	/**
+	 * Method to get the patientId
+	 */
+	public String getPatientId() {
+		try {
+			return this.patient.getId();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	/**
 	 * Method to get an encounter for a given id.  
 	 */
 	public EncounterParser getEncounter(String encounterId) {

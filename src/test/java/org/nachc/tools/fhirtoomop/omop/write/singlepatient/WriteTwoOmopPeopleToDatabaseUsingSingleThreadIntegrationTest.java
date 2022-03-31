@@ -35,7 +35,7 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 				log.info("WRITING PATIENT " + cnt + " OF " + dirList.size() + " TO DATABASE.");
 				log.info("------------");
 				List<String> fileList = FileUtil.listResources(dir, getClass());
-				FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFhirPatient();
+				FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
 				OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
 				WriteOmopPersonToDatabase.exec(omopPerson, conn);
 			}

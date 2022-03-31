@@ -22,7 +22,7 @@ public class MedicationRequestParserIntegrationTest {
 	public void shouldParseMedicationRequests() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFhirPatient();
+		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
 		List<MedicationRequestParser> medReqList = fhirPatient.getMedicationRequestList();
 		log.info("Got " + medReqList.size() + " MedicationRequest resources");
 		assertTrue(medReqList.size() == 8);

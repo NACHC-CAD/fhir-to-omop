@@ -21,7 +21,7 @@ public class ProcedureParserIntegrationTest {
 	public void shouldParseObservtion() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient patient = new FhirPatientFactory(fileList).buildFhirPatient();
+		FhirPatient patient = new FhirPatientFactory(fileList).buildFromFileList();
 		List<ProcedureParser> procList = patient.getProcedureList();
 		log.info("Got " + procList.size() + " procedures.");
 		assertTrue(procList.size() == 155);
