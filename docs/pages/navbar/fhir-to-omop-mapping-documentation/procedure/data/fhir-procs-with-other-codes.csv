@@ -1,6 +1,6 @@
 person_source_value,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,conept_code,valid_start_date,valid_end_date,invalid_reason
-0a2a950e-59b0-4669-8007-a505a3f14cbc,37393315,Faecal occult blood test,Measurement,SNOMED,Observable Entity,S,1.02E+15,4/1/2016,12/31/2099,NULL
-0a2a950e-59b0-4669-8007-a505a3f14cbc,765467,Documentation of current medications,Observation,SNOMED,Procedure,S,4.28E+14,9/1/2012,12/31/2099,NULL
+0a2a950e-59b0-4669-8007-a505a3f14cbc,37393315,Faecal occult blood test,Measurement,SNOMED,Observable Entity,S,1015401000000102,2016-04-01,2099-12-31,NULL
+0a2a950e-59b0-4669-8007-a505a3f14cbc,765467,Documentation of current medications,Observation,SNOMED,Procedure,S,428191000124101,2012-09-01,2099-12-31,NULL
 0a462ac1-182b-45c5-83a2-9653c17624bf,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,1/31/2019,12/31/2099,NULL
 0ad0e949-9cb5-4778-ae4c-22af933aacd8,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,1/31/2019,12/31/2099,NULL
 00bf3b32-5d99-47a2-a72b-f4bc2e3d9d1d,4064377,Depression screening,Measurement,SNOMED,Procedure,S,171207006,1/31/2002,12/31/2099,NULL
