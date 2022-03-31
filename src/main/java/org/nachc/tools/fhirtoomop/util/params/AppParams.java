@@ -149,6 +149,10 @@ public class AppParams {
 		return rtn;
 	}
 
+	public static String getDownloadOutputDir() {
+		return PROPS.getProperty("downloadOutputDir");
+	}
+
 	/*
 	 * 
 	 * // local files stuff

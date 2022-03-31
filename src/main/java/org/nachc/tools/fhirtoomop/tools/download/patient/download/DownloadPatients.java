@@ -23,8 +23,10 @@ public class DownloadPatients {
 
 	private static ArrayList<Thread> threads = new ArrayList<Thread>();
 
-	public static void getPatients(List<String> patientIdList, File outDir) {
+	public static void getPatients(List<String> patientIdList) {
 		waiting = patientIdList;
+		String outDirName = AppParams.getDownloadOutputDir();
+		File outDir = new File(outDirName);
 		int threadId = 0;
 		while (waiting.size() > 0) {
 			while (active.size() <= MAX_ACTIVE && waiting.size() > 0) {
@@ -37,7 +39,7 @@ public class DownloadPatients {
 					}
 				}
 				threadId++;
-				DownloadPatientsWorker worker = new DownloadPatientsWorker(patientIdList, outDir);
+				DownloadPatientsWorker worker = new DownloadPatientsWorker(patientsForWorker, outDir);
 				DownloadFhirPatientWorkerRunnable runnable = new DownloadFhirPatientWorkerRunnable(worker, threadId);
 				Thread thread = new Thread(runnable);
 				threads.add(thread);

@@ -24,7 +24,9 @@ public class DownloadPatientRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		new WriteFhirPatientToFile().exec(token, token, outputDir);
+		for(String patientId : this.patientIds) {
+			new WriteFhirPatientToFile().exec(patientId, token, outputDir);
+		}
 	}
 
 }
