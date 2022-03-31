@@ -2,20 +2,28 @@
 
 	<!-- March 17, 2022 -->
 	<h1>2022-03-31: March 31, 2022 Status</h1>
-	Happy Thursday March the 31st morning.  
-	Today it's back up to 43 degrees Fahrenheit here in East Lyme, 
-	but that's an outlier for the week that has been consistently in the 20's.  
-	Winter hasn't given up yet!   
-	We've been getting 
-	<a target="bird" href="/fhir-to-omop/pages/birds/birds.html">yellow-rumped warblers</a> at our bird feeders.  
-	An other first for us!		
-	We are thrilled with the progress the team has made.  
-	In the past few weeks we have undergone a major refactoring and the overall architecture is looking much more polished.  
-	This refactoring now accounts for Patient resources represented across multiple requests (paging).  
-	We've also brought all of the tests for the PROCEDURE entity to passing DQD!  
-	The curve ball challenge for this feature was the accounting for FHIR using procedure, measurement, observation, and condition codes to represent procedures.  
-	OMOP DQD requires all records in the procedure table to have a procedute_concept_id with a domain_id of "Procedure".  
-	This was reconciled by putting FHIR procedures using measurement, observation, and condition codes into those respective tables in OMOP.   
+	<p>
+		Happy Thursday March the 31st morning.  
+		Today it's back up to 43 degrees Fahrenheit here in East Lyme, 
+		but that's an outlier for the week that has been consistently in the 20's.  
+		Winter hasn't given up yet!   
+		We've been getting 
+		<a target="bird" href="/fhir-to-omop/pages/birds/birds.html">yellow-rumped warblers</a> at our bird feeders.  
+		An other first for us!		
+		We are thrilled with the progress the team has made.  
+		In the past few weeks we have undergone a major refactoring and the overall architecture is looking much more polished.  
+		This refactoring now accounts for Patient resources represented across multiple requests (paging).  
+		We've also brought all of the tests for the PROCEDURE entity to passing DQD!  
+		The curve ball challenge for this feature was the accounting for FHIR using procedure, measurement, observation, and condition codes to represent procedures.  
+		OMOP DQD requires all records in the procedure table to have a procedute_concept_id with a domain_id of "Procedure".  
+		This was reconciled by putting FHIR procedures using measurement, observation, and condition codes into those respective tables in OMOP.   
+	</p>
+	<p>
+		Details for FHIR to OMOP mapping for PROCEDURE are 
+		<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/procedure/procedure.html">
+			here
+		</a>.  
+	</p>
 	Next steps include:		
 	<ul>
 		<li>Update Measurements to pass all tests</li>
