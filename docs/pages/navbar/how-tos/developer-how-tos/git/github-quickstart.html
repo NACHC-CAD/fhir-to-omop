@@ -1,0 +1,126 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Git and Github Quickstart Guide</h1>
+			This is the quick start guid for Git and Git hub.  
+			Git is a version control system that is used by virtually all open source (and other large) projects.  
+			This quick start guide shows how to download and install a Git client, 
+			how to create a Github account,
+			and how to get permissions for an existing Github project (like this one!).   
+			<br/>
+
+			<h3>Summary</h3>
+			The following steps are detail below.  
+			Here's a summary of the process.  
+			<ul>
+				<li>Install a Git Client</li>
+				<li>Create a Github Account</li>
+				<li>Contact the Repository Owner and Request to be A Collaborator
+					<ul>
+						<li>Follow the instructions in the response from the repository owner</li>
+					</ul>
+				</li>
+				<li>Fork and Branch</li>
+				<li>Clone the project</li>
+				<li>Make your updates</li>
+				<li>Commit your updates</li>
+			</ul>
+
+			<h2>Install a Git Client</h2>
+			Instructions for installing a Git client are 
+			<a target="gitclient" href = "/fhir-to-omop/pages/navbar/getting-started/start-here/InstallGit.html">
+				here
+			</a>. 
+			<br/>
+			
+			<h2>Create a Github Account</h2>
+			Go to <a href="https://github.com/">https://github.com/</a> and select "Sign Up".  
+			Follow the instructions there to create your Github account.  
+			<img width="600px" src="./img/create-account.png" />
+			<br/><br/>
+			<p>
+				Once you've created your account you can check your user name by selecting the icon in the upper right corner 
+				and then selecting "Your Profile" (select the link at the bottom of the screen to skip the tutorial first).  
+				Your user name should be on the left side of the screen.  
+			</p>
+			<p>
+				Contact the administration of the Github repository you need access to and include this username in the message 
+				(in this example the username would be "gresh-test").  The administration can add you to the project and you should receive a confirmation email.  
+				Follow the instructions in the email.  
+			</p>
+			<br/>
+			<img width="600px" src="./img/select-profile.png" />
+			<br/><br/>
+			<img width="600px" src="./img/user-name.png" />
+			<br/><br/>
+			<h3>Email from Github Site Administrator</h3>
+			The email you receive from the site administrator should look something like the following.  
+			<br/><br/>
+			<img width="400px" src="./img/email.png" />
+			<br/><br/>
+			<h3>Accept the invitation</h3>
+			Click on the link in the email and accept the invitation.  
+			<br/><br/>
+			<img width="600px" src="./img/accept-invitation.png" />
+			<br/><br/>
+			<h3>Clone the Repository</h3>
+			<p>
+			"Cloning" the repository just means pulling a copy of the files down to your local machine in a way that 
+			any changes you make can be merged back into the repository.  
+			</p>
+			<p>
+			After you've accepted the invitation you will be sent to the home page of the repository.  
+			Copy the url.  
+			</p>
+			<br/><br/>
+			<img width="600px" src="./img/repository.png" />
+			<br/><br/>
+			<p>
+				You'll want to follow the repository owners instructions for forking and branching, but for now, 
+				lets just look at the case of working directly on the main branch of the existing (unforked) repository (which you should never do... ever).  
+			</p>
+			<p>
+				Open a cmd prompt and navigate to the directory where you would like the project to live.  
+			</p>
+			<p>
+				After you've install the client you will need to issue the following two commands (this is usually a one time thing).  
+				<br/>
+				git config --global user.email "the-email-you-registered-withc@yourhost.com"
+				<br/>
+				git config --global user.name "YOUR_USERNAME"
+			</p>
+			<p>
+				To clone the repository, enter the command:<br/>
+				git clone &lt;paste-repository-name-here&gt;
+			</p>			
+			<img width="800px" src="./img/clone.png" />
+			<br/><br/>
+			<h3>Make Your Updates and Commit</h3>
+			Change to the directory that was downloaded from the clone process.  
+			Make your updates to the files.  
+			When you are done with your updates, commit the changes using the following Git commands. 
+			<br/>
+			<br/>
+			git add -A <br/>
+			git commit -m "a very useful and meaningful message" <br/>
+			git push origin <br/>
+
+		</div>
+
+	</body>
+</html>
