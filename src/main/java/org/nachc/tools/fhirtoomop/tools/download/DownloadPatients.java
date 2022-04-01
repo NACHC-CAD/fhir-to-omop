@@ -30,7 +30,7 @@ public class DownloadPatients {
 
 	private static List<String> getPatientList() {
 		List<String> rtn = new ArrayList<String>();
-		File dir = FileUtil.getFile(DIR_PATH);
+		File dir = new File(DIR_PATH);
 		List<File> fileList = FileUtil.listFiles(dir);
 		for (File file : fileList) {
 			rtn.addAll(FileUtil.getAsList(file));
