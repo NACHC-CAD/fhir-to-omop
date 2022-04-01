@@ -11,7 +11,7 @@ import org.yaorma.util.time.TimeUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DownloadPatients {
+public class FhirPatientDownloader {
 
 	private static int MAX_ACTIVE = AppParams.getDownloadMaxNumberOfActiveWorkers();
 

@@ -11,7 +11,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DownloadPatientsIntegrationTest {
+public class FhirPatientDownloaderIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/patient-ids/patient-ids-2500";
 
@@ -20,7 +20,7 @@ public class DownloadPatientsIntegrationTest {
 		log.info("Getting patients...");
 		List<String> patientList = getPatientList();
 		log.info("Got " + patientList.size() + " patients.");
-		DownloadPatients.getPatients(patientList);
+		FhirPatientDownloader.getPatients(patientList);
 		log.info("Done.");
 	}
 
@@ -33,4 +33,5 @@ public class DownloadPatientsIntegrationTest {
 		}
 		return rtn;
 	}
+
 }

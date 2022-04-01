@@ -43,10 +43,11 @@ public class DownloadPatientsWorker {
 		this.downloaders = new ArrayList<DownloadPatientRunnable>();
 		this.threads = new ArrayList<Thread>();
 		this.patientsPerThread = AppParams.getDownloadNumberOfPatientsPerThread();
-		FhirServerAuthenticator.refresh();
 	}
 
 	public void getPatients() {
+		// get a new token
+		FhirServerAuthenticator.refresh();
 		// echo status
 		log.info("Getting " + this.patientsPerThread + " patients per thread");
 		log.info("Got " + patientIdList.size() + " patientIds (showing first 10)");
@@ -82,7 +83,7 @@ public class DownloadPatientsWorker {
 				log.error("* * *EXCEPTION THROWN JOINING THREAD * * *");
 			}
 		}
-		DownloadPatients.done(this);
+		FhirPatientDownloader.done(this);
 		log.info("Done running threads...");
 	}
 

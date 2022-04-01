@@ -159,6 +159,10 @@ public class AppParams {
 		return rtn;
 	}
 
+	public static String getDownloadPatientIdDir() {
+		return PROPS.getProperty("downloadPatientIdDir");
+	}
+
 	/*
 	 * 
 	 * // local files stuff
