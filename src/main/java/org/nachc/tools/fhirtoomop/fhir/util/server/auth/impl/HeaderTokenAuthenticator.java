@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class HeaderTokenAuthenticator implements HttpClientAuthenticator {
 
 	private String token;
-
+	
 	@Override
 	public void init() {
 		this.token = fetchToken();
@@ -20,9 +20,23 @@ public class HeaderTokenAuthenticator implements HttpClientAuthenticator {
 
 	@Override
 	public void refresh() {
-		this.token = fetchToken();
+		refresh(0);
 	}
 
+	private void refresh(int cnt) {
+		try {
+			this.token = fetchToken();
+		} catch(Exception exp) {
+			log.error("! ! ! ERROR REFRESHING TOKEN, TRYING AGAIN ! ! !");
+			log.error("! ! !");
+			log.error("! ! ! RETRY COUNT=" + cnt);
+			log.error("! ! !");
+			log.error("! ! ! ERROR REFRESHING TOKEN, TRYING AGAIN ! ! !");
+			cnt++;
+			refresh(cnt);
+		}
+	}
+	
 	@Override
 	public void addAuth(HttpRequestClient client) {
 		addHeaders(client, token);
