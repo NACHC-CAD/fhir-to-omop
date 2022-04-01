@@ -153,6 +153,12 @@ public class AppParams {
 		return PROPS.getProperty("downloadOutputDir");
 	}
 
+	public static int getDownloadRetryCount() {
+		String str = PROPS.getProperty("downloadRetryCount");
+		Integer rtn = StringUtil.parseInt(str);
+		return rtn;
+	}
+
 	/*
 	 * 
 	 * // local files stuff
