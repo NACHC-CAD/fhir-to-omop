@@ -7,6 +7,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
@@ -57,6 +58,13 @@ public class OmopMeasurementFromProcedure {
 		String fhirEncounterId = parser.getEncounterId();
 		Integer omopVisitId = this.omopPerson.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
+		if("Procedure".equals(conceptDvo.getConceptClassId())) {
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+		} else if ("Observable Entity".equals(conceptDvo.getConceptClassId())) {
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+		} else {
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
+		}
 		return dvo;
 	}
 

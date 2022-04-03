@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.fhir.parser.observation.component.ObservationC
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.type.ObservationType;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
@@ -119,6 +120,7 @@ public class OmopObservationBuilder {
 		dvo.setObservationTypeConceptId(0);
 		// create the proxy and return it
 		if(isMeasurement(parser)) {
+			addMeasType(parser, dvo);
 			this.measurementObsList.add(dvo);
 		} else {
 			this.observationList.add(dvo);
@@ -131,6 +133,14 @@ public class OmopObservationBuilder {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	private void addMeasType(ObservationParser parser, ObservationDvo dvo) {
+		if(parser.getObservationType() == ObservationType.LABORATORY) {
+			dvo.setObservationTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+		} else {
+			dvo.setObservationTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
 		}
 	}
 	
@@ -169,6 +179,7 @@ public class OmopObservationBuilder {
 			dvo.setObservationEventId(parent.getObservationId() == null? null : parent.getObservationId() + "");
 			// create the proxy and add it to the return
 			if(isMeasurement(parser)) {
+				addMeasType(parser, dvo);
 				this.measurementObsList.add(dvo);
 			} else {
 				this.observationList.add(dvo);
