@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.nachc.tools.fhirtoomop.tools.download.patient.writer.WriteFhirPatientToFile;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -45,6 +46,7 @@ public class DownloadPatientRunnable implements Runnable {
 			} else {
 				retryCount++;
 				log.info("! ! ! DOING RETRY (" + retryCount + " of " + maxRetries + ") ! ! !");
+				TimeUtil.sleep(3);
 				write(patientId, retryCount);
 			}
 		}

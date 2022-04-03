@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FhirPatientDownloaderIntegrationTest {
 
-	private static final String DIR_PATH = "/test/fhir/patient-ids/patient-ids-2500";
+	private static final String DIR_PATH = "/test/fhir/patient-ids/patient-ids-50";
 
 	@Test
 	public void shouldGetPatients() {

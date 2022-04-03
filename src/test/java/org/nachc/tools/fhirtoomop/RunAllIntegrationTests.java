@@ -41,7 +41,6 @@ public class RunAllIntegrationTests {
 		TruncateAllDataTables.exec();
 		log.info("Populating with 100 patients...");
 		new WriteListOfFhirPatientsToOmopIntegrationTest().writePatientsToDatabase();
-		int patientCount = GetCountForTable.exec("person");
 		log.info("");
 		log.info("");
 		log.info("***********************************************************");
@@ -55,6 +54,7 @@ public class RunAllIntegrationTests {
 		log.info("Stop:    " + TIMER.getStopAsString());
 		log.info("Elapsed: " + TIMER.getElapsedString());
 		log.info("");
+		int patientCount = GetCountForTable.exec("person");
 		log.info("There are now " + patientCount + " patients in your OMOP database.");
 		log.info("");
 		log.info("Done.");
