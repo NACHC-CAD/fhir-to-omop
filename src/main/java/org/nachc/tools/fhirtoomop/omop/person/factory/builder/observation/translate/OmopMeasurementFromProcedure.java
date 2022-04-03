@@ -58,6 +58,7 @@ public class OmopMeasurementFromProcedure {
 		String fhirEncounterId = parser.getEncounterId();
 		Integer omopVisitId = this.omopPerson.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);
+		// measuerment type
 		if("Procedure".equals(conceptDvo.getConceptClassId())) {
 			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
 		} else if ("Observable Entity".equals(conceptDvo.getConceptClassId())) {
@@ -65,6 +66,9 @@ public class OmopMeasurementFromProcedure {
 		} else {
 			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
 		}
+		// measurment units
+		dvo.setUnitConceptId(OmopConceptConstants.getScalarMeasurementUnitsConceptId());
+		// done
 		return dvo;
 	}
 

@@ -9,5 +9,9 @@ public class OmopConceptConstants {
 	public static int getLabResultMeasurementConceptId() {
 		return 44818702;
 	}
+	
+	public static int getScalarMeasurementUnitsConceptId() {
+		return 44777566;
+	}
 
 }
