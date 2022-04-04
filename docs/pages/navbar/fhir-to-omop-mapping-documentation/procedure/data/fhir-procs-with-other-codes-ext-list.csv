@@ -1,4 +1,4 @@
-person_source_value,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,conept_code,valid_start_date,valid_end_date,invalid_reason
+person_id,person_source_value,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,conept_code,valid_start_date,valid_end_date,invalid_reason
 282,0a462ac1-182b-45c5-83a2-9653c17624bf,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,2019-01-31,2099-12-31,NULL
 486,0ad0e949-9cb5-4778-ae4c-22af933aacd8,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,2019-01-31,2099-12-31,NULL
 261,0a31aa1f-7e18-4358-9739-9c6f73392b40,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,2019-01-31,2099-12-31,NULL

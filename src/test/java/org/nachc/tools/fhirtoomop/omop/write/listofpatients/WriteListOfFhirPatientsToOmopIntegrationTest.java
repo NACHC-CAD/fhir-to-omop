@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
 
@@ -37,6 +38,7 @@ public class WriteListOfFhirPatientsToOmopIntegrationTest {
 		List<Connection> connList = getConnections();
 		log.info("Got connection");
 		try {
+			TruncateAllDataTables.exec();
 			int before = Database.count("person", connList.get(0));
 			log.info("before: " + before);
 			Timer timer = new Timer();

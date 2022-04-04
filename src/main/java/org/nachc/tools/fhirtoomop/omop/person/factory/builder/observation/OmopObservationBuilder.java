@@ -120,7 +120,7 @@ public class OmopObservationBuilder {
 		dvo.setObservationTypeConceptId(0);
 		// create the proxy and return it
 		if(isMeasurement(parser)) {
-			addMeasType(parser, dvo);
+			fixMeas(parser, dvo);
 			this.measurementObsList.add(dvo);
 		} else {
 			this.observationList.add(dvo);
@@ -136,6 +136,13 @@ public class OmopObservationBuilder {
 		}
 	}
 	
+	
+	
+	private void fixMeas(ObservationParser parser, ObservationDvo dvo) {
+		addMeasType(parser, dvo);
+		checkUnits(parser, dvo);
+	}
+	
 	private void addMeasType(ObservationParser parser, ObservationDvo dvo) {
 		if(parser.getObservationType() == ObservationType.LABORATORY) {
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
@@ -143,7 +150,13 @@ public class OmopObservationBuilder {
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
 		}
 	}
-	
+
+	private void checkUnits(ObservationParser parser, ObservationDvo dvo) {
+		if(dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
+			dvo.setUnitConceptId(OmopConceptConstants.getScalarMeasurementUnitsConceptId());
+		}
+	}
+
 	private void buildMultipleObservations(ObservationParser parser) {
 		// create the return array and add the original concept as a parent concept
 		ArrayList<ObservationDvo> rtn = new ArrayList<ObservationDvo>();
@@ -179,7 +192,7 @@ public class OmopObservationBuilder {
 			dvo.setObservationEventId(parent.getObservationId() == null? null : parent.getObservationId() + "");
 			// create the proxy and add it to the return
 			if(isMeasurement(parser)) {
-				addMeasType(parser, dvo);
+				fixMeas(parser, dvo);
 				this.measurementObsList.add(dvo);
 			} else {
 				this.observationList.add(dvo);

@@ -1,4 +1,8 @@
-use synthea_dev;
+-- use synthea_dev;
+use synthea_micro;
+
+select count(*) from concept;
+
 
 select distinct
 	p.person_id,
@@ -125,10 +129,7 @@ select * from measurement where unit_concept_id = 0;
 
 
 select distinct 
---	p.person_id,
---	p.person_source_value,
 	c.concept_name,
---	m.measurement_id,
 	m.measurement_concept_id,
 	m.value_as_number,
 	c.concept_name as type,
@@ -143,13 +144,14 @@ from
 where 1=1
 	and m.unit_concept_id = 0
 order by 
--- 	p.person_source_value,
--- 	m.value_as_number desc
 	c.domain_id,
 	c.concept_class_id,
 	c.vocabulary_id,
 	c.concept_name
 ;
+
+
+
 
 select distinct 
 	unit_concept_id
@@ -165,4 +167,65 @@ from
 	join concept c on c.concept_id = m.unit_concept_id;
 ;
 
+select * from concept 
+where 1=1
+	and vocabulary_id = 'UCUM'
+--	and domain_id = 'Unit'
+	and lower(concept_name) like '%score%'
+order by concept_name
+;
 
+
+select * from concept where lower(concept_name) like '%score%'
+
+select * from measurement where unit_concept_id = 0;
+
+
+select distinct 
+	c.concept_name,
+	m.measurement_concept_id,
+	m.value_as_number,
+	m.unit_concept_id,
+	c.concept_name as type,
+	c.domain_id,
+	c.concept_class_id,
+	c.vocabulary_id
+from
+	measurement m
+	join person p on m.person_id = p.person_id
+	join concept c on m.measurement_concept_id = c.concept_id 
+	join concept tc on m.measurement_type_concept_id = tc.concept_id
+where 1=1
+	and m.unit_concept_id = 0
+order by 
+	c.domain_id,
+	c.concept_class_id,
+	c.vocabulary_id,
+	c.concept_name
+;
+
+
+select distinct 
+	c.concept_name,
+	m.measurement_concept_id,
+	max(m.value_as_number),
+	m.unit_concept_id,
+	c.concept_name as type,
+	uc.concept_name as units,
+	c.domain_id,
+	c.concept_class_id,
+	c.vocabulary_id
+from
+	measurement m
+	join person p on m.person_id = p.person_id
+	join concept c on m.measurement_concept_id = c.concept_id 
+	join concept tc on m.measurement_type_concept_id = tc.concept_id
+	join concept uc on m.unit_concept_id = uc.concept_id
+where 1=1
+group by c.concept_name,2,4,5,6,7,8,9
+order by 
+	c.domain_id,
+	c.concept_class_id,
+	c.vocabulary_id,
+	c.concept_name
+;
