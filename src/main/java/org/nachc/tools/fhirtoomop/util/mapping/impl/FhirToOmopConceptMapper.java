@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.yaorma.dao.Dao;
+import org.yaorma.database.Database;
 import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -54,7 +55,7 @@ public class FhirToOmopConceptMapper {
 			}
 			// look for a non-standard concept
 			dvo = getNonStandardConcept(system, code, conn);
-			if(dvo != null) {
+			if (dvo != null) {
 				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
 				return dvo;
 			}
@@ -146,6 +147,19 @@ public class FhirToOmopConceptMapper {
 	}
 
 	private static ConceptDvo addTempConcept(String system, String code, Connection conn) {
+		try {
+			log.info("ADDING NEW CONCEPT: " + system + " (" + code + ")");
+			Database.update("begin transaction", conn);
+			ConceptDvo rtn = addTempConceptTransaction(system, code, conn);
+			Database.update("commit transaction", conn);
+			return rtn;
+		} catch (Exception exp) {
+			Database.update("rollback transaction", conn);
+			throw new RuntimeException(exp);
+		}
+	}
+
+	private static ConceptDvo addTempConceptTransaction(String system, String code, Connection conn) {
 		system = SystemMapping.getOmopSystemForFhirSystem(system);
 		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id", conn);
 		if (id <= 2000000000) {
@@ -163,7 +177,7 @@ public class FhirToOmopConceptMapper {
 		dvo.setValidStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1942-08-01"));
 		Dao.insert(dvo, conn);
 		log.info("+++++++++++++++++++++");
-		log.info("New concept created: (" + system + ")\t" + code + "\t");
+		log.info("New concept created " + dvo.getConceptId() + ": (" + system + "): " + code + "\t");
 		log.info("+++++++++++++++++++++");
 		return dvo;
 	}
