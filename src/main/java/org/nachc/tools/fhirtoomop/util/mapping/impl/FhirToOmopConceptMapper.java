@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -147,37 +148,64 @@ public class FhirToOmopConceptMapper {
 	}
 
 	private static ConceptDvo addTempConcept(String system, String code, Connection conn) {
+		return doInsertOfNewConcept(system, code);
+	}
+
+	private static ConceptDvo doInsertOfNewConcept(String system, String code) {
+		ConceptDvo rtn = null;
+		log.info("GETTING CONNECTION...");
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		log.info("GOT CONNECTION.");
 		try {
-			log.info("ADDING NEW CONCEPT: " + system + " (" + code + ")");
 			Database.update("begin transaction", conn);
-			ConceptDvo rtn = addTempConceptTransaction(system, code, conn);
-			Database.update("commit transaction", conn);
+			TimeUtil.sleep(10);
+			rtn = findExistingTempConcept(system, code, conn);
+			if(rtn == null) {
+				log.info("ADDING NEW CONCEPT: " + system + " (" + code + ")");
+				rtn = addTempConceptTransaction(system, code, conn);
+				Database.update("commit transaction", conn);
+				Database.commit(conn);
+			} else {
+				log.info("#############################");
+				log.info("FOUND EXISTING TEMP CONCEPT: " + rtn.getVocabularyId() + "(" + rtn.getConceptCode() + ")");
+				log.info("#############################");
+			}
 			return rtn;
-		} catch (Exception exp) {
-			Database.update("rollback transaction", conn);
-			throw new RuntimeException(exp);
+		} finally {
+			Database.close(conn);
+		}
+		
+	}
+	
+	private static ConceptDvo findExistingTempConcept(String system, String code, Connection conn) {
+		String vocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
+		String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ? and concept_id > 2000000000";
+		String[] params = { vocabularyId, code };
+		Database.query(sqlString, params, conn);
+		List<ConceptDvo> data = Dao.findListBySql(new ConceptDvo(), sqlString, params, conn);
+		if(data.size() > 0) {
+			return data.get(0);
+		} else {
+			return null;
 		}
 	}
 
 	private static ConceptDvo addTempConceptTransaction(String system, String code, Connection conn) {
-		system = SystemMapping.getOmopSystemForFhirSystem(system);
+		String vocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
 		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id", conn);
-		if (id <= 2000000000) {
-			id = 2000000001;
-		}
 		ConceptDvo dvo = new ConceptDvo();
 		dvo.setConceptId(id);
-		dvo.setVocabularyId(system);
+		dvo.setVocabularyId(vocabularyId);
 		dvo.setConceptCode(code);
 		// TODO: FIX THIS (This is a place holder for now)
 		dvo.setDomainId("Measurement");
 		dvo.setConceptClassId("Clinical Observation");
 		dvo.setConceptName(code);
-		dvo.setValidEndDate(TimeUtil.getDateForYyyy_Mm_Dd("1995-08-09"));
-		dvo.setValidStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1942-08-01"));
+		dvo.setValidStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1770-12-17"));
+		dvo.setValidEndDate(TimeUtil.getDateForYyyy_Mm_Dd("2222-01-01"));
 		Dao.insert(dvo, conn);
 		log.info("+++++++++++++++++++++");
-		log.info("New concept created " + dvo.getConceptId() + ": (" + system + "): " + code + "\t");
+		log.info("New concept created " + dvo.getConceptId() + ": (" + vocabularyId + "): " + code + "\t");
 		log.info("+++++++++++++++++++++");
 		return dvo;
 	}

@@ -28,6 +28,9 @@ public class RunAllIntegrationTests {
 		log.info("***********************************************************");
 		log.info("Starting set up");
 		log.info("***********************************************************");
+		log.info("Truncating tables...");
+		TruncateAllDataTables.exec();
+		log.info("Done truncating tables.");
 		log.info("***********************************************************");
 		log.info("Done with set up");
 		log.info("***********************************************************");

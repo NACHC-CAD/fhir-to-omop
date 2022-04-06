@@ -225,6 +225,7 @@ public class OmopObservationBuilder {
 			return unitsConceptDvo;
 		} else {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
+			/*
 			// for some reason synthea uses curly brackets instead of brackets
 			if (unitsConceptDvo == null) {
 				String mod = unitsCode;
@@ -262,6 +263,7 @@ public class OmopObservationBuilder {
 				unitsConceptDvo.setConceptId(0);
 				ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 			}
+			*/
 			return unitsConceptDvo;
 		}
 	}

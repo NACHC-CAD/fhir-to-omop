@@ -26,18 +26,11 @@ public class FhirToOmopIdGenerator {
 	}
 
 	public static Integer getIdFromDatabase(String tableName, String idName, Connection conn) {
-		String sqlString = "select max(" + idName + ") as id from " + tableName;
-		Data data = Database.query(sqlString, conn);
-		if (data.size() == 0) {
-			return 1;
-		} else {
-			Integer rtn = data.get(0).getInt("id");
-			if (rtn == null) {
-				return 1;
-			} else {
-				return rtn + 1;
-			}
-		}
+		String seqName = tableName + "_" + idName;
+		String sqlString = "select next value for " + seqName + " as val";
+		String str = Database.queryForFirst(sqlString, "val", conn);
+		Integer rtn = Integer.parseInt(str);
+		return rtn;
 	}
 
 	public static void invalidateKey(String tableName, String idName) {
