@@ -1,0 +1,47 @@
+person_source_value,concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,conept_code,valid_start_date,valid_end_date,invalid_reason
+0a2a950e-59b0-4669-8007-a505a3f14cbc,37393315,Faecal occult blood test,Measurement,SNOMED,Observable Entity,S,1015401000000102,2016-04-01,2099-12-31,NULL
+0a2a950e-59b0-4669-8007-a505a3f14cbc,765467,Documentation of current medications,Observation,SNOMED,Procedure,S,428191000124101,2012-09-01,2099-12-31,NULL
+0a462ac1-182b-45c5-83a2-9653c17624bf,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,1/31/2019,12/31/2099,NULL
+0ad0e949-9cb5-4778-ae4c-22af933aacd8,36675035,Prematurity of infant,Condition,SNOMED,Clinical Finding,S,771299009,1/31/2019,12/31/2099,NULL
+00bf3b32-5d99-47a2-a72b-f4bc2e3d9d1d,4064377,Depression screening,Measurement,SNOMED,Procedure,S,171207006,1/31/2002,12/31/2099,NULL
+00bbbd8d-3e10-4058-82f2-c4c32c21ef7b,4064377,Depression screening,Measurement,SNOMED,Procedure,S,171207006,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4064377,Depression screening,Measurement,SNOMED,Procedure,S,171207006,1/31/2002,12/31/2099,NULL
+00cbbbf9-f11a-440d-ad10-4adfe5e9d58a,4064377,Depression screening,Measurement,SNOMED,Procedure,S,171207006,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4014117,Gonorrhea infection titer test,Measurement,SNOMED,Procedure,S,165829005,1/31/2002,12/31/2099,NULL
+00cbbbf9-f11a-440d-ad10-4adfe5e9d58a,4015052,"Hemogram, automated, with RBC, WBC, Hgb, Hct, Indices, Platelet count, and manual WBC differential",Measurement,SNOMED,Procedure,S,104091002,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4015052,"Hemogram, automated, with RBC, WBC, Hgb, Hct, Indices, Platelet count, and manual WBC differential",Measurement,SNOMED,Procedure,S,104091002,1/31/2002,12/31/2099,NULL
+00cbbbf9-f11a-440d-ad10-4adfe5e9d58a,4018603,"Hepatitis C antibody, confirmatory test",Measurement,SNOMED,Procedure,S,104375008,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4136494,HIV antigen test,Measurement,SNOMED,Procedure,S,31676001,1/31/2002,12/31/2099,NULL
+00bbbd8d-3e10-4058-82f2-c4c32c21ef7b,4052083,Measurement of respiratory function,Measurement,SNOMED,Procedure,S,23426006,1/31/2002,12/31/2099,NULL
+00b19874-4b2c-47ea-8194-ac75e879e3af,4052083,Measurement of respiratory function,Measurement,SNOMED,Procedure,S,23426006,1/31/2002,12/31/2099,NULL
+00ce1dd4-d6ff-4d34-829d-83ae509988bf,4052083,Measurement of respiratory function,Measurement,SNOMED,Procedure,S,23426006,1/31/2002,12/31/2099,NULL
+00a67551-33c1-42d5-ab30-e5df6ae29b20,4052083,Measurement of respiratory function,Measurement,SNOMED,Procedure,S,23426006,1/31/2002,12/31/2099,NULL
+00ad5285-4454-40ae-81ef-b637257cf766,4052083,Measurement of respiratory function,Measurement,SNOMED,Procedure,S,23426006,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4018595,Measurement of Varicella-zoster virus antibody,Measurement,SNOMED,Procedure,S,104326007,1/31/2002,12/31/2099,NULL
+00cbbbf9-f11a-440d-ad10-4adfe5e9d58a,4018595,Measurement of Varicella-zoster virus antibody,Measurement,SNOMED,Procedure,S,104326007,1/31/2002,12/31/2099,NULL
+00bbbd8d-3e10-4058-82f2-c4c32c21ef7b,4091461,Standard pregnancy test,Measurement,SNOMED,Procedure,S,252160004,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4151408,Syphilis infectious titer test,Measurement,SNOMED,Procedure,S,269828009,1/31/2002,12/31/2099,NULL
+00be7562-8290-4ec8-911e-37fbe01a5e9b,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00d8e131-3a2b-43f4-bc4b-7b2e557d6422,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00b32125-3400-4e80-b5f7-04073f4e5629,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00a9d331-c53d-4152-aa6d-5dbceb2d1418,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00b2ea15-855c-46f6-bb10-a8ee36c84644,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00bbbd8d-3e10-4058-82f2-c4c32c21ef7b,4024958,Throat culture,Measurement,SNOMED,Procedure,S,117015009,1/31/2002,12/31/2099,NULL
+00cbbbf9-f11a-440d-ad10-4adfe5e9d58a,4024509,Urine culture,Measurement,SNOMED,Procedure,S,117010004,1/31/2002,12/31/2099,NULL
+00cd2a68-3397-4bde-b3f8-2c6453e916d3,4149386,Urine screening for glucose,Measurement,SNOMED,Procedure,S,268556000,1/31/2002,12/31/2099,NULL
+0bbc15aa-9d2f-4f9d-b31c-606aed505269,4138954,Admission to neurosurgical department,Observation,SNOMED,Procedure,S,305425002,1/31/2002,12/31/2099,NULL
+00d53a66-a217-4372-9ebc-aff891a65e91,4139064,Admission to orthopedic department,Observation,SNOMED,Procedure,S,305428000,1/31/2002,12/31/2099,NULL
+00e29483-ce77-4378-82d2-b109171e48bd,4139064,Admission to orthopedic department,Observation,SNOMED,Procedure,S,305428000,1/31/2002,12/31/2099,NULL
+0a3cf8e9-2d3a-4e85-9534-be4df25f7f22,4139065,Admission to trauma surgery department,Observation,SNOMED,Procedure,S,305433001,1/31/2002,12/31/2099,NULL
+00b19874-4b2c-47ea-8194-ac75e879e3af,765467,Documentation of current medications,Observation,SNOMED,Procedure,S,4.28E+14,9/1/2012,12/31/2099,NULL
+00b32125-3400-4e80-b5f7-04073f4e5629,765467,Documentation of current medications,Observation,SNOMED,Procedure,S,4.28E+14,9/1/2012,12/31/2099,NULL
+0c4fcc47-ea6f-4d50-abb6-00caed9669d7,4253640,"Hospital admission, short-term, 24 hours",Observation,SNOMED,Procedure,S,74857009,1/31/2002,12/31/2099,NULL
+00d1b4ab-64cd-4a22-a6e4-a56ed534d39f,4210433,Information gathering,Observation,SNOMED,Procedure,S,311791003,1/31/2002,12/31/2099,NULL
+0a1eafc4-fe08-431e-a524-68b34bf386d8,4210433,Information gathering,Observation,SNOMED,Procedure,S,311791003,1/31/2002,12/31/2099,NULL
+00d2188b-1561-4950-a95e-e88e01038377,40623280,Parturition,Observation,SNOMED,Observable Entity,NULL,66348005,1/31/2002,1/31/2003,D
+00a3d2f9-6f54-49bf-bc8e-90d6afe3dcc4,40623280,Parturition,Observation,SNOMED,Observable Entity,NULL,66348005,1/31/2002,1/31/2003,D
+00d52d42-129f-48df-9612-4823350e626d,40623280,Parturition,Observation,SNOMED,Observable Entity,NULL,66348005,1/31/2002,1/31/2003,D
+00bf3b32-5d99-47a2-a72b-f4bc2e3d9d1d,4302270,Pregnancy termination care,Observation,SNOMED,Procedure,S,386394001,1/31/2003,12/31/2099,NULL
+00d1b4ab-64cd-4a22-a6e4-a56ed534d39f,4302270,Pregnancy termination care,Observation,SNOMED,Procedure,S,386394001,1/31/2003,12/31/2099,NULL
+000f1ed9-3e16-420f-a0f3-46408344bce0,4302270,Pregnancy termination care,Observation,SNOMED,Procedure,S,386394001,1/31/2003,12/31/2099,NULL
+00a77aaa-58a6-40a2-9086-c2c04e1efdba,4302270,Pregnancy termination care,Observation,SNOMED,Procedure,S,386394001,1/31/2003,12/31/2099,NULL

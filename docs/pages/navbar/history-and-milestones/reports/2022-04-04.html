@@ -1,0 +1,41 @@
+<div>
+
+	<!-- Apr 04, 2022 -->
+	<h1>2022-04-04: April 04, 2022 Status</h1>
+	<p>
+		Happy Wednesday April the 4th morning.  
+		Enjoying April showers at 48 degreees Fahrenheit here in East Lyme today.
+		We are thrilled with the progress the team continues to make.  
+		This week we've clean up the MEASUREMENT code.  
+	</p>
+	<p>
+		Details for FHIR to OMOP mapping for MEASUREMENT are 
+		<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/measurement/measurement.html">
+			here
+		</a>.  
+	</p>
+	Next steps include:		
+	<ul>
+		<li>Update Observations to pass all tests</li>
+		<li>Update to visit_occurrence to pass all tests</li>
+		<li>Upload of complete 1.1 million records from Synthea</li>
+		<li>We are passing 98% of the Data Quality Dashboard tests as shown below.</li>
+		<li>But we still have some work to do as you can see from the screen shots below.</li>
+	</ul>
+	<h2>Data Quality Dashboard Summary</h2>
+	JSON from this run can be downloaded 
+	<a download href="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-json/results-2022-04-04.json">here</a>.
+	<h2>Latest Successes: Measurements</h2>
+	<img class="bordered" src="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-screenshots/2022-04-07/pass/completeness-pass.JPG" />
+	<h2>Failing due to data</h2>
+	<p>
+		The tests failing below have been found to be related to data found in the Synthea data set.   
+	</p>
+	<img class="bordered" src="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-screenshots/2022-04-07/pass/labs-fail.JPG" />	
+	<h2>Failing due to UCUM codes not found in OHDSI CONCEPTS Table</h2>
+	<p>
+		The tests failing below have been found to be related to concepts in the Synthea data that have UCUM codes that are not in OHDSI.
+	</p>
+	<img class="bordered" src="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-screenshots/2022-04-07/pass/codes-fail.JPG" />	
+
+</div>
