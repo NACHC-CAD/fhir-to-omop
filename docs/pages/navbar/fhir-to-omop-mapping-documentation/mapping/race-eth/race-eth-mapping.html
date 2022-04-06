@@ -1,0 +1,134 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Race and Terminology Mapping in the NACHC fhir-to-omop Tools</h1>
+			<h3>Summary</h3>
+			The FHIR US Core Profile uses some internally defined terminologies including a terminology for Race/Ethnicity.  
+			The terminology can be found 
+			<a target="terminology" href="https://www.hl7.org/fhir/us/core/CodeSystem-cdcrec.html">
+				here
+			</a>.  
+			The US Core Profile Implementation guide is 
+			<a target="core" href="https://www.hl7.org/fhir/us/core/artifacts.html">
+				here
+			</a>. 
+			Section 10.0.7 Contains information about the terminologies used by U.S. Core including Race and Ethnicity.  
+			The Race and Ethnicity code systems were downloaded as XML from 
+			<a target="race-eth" href="https://www.hl7.org/fhir/us/core/CodeSystem-cdcrec.html">
+				here
+			</a> as XML and the XML was converted to CSV files.  
+			These CSV files were then mapped to existing OMOP codes.  
+			The files used in this process are shown below.  			
+			
+			<h3>Data Files</h3>
+			<table class="table">
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/fhir/RaceAndEthnicityCDC.csv">
+							<nobr>FHIR: Race &amp; Ethnicity</nobr>
+						</a>
+					</td>
+					<td>
+						This is the source file for all of the Race and Ethnicity codes from 
+						<a download href="https://www.hl7.org/fhir/us/core/CodeSystem-cdcrec.html">
+							10.143.1 CodeSystem: Race &amp; Ethnicity - CDC.
+						</a>
+						This file was then divided into a race file and a ethnicity file.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/fhir/RaceAndEthnicityCDC-Race.csv">
+							FHIR: Race
+						</a>
+					</td>
+					<td>
+						This is the file that contains just the Race data from 
+						<a download href="https://www.hl7.org/fhir/us/core/CodeSystem-cdcrec.html">
+							10.143.1 CodeSystem: Race & Ethnicity - CDC.
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/fhir/RaceAndEthnicityCDC-Eth.csv">
+							FHIR: Ethnicity
+						</a>
+					</td>
+					<td>
+						This is the file that contains just the Ethnicity data from 
+						<a download href="https://www.hl7.org/fhir/us/core/CodeSystem-cdcrec.html">
+							10.143.1 CodeSystem: Race & Ethnicity - CDC.
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/omop/OMOP-Race.csv">
+							OMOP: Race
+						</a>
+					</td>
+					<td>
+						This is an extract of the Race concepts from the OMOP Concept table (data down loaded from 
+						<a download href="https://athena.ohdsi.org/">Athena</a>).  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/omop/OMOP-Eth.csv">
+							OMOP: Ethnicity
+						</a>
+					</td>
+					<td>
+						This is an extract of the Race concepts from the OMOP Concept table (data down loaded from 
+						<a href="https://athena.ohdsi.org/">Athena</a>).  
+					</td>
+				</tr>
+			</table>
+			
+			<h3>Mapping Files</h3>
+			The following mapping files were manually mapped using the above data files. 
+			<table class="table">
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/RaceAndEthnicityCDC-OMOP-MAPPING-Race.csv">
+							Mapping: Race
+						</a>
+					</td>
+					<td>
+						This file contains the mappings of the Race codes used by FHIR to the race codes used by OMOP.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a download href="/fhir-to-omop/pages/resources/mappings/race-eth/RaceAndEthnicityCDC-OMOP-MAPPING-Eth.csv">
+							Mapping: Ethnicity
+						</a>
+					</td>
+					<td>
+						This file contains the mappings of the Ethnicity codes used by FHIR to the race codes used by OMOP.  
+					</td>
+				</tr>
+			</table> 
+			
+		</div>
+
+	</body>
+
+</html>

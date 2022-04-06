@@ -1,0 +1,967 @@
+depth,parent_code,parent_display,code,display,is_abstract,definition
+0,,,1000-9,Race,TRUE,"Race, Note that this is an abstract 'grouping' concept and not for use as a real concept"
+1,1000-9,Race,1002-5,American Indian or Alaska Native,FALSE,American Indian or Alaska Native
+2,1002-5,American Indian or Alaska Native,1004-1,American Indian,FALSE,American Indian
+2,1002-5,American Indian or Alaska Native,1735-0,Alaska Native,FALSE,Alaska Native
+2,1002-5,American Indian or Alaska Native,1006-6,Abenaki,FALSE,Abenaki
+2,1002-5,American Indian or Alaska Native,1008-2,Algonquian,FALSE,Algonquian
+2,1002-5,American Indian or Alaska Native,1010-8,Apache,FALSE,Apache
+2,1002-5,American Indian or Alaska Native,1021-5,Arapaho,FALSE,Arapaho
+2,1002-5,American Indian or Alaska Native,1026-4,Arikara,FALSE,Arikara
+2,1002-5,American Indian or Alaska Native,1028-0,Assiniboine,FALSE,Assiniboine
+2,1002-5,American Indian or Alaska Native,1030-6,Assiniboine Sioux,FALSE,Assiniboine Sioux
+2,1002-5,American Indian or Alaska Native,1033-0,Bannock,FALSE,Bannock
+2,1002-5,American Indian or Alaska Native,1035-5,Blackfeet,FALSE,Blackfeet
+2,1002-5,American Indian or Alaska Native,1037-1,Brotherton,FALSE,Brotherton
+2,1002-5,American Indian or Alaska Native,1039-7,Burt Lake Band,FALSE,Burt Lake Band
+2,1002-5,American Indian or Alaska Native,1041-3,Caddo,FALSE,Caddo
+2,1002-5,American Indian or Alaska Native,1044-7,Cahuilla,FALSE,Cahuilla
+2,1002-5,American Indian or Alaska Native,1053-8,California Tribes,FALSE,California Tribes
+2,1002-5,American Indian or Alaska Native,1068-6,Canadian and Latin American Indian,FALSE,Canadian and Latin American Indian
+2,1002-5,American Indian or Alaska Native,1076-9,Catawba,FALSE,Catawba
+2,1002-5,American Indian or Alaska Native,1078-5,Cayuse,FALSE,Cayuse
+2,1002-5,American Indian or Alaska Native,1080-1,Chehalis,FALSE,Chehalis
+2,1002-5,American Indian or Alaska Native,1082-7,Chemakuan,FALSE,Chemakuan
+2,1002-5,American Indian or Alaska Native,1086-8,Chemehuevi,FALSE,Chemehuevi
+2,1002-5,American Indian or Alaska Native,1088-4,Cherokee,FALSE,Cherokee
+2,1002-5,American Indian or Alaska Native,1100-7,Cherokee Shawnee,FALSE,Cherokee Shawnee
+2,1002-5,American Indian or Alaska Native,1102-3,Cheyenne,FALSE,Cheyenne
+2,1002-5,American Indian or Alaska Native,1106-4,Cheyenne-Arapaho,FALSE,Cheyenne-Arapaho
+2,1002-5,American Indian or Alaska Native,1108-0,Chickahominy,FALSE,Chickahominy
+2,1002-5,American Indian or Alaska Native,1112-2,Chickasaw,FALSE,Chickasaw
+2,1002-5,American Indian or Alaska Native,1114-8,Chinook,FALSE,Chinook
+2,1002-5,American Indian or Alaska Native,1123-9,Chippewa,FALSE,Chippewa
+2,1002-5,American Indian or Alaska Native,1150-2,Chippewa Cree,FALSE,Chippewa Cree
+2,1002-5,American Indian or Alaska Native,1153-6,Chitimacha,FALSE,Chitimacha
+2,1002-5,American Indian or Alaska Native,1155-1,Choctaw,FALSE,Choctaw
+2,1002-5,American Indian or Alaska Native,1162-7,Chumash,FALSE,Chumash
+2,1002-5,American Indian or Alaska Native,1165-0,Clear Lake,FALSE,Clear Lake
+2,1002-5,American Indian or Alaska Native,1167-6,Coeur D'Alene,FALSE,Coeur D'Alene
+2,1002-5,American Indian or Alaska Native,1169-2,Coharie,FALSE,Coharie
+2,1002-5,American Indian or Alaska Native,1171-8,Colorado River,FALSE,Colorado River
+2,1002-5,American Indian or Alaska Native,1173-4,Colville,FALSE,Colville
+2,1002-5,American Indian or Alaska Native,1175-9,Comanche,FALSE,Comanche
+2,1002-5,American Indian or Alaska Native,1178-3,"Coos, Lower Umpqua, Siuslaw",FALSE,"Coos, Lower Umpqua, Siuslaw"
+2,1002-5,American Indian or Alaska Native,1180-9,Coos,FALSE,Coos
+2,1002-5,American Indian or Alaska Native,1182-5,Coquilles,FALSE,Coquilles
+2,1002-5,American Indian or Alaska Native,1184-1,Costanoan,FALSE,Costanoan
+2,1002-5,American Indian or Alaska Native,1186-6,Coushatta,FALSE,Coushatta
+2,1002-5,American Indian or Alaska Native,1189-0,Cowlitz,FALSE,Cowlitz
+2,1002-5,American Indian or Alaska Native,1191-6,Cree,FALSE,Cree
+2,1002-5,American Indian or Alaska Native,1193-2,Creek,FALSE,Creek
+2,1002-5,American Indian or Alaska Native,1207-0,Croatan,FALSE,Croatan
+2,1002-5,American Indian or Alaska Native,1209-6,Crow,FALSE,Crow
+2,1002-5,American Indian or Alaska Native,1211-2,Cupeno,FALSE,Cupeno
+2,1002-5,American Indian or Alaska Native,1214-6,Delaware,FALSE,Delaware
+2,1002-5,American Indian or Alaska Native,1222-9,Diegueno,FALSE,Diegueno
+2,1002-5,American Indian or Alaska Native,1233-6,Eastern Tribes,FALSE,Eastern Tribes
+2,1002-5,American Indian or Alaska Native,1250-0,Esselen,FALSE,Esselen
+2,1002-5,American Indian or Alaska Native,1252-6,Fort Belknap,FALSE,Fort Belknap
+2,1002-5,American Indian or Alaska Native,1254-2,Fort Berthold,FALSE,Fort Berthold
+2,1002-5,American Indian or Alaska Native,1256-7,Fort Mcdowell,FALSE,Fort Mcdowell
+2,1002-5,American Indian or Alaska Native,1258-3,Fort Hall,FALSE,Fort Hall
+2,1002-5,American Indian or Alaska Native,1260-9,Gabrieleno,FALSE,Gabrieleno
+2,1002-5,American Indian or Alaska Native,1262-5,Grand Ronde,FALSE,Grand Ronde
+2,1002-5,American Indian or Alaska Native,1264-1,Gros Ventres,FALSE,Gros Ventres
+2,1002-5,American Indian or Alaska Native,1267-4,Haliwa,FALSE,Haliwa
+2,1002-5,American Indian or Alaska Native,1269-0,Hidatsa,FALSE,Hidatsa
+2,1002-5,American Indian or Alaska Native,1271-6,Hoopa,FALSE,Hoopa
+2,1002-5,American Indian or Alaska Native,1275-7,Hoopa Extension,FALSE,Hoopa Extension
+2,1002-5,American Indian or Alaska Native,1277-3,Houma,FALSE,Houma
+2,1002-5,American Indian or Alaska Native,1279-9,Inaja-Cosmit,FALSE,Inaja-Cosmit
+2,1002-5,American Indian or Alaska Native,1281-5,Iowa,FALSE,Iowa
+2,1002-5,American Indian or Alaska Native,1285-6,Iroquois,FALSE,Iroquois
+2,1002-5,American Indian or Alaska Native,1297-1,Juaneno,FALSE,Juaneno
+2,1002-5,American Indian or Alaska Native,1299-7,Kalispel,FALSE,Kalispel
+2,1002-5,American Indian or Alaska Native,1301-1,Karuk,FALSE,Karuk
+2,1002-5,American Indian or Alaska Native,1303-7,Kaw,FALSE,Kaw
+2,1002-5,American Indian or Alaska Native,1305-2,Kickapoo,FALSE,Kickapoo
+2,1002-5,American Indian or Alaska Native,1309-4,Kiowa,FALSE,Kiowa
+2,1002-5,American Indian or Alaska Native,1312-8,Klallam,FALSE,Klallam
+2,1002-5,American Indian or Alaska Native,1317-7,Klamath,FALSE,Klamath
+2,1002-5,American Indian or Alaska Native,1319-3,Konkow,FALSE,Konkow
+2,1002-5,American Indian or Alaska Native,1321-9,Kootenai,FALSE,Kootenai
+2,1002-5,American Indian or Alaska Native,1323-5,Lassik,FALSE,Lassik
+2,1002-5,American Indian or Alaska Native,1325-0,Long Island,FALSE,Long Island
+2,1002-5,American Indian or Alaska Native,1331-8,Luiseno,FALSE,Luiseno
+2,1002-5,American Indian or Alaska Native,1340-9,Lumbee,FALSE,Lumbee
+2,1002-5,American Indian or Alaska Native,1342-5,Lummi,FALSE,Lummi
+2,1002-5,American Indian or Alaska Native,1344-1,Maidu,FALSE,Maidu
+2,1002-5,American Indian or Alaska Native,1348-2,Makah,FALSE,Makah
+2,1002-5,American Indian or Alaska Native,1350-8,Maliseet,FALSE,Maliseet
+2,1002-5,American Indian or Alaska Native,1352-4,Mandan,FALSE,Mandan
+2,1002-5,American Indian or Alaska Native,1354-0,Mattaponi,FALSE,Mattaponi
+2,1002-5,American Indian or Alaska Native,1356-5,Menominee,FALSE,Menominee
+2,1002-5,American Indian or Alaska Native,1358-1,Miami,FALSE,Miami
+2,1002-5,American Indian or Alaska Native,1363-1,Miccosukee,FALSE,Miccosukee
+2,1002-5,American Indian or Alaska Native,1365-6,Micmac,FALSE,Micmac
+2,1002-5,American Indian or Alaska Native,1368-0,Mission Indians,FALSE,Mission Indians
+2,1002-5,American Indian or Alaska Native,1370-6,Miwok,FALSE,Miwok
+2,1002-5,American Indian or Alaska Native,1372-2,Modoc,FALSE,Modoc
+2,1002-5,American Indian or Alaska Native,1374-8,Mohegan,FALSE,Mohegan
+2,1002-5,American Indian or Alaska Native,1376-3,Mono,FALSE,Mono
+2,1002-5,American Indian or Alaska Native,1378-9,Nanticoke,FALSE,Nanticoke
+2,1002-5,American Indian or Alaska Native,1380-5,Narragansett,FALSE,Narragansett
+2,1002-5,American Indian or Alaska Native,1382-1,Navajo,FALSE,Navajo
+2,1002-5,American Indian or Alaska Native,1387-0,Nez Perce,FALSE,Nez Perce
+2,1002-5,American Indian or Alaska Native,1389-6,Nomalaki,FALSE,Nomalaki
+2,1002-5,American Indian or Alaska Native,1391-2,Northwest Tribes,FALSE,Northwest Tribes
+2,1002-5,American Indian or Alaska Native,1403-5,Omaha,FALSE,Omaha
+2,1002-5,American Indian or Alaska Native,1405-0,Oregon Athabaskan,FALSE,Oregon Athabaskan
+2,1002-5,American Indian or Alaska Native,1407-6,Osage,FALSE,Osage
+2,1002-5,American Indian or Alaska Native,1409-2,Otoe-Missouria,FALSE,Otoe-Missouria
+2,1002-5,American Indian or Alaska Native,1411-8,Ottawa,FALSE,Ottawa
+2,1002-5,American Indian or Alaska Native,1416-7,Paiute,FALSE,Paiute
+2,1002-5,American Indian or Alaska Native,1439-9,Pamunkey,FALSE,Pamunkey
+2,1002-5,American Indian or Alaska Native,1441-5,Passamaquoddy,FALSE,Passamaquoddy
+2,1002-5,American Indian or Alaska Native,1445-6,Pawnee,FALSE,Pawnee
+2,1002-5,American Indian or Alaska Native,1448-0,Penobscot,FALSE,Penobscot
+2,1002-5,American Indian or Alaska Native,1450-6,Peoria,FALSE,Peoria
+2,1002-5,American Indian or Alaska Native,1453-0,Pequot,FALSE,Pequot
+2,1002-5,American Indian or Alaska Native,1456-3,Pima,FALSE,Pima
+2,1002-5,American Indian or Alaska Native,1460-5,Piscataway,FALSE,Piscataway
+2,1002-5,American Indian or Alaska Native,1462-1,Pit River,FALSE,Pit River
+2,1002-5,American Indian or Alaska Native,1464-7,Pomo,FALSE,Pomo
+2,1002-5,American Indian or Alaska Native,1474-6,Ponca,FALSE,Ponca
+2,1002-5,American Indian or Alaska Native,1478-7,Potawatomi,FALSE,Potawatomi
+2,1002-5,American Indian or Alaska Native,1487-8,Powhatan,FALSE,Powhatan
+2,1002-5,American Indian or Alaska Native,1489-4,Pueblo,FALSE,Pueblo
+2,1002-5,American Indian or Alaska Native,1518-0,Puget Sound Salish,FALSE,Puget Sound Salish
+2,1002-5,American Indian or Alaska Native,1541-2,Quapaw,FALSE,Quapaw
+2,1002-5,American Indian or Alaska Native,1543-8,Quinault,FALSE,Quinault
+2,1002-5,American Indian or Alaska Native,1545-3,Rappahannock,FALSE,Rappahannock
+2,1002-5,American Indian or Alaska Native,1547-9,Reno-Sparks,FALSE,Reno-Sparks
+2,1002-5,American Indian or Alaska Native,1549-5,Round Valley,FALSE,Round Valley
+2,1002-5,American Indian or Alaska Native,1551-1,Sac and Fox,FALSE,Sac and Fox
+2,1002-5,American Indian or Alaska Native,1556-0,Salinan,FALSE,Salinan
+2,1002-5,American Indian or Alaska Native,1558-6,Salish,FALSE,Salish
+2,1002-5,American Indian or Alaska Native,1560-2,Salish and Kootenai,FALSE,Salish and Kootenai
+2,1002-5,American Indian or Alaska Native,1562-8,Schaghticoke,FALSE,Schaghticoke
+2,1002-5,American Indian or Alaska Native,1564-4,Scott Valley,FALSE,Scott Valley
+2,1002-5,American Indian or Alaska Native,1566-9,Seminole,FALSE,Seminole
+2,1002-5,American Indian or Alaska Native,1573-5,Serrano,FALSE,Serrano
+2,1002-5,American Indian or Alaska Native,1576-8,Shasta,FALSE,Shasta
+2,1002-5,American Indian or Alaska Native,1578-4,Shawnee,FALSE,Shawnee
+2,1002-5,American Indian or Alaska Native,1582-6,Shinnecock,FALSE,Shinnecock
+2,1002-5,American Indian or Alaska Native,1584-2,Shoalwater Bay,FALSE,Shoalwater Bay
+2,1002-5,American Indian or Alaska Native,1586-7,Shoshone,FALSE,Shoshone
+2,1002-5,American Indian or Alaska Native,1602-2,Shoshone Paiute,FALSE,Shoshone Paiute
+2,1002-5,American Indian or Alaska Native,1607-1,Siletz,FALSE,Siletz
+2,1002-5,American Indian or Alaska Native,1609-7,Sioux,FALSE,Sioux
+2,1002-5,American Indian or Alaska Native,1643-6,Siuslaw,FALSE,Siuslaw
+2,1002-5,American Indian or Alaska Native,1645-1,Spokane,FALSE,Spokane
+2,1002-5,American Indian or Alaska Native,1647-7,Stewart,FALSE,Stewart
+2,1002-5,American Indian or Alaska Native,1649-3,Stockbridge,FALSE,Stockbridge
+2,1002-5,American Indian or Alaska Native,1651-9,Susanville,FALSE,Susanville
+2,1002-5,American Indian or Alaska Native,1653-5,Tohono O'Odham,FALSE,Tohono O'Odham
+2,1002-5,American Indian or Alaska Native,1659-2,Tolowa,FALSE,Tolowa
+2,1002-5,American Indian or Alaska Native,1661-8,Tonkawa,FALSE,Tonkawa
+2,1002-5,American Indian or Alaska Native,1663-4,Tygh,FALSE,Tygh
+2,1002-5,American Indian or Alaska Native,1665-9,Umatilla,FALSE,Umatilla
+2,1002-5,American Indian or Alaska Native,1667-5,Umpqua,FALSE,Umpqua
+2,1002-5,American Indian or Alaska Native,1670-9,Ute,FALSE,Ute
+2,1002-5,American Indian or Alaska Native,1675-8,Wailaki,FALSE,Wailaki
+2,1002-5,American Indian or Alaska Native,1677-4,Walla-Walla,FALSE,Walla-Walla
+2,1002-5,American Indian or Alaska Native,1679-0,Wampanoag,FALSE,Wampanoag
+2,1002-5,American Indian or Alaska Native,1683-2,Warm Springs,FALSE,Warm Springs
+2,1002-5,American Indian or Alaska Native,1685-7,Wascopum,FALSE,Wascopum
+2,1002-5,American Indian or Alaska Native,1687-3,Washoe,FALSE,Washoe
+2,1002-5,American Indian or Alaska Native,1692-3,Wichita,FALSE,Wichita
+2,1002-5,American Indian or Alaska Native,1694-9,Wind River,FALSE,Wind River
+2,1002-5,American Indian or Alaska Native,1696-4,Winnebago,FALSE,Winnebago
+2,1002-5,American Indian or Alaska Native,1700-4,Winnemucca,FALSE,Winnemucca
+2,1002-5,American Indian or Alaska Native,1702-0,Wintun,FALSE,Wintun
+2,1002-5,American Indian or Alaska Native,1704-6,Wiyot,FALSE,Wiyot
+2,1002-5,American Indian or Alaska Native,1707-9,Yakama,FALSE,Yakama
+2,1002-5,American Indian or Alaska Native,1709-5,Yakama Cowlitz,FALSE,Yakama Cowlitz
+2,1002-5,American Indian or Alaska Native,1711-1,Yaqui,FALSE,Yaqui
+2,1002-5,American Indian or Alaska Native,1715-2,Yavapai Apache,FALSE,Yavapai Apache
+2,1002-5,American Indian or Alaska Native,1717-8,Yokuts,FALSE,Yokuts
+2,1002-5,American Indian or Alaska Native,1722-8,Yuchi,FALSE,Yuchi
+2,1002-5,American Indian or Alaska Native,1724-4,Yuman,FALSE,Yuman
+2,1002-5,American Indian or Alaska Native,1732-7,Yurok,FALSE,Yurok
+2,1002-5,American Indian or Alaska Native,1011-6,Chiricahua,FALSE,Chiricahua
+2,1002-5,American Indian or Alaska Native,1012-4,Fort Sill Apache,FALSE,Fort Sill Apache
+2,1002-5,American Indian or Alaska Native,1013-2,Jicarilla Apache,FALSE,Jicarilla Apache
+2,1002-5,American Indian or Alaska Native,1014-0,Lipan Apache,FALSE,Lipan Apache
+2,1002-5,American Indian or Alaska Native,1015-7,Mescalero Apache,FALSE,Mescalero Apache
+2,1002-5,American Indian or Alaska Native,1016-5,Oklahoma Apache,FALSE,Oklahoma Apache
+2,1002-5,American Indian or Alaska Native,1017-3,Payson Apache,FALSE,Payson Apache
+2,1002-5,American Indian or Alaska Native,1018-1,San Carlos Apache,FALSE,San Carlos Apache
+2,1002-5,American Indian or Alaska Native,1019-9,White Mountain Apache,FALSE,White Mountain Apache
+2,1002-5,American Indian or Alaska Native,1022-3,Northern Arapaho,FALSE,Northern Arapaho
+2,1002-5,American Indian or Alaska Native,1023-1,Southern Arapaho,FALSE,Southern Arapaho
+2,1002-5,American Indian or Alaska Native,1024-9,Wind River Arapaho,FALSE,Wind River Arapaho
+2,1002-5,American Indian or Alaska Native,1031-4,Fort Peck Assiniboine Sioux,FALSE,Fort Peck Assiniboine Sioux
+2,1002-5,American Indian or Alaska Native,1042-1,Oklahoma Cado,FALSE,Oklahoma Cado
+2,1002-5,American Indian or Alaska Native,1045-4,Agua Caliente Cahuilla,FALSE,Agua Caliente Cahuilla
+2,1002-5,American Indian or Alaska Native,1046-2,Augustine,FALSE,Augustine
+2,1002-5,American Indian or Alaska Native,1047-0,Cabazon,FALSE,Cabazon
+2,1002-5,American Indian or Alaska Native,1048-8,Los Coyotes,FALSE,Los Coyotes
+2,1002-5,American Indian or Alaska Native,1049-6,Morongo,FALSE,Morongo
+2,1002-5,American Indian or Alaska Native,1050-4,Santa Rosa Cahuilla,FALSE,Santa Rosa Cahuilla
+2,1002-5,American Indian or Alaska Native,1051-2,Torres-Martinez,FALSE,Torres-Martinez
+2,1002-5,American Indian or Alaska Native,1054-6,Cahto,FALSE,Cahto
+2,1002-5,American Indian or Alaska Native,1055-3,Chimariko,FALSE,Chimariko
+2,1002-5,American Indian or Alaska Native,1056-1,Coast Miwok,FALSE,Coast Miwok
+2,1002-5,American Indian or Alaska Native,1057-9,Digger,FALSE,Digger
+2,1002-5,American Indian or Alaska Native,1058-7,Kawaiisu,FALSE,Kawaiisu
+2,1002-5,American Indian or Alaska Native,1059-5,Kern River,FALSE,Kern River
+2,1002-5,American Indian or Alaska Native,1060-3,Mattole,FALSE,Mattole
+2,1002-5,American Indian or Alaska Native,1061-1,Red Wood,FALSE,Red Wood
+2,1002-5,American Indian or Alaska Native,1062-9,Santa Rosa,FALSE,Santa Rosa
+2,1002-5,American Indian or Alaska Native,1063-7,Takelma,FALSE,Takelma
+2,1002-5,American Indian or Alaska Native,1064-5,Wappo,FALSE,Wappo
+2,1002-5,American Indian or Alaska Native,1065-2,Yana,FALSE,Yana
+2,1002-5,American Indian or Alaska Native,1066-0,Yuki,FALSE,Yuki
+2,1002-5,American Indian or Alaska Native,1069-4,Canadian Indian,FALSE,Canadian Indian
+2,1002-5,American Indian or Alaska Native,1070-2,Central American Indian,FALSE,Central American Indian
+2,1002-5,American Indian or Alaska Native,1071-0,French American Indian,FALSE,French American Indian
+2,1002-5,American Indian or Alaska Native,1072-8,Mexican American Indian,FALSE,Mexican American Indian
+2,1002-5,American Indian or Alaska Native,1073-6,South American Indian,FALSE,South American Indian
+2,1002-5,American Indian or Alaska Native,1074-4,Spanish American Indian,FALSE,Spanish American Indian
+2,1002-5,American Indian or Alaska Native,1083-5,Hoh,FALSE,Hoh
+2,1002-5,American Indian or Alaska Native,1084-3,Quileute,FALSE,Quileute
+2,1002-5,American Indian or Alaska Native,1089-2,Cherokee Alabama,FALSE,Cherokee Alabama
+2,1002-5,American Indian or Alaska Native,1090-0,Cherokees of Northeast Alabama,FALSE,Cherokees of Northeast Alabama
+2,1002-5,American Indian or Alaska Native,1091-8,Cherokees of Southeast Alabama,FALSE,Cherokees of Southeast Alabama
+2,1002-5,American Indian or Alaska Native,1092-6,Eastern Cherokee,FALSE,Eastern Cherokee
+2,1002-5,American Indian or Alaska Native,1093-4,Echota Cherokee,FALSE,Echota Cherokee
+2,1002-5,American Indian or Alaska Native,1094-2,Etowah Cherokee,FALSE,Etowah Cherokee
+2,1002-5,American Indian or Alaska Native,1095-9,Northern Cherokee,FALSE,Northern Cherokee
+2,1002-5,American Indian or Alaska Native,1096-7,Tuscola,FALSE,Tuscola
+2,1002-5,American Indian or Alaska Native,1097-5,United Keetowah Band of Cherokee,FALSE,United Keetowah Band of Cherokee
+2,1002-5,American Indian or Alaska Native,1098-3,Western Cherokee,FALSE,Western Cherokee
+2,1002-5,American Indian or Alaska Native,1103-1,Northern Cheyenne,FALSE,Northern Cheyenne
+2,1002-5,American Indian or Alaska Native,1104-9,Southern Cheyenne,FALSE,Southern Cheyenne
+2,1002-5,American Indian or Alaska Native,1109-8,Eastern Chickahominy,FALSE,Eastern Chickahominy
+2,1002-5,American Indian or Alaska Native,1110-6,Western Chickahominy,FALSE,Western Chickahominy
+2,1002-5,American Indian or Alaska Native,1115-5,Clatsop,FALSE,Clatsop
+2,1002-5,American Indian or Alaska Native,1116-3,Columbia River Chinook,FALSE,Columbia River Chinook
+2,1002-5,American Indian or Alaska Native,1117-1,Kathlamet,FALSE,Kathlamet
+2,1002-5,American Indian or Alaska Native,1118-9,Upper Chinook,FALSE,Upper Chinook
+2,1002-5,American Indian or Alaska Native,1119-7,Wakiakum Chinook,FALSE,Wakiakum Chinook
+2,1002-5,American Indian or Alaska Native,1120-5,Willapa Chinook,FALSE,Willapa Chinook
+2,1002-5,American Indian or Alaska Native,1121-3,Wishram,FALSE,Wishram
+2,1002-5,American Indian or Alaska Native,1124-7,Bad River,FALSE,Bad River
+2,1002-5,American Indian or Alaska Native,1125-4,Bay Mills Chippewa,FALSE,Bay Mills Chippewa
+2,1002-5,American Indian or Alaska Native,1126-2,Bois Forte,FALSE,Bois Forte
+2,1002-5,American Indian or Alaska Native,1127-0,Burt Lake Chippewa,FALSE,Burt Lake Chippewa
+2,1002-5,American Indian or Alaska Native,1128-8,Fond du Lac,FALSE,Fond du Lac
+2,1002-5,American Indian or Alaska Native,1129-6,Grand Portage,FALSE,Grand Portage
+2,1002-5,American Indian or Alaska Native,1130-4,Grand Traverse Band of Ottawa/Chippewa,FALSE,Grand Traverse Band of Ottawa/Chippewa
+2,1002-5,American Indian or Alaska Native,1131-2,Keweenaw,FALSE,Keweenaw
+2,1002-5,American Indian or Alaska Native,1132-0,Lac Courte Oreilles,FALSE,Lac Courte Oreilles
+2,1002-5,American Indian or Alaska Native,1133-8,Lac du Flambeau,FALSE,Lac du Flambeau
+2,1002-5,American Indian or Alaska Native,1134-6,Lac Vieux Desert Chippewa,FALSE,Lac Vieux Desert Chippewa
+2,1002-5,American Indian or Alaska Native,1135-3,Lake Superior,FALSE,Lake Superior
+2,1002-5,American Indian or Alaska Native,1136-1,Leech Lake,FALSE,Leech Lake
+2,1002-5,American Indian or Alaska Native,1137-9,Little Shell Chippewa,FALSE,Little Shell Chippewa
+2,1002-5,American Indian or Alaska Native,1138-7,Mille Lacs,FALSE,Mille Lacs
+2,1002-5,American Indian or Alaska Native,1139-5,Minnesota Chippewa,FALSE,Minnesota Chippewa
+2,1002-5,American Indian or Alaska Native,1140-3,Ontonagon,FALSE,Ontonagon
+2,1002-5,American Indian or Alaska Native,1141-1,Red Cliff Chippewa,FALSE,Red Cliff Chippewa
+2,1002-5,American Indian or Alaska Native,1142-9,Red Lake Chippewa,FALSE,Red Lake Chippewa
+2,1002-5,American Indian or Alaska Native,1143-7,Saginaw Chippewa,FALSE,Saginaw Chippewa
+2,1002-5,American Indian or Alaska Native,1144-5,St. Croix Chippewa,FALSE,St. Croix Chippewa
+2,1002-5,American Indian or Alaska Native,1145-2,Sault Ste. Marie Chippewa,FALSE,Sault Ste. Marie Chippewa
+2,1002-5,American Indian or Alaska Native,1146-0,Sokoagon Chippewa,FALSE,Sokoagon Chippewa
+2,1002-5,American Indian or Alaska Native,1147-8,Turtle Mountain,FALSE,Turtle Mountain
+2,1002-5,American Indian or Alaska Native,1148-6,White Earth,FALSE,White Earth
+2,1002-5,American Indian or Alaska Native,1151-0,Rocky Boy's Chippewa Cree,FALSE,Rocky Boy's Chippewa Cree
+2,1002-5,American Indian or Alaska Native,1156-9,Clifton Choctaw,FALSE,Clifton Choctaw
+2,1002-5,American Indian or Alaska Native,1157-7,Jena Choctaw,FALSE,Jena Choctaw
+2,1002-5,American Indian or Alaska Native,1158-5,Mississippi Choctaw,FALSE,Mississippi Choctaw
+2,1002-5,American Indian or Alaska Native,1159-3,Mowa Band of Choctaw,FALSE,Mowa Band of Choctaw
+2,1002-5,American Indian or Alaska Native,1160-1,Oklahoma Choctaw,FALSE,Oklahoma Choctaw
+2,1002-5,American Indian or Alaska Native,1163-5,Santa Ynez,FALSE,Santa Ynez
+2,1002-5,American Indian or Alaska Native,1176-7,Oklahoma Comanche,FALSE,Oklahoma Comanche
+2,1002-5,American Indian or Alaska Native,1187-4,Alabama Coushatta,FALSE,Alabama Coushatta
+2,1002-5,American Indian or Alaska Native,1194-0,Alabama Creek,FALSE,Alabama Creek
+2,1002-5,American Indian or Alaska Native,1195-7,Alabama Quassarte,FALSE,Alabama Quassarte
+2,1002-5,American Indian or Alaska Native,1196-5,Eastern Creek,FALSE,Eastern Creek
+2,1002-5,American Indian or Alaska Native,1197-3,Eastern Muscogee,FALSE,Eastern Muscogee
+2,1002-5,American Indian or Alaska Native,1198-1,Kialegee,FALSE,Kialegee
+2,1002-5,American Indian or Alaska Native,1199-9,Lower Muscogee,FALSE,Lower Muscogee
+2,1002-5,American Indian or Alaska Native,1200-5,Machis Lower Creek Indian,FALSE,Machis Lower Creek Indian
+2,1002-5,American Indian or Alaska Native,1201-3,Poarch Band,FALSE,Poarch Band
+2,1002-5,American Indian or Alaska Native,1202-1,Principal Creek Indian Nation,FALSE,Principal Creek Indian Nation
+2,1002-5,American Indian or Alaska Native,1203-9,Star Clan of Muscogee Creeks,FALSE,Star Clan of Muscogee Creeks
+2,1002-5,American Indian or Alaska Native,1204-7,Thlopthlocco,FALSE,Thlopthlocco
+2,1002-5,American Indian or Alaska Native,1205-4,Tuckabachee,FALSE,Tuckabachee
+2,1002-5,American Indian or Alaska Native,1212-0,Agua Caliente,FALSE,Agua Caliente
+2,1002-5,American Indian or Alaska Native,1215-3,Eastern Delaware,FALSE,Eastern Delaware
+2,1002-5,American Indian or Alaska Native,1216-1,Lenni-Lenape,FALSE,Lenni-Lenape
+2,1002-5,American Indian or Alaska Native,1217-9,Munsee,FALSE,Munsee
+2,1002-5,American Indian or Alaska Native,1218-7,Oklahoma Delaware,FALSE,Oklahoma Delaware
+2,1002-5,American Indian or Alaska Native,1219-5,Rampough Mountain,FALSE,Rampough Mountain
+2,1002-5,American Indian or Alaska Native,1220-3,Sand Hill,FALSE,Sand Hill
+2,1002-5,American Indian or Alaska Native,1223-7,Campo,FALSE,Campo
+2,1002-5,American Indian or Alaska Native,1224-5,Capitan Grande,FALSE,Capitan Grande
+2,1002-5,American Indian or Alaska Native,1225-2,Cuyapaipe,FALSE,Cuyapaipe
+2,1002-5,American Indian or Alaska Native,1226-0,La Posta,FALSE,La Posta
+2,1002-5,American Indian or Alaska Native,1227-8,Manzanita,FALSE,Manzanita
+2,1002-5,American Indian or Alaska Native,1228-6,Mesa Grande,FALSE,Mesa Grande
+2,1002-5,American Indian or Alaska Native,1229-4,San Pasqual,FALSE,San Pasqual
+2,1002-5,American Indian or Alaska Native,1230-2,Santa Ysabel,FALSE,Santa Ysabel
+2,1002-5,American Indian or Alaska Native,1231-0,Sycuan,FALSE,Sycuan
+2,1002-5,American Indian or Alaska Native,1234-4,Attacapa,FALSE,Attacapa
+2,1002-5,American Indian or Alaska Native,1235-1,Biloxi,FALSE,Biloxi
+2,1002-5,American Indian or Alaska Native,1236-9,Georgetown (Eastern Tribes),FALSE,Georgetown (Eastern Tribes)
+2,1002-5,American Indian or Alaska Native,1237-7,Moor,FALSE,Moor
+2,1002-5,American Indian or Alaska Native,1238-5,Nansemond,FALSE,Nansemond
+2,1002-5,American Indian or Alaska Native,1239-3,Natchez,FALSE,Natchez
+2,1002-5,American Indian or Alaska Native,1240-1,Nausu Waiwash,FALSE,Nausu Waiwash
+2,1002-5,American Indian or Alaska Native,1241-9,Nipmuc,FALSE,Nipmuc
+2,1002-5,American Indian or Alaska Native,1242-7,Paugussett,FALSE,Paugussett
+2,1002-5,American Indian or Alaska Native,1243-5,Pocomoke Acohonock,FALSE,Pocomoke Acohonock
+2,1002-5,American Indian or Alaska Native,1244-3,Southeastern Indians,FALSE,Southeastern Indians
+2,1002-5,American Indian or Alaska Native,1245-0,Susquehanock,FALSE,Susquehanock
+2,1002-5,American Indian or Alaska Native,1246-8,Tunica Biloxi,FALSE,Tunica Biloxi
+2,1002-5,American Indian or Alaska Native,1247-6,Waccamaw-Siousan,FALSE,Waccamaw-Siousan
+2,1002-5,American Indian or Alaska Native,1248-4,Wicomico,FALSE,Wicomico
+2,1002-5,American Indian or Alaska Native,1265-8,Atsina,FALSE,Atsina
+2,1002-5,American Indian or Alaska Native,1272-4,Trinity,FALSE,Trinity
+2,1002-5,American Indian or Alaska Native,1273-2,Whilkut,FALSE,Whilkut
+2,1002-5,American Indian or Alaska Native,1282-3,Iowa of Kansas-Nebraska,FALSE,Iowa of Kansas-Nebraska
+2,1002-5,American Indian or Alaska Native,1283-1,Iowa of Oklahoma,FALSE,Iowa of Oklahoma
+2,1002-5,American Indian or Alaska Native,1286-4,Cayuga,FALSE,Cayuga
+2,1002-5,American Indian or Alaska Native,1287-2,Mohawk,FALSE,Mohawk
+2,1002-5,American Indian or Alaska Native,1288-0,Oneida,FALSE,Oneida
+2,1002-5,American Indian or Alaska Native,1289-8,Onondaga,FALSE,Onondaga
+2,1002-5,American Indian or Alaska Native,1290-6,Seneca,FALSE,Seneca
+2,1002-5,American Indian or Alaska Native,1291-4,Seneca Nation,FALSE,Seneca Nation
+2,1002-5,American Indian or Alaska Native,1292-2,Seneca-Cayuga,FALSE,Seneca-Cayuga
+2,1002-5,American Indian or Alaska Native,1293-0,Tonawanda Seneca,FALSE,Tonawanda Seneca
+2,1002-5,American Indian or Alaska Native,1294-8,Tuscarora,FALSE,Tuscarora
+2,1002-5,American Indian or Alaska Native,1295-5,Wyandotte,FALSE,Wyandotte
+2,1002-5,American Indian or Alaska Native,1306-0,Oklahoma Kickapoo,FALSE,Oklahoma Kickapoo
+2,1002-5,American Indian or Alaska Native,1307-8,Texas Kickapoo,FALSE,Texas Kickapoo
+2,1002-5,American Indian or Alaska Native,1310-2,Oklahoma Kiowa,FALSE,Oklahoma Kiowa
+2,1002-5,American Indian or Alaska Native,1313-6,Jamestown,FALSE,Jamestown
+2,1002-5,American Indian or Alaska Native,1314-4,Lower Elwha,FALSE,Lower Elwha
+2,1002-5,American Indian or Alaska Native,1315-1,Port Gamble Klallam,FALSE,Port Gamble Klallam
+2,1002-5,American Indian or Alaska Native,1326-8,Matinecock,FALSE,Matinecock
+2,1002-5,American Indian or Alaska Native,1327-6,Montauk,FALSE,Montauk
+2,1002-5,American Indian or Alaska Native,1328-4,Poospatuck,FALSE,Poospatuck
+2,1002-5,American Indian or Alaska Native,1329-2,Setauket,FALSE,Setauket
+2,1002-5,American Indian or Alaska Native,1332-6,La Jolla,FALSE,La Jolla
+2,1002-5,American Indian or Alaska Native,1333-4,Pala,FALSE,Pala
+2,1002-5,American Indian or Alaska Native,1334-2,Pauma,FALSE,Pauma
+2,1002-5,American Indian or Alaska Native,1335-9,Pechanga,FALSE,Pechanga
+2,1002-5,American Indian or Alaska Native,1336-7,Soboba,FALSE,Soboba
+2,1002-5,American Indian or Alaska Native,1337-5,Twenty-Nine Palms,FALSE,Twenty-Nine Palms
+2,1002-5,American Indian or Alaska Native,1338-3,Temecula,FALSE,Temecula
+2,1002-5,American Indian or Alaska Native,1345-8,Mountain Maidu,FALSE,Mountain Maidu
+2,1002-5,American Indian or Alaska Native,1346-6,Nishinam,FALSE,Nishinam
+2,1002-5,American Indian or Alaska Native,1359-9,Illinois Miami,FALSE,Illinois Miami
+2,1002-5,American Indian or Alaska Native,1360-7,Indiana Miami,FALSE,Indiana Miami
+2,1002-5,American Indian or Alaska Native,1361-5,Oklahoma Miami,FALSE,Oklahoma Miami
+2,1002-5,American Indian or Alaska Native,1366-4,Aroostook,FALSE,Aroostook
+2,1002-5,American Indian or Alaska Native,1383-9,Alamo Navajo,FALSE,Alamo Navajo
+2,1002-5,American Indian or Alaska Native,1384-7,Canoncito Navajo,FALSE,Canoncito Navajo
+2,1002-5,American Indian or Alaska Native,1385-4,Ramah Navajo,FALSE,Ramah Navajo
+2,1002-5,American Indian or Alaska Native,1392-0,Alsea,FALSE,Alsea
+2,1002-5,American Indian or Alaska Native,1393-8,Celilo,FALSE,Celilo
+2,1002-5,American Indian or Alaska Native,1394-6,Columbia,FALSE,Columbia
+2,1002-5,American Indian or Alaska Native,1395-3,Kalapuya,FALSE,Kalapuya
+2,1002-5,American Indian or Alaska Native,1396-1,Molala,FALSE,Molala
+2,1002-5,American Indian or Alaska Native,1397-9,Talakamish,FALSE,Talakamish
+2,1002-5,American Indian or Alaska Native,1398-7,Tenino,FALSE,Tenino
+2,1002-5,American Indian or Alaska Native,1399-5,Tillamook,FALSE,Tillamook
+2,1002-5,American Indian or Alaska Native,1400-1,Wenatchee,FALSE,Wenatchee
+2,1002-5,American Indian or Alaska Native,1401-9,Yahooskin,FALSE,Yahooskin
+2,1002-5,American Indian or Alaska Native,1412-6,Burt Lake Ottawa,FALSE,Burt Lake Ottawa
+2,1002-5,American Indian or Alaska Native,1413-4,Michigan Ottawa,FALSE,Michigan Ottawa
+2,1002-5,American Indian or Alaska Native,1414-2,Oklahoma Ottawa,FALSE,Oklahoma Ottawa
+2,1002-5,American Indian or Alaska Native,1417-5,Bishop,FALSE,Bishop
+2,1002-5,American Indian or Alaska Native,1418-3,Bridgeport,FALSE,Bridgeport
+2,1002-5,American Indian or Alaska Native,1419-1,Burns Paiute,FALSE,Burns Paiute
+2,1002-5,American Indian or Alaska Native,1420-9,Cedarville,FALSE,Cedarville
+2,1002-5,American Indian or Alaska Native,1421-7,Fort Bidwell,FALSE,Fort Bidwell
+2,1002-5,American Indian or Alaska Native,1422-5,Fort Independence,FALSE,Fort Independence
+2,1002-5,American Indian or Alaska Native,1423-3,Kaibab,FALSE,Kaibab
+2,1002-5,American Indian or Alaska Native,1424-1,Las Vegas,FALSE,Las Vegas
+2,1002-5,American Indian or Alaska Native,1425-8,Lone Pine,FALSE,Lone Pine
+2,1002-5,American Indian or Alaska Native,1426-6,Lovelock,FALSE,Lovelock
+2,1002-5,American Indian or Alaska Native,1427-4,Malheur Paiute,FALSE,Malheur Paiute
+2,1002-5,American Indian or Alaska Native,1428-2,Moapa,FALSE,Moapa
+2,1002-5,American Indian or Alaska Native,1429-0,Northern Paiute,FALSE,Northern Paiute
+2,1002-5,American Indian or Alaska Native,1430-8,Owens Valley,FALSE,Owens Valley
+2,1002-5,American Indian or Alaska Native,1431-6,Pyramid Lake,FALSE,Pyramid Lake
+2,1002-5,American Indian or Alaska Native,1432-4,San Juan Southern Paiute,FALSE,San Juan Southern Paiute
+2,1002-5,American Indian or Alaska Native,1433-2,Southern Paiute,FALSE,Southern Paiute
+2,1002-5,American Indian or Alaska Native,1434-0,Summit Lake,FALSE,Summit Lake
+2,1002-5,American Indian or Alaska Native,1435-7,Utu Utu Gwaitu Paiute,FALSE,Utu Utu Gwaitu Paiute
+2,1002-5,American Indian or Alaska Native,1436-5,Walker River,FALSE,Walker River
+2,1002-5,American Indian or Alaska Native,1437-3,Yerington Paiute,FALSE,Yerington Paiute
+2,1002-5,American Indian or Alaska Native,1442-3,Indian Township,FALSE,Indian Township
+2,1002-5,American Indian or Alaska Native,1443-1,Pleasant Point Passamaquoddy,FALSE,Pleasant Point Passamaquoddy
+2,1002-5,American Indian or Alaska Native,1446-4,Oklahoma Pawnee,FALSE,Oklahoma Pawnee
+2,1002-5,American Indian or Alaska Native,1451-4,Oklahoma Peoria,FALSE,Oklahoma Peoria
+2,1002-5,American Indian or Alaska Native,1454-8,Marshantucket Pequot,FALSE,Marshantucket Pequot
+2,1002-5,American Indian or Alaska Native,1457-1,Gila River Pima-Maricopa,FALSE,Gila River Pima-Maricopa
+2,1002-5,American Indian or Alaska Native,1458-9,Salt River Pima-Maricopa,FALSE,Salt River Pima-Maricopa
+2,1002-5,American Indian or Alaska Native,1465-4,Central Pomo,FALSE,Central Pomo
+2,1002-5,American Indian or Alaska Native,1466-2,Dry Creek,FALSE,Dry Creek
+2,1002-5,American Indian or Alaska Native,1467-0,Eastern Pomo,FALSE,Eastern Pomo
+2,1002-5,American Indian or Alaska Native,1468-8,Kashia,FALSE,Kashia
+2,1002-5,American Indian or Alaska Native,1469-6,Northern Pomo,FALSE,Northern Pomo
+2,1002-5,American Indian or Alaska Native,1470-4,Scotts Valley,FALSE,Scotts Valley
+2,1002-5,American Indian or Alaska Native,1471-2,Stonyford,FALSE,Stonyford
+2,1002-5,American Indian or Alaska Native,1472-0,Sulphur Bank,FALSE,Sulphur Bank
+2,1002-5,American Indian or Alaska Native,1475-3,Nebraska Ponca,FALSE,Nebraska Ponca
+2,1002-5,American Indian or Alaska Native,1476-1,Oklahoma Ponca,FALSE,Oklahoma Ponca
+2,1002-5,American Indian or Alaska Native,1479-5,Citizen Band Potawatomi,FALSE,Citizen Band Potawatomi
+2,1002-5,American Indian or Alaska Native,1480-3,Forest County,FALSE,Forest County
+2,1002-5,American Indian or Alaska Native,1481-1,Hannahville,FALSE,Hannahville
+2,1002-5,American Indian or Alaska Native,1482-9,Huron Potawatomi,FALSE,Huron Potawatomi
+2,1002-5,American Indian or Alaska Native,1483-7,Pokagon Potawatomi,FALSE,Pokagon Potawatomi
+2,1002-5,American Indian or Alaska Native,1484-5,Prairie Band,FALSE,Prairie Band
+2,1002-5,American Indian or Alaska Native,1485-2,Wisconsin Potawatomi,FALSE,Wisconsin Potawatomi
+2,1002-5,American Indian or Alaska Native,1490-2,Acoma,FALSE,Acoma
+2,1002-5,American Indian or Alaska Native,1491-0,Arizona Tewa,FALSE,Arizona Tewa
+2,1002-5,American Indian or Alaska Native,1492-8,Cochiti,FALSE,Cochiti
+2,1002-5,American Indian or Alaska Native,1493-6,Hopi,FALSE,Hopi
+2,1002-5,American Indian or Alaska Native,1494-4,Isleta,FALSE,Isleta
+2,1002-5,American Indian or Alaska Native,1495-1,Jemez,FALSE,Jemez
+2,1002-5,American Indian or Alaska Native,1496-9,Keres,FALSE,Keres
+2,1002-5,American Indian or Alaska Native,1497-7,Laguna,FALSE,Laguna
+2,1002-5,American Indian or Alaska Native,1498-5,Nambe,FALSE,Nambe
+2,1002-5,American Indian or Alaska Native,1499-3,Picuris,FALSE,Picuris
+2,1002-5,American Indian or Alaska Native,1500-8,Piro,FALSE,Piro
+2,1002-5,American Indian or Alaska Native,1501-6,Pojoaque,FALSE,Pojoaque
+2,1002-5,American Indian or Alaska Native,1502-4,San Felipe,FALSE,San Felipe
+2,1002-5,American Indian or Alaska Native,1503-2,San Ildefonso,FALSE,San Ildefonso
+2,1002-5,American Indian or Alaska Native,1504-0,San Juan Pueblo,FALSE,San Juan Pueblo
+2,1002-5,American Indian or Alaska Native,1505-7,San Juan De,FALSE,San Juan De
+2,1002-5,American Indian or Alaska Native,1506-5,San Juan,FALSE,San Juan
+2,1002-5,American Indian or Alaska Native,1507-3,Sandia,FALSE,Sandia
+2,1002-5,American Indian or Alaska Native,1508-1,Santa Ana,FALSE,Santa Ana
+2,1002-5,American Indian or Alaska Native,1509-9,Santa Clara,FALSE,Santa Clara
+2,1002-5,American Indian or Alaska Native,1510-7,Santo Domingo,FALSE,Santo Domingo
+2,1002-5,American Indian or Alaska Native,1511-5,Taos,FALSE,Taos
+2,1002-5,American Indian or Alaska Native,1512-3,Tesuque,FALSE,Tesuque
+2,1002-5,American Indian or Alaska Native,1513-1,Tewa,FALSE,Tewa
+2,1002-5,American Indian or Alaska Native,1514-9,Tigua,FALSE,Tigua
+2,1002-5,American Indian or Alaska Native,1515-6,Zia,FALSE,Zia
+2,1002-5,American Indian or Alaska Native,1516-4,Zuni,FALSE,Zuni
+2,1002-5,American Indian or Alaska Native,1519-8,Duwamish,FALSE,Duwamish
+2,1002-5,American Indian or Alaska Native,1520-6,Kikiallus,FALSE,Kikiallus
+2,1002-5,American Indian or Alaska Native,1521-4,Lower Skagit,FALSE,Lower Skagit
+2,1002-5,American Indian or Alaska Native,1522-2,Muckleshoot,FALSE,Muckleshoot
+2,1002-5,American Indian or Alaska Native,1523-0,Nisqually,FALSE,Nisqually
+2,1002-5,American Indian or Alaska Native,1524-8,Nooksack,FALSE,Nooksack
+2,1002-5,American Indian or Alaska Native,1525-5,Port Madison,FALSE,Port Madison
+2,1002-5,American Indian or Alaska Native,1526-3,Puyallup,FALSE,Puyallup
+2,1002-5,American Indian or Alaska Native,1527-1,Samish,FALSE,Samish
+2,1002-5,American Indian or Alaska Native,1528-9,Sauk-Suiattle,FALSE,Sauk-Suiattle
+2,1002-5,American Indian or Alaska Native,1529-7,Skokomish,FALSE,Skokomish
+2,1002-5,American Indian or Alaska Native,1530-5,Skykomish,FALSE,Skykomish
+2,1002-5,American Indian or Alaska Native,1531-3,Snohomish,FALSE,Snohomish
+2,1002-5,American Indian or Alaska Native,1532-1,Snoqualmie,FALSE,Snoqualmie
+2,1002-5,American Indian or Alaska Native,1533-9,Squaxin Island,FALSE,Squaxin Island
+2,1002-5,American Indian or Alaska Native,1534-7,Steilacoom,FALSE,Steilacoom
+2,1002-5,American Indian or Alaska Native,1535-4,Stillaguamish,FALSE,Stillaguamish
+2,1002-5,American Indian or Alaska Native,1536-2,Suquamish,FALSE,Suquamish
+2,1002-5,American Indian or Alaska Native,1537-0,Swinomish,FALSE,Swinomish
+2,1002-5,American Indian or Alaska Native,1538-8,Tulalip,FALSE,Tulalip
+2,1002-5,American Indian or Alaska Native,1539-6,Upper Skagit,FALSE,Upper Skagit
+2,1002-5,American Indian or Alaska Native,1552-9,Iowa Sac and Fox,FALSE,Iowa Sac and Fox
+2,1002-5,American Indian or Alaska Native,1553-7,Missouri Sac and Fox,FALSE,Missouri Sac and Fox
+2,1002-5,American Indian or Alaska Native,1554-5,Oklahoma Sac and Fox,FALSE,Oklahoma Sac and Fox
+2,1002-5,American Indian or Alaska Native,1567-7,Big Cypress,FALSE,Big Cypress
+2,1002-5,American Indian or Alaska Native,1568-5,Brighton,FALSE,Brighton
+2,1002-5,American Indian or Alaska Native,1569-3,Florida Seminole,FALSE,Florida Seminole
+2,1002-5,American Indian or Alaska Native,1570-1,Hollywood Seminole,FALSE,Hollywood Seminole
+2,1002-5,American Indian or Alaska Native,1571-9,Oklahoma Seminole,FALSE,Oklahoma Seminole
+2,1002-5,American Indian or Alaska Native,1574-3,San Manual,FALSE,San Manual
+2,1002-5,American Indian or Alaska Native,1579-2,Absentee Shawnee,FALSE,Absentee Shawnee
+2,1002-5,American Indian or Alaska Native,1580-0,Eastern Shawnee,FALSE,Eastern Shawnee
+2,1002-5,American Indian or Alaska Native,1587-5,Battle Mountain,FALSE,Battle Mountain
+2,1002-5,American Indian or Alaska Native,1588-3,Duckwater,FALSE,Duckwater
+2,1002-5,American Indian or Alaska Native,1589-1,Elko,FALSE,Elko
+2,1002-5,American Indian or Alaska Native,1590-9,Ely,FALSE,Ely
+2,1002-5,American Indian or Alaska Native,1591-7,Goshute,FALSE,Goshute
+2,1002-5,American Indian or Alaska Native,1592-5,Panamint,FALSE,Panamint
+2,1002-5,American Indian or Alaska Native,1593-3,Ruby Valley,FALSE,Ruby Valley
+2,1002-5,American Indian or Alaska Native,1594-1,Skull Valley,FALSE,Skull Valley
+2,1002-5,American Indian or Alaska Native,1595-8,South Fork Shoshone,FALSE,South Fork Shoshone
+2,1002-5,American Indian or Alaska Native,1596-6,Te-Moak Western Shoshone,FALSE,Te-Moak Western Shoshone
+2,1002-5,American Indian or Alaska Native,1597-4,Timbi-Sha Shoshone,FALSE,Timbi-Sha Shoshone
+2,1002-5,American Indian or Alaska Native,1598-2,Washakie,FALSE,Washakie
+2,1002-5,American Indian or Alaska Native,1599-0,Wind River Shoshone,FALSE,Wind River Shoshone
+2,1002-5,American Indian or Alaska Native,1600-6,Yomba,FALSE,Yomba
+2,1002-5,American Indian or Alaska Native,1603-0,Duck Valley,FALSE,Duck Valley
+2,1002-5,American Indian or Alaska Native,1604-8,Fallon,FALSE,Fallon
+2,1002-5,American Indian or Alaska Native,1605-5,Fort McDermitt,FALSE,Fort McDermitt
+2,1002-5,American Indian or Alaska Native,1610-5,Blackfoot Sioux,FALSE,Blackfoot Sioux
+2,1002-5,American Indian or Alaska Native,1611-3,Brule Sioux,FALSE,Brule Sioux
+2,1002-5,American Indian or Alaska Native,1612-1,Cheyenne River Sioux,FALSE,Cheyenne River Sioux
+2,1002-5,American Indian or Alaska Native,1613-9,Crow Creek Sioux,FALSE,Crow Creek Sioux
+2,1002-5,American Indian or Alaska Native,1614-7,Dakota Sioux,FALSE,Dakota Sioux
+2,1002-5,American Indian or Alaska Native,1615-4,Flandreau Santee,FALSE,Flandreau Santee
+2,1002-5,American Indian or Alaska Native,1616-2,Fort Peck,FALSE,Fort Peck
+2,1002-5,American Indian or Alaska Native,1617-0,Lake Traverse Sioux,FALSE,Lake Traverse Sioux
+2,1002-5,American Indian or Alaska Native,1618-8,Lower Brule Sioux,FALSE,Lower Brule Sioux
+2,1002-5,American Indian or Alaska Native,1619-6,Lower Sioux,FALSE,Lower Sioux
+2,1002-5,American Indian or Alaska Native,1620-4,Mdewakanton Sioux,FALSE,Mdewakanton Sioux
+2,1002-5,American Indian or Alaska Native,1621-2,Miniconjou,FALSE,Miniconjou
+2,1002-5,American Indian or Alaska Native,1622-0,Oglala Sioux,FALSE,Oglala Sioux
+2,1002-5,American Indian or Alaska Native,1623-8,Pine Ridge Sioux,FALSE,Pine Ridge Sioux
+2,1002-5,American Indian or Alaska Native,1624-6,Pipestone Sioux,FALSE,Pipestone Sioux
+2,1002-5,American Indian or Alaska Native,1625-3,Prairie Island Sioux,FALSE,Prairie Island Sioux
+2,1002-5,American Indian or Alaska Native,1626-1,Prior Lake Sioux,FALSE,Prior Lake Sioux
+2,1002-5,American Indian or Alaska Native,1627-9,Rosebud Sioux,FALSE,Rosebud Sioux
+2,1002-5,American Indian or Alaska Native,1628-7,Sans Arc Sioux,FALSE,Sans Arc Sioux
+2,1002-5,American Indian or Alaska Native,1629-5,Santee Sioux,FALSE,Santee Sioux
+2,1002-5,American Indian or Alaska Native,1630-3,Sisseton-Wahpeton,FALSE,Sisseton-Wahpeton
+2,1002-5,American Indian or Alaska Native,1631-1,Sisseton Sioux,FALSE,Sisseton Sioux
+2,1002-5,American Indian or Alaska Native,1632-9,Spirit Lake Sioux,FALSE,Spirit Lake Sioux
+2,1002-5,American Indian or Alaska Native,1633-7,Standing Rock Sioux,FALSE,Standing Rock Sioux
+2,1002-5,American Indian or Alaska Native,1634-5,Teton Sioux,FALSE,Teton Sioux
+2,1002-5,American Indian or Alaska Native,1635-2,Two Kettle Sioux,FALSE,Two Kettle Sioux
+2,1002-5,American Indian or Alaska Native,1636-0,Upper Sioux,FALSE,Upper Sioux
+2,1002-5,American Indian or Alaska Native,1637-8,Wahpekute Sioux,FALSE,Wahpekute Sioux
+2,1002-5,American Indian or Alaska Native,1638-6,Wahpeton Sioux,FALSE,Wahpeton Sioux
+2,1002-5,American Indian or Alaska Native,1639-4,Wazhaza Sioux,FALSE,Wazhaza Sioux
+2,1002-5,American Indian or Alaska Native,1640-2,Yankton Sioux,FALSE,Yankton Sioux
+2,1002-5,American Indian or Alaska Native,1641-0,Yanktonai Sioux,FALSE,Yanktonai Sioux
+2,1002-5,American Indian or Alaska Native,1654-3,Ak-Chin,FALSE,Ak-Chin
+2,1002-5,American Indian or Alaska Native,1655-0,Gila Bend,FALSE,Gila Bend
+2,1002-5,American Indian or Alaska Native,1656-8,San Xavier,FALSE,San Xavier
+2,1002-5,American Indian or Alaska Native,1657-6,Sells,FALSE,Sells
+2,1002-5,American Indian or Alaska Native,1668-3,Cow Creek Umpqua,FALSE,Cow Creek Umpqua
+2,1002-5,American Indian or Alaska Native,1671-7,Allen Canyon,FALSE,Allen Canyon
+2,1002-5,American Indian or Alaska Native,1672-5,Uintah Ute,FALSE,Uintah Ute
+2,1002-5,American Indian or Alaska Native,1673-3,Ute Mountain Ute,FALSE,Ute Mountain Ute
+2,1002-5,American Indian or Alaska Native,1680-8,Gay Head Wampanoag,FALSE,Gay Head Wampanoag
+2,1002-5,American Indian or Alaska Native,1681-6,Mashpee Wampanoag,FALSE,Mashpee Wampanoag
+2,1002-5,American Indian or Alaska Native,1688-1,Alpine,FALSE,Alpine
+2,1002-5,American Indian or Alaska Native,1689-9,Carson,FALSE,Carson
+2,1002-5,American Indian or Alaska Native,1690-7,Dresslerville,FALSE,Dresslerville
+2,1002-5,American Indian or Alaska Native,1697-2,Ho-chunk,FALSE,Ho-chunk
+2,1002-5,American Indian or Alaska Native,1698-0,Nebraska Winnebago,FALSE,Nebraska Winnebago
+2,1002-5,American Indian or Alaska Native,1705-3,Table Bluff,FALSE,Table Bluff
+2,1002-5,American Indian or Alaska Native,1712-9,Barrio Libre,FALSE,Barrio Libre
+2,1002-5,American Indian or Alaska Native,1713-7,Pascua Yaqui,FALSE,Pascua Yaqui
+2,1002-5,American Indian or Alaska Native,1718-6,Chukchansi,FALSE,Chukchansi
+2,1002-5,American Indian or Alaska Native,1719-4,Tachi,FALSE,Tachi
+2,1002-5,American Indian or Alaska Native,1720-2,Tule River,FALSE,Tule River
+2,1002-5,American Indian or Alaska Native,1725-1,Cocopah,FALSE,Cocopah
+2,1002-5,American Indian or Alaska Native,1726-9,Havasupai,FALSE,Havasupai
+2,1002-5,American Indian or Alaska Native,1727-7,Hualapai,FALSE,Hualapai
+2,1002-5,American Indian or Alaska Native,1728-5,Maricopa,FALSE,Maricopa
+2,1002-5,American Indian or Alaska Native,1729-3,Mohave,FALSE,Mohave
+2,1002-5,American Indian or Alaska Native,1730-1,Quechan,FALSE,Quechan
+2,1002-5,American Indian or Alaska Native,1731-9,Yavapai,FALSE,Yavapai
+2,1002-5,American Indian or Alaska Native,1733-5,Coast Yurok,FALSE,Coast Yurok
+2,1002-5,American Indian or Alaska Native,1737-6,Alaska Indian,FALSE,Alaska Indian
+2,1002-5,American Indian or Alaska Native,1840-8,Eskimo,FALSE,Eskimo
+2,1002-5,American Indian or Alaska Native,1966-1,Aleut,FALSE,Aleut
+2,1002-5,American Indian or Alaska Native,1739-2,Alaskan Athabascan,FALSE,Alaskan Athabascan
+2,1002-5,American Indian or Alaska Native,1811-9,Southeast Alaska,FALSE,Southeast Alaska
+2,1002-5,American Indian or Alaska Native,1740-0,Ahtna,FALSE,Ahtna
+2,1002-5,American Indian or Alaska Native,1741-8,Alatna,FALSE,Alatna
+2,1002-5,American Indian or Alaska Native,1742-6,Alexander,FALSE,Alexander
+2,1002-5,American Indian or Alaska Native,1743-4,Allakaket,FALSE,Allakaket
+2,1002-5,American Indian or Alaska Native,1744-2,Alanvik,FALSE,Alanvik
+2,1002-5,American Indian or Alaska Native,1745-9,Anvik,FALSE,Anvik
+2,1002-5,American Indian or Alaska Native,1746-7,Arctic,FALSE,Arctic
+2,1002-5,American Indian or Alaska Native,1747-5,Beaver,FALSE,Beaver
+2,1002-5,American Indian or Alaska Native,1748-3,Birch Creek,FALSE,Birch Creek
+2,1002-5,American Indian or Alaska Native,1749-1,Cantwell,FALSE,Cantwell
+2,1002-5,American Indian or Alaska Native,1750-9,Chalkyitsik,FALSE,Chalkyitsik
+2,1002-5,American Indian or Alaska Native,1751-7,Chickaloon,FALSE,Chickaloon
+2,1002-5,American Indian or Alaska Native,1752-5,Chistochina,FALSE,Chistochina
+2,1002-5,American Indian or Alaska Native,1753-3,Chitina,FALSE,Chitina
+2,1002-5,American Indian or Alaska Native,1754-1,Circle,FALSE,Circle
+2,1002-5,American Indian or Alaska Native,1755-8,Cook Inlet,FALSE,Cook Inlet
+2,1002-5,American Indian or Alaska Native,1756-6,Copper Center,FALSE,Copper Center
+2,1002-5,American Indian or Alaska Native,1757-4,Copper River,FALSE,Copper River
+2,1002-5,American Indian or Alaska Native,1758-2,Dot Lake,FALSE,Dot Lake
+2,1002-5,American Indian or Alaska Native,1759-0,Doyon,FALSE,Doyon
+2,1002-5,American Indian or Alaska Native,1760-8,Eagle,FALSE,Eagle
+2,1002-5,American Indian or Alaska Native,1761-6,Eklutna,FALSE,Eklutna
+2,1002-5,American Indian or Alaska Native,1762-4,Evansville,FALSE,Evansville
+2,1002-5,American Indian or Alaska Native,1763-2,Fort Yukon,FALSE,Fort Yukon
+2,1002-5,American Indian or Alaska Native,1764-0,Gakona,FALSE,Gakona
+2,1002-5,American Indian or Alaska Native,1765-7,Galena,FALSE,Galena
+2,1002-5,American Indian or Alaska Native,1766-5,Grayling,FALSE,Grayling
+2,1002-5,American Indian or Alaska Native,1767-3,Gulkana,FALSE,Gulkana
+2,1002-5,American Indian or Alaska Native,1768-1,Healy Lake,FALSE,Healy Lake
+2,1002-5,American Indian or Alaska Native,1769-9,Holy Cross,FALSE,Holy Cross
+2,1002-5,American Indian or Alaska Native,1770-7,Hughes,FALSE,Hughes
+2,1002-5,American Indian or Alaska Native,1771-5,Huslia,FALSE,Huslia
+2,1002-5,American Indian or Alaska Native,1772-3,Iliamna,FALSE,Iliamna
+2,1002-5,American Indian or Alaska Native,1773-1,Kaltag,FALSE,Kaltag
+2,1002-5,American Indian or Alaska Native,1774-9,Kluti Kaah,FALSE,Kluti Kaah
+2,1002-5,American Indian or Alaska Native,1775-6,Knik,FALSE,Knik
+2,1002-5,American Indian or Alaska Native,1776-4,Koyukuk,FALSE,Koyukuk
+2,1002-5,American Indian or Alaska Native,1777-2,Lake Minchumina,FALSE,Lake Minchumina
+2,1002-5,American Indian or Alaska Native,1778-0,Lime,FALSE,Lime
+2,1002-5,American Indian or Alaska Native,1779-8,Mcgrath,FALSE,Mcgrath
+2,1002-5,American Indian or Alaska Native,1780-6,Manley Hot Springs,FALSE,Manley Hot Springs
+2,1002-5,American Indian or Alaska Native,1781-4,Mentasta Lake,FALSE,Mentasta Lake
+2,1002-5,American Indian or Alaska Native,1782-2,Minto,FALSE,Minto
+2,1002-5,American Indian or Alaska Native,1783-0,Nenana,FALSE,Nenana
+2,1002-5,American Indian or Alaska Native,1784-8,Nikolai,FALSE,Nikolai
+2,1002-5,American Indian or Alaska Native,1785-5,Ninilchik,FALSE,Ninilchik
+2,1002-5,American Indian or Alaska Native,1786-3,Nondalton,FALSE,Nondalton
+2,1002-5,American Indian or Alaska Native,1787-1,Northway,FALSE,Northway
+2,1002-5,American Indian or Alaska Native,1788-9,Nulato,FALSE,Nulato
+2,1002-5,American Indian or Alaska Native,1789-7,Pedro Bay,FALSE,Pedro Bay
+2,1002-5,American Indian or Alaska Native,1790-5,Rampart,FALSE,Rampart
+2,1002-5,American Indian or Alaska Native,1791-3,Ruby,FALSE,Ruby
+2,1002-5,American Indian or Alaska Native,1792-1,Salamatof,FALSE,Salamatof
+2,1002-5,American Indian or Alaska Native,1793-9,Seldovia,FALSE,Seldovia
+2,1002-5,American Indian or Alaska Native,1794-7,Slana,FALSE,Slana
+2,1002-5,American Indian or Alaska Native,1795-4,Shageluk,FALSE,Shageluk
+2,1002-5,American Indian or Alaska Native,1796-2,Stevens,FALSE,Stevens
+2,1002-5,American Indian or Alaska Native,1797-0,Stony River,FALSE,Stony River
+2,1002-5,American Indian or Alaska Native,1798-8,Takotna,FALSE,Takotna
+2,1002-5,American Indian or Alaska Native,1799-6,Tanacross,FALSE,Tanacross
+2,1002-5,American Indian or Alaska Native,1800-2,Tanaina,FALSE,Tanaina
+2,1002-5,American Indian or Alaska Native,1801-0,Tanana,FALSE,Tanana
+2,1002-5,American Indian or Alaska Native,1802-8,Tanana Chiefs,FALSE,Tanana Chiefs
+2,1002-5,American Indian or Alaska Native,1803-6,Tazlina,FALSE,Tazlina
+2,1002-5,American Indian or Alaska Native,1804-4,Telida,FALSE,Telida
+2,1002-5,American Indian or Alaska Native,1805-1,Tetlin,FALSE,Tetlin
+2,1002-5,American Indian or Alaska Native,1806-9,Tok,FALSE,Tok
+2,1002-5,American Indian or Alaska Native,1807-7,Tyonek,FALSE,Tyonek
+2,1002-5,American Indian or Alaska Native,1808-5,Venetie,FALSE,Venetie
+2,1002-5,American Indian or Alaska Native,1809-3,Wiseman,FALSE,Wiseman
+2,1002-5,American Indian or Alaska Native,1813-5,Tlingit-Haida,FALSE,Tlingit-Haida
+2,1002-5,American Indian or Alaska Native,1837-4,Tsimshian,FALSE,Tsimshian
+2,1002-5,American Indian or Alaska Native,1814-3,Angoon,FALSE,Angoon
+2,1002-5,American Indian or Alaska Native,1815-0,Central Council of Tlingit and Haida Tribes,FALSE,Central Council of Tlingit and Haida Tribes
+2,1002-5,American Indian or Alaska Native,1816-8,Chilkat,FALSE,Chilkat
+2,1002-5,American Indian or Alaska Native,1817-6,Chilkoot,FALSE,Chilkoot
+2,1002-5,American Indian or Alaska Native,1818-4,Craig,FALSE,Craig
+2,1002-5,American Indian or Alaska Native,1819-2,Douglas,FALSE,Douglas
+2,1002-5,American Indian or Alaska Native,1820-0,Haida,FALSE,Haida
+2,1002-5,American Indian or Alaska Native,1821-8,Hoonah,FALSE,Hoonah
+2,1002-5,American Indian or Alaska Native,1822-6,Hydaburg,FALSE,Hydaburg
+2,1002-5,American Indian or Alaska Native,1823-4,Kake,FALSE,Kake
+2,1002-5,American Indian or Alaska Native,1824-2,Kasaan,FALSE,Kasaan
+2,1002-5,American Indian or Alaska Native,1825-9,Kenaitze,FALSE,Kenaitze
+2,1002-5,American Indian or Alaska Native,1826-7,Ketchikan,FALSE,Ketchikan
+2,1002-5,American Indian or Alaska Native,1827-5,Klawock,FALSE,Klawock
+2,1002-5,American Indian or Alaska Native,1828-3,Pelican,FALSE,Pelican
+2,1002-5,American Indian or Alaska Native,1829-1,Petersburg,FALSE,Petersburg
+2,1002-5,American Indian or Alaska Native,1830-9,Saxman,FALSE,Saxman
+2,1002-5,American Indian or Alaska Native,1831-7,Sitka,FALSE,Sitka
+2,1002-5,American Indian or Alaska Native,1832-5,Tenakee Springs,FALSE,Tenakee Springs
+2,1002-5,American Indian or Alaska Native,1833-3,Tlingit,FALSE,Tlingit
+2,1002-5,American Indian or Alaska Native,1834-1,Wrangell,FALSE,Wrangell
+2,1002-5,American Indian or Alaska Native,1835-8,Yakutat,FALSE,Yakutat
+2,1002-5,American Indian or Alaska Native,1838-2,Metlakatla,FALSE,Metlakatla
+2,1002-5,American Indian or Alaska Native,1842-4,Greenland Eskimo,FALSE,Greenland Eskimo
+2,1002-5,American Indian or Alaska Native,1844-0,Inupiat Eskimo,FALSE,Inupiat Eskimo
+2,1002-5,American Indian or Alaska Native,1891-1,Siberian Eskimo,FALSE,Siberian Eskimo
+2,1002-5,American Indian or Alaska Native,1896-0,Yupik Eskimo,FALSE,Yupik Eskimo
+2,1002-5,American Indian or Alaska Native,1845-7,Ambler,FALSE,Ambler
+2,1002-5,American Indian or Alaska Native,1846-5,Anaktuvuk,FALSE,Anaktuvuk
+2,1002-5,American Indian or Alaska Native,1847-3,Anaktuvuk Pass,FALSE,Anaktuvuk Pass
+2,1002-5,American Indian or Alaska Native,1848-1,Arctic Slope Inupiat,FALSE,Arctic Slope Inupiat
+2,1002-5,American Indian or Alaska Native,1849-9,Arctic Slope Corporation,FALSE,Arctic Slope Corporation
+2,1002-5,American Indian or Alaska Native,1850-7,Atqasuk,FALSE,Atqasuk
+2,1002-5,American Indian or Alaska Native,1851-5,Barrow,FALSE,Barrow
+2,1002-5,American Indian or Alaska Native,1852-3,Bering Straits Inupiat,FALSE,Bering Straits Inupiat
+2,1002-5,American Indian or Alaska Native,1853-1,Brevig Mission,FALSE,Brevig Mission
+2,1002-5,American Indian or Alaska Native,1854-9,Buckland,FALSE,Buckland
+2,1002-5,American Indian or Alaska Native,1855-6,Chinik,FALSE,Chinik
+2,1002-5,American Indian or Alaska Native,1856-4,Council,FALSE,Council
+2,1002-5,American Indian or Alaska Native,1857-2,Deering,FALSE,Deering
+2,1002-5,American Indian or Alaska Native,1858-0,Elim,FALSE,Elim
+2,1002-5,American Indian or Alaska Native,1859-8,Golovin,FALSE,Golovin
+2,1002-5,American Indian or Alaska Native,1860-6,Inalik Diomede,FALSE,Inalik Diomede
+2,1002-5,American Indian or Alaska Native,1861-4,Inupiaq,FALSE,Inupiaq
+2,1002-5,American Indian or Alaska Native,1862-2,Kaktovik,FALSE,Kaktovik
+2,1002-5,American Indian or Alaska Native,1863-0,Kawerak,FALSE,Kawerak
+2,1002-5,American Indian or Alaska Native,1864-8,Kiana,FALSE,Kiana
+2,1002-5,American Indian or Alaska Native,1865-5,Kivalina,FALSE,Kivalina
+2,1002-5,American Indian or Alaska Native,1866-3,Kobuk,FALSE,Kobuk
+2,1002-5,American Indian or Alaska Native,1867-1,Kotzebue,FALSE,Kotzebue
+2,1002-5,American Indian or Alaska Native,1868-9,Koyuk,FALSE,Koyuk
+2,1002-5,American Indian or Alaska Native,1869-7,Kwiguk,FALSE,Kwiguk
+2,1002-5,American Indian or Alaska Native,1870-5,Mauneluk Inupiat,FALSE,Mauneluk Inupiat
+2,1002-5,American Indian or Alaska Native,1871-3,Nana Inupiat,FALSE,Nana Inupiat
+2,1002-5,American Indian or Alaska Native,1872-1,Noatak,FALSE,Noatak
+2,1002-5,American Indian or Alaska Native,1873-9,Nome,FALSE,Nome
+2,1002-5,American Indian or Alaska Native,1874-7,Noorvik,FALSE,Noorvik
+2,1002-5,American Indian or Alaska Native,1875-4,Nuiqsut,FALSE,Nuiqsut
+2,1002-5,American Indian or Alaska Native,1876-2,Point Hope,FALSE,Point Hope
+2,1002-5,American Indian or Alaska Native,1877-0,Point Lay,FALSE,Point Lay
+2,1002-5,American Indian or Alaska Native,1878-8,Selawik,FALSE,Selawik
+2,1002-5,American Indian or Alaska Native,1879-6,Shaktoolik,FALSE,Shaktoolik
+2,1002-5,American Indian or Alaska Native,1880-4,Shishmaref,FALSE,Shishmaref
+2,1002-5,American Indian or Alaska Native,1881-2,Shungnak,FALSE,Shungnak
+2,1002-5,American Indian or Alaska Native,1882-0,Solomon,FALSE,Solomon
+2,1002-5,American Indian or Alaska Native,1883-8,Teller,FALSE,Teller
+2,1002-5,American Indian or Alaska Native,1884-6,Unalakleet,FALSE,Unalakleet
+2,1002-5,American Indian or Alaska Native,1885-3,Wainwright,FALSE,Wainwright
+2,1002-5,American Indian or Alaska Native,1886-1,Wales,FALSE,Wales
+2,1002-5,American Indian or Alaska Native,1887-9,White Mountain,FALSE,White Mountain
+2,1002-5,American Indian or Alaska Native,1888-7,White Mountain Inupiat,FALSE,White Mountain Inupiat
+2,1002-5,American Indian or Alaska Native,1889-5,Mary's Igloo,FALSE,Mary's Igloo
+2,1002-5,American Indian or Alaska Native,1892-9,Gambell,FALSE,Gambell
+2,1002-5,American Indian or Alaska Native,1893-7,Savoonga,FALSE,Savoonga
+2,1002-5,American Indian or Alaska Native,1894-5,Siberian Yupik,FALSE,Siberian Yupik
+2,1002-5,American Indian or Alaska Native,1897-8,Akiachak,FALSE,Akiachak
+2,1002-5,American Indian or Alaska Native,1898-6,Akiak,FALSE,Akiak
+2,1002-5,American Indian or Alaska Native,1899-4,Alakanuk,FALSE,Alakanuk
+2,1002-5,American Indian or Alaska Native,1900-0,Aleknagik,FALSE,Aleknagik
+2,1002-5,American Indian or Alaska Native,1901-8,Andreafsky,FALSE,Andreafsky
+2,1002-5,American Indian or Alaska Native,1902-6,Aniak,FALSE,Aniak
+2,1002-5,American Indian or Alaska Native,1903-4,Atmautluak,FALSE,Atmautluak
+2,1002-5,American Indian or Alaska Native,1904-2,Bethel,FALSE,Bethel
+2,1002-5,American Indian or Alaska Native,1905-9,Bill Moore's Slough,FALSE,Bill Moore's Slough
+2,1002-5,American Indian or Alaska Native,1906-7,Bristol Bay Yupik,FALSE,Bristol Bay Yupik
+2,1002-5,American Indian or Alaska Native,1907-5,Calista Yupik,FALSE,Calista Yupik
+2,1002-5,American Indian or Alaska Native,1908-3,Chefornak,FALSE,Chefornak
+2,1002-5,American Indian or Alaska Native,1909-1,Chevak,FALSE,Chevak
+2,1002-5,American Indian or Alaska Native,1910-9,Chuathbaluk,FALSE,Chuathbaluk
+2,1002-5,American Indian or Alaska Native,1911-7,Clark's Point,FALSE,Clark's Point
+2,1002-5,American Indian or Alaska Native,1912-5,Crooked Creek,FALSE,Crooked Creek
+2,1002-5,American Indian or Alaska Native,1913-3,Dillingham,FALSE,Dillingham
+2,1002-5,American Indian or Alaska Native,1914-1,Eek,FALSE,Eek
+2,1002-5,American Indian or Alaska Native,1915-8,Ekuk,FALSE,Ekuk
+2,1002-5,American Indian or Alaska Native,1916-6,Ekwok,FALSE,Ekwok
+2,1002-5,American Indian or Alaska Native,1917-4,Emmonak,FALSE,Emmonak
+2,1002-5,American Indian or Alaska Native,1918-2,Goodnews Bay,FALSE,Goodnews Bay
+2,1002-5,American Indian or Alaska Native,1919-0,Hooper Bay,FALSE,Hooper Bay
+2,1002-5,American Indian or Alaska Native,1920-8,Iqurmuit (Russian Mission),FALSE,Iqurmuit (Russian Mission)
+2,1002-5,American Indian or Alaska Native,1921-6,Kalskag,FALSE,Kalskag
+2,1002-5,American Indian or Alaska Native,1922-4,Kasigluk,FALSE,Kasigluk
+2,1002-5,American Indian or Alaska Native,1923-2,Kipnuk,FALSE,Kipnuk
+2,1002-5,American Indian or Alaska Native,1924-0,Koliganek,FALSE,Koliganek
+2,1002-5,American Indian or Alaska Native,1925-7,Kongiganak,FALSE,Kongiganak
+2,1002-5,American Indian or Alaska Native,1926-5,Kotlik,FALSE,Kotlik
+2,1002-5,American Indian or Alaska Native,1927-3,Kwethluk,FALSE,Kwethluk
+2,1002-5,American Indian or Alaska Native,1928-1,Kwigillingok,FALSE,Kwigillingok
+2,1002-5,American Indian or Alaska Native,1929-9,Levelock,FALSE,Levelock
+2,1002-5,American Indian or Alaska Native,1930-7,Lower Kalskag,FALSE,Lower Kalskag
+2,1002-5,American Indian or Alaska Native,1931-5,Manokotak,FALSE,Manokotak
+2,1002-5,American Indian or Alaska Native,1932-3,Marshall,FALSE,Marshall
+2,1002-5,American Indian or Alaska Native,1933-1,Mekoryuk,FALSE,Mekoryuk
+2,1002-5,American Indian or Alaska Native,1934-9,Mountain Village,FALSE,Mountain Village
+2,1002-5,American Indian or Alaska Native,1935-6,Naknek,FALSE,Naknek
+2,1002-5,American Indian or Alaska Native,1936-4,Napaumute,FALSE,Napaumute
+2,1002-5,American Indian or Alaska Native,1937-2,Napakiak,FALSE,Napakiak
+2,1002-5,American Indian or Alaska Native,1938-0,Napaskiak,FALSE,Napaskiak
+2,1002-5,American Indian or Alaska Native,1939-8,Newhalen,FALSE,Newhalen
+2,1002-5,American Indian or Alaska Native,1940-6,New Stuyahok,FALSE,New Stuyahok
+2,1002-5,American Indian or Alaska Native,1941-4,Newtok,FALSE,Newtok
+2,1002-5,American Indian or Alaska Native,1942-2,Nightmute,FALSE,Nightmute
+2,1002-5,American Indian or Alaska Native,1943-0,Nunapitchukv,FALSE,Nunapitchukv
+2,1002-5,American Indian or Alaska Native,1944-8,Oscarville,FALSE,Oscarville
+2,1002-5,American Indian or Alaska Native,1945-5,Pilot Station,FALSE,Pilot Station
+2,1002-5,American Indian or Alaska Native,1946-3,Pitkas Point,FALSE,Pitkas Point
+2,1002-5,American Indian or Alaska Native,1947-1,Platinum,FALSE,Platinum
+2,1002-5,American Indian or Alaska Native,1948-9,Portage Creek,FALSE,Portage Creek
+2,1002-5,American Indian or Alaska Native,1949-7,Quinhagak,FALSE,Quinhagak
+2,1002-5,American Indian or Alaska Native,1950-5,Red Devil,FALSE,Red Devil
+2,1002-5,American Indian or Alaska Native,1951-3,St. Michael,FALSE,St. Michael
+2,1002-5,American Indian or Alaska Native,1952-1,Scammon Bay,FALSE,Scammon Bay
+2,1002-5,American Indian or Alaska Native,1953-9,Sheldon's Point,FALSE,Sheldon's Point
+2,1002-5,American Indian or Alaska Native,1954-7,Sleetmute,FALSE,Sleetmute
+2,1002-5,American Indian or Alaska Native,1955-4,Stebbins,FALSE,Stebbins
+2,1002-5,American Indian or Alaska Native,1956-2,Togiak,FALSE,Togiak
+2,1002-5,American Indian or Alaska Native,1957-0,Toksook,FALSE,Toksook
+2,1002-5,American Indian or Alaska Native,1958-8,Tulukskak,FALSE,Tulukskak
+2,1002-5,American Indian or Alaska Native,1959-6,Tuntutuliak,FALSE,Tuntutuliak
+2,1002-5,American Indian or Alaska Native,1960-4,Tununak,FALSE,Tununak
+2,1002-5,American Indian or Alaska Native,1961-2,Twin Hills,FALSE,Twin Hills
+2,1002-5,American Indian or Alaska Native,1962-0,Georgetown (Yupik-Eskimo),FALSE,Georgetown (Yupik-Eskimo)
+2,1002-5,American Indian or Alaska Native,1963-8,St. Mary's,FALSE,St. Mary's
+2,1002-5,American Indian or Alaska Native,1964-6,Umkumiate,FALSE,Umkumiate
+2,1002-5,American Indian or Alaska Native,1968-7,Alutiiq Aleut,FALSE,Alutiiq Aleut
+2,1002-5,American Indian or Alaska Native,1972-9,Bristol Bay Aleut,FALSE,Bristol Bay Aleut
+2,1002-5,American Indian or Alaska Native,1984-4,Chugach Aleut,FALSE,Chugach Aleut
+2,1002-5,American Indian or Alaska Native,1990-1,Eyak,FALSE,Eyak
+2,1002-5,American Indian or Alaska Native,1992-7,Koniag Aleut,FALSE,Koniag Aleut
+2,1002-5,American Indian or Alaska Native,2002-4,Sugpiaq,FALSE,Sugpiaq
+2,1002-5,American Indian or Alaska Native,2004-0,Suqpigaq,FALSE,Suqpigaq
+2,1002-5,American Indian or Alaska Native,2006-5,Unangan Aleut,FALSE,Unangan Aleut
+2,1002-5,American Indian or Alaska Native,1969-5,Tatitlek,FALSE,Tatitlek
+2,1002-5,American Indian or Alaska Native,1970-3,Ugashik,FALSE,Ugashik
+2,1002-5,American Indian or Alaska Native,1973-7,Chignik,FALSE,Chignik
+2,1002-5,American Indian or Alaska Native,1974-5,Chignik Lake,FALSE,Chignik Lake
+2,1002-5,American Indian or Alaska Native,1975-2,Egegik,FALSE,Egegik
+2,1002-5,American Indian or Alaska Native,1976-0,Igiugig,FALSE,Igiugig
+2,1002-5,American Indian or Alaska Native,1977-8,Ivanof Bay,FALSE,Ivanof Bay
+2,1002-5,American Indian or Alaska Native,1978-6,King Salmon,FALSE,King Salmon
+2,1002-5,American Indian or Alaska Native,1979-4,Kokhanok,FALSE,Kokhanok
+2,1002-5,American Indian or Alaska Native,1980-2,Perryville,FALSE,Perryville
+2,1002-5,American Indian or Alaska Native,1981-0,Pilot Point,FALSE,Pilot Point
+2,1002-5,American Indian or Alaska Native,1982-8,Port Heiden,FALSE,Port Heiden
+2,1002-5,American Indian or Alaska Native,1985-1,Chenega,FALSE,Chenega
+2,1002-5,American Indian or Alaska Native,1986-9,Chugach Corporation,FALSE,Chugach Corporation
+2,1002-5,American Indian or Alaska Native,1987-7,English Bay,FALSE,English Bay
+2,1002-5,American Indian or Alaska Native,1988-5,Port Graham,FALSE,Port Graham
+2,1002-5,American Indian or Alaska Native,1993-5,Akhiok,FALSE,Akhiok
+2,1002-5,American Indian or Alaska Native,1994-3,Agdaagux,FALSE,Agdaagux
+2,1002-5,American Indian or Alaska Native,1995-0,Karluk,FALSE,Karluk
+2,1002-5,American Indian or Alaska Native,1996-8,Kodiak,FALSE,Kodiak
+2,1002-5,American Indian or Alaska Native,1997-6,Larsen Bay,FALSE,Larsen Bay
+2,1002-5,American Indian or Alaska Native,1998-4,Old Harbor,FALSE,Old Harbor
+2,1002-5,American Indian or Alaska Native,1999-2,Ouzinkie,FALSE,Ouzinkie
+2,1002-5,American Indian or Alaska Native,2000-8,Port Lions,FALSE,Port Lions
+2,1002-5,American Indian or Alaska Native,2007-3,Akutan,FALSE,Akutan
+2,1002-5,American Indian or Alaska Native,2008-1,Aleut Corporation,FALSE,Aleut Corporation
+2,1002-5,American Indian or Alaska Native,2009-9,Aleutian,FALSE,Aleutian
+2,1002-5,American Indian or Alaska Native,2010-7,Aleutian Islander,FALSE,Aleutian Islander
+2,1002-5,American Indian or Alaska Native,2011-5,Atka,FALSE,Atka
+2,1002-5,American Indian or Alaska Native,2012-3,Belkofski,FALSE,Belkofski
+2,1002-5,American Indian or Alaska Native,2013-1,Chignik Lagoon,FALSE,Chignik Lagoon
+2,1002-5,American Indian or Alaska Native,2014-9,King Cove,FALSE,King Cove
+2,1002-5,American Indian or Alaska Native,2015-6,False Pass,FALSE,False Pass
+2,1002-5,American Indian or Alaska Native,2016-4,Nelson Lagoon,FALSE,Nelson Lagoon
+2,1002-5,American Indian or Alaska Native,2017-2,Nikolski,FALSE,Nikolski
+2,1002-5,American Indian or Alaska Native,2018-0,Pauloff Harbor,FALSE,Pauloff Harbor
+2,1002-5,American Indian or Alaska Native,2019-8,Qagan Toyagungin,FALSE,Qagan Toyagungin
+2,1002-5,American Indian or Alaska Native,2020-6,Qawalangin,FALSE,Qawalangin
+2,1002-5,American Indian or Alaska Native,2021-4,St. George,FALSE,St. George
+2,1002-5,American Indian or Alaska Native,2022-2,St. Paul,FALSE,St. Paul
+2,1002-5,American Indian or Alaska Native,2023-0,Sand Point,FALSE,Sand Point
+2,1002-5,American Indian or Alaska Native,2024-8,South Naknek,FALSE,South Naknek
+2,1002-5,American Indian or Alaska Native,2025-5,Unalaska,FALSE,Unalaska
+2,1002-5,American Indian or Alaska Native,2026-3,Unga,FALSE,Unga
+1,1000-9,Race,2028-9,Asian,FALSE,Asian
+2,2028-9,Asian,2029-7,Asian Indian,FALSE,Asian Indian
+2,2028-9,Asian,2030-5,Bangladeshi,FALSE,Bangladeshi
+2,2028-9,Asian,2031-3,Bhutanese,FALSE,Bhutanese
+2,2028-9,Asian,2032-1,Burmese,FALSE,Burmese
+2,2028-9,Asian,2033-9,Cambodian,FALSE,Cambodian
+2,2028-9,Asian,2034-7,Chinese,FALSE,Chinese
+2,2028-9,Asian,2035-4,Taiwanese,FALSE,Taiwanese
+2,2028-9,Asian,2036-2,Filipino,FALSE,Filipino
+2,2028-9,Asian,2037-0,Hmong,FALSE,Hmong
+2,2028-9,Asian,2038-8,Indonesian,FALSE,Indonesian
+2,2028-9,Asian,2039-6,Japanese,FALSE,Japanese
+2,2028-9,Asian,2040-4,Korean,FALSE,Korean
+2,2028-9,Asian,2041-2,Laotian,FALSE,Laotian
+2,2028-9,Asian,2042-0,Malaysian,FALSE,Malaysian
+2,2028-9,Asian,2043-8,Okinawan,FALSE,Okinawan
+2,2028-9,Asian,2044-6,Pakistani,FALSE,Pakistani
+2,2028-9,Asian,2045-3,Sri Lankan,FALSE,Sri Lankan
+2,2028-9,Asian,2046-1,Thai,FALSE,Thai
+2,2028-9,Asian,2047-9,Vietnamese,FALSE,Vietnamese
+2,2028-9,Asian,2048-7,Iwo Jiman,FALSE,Iwo Jiman
+2,2028-9,Asian,2049-5,Maldivian,FALSE,Maldivian
+2,2028-9,Asian,2050-3,Nepalese,FALSE,Nepalese
+2,2028-9,Asian,2051-1,Singaporean,FALSE,Singaporean
+2,2028-9,Asian,2052-9,Madagascar,FALSE,Madagascar
+1,1000-9,Race,2054-5,Black or African American,FALSE,Black or African American
+2,2054-5,Black or African American,2056-0,Black,FALSE,Black
+2,2054-5,Black or African American,2058-6,African American,FALSE,African American
+2,2054-5,Black or African American,2060-2,African,FALSE,African
+2,2054-5,Black or African American,2067-7,Bahamian,FALSE,Bahamian
+2,2054-5,Black or African American,2068-5,Barbadian,FALSE,Barbadian
+2,2054-5,Black or African American,2069-3,Dominican,FALSE,Dominican
+2,2054-5,Black or African American,2070-1,Dominica Islander,FALSE,Dominica Islander
+2,2054-5,Black or African American,2071-9,Haitian,FALSE,Haitian
+2,2054-5,Black or African American,2072-7,Jamaican,FALSE,Jamaican
+2,2054-5,Black or African American,2073-5,Tobagoan,FALSE,Tobagoan
+2,2054-5,Black or African American,2074-3,Trinidadian,FALSE,Trinidadian
+2,2054-5,Black or African American,2075-0,West Indian,FALSE,West Indian
+2,2054-5,Black or African American,2061-0,Botswanan,FALSE,Botswanan
+2,2054-5,Black or African American,2062-8,Ethiopian,FALSE,Ethiopian
+2,2054-5,Black or African American,2063-6,Liberian,FALSE,Liberian
+2,2054-5,Black or African American,2064-4,Namibian,FALSE,Namibian
+2,2054-5,Black or African American,2065-1,Nigerian,FALSE,Nigerian
+2,2054-5,Black or African American,2066-9,Zairean,FALSE,Zairean
+1,1000-9,Race,2076-8,Native Hawaiian or Other Pacific Islander,FALSE,Native Hawaiian or Other Pacific Islander
+2,2076-8,Native Hawaiian or Other Pacific Islander,2078-4,Polynesian,FALSE,Polynesian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2085-9,Micronesian,FALSE,Micronesian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2100-6,Melanesian,FALSE,Melanesian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2500-7,Other Pacific Islander,FALSE,Other Pacific Islander
+2,2076-8,Native Hawaiian or Other Pacific Islander,2079-2,Native Hawaiian,FALSE,Native Hawaiian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2080-0,Samoan,FALSE,Samoan
+2,2076-8,Native Hawaiian or Other Pacific Islander,2081-8,Tahitian,FALSE,Tahitian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2082-6,Tongan,FALSE,Tongan
+2,2076-8,Native Hawaiian or Other Pacific Islander,2083-4,Tokelauan,FALSE,Tokelauan
+2,2076-8,Native Hawaiian or Other Pacific Islander,2086-7,Guamanian or Chamorro,FALSE,Guamanian or Chamorro
+2,2076-8,Native Hawaiian or Other Pacific Islander,2087-5,Guamanian,FALSE,Guamanian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2088-3,Chamorro,FALSE,Chamorro
+2,2076-8,Native Hawaiian or Other Pacific Islander,2089-1,Mariana Islander,FALSE,Mariana Islander
+2,2076-8,Native Hawaiian or Other Pacific Islander,2090-9,Marshallese,FALSE,Marshallese
+2,2076-8,Native Hawaiian or Other Pacific Islander,2091-7,Palauan,FALSE,Palauan
+2,2076-8,Native Hawaiian or Other Pacific Islander,2092-5,Carolinian,FALSE,Carolinian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2093-3,Kosraean,FALSE,Kosraean
+2,2076-8,Native Hawaiian or Other Pacific Islander,2094-1,Pohnpeian,FALSE,Pohnpeian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2095-8,Saipanese,FALSE,Saipanese
+2,2076-8,Native Hawaiian or Other Pacific Islander,2096-6,Kiribati,FALSE,Kiribati
+2,2076-8,Native Hawaiian or Other Pacific Islander,2097-4,Chuukese,FALSE,Chuukese
+2,2076-8,Native Hawaiian or Other Pacific Islander,2098-2,Yapese,FALSE,Yapese
+2,2076-8,Native Hawaiian or Other Pacific Islander,2101-4,Fijian,FALSE,Fijian
+2,2076-8,Native Hawaiian or Other Pacific Islander,2102-2,Papua New Guinean,FALSE,Papua New Guinean
+2,2076-8,Native Hawaiian or Other Pacific Islander,2103-0,Solomon Islander,FALSE,Solomon Islander
+2,2076-8,Native Hawaiian or Other Pacific Islander,2104-8,New Hebrides,FALSE,New Hebrides
+1,1000-9,Race,2106-3,White,FALSE,White
+2,2106-3,White,2108-9,European,FALSE,European
+2,2106-3,White,2118-8,Middle Eastern or North African,FALSE,Middle Eastern or North African
+2,2106-3,White,2129-5,Arab,FALSE,Arab
+2,2106-3,White,2109-7,Armenian,FALSE,Armenian
+2,2106-3,White,2110-5,English,FALSE,English
+2,2106-3,White,2111-3,French,FALSE,French
+2,2106-3,White,2112-1,German,FALSE,German
+2,2106-3,White,2113-9,Irish,FALSE,Irish
+2,2106-3,White,2114-7,Italian,FALSE,Italian
+2,2106-3,White,2115-4,Polish,FALSE,Polish
+2,2106-3,White,2116-2,Scottish,FALSE,Scottish
+2,2106-3,White,2119-6,Assyrian,FALSE,Assyrian
+2,2106-3,White,2120-4,Egyptian,FALSE,Egyptian
+2,2106-3,White,2121-2,Iranian,FALSE,Iranian
+2,2106-3,White,2122-0,Iraqi,FALSE,Iraqi
+2,2106-3,White,2123-8,Lebanese,FALSE,Lebanese
+2,2106-3,White,2124-6,Palestinian,FALSE,Palestinian
+2,2106-3,White,2125-3,Syrian,FALSE,Syrian
+2,2106-3,White,2126-1,Afghanistani,FALSE,Afghanistani
+2,2106-3,White,2127-9,Israeili,FALSE,Israeili
+1,1000-9,Race,2131-1,Other Race,FALSE,"Note that this term remains in the table for completeness, even though within HL7, the notion of Other code is deprecated."
+0,,,2133-7,Ethnicity,TRUE,Ethnicity Note that this is an abstract 'grouping' concept and not for use as a real concept
+1,2133-7,Ethnicity,2135-2,Hispanic or Latino,FALSE,Hispanic or Latino
+2,2135-2,Hispanic or Latino,2137-8,Spaniard,FALSE,Spaniard
+2,2135-2,Hispanic or Latino,2148-5,Mexican,FALSE,Mexican
+2,2135-2,Hispanic or Latino,2155-0,Central American,FALSE,Central American
+2,2135-2,Hispanic or Latino,2165-9,South American,FALSE,South American
+2,2135-2,Hispanic or Latino,2178-2,Latin American,FALSE,Latin American
+2,2135-2,Hispanic or Latino,2180-8,Puerto Rican,FALSE,Puerto Rican
+2,2135-2,Hispanic or Latino,2182-4,Cuban,FALSE,Cuban
+2,2135-2,Hispanic or Latino,2184-0,Dominican,FALSE,Dominican
+2,2135-2,Hispanic or Latino,2138-6,Andalusian,FALSE,Andalusian
+2,2135-2,Hispanic or Latino,2139-4,Asturian,FALSE,Asturian
+2,2135-2,Hispanic or Latino,2140-2,Castillian,FALSE,Castillian
+2,2135-2,Hispanic or Latino,2141-0,Catalonian,FALSE,Catalonian
+2,2135-2,Hispanic or Latino,2142-8,Belearic Islander,FALSE,Belearic Islander
+2,2135-2,Hispanic or Latino,2143-6,Gallego,FALSE,Gallego
+2,2135-2,Hispanic or Latino,2144-4,Valencian,FALSE,Valencian
+2,2135-2,Hispanic or Latino,2145-1,Canarian,FALSE,Canarian
+2,2135-2,Hispanic or Latino,2146-9,Spanish Basque,FALSE,Spanish Basque
+2,2135-2,Hispanic or Latino,2149-3,Mexican American,FALSE,Mexican American
+2,2135-2,Hispanic or Latino,2150-1,Mexicano,FALSE,Mexicano
+2,2135-2,Hispanic or Latino,2151-9,Chicano,FALSE,Chicano
+2,2135-2,Hispanic or Latino,2152-7,La Raza,FALSE,La Raza
+2,2135-2,Hispanic or Latino,2153-5,Mexican American Indian,FALSE,Mexican American Indian
+2,2135-2,Hispanic or Latino,2156-8,Costa Rican,FALSE,Costa Rican
+2,2135-2,Hispanic or Latino,2157-6,Guatemalan,FALSE,Guatemalan
+2,2135-2,Hispanic or Latino,2158-4,Honduran,FALSE,Honduran
+2,2135-2,Hispanic or Latino,2159-2,Nicaraguan,FALSE,Nicaraguan
+2,2135-2,Hispanic or Latino,2160-0,Panamanian,FALSE,Panamanian
+2,2135-2,Hispanic or Latino,2161-8,Salvadoran,FALSE,Salvadoran
+2,2135-2,Hispanic or Latino,2162-6,Central American Indian,FALSE,Central American Indian
+2,2135-2,Hispanic or Latino,2163-4,Canal Zone,FALSE,Canal Zone
+2,2135-2,Hispanic or Latino,2166-7,Argentinean,FALSE,Argentinean
+2,2135-2,Hispanic or Latino,2167-5,Bolivian,FALSE,Bolivian
+2,2135-2,Hispanic or Latino,2168-3,Chilean,FALSE,Chilean
+2,2135-2,Hispanic or Latino,2169-1,Colombian,FALSE,Colombian
+2,2135-2,Hispanic or Latino,2170-9,Ecuadorian,FALSE,Ecuadorian
+2,2135-2,Hispanic or Latino,2171-7,Paraguayan,FALSE,Paraguayan
+2,2135-2,Hispanic or Latino,2172-5,Peruvian,FALSE,Peruvian
+2,2135-2,Hispanic or Latino,2173-3,Uruguayan,FALSE,Uruguayan
+2,2135-2,Hispanic or Latino,2174-1,Venezuelan,FALSE,Venezuelan
+2,2135-2,Hispanic or Latino,2175-8,South American Indian,FALSE,South American Indian
+2,2135-2,Hispanic or Latino,2176-6,Criollo,FALSE,Criollo
+1,2133-7,Ethnicity,2186-5,Not Hispanic or Latino,FALSE,"Note that this term remains in the table for completeness, even though within HL7, the notion of ""not otherwise coded"" term is deprecated."

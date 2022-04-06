@@ -1,0 +1,44 @@
+omop_code,omop_display,depth,parent_code,parent_display,code,display,is_abstract,definition
+38003563,Hispanic or Latino,1,2133-7,Ethnicity,2135-2,Hispanic or Latino,0,Hispanic or Latino
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2137-8,Spaniard,0,Spaniard
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2148-5,Mexican,0,Mexican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2155-0,Central American,0,Central American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2165-9,South American,0,South American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2178-2,Latin American,0,Latin American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2180-8,Puerto Rican,0,Puerto Rican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2182-4,Cuban,0,Cuban
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2184-0,Dominican,0,Dominican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2138-6,Andalusian,0,Andalusian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2139-4,Asturian,0,Asturian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2140-2,Castillian,0,Castillian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2141-0,Catalonian,0,Catalonian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2142-8,Belearic Islander,0,Belearic Islander
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2143-6,Gallego,0,Gallego
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2144-4,Valencian,0,Valencian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2145-1,Canarian,0,Canarian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2146-9,Spanish Basque,0,Spanish Basque
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2149-3,Mexican American,0,Mexican American
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2150-1,Mexicano,0,Mexicano
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2151-9,Chicano,0,Chicano
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2152-7,La Raza,0,La Raza
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2153-5,Mexican American Indian,0,Mexican American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2156-8,Costa Rican,0,Costa Rican
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2157-6,Guatemalan,0,Guatemalan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2158-4,Honduran,0,Honduran
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2159-2,Nicaraguan,0,Nicaraguan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2160-0,Panamanian,0,Panamanian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2161-8,Salvadoran,0,Salvadoran
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2162-6,Central American Indian,0,Central American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2163-4,Canal Zone,0,Canal Zone
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2166-7,Argentinean,0,Argentinean
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2167-5,Bolivian,0,Bolivian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2168-3,Chilean,0,Chilean
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2169-1,Colombian,0,Colombian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2170-9,Ecuadorian,0,Ecuadorian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2171-7,Paraguayan,0,Paraguayan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2172-5,Peruvian,0,Peruvian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2173-3,Uruguayan,0,Uruguayan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2174-1,Venezuelan,0,Venezuelan
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2175-8,South American Indian,0,South American Indian
+38003563,Hispanic or Latino,2,2135-2,Hispanic or Latino,2176-6,Criollo,0,Criollo
+38003564,Not Hispanic or Latino,1,2133-7,Ethnicity,2186-5,Not Hispanic or Latino,0,"Note that this term remains in the table for completeness, even though within HL7, the notion of ""not otherwise coded"" term is deprecated."
