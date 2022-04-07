@@ -39,7 +39,8 @@
 				<p>
 					The OmopPerson object is a simple Data Value Object with trivial getters and setters and a small number of convenience getters.  
 					All of the logic for how the OmopPerson object is created is in the OmopPersonBuiler class.  
-					The OmopPerson object is composed of Data Value Objects (DVOs) that are exactly mapped one-to-on to OMOP tables.  
+					The OmopPerson object is composed of Data Value Objects (DVOs) that are exactly mapped one-to-on to OMOP tables. 
+					The DVOs are created using a code generator by the <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/omop/orm/ormgenerator/GenerateOrm.java">GenerateOrm</a> class.    
 					The DVOs are in the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/omop/yaorma/dvo">dvo package</a>.
 					The Builder classes for each of the OMOP tables are used to perform the mappings.
 					These classes are in the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder">builder packages</a>.   
