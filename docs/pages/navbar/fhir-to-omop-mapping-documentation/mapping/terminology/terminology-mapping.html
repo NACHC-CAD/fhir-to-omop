@@ -1,0 +1,108 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Terminology Mapping</h1>
+			<h3>Terminology Domain Mapping</h3>
+			<p>
+				FHIR Codings are generally defined by a "system", "code", and "description".  
+				Records in the OMOP CONCEPT table are mapped to a "vocabulary_id".  
+				There currently is not an official blessed mapping of FHIR "system" values to OMOP "vocabulary_id" values.  
+				A draft status list has been provided as described in this 
+				<a href="https://stackoverflow.com/questions/70939302/is-there-a-mapping-of-fhir-systems-to-omop-vocabularies">Stackoverflow post</a>.
+				The mapping file we are using is available <a download href="./resources/omo-map.xlsx">here</a>.
+			</p>
+			<h3>Code Mapping</h3>
+			<p>
+				FHIR codes are mapped to OMOP Concepts during the creation of the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/OmopPerson.java">
+					OmopPerson 
+				</a> object by the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/OmopPersonFactory.java">
+					OmopPersonFactory
+				</a> class.
+				<p>
+					The OmopPerson object is a simple Data Value Object with trivial getters and setters and a small number of convenience getters.  
+					All of the logic for how the OmopPerson object is created is in the OmopPersonBuiler class.  
+					The OmopPerson object is composed of Data Value Objects (DVOs) that are exactly mapped one-to-on to OMOP tables.  
+					The DVOs are in the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/omop/yaorma/dvo">dvo package</a>.
+					The Builder classes for each of the OMOP tables are used to perform the mappings.
+					These classes are in the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder">builder packages</a>.   
+				</p>
+				<p>
+					All standard mappings are done by the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/util/mapping/impl/FhirToOmopConceptMapper.java">FhirToOmopConceptMapper</a> class.  
+	  				Race and Ethnicity mappings are a special case as FHIR has defined its own vocabulary for Race and Ethnicity
+	  				and OMOP has defined their own vocabulary for Race and Ethnicity.  
+	  				Race and Ethnicity are mapped using a simple mapping of these terminologies to each other as described 
+	  				<a href="/fhir-to-omop-mapping-documentation/mapping/race-eth/race-eth-mapping.html">here</a>.  
+				</p>
+				<p>
+					FHIR systems and codes are mapped to OMOP concepts by the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/util/mapping/impl/FhirToOmopConceptMapper.java">FhirToOmopConceptMapper</a> class 
+					according to the following.  
+					<ul>
+						<li>
+							The FHIR System is resolved to an OMOP vocabulary_id using the mapping described above.
+						</li>
+						<li>
+							An OMOP standard concept matching the vocabulary_id and the code is queried for using the getStandardConcept method.  
+							<br/>
+							The following query is used:
+							<br/>
+							<pre class="pre-scrollable"><code>select * from concept where vocabulary_id = ? and concept_code = ? and standard_concept = 'S'</code></pre>
+						</li>
+						<li>
+							A mapping to a standard concept matching the vocabulary_id and the code is queried for using the getStandardConceptFromMapping method.  
+							The following query is used:
+<pre class="pre-scrollable">
+<code>select 
+  con2.* 
+from 
+  concept_relationship rel 
+  join concept con1 on con1.concept_id = rel.concept_id_1 
+  join concept con2 on con2.concept_id = rel.concept_id_2 
+where 1=1 
+  and relationship_id = 'Maps to' 
+  and con1.vocabulary_id = ? 
+  and con1.concept_code = ? 
+  and con2.standard_concept = 'S' </code>
+</pre>
+						</li>	
+						<li>
+							A non-standard concept matching the vocabulary_id and the code is queried for using the getNonStandardConcept method.  
+							<br/>
+							The following query is used:
+							<br/>
+							<pre class="pre-scrollable"><code>select * from concept where vocabulary_id = ? and concept_code = ?</code></pre>
+						</li>
+						<li>
+							If no matching concept is found by any of the above methods, a new concept is created as one of the so called two-billionaires.  
+							(the new concept is given a concept_id that is > 2000000000).   
+						</li>
+					</ul>
+				</p>
+			</p>
+
+			<h3>Caching</h3>
+			A cache for FHIR to OMOP terminology mapping has been put in place.  Concepts are added to the cache as they are found.  
+			The cache is queried prior to going to the database to get the concept.  
+			The cachc is implemented in the <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/util/mapping/impl/cache/ConceptCache.java">ConceptCache</a> class.
+
+		</div>
+
+	</body>
+</html>
