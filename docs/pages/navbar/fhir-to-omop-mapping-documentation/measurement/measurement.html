@@ -165,15 +165,19 @@
 				</tr>
 				<tr>
 					<td>
-						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#PROCEDURE_OCCURRENCE">
-							PROCEDURE_OCCURRENCE
+						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#MEASUREMENT">
+							MEASUREMENT
 						</a>
 					</td>
 					<td>
-						This is the OMOP documentation for the PROCEDURE_OCCURRENCE table.  
+						Procedures with codes for the measurement domain are put into the MEASUREMENT table.  
+						This is the OMOP documentation for the MEASUREMENT table.  
 					</td>
 				</tr>
 				<tr>
+					<td></td>
+					<td></td>
+				</tr>
 					<td></td>
 					<td></td>
 				</tr>
@@ -207,27 +211,47 @@
 
 			<h3>Mapping Details</h3>
 			<p>
-				OMOP procedure records are mapped from FHIR Procedure resources. 
-				Attribute level details of how FHIR Procedure resources are parsed are in the 
-				<a target="parser" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/procedure/ProcedureParser.java">
-					OmopProcedureBuilder
-				</a>
-				class.
-			</p>
-			<p>
-				Attribute level details of how the parser is mapped to OMOP records are in the 
-				<a target="builder" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/procedure/OmopProcedureBuilder.java">
-					OmopProcedureBuilder
-				</a>
-				class.
-			</p>
-			<p>
 				Records in the MEASUREMENT table come from three sources.
 				<ul>
 					<li>Procedures: Procedures with codes in the Measurement domain are written to the MEASUREMENT table.</li>
 					<li>Observations (Single): FHIR Observations that are either LABS or VITAL_SIGNS are written to the MEASUREMENT table.</li>
 					<li>Observations (Multiple): FHIR Observations contain resources that represent a set of measurements.</li>
 				</ul>
+			</p>
+			<!-- MEASUREMENTS FROM OBSERVATIONS -->
+			<h3>Measurements from Observations</h3>
+			<p>
+				FHIR: OMOP MEASUREMENT records are mapped from FHIR Observation resources. 
+				Observations that are in the LAB domain or in the VITAL_SIGNS domain are mapped to OMOP MEASUREMENT records
+				Attribute level details of how FHIR Observation resources are parsed are in the 
+				<a target="parser" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/observation/ObservationParser.java">
+					ObservationParser
+				</a>
+				class.
+			</p>
+			<p>
+				OMOP: Attribute level details of how the parser is mapped to OMOP records are in the 
+				<a target="builder" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/observation/OmopObservationBuilder.java">
+					ObservationBuilder
+				</a>
+				class.
+			</p>
+			<!-- MEASUREMENTS FROM PROCEDURES -->
+			<h3>Measurements from Procedures</h3>
+			<p>
+				FHIR: OMOP MEASUREMENT records are mapped from FHIR Procedure resources. 
+				Attribute level details of how FHIR Procedure resources are parsed are in the 
+				<a target="parser" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/procedure/ProcedureParser.java">
+					ProcedureParser
+				</a>
+				class.
+			</p>
+			<p>
+				OMOP: Attribute level details of how the parser is mapped to OMOP records are in the 
+				<a target="builder" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/procedure/OmopProcedureBuilder.java">
+					OmopProcedureBuilder
+				</a>
+				class.
 			</p>
 			<p>
 				We have found FHIR Procedure resources using codes that are not procedure codes.
