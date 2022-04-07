@@ -116,8 +116,8 @@ public class OmopObservationBuilder {
 		String unitsCode = parser.getUnitsCodingCode();
 		ConceptDvo unitsConcept = getUnits(unitsSystem, unitsCode, conn);
 		dvo.setUnitConceptId(unitsConcept.getConceptId());
-		// type
-		dvo.setObservationTypeConceptId(0);
+		// observation type id
+		dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 		// create the proxy and return it
 		if(isMeasurement(parser)) {
 			fixMeas(parser, dvo);
@@ -145,15 +145,15 @@ public class OmopObservationBuilder {
 	
 	private void addMeasType(ObservationParser parser, ObservationDvo dvo) {
 		if(parser.getObservationType() == ObservationType.LABORATORY) {
-			dvo.setObservationTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsLabResultMeasurementConceptId());
 		} else {
-			dvo.setObservationTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
+			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromPhysicalExaminationConceptId());
 		}
 	}
 
 	private void checkUnits(ObservationParser parser, ObservationDvo dvo) {
 		if(dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
-			dvo.setUnitConceptId(OmopConceptConstants.getScalarMeasurementUnitsConceptId());
+			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
 	}
 
@@ -187,7 +187,7 @@ public class OmopObservationBuilder {
 			ConceptDvo unitsConcept = getUnits(unitsSystem, unitsCode, conn);
 			dvo.setUnitConceptId(unitsConcept.getConceptId());
 			// type
-			dvo.setObservationTypeConceptId(0);
+			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 			// set the parent id
 			dvo.setObservationEventId(parent.getObservationId() == null? null : parent.getObservationId() + "");
 			// create the proxy and add it to the return

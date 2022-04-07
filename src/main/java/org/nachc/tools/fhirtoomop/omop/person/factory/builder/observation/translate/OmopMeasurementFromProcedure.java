@@ -60,14 +60,14 @@ public class OmopMeasurementFromProcedure {
 		dvo.setVisitOccurrenceId(omopVisitId);
 		// measuerment type
 		if("Procedure".equals(conceptDvo.getConceptClassId())) {
-			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getObsIsLabResultMeasurementConceptId());
 		} else if ("Observable Entity".equals(conceptDvo.getConceptClassId())) {
-			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getLabResultMeasurementConceptId());
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getObsIsLabResultMeasurementConceptId());
 		} else {
-			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getFromPhysicalExaminationConceptId());
+			dvo.setMeasurementTypeConceptId(OmopConceptConstants.getObsIsFromPhysicalExaminationConceptId());
 		}
 		// measurment units
-		dvo.setUnitConceptId(OmopConceptConstants.getScalarMeasurementUnitsConceptId());
+		dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		// done
 		return dvo;
 	}

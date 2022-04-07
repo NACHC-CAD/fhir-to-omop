@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
@@ -59,6 +60,9 @@ public class CreateOmopInstanceTool {
 			// create the cdm_source record (uses app.parameters values)
 			CreateCdmSourceRecord.exec(conn);
 			Database.commit(conn);
+			// create the sequences
+			logMsg("CREATING SEQUENCES");
+			CreateSequencesForPrimaryKeys.exec(conn);
 			// load terminology
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(conn);

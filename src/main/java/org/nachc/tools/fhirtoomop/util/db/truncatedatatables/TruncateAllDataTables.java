@@ -22,9 +22,16 @@ public class TruncateAllDataTables {
 	public static void exec() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
+			// get the params
 			String schemaName = AppParams.getFullyQualifiedDbName();
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
+			// truncate the data tables
 			TruncateDataTables.truncateTables(tableNames, conn);
+			// commit
+			Database.commit(conn);
+			// delete two-billionaires
+			Database.update("delete from concept where concept_id > 2000000000", conn);
+			// commit
 			Database.commit(conn);
 			Data data = GetCountsForAllTablesInSchema.getCountsForTables(schemaName, tableNames, conn);
 			log.info("\tcnt\ttable_name");

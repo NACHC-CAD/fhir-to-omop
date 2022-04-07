@@ -7,7 +7,10 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
+import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
@@ -16,7 +19,7 @@ public class OmopVisitOccurrenceBuilder {
 	public OmopPerson omopPerson;
 
 	public FhirPatient fhirPatient;
-	
+
 	private Connection conn;
 
 	public OmopVisitOccurrenceBuilder(FhirPatient fhirPatient, OmopPerson omopPerson, Connection conn) {
@@ -28,7 +31,7 @@ public class OmopVisitOccurrenceBuilder {
 	public void build() {
 		buildVisitOccurencesList();
 	}
-	
+
 	private void buildVisitOccurencesList() {
 		PersonDvo person = omopPerson.getPerson();
 		List<VisitOccurrenceDvo> rtn = new ArrayList<VisitOccurrenceDvo>();
@@ -48,8 +51,13 @@ public class OmopVisitOccurrenceBuilder {
 		dvo.setVisitStartDate(enc.getStartDate());
 		dvo.setVisitEndDate(enc.getEndDate());
 		dvo.setVisitSourceValue(enc.getEncounterId());
-		// TODO: (JEG) Need to figure out what the mapping is here
-		dvo.setVisitConceptId(0);
+		// types
+		ConceptDvo visitConcept = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(enc.getEncounterType(), conn);
+		if(visitConcept != null && visitConcept.getConceptId() != null) {
+			dvo.setVisitConceptId(visitConcept.getConceptId());
+		} else {
+			dvo.setVisitConceptId(OmopConceptConstants.getVisitIsOtherType());
+		}
 		dvo.setVisitTypeConceptId(0);
 		return dvo;
 	}
