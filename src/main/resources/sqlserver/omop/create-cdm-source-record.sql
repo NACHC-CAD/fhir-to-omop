@@ -27,3 +27,29 @@ insert into cdm_source (
    @cdm_version_concept_id
 );
 
+truncate table care_site;
+insert into care_site (
+	care_site_id,
+	care_site_name,
+	place_of_service_concept_id,
+	location_id,
+	care_site_source_value,
+	place_of_service_source_value
+) values (
+	1,
+	'Not Available',
+	null,
+	1,
+	null,
+	null
+);
+
+truncate table provider;
+insert into provider (
+	provider_id,
+	provider_name
+) values (
+	1,
+	'Not Available'
+);
+

@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.populate;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,8 @@ public class PopulateOmopInstanceFromFhirFiles {
 		try {
 			WriteListOfFhirPatientsToOmop.exec(fileList, connList, maxThreads);
 			cnt = Database.count("person", connList.get(0));
+			log.info("Doing updates for " + cnt + " patients");
+			updatePrevVisit();
 		} finally {
 			closeConnections(connList);
 			timer.stop();
@@ -68,6 +71,21 @@ public class PopulateOmopInstanceFromFhirFiles {
 		for (Connection conn : connList) {
 			Database.close(conn);
 		}
+	}
+	
+	private static void updatePrevVisit() {
+		log.info("Updating prev visit records...");
+		String filePath = "/sqlserver/omop/update-prev-visit.sql";
+		InputStream is = FileUtil.getInputStream(filePath);
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			String dbName = AppParams.getDbName();
+			Database.update("use " + dbName, conn);
+			Database.executeSqlScript(is, conn);
+		} finally {
+			Database.close(conn);
+		}
+		log.info("Done updating prev visit.");
 	}
 
 }

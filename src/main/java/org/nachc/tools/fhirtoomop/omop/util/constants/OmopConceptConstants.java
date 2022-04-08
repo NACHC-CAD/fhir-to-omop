@@ -26,5 +26,16 @@ public class OmopConceptConstants {
 		return 32271;
 	}
 	
-
+	public static int getVisitTypeIsFromEmr() {
+		return 32035;
+	}
+	
+	public static int getDefaultVisitAdmittedFrom() {
+		return 32693;
+	}
+	
+	public static int getDefaultDischargedTo() {
+		return 32693;
+	}
+	
 }

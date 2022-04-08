@@ -157,7 +157,9 @@ public class FhirToOmopConceptMapper {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		log.info("GOT CONNECTION.");
 		try {
+			log.info("Maybe adding a new concept...");
 			Database.update("begin transaction", conn);
+			log.info("Waiting 10 seconds for existing threads to finish or get to this lock...");
 			TimeUtil.sleep(10);
 			rtn = findExistingTempConcept(system, code, conn);
 			if(rtn == null) {
