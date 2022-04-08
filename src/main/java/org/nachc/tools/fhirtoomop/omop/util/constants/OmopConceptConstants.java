@@ -38,4 +38,10 @@ public class OmopConceptConstants {
 		return 32693;
 	}
 	
+	// rx stuff
+	
+	public static int getDefaultRxType() {
+		return 38000177;
+	}
+	
 }

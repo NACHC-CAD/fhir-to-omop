@@ -8,6 +8,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.fhir.parser.medicationrequest.MedicationRequestParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -78,7 +79,7 @@ public class OmopDrugExposureBuilder {
 			dvo.setDrugConceptId(0);
 		}
 		// drug type
-		dvo.setDrugTypeConceptId(0);
+		dvo.setDrugTypeConceptId(OmopConceptConstants.getDefaultRxType());
 		// start date
 		dvo.setDrugExposureStartDate(medReq.getStartDate());
 		dvo.setDrugExposureEndDate(medReq.getStartDate());

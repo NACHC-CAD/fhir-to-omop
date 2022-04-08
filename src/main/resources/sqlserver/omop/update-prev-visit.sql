@@ -25,3 +25,5 @@ from
 	join prev_visit_temp t on t.visit_occurrence_id = v.visit_occurrence_id
 ;
 
+update visit_occurrence set preceding_visit_occurrence_id = visit_occurrence_id where preceding_visit_occurrence_id is null;
+
