@@ -1,0 +1,122 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Mapping of FHIR Encounter resource to the OMOP VISIT_OCCURRENCE Table</h1>
+			
+			<p>
+				This document details the design and decisions for implementing mapping of FHIR Encounter resource to the OMOP VISIT_OCCURRENCE Table. 
+			</p>
+			<p>	
+				The following references were used to inform this implementation.  
+			</p>
+			<br/>
+			<h3>References for Patient</h3>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td>
+						<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping.html">General Mapping Resources</a>
+					</td>
+					<td>
+						This is the fhir-to-omop documentation for general FHIR and OMOP information.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/STU3/encounter.html">
+							FHIR Encounter (STU3)
+						</a>
+					</td>
+					<td>
+						FHIR Documentation for the Encounter resource. The following version have been considered.  
+						<ul>
+							<li>
+								<a href="http://build.fhir.org/encounter.html">
+									Encounter (Current Build)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/R4/encounter.html">
+									Encounter (R4)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/STU3/encounter.html">
+									Encounter (STU3)
+								</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#VISIT_OCCURRENCE">
+							VISIT_OCCURRENCE
+						</a>
+					</td>
+					<td>
+						This is the OMOP documentation for the VISIT_OCCURRENCE table.  
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table> 
+			
+			<h3>Mapping Details</h3>
+			<p>
+				Mapping of FHIR Encounter resources to OMOP VISIT_OCCURRENCE records is relatively straight forward.  
+				Mapping is done in the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/visitoccurrence/OmopVisitOccurrenceBuilder.java">
+					OmopVisitOccurrenceBuilder
+				</a> class.  
+				The OmopPersonBuilder constructs PERSON Data Value Objects (DVOs) using the
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/encounter/EncounterParser.java">
+					EncounterParser
+				</a> class to parse FHIR Patient resources
+			</p>
+			
+			
+			<h3>Testing Results</h3>
+			<p>
+				The mapping of FHIR Encounter resources to OMOP VISIT_OCCURRENCE records is passing for all Data Quality Dashboard (DQD) tests. 
+				However, many of the values have been hard coded as can be seen in the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/visitoccurrence/OmopVisitOccurrenceBuilder.java">OmopVisitOccurrenceBuilder</a> class.  
+			</p>
+
+			<h3>Currently Passing Tests</h3>
+			<img class="bordered" src="./img/passing/visit-passing.JPG" />
+			<br/>
+			<h3>Previously Failing Tests</h3>
+			The conformance and conpleteness tests shown below were initailly failing and have now been remediated.  
+			<h3>Previous Conformance Fails</h3>
+			<img class="bordered" src="./img/failing/visit-conf-fail-01.JPG" />
+			<br/><br/>
+			<img class="bordered" src="./img/failing/visit-conf-fail-02.JPG" />
+			<br/><br/>
+			<h3>Previous Completeness Fails</h3>
+			<img class="bordered" src="./img/failing/visit-comp-fail-01.JPG" />
+			<br/><br/>
+			<img class="bordered" src="./img/failing/visit-comp-fail-02.JPG" />
+			<br/><br/>
+
+		</div>
+	</body>
+	
+</html>
