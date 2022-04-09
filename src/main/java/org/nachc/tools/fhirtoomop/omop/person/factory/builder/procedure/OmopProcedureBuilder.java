@@ -90,9 +90,30 @@ public class OmopProcedureBuilder {
 			dvo.setProcedureConceptId(0);
 		}
 		dvo.setProcedureDate(proc.getStartDate());
+		dvo.setProcedureDatetime(proc.getStartDateAsString());
 		dvo.setProcedureEndDate(proc.getEndDate());
+		dvo.setProcedureEndDatetime(proc.getEndDateAsString());
 		// TODO: (JEG) hard coding this to primary procedure for now
 		dvo.setProcedureTypeConceptId(44786630);
+		// clean up
+		if(dvo.getModifierConceptId() == null) {
+			dvo.setModifierConceptId(0);
+		}
+		if(dvo.getModifierSourceValue() == null) {
+			dvo.setModifierSourceValue("Not Available");
+		}
+		if(dvo.getProcedureSourceConceptId() == null) {
+			dvo.setProcedureSourceConceptId(dvo.getProcedureConceptId());
+		}
+		if(dvo.getProcedureSourceValue() == null) {
+			dvo.setProcedureSourceValue(proc.getProcedureCode());
+		}
+		if(dvo.getProviderId() == null) {
+			dvo.setProviderId(1);
+		}
+		if(dvo.getQuantity() == null) {
+			dvo.setQuantity(1);
+		}
 		// done
 		this.procedureList.add(dvo);
 	}

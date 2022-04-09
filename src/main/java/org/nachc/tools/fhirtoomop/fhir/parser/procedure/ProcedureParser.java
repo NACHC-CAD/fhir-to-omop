@@ -6,6 +6,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Procedure;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.util.id.FhirUtil;
+import org.yaorma.util.time.TimeUtil;
 
 public class ProcedureParser {
 
@@ -91,12 +92,24 @@ public class ProcedureParser {
 		}
 	}
 	
+	public String getStartDateAsString() {
+		return TimeUtil.format(getStartDate(), "yyyy-MM-dd");
+	}
+	
 	public Date getEndDate() {
 		try {
-			return this.proc.getPerformedPeriod().getEnd();
+			Date rtn = this.proc.getPerformedPeriod().getEnd();
+			if(rtn == null) {
+				rtn = getStartDate();
+			}
+			return rtn;
 		} catch(Exception exp) {
 			return null;
 		}
+	}
+	
+	public String getEndDateAsString() {
+		return TimeUtil.format(getEndDate(), "yyyy-MM-dd");
 	}
 	
 }
