@@ -36,11 +36,25 @@ public class OmopPersonBuilder {
 		dvo.setPersonId(personId);
 		// person_source_value
 		dvo.setPersonSourceValue(patient.getId());
+		//
 		// mappings
 		mapRace(patient, dvo, conn);
 		mapEthnicity(patient, dvo, conn);
 		mapGender(patient, dvo, conn);
 		mapBirthDay(patient, dvo, conn);
+		// other values
+		if(dvo.getLocationId() == null) {
+			dvo.setLocationId(1);
+		}
+		if(dvo.getCareSiteId() == null) {
+			dvo.setCareSiteId(1);
+		}
+		if(dvo.getProviderId() == null) {
+			dvo.setProviderId(1);
+		}
+		if(dvo.getRaceSourceValue() == null) {
+			dvo.setRaceSourceValue("Not Available");
+		}
 		// done
 		this.omopPerson.setPerson(dvo);
 	}
@@ -54,12 +68,14 @@ public class OmopPersonBuilder {
 				if (race != null) {
 					Integer raceId = race.getConceptId();
 					dvo.setRaceConceptId(raceId);
+					dvo.setRaceSourceConceptId(raceId);
 					dvo.setRaceSourceValue(code);
 				}
 			}
 		}
 		if (dvo.getRaceConceptId() == null) {
 			dvo.setRaceConceptId(0);
+			dvo.setRaceSourceConceptId(0);
 		}
 	}
 
@@ -72,6 +88,7 @@ public class OmopPersonBuilder {
 				if (eth != null) {
 					Integer ethId = eth.getConceptId();
 					dvo.setEthnicityConceptId(ethId);
+					dvo.setEthnicitySourceConceptId(ethId);
 					dvo.setEthnicitySourceValue(code);
 				}
 			}
@@ -85,6 +102,7 @@ public class OmopPersonBuilder {
 		AdministrativeGender gender = patient.getGender();
 		Integer genderId = GenderMapping.getOmopConceptForFhirCode(gender);
 		dvo.setGenderConceptId(genderId);
+		dvo.setGenderSourceConceptId(genderId);
 		dvo.setGenderSourceValue(gender.toCode());
 		if (dvo.getGenderConceptId() == null) {
 			dvo.setGenderConceptId(0);
@@ -95,6 +113,7 @@ public class OmopPersonBuilder {
 		dvo.setYearOfBirth(patient.getBirthYear());
 		dvo.setMonthOfBirth(patient.getBirthMonth());
 		dvo.setDayOfBirth(patient.getBirthDay());
+		dvo.setBirthDatetime(patient.getBirthDateAsString());
 	}
 
 }

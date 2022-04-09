@@ -17,6 +17,7 @@ import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
+import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,12 +34,14 @@ public class OmopObservationBuilder {
 	private OmopPerson omopPerson;
 
 	private Connection conn;
-	
+
 	private List<ObservationDvo> observationList = new ArrayList<ObservationDvo>();
 
 	private List<ObservationDvo> measurementObsList = new ArrayList<ObservationDvo>();
-	
+
 	private List<MeasurementDvo> measurementList = new ArrayList<MeasurementDvo>();
+
+	private List<ProcedureOccurrenceDvo> procedureList = new ArrayList<ProcedureOccurrenceDvo>();
 
 	//
 	// constructor
@@ -56,7 +59,7 @@ public class OmopObservationBuilder {
 		omopPerson.setObservationList(this.observationList);
 		omopPerson.setMeasurementList(this.measurementList);
 	}
-	
+
 	//
 	// implementation
 	//
@@ -119,7 +122,7 @@ public class OmopObservationBuilder {
 		// observation type id
 		dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 		// create the proxy and return it
-		if(isMeasurement(parser)) {
+		if (isMeasurement(parser)) {
 			fixMeas(parser, dvo);
 			this.measurementObsList.add(dvo);
 		} else {
@@ -129,22 +132,20 @@ public class OmopObservationBuilder {
 	}
 
 	private boolean isMeasurement(ObservationParser obs) {
-		if(obs.getObservationType() == ObservationType.VITAL_SIGNS || obs.getObservationType() == ObservationType.LABORATORY) {
+		if (obs.getObservationType() == ObservationType.VITAL_SIGNS || obs.getObservationType() == ObservationType.LABORATORY) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
-	
-	
+
 	private void fixMeas(ObservationParser parser, ObservationDvo dvo) {
 		addMeasType(parser, dvo);
 		checkUnits(parser, dvo);
 	}
-	
+
 	private void addMeasType(ObservationParser parser, ObservationDvo dvo) {
-		if(parser.getObservationType() == ObservationType.LABORATORY) {
+		if (parser.getObservationType() == ObservationType.LABORATORY) {
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsLabResultMeasurementConceptId());
 		} else {
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromPhysicalExaminationConceptId());
@@ -152,7 +153,7 @@ public class OmopObservationBuilder {
 	}
 
 	private void checkUnits(ObservationParser parser, ObservationDvo dvo) {
-		if(dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
+		if (dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
 			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
 	}
@@ -189,9 +190,9 @@ public class OmopObservationBuilder {
 			// type
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 			// set the parent id
-			dvo.setObservationEventId(parent.getObservationId() == null? null : parent.getObservationId() + "");
+			dvo.setObservationEventId(parent.getObservationId() == null ? null : parent.getObservationId() + "");
 			// create the proxy and add it to the return
-			if(isMeasurement(parser)) {
+			if (isMeasurement(parser)) {
 				fixMeas(parser, dvo);
 				this.measurementObsList.add(dvo);
 			} else {
@@ -231,11 +232,11 @@ public class OmopObservationBuilder {
 
 	private void buildMeasList() {
 		this.measurementList = new ArrayList<MeasurementDvo>();
-		for(ObservationDvo obs : this.measurementObsList) {
+		for (ObservationDvo obs : this.measurementObsList) {
 			this.measurementList.add(getMeasurement(obs));
 		}
 	}
-	
+
 	// TODO: MOVE THIS TO A CONVERTER CLASS (JEG)
 	private MeasurementDvo getMeasurement(ObservationDvo obs) {
 		MeasurementDvo dvo = new MeasurementDvo();
@@ -260,7 +261,7 @@ public class OmopObservationBuilder {
 		dvo.setValueSourceValue(obs.getValueSourceValue());
 		dvo.setMeasurementEventId(obs.getObservationEventId());
 		dvo.setMeasEventFieldConceptId(obs.getObsEventFieldConceptId());
-		return dvo;	
+		return dvo;
 	}
 
 }

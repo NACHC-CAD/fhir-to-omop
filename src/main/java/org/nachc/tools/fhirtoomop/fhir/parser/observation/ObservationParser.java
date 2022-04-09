@@ -171,6 +171,20 @@ public class ObservationParser {
 		}
 	}
 
+	public Date getEndDate() {
+		try {
+			String encounterId = this.getEncounterId();
+			EncounterParser enc = this.patient.getEncounter(encounterId);
+			Date rtn = enc.getEndDate();
+			if(rtn == null) {
+				rtn = getStartDate();
+			}
+			return rtn;
+		} catch (Exception exp) {
+			return null;
+		}
+	}
+
 	//
 	// observation code (what observation is this)
 	//

@@ -55,6 +55,8 @@ public class OmopObservationFromProcedure {
 		dvo.setObservationConceptId(conceptDvo.getConceptId());
 		dvo.setObservationDate(parser.getStartDate());
 		dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
+		dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
+		dvo.setObservationSourceConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 		String fhirEncounterId = parser.getEncounterId();
 		Integer omopVisitId = this.omopPerson.getOmopEncounterId(fhirEncounterId);
 		dvo.setVisitOccurrenceId(omopVisitId);

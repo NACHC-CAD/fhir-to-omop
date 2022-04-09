@@ -53,3 +53,27 @@ insert into provider (
 	'Not Available'
 );
 
+truncate table location;
+insert into location (
+	location_id,
+	address_1,
+	city,
+	state,
+	zip,
+	county,
+	location_source_value,
+	country_concept_id,
+	country_source_value
+) values (
+	1,
+	'Location Unknow',
+	'Unknown City',
+	'??',
+	'00000',
+	'Unknown County',
+	'Unknown',
+	42046186,
+	'USA'
+);
+
+

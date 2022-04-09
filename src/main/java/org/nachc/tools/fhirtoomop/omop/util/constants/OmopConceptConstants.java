@@ -20,6 +20,10 @@ public class OmopConceptConstants {
 		return 44777566;
 	}
 	
+	public static Integer getObservationTableConceptId() {
+		return 1147304;
+	}
+	
 	// visit stuff
 	
 	public static int getVisitIsOtherType() {
@@ -43,5 +47,5 @@ public class OmopConceptConstants {
 	public static int getDefaultRxType() {
 		return 38000177;
 	}
-	
+
 }

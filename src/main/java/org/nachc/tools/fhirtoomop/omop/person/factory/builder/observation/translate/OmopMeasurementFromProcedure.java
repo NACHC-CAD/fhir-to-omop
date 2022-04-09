@@ -39,10 +39,10 @@ public class OmopMeasurementFromProcedure {
 	// constructor
 	//
 
-	public OmopMeasurementFromProcedure(FhirPatient fhirPatient, ProcedureParser parser, ConceptDvo conceptDvo, OmopPerson omopPerson, Connection conn) {
+	public OmopMeasurementFromProcedure(FhirPatient fhirPatient, ProcedureParser parser, ConceptDvo measConcept, OmopPerson omopPerson, Connection conn) {
 		this.fhirPatient = fhirPatient;
 		this.parser = parser;
-		this.conceptDvo = conceptDvo;
+		this.conceptDvo = measConcept;
 		this.omopPerson = omopPerson;
 		this.conn = conn;
 	}
