@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.fhir.parser.observation.component.ObservationC
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.type.ObservationType;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopMeasurementFromObservation;
 import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
@@ -19,6 +20,7 @@ import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -37,9 +39,7 @@ public class OmopObservationBuilder {
 
 	private List<ObservationDvo> observationList = new ArrayList<ObservationDvo>();
 
-	private List<ObservationDvo> measurementObsList = new ArrayList<ObservationDvo>();
-
-	private List<MeasurementDvo> measurementList = new ArrayList<MeasurementDvo>();
+	private List<OmopMeasurementFromObservation> measurementList = new ArrayList<OmopMeasurementFromObservation>();
 
 	private List<ProcedureOccurrenceDvo> procedureList = new ArrayList<ProcedureOccurrenceDvo>();
 
@@ -55,11 +55,19 @@ public class OmopObservationBuilder {
 
 	public void build() {
 		buildObservationLists();
-		buildMeasList();
 		omopPerson.setObservationList(this.observationList);
-		omopPerson.setMeasurementList(this.measurementList);
+		omopPerson.setMeasurementList(this.getMeasurementList());
 	}
 
+	private List<MeasurementDvo> getMeasurementList() {
+		ArrayList<MeasurementDvo> rtn = new ArrayList<MeasurementDvo>();
+		for(OmopMeasurementFromObservation meas : this.measurementList) {
+			MeasurementDvo dvo = meas.buildMeasurement();
+			rtn.add(dvo);
+		}
+		return rtn;
+	}
+	
 	//
 	// implementation
 	//
@@ -124,7 +132,8 @@ public class OmopObservationBuilder {
 		// create the proxy and return it
 		if (isMeasurement(parser)) {
 			fixMeas(parser, dvo);
-			this.measurementObsList.add(dvo);
+			OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(parser, null, dvo, conn);
+			this.measurementList.add(translator);
 		} else {
 			this.observationList.add(dvo);
 		}
@@ -194,7 +203,8 @@ public class OmopObservationBuilder {
 			// create the proxy and add it to the return
 			if (isMeasurement(parser)) {
 				fixMeas(parser, dvo);
-				this.measurementObsList.add(dvo);
+				OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(null, comp, dvo, conn);
+				this.measurementList.add(translator);
 			} else {
 				this.observationList.add(dvo);
 			}
@@ -210,6 +220,7 @@ public class OmopObservationBuilder {
 		dvo.setPersonId(omopPatientId);
 		// date
 		dvo.setObservationDate(parser.getStartDate());
+		dvo.setObservationDatetime(TimeUtil.format(dvo.getObservationDate(), "yyyy-MM-dd"));
 		if (dvo.getObservationDate() == null) {
 			String encounterId = parser.getEncounterId();
 			VisitOccurrenceDvo visitDvo = this.omopPerson.getVisitOccurrenceByFhirId(encounterId);
@@ -228,40 +239,6 @@ public class OmopObservationBuilder {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
 			return unitsConceptDvo;
 		}
-	}
-
-	private void buildMeasList() {
-		this.measurementList = new ArrayList<MeasurementDvo>();
-		for (ObservationDvo obs : this.measurementObsList) {
-			this.measurementList.add(getMeasurement(obs));
-		}
-	}
-
-	// TODO: MOVE THIS TO A CONVERTER CLASS (JEG)
-	private MeasurementDvo getMeasurement(ObservationDvo obs) {
-		MeasurementDvo dvo = new MeasurementDvo();
-		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id", conn);
-		dvo.setMeasurementId(measurementId);
-		dvo.setPersonId(obs.getPersonId());
-		dvo.setMeasurementConceptId(obs.getObservationConceptId());
-		dvo.setMeasurementDate(obs.getObservationDate());
-		dvo.setMeasurementDatetime(obs.getObservationDatetime());
-		dvo.setMeasurementTypeConceptId(obs.getObservationTypeConceptId());
-		// TODO: (JEG) need to get operator
-		dvo.setValueAsNumber(obs.getValueAsNumber());
-		dvo.setValueAsConceptId(obs.getValueAsConceptId());
-		dvo.setUnitConceptId(obs.getUnitConceptId());
-		// TODO: (JEG) need to get range
-		// TODO: (JEG) need to get provider
-		dvo.setVisitOccurrenceId(obs.getVisitOccurrenceId());
-		dvo.setVisitDetailId(obs.getVisitDetailId());
-		dvo.setMeasurementSourceConceptId(obs.getObservationSourceConceptId());
-		dvo.setUnitSourceValue(obs.getUnitSourceValue());
-		dvo.setUnitSourceConceptId(obs.getUnitConceptId());
-		dvo.setValueSourceValue(obs.getValueSourceValue());
-		dvo.setMeasurementEventId(obs.getObservationEventId());
-		dvo.setMeasEventFieldConceptId(obs.getObsEventFieldConceptId());
-		return dvo;
 	}
 
 }

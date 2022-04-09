@@ -97,6 +97,19 @@ public class ObservationComponentParser {
 		}
 	}
 
+	//
+	// operator
+	//
+	
+	public String getOperator() {
+		try {
+			return comp.getValueQuantity().getComparator().getDisplay();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
+	
 	// -----------------------------------
 	//
 	// UNITS (There are several types of Observations)

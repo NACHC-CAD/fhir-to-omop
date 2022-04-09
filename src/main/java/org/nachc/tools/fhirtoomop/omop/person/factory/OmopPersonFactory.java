@@ -6,6 +6,7 @@ import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.condition.OmopConditionOccurrenceBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.drugexposure.OmopDrugExposureBuilder;
+import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.MeasurementPostProcessor;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.OmopObservationBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.person.OmopPersonBuilder;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.procedure.OmopProcedureBuilder;
@@ -23,6 +24,8 @@ public class OmopPersonFactory {
 		new OmopObservationBuilder(fhirPatient, rtn, conn).build();
 		new OmopProcedureBuilder(fhirPatient, rtn, conn).build();
 		new OmopFhirResourceBuilder(fhirPatient, rtn, conn).build();
+		// post processing
+		new MeasurementPostProcessor(rtn, conn).build();
 		return rtn;
 	}
 

@@ -24,6 +24,14 @@ public class OmopConceptConstants {
 		return 1147304;
 	}
 	
+	public static Integer getMeasurementTable() {
+		return 1147330;
+	}
+
+	public static int getDefaultQualifier() {
+		return 0;
+	}
+	
 	// visit stuff
 	
 	public static int getVisitIsOtherType() {

@@ -297,6 +297,18 @@ public class ObservationParser {
 		}
 	}
 
+	//
+	// operator
+	//
+	
+	public String getOperator() {
+		try {
+			return obs.getValueQuantity().getComparator().getDisplay();
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+	
 	// -----------------------------------
 	//
 	// UNITS (There are several types of Observations)
