@@ -151,7 +151,7 @@
 				OMOP procedure records are mapped from FHIR Procedure resources. 
 				Attribute level details of how FHIR Procedure resources are parsed are in the 
 				<a target="parser" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/procedure/ProcedureParser.java">
-					OmopProcedureBuilder
+					ProcedureParser
 				</a>
 				class.
 			</p>
@@ -178,8 +178,27 @@
 				DQD results before and after making these distinctions are shown below.  				
 			</p>
 			<br/>
+			<h3>Update Testing Results 2022-04-08</h3>
+			<p>
+				On April 08, 2022 we updated our DQD instance to the latest version.  
+				This included a number of new tests that were failing.  
+				These failures have been remediated and the testing results are shown below.  
+			</p>
+			<h3>Procedure Tests Passing 2022-04-08</h3>
+			All but two of the procedure tests are passing.  
+			For the failing tests: 
+			procedure_detail is not being implemented at this time.  
+			The number of patients that do not have a record in the procedure table is an accurate reflection of our test data set.  
+			<img class="bordered" src="./img/pass/procedure-pass-2022-04-09.JPG" />
+			<br/>
+			<h3>Procedure Tests Previously Failing 2022-04-08</h3>
+			<br/>
+			<img class="bordered" src="./img/fail/procedure-fail-2022-04-09_01.JPG" />
+			<br/>			
+			<img class="bordered" src="./img/fail/procedure-fail-2022-04-09_02.JPG" />
+			<br/>
 			
-			<h3>Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the OMOP procedure table</h3>
+			<h3>Origingal Data Quality Dashboard results when mapping FHIR procedure resources exclusively to the OMOP procedure table</h3>
 			<p>
 				Prior to mapping FHIR Procedure resources to Measurement, Observation, Condition, and Procedure 
 				the following results were obtainded after running the DQD.  
