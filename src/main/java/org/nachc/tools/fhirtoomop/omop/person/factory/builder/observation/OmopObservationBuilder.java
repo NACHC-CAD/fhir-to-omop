@@ -225,45 +225,6 @@ public class OmopObservationBuilder {
 			return unitsConceptDvo;
 		} else {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);
-			/*
-			// for some reason synthea uses curly brackets instead of brackets
-			if (unitsConceptDvo == null) {
-				String mod = unitsCode;
-				mod = mod.replace("{", "[");
-				mod = mod.replace("}", "]");
-				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-				if (unitsConceptDvo != null) {
-					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-				}
-			}
-			// this is for concept_id 9117
-			if (unitsConceptDvo == null) {
-				String mod = unitsCode;
-				mod = mod.replace("{", "");
-				mod = mod.replace("}", "");
-				mod = mod.replace('_', '.');
-				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-				if (unitsConceptDvo != null) {
-					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-				}
-			}
-			// this is for mmHg
-			if (unitsConceptDvo == null && unitsCode != null && "mmHg".equalsIgnoreCase(unitsCode)) {
-				String mod = "mm[Hg]";
-				unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, mod, conn);
-				if (unitsConceptDvo != null) {
-					ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-				}
-			}
-			ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-			if (unitsConceptDvo != null) {
-				ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-			} else {
-				unitsConceptDvo = new ConceptDvo();
-				unitsConceptDvo.setConceptId(0);
-				ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
-			}
-			*/
 			return unitsConceptDvo;
 		}
 	}
