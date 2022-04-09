@@ -49,6 +49,9 @@ public class OmopMeasurementFromObservation {
 		dvo.setValueAsNumber(obs.getValueAsNumber());
 		dvo.setValueAsConceptId(obs.getValueAsConceptId());
 		dvo.setUnitConceptId(obs.getUnitConceptId());
+		dvo.setUnitSourceValue(obs.getUnitSourceValue());
+		dvo.setValueSourceValue(obs.getValueSourceValue());
+		
 		// TODO: (JEG) need to get range
 		// TODO: (JEG) need to get provider
 		dvo.setVisitOccurrenceId(obs.getVisitOccurrenceId());

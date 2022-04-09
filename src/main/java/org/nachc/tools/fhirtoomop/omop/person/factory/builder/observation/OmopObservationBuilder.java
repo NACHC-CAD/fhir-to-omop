@@ -224,6 +224,7 @@ public class OmopObservationBuilder {
 		if (dvo.getObservationDate() == null) {
 			String encounterId = parser.getEncounterId();
 			VisitOccurrenceDvo visitDvo = this.omopPerson.getVisitOccurrenceByFhirId(encounterId);
+			dvo.setVisitOccurrenceId(visitDvo.getVisitOccurrenceId());
 			dvo.setObservationDate(visitDvo.getVisitStartDate());
 		}
 		return dvo;
