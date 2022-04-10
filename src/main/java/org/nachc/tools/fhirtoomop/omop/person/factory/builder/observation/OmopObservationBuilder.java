@@ -150,7 +150,6 @@ public class OmopObservationBuilder {
 			this.measurementList.add(translator);
 		} else {
 			// add to observations if obs
-			addAdditionalObsValues(dvo);
 			this.observationList.add(dvo);
 		}
 		return dvo;
@@ -161,60 +160,6 @@ public class OmopObservationBuilder {
 			return true;
 		} else {
 			return false;
-		}
-	}
-
-	public void addAdditionalObsValues(ObservationDvo dvo) {
-		// value as string
-		if(dvo.getValueAsString() == null && dvo.getValueAsNumber() != null) {
-			dvo.setValueAsString(dvo.getValueAsNumber().toString());
-		}
-		if(dvo.getValueAsString() == null) {
-			dvo.setValueAsString("Not Availavble");
-		}
-		// observation event
-		if(dvo.getObservationEventId() == null && dvo.getObservationId() != null) {
-			dvo.setObservationEventId(dvo.getObservationId().toString());
-		}
-		if(dvo.getObsEventFieldConceptId() == null) {
-			dvo.setObsEventFieldConceptId(OmopConceptConstants.getObservationTableConceptId());
-		}
-		// provider
-		if(dvo.getProviderId() == null) {
-			dvo.setProviderId(1);
-		}
-		// qualifier
-		if(dvo.getQualifierConceptId() == null) {
-			dvo.setQualifierConceptId(OperatorMapping.get("="));
-		}
-		if(dvo.getQualifierSourceValue() == null) {
-			dvo.setQualifierSourceValue("=");
-		}
-		if(dvo.getUnitSourceValue() == null) {
-			dvo.setUnitSourceValue("Not Available");
-		}
-		// source value
-		if(dvo.getValueSourceValue() == null) {
-			dvo.setValueSourceValue(dvo.getValueAsString());
-		}
-		if(dvo.getValueSourceValue() == null) {
-			dvo.setValueSourceValue("Not Available");
-		}
-		if(dvo.getObservationSourceConceptId() == null) {
-			dvo.setObservationSourceConceptId(0);
-		}
-		if(dvo.getObservationSourceValue() == null) {
-			dvo.setObservationSourceValue(dvo.getValueAsString());
-		}
-		if(dvo.getObservationSourceValue() == null) {
-			dvo.setObservationSourceValue("Not Available");
-		}
-		// units
-		if(dvo.getUnitConceptId() == null) {
-			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
-		}
-		if(dvo.getObservationDatetime() == null && dvo.getObservationDate() != null) {
-			dvo.setObservationDatetime(TimeUtil.format(dvo.getObservationDate(), "yyyy-MM-dd"));
 		}
 	}
 
@@ -281,7 +226,6 @@ public class OmopObservationBuilder {
 				OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(null, comp, dvo, conn);
 				this.measurementList.add(translator);
 			} else {
-				addAdditionalObsValues(dvo);
 				this.observationList.add(dvo);
 			}
 		}
