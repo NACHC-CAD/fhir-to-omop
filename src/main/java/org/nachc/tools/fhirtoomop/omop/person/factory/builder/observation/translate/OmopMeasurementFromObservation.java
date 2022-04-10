@@ -45,19 +45,25 @@ public class OmopMeasurementFromObservation {
 		dvo.setMeasurementDatetime(obs.getObservationDatetime());
 		// type
 		dvo.setMeasurementTypeConceptId(obs.getObservationTypeConceptId());
-		// TODO: (JEG) need to get operator
 		dvo.setValueAsNumber(obs.getValueAsNumber());
 		dvo.setValueAsConceptId(obs.getValueAsConceptId());
 		dvo.setUnitConceptId(obs.getUnitConceptId());
 		dvo.setUnitSourceValue(obs.getUnitSourceValue());
 		dvo.setValueSourceValue(obs.getValueSourceValue());
-		
-		// TODO: (JEG) need to get range
-		// TODO: (JEG) need to get provider
 		dvo.setVisitOccurrenceId(obs.getVisitOccurrenceId());
 		dvo.setVisitDetailId(obs.getVisitDetailId());
 		dvo.setMeasurementSourceConceptId(obs.getObservationSourceConceptId());
 		dvo.setUnitSourceValue(obs.getUnitSourceValue());
+		if(dvo.getUnitSourceValue() == null) {
+			String units = "Not available";
+			if(obsParser != null) {
+				units = obsParser.getUnitsCodingDisplay();
+			}
+			if(compParser != null) {
+				units = compParser.getUnitsCodingDisplay();
+			}
+			dvo.setUnitSourceValue(units);
+		}
 		dvo.setUnitSourceConceptId(obs.getUnitConceptId());
 		dvo.setValueSourceValue(obs.getValueSourceValue());
 		dvo.setMeasurementEventId(obs.getObservationEventId());

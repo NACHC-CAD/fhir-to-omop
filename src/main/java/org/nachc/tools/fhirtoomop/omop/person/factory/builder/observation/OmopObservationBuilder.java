@@ -132,6 +132,8 @@ public class OmopObservationBuilder {
 		// create the proxy and return it
 		if (isMeasurement(parser)) {
 			fixMeas(parser, dvo);
+			VisitOccurrenceDvo visit = this.omopPerson.getVisitOccurrenceByFhirId(parser.getEncounterId());
+			dvo.setVisitOccurrenceId(visit.getVisitOccurrenceId());
 			OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(parser, null, dvo, conn);
 			this.measurementList.add(translator);
 		} else {
@@ -203,6 +205,8 @@ public class OmopObservationBuilder {
 			// create the proxy and add it to the return
 			if (isMeasurement(parser)) {
 				fixMeas(parser, dvo);
+				VisitOccurrenceDvo visit = this.omopPerson.getVisitOccurrenceByFhirId(parser.getEncounterId());
+				dvo.setVisitOccurrenceId(visit.getVisitOccurrenceId());
 				OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(null, comp, dvo, conn);
 				this.measurementList.add(translator);
 			} else {

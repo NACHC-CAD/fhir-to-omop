@@ -52,7 +52,41 @@ public class MeasurementPostProcessor {
 			}		
 			// value as concept
 			if(dvo.getValueAsConceptId() == null) {
-				dvo.setValueAsConceptId(1);
+				dvo.setValueAsConceptId(0);
+			}
+			// source
+			if(dvo.getMeasurementSourceConceptId() == null) {
+				dvo.setMeasurementSourceConceptId(dvo.getMeasurementId());
+			}
+			// time
+			if(dvo.getMeasurementTime() == null) {
+				dvo.setMeasurementTime(dvo.getMeasurementDatetime());
+			}
+			// unit
+			if(dvo.getUnitSourceConceptId() == null) {
+				dvo.setUnitSourceConceptId(dvo.getUnitConceptId());
+			}
+			if(dvo.getUnitSourceValue() == null) {
+				dvo.setUnitSourceValue("Not Available");
+			}
+			// source value
+			if(dvo.getMeasurementSourceValue() == null) {
+				dvo.setMeasurementSourceValue("Not Available");
+			}
+			if(dvo.getValueSourceValue() == null) {
+				dvo.setValueSourceValue(dvo.getMeasurementSourceValue());
+			}
+			if(dvo.getValueSourceValue() == null) {
+				dvo.setValueSourceValue(dvo.getValueAsNumber());
+			}
+			if(dvo.getValueSourceValue() == null && dvo.getValueAsConceptDvo() != null) {
+				dvo.setValueSourceValue(dvo.getValueAsConceptDvo().toString());
+			}
+			if(dvo.getValueSourceValue() == null) {
+				dvo.setValueSourceValue("Not Available");
+			}
+			if(dvo.getMeasurementSourceConceptId() == null) {
+				dvo.setMeasurementSourceConceptId(0);
 			}
 		}
 	}
