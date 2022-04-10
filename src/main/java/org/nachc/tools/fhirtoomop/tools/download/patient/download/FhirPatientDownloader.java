@@ -65,6 +65,8 @@ public class FhirPatientDownloader {
 		log.info("REMOVING GETTER");
 		active.remove(worker);
 		log.info("GETTER REMOVED");
+		log.info("Active:  " + active.size());
+		log.info("Waiting: " + waiting.size());
 	}
 
 }
