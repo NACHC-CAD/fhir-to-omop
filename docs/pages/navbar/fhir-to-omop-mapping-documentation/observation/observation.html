@@ -1,0 +1,122 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Mapping of FHIR Observation resource to the OMOP OBSERVATION Table</h1>
+			
+			<p>
+				This document details the design and decisions for implementing mapping of FHIR Observation resource to the OMOP OBSERVATION Table. 
+			</p>
+			<p>	
+				The following references were used to inform this implementation.  
+			</p>
+
+			<h3>References for Observation</h3>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td>
+						<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping.html">General Mapping Resources</a>
+					</td>
+					<td>
+						This is the fhir-to-omop documentation for general FHIR and OMOP information.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/STU3/observation.html">
+							FHIR Observation (STU3)
+						</a>
+					</td>
+					<td>
+						FHIR Documentation for the Patient resource. The following version have been considered.  
+						<ul>
+							<li>
+								<a href="http://build.fhir.org/observation.html">
+									Observation (Current Build)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/R4/observation.html">
+									Observation (R4)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/STU3/observation.html">
+									Observation (STU3)
+								</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#OBSERVATION">
+							OBSERVATION
+						</a>
+					</td>
+					<td>
+						This is the OMOP documentation for the OBSERVATION table.  
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table> 
+
+			<h3>Mapping Details</h3>
+			<p>
+				Mapping of FHIR Observation resources to OMOP OBSERVATION records is relatively straight forward.  
+				Mapping is done in the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/observation/OmopObservationBuilder.java">
+					OmopObservationBuilder
+				</a> class.  
+				The OmopObservationBuilder constructs OBSERVATION Data Value Objects (DVOs) using the
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/observation/ObservationParser.java">
+					ObservationParser
+				</a> class to parse FHIR Patient resources
+			</p>
+			
+			<h3>Testing Results</h3>
+			<h3>Testing Results 2022-04-08</h3>
+			<p>
+				On April 08 we updated our tests to the latest version of DQD.   
+				This resulted in a number of the new tests failing.  Failures are shown below.  
+				Code has been updated to correct for these failures.  
+				All tests are passing except for those shown below.  
+				We are currently not implementing visit_detail.  
+				We have confirmed the failing results are consistent with the test data set we are currently using.  
+			</p>
+
+			<h3>Passing Tests 2022-04-08</h3>
+			<img class="bordered" src="./img/pass/obs-pass-2022-04-08.JPG" />
+			<br/>
+			<h3>Tests Failing Prior to Latest Update 2022-04-08</h3>
+			<img class="bordered" src="./img/fail/obs-fail-2022-04-08_01.JPG" />
+			<br/>
+			<img class="bordered" src="./img/fail/obs-fail-2022-04-08_02.JPG" />
+			<br/>
+			<img class="bordered" src="./img/fail/obs-fail-2022-04-08_03.JPG" />
+			<br/>
+			<img class="bordered" src="./img/fail/obs-fail-2022-04-08_04.JPG" />
+			<br/>
+
+		</div>
+	</body>
+	
+</html>

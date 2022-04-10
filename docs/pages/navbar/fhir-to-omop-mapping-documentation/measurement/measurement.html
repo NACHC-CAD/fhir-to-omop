@@ -71,8 +71,8 @@
 			<p>	
 				The following references were used to inform this implementation.  
 			</p>
-			<br/>
-			<h3>References for Observation</h3>
+
+			<h3>References for FHIR Observation (mapped to OMOP MEASUREMENT)</h3>
 			<table class="table table-condensed table-hover">
 				<tr>
 					<td>
@@ -262,7 +262,6 @@
 				DQD results are shown below.  				
 			</p>
 
-
 			<h3>Testing Results 2022-04-08</h3>
 			On April 8th, 2022 we updated our instance of DQD witch resulted in a number of new tests failing.  
 			These failures have been remediated with the exceptions shown below.  
@@ -283,7 +282,6 @@
 			<img class="bordered" src="./img/fail/meas-fail-2022-04-09_03.JPG" />
 			<br/>
 
-
 			<h3>Data Quality Dashboard results for MEASUREMENT</h3>
 
 			<img class="bordered" src="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-screenshots/2022-04-07/pass/completeness-pass.JPG" />
@@ -297,9 +295,7 @@
 				The tests failing below have been found to be related to concepts in the Synthea data that have UCUM codes that are not in OHDSI.
 			</p>
 			<img class="bordered" src="/fhir-to-omop/ohdsi-tools/dqd/dqd-history-screenshots/2022-04-07/pass/codes-fail.JPG" />	
-			<br/>
-			<br/>
-			
+
 			<h3>Examples of FHIR Procedure Resources That Have Non-procedure Codings</h3>
 			<p>
 				The following is a list of FHIR resources found to have non-procedure codings 

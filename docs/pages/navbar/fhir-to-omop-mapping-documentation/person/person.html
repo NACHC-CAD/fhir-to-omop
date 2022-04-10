@@ -25,7 +25,7 @@
 			<p>	
 				The following references were used to inform this implementation.  
 			</p>
-			<br/>
+
 			<h3>References for Patient</h3>
 			<table class="table table-condensed table-hover">
 				<tr>
@@ -78,7 +78,7 @@
 					<td></td>
 				</tr>
 			</table> 
-			<br/><br/>
+
 			<h3>Mapping Details</h3>
 			<p>
 				Mapping of FHIR Patient resources to OMOP PATIENT records is relatively straight forward.  
@@ -87,19 +87,22 @@
 					OmopPersonBuilder
 				</a> class.  
 				The OmopPersonBuilder constructs PERSON Data Value Objects (DVOs) using the
-				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/encounter/EncounterParser.java">
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/patient/PatientParser.java">
 					PatientParser
 				</a> class to parse FHIR Patient resources
 			</p>
 			
 			<h3>Testing Results</h3>
 			<h3>Testing Results 2022-04-08</h3>
-			On April 08 we updated our tests to the latest version of DQD.   
-			This resulted in a number of the new tests failing.  Failures are shown below.  
-			Code has been updated to correct for these failures.  
-			All tests except for the standard, valid race_concept_id shown below are passing.  
-			The race_concept_id test is passing as the source data have records with a non-standard race code: 
-			Concept ID 8522 "Other Race".  
+			<p>
+				On April 08 we updated our tests to the latest version of DQD.   
+				This resulted in a number of the new tests failing.  Failures are shown below.  
+				Code has been updated to correct for these failures.  
+				All tests except for the standard, valid race_concept_id shown below are passing.  
+				The race_concept_id test is passing as the source data have records with a non-standard race code: 
+				Concept ID 8522 "Other Race".  
+			</p>
+
 			<h3>Passing Tests</h3>
 			<img class="bordered" src="./img/pass/person-pass-2022-04-09.JPG" />
 			<br/>

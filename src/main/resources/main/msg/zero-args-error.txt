@@ -21,15 +21,13 @@ The following options are valid:
 	instant-omop (i)
 		Instant OMOP will build an instance of OMOP based on your app.params file.  
 		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
-	add-test-patients (a)
-		Adds about 1,000 test patients from synthea to your OMOP instance
-	add-from-dir (d)
-		Add all of the patients from the dir in the app.properties file
-		All of the files in the directory should be /Patient/[ID]/$everything resources represented as JSON
-	
-	// --- synthea stuff
-	get-synthea-patient-ids (sid)
-		Get 2500 patient ids from synthea
+	download (d)
+		Download patients from the specified dir of FHIR patient resources.  
+		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
+	upload (u)
+		Upload patients to OMOP from the specified dir of FHIR patient resources.  
+		Your app.params file needs to be in the directory you are launching fhir-to-omop from.
+
 
 Also, make sure you have an app.properties file in your working dir (the dir your in now).  
 
