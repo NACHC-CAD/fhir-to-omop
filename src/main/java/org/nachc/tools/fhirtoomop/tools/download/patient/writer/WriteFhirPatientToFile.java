@@ -5,6 +5,7 @@ import java.io.File;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingNextFetcher;
+import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.guid.GuidFactory;
@@ -13,6 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WriteFhirPatientToFile {
+
+	private static final int RETRY_MAX = 5;
 
 	private int cnt = 0;
 
@@ -24,8 +27,19 @@ public class WriteFhirPatientToFile {
 		FhirPatientEverythingFetcher fetcher = new FhirPatientEverythingFetcher();
 		String json = fetcher.fetchEverything(patientId);
 		int statusCode = fetcher.getStatusCode();
-		if (statusCode == 401) {
-			// TODO: JEG
+		if (statusCode != 200) {
+			log.warn("DID NOT GET 200 RESPONSE: Sleeping for 3 seconds and retrying");
+			TimeUtil.sleep(3);
+			boolean success = false;
+			int numberOfTries = 0;
+			while (success == false && numberOfTries < RETRY_MAX) {
+				fetcher = new FhirPatientEverythingFetcher();
+				json = fetcher.fetchEverything(patientId);
+				statusCode = fetcher.getStatusCode();
+				if (statusCode == 200) {
+					success = true;
+				}
+			}
 		}
 		String guid = GuidFactory.getGuid();
 		String fileName = cnt + "_" + patientId + "_" + guid + ".json";
@@ -45,8 +59,19 @@ public class WriteFhirPatientToFile {
 			FhirPatientEverythingNextFetcher fetcher = new FhirPatientEverythingNextFetcher();
 			String nextJson = fetcher.fetchNext(nextUrl);
 			int statusCode = fetcher.getStatusCode();
-			if (statusCode == 401) {
-				// TODO: JEG
+			if (statusCode != 200) {
+				log.warn("DID NOT GET 200 RESPONSE (getting next): Sleeping for 3 seconds and retrying");
+				TimeUtil.sleep(3);
+				boolean success = false;
+				int numberOfTries = 0;
+				while (success == false && numberOfTries < RETRY_MAX) {
+					fetcher = new FhirPatientEverythingNextFetcher();
+					json = fetcher.fetchNext(patientId);
+					statusCode = fetcher.getStatusCode();
+					if (statusCode == 200) {
+						success = true;
+					}
+				}
 			}
 			String guid = GuidFactory.getGuid();
 			String fileName = cnt + "_" + patientId + "_" + guid + ".json";
