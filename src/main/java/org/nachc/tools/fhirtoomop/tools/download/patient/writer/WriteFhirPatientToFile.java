@@ -5,6 +5,7 @@ import java.io.File;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingNextFetcher;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
@@ -15,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteFhirPatientToFile {
 
-	private static final int RETRY_MAX = 5;
+	private static final int RETRY_MAX = Integer.parseInt(AppParams.get("downloadRetryCount"));
 
 	private int cnt = 0;
 
@@ -39,6 +40,10 @@ public class WriteFhirPatientToFile {
 				if (statusCode == 200) {
 					success = true;
 				}
+			}
+			if(success == false) {
+				log.error("Could not download patient: " + patientId);
+				return;
 			}
 		}
 		String guid = GuidFactory.getGuid();
@@ -71,6 +76,11 @@ public class WriteFhirPatientToFile {
 					if (statusCode == 200) {
 						success = true;
 					}
+				}
+				if(success == false) {
+					log.error("Could not download patient: " + patientId);
+					FileUtil.rmdir(outputDir);
+					return;
 				}
 			}
 			String guid = GuidFactory.getGuid();
