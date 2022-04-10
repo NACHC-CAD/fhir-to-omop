@@ -149,9 +149,8 @@ public class OmopObservationBuilder {
 			OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(parser, null, dvo, conn);
 			this.measurementList.add(translator);
 		} else {
-			this.addAdditionalObsValues(parser, dvo);
 			// add to observations if obs
-			addAdditionalObsValues(parser, dvo);
+			addAdditionalObsValues(dvo);
 			this.observationList.add(dvo);
 		}
 		return dvo;
@@ -165,7 +164,7 @@ public class OmopObservationBuilder {
 		}
 	}
 
-	private void addAdditionalObsValues(ObservationParser parser, ObservationDvo dvo) {
+	private void addAdditionalObsValues(ObservationDvo dvo) {
 		// value as string
 		if(dvo.getValueAsString() == null && dvo.getValueAsNumber() != null) {
 			dvo.setValueAsString(dvo.getValueAsNumber().toString());
@@ -189,14 +188,7 @@ public class OmopObservationBuilder {
 			dvo.setQualifierConceptId(OperatorMapping.get("="));
 		}
 		if(dvo.getQualifierSourceValue() == null) {
-			dvo.setQualifierSourceValue(parser.getOperator());
-		}
-		if(dvo.getQualifierSourceValue() == null) {
 			dvo.setQualifierSourceValue("=");
-		}
-		// units
-		if(dvo.getUnitSourceValue() == null) {
-			dvo.setUnitSourceValue(parser.getUnitsCodingDisplay());
 		}
 		if(dvo.getUnitSourceValue() == null) {
 			dvo.setUnitSourceValue("Not Available");
@@ -243,6 +235,9 @@ public class OmopObservationBuilder {
 		if (dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
 			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
+		if(dvo.getUnitConceptId() == 0) {
+			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
+		}
 	}
 
 	private void buildMultipleObservations(ObservationParser parser) {
@@ -286,6 +281,7 @@ public class OmopObservationBuilder {
 				OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(null, comp, dvo, conn);
 				this.measurementList.add(translator);
 			} else {
+				addAdditionalObsValues(dvo);
 				this.observationList.add(dvo);
 			}
 		}
@@ -307,6 +303,8 @@ public class OmopObservationBuilder {
 			dvo.setVisitOccurrenceId(visitDvo.getVisitOccurrenceId());
 			dvo.setObservationDate(visitDvo.getVisitStartDate());
 		}
+		dvo.setUnitSourceValue(parser.getUnitsCodingDisplay());
+		dvo.setQualifierSourceValue(parser.getOperator());
 		return dvo;
 	}
 
