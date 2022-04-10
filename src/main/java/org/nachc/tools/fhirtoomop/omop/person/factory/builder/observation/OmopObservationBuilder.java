@@ -164,7 +164,7 @@ public class OmopObservationBuilder {
 		}
 	}
 
-	private void addAdditionalObsValues(ObservationDvo dvo) {
+	public void addAdditionalObsValues(ObservationDvo dvo) {
 		// value as string
 		if(dvo.getValueAsString() == null && dvo.getValueAsNumber() != null) {
 			dvo.setValueAsString(dvo.getValueAsNumber().toString());
