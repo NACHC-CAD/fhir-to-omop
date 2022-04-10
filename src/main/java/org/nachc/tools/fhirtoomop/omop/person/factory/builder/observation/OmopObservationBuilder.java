@@ -13,6 +13,7 @@ import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopMeasurementFromObservation;
 import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
+import org.nachc.tools.fhirtoomop.util.mapping.OperatorMapping;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -61,13 +62,13 @@ public class OmopObservationBuilder {
 
 	private List<MeasurementDvo> getMeasurementList() {
 		ArrayList<MeasurementDvo> rtn = new ArrayList<MeasurementDvo>();
-		for(OmopMeasurementFromObservation meas : this.measurementList) {
+		for (OmopMeasurementFromObservation meas : this.measurementList) {
 			MeasurementDvo dvo = meas.buildMeasurement();
 			rtn.add(dvo);
 		}
 		return rtn;
 	}
-	
+
 	//
 	// implementation
 	//
@@ -115,9 +116,14 @@ public class OmopObservationBuilder {
 		dvo.setObservationSourceValue(parser.getId());
 		// value as coding
 		Coding valueCoding = parser.getValueCoding();
-		ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
-		Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
-		dvo.setValueAsConceptId(valueConceptId);
+		if(valueCoding != null) {
+			ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
+			Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
+			if(valueConceptId != null) {
+				dvo.setValueAsConceptId(valueConceptId);
+				dvo.setValueAsString(valueConceptDvo.getConceptName());
+			}
+		}
 		// value as number
 		dvo.setValueAsNumber(parser.getValueAsNumber());
 		// value as string
@@ -129,14 +135,23 @@ public class OmopObservationBuilder {
 		dvo.setUnitConceptId(unitsConcept.getConceptId());
 		// observation type id
 		dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
-		// create the proxy and return it
-		if (isMeasurement(parser)) {
-			fixMeas(parser, dvo);
+		// visitId
+		try {
 			VisitOccurrenceDvo visit = this.omopPerson.getVisitOccurrenceByFhirId(parser.getEncounterId());
 			dvo.setVisitOccurrenceId(visit.getVisitOccurrenceId());
+		} catch(NullPointerException npe) {
+			log.error("COULD NOT GET VISIT ID");
+		}
+		// add to appropriate list
+		if (isMeasurement(parser)) {
+			// add to measurement if meas
+			fixMeas(parser, dvo);
 			OmopMeasurementFromObservation translator = new OmopMeasurementFromObservation(parser, null, dvo, conn);
 			this.measurementList.add(translator);
 		} else {
+			this.addAdditionalObsValues(parser, dvo);
+			// add to observations if obs
+			addAdditionalObsValues(parser, dvo);
 			this.observationList.add(dvo);
 		}
 		return dvo;
@@ -147,6 +162,67 @@ public class OmopObservationBuilder {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	private void addAdditionalObsValues(ObservationParser parser, ObservationDvo dvo) {
+		// value as string
+		if(dvo.getValueAsString() == null && dvo.getValueAsNumber() != null) {
+			dvo.setValueAsString(dvo.getValueAsNumber().toString());
+		}
+		if(dvo.getValueAsString() == null) {
+			dvo.setValueAsString("Not Availavble");
+		}
+		// observation event
+		if(dvo.getObservationEventId() == null && dvo.getObservationId() != null) {
+			dvo.setObservationEventId(dvo.getObservationId().toString());
+		}
+		if(dvo.getObsEventFieldConceptId() == null) {
+			dvo.setObsEventFieldConceptId(OmopConceptConstants.getObservationTableConceptId());
+		}
+		// provider
+		if(dvo.getProviderId() == null) {
+			dvo.setProviderId(1);
+		}
+		// qualifier
+		if(dvo.getQualifierConceptId() == null) {
+			dvo.setQualifierConceptId(OperatorMapping.get("="));
+		}
+		if(dvo.getQualifierSourceValue() == null) {
+			dvo.setQualifierSourceValue(parser.getOperator());
+		}
+		if(dvo.getQualifierSourceValue() == null) {
+			dvo.setQualifierSourceValue("=");
+		}
+		// units
+		if(dvo.getUnitSourceValue() == null) {
+			dvo.setUnitSourceValue(parser.getUnitsCodingDisplay());
+		}
+		if(dvo.getUnitSourceValue() == null) {
+			dvo.setUnitSourceValue("Not Available");
+		}
+		// source value
+		if(dvo.getValueSourceValue() == null) {
+			dvo.setValueSourceValue(dvo.getValueAsString());
+		}
+		if(dvo.getValueSourceValue() == null) {
+			dvo.setValueSourceValue("Not Available");
+		}
+		if(dvo.getObservationSourceConceptId() == null) {
+			dvo.setObservationSourceConceptId(0);
+		}
+		if(dvo.getObservationSourceValue() == null) {
+			dvo.setObservationSourceValue(dvo.getValueAsString());
+		}
+		if(dvo.getObservationSourceValue() == null) {
+			dvo.setObservationSourceValue("Not Available");
+		}
+		// units
+		if(dvo.getUnitConceptId() == null) {
+			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
+		}
+		if(dvo.getObservationDatetime() == null && dvo.getObservationDate() != null) {
+			dvo.setObservationDatetime(TimeUtil.format(dvo.getObservationDate(), "yyyy-MM-dd"));
 		}
 	}
 

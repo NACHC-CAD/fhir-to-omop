@@ -9,7 +9,17 @@ import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
 
 public class ObservationPostProcessor {
 
-	public void exec(OmopPerson person, Connection conn) {
+	private OmopPerson person;
+	
+	private Connection conn;
+
+	public ObservationPostProcessor(OmopPerson person, Connection conn) {
+		super();
+		this.person = person;
+		this.conn = conn;
+	}
+
+	public void build() {
 		List<ObservationDvo> obsList = person.getObservationList();
 		for(ObservationDvo obs : obsList) {
 			if(obs.getObservationEventId() == null && obs.getObsEventFieldConceptId() == null) {
