@@ -22,71 +22,71 @@ public class MeasurementPostProcessor {
 		List<MeasurementDvo> measList = omopPerson.getMeasurementList();
 		for (MeasurementDvo dvo : measList) {
 			// event
-			if(dvo.getMeasurementEventId() == null && dvo.getMeasEventFieldConceptId() == null) {
+			if (dvo.getMeasurementEventId() == null && dvo.getMeasEventFieldConceptId() == null) {
 				dvo.setMeasurementEventId(dvo.getMeasurementId() + "");
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
-			if(dvo.getMeasEventFieldConceptId() == null) {
+			if (dvo.getMeasEventFieldConceptId() == null) {
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
-			if(dvo.getMeasurementEventId() == null) {
+			if (dvo.getMeasurementEventId() == null) {
 				dvo.setMeasurementEventId(dvo.getMeasurementId() + "");
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
 			// provider
-			if(dvo.getProviderId() == null) {
+			if (dvo.getProviderId() == null) {
 				dvo.setProviderId(1);
 			}
 			// range
-			if(dvo.getRangeHigh() == null) {
+			if (dvo.getRangeHigh() == null) {
 				dvo.setRangeHigh(dvo.getValueAsNumber());
 			}
-			if(dvo.getRangeLow() == null) {
+			if (dvo.getRangeLow() == null) {
 				dvo.setRangeLow(dvo.getValueAsNumber());
 			}
-			if(dvo.getRangeHigh() == null) {
+			if (dvo.getRangeHigh() == null) {
 				dvo.setRangeHigh("0");
 			}
-			if(dvo.getRangeLow() == null) {
+			if (dvo.getRangeLow() == null) {
 				dvo.setRangeLow("0");
-			}		
+			}
 			// value as concept
-			if(dvo.getValueAsConceptId() == null) {
+			if (dvo.getValueAsConceptId() == null) {
 				dvo.setValueAsConceptId(0);
 			}
 			// source
-			if(dvo.getMeasurementSourceConceptId() == null) {
-				dvo.setMeasurementSourceConceptId(dvo.getMeasurementId());
+			if (dvo.getMeasurementSourceConceptId() == null) {
+				dvo.setMeasurementSourceConceptId(dvo.getMeasurementConceptId());
+			}
+			if (dvo.getMeasurementSourceConceptId() == null) {
+				dvo.setMeasurementSourceConceptId(0);
 			}
 			// time
-			if(dvo.getMeasurementTime() == null) {
+			if (dvo.getMeasurementTime() == null) {
 				dvo.setMeasurementTime(dvo.getMeasurementDatetime());
 			}
 			// unit
-			if(dvo.getUnitSourceConceptId() == null) {
+			if (dvo.getUnitSourceConceptId() == null) {
 				dvo.setUnitSourceConceptId(dvo.getUnitConceptId());
 			}
-			if(dvo.getUnitSourceValue() == null) {
+			if (dvo.getUnitSourceValue() == null) {
 				dvo.setUnitSourceValue("Not Available");
 			}
 			// source value
-			if(dvo.getMeasurementSourceValue() == null) {
+			if (dvo.getMeasurementSourceValue() == null) {
 				dvo.setMeasurementSourceValue("Not Available");
 			}
-			if(dvo.getValueSourceValue() == null) {
+			if (dvo.getValueSourceValue() == null) {
 				dvo.setValueSourceValue(dvo.getMeasurementSourceValue());
 			}
-			if(dvo.getValueSourceValue() == null) {
+			if (dvo.getValueSourceValue() == null) {
 				dvo.setValueSourceValue(dvo.getValueAsNumber());
 			}
-			if(dvo.getValueSourceValue() == null && dvo.getValueAsConceptDvo() != null) {
+			if (dvo.getValueSourceValue() == null && dvo.getValueAsConceptDvo() != null) {
 				dvo.setValueSourceValue(dvo.getValueAsConceptDvo().toString());
 			}
-			if(dvo.getValueSourceValue() == null) {
+			if (dvo.getValueSourceValue() == null) {
 				dvo.setValueSourceValue("Not Available");
-			}
-			if(dvo.getMeasurementSourceConceptId() == null) {
-				dvo.setMeasurementSourceConceptId(0);
 			}
 		}
 	}
