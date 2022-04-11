@@ -31,6 +31,8 @@ public class DownloadPatients {
 	private static List<String> getPatientList() {
 		List<String> rtn = new ArrayList<String>();
 		File dir = new File(DIR_PATH);
+		log.info("DIR_PATH: " + DIR_PATH);
+		log.info("PATIENT IDS DIR: " + FileUtil.getCanonicalPath(dir));
 		List<File> fileList = FileUtil.listFiles(dir);
 		for (File file : fileList) {
 			rtn.addAll(FileUtil.getAsList(file));
