@@ -1,0 +1,109 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Mapping of FHIR Medication Request resource to the OMOP DRUG_EXPOSURE Table</h1>
+			
+			<p>
+				This document details the design and decisions for implementing mapping of FHIR Medication Request resource to the OMOP DRUG_EXPOSURE Table. 
+			</p>
+			<p>	
+				The following references were used to inform this implementation.  
+			</p>
+
+			<h3>References for Patient</h3>
+			<table class="table table-condensed table-hover">
+				<tr>
+					<td>
+						<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping.html">General Mapping Resources</a>
+					</td>
+					<td>
+						This is the fhir-to-omop documentation for general FHIR and OMOP information.  
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="http://hl7.org/fhir/STU3/patient.html">
+							FHIR Medication Request (STU3)
+						</a>
+					</td>
+					<td>
+						FHIR Documentation for the Medication Request resource. The following version have been considered.  
+						<ul>
+							<li>
+								<a href="http://build.fhir.org/medicationrequest.html">
+									Medication Request (Current Build)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/R4/medicationrequest.html">
+									Medication Request (R4)
+								</a>
+							</li>
+							<li>
+								<a href="http://hl7.org/fhir/STU3/medicationrequest.html">
+									Medication Request (STU3)
+								</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a target="cdm-procedure" href="https://ohdsi.github.io/CommonDataModel/cdm54.html#DRUG_EXPOSURE">
+							DRUG_EXPOSURE
+						</a>
+					</td>
+					<td>
+						This is the OMOP documentation for the DRUG_EXPOSURE table.  
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table> 
+
+			<h3>Mapping Details</h3>
+			<p>
+				Mapping of FHIR Medication Request resources to OMOP DRUG_EXPOSURE records is relatively straight forward.  
+				Mapping is done in the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/drugexposure/OmopDrugExposureBuilder.java">
+					OmopDrugExposureBuilder
+				</a> class.  
+				The OmopPersonBuilder constructs DRUG_EXPOSURE Data Value Objects (DVOs) using the
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/medicationrequest/MedicationRequestParser.java">
+					MedicationRequestParser
+				</a> class to parse FHIR Patient resources
+			</p>
+			
+			<h3>Testing Results</h3>
+			<h3>Testing Results 2022-04-08</h3>
+			<p>
+				All test are passing except for those shown below.  
+				We have confirmed the failing results are consistent with the test data set we are currently using. 
+			</p>
+
+			<h3>Passing Tests</h3>
+			<img class="bordered" src="./img/pass/drug-exp-pass-2022-04-08.JPG" />
+			<br/>
+
+		</div>
+	</body>
+	
+</html>
