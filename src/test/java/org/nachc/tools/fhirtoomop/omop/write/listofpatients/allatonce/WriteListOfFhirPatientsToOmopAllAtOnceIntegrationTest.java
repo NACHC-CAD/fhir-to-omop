@@ -32,8 +32,8 @@ public class WriteListOfFhirPatientsToOmopAllAtOnceIntegrationTest {
 			log.info("before: " + before);
 			Timer timer = new Timer();
 			timer.start();
-			WriteListOfFhirPatientsToOmopAllAtOnce writer = new WriteListOfFhirPatientsToOmopAllAtOnce();
-			writer.exec(patientList, conn);
+			WriteListOfFhirPatientsToOmopAllAtOnce writer = new WriteListOfFhirPatientsToOmopAllAtOnce(patientList, conn);
+			writer.exec();
 			timer.stop();
 			int after = Database.count("person", conn);
 			log.info("before: " + before);
@@ -47,7 +47,7 @@ public class WriteListOfFhirPatientsToOmopAllAtOnceIntegrationTest {
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
-
+		log.info("Done.");
 	}
 
 }

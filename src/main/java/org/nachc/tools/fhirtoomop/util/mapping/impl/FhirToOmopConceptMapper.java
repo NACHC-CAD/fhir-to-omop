@@ -174,7 +174,7 @@ public class FhirToOmopConceptMapper {
 			}
 			return rtn;
 		} finally {
-			Database.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 		
 	}

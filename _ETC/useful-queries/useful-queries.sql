@@ -273,5 +273,41 @@ select * from concept where concept_id = 8522;
 
 select * from visit_detail;
 
+select * from concept where concept_id = 1147304;
+
+select * from concept where domain_id = 'Metadata' and concept_name = 'measurement';
+
+select * from concept where concept_name = '>';
+
+
+select * from concept where domain_id = 'Meas Value Operator';
+
+select * from MEASUREMENT;
+
+select * from concept where concept_id = 0;
+
+		SELECT 'MEASUREMENT.VALUE_AS_CONCEPT_ID' AS violating_field, cdmTable.* 
+		  FROM synthea_micro.dbo.MEASUREMENT cdmTable
+		  LEFT JOIN synthea_micro.dbo.concept co
+		    ON cdmTable.VALUE_AS_CONCEPT_ID = co.concept_id
+		  
+		 WHERE co.concept_id != 0 AND co.domain_id NOT IN ('Meas Value')
+
+
+
+		select distinct value_as_concept_id, c.*
+		from measurement m
+		join concept c on c.concept_id = m.value_as_concept_id 
+		 WHERE c.concept_id != 0 AND c.domain_id NOT IN ('Meas Value')
+
+		SELECT 'MEASUREMENT.MEASUREMENT_SOURCE_CONCEPT_ID' AS violating_field, cdmTable.* 
+		FROM synthea_micro.dbo.MEASUREMENT cdmTable
+		
+		LEFT JOIN synthea_micro.dbo.CONCEPT fkTable
+		ON cdmTable.MEASUREMENT_SOURCE_CONCEPT_ID = fkTable.CONCEPT_ID
+		WHERE fkTable.CONCEPT_ID IS NULL AND cdmTable.MEASUREMENT_SOURCE_CONCEPT_ID IS NOT NULL 
+
+
+
 
 

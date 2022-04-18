@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nachc.tools.fhirtoomop.omop.write.listofpatients.WriteListOfFhirPatientsToOmop;
 import org.nachc.tools.fhirtoomop.omop.write.threaded.runnable.WriteFhirPatientToOmopRunnable;
 import org.yaorma.database.Database;
 
@@ -22,14 +23,23 @@ import lombok.extern.slf4j.Slf4j;
 public class WriteListOfFhirPatientsToOmopAllAtOnce {
 
 	private List<Thread> threadList = new ArrayList<Thread>();
-
-	public void exec(List<String> dirList, Connection conn) {
-		ArrayList<Connection> connList = new ArrayList<Connection>();
-		connList.add(conn);
-		exec(dirList, connList);
+	
+	private List<String> dirList;
+	
+	private List<Connection> connList;
+	
+	public WriteListOfFhirPatientsToOmopAllAtOnce(List<String> dirList, Connection conn) {
+		this.dirList = dirList;
+		this.connList = new ArrayList<Connection>();
+		this.connList.add(conn);
 	}
-
-	public void exec(List<String> dirList, List<Connection> connList) {
+	
+	public WriteListOfFhirPatientsToOmopAllAtOnce(List<String> dirList, List<Connection> connList) {
+		this.dirList = dirList;
+		this.connList = connList;
+	}
+	
+	public void exec() {
 		log.info("USING " + connList.size() + " CONNECTIONS.");
 		// create the threads
 		log.info("Creating threads...");
@@ -65,6 +75,7 @@ public class WriteListOfFhirPatientsToOmopAllAtOnce {
 			Database.commit(conn);
 		}
 		log.info("Done running threads!");
+		WriteListOfFhirPatientsToOmop.done(this);
 	}
 
 }
