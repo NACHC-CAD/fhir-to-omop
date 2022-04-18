@@ -124,6 +124,13 @@ public class AppParams {
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
+	
+	
+	public static int getMaxNumberOfWorkersForUpload() {
+		String str = AppParams.get("maxNumberOfWorkersForUpload");
+		Integer rtn = Integer.parseInt(str);
+		return rtn;
+	}
 
 	// ---
 	//

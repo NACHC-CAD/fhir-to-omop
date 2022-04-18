@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.omop.write.listofpatients.allatonce.WriteListOfFhirPatientsToOmopAllAtOnce;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.TimeUtil;
 
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteListOfFhirPatientsToOmop {
 
-	private static int maxActive = 10;
+	private static int maxActive = AppParams.getMaxNumberOfWorkersForUpload();
 	
 	private static List<WriteListOfFhirPatientsToOmopAllAtOnce> waiting = new ArrayList<WriteListOfFhirPatientsToOmopAllAtOnce>();
 	
