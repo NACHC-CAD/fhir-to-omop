@@ -159,10 +159,11 @@ public class FhirToOmopConceptMapper {
 		try {
 			log.info("Maybe adding a new concept...");
 			Database.update("begin transaction", conn);
-			log.info("Waiting 10 seconds for existing threads to finish or get to this lock...");
-			TimeUtil.sleep(10);
+			int secsToSleep = 3;
+			log.info("Waiting " + secsToSleep + " seconds for existing threads to finish or get to this lock...");
+			TimeUtil.sleep(secsToSleep);
 			rtn = findExistingTempConcept(system, code, conn);
-			if(rtn == null) {
+			if (rtn == null) {
 				log.info("ADDING NEW CONCEPT: " + system + " (" + code + ")");
 				rtn = addTempConceptTransaction(system, code, conn);
 				Database.update("commit transaction", conn);
@@ -176,16 +177,16 @@ public class FhirToOmopConceptMapper {
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
-		
+
 	}
-	
+
 	private static ConceptDvo findExistingTempConcept(String system, String code, Connection conn) {
 		String vocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
 		String sqlString = "select * from concept where vocabulary_id = ? and concept_code = ? and concept_id > 2000000000";
 		String[] params = { vocabularyId, code };
 		Database.query(sqlString, params, conn);
 		List<ConceptDvo> data = Dao.findListBySql(new ConceptDvo(), sqlString, params, conn);
-		if(data.size() > 0) {
+		if (data.size() > 0) {
 			return data.get(0);
 		} else {
 			return null;
