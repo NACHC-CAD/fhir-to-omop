@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.omop.write.listofpatients.WriteListOfFhirPatientsToOmop;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -22,7 +21,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 	public static void main(String[] args) {
 		exec();
 	}
-	
+
 	public static void exec() {
 		log.info("TRUNCATING DATA TABLES");
 		TruncateAllDataTables.exec();
@@ -41,11 +40,12 @@ public class PopulateOmopInstanceFromFhirFiles {
 		List<Connection> connList = getConnections(maxConns);
 		log.info("Got " + fileList.size() + " patients.");
 		log.info("Got " + connList.size() + " connections.");
-		Timer timer =  new Timer();
+		Timer timer = new Timer();
 		timer.start();
 		int cnt = 0;
 		try {
-			WriteListOfFhirPatientsToOmop.exec(fileList, connList, maxThreads);
+// TODO: (JEG) ADD THIS BACK IN			
+//			WriteListOfFhirPatientsToOmop.exec(fileList, connList, maxThreads);
 			cnt = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + cnt + " patients");
 			updatePrevVisit();
@@ -76,7 +76,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 			Database.close(conn);
 		}
 	}
-	
+
 	private static void updatePrevVisit() {
 		log.info("Updating prev visit records...");
 		String filePath = "/sqlserver/omop/update-prev-visit.sql";

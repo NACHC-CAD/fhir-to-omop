@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
-import org.nachc.tools.fhirtoomop.omop.write.listofpatients.WriteListOfFhirPatientsToOmopIntegrationTest;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.util.time.Timer;
@@ -43,7 +42,8 @@ public class RunAllIntegrationTests {
 		log.info("Truncating data tables...");
 		TruncateAllDataTables.exec();
 		log.info("Populating with 100 patients...");
-		new WriteListOfFhirPatientsToOmopIntegrationTest().writePatientsToDatabase();
+// TODO: ADD THIS BACK IN
+//		new WriteListOfFhirPatientsToOmopIntegrationTest().writePatientsToDatabase();
 		log.info("");
 		log.info("");
 		log.info("***********************************************************");
