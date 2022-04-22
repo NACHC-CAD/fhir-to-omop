@@ -9,8 +9,8 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsJson;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.json.FhirPatientResourcesAsJson;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingNextFetcher;
 

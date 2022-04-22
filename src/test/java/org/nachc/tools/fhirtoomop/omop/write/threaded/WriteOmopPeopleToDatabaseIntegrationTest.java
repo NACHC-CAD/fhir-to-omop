@@ -6,7 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
@@ -35,7 +36,7 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 		Timer timer = new Timer();
 		try {
 			timer.start();
-			List<FhirPatientResources> resourceList = getResources();
+			List<FhirPatientResources> resourceList = FhirPatientResourcesAsFilesFactory.getForDir(DIR);
 			WriteOmopPeopleToDatabase.exec(resourceList, conns, workers, patientsPerWorker);
 			timer.stop();
 		} finally {
@@ -45,17 +46,6 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 		log.info("Elapsed time: " + timer.getElapsedString());
 		log.info("---");
 		log.info("Done.");
-	}
-	
-	private List<FhirPatientResources> getResources() {
-		List<FhirPatientResources> rtn = new ArrayList<FhirPatientResources>();
-		List<String> fileList = FileUtil.listResources(DIR, getClass());
-		for(String str : fileList) {
-			List<String> files = FileUtil.listResources(str, getClass());
-			FhirPatientResourcesAsFiles resource = new FhirPatientResourcesAsFiles(files);
-			rtn.add(resource);
-		}
-		return rtn;
 	}
 	
 	private List<Connection> getConnections() {

@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
+import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -44,8 +47,8 @@ public class PopulateOmopInstanceFromFhirFiles {
 		timer.start();
 		int cnt = 0;
 		try {
-// TODO: (JEG) ADD THIS BACK IN			
-//			WriteListOfFhirPatientsToOmop.exec(fileList, connList, maxThreads);
+			List<FhirPatientResources> resources = FhirPatientResourcesAsFilesFactory.getForDir(rootDir);
+			WriteOmopPeopleToDatabase.exec(resources, connList, maxWorkers, maxThreads);
 			cnt = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + cnt + " patients");
 			updatePrevVisit();

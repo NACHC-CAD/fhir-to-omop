@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 
 import com.nach.core.util.file.FileUtil;
 

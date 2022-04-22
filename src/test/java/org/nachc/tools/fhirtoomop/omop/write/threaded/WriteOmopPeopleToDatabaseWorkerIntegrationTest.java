@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
