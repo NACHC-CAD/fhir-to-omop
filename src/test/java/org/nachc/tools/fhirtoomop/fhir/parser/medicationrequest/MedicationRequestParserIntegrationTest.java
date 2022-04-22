@@ -8,6 +8,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -22,7 +23,8 @@ public class MedicationRequestParserIntegrationTest {
 	public void shouldParseMedicationRequests() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
 		List<MedicationRequestParser> medReqList = fhirPatient.getMedicationRequestList();
 		log.info("Got " + medReqList.size() + " MedicationRequest resources");
 		assertTrue(medReqList.size() == 8);

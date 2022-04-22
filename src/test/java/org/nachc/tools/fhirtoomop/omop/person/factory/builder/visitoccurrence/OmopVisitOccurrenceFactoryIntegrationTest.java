@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
@@ -35,7 +36,8 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 	public void shouldGetVisitOccurrences() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
 		// get a connection
 		log.info("Getting connection...");
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();

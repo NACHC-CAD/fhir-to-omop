@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.fhir.validate.encounter.ValidateEncounter;
 
 import com.nach.core.util.file.FileUtil;
@@ -23,7 +24,8 @@ public class EncountersShouldHaveDatesIntegrationTest {
 	public void shouldGetDates() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient fhirPatient = new FhirPatientFactory(fileList).buildFromFileList();
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
 		List<EncounterParser> encList = fhirPatient.getEncounterList();
 		List<EncounterParser> invalid = new ArrayList<EncounterParser>();
 		List<EncounterParser> valid = new ArrayList<EncounterParser>();

@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
@@ -18,9 +20,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteOmopPeopleToDatabaseIntegrationTest {
 
-//	private static final String DIR = "/test/fhir/test-sets/test-set-10";
+//	private static final String DIR = "D:\\NACHC\\SYNTHEA\\TEST\\SYNTHEA_MICRO\\synthea-micro-patients";
 	
-	private static final String DIR = "D:\\NACHC\\SYNTHEA\\TEST\\SYNTHEA_MICRO\\synthea-micro-patients";
+	private static final String DIR = "/test/fhir/test-sets/test-set-10";
 	
 	private int NUM_OF_CONNS = 100;
 
@@ -36,7 +38,7 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 			int cntBefore = Database.count("person", conn);
 			log.info("Getting dirs...");
 			List<String> dirs = FileUtil.listResources(DIR, getClass());
-			List<List<String>> fileListList = new ArrayList<List<String>>();
+			List<FhirPatientResources> fileListList = new ArrayList<FhirPatientResources>();
 			int cnt = 0;
 			int batchNumber = 0;
 			Timer timer = new Timer();
@@ -48,10 +50,11 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 					batchNumber++;
 					log.info("WRITING BATCH " + batchNumber);
 					new WriteOmopPeopleToDatabase(fileListList, connectionList).exec();
-					fileListList = new ArrayList<List<String>>();
+					fileListList = new ArrayList<FhirPatientResources>();
 				}
 				List<String> files = FileUtil.listResources(dir, getClass());
-				fileListList.add(files);
+				FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(files);
+				fileListList.add(resources);
 			}
 			if(fileListList.size() > 0) {
 				new WriteOmopPeopleToDatabase(fileListList, connectionList).exec();

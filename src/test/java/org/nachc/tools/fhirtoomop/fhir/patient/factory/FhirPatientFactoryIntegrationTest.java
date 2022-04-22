@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.fhir.validate.ValidateFhirPatient;
 
 import com.nach.core.util.file.FileUtil;
@@ -19,7 +20,8 @@ public class FhirPatientFactoryIntegrationTest {
 	public void shouldGetFhirPatient() {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(FILE_PATH, getClass());
-		FhirPatient pat = new FhirPatientFactory(fileList).buildFromFileList();
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		FhirPatient pat = new FhirPatientFactory(resources).buildFromFileList();
 		log.info("Got pat: " + pat.getPatient().getId());
 		new ValidateFhirPatient(pat).validate().isValid();
 		log.info("Done.");

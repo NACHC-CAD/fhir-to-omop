@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsJson;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingNextFetcher;
 
@@ -34,7 +36,8 @@ public class FhirPatientEverythingFetcherIntegrationTest {
 		resourceList.add(json);
 		FhirPatient fhirPatient;
 		String patientId;
-		fhirPatient = new FhirPatientFactory(resourceList).buildFromJson();
+		FhirPatientResourcesAsJson resources = new FhirPatientResourcesAsJson(resourceList);
+		fhirPatient = new FhirPatientFactory(resources).buildFromJson();
 		// assert that we got the right patient
 		patientId = fhirPatient.getPatientId();
 		log.info("Created fhirPatient: " + patientId);
@@ -46,7 +49,8 @@ public class FhirPatientEverythingFetcherIntegrationTest {
 		String pageTwoJson = nextFetcher.fetchNext(nextUrl);
 		// create a FhirPerson from the two responses
 		resourceList.add(pageTwoJson);
-		fhirPatient = new FhirPatientFactory(resourceList).buildFromJson();
+		resources = new FhirPatientResourcesAsJson(resourceList);
+		fhirPatient = new FhirPatientFactory(resources).buildFromJson();
 		// assert that we got the right patient
 		patientId = fhirPatient.getPatientId();
 		log.info("Created fhirPatient: " + patientId);

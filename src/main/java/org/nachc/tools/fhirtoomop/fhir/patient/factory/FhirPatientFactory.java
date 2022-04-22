@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.fhir.patient.factory;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,19 +20,21 @@ import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 
 import com.nach.core.util.file.FileUtil;
+import com.nach.core.util.string.StringUtil;
 
 public class FhirPatientFactory {
 
-	private List<String> resourceList;
+	private FhirPatientResources resources;
 	
 	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
 
-	public FhirPatientFactory(List<String> resourceList) {
-		this.resourceList = resourceList;
+	public FhirPatientFactory(FhirPatientResources resources) {
+		this.resources = resources;
 	}
 
 	public FhirPatient buildFromJson()  {
-		for (String str : resourceList) {
+		for (InputStream is : resources.getResources()) {
+			String str = FileUtil.getAsString(is);
 			BundleParser bundleParser = new BundleParser(str);
 			this.bundleParserList.add(bundleParser);
 		}
@@ -39,9 +42,9 @@ public class FhirPatientFactory {
 	}
 	
 	public FhirPatient buildFromFileList() {
-		for (String path : resourceList) {
-			String json = FileUtil.getAsString(path);
-			BundleParser bundleParser = new BundleParser(json);
+		for (InputStream is : resources.getResources()) {
+			String str = FileUtil.getAsString(is);
+			BundleParser bundleParser = new BundleParser(str);
 			this.bundleParserList.add(bundleParser);
 		}
 		return doBuild();

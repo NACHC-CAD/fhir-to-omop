@@ -9,6 +9,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -22,7 +23,8 @@ public class ObservationParserIntegrationTest {
 	@Test
 	public void shouldParseObservtion() {
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
-		FhirPatient patient = new FhirPatientFactory(fileList).buildFromFileList();
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		FhirPatient patient = new FhirPatientFactory(resources).buildFromFileList();
 		List<String> types = patient.getResourceTypes();
 		log.info("Got " + types.size() + " types");
 		for (String type : types) {
