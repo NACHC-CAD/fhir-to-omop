@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.yaorma.database.Database;
+import org.yaorma.util.time.Timer;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -17,9 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteOmopPeopleToDatabaseIntegrationTest {
 
-	private static final String DIR = "D:\\NACHC\\SYNTHEA\\TEST\\SYNTHEA_MICRO\\synthea-micro-patients";
+//	private static final String DIR = "D:\\NACHC\\SYNTHEA\\TEST\\SYNTHEA_MICRO\\synthea-micro-patients";
 	
-//	private static final String DIR = "/test/fhir/test-sets/test-set-100";
+	private static final String DIR = "/test/fhir/test-sets/test-set-100";
 	
 	private static final int workers = 10;
 	
@@ -31,12 +32,18 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 	public void shouldWritePeopleToDatabase() {
 		log.info("Starting test...");
 		List<Connection> conns = getConnections();
+		Timer timer = new Timer();
 		try {
+			timer.start();
 			List<FhirPatientResources> resourceList = getResources();
 			WriteOmopPeopleToDatabase.exec(resourceList, conns, workers, patientsPerWorker);
+			timer.stop();
 		} finally {
 			closeConnections(conns);
 		}
+		log.info("---");
+		log.info("Elapsed time: " + timer.getElapsedString());
+		log.info("---");
 		log.info("Done.");
 	}
 	

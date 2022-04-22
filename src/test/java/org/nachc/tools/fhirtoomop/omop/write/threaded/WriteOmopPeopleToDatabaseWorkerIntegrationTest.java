@@ -32,16 +32,18 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 	public void shouldGetPatients() {
 		log.info("Starting test...");
 		List<Connection> connectionList = getConnections();
+		Timer timer = new Timer();
+		int cntBefore;
+		int cntAfter;
 		try {
 			log.info("Getting conns...");
 			Connection conn = connectionList.get(0);
-			int cntBefore = Database.count("person", conn);
+			cntBefore = Database.count("person", conn);
 			log.info("Getting dirs...");
 			List<String> dirs = FileUtil.listResources(DIR, getClass());
 			List<FhirPatientResources> fileListList = new ArrayList<FhirPatientResources>();
 			int cnt = 0;
 			int batchNumber = 0;
-			Timer timer = new Timer();
 			timer.start();
 			for(String dir : dirs) {
 				cnt++;
@@ -60,7 +62,7 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 				new WriteOmopPeopleToDatabaseWorker(fileListList, connectionList).exec();
 			}
 			timer.stop();
-			int cntAfter = Database.count("person", conn);
+			cntAfter = Database.count("person", conn);
 			log.info("Before: " + cntBefore);
 			log.info("After:  " + cntAfter);
 			log.info("Time elapsed: " + timer.getElapsedString());
@@ -68,6 +70,9 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 		} finally {
 			closeConnections(connectionList);
 		}
+		log.info("Before: " + cntBefore);
+		log.info("After:  " + cntAfter);
+		log.info("Time elapsed: " + timer.getElapsedString());
 		log.info("Done.");
 	}
 
