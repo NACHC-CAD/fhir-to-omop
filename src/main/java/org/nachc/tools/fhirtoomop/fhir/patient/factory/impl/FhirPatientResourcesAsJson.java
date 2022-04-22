@@ -9,17 +9,23 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 
 public class FhirPatientResourcesAsJson implements FhirPatientResources {
 
-	private List<InputStream> resources = new ArrayList<InputStream>();
+	private List<String> fileList;
+	
+	private List<InputStream> resources;
 
 	public FhirPatientResourcesAsJson(List<String> fileList) {
-		for (String str : fileList) {
-			InputStream is = new ByteArrayInputStream(str.getBytes());
-			this.resources.add(is);
-		}
+		this.fileList = fileList;
 	}
 
 	@Override
 	public List<InputStream> getResources() {
+		if(this.resources == null) {
+			this.resources = new ArrayList<InputStream>();
+			for (String str : fileList) {
+				InputStream is = new ByteArrayInputStream(str.getBytes());
+				this.resources.add(is);
+			}
+		}
 		return this.resources;
 	}
 

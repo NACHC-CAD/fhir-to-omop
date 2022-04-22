@@ -11,18 +11,24 @@ import com.nach.core.util.file.FileUtil;
 
 public class FhirPatientResourcesAsFiles implements FhirPatientResources {
 
-	private List<InputStream> resources = new ArrayList<InputStream>();
+	private List<String> fileList;
+	
+	private List<InputStream> resources;
 	
 	public FhirPatientResourcesAsFiles(List<String> fileList) {
-		for(String fileName : fileList) {
-			String str = FileUtil.getAsString(fileName);
-			InputStream is = new ByteArrayInputStream(str.getBytes());
-			this.resources.add(is);
-		}
+		this.fileList = fileList;
 	}
 	
 	@Override
 	public List<InputStream> getResources() {
+		if(this.resources == null) {
+			this.resources = new ArrayList<InputStream>();
+			for(String fileName : fileList) {
+				String str = FileUtil.getAsString(fileName);
+				InputStream is = new ByteArrayInputStream(str.getBytes());
+				this.resources.add(is);
+			}
+		}
 		return this.resources;
 	}
 
