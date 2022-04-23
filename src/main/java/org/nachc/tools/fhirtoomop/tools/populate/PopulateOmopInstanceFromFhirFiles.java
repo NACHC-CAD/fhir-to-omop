@@ -45,7 +45,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		timer.start();
 		int numberOfPatients = 0;
 		int cnt = 0;
-		int patientsPerRun = 10000;
+		int patientsPerRun = 2000;
 		WriteOmopPeopleToDatabase writer;
 		try {
 			List<String> filesForJob = new ArrayList<String>();
