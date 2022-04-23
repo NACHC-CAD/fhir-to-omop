@@ -12,15 +12,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteOmopPeopleToDatabaseWorker {
 
+	private WriteOmopPeopleToDatabase boss;
+
 	private List<FhirPatientResources> resourcesList;
 
 	private List<Connection> connectionList;
 
 	private List<Thread> threads = new ArrayList<Thread>();
-
-	public WriteOmopPeopleToDatabaseWorker(List<FhirPatientResources> resourcesList, List<Connection> connectionList) {
+	
+	public WriteOmopPeopleToDatabaseWorker(List<FhirPatientResources> resourcesList, List<Connection> connectionList, WriteOmopPeopleToDatabase boss) {
 		this.resourcesList = resourcesList;
 		this.connectionList = connectionList;
+		this.boss = boss;
 	}
 
 	public void exec() {
@@ -41,10 +44,10 @@ public class WriteOmopPeopleToDatabaseWorker {
 			try {
 				thread.join();
 			} catch (Exception exp) {
-				log.error("EXCEPTION THROWN JOINING THREAD");
+				throw new RuntimeException(exp);
 			}
 		}
-		WriteOmopPeopleToDatabase.done(this);
+		boss.done(this);
 	}
 
 }

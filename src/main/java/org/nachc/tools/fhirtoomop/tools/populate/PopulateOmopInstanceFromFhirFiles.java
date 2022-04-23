@@ -48,7 +48,8 @@ public class PopulateOmopInstanceFromFhirFiles {
 		int cnt = 0;
 		try {
 			List<FhirPatientResources> resources = FhirPatientResourcesAsFilesFactory.getForDir(rootDir);
-			WriteOmopPeopleToDatabase.exec(resources, connList, maxWorkers, maxThreads);
+			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, connList, maxWorkers, maxThreads);
+			writer.exec();
 			cnt = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + cnt + " patients");
 			updatePrevVisit();
