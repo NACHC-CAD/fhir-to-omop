@@ -9,6 +9,8 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 
+import com.nach.core.util.file.FileUtil;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -25,7 +27,7 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 	@Test
 	public void shouldGetPatients() {
 		log.info("Starting tests...");
-		List<FhirPatientResources> resources = FhirPatientResourcesAsFilesFactory.getForDir(DIR);
+		List<String> resources = FileUtil.listResources(DIR, getClass());
 		List<Connection> conns = getConnections();
 		WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_CONNS, MAX_PER_BATCH);
 		writer.exec();

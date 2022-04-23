@@ -66,7 +66,7 @@ public class FhirToOmopMain {
 				break;
 			case "upload":
 			case "u":
-				PopulateOmopInstanceFromFhirFiles.exec();
+				new PopulateOmopInstanceFromFhirFiles().exec();
 				break;
 			default:
 				wrongParam();

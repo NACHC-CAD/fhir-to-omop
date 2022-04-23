@@ -36,8 +36,8 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 		Timer timer = new Timer();
 		try {
 			timer.start();
-			List<FhirPatientResources> resourceList = FhirPatientResourcesAsFilesFactory.getForDir(DIR);
-			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resourceList, conns, workers, patientsPerWorker);
+			List<String> resources = FileUtil.listResources(DIR, getClass());
+			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, workers, patientsPerWorker);
 			writer.exec();
 			timer.stop();
 		} finally {

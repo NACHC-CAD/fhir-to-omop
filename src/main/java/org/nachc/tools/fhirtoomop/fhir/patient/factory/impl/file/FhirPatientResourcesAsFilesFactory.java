@@ -12,6 +12,11 @@ public class FhirPatientResourcesAsFilesFactory {
 	public static List<FhirPatientResources> getForDir(String rootDir) {
 		List<FhirPatientResources> rtn = new ArrayList<FhirPatientResources>();
 		List<String> dirList = FileUtil.listResources(rootDir, FhirPatientResourcesAsFilesFactory.class);
+		return getForList(dirList);
+	}
+	
+	public static List<FhirPatientResources> getForList(List<String> dirList) {
+		List<FhirPatientResources> rtn = new ArrayList<FhirPatientResources>();
 		for (String dir : dirList) {
 			List<String> fileList = FileUtil.listResources(dir, FhirPatientResourcesAsFilesFactory.class);
 			FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);

@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.populate;
 
+import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -22,10 +23,10 @@ import lombok.extern.slf4j.Slf4j;
 public class PopulateOmopInstanceFromFhirFiles {
 
 	public static void main(String[] args) {
-		exec();
+		new PopulateOmopInstanceFromFhirFiles().exec();
 	}
 
-	public static void exec() {
+	public void exec() {
 		log.info("TRUNCATING DATA TABLES");
 		TruncateAllDataTables.exec();
 		log.info("Populating OMOP instance from files...");
@@ -47,8 +48,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		timer.start();
 		int cnt = 0;
 		try {
-			List<FhirPatientResources> resources = FhirPatientResourcesAsFilesFactory.getForDir(rootDir);
-			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, connList, maxWorkers, maxThreads);
+			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(fileList, connList, maxWorkers, maxThreads);
 			writer.exec();
 			cnt = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + cnt + " patients");
@@ -67,7 +67,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		log.info("Done.");
 	}
 
-	private static List<Connection> getConnections(int maxConns) {
+	private List<Connection> getConnections(int maxConns) {
 		List<Connection> rtn = new ArrayList<Connection>();
 		for (int i = 0; i < maxConns; i++) {
 			rtn.add(OmopDatabaseConnectionFactory.getOmopConnection());
@@ -75,13 +75,13 @@ public class PopulateOmopInstanceFromFhirFiles {
 		return rtn;
 	}
 
-	private static void closeConnections(List<Connection> connList) {
+	private void closeConnections(List<Connection> connList) {
 		for (Connection conn : connList) {
 			Database.close(conn);
 		}
 	}
 
-	private static void updatePrevVisit() {
+	private void updatePrevVisit() {
 		log.info("Updating prev visit records...");
 		String filePath = "/sqlserver/omop/update-prev-visit.sql";
 		InputStream is = FileUtil.getInputStream(filePath);
