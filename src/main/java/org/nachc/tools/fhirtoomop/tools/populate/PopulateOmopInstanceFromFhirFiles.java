@@ -39,7 +39,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		log.info("maxThreads: " + maxThreads);
 		log.info("maxWorkers: " + maxWorkers);
 		log.info("Getting all files (this can take a couple of minutes).");
-		log.info("(last updated 2022-04-18)");
+		log.info("(last updated 2022-04-23 -- Using Executors)");
 		List<String> fileList = FileUtil.listResources(rootDir, PopulateOmopInstanceFromFhirFiles.class);
 		List<Connection> connList = getConnections(maxConns);
 		log.info("Got " + fileList.size() + " patients.");
