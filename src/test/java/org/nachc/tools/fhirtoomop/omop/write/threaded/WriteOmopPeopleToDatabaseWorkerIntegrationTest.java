@@ -20,9 +20,9 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 	
 	private static final String DIR = "/test/fhir/test-sets/test-set-10";
 	
-	private int NUM_OF_CONNS = 1;
+	private int NUM_OF_CONNS = 4;
 
-	private int MAX_PER_BATCH = 1;
+	private int MAX_PER_BATCH = 2;
 	
 	@Test
 	public void shouldGetPatients() {

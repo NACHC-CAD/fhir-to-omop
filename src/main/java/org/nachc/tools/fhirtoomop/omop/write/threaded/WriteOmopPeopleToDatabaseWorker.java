@@ -34,22 +34,25 @@ public class WriteOmopPeopleToDatabaseWorker {
 	}
 
 	public void exec() {
-		int connNumber = 0;
-		for (FhirPatientResources resources : resourcesList) {
-			if (connNumber >= connectionList.size() - 1) {
-				connNumber = 0;
-			} else {
-				connNumber++;
+		try {
+			int connNumber = 0;
+			for (FhirPatientResources resources : resourcesList) {
+				if (connNumber >= connectionList.size() - 1) {
+					connNumber = 0;
+				} else {
+					connNumber++;
+				}
+				Connection conn = connectionList.get(connNumber);
+				WriteOmopPeopleToDatabaseRunnable runnable = new WriteOmopPeopleToDatabaseRunnable(this, resources, conn);
+				ExecutorManager.getWorkerExecutor().execute(runnable);
 			}
-			Connection conn = connectionList.get(connNumber);
-			WriteOmopPeopleToDatabaseRunnable runnable = new WriteOmopPeopleToDatabaseRunnable(this, resources, conn);
-			ExecutorManager.getWorkerExecutor().execute(runnable);
+			while(done < resourcesList.size()) {
+				TimeUtil.sleep(1);
+			}
+		} finally {
+			boss.done(this);
+			this.isDone = true;
 		}
-		while(done < resourcesList.size()) {
-			TimeUtil.sleep(1);
-		}
-		boss.done(this);
-		this.isDone = true;
 	}
 
 	public boolean getIsDone() {

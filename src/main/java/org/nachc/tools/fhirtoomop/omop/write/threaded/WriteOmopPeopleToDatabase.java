@@ -71,6 +71,14 @@ public class WriteOmopPeopleToDatabase {
 			log.info("Almost done: " + active.size() + " active threads still running...");
 			synchronized (LOCK) {
 				activeSize = active.size();
+				if(active.size() > 0) {
+					for(WriteOmopPeopleToDatabaseWorker worker : active) {
+						if(worker.getIsDone() == true) {
+							log.info("WORKER NEEDS TIME TO FINISH UP ------------------------");
+							TimeUtil.sleep(1);
+						}
+					}
+				}
 			}
 		}
 		ExecutorManager.getWriterExecutor().shutdown();
