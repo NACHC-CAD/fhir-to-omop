@@ -1,13 +1,10 @@
 package org.nachc.tools.fhirtoomop.tools.populate;
 
-import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
-import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
@@ -46,12 +43,26 @@ public class PopulateOmopInstanceFromFhirFiles {
 		log.info("Got " + connList.size() + " connections.");
 		Timer timer = new Timer();
 		timer.start();
+		int numberOfPatients = 0;
 		int cnt = 0;
+		int patientsPerRun = 10000;
+		WriteOmopPeopleToDatabase writer;
 		try {
-			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(fileList, connList, maxWorkers, maxThreads);
-			writer.exec();
-			cnt = Database.count("person", connList.get(0));
-			log.info("Doing updates for " + cnt + " patients");
+			List<String> filesForJob = new ArrayList<String>();
+			while (fileList.size() > 0) {
+				filesForJob.add(fileList.remove(0));
+				cnt++;
+				if(cnt % patientsPerRun == 0) {
+					writer = new WriteOmopPeopleToDatabase(filesForJob, connList, maxWorkers, maxThreads);
+					writer.exec();
+				}
+			}
+			if(filesForJob != null && filesForJob.size() > 0) {
+				writer = new WriteOmopPeopleToDatabase(filesForJob, connList, maxWorkers, maxThreads);
+				writer.exec();
+			}
+			numberOfPatients = Database.count("person", connList.get(0));
+			log.info("Doing updates for " + numberOfPatients + " patients");
 			updatePrevVisit();
 		} finally {
 			closeConnections(connList);
@@ -62,7 +73,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 			log.info(timer.getElapsedString());
 			log.info("------------");
 			log.info("");
-			log.info("Your OMOP database now has " + cnt + " patients.");
+			log.info("Your OMOP database now has " + numberOfPatients + " patients.");
 		}
 		log.info("Done.");
 	}
@@ -82,6 +93,13 @@ public class PopulateOmopInstanceFromFhirFiles {
 	}
 
 	private void updatePrevVisit() {
+		log.info("* * *");
+		log.info("* * *");
+		log.info("* * *");
+		log.info("UPDATING PREVIOUS VISIT RECORDS");
+		log.info("* * *");
+		log.info("* * *");
+		log.info("* * *");
 		log.info("Updating prev visit records...");
 		String filePath = "/sqlserver/omop/update-prev-visit.sql";
 		InputStream is = FileUtil.getInputStream(filePath);

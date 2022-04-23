@@ -52,6 +52,10 @@ public class WriteOmopPeopleToDatabase {
 	}
 
 	public void exec() {
+		log.info("-----------------------------------------");
+		log.info("STARTING NEW WRITER JOB");
+		log.info("NUMBER OF PATIENTS: " + this.fileList.size());
+		log.info("-----------------------------------------");		
 		while (true) {
 			synchronized (LOCK) {
 				if (active.size() < numberOfWorkers) {
