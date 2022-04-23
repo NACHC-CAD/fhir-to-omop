@@ -2,12 +2,12 @@ package org.nachc.tools.fhirtoomop.omop.write.threaded;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
-import org.nachc.tools.fhirtoomop.omop.write.threaded.runnable.WriteOmopPeopleToDatabaseRunnable;
 import org.nachc.tools.fhirtoomop.omop.write.threaded.runnable.WriteOmopPeopleToDatabaseWorkerRunnable;
-import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +22,7 @@ public class WriteOmopPeopleToDatabase {
 
 	private static List<WriteOmopPeopleToDatabaseWorker> active = new ArrayList<WriteOmopPeopleToDatabaseWorker>();
 	
-	private static List<Thread> threads = new ArrayList<Thread>();
+	private static HashMap<WriteOmopPeopleToDatabaseWorker, Thread> threads = new HashMap<WriteOmopPeopleToDatabaseWorker, Thread>();
 
 	public static void exec(List<FhirPatientResources> resourceList, List<Connection> connList, int maxNumberOfWorkers, int numberOfPatientsPerWorker) {
 		init(resourceList, connList, maxNumberOfWorkers, numberOfPatientsPerWorker);
@@ -61,13 +61,15 @@ public class WriteOmopPeopleToDatabase {
 					active.add(worker);
 					WriteOmopPeopleToDatabaseWorkerRunnable runnable = new WriteOmopPeopleToDatabaseWorkerRunnable(worker);
 					Thread thread = new Thread(runnable);
-					threads.add(thread);
+					threads.put(worker, thread);
 					thread.start();
 				}
 			}
 		}
-		for (Thread thread : threads) {
+		Set<WriteOmopPeopleToDatabaseWorker> keys = threads.keySet();
+		for (WriteOmopPeopleToDatabaseWorker key : keys) {
 			try {
+				Thread thread = threads.get(key);
 				thread.join();
 			} catch (Exception exp) {
 				log.info("Could not join thread");
@@ -82,6 +84,7 @@ public class WriteOmopPeopleToDatabase {
 			log.info("Waiting: " + waiting.size());
 			log.info("-----");
 			active.remove(worker);
+			threads.remove(worker);
 		}
 	}
 
