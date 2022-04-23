@@ -2,12 +2,11 @@ package org.nachc.tools.fhirtoomop.omop.write.threaded;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
+import org.nachc.tools.fhirtoomop.omop.write.threaded.executor.ExecutorManager;
 import org.nachc.tools.fhirtoomop.omop.write.threaded.runnable.WriteOmopPeopleToDatabaseWorkerRunnable;
 import org.yaorma.util.time.TimeUtil;
 
@@ -27,8 +26,6 @@ public class WriteOmopPeopleToDatabase {
 	private int numberOfPatientsPerWorker;
 
 	private List<WriteOmopPeopleToDatabaseWorker> active = new ArrayList<WriteOmopPeopleToDatabaseWorker>();
-
-	private HashMap<WriteOmopPeopleToDatabaseWorker, Thread> threads = new HashMap<WriteOmopPeopleToDatabaseWorker, Thread>();
 
 	public WriteOmopPeopleToDatabase(List<String> fileList, List<Connection> connList, int numberOfWorkers, int numberOfPatientsPerWorker) {
 		this.fileList = fileList;
@@ -64,25 +61,19 @@ public class WriteOmopPeopleToDatabase {
 					}
 					active.add(worker);
 					WriteOmopPeopleToDatabaseWorkerRunnable runnable = new WriteOmopPeopleToDatabaseWorkerRunnable(worker);
-					Thread thread = new Thread(runnable);
-					threads.put(worker, thread);
-					thread.start();
+					ExecutorManager.getWriterExecutor().execute(runnable);
 				}
 			}
 		}
-		while (active.size() > 0) {
+		int activeSize = active.size();
+		while (activeSize > 0) {
 			TimeUtil.sleep(1);
 			log.info("Almost done: " + active.size() + " active threads still running...");
-		}
-		Set<WriteOmopPeopleToDatabaseWorker> keys = threads.keySet();
-		for (WriteOmopPeopleToDatabaseWorker key : keys) {
-			try {
-				Thread thread = threads.get(key);
-				thread.join();
-			} catch (Exception exp) {
-				log.info("Could not join thread");
+			synchronized (LOCK) {
+				activeSize = active.size();
 			}
 		}
+		ExecutorManager.getWriterExecutor().shutdown();
 	}
 
 	public void done(WriteOmopPeopleToDatabaseWorker worker) {
@@ -92,7 +83,9 @@ public class WriteOmopPeopleToDatabase {
 			log.info("Waiting: " + fileList.size());
 			log.info("-----");
 			active.remove(worker);
-			threads.remove(worker);
+			if(active.size() == 0) {
+				ExecutorManager.getWorkerExecutor().shutdown();
+			}
 		}
 	}
 
