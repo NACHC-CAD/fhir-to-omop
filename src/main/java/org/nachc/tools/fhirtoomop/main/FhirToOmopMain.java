@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
+import org.nachc.tools.fhirtoomop.tools.download.DownloadPatientIds;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatients;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -18,17 +19,16 @@ public class FhirToOmopMain {
 		if (args == null || args.length < 1) {
 			zeroParam();
 		} else {
-			// get the config file
-			String fileName = null;
+			// get the second param if it exists
+			String paramTwo = null;
 			if (args.length > 1) {
-				fileName = args[1];
-				System.out.println("Using config file from here:");
-				System.out.println(fileName);
-			} else {
-				File file = new File("./");
-				fileName = FileUtil.getCanonicalPath(file);
-				System.out.println("Getting config file from: " + fileName);
-			}
+				paramTwo = args[1];
+				System.out.println("Got parameter: " + paramTwo);
+			} 
+			// get the config file
+			File dir = new File("./");
+			String fileName = FileUtil.getCanonicalPath(dir);
+			System.out.println("Getting config file from: " + fileName);
 			File file = new File(fileName, "app.properties");
 			System.out.println("------------");
 			System.out.println("app.properties:");
@@ -54,16 +54,22 @@ public class FhirToOmopMain {
 			case "m":
 				myParams(fileName);
 				break;
-			// omop stuff
+			// instant omop
 			case "instant-omop":
 			case "i":
 				CreateOmopInstanceTool.createOmopInstance();
 				break;
-			// down load fhir
+			// download fhir patient ids
+			case "download-patient-ids":
+			case "ids":
+				downLoadPatientIds(paramTwo);
+				break;
+			// download fhir
 			case "download":
 			case "d":
 				DownloadPatients.main(null);
 				break;
+			// upload files to omop instance
 			case "upload":
 			case "u":
 				new PopulateOmopInstanceFromFhirFiles().exec();
@@ -95,6 +101,16 @@ public class FhirToOmopMain {
 		System.out.println("-----------------8<-----------------8<-----------------8<--------------------");
 	}
 
+	private static void downLoadPatientIds(String param) {
+		if(param != null) {
+			System.out.println("Parsing " + param + " as a number...");
+			int max = Integer.parseInt(param);
+			DownloadPatientIds.exec(max);
+		} else {
+			DownloadPatientIds.exec();
+		}
+	}
+	
 	// ---
 	//
 	// error cases
