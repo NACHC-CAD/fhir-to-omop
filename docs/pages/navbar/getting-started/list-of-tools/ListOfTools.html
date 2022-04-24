@@ -16,8 +16,21 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>List of fhir-to-omop Tools and Utilities</h1>
-			The tools an Utilities listed below are currently provided publicly under the Apache 2 license by the fhir-to-omop project.  
+			<h1>List of fhir-to-omop Tools and Utilities: Create and Populate an OMOP CDM Database with FHIR Patients From Scratch</h1>
+			<h3>
+				Everything you need to:<br/>
+				- <a href="#build">Build Your OMOP CDM Database</a><br/>
+				- <a href="#get-ids">Get the IDs of the Patients on Your FHIR Server</a><br/>
+				- Download Patients from your FHIR Server<br/>
+				- Upload your FHIR Patients into Your OMOP CDM Database<br/>
+			</h3>
+			This page summarizes the tools that are available in the fhir-to-omop project to build and populate and OMOP CDM database from scratch using data from a FHIR Server.  
+			All of the components used to do this are also available and can be used independently.  
+			These components are listed below as Utilities.  
+			These utilities include functionality such as authenticating to a FHIR server using OAUTH2 (or any other method),
+			getting a list of patient ids from a FHIR server that can then be used to get patients from a FHIR server, 
+			retrieving patients from a FHIR server, converting FHIR patients into OMOP CDM resources, etc.  
+			The tools and Utilities listed below are currently provided publicly under the Apache 2 license by the fhir-to-omop project.  
 			All of the tools listed here have a simplest complete example listed.  
 			These examples are all JUnit integration tests.  
 			These examples can be run individually to observe the intended behavior.  
@@ -31,16 +44,12 @@
 			<h2>Notes on Configuration and Testing</h2>
 			All of the fhir-to-omop tools are configured using a single properties file.  
 			Most of the parameters in this file are for the instance of OMOP that can be created locally by these tools.  
-			Therefore, most of the parameters are allready populated with default values.  
+			Therefore, most of the parameters are all ready populated with default values.  
 			A copy of this file is provided in the root directory of the fhir-to-omop.zip file created for each distribution
 			(e.g. fhir-to-omop-0.0.14.zip).  
 			The fhir-to-omop project maintains a robust set of JUnit integration tests that can be run individually.
-			All of the Synthea tests can be run using the 
-			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopsynthea/RunAllSyntheaIntegrationTests.java">RunAllSyntheaIntegrationTests</a> class.
-			All of the OMOP tests can be run using the 
-			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/RunAllOmopIntegrationTests.java">RunAllOmopIntegrationTests</a> class.
 			The entire JUnit test suite can be run using the 
-			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/RunAllIntegrationTests.java">RunAllIntegrationTests</a> class.  
+			<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/RunAllIntegrationTests.java">RunAllIntegrationTests</a> class.  
 			
 			<!-- notes on design patterns and system architecture -->
 			<h2>Notes on Design Patterns and System Architecture</h2>
@@ -104,42 +113,116 @@
 				
 			</table>
 			
-			<!-- tools -->
+			<!-- 
+			* 
+			* tools 
+			*
+			-->
+			
+			<a id="build"></a>
 			<h2>Tools</h2>
 			The fhir-to-omop tools are the more complete solutions that perform complex tasks.
 			Things like creating an entire OMOP instance including populated vocabulary tables from scratch.  
-			Things like populating an OMOP instance with the entire contents of a FHIR Patient server.  
+			Things like populating an OMOP instance with the entire contents of a FHIR Patient server. 
+			All of the Tools listed in this section can be launched from the 
+			<a href="">Standalone Application</a>.  
 			
 			<table class="table">
 
 				<!-- header -->
 				<tr>
-					<th>Resource</th>
+					<th>Tool</th>
 					<th>Description</th>
 				</tr>
 	
-				<!-- populate from files -->
+				<!-- build -->
 				<tr>
 					<td>
-						OMOP:&nbsp;PopulateFromFiles
+						Build Your OMOP CDM Database
 					</td>
 					<td>
 						<p>
-							Write a set of FHIR patients to OMOP
+							Build a complete OMOP CDM Database
 						</p>
 						<p>
-							The PopulateFromFiles tool will write all of the FHIR /Patient/[ID]/$everything JSON files from a given directory to an OMOP database instance.  
-							This tool is completely configured from the app.properties file.  
-							The fhirPatientsDir parameter in this file can be set to point to a directory on your local machine
-							(e.g. D:\\NACHC\\SYNTHEA\\_DEV\\test-set-10).
-							Note, this tool does expect the backslash charater to be escaped (i.e. use \\ for \).  
+							The 
+							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/build/CreateOmopInstanceTool.java">CreateOmopInstanceTool</a> class 
+							will build a complete OMOP CDM database that is ready to receive data and get plugged into OHDSI tools. 
+							This tool will 
+							<ul>
+								<li>Drop the OMOP Database to be created if it exists</li>
+								<li>Create the OMOP Database instance using the CDM 5.4 scripts</li>
+								<li>Create an OMOP Database user</li>
+								<li>Create tables used for mappings</li>
+								<li>Create a cdm_source record (this is used by the Data Quality Dashboard)</li>
+								<li>Create the sequences used to generate the primary keys when FHIR resources are imported</li>
+								<li>Load all of the terminology tables (e.g. concept)</li>
+								<li>Create indexes used during the data loading process</li>
+							</ul> 
+							The following prerequisites must be met before this tool can be run.  
+							<ul>
+								<li>A running instance of Microsoft Sql Server</li>
+								<li>
+									A folder containing the files that define the vocabularies to be used for the instance downloaded from 
+									<a href="https://athena.ohdsi.org">Athena</a>
+								</li>
+								<li>
+									Correct settings in the app.properties file. 
+									The <a href="">app.properties</a>  
+									file provided with the distribution has everything required for a default build 
+									except for the location of your Athena vocabularies files 
+									and the settings for your MS Sql Server database.  
+								</li>
+							</ul>
+							
+							This tool can be run using the 
+							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/build/CreateOmopInstanceTool.java">CreateOmopInstanceTool</a> class 
+							directly.  This class has a main method that will create the database, user, etc. based on the parameters in the app.properties file.  
+						</p>							
+						<p>
+							<a id="get-ids"></a>
+							This tool can be run from the <a href="">Standalone Application</a> using the "instant-omop" or "i" option:
+							<br/>
+							fhir-to-omop instant-omop
+							<br/>
+							fhir-to-omop i
+						</p>
+					</td>
+				</tr>
+
+				<!-- get-ids -->
+				<tr>
+					<td>
+						Get the IDs of the Patients on Your FHIR Server
+					</td>
+					<td>
+						<p>
+							Get a list of all of the IDs for all of the patients on a FHIR server.
 						</p>
 						<p>
-							Example: The 
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/omop/PopulateFromFilesExampleIntegrationTest.java">
-								SyntheaOauthIntegrationTest
-							</a> class gives a simplest complete example of the use of this tool.  
+							Before you can ask for a patient, you'll need to know what patients exist on a server.  
+							This tool can be used to fetch the entire list of patients that exist on a server.
+							The ids will be written to a list of files with 1000 patient ids each.
+							The files are written to the dir specified in the app.properties file as fhirPatientIdDir.
+							This utility gets all of its parameters from the app.properties file.  
+							The test example below uses Synthea as a test patient server.  
+							To run the test you will need to get Synthea credentials as describe in the 
+							<a target="getting-started2" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">
+								Getting Started
+							</a> document.  
 						</p>
+						<p>
+							This tool can be run using the 
+							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatientIdsIntegrationTest.java">DownloadPatientIdsIntegrationTest</a>
+						</p>
+						<p>
+							<a id="get-ids"></a>
+							This tool can be run from the <a href="">Standalone Application</a> using the "download-patient-ids" or "ids" option:
+							<br/>
+							fhir-to-omop download-patient-ids
+							<br/>
+							fhir-to-omop ids
+						<p>
 					</td>
 				</tr>
 
@@ -154,7 +237,7 @@
 				
 			</table>
 			
-			<h2>Utilities</h2>
+			<h1>Utilities</h1>
 			The fhir-to-omop utilities are the building blocks of the fhir-to-omop environment.  
 			These tools can be used individually.
 			Each tool has a simplest complete example that exists as a JUnit integration test in the fhir-to-omop project.  
@@ -195,57 +278,6 @@
 				<tr>
 					<td>
 						FHIR:&nbsp;GetAllPatientIdsTool
-					</td>
-					<td>
-						<p>
-							Get a list of all of the IDs for all of the patients on a FHIR server.
-						</p>
-						<p>
-							Before you can ask for a patient, you'll need to know what patients exist on a server.  
-							This tool can be used to fetch the entire list of patients that exist on a server.
-							The ids will be written to a list of files with 1000 patient ids each.
-							The files are written to the dir specified in the app.properties file as fhirPatientIdDir.
-							This utility gets all of its parameters from the app.properties file.  
-							The test example below uses Synthea as a test patient server.  
-							To run the test you will need to get Synthea credentials as describe in the 
-							<a target="getting-started2" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">
-								Getting Started
-							</a> document.  
-							The following parameters are used by this tool
-							<ul>
-								<li>
-									fhirPatientIdDir=The directory where the files will be written
-								</li>
-								<li>
-									fhir-server-oauth-url=https://syntheticmass.mitre.org/oauth2/accesstoken
-								</li>
-								<li>
-									fhir-server-url=https://syntheticmass.mitre.org/v1/fhir
-								</li>
-								<li>
-									The Example shown below uses the following parameters
-									<ul>
-										<li>
-											synthea-app-id=your-app-id
-										</li>
-										<li>
-											synthea-key=your-synthea-key
-										</li>
-										<li>
-											synthea-secret=your-synthea-key
-										</li>
-									</ul>
-								</li>
-							</ul>
-						</p>
-						<p>
-							Example: 
-							The 
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/synthea/GetAllPatientIdsExampleIntegrationTest.java">
-								GetAllPatientIdsExampleIntegrationTest
-							</a> 
-							class gives a simplest complete example of the use of this tool.  
-						</p>
 					</td>
 				</tr>
 				
