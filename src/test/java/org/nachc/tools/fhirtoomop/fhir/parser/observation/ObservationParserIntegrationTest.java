@@ -24,7 +24,7 @@ public class ObservationParserIntegrationTest {
 	public void shouldParseObservtion() {
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient patient = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient patient = new FhirPatientFactory(resources).build();
 		List<String> types = patient.getResourceTypes();
 		log.info("Got " + types.size() + " types");
 		for (String type : types) {

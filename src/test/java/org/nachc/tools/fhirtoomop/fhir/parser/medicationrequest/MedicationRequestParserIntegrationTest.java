@@ -24,7 +24,7 @@ public class MedicationRequestParserIntegrationTest {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 		List<MedicationRequestParser> medReqList = fhirPatient.getMedicationRequestList();
 		log.info("Got " + medReqList.size() + " MedicationRequest resources");
 		assertTrue(medReqList.size() == 8);

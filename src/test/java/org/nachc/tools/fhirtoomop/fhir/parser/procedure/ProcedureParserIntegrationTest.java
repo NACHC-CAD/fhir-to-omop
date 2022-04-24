@@ -23,7 +23,7 @@ public class ProcedureParserIntegrationTest {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient patient = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient patient = new FhirPatientFactory(resources).build();
 		List<ProcedureParser> procList = patient.getProcedureList();
 		log.info("Got " + procList.size() + " procedures.");
 		assertTrue(procList.size() == 155);

@@ -21,7 +21,7 @@ public class FhirPatientFactoryIntegrationTest {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(FILE_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient pat = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient pat = new FhirPatientFactory(resources).build();
 		log.info("Got pat: " + pat.getPatient().getId());
 		new ValidateFhirPatient(pat).validate().isValid();
 		log.info("Done.");

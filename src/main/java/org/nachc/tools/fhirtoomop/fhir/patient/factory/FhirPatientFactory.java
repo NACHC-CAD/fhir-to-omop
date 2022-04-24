@@ -24,6 +24,8 @@ import com.nach.core.util.string.StringUtil;
 
 public class FhirPatientFactory {
 
+	private static FhirPatient testPatient;
+	
 	private FhirPatientResources resources;
 	
 	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
@@ -32,22 +34,17 @@ public class FhirPatientFactory {
 		this.resources = resources;
 	}
 
-	public FhirPatient buildFromJson()  {
-		for (InputStream is : resources.getResources()) {
-			String str = FileUtil.getAsString(is);
-			BundleParser bundleParser = new BundleParser(str);
-			this.bundleParserList.add(bundleParser);
+	public FhirPatient build() {
+		if(testPatient != null) {
+			return testPatient;
+		} else {
+			for (InputStream is : resources.getResources()) {
+				String str = FileUtil.getAsString(is);
+				BundleParser bundleParser = new BundleParser(str);
+				this.bundleParserList.add(bundleParser);
+			}
+			return doBuild();
 		}
-		return doBuild();
-	}
-	
-	public FhirPatient buildFromFileList() {
-		for (InputStream is : resources.getResources()) {
-			String str = FileUtil.getAsString(is);
-			BundleParser bundleParser = new BundleParser(str);
-			this.bundleParserList.add(bundleParser);
-		}
-		return doBuild();
 	}
 	
 	// ---
@@ -65,6 +62,7 @@ public class FhirPatientFactory {
 		buildMedicationList(rtn);
 		buildObservationList(rtn);
 		buildProcedureList(rtn);
+		testPatient = rtn;
 		return rtn;
 	}
 	

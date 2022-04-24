@@ -29,7 +29,7 @@ public class WriteOmopPersonToDatabaseIntegrationTest {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 		// get a connection
 		log.info("Getting connection...");
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();

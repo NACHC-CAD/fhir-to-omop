@@ -37,7 +37,7 @@ public class FhirPatientEverythingFetcherIntegrationTest {
 		FhirPatient fhirPatient;
 		String patientId;
 		FhirPatientResourcesAsJson resources = new FhirPatientResourcesAsJson(resourceList);
-		fhirPatient = new FhirPatientFactory(resources).buildFromJson();
+		fhirPatient = new FhirPatientFactory(resources).build();
 		// assert that we got the right patient
 		patientId = fhirPatient.getPatientId();
 		log.info("Created fhirPatient: " + patientId);
@@ -50,7 +50,7 @@ public class FhirPatientEverythingFetcherIntegrationTest {
 		// create a FhirPerson from the two responses
 		resourceList.add(pageTwoJson);
 		resources = new FhirPatientResourcesAsJson(resourceList);
-		fhirPatient = new FhirPatientFactory(resources).buildFromJson();
+		fhirPatient = new FhirPatientFactory(resources).build();
 		// assert that we got the right patient
 		patientId = fhirPatient.getPatientId();
 		log.info("Created fhirPatient: " + patientId);

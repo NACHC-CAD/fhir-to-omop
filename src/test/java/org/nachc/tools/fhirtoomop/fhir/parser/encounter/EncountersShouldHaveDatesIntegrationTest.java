@@ -25,7 +25,7 @@ public class EncountersShouldHaveDatesIntegrationTest {
 		log.info("Starting test...");
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 		List<EncounterParser> encList = fhirPatient.getEncounterList();
 		List<EncounterParser> invalid = new ArrayList<EncounterParser>();
 		List<EncounterParser> valid = new ArrayList<EncounterParser>();

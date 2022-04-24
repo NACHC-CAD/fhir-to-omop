@@ -1,7 +1,6 @@
 package org.nachc.tools.fhirtoomop.omop.write.threaded.runnable;
 
 import java.sql.Connection;
-import java.util.List;
 
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
@@ -22,7 +21,7 @@ public class WriteOmopPeopleToDatabaseRunnable implements Runnable {
 	private Connection conn;
 
 	private WriteOmopPeopleToDatabaseWorker worker;
-	
+
 	public WriteOmopPeopleToDatabaseRunnable(WriteOmopPeopleToDatabaseWorker worker, FhirPatientResources resources, Connection conn) {
 		this.worker = worker;
 		this.resources = resources;
@@ -32,7 +31,7 @@ public class WriteOmopPeopleToDatabaseRunnable implements Runnable {
 	@Override
 	public void run() {
 		try {
-			FhirPatient fhirPatient = new FhirPatientFactory(resources).buildFromFileList();
+			FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 			log.info("Done parsing file");
 			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
 			WriteOmopPersonToDatabase.exec(omopPerson, conn);
