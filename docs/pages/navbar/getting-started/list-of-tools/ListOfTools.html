@@ -160,7 +160,7 @@
 								</li>
 								<li>
 									Correct settings in the app.properties file. 
-									The <a href="">app.properties</a>  
+									The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/resources/main/example-params/app.properties">app.properties</a>  
 									file provided with the distribution has everything required for a default build 
 									except for the location of your Athena vocabularies files 
 									and the settings for your MS Sql Server database.  
@@ -271,7 +271,7 @@
 							All of the files in that directory are Patient/[id]/$everything resources.  
 							Each Patient/[id]/$everything file is read.  
 							The set of files are parsed into a single 
-							<a href="">OmopPerson</a> object.  
+							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/OmopPerson.java">OmopPerson</a> object.  
 							The OmopPerson object is composed of Data Value Objects (DVOs) that are exact 1:1 mappings to the OMOP CDM.  
 							The OmopPerson object is then written to the OMOP CDM Database.  
 						</p>
