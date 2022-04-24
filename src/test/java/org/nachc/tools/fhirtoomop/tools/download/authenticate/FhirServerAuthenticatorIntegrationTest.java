@@ -18,7 +18,7 @@ public class FhirServerAuthenticatorIntegrationTest {
 	@Test
 	public void shouldAuthenticateRequest() {
 		log.info("Starting test..");
-		String url = AppParams.get("fhirPatientServerUrl");
+		String url = AppParams.getFhirPatientServerUrl();
 		url = url + "/Patient";
 		// auth after init and after refresh
 		HttpRequestClient client;

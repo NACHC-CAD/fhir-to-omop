@@ -1,6 +1,5 @@
 package org.nachc.tools.fhirtoomop.tools.download.patient.fetcher;
 
-import org.nachc.tools.fhirtoomop.fhir.util.server.auth.HttpClientAuthenticator;
 import org.nachc.tools.fhirtoomop.tools.download.authenticate.FhirServerAuthenticator;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
@@ -28,7 +27,7 @@ public class FhirPatientEverythingFetcher {
 	}
 
 	public String fetchEverything(String patientId) {
-		String url = AppParams.get("fhirPatientServerUrl");
+		String url = AppParams.getFhirPatientServerUrl();
 		url += "/Patient/" + patientId + "/$everything?";
 		log.info("URL: " + url);
 		this.client = new HttpRequestClient(url);

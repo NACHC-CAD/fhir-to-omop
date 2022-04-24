@@ -1,6 +1,5 @@
 package org.nachc.tools.fhirtoomop.tools.download.patient.fetcher;
 
-import org.nachc.tools.fhirtoomop.fhir.util.server.auth.HttpClientAuthenticator;
 import org.nachc.tools.fhirtoomop.tools.download.authenticate.FhirServerAuthenticator;
 
 import com.nach.core.util.http.HttpRequestClient;
