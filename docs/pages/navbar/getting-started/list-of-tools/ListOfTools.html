@@ -103,15 +103,6 @@
 					</td>
 				</tr>
 				
-				<!-- blank row deliberately included to give bottom line -->
-				<tr>
-					<td>
-						Download Patients from your FHIR Server
-					</td>
-					<td>
-					</td>
-				</tr>
-				
 			</table>
 			
 			<!-- 
@@ -174,6 +165,9 @@
 									except for the location of your Athena vocabularies files 
 									and the settings for your MS Sql Server database.  
 								</li>
+								<li>
+									Java: This application was developed and tested using Java 1.8.0
+								</li>
 							</ul>
 							
 							This tool can be run using the 
@@ -204,17 +198,19 @@
 							Before you can ask for a patient, you'll need to know what patients exist on a server.  
 							This tool can be used to fetch the entire list of patients that exist on a server.
 							The ids will be written to a list of files with 1000 patient ids each.
-							The files are written to the dir specified in the app.properties file as fhirPatientIdDir.
-							This utility gets all of its parameters from the app.properties file.  
-							The test example below uses Synthea as a test patient server.  
-							To run the test you will need to get Synthea credentials as describe in the 
+							The files are written to the dir specified in the app.properties file.
+							This utility gets all of its parameters from the app.properties file. 
+							This tool was developed using the Synthea 
+							<a href="https://synthea.mitre.org/">SyntheticMass</a> FHIR Server.   
+							To run this tool using SyntheticMass you will need to get Synthea credentials as describe in the 
 							<a target="getting-started2" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">
 								Getting Started
 							</a> document.  
 						</p>
 						<p>
-							This tool can be run using the 
-							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatientIdsIntegrationTest.java">DownloadPatientIdsIntegrationTest</a>
+							This tool can be run using the
+							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatientIds.java">DownloadPatientIds</a> tool.
+							This class has a main method that can be call directly.  
 						</p>
 						<p>
 							<a id="download-fhir"></a>
@@ -240,6 +236,7 @@
 							The 
 							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatients.java">DownloadPatients</a> tool 
 							is used to download a set of patients from a FHIR server.  
+							This class has a main method that can be called directly.  
 							The FHIR server is configured in the app.properties file.  
 							This tool uses the files down loaded by the DownloadPatientIds tool that contain the patient ids for the FHIR server.  
 							This tool is configured in the app.properties file to point to the directory containing the id files.  
