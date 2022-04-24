@@ -21,8 +21,8 @@
 				Everything you need to:<br/>
 				- <a href="#build">Build Your OMOP CDM Database</a><br/>
 				- <a href="#get-ids">Get the IDs of the Patients on Your FHIR Server</a><br/>
-				- Download Patients from your FHIR Server<br/>
-				- Upload your FHIR Patients into Your OMOP CDM Database<br/>
+				- <a href="#download-fhir">Download Patients from Your FHIR Server</a><br/>
+				- <a href="#upload-omop">Upload Your FHIR Patients into Your OMOP CDM Database</a><br/>
 			</h3>
 			This page summarizes the tools that are available in the fhir-to-omop project to build and populate and OMOP CDM database from scratch using data from a FHIR Server.  
 			All of the components used to do this are also available and can be used independently.  
@@ -106,6 +106,7 @@
 				<!-- blank row deliberately included to give bottom line -->
 				<tr>
 					<td>
+						Download Patients from your FHIR Server
 					</td>
 					<td>
 					</td>
@@ -216,7 +217,7 @@
 							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatientIdsIntegrationTest.java">DownloadPatientIdsIntegrationTest</a>
 						</p>
 						<p>
-							<a id="get-ids"></a>
+							<a id="download-fhir"></a>
 							This tool can be run from the <a href="">Standalone Application</a> using the "download-patient-ids" or "ids" option:
 							<br/>
 							fhir-to-omop download-patient-ids
@@ -229,176 +230,68 @@
 				<!-- blank row deliberately included to give bottom line -->
 				<tr>
 					<td>
+						Download Patients from Your FHIR Server
 					</td>
 					<td>
+						<p>
+							Download a set of patients from a FHIR Server.  
+						</p>
+						<p>
+							The 
+							<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/download/DownloadPatients.java">DownloadPatients</a> tool 
+							is used to download a set of patients from a FHIR server.  
+							The FHIR server is configured in the app.properties file.  
+							This tool uses the files down loaded by the DownloadPatientIds tool that contain the patient ids for the FHIR server.  
+							This tool is configured in the app.properties file to point to the directory containing the id files.  
+							When the tool is run all of the resources representing the Patient/[id]/$everything resource for each patient is downloaded. 
+							The Patient/[id]/$everything resource is allowed to be paged so each patient is usually represented by more than one file.  
+							The files representing each patient are downloaded into a directory given the name of the patient id.  
+							Each file in that directory is prefixed with the download order (0_, 1_, etc.) and the patient id and an arbitrary guid (to prevent duplicates).  
+						</p>
+						<p>
+							<a id="upload-omop"></a>
+							This tool can be run from the <a href="">Standalone Application</a> using the "download" or "d" option:
+							<br/>
+							fhir-to-omop download
+							<br/>
+							fhir-to-omop d
+						<p>
 					</td>
 				</tr>
 
-				
-			</table>
-			
-			<h1>Utilities</h1>
-			The fhir-to-omop utilities are the building blocks of the fhir-to-omop environment.  
-			These tools can be used individually.
-			Each tool has a simplest complete example that exists as a JUnit integration test in the fhir-to-omop project.  
-			This integration test is listed at the bottom of the description for each entry in the list below.  
-			
-			<table class="table">
-				
-				<!-- header -->
-				<tr>
-					<th>Resource</th>
-					<th>Description</th>
-				</tr>
-	
-				<!-- SyntheaOauth -->
+				<!-- upload -->
 				<tr>
 					<td>
-						FHIR:&nbsp;SyntheaOauth
+						Upload Your FHIR Patients into Your OMOP CDM Database
 					</td>
 					<td>
 						<p>
-							Get an OAUTH2 token from the Synthea patient server.  
+							The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/populate/PopulateOmopInstanceFromFhirFiles.java">PopulateOmopInstanceFromFhirFiles</a> tool 
+							can be used to populate an OMOP instance from a set of files representing FHIR patients.  
+							This tool is configured in the app.properties file.  
+							This tool will scan a root directory.  
+							Each directory in the root directory represents a patient.  
+							All of the files in that directory are Patient/[id]/$everything resources.  
+							Each Patient/[id]/$everything file is read.  
+							The set of files are parsed into a single 
+							<a href="">OmopPerson</a> object.  
+							The OmopPerson object is composed of Data Value Objects (DVOs) that are exact 1:1 mappings to the OMOP CDM.  
+							The OmopPerson object is then written to the OMOP CDM Database.  
 						</p>
 						<p>
-							The SyntheaOauth tool gets an OAUTH token from the Synthea Patient server used as a reference implementation for the fhir-to-omop tool suite.  
-							There seems to be some variation in how OAUTH authentication is done from server to server.  
-							This class works for the Synthea Patient server we use here and may or may not work with other servers.  
-						</p>					
+							The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/populate/PopulateOmopInstanceFromFhirFiles.java">PopulateOmopInstanceFromFhirFiles</a> tool 
+							has a main method and can be called directly.  
+						</p>						
 						<p>
-							Example: The 
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/oauth/SyntheaOauthIntegrationTest.java">
-								SyntheaOauthIntegrationTest
-							</a> class gives a simplest complete example of the use of this tool.  
-						</p>
+							This tool can be run from the <a href="">Standalone Application</a> using the "download" or "d" option:
+							<br/>
+							fhir-to-omop upload
+							<br/>
+							fhir-to-omop u
+						<p>
 					</td>
 				</tr>
 
-				<!-- get list of patients -->				
-				<tr>
-					<td>
-						FHIR:&nbsp;GetAllPatientIdsTool
-					</td>
-				</tr>
-				
-				<!-- FHIR: FhirPatientEverythingFetcher  -->
-				<tr>
-					<td>
-						FHIR:&nbsp;FhirPatientEverythingFetcher
-					</td>
-					<td>
-						Get a Patient/[ID]/$everything resource from any FHIR Patient server.  
-						<br/><br/>
-						<p>
-							The FhirPatientEverythingFetcher is used to get the JSON string representing all of the information the server has for a given patient.  
-							Although it is intended to be used for any FHIR server, there does seem to be differences in the way FHIR Patient servers implement authentication.  
-							In our simplest complete example, we are using a Synthea Patient server and the SyntheaOauth tool to generate the token needed for the request.  
-							Getting an account and credentials required to get this token are described in our list of 
-							<a target="start-here" href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">prerequisites</a>.
-						</p>
-						<p>
-							The tool requires these parameters
-							<ul>
-								<li>The URL of the FHIR Patient Server</li>
-								<li>The ID of the Patient</li>
-								<li>An OAUTH2 token (this can be generated for the Synthea server using the SyntheaOauth tool)</li>
-							</ul>
-						</p>
-						<p>
-							Example: 
-							The 
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/everything/FhirPatientEverythingIntegrationTest.java">
-								FhirPatientEverythingIntegrationTest
-							</a> 
-							class gives a simplest complete example of the use of this tool.  
-						</p>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						FHIR:&nbsp;GetASingleSyntheaPatient
-					</td>
-					<td>
-						<p>
-							Get a single patient from Synthea.  
-						</p>
-						<p>
-							The GetASingleSyntheaPatient tool gets a single patient as a FHIR json string.  
-							This patient is loaded from a file that was created by fetching the /Patient/[ID\/$everything resource from Synthea.  
-							This tools is used throughout the JUnit testing code for this project.  
-						</p>
-						<p>
-							Example: The  
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/synthea/GatASingleSyntheaPatientExampleIntegrationTest.java">
-								GatASingleSyntheaPatientExampleIntegrationTest
-							</a> represents the simplest complete example of this tool.  
-						</p>
-					</td>
-				</tr>
-				
-				<!-- fhir-to-omop -->
-				<tr>
-					<td>
-						FHIR-TO-OMOP:<br/>
-						OmopPersonEverything
-					</td>
-					<td>
-						<p>
-							Convert a single FHIR Patient into a series of OMOP Common Data Model entities.  
-						</p>
-						<p>
-							The intersection between FHIR and OMOP is completely encapsulated in the OmopPersonEverything class.
-							The OmopPersonEverything is constructed using and FHIR /Person/[ID]/$everything resource.
-							The OmopPersonEverything then provides this resources as collections of DVOs that exactly map to OMOP tables.  
-							These DVO objects can then be used to directly write data to the data base using the Dao class.
-							These DVO objects can also be used to otherwise represent the data as CDM structures 
-							(e.g. by writing the data to CSV files that represent the CDM tables).  
-							In some cases additional information is derived from the data.  This additional data is managed using the DvoProxy class
-							(which create DVO classes under the hood).  
-						</p>
-						<p>
-							Note that this mapping requires a connection to your OMOP instance.
-							All of the concept mapping for FHIR to OMOP is done through the OmopPersonEverything class.  
-							This database connection is used to get the OHDSI concept ids from the concept table.  
-							The database connection is also used to ensure that OMOP database records get unique ids.  
-						</p>
-						<p>
-							Example: 
-							The 
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/omoppersoneverything/OmopPersonEverythingExampleIntegrationTest.java">
-								OmopPersonEverythingExampleIntegrationTest
-							</a> 
-							class gives a simplest complete example of the use of this tool.  
-						</p>					
-					</td>
-				</tr>
-				
-				<!-- WriteFhirPatientToOmop -->
-				<tr>
-					<td>
-						OMOP:&nbsp;WriteFhirPatientToOmop
-					</td>
-					<td>
-						<p>
-							Write a single FHIR patient to an OMOP database instance.  
-						</p>
-						The WriteFhirPatientToOmop tool uses the OmopPersonEverything class to get the patient information as OMOP DVOs and then inserts these DVOs into the database.  
-						The primary use case for this tool takes as parameters simply:
-						<ul>
-							<li>JSON representation of the FHIR /Patient/[ID]/$everything resource</li>
-							<li>A connection to the OMOP database instance</li>
-						</ul>
-						<p>
-							Example: The
-							<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomopexamples/fhir/omoppersoneverything/OmopInsertPersonExampleIntegrationTest.java">
-								OmopInsertPersonExampleIntegrationTest
-							</a> 
-							class gives a simplest complete example of the use of this tool.  
-						</p>
-					</td>
-				</tr>
-				
 				<!-- blank row deliberately included to give bottom line -->
 				<tr>
 					<td>
@@ -408,7 +301,24 @@
 				</tr>
 
 			</table>
-			
+
+			<!-- 
+			*
+			* UTILITIES
+			*
+			* -->
+
+			<h1>Utilities</h1>
+			The fhir-to-omop utilities are the building blocks of the fhir-to-omop environment.  
+			These tools can be used individually.
+			Each tool has a simplest complete example that exists as a JUnit integration test in the fhir-to-omop project.  
+			This integration test is listed at the bottom of the description for each entry in the list below.  
+			<p>
+				Utilities documentation is forthcoming.  
+			</p>
+
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	
 		</div>
 	</body>
 </html>

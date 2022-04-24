@@ -18,6 +18,10 @@ public class DownloadPatientIds {
 
 	private static final int PATIENTS_PER_FILE = 100;
 
+	public static void main(String[] args) {
+		exec();
+	}
+	
 	public static void exec() {
 		exec(null);
 	}
