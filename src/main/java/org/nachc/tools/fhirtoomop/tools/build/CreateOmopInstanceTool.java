@@ -82,7 +82,7 @@ public class CreateOmopInstanceTool {
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
 		String msg = "";
-		msg += "\n\n\n";
+		msg += "\n\n";
 		msg += "\n---------------";
 		msg += "\nYour instance has been created with the following parameters:  ";
 		msg += "\nDatbase:\t" + dbName;
@@ -90,11 +90,11 @@ public class CreateOmopInstanceTool {
 		msg += "\nPassword\t" + pwd;
 		msg += "\nHave a great odyssey :)";
 		msg += "\n---------------";
-		log.info("start:   " + timer.getStartAsString());
-		log.info("stop:    " + timer.getStopAsString());
-		log.info("elapsed: " + timer.getElapsedString());
+		msg += "\nstart:   " + timer.getStartAsString();
+		msg += "\nstop:    " + timer.getStopAsString();
+		msg += "\nelapsed: " + timer.getElapsedString();
 		msg += "\n---------------";
-		msg += "\n\n\n";
+		msg += "\n";
 		log.info(msg);
 		log.info("Done.");
 	}

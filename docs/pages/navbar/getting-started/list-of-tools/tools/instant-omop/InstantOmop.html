@@ -25,6 +25,11 @@
 			* INTRODUCTION
 			*
 			* -->
+			<div align="center">
+				<br/>
+				<img width="600px;" src="/fhir-to-omop/cdm.png" />
+				<br/><br/>
+			</div>
 	
 			<p>
 				The 
@@ -51,10 +56,9 @@
 					</li>
 					<li>
 						Correct settings in the app.properties file. 
-						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/resources/main/example-params/app.properties">app.properties</a>  
+						The <a download href="/fhir-to-omop/app.properties">app.properties</a>  
 						file provided with the distribution has everything required for a default build 
-						except for the location of your Athena vocabularies files 
-						and the settings for your MS Sql Server database.  
+						(but will need to be modified to use your information).  
 					</li>
 					<li>
 						Java: This application was developed and tested using Java 1.8.0
@@ -92,6 +96,7 @@
 	
 			<h3>The app.properties file</h3>
 			The following shows the settings in the app.properties file used for this example.  	
+			A complete app.properties file can be downloaded from <a download href="/fhir-to-omop/app.properties">here</a>. 
 			<br/>		
 
 <pre class="pre-scrollable">
@@ -153,11 +158,27 @@ terminologyRootDir=D:\\NACHC\\Projects\\athena\\downloads\\vocabulary_download_v
 				This folder looks like this:
 				<br/>
 				<img src="./img/terminology-dir.JPG" />
+			<h3>Running the Application</h3>
 			<p>
+				The Instant OMOP Tool can be run from the Standalone application as shown below by entering the command shown below.  
+				The second screen shot shows what the application should look like when it has finished.  
+				As shown in the second screen shot, the process takes about 10 minutes.  
+<pre class="pre-scrollable">fhir-to-omop.bat i</pre>
+				<img src="./img/instant-omop-start.JPG" />
+				<br/>
+				<img src="./img/instant-omop-done.JPG" />
 			</p>
+			
+			<h3>Results</h3>
+			<p>
+				The results of running the application is the creation of all of the database object required for OMOP.  
+				This includes the OMOP schema, the DQD results database, an OMOP database user, etc.  
+				Before and after screen shots are shown below.  
+				<br/>
+				<img src="./img/sql-server-before.JPG" />
+				<img src="./img/sql-server-after.JPG" />
+			</p>			
+			
 		</div>
-		
-		
-		
 	</body>
 </html>

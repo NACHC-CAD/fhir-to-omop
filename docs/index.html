@@ -17,11 +17,20 @@
 			
 			<!-- contents of splash page --> 
 			<h1>NACHC fhir-to-omop: Tools and utilities for FHIR and OMOP</h1>
-			Welcome to the NACHC fhir-to-omop documentation.  This is currently a work in progress.  Please let us know if you have any questions, issues, or haikus you would like to share with us.
-			The best way to get in touch with us is to <a target="issues" href="https://github.com/NACHC-CAD/fhir-to-omop/issues">open a github issue</a> for this project.  
-			<br/>
-			We also try to attend the OHDSI Weekly meeting and we try to follow the <a target="forum" href="https://forums.ohdsi.org/c/implementers">OHDSI Developers Forum</a>.
-			
+			<p>
+				Welcome to the NACHC fhir-to-omop documentation.  This is currently a work in progress.  Please let us know if you have any questions, issues, or haikus you would like to share with us.
+				The best way to get in touch with us is to <a target="issues" href="https://github.com/NACHC-CAD/fhir-to-omop/issues">open a github issue</a> for this project.  
+				We also try to attend the OHDSI Weekly meeting and we try to follow the <a target="forum" href="https://forums.ohdsi.org/c/implementers">OHDSI Developers Forum</a>.
+			</p>
+			<p>
+				The tools presented here use a file based solution to transform FHIR data to OMOP.  
+				We download files from our FHIR Patient Server and then use those files to write the data to an OMOP CDM database instance.  
+				The tools and utilities used here could also be used to create a complete passthrough appllication 
+				that writes FHIR resources from a sever directly to an OMOP database without creating any files as part of the process.  
+				The file base solution was selected here as we had a strong motivation to keep the files for testing, 
+				working off line, validation, etc.  
+			</p>
+
 			<h2>Everything you need to:</h2>
 			<h3>
 				- <a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/tools/instant-omop/InstantOmop.html">Build Your OMOP CDM Database</a><br/>
