@@ -12,7 +12,7 @@ set workingDir=%CD%
 
 echo Working Directory: %workingDir%
 
-java -jar fhir-to-omop.jar %1 %2
+java -jar -Xms1g -Xmx8g fhir-to-omop.jar %1 %2
 
 echo.
 echo.

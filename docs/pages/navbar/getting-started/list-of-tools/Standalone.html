@@ -20,8 +20,94 @@
 			The NACHC fhir-to-omop Standalone Application is a Java application that can be run as an application 
 			thereby avoiding most of the dependencies listed in the 
 			<a href="../start-here/StartHere.html">Installing and First Steps</a> page.
-			 
-			
+
+			<h3>
+				Everything you need to:<br/>
+				- <a href="#build">Build Your OMOP CDM Database</a><br/>
+				- <a href="#get-ids">Get the IDs of the Patients on Your FHIR Server</a><br/>
+				- <a href="#download-fhir">Download Patients from Your FHIR Server</a><br/>
+				- <a href="#upload-omop">Upload Your FHIR Patients into Your OMOP CDM Database</a><br/>
+			</h3>
+			<br/>
+			<div align="center">
+				<img src="./img/fhir-to-omop-0.0.16.JPG" />
+			</div>
+			<br/>
+			<img class="bordered" src="./img/done.JPG" />
+			<br/><br/>
+			<h2>How to Get NACHC fhir-to-omop Standalone Application</h2>
+			<p>
+				The NACHC fhir-to-omop is packaged as a zip file with each release.  
+				The latest version can be downloaded by going to the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">releases</a> page 
+				and clicking on the link for the fhir-to-omop zip file link for the latest release.  
+				(you will probably need to expand the drop-down for the Assets)
+			</p>
+			<img src="./img/releases.jpg" />
+			<h2>Contents of the zip file</h2>
+			<p>
+				After you've downloaded the zip, unzip the file.  
+				The zip file contains the following:
+				<ul>
+					<li><b>lib:</b> A folder containing all of the dependencies for the application</li>
+					<li>
+						<b>app.properties:</b> 
+						The app.properties file that has all of the configuration information for the application. 
+						The version of the file provided here includes everything required to create a default instnace 
+						except for the connection information for the FHIR server will use to get patients.  
+					</li>
+					<li><b>fhir-to-omop.bat:</b> A bat file that calls the Java code. This is the bat file you will call to access the application.  </li>
+					<li><b>fhir-to-omop.jar</b> The jar file that contains the fhir-to-omop Java classes.  </li>
+				</ul>
+			</p>
+			<img src="./img/dir.JPG" />
+			<h2>Using the Application</h2>
+			<p>
+				The application is called by calling the bat file using the parameter for the desired action.  
+				The download ids call allows for a second parameter that will limit the number of patient IDs downloaded by the application.  
+				Each call has a long version of the parameter and a short version.  
+				All of the function of the application can be seen by simply calling the bat file without any parameters.  
+				<ul>
+					<li>
+						<b>fhir-to-omop.bat</b>
+						<br/> 
+						Help
+						<br/> 
+						Display a help page that shows the available functionality.  
+					</li>
+					<li>
+						<b>fhir-to-omop.bat i</b>
+						<br/>
+						Build Your OMOP CDM Database
+						<br/> 
+						Instant OMOP. Create an instance of the OMOP CDM.
+					</li>
+					<li>
+						<b>fhir-to-omop.bat ids</b> 
+						<br/>
+						Get the IDs of the Patients on Your FHIR Server
+						<br/>
+						Patient IDs will be stored in files in the folder specified in the app.properties file.  
+					</li>
+					<li>
+						<b>fhir-to-omop.bat d</b> 
+						<br/>
+						Download Patients from Your FHIR Server
+						<br/>
+						Download FHIR patients using the IDs created in the previous step.  
+						Patient data will be written to the directory specified in the app.properties file.  
+						Each patient will be represented as a directory containing the Patient[id]/$everything resources as a set of files.  
+					</li>
+					<li>
+						<b>fhir-to-omop.bat u</b>
+						<br/>
+						Upload Your FHIR Patitents into Your OMOP CDM Database
+						<br/>
+						Patient FHIR data will be converted to OMOP CDM data and written to the database.  
+						This includes all code lookups, mappings, key generation, etc.   
+					</li>
+				</ul>
+			</p>
 		</div>
 	</body>
 
