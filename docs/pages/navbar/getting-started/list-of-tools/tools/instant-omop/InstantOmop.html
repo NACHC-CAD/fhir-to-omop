@@ -17,7 +17,119 @@
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
 
+			<!-- INSTANT OMOP -->
 			<h1>Build Your OMOP CDM Database</h1>
+	
+			<!-- 
+			*
+			* INTRODUCTION
+			*
+			* -->
+	
+			<p>
+				The 
+				<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/build/CreateOmopInstanceTool.java">CreateOmopInstanceTool</a> class 
+				will build a complete OMOP CDM database that is ready to receive data and get plugged into OHDSI tools. 
+				This tool will 
+				<ul>
+					<li>Drop the OMOP Database to be created if it exists</li>
+					<li>Create the OMOP database instance using the CDM 5.4 scripts</li>
+					<li>Create the OMOP DQD results database instance</li>
+					<li>Create an OMOP Database user</li>
+					<li>Create tables used for mappings</li>
+					<li>Create a cdm_source record (this is used by the Data Quality Dashboard)</li>
+					<li>Create the sequences used to generate the primary keys when FHIR resources are imported</li>
+					<li>Load all of the terminology tables (e.g. concept)</li>
+					<li>Create indexes used during the data loading process</li>
+				</ul> 
+				The following prerequisites must be met before this tool can be run.  
+				<ul>
+					<li>A running instance of Microsoft Sql Server</li>
+					<li>
+						A folder containing the files that define the vocabularies to be used for the instance downloaded from 
+						<a href="https://athena.ohdsi.org">Athena</a>
+					</li>
+					<li>
+						Correct settings in the app.properties file. 
+						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/resources/main/example-params/app.properties">app.properties</a>  
+						file provided with the distribution has everything required for a default build 
+						except for the location of your Athena vocabularies files 
+						and the settings for your MS Sql Server database.  
+					</li>
+					<li>
+						Java: This application was developed and tested using Java 1.8.0
+					</li>
+				</ul>
+				
+				This tool can be run using the 
+				<a target="_blank" href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/build/CreateOmopInstanceTool.java">CreateOmopInstanceTool</a> class 
+				directly.  This class has a main method that will create the database, user, etc. based on the parameters in the app.properties file.  
+			</p>							
+			<p>
+				<a id="get-ids"></a>
+				This tool can be run from the <a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Standalone Application</a> using the "instant-omop" or "i" option:
+				<br/>
+				fhir-to-omop instant-omop
+				<br/>
+				fhir-to-omop i
+			</p>
+	
+			<!-- 
+			*
+			* PREREQUISITES
+			*
+			* -->
+	
+			<h2>Prerequisites</h2>
+			Before running the Instant OMOP tool you will need the following 
+			(for details about versions, see the <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/StartHere.html">Start Here</a> page.)
+			<ul>
+				<li>An app.properties file that correctly points to your database</li>
+				<li>A running instance of Microsoft Sql Server you can connect to</li>
+				<li>Terminology data files from <a href="https://athena.ohdsi.org">Athena</a>
+				<li>Java</li>
+			</ul>
+	
+			<h3>The app.properties file</h3>
+			The following shows the settings in the app.properties file used for this example.  	
+			<br/>		
+
+<pre class="pre-scrollable">
+# ---
+# DATABASE INSTANCE
+# ---
+
+bootstrapUrl=jdbc:sqlserver://localhost;databaseName=master;integratedSecurity=true;encrypt=false
+url=jdbc:sqlserver://localhost:1433;encrypt=false
+
+syntheaDb=synthea_micro.dbo
+uid=synthea_micro
+pwd=sneaker
+
+# ---
+# 
+# VALUES USED TO CREATE CDM_SOURCE RECORD
+#   These values are used by the Data Quality Dashboard. Documented here:
+#
+#   https://nachc-cad.github.io/fhir-to-omop/pages/navbar/ohdsi-tools/dqd/DataQualityDashboard.html
+#   https://ohdsi.github.io/DataQualityDashboard/ 
+#
+# ---
+
+cdm_source_name=NACHC Test
+cdm_source_abbreviation=NACHC-TEST
+cdm_holder=johngresh@curlewconsulting.com
+source_description=Test database
+source_documentation_reference=https://github.com/NACHC-CAD/fhir-to-omop
+cdm_etl_reference=N/A 
+source_release_date=2021-12-01
+cdm_release_date=2021-12-01
+cdm_version=5.4
+vocabulary_version=v5.0 04-FEB-22
+cdm_version_concept_id=756265
+
+</pre>
+			
 		</div>
 	</body>
 </html>
