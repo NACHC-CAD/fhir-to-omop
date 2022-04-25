@@ -34,6 +34,7 @@ public class WriteFhirPatientToFile {
 			boolean success = false;
 			int numberOfTries = 0;
 			while (success == false && numberOfTries < RETRY_MAX) {
+				numberOfTries++;
 				fetcher = new FhirPatientEverythingFetcher();
 				json = fetcher.fetchEverything(patientId);
 				statusCode = fetcher.getStatusCode();
@@ -70,6 +71,7 @@ public class WriteFhirPatientToFile {
 				boolean success = false;
 				int numberOfTries = 0;
 				while (success == false && numberOfTries < RETRY_MAX) {
+					numberOfTries++;
 					fetcher = new FhirPatientEverythingNextFetcher();
 					json = fetcher.fetchNext(patientId);
 					statusCode = fetcher.getStatusCode();

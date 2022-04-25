@@ -51,7 +51,10 @@ public class DownloadPatientsWorker {
 		// echo status
 		log.info("Getting " + this.patientsPerThread + " patients per thread");
 		log.info("Got " + patientIdList.size() + " patientIds (showing first 10)");
-		for (int i = 0; i < 10 || i >= patientIdList.size(); i++) {
+		for (int i = 0; i < 10 || i >= patientIdList.size() - 1; i++) {
+			if(i >= patientIdList.size() - 1) {
+				break;
+			}
 			log.info("\t" + patientIdList.get(i));
 		}
 		// make a new thread for each set patients

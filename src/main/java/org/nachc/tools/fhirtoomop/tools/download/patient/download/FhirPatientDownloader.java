@@ -64,9 +64,11 @@ public class FhirPatientDownloader {
 	public static synchronized void done(DownloadPatientsWorker worker) {
 		log.info("REMOVING GETTER");
 		active.remove(worker);
+		log.info("------------------------------");
 		log.info("GETTER REMOVED");
 		log.info("Active:  " + active.size());
 		log.info("Waiting: " + waiting.size());
+		log.info("------------------------------");
 	}
 
 }
