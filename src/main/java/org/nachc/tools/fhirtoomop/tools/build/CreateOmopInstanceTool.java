@@ -39,8 +39,8 @@ public class CreateOmopInstanceTool {
 
 	public static void createOmopInstance() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		Timer timer = new Timer();
 		try {
-			Timer timer = new Timer();
 			timer.start();
 			// delete the existing instance
 			logMsg("BURNING EVERYTHING TO THE GROUND");
@@ -72,9 +72,6 @@ public class CreateOmopInstanceTool {
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");
-			log.info("start:   " + timer.getStartAsString());
-			log.info("stop:    " + timer.getStopAsString());
-			log.info("elapsed: " + timer.getElapsedString());
 		} finally {
 			log.info("Closing database connection...");
 			Database.close(conn);
@@ -91,7 +88,11 @@ public class CreateOmopInstanceTool {
 		msg += "\nDatbase:\t" + dbName;
 		msg += "\nUsername:\t" + uid;
 		msg += "\nPassword\t" + pwd;
-		msg += "\nYour welcome :)";
+		msg += "\nHave a great odyssey :)";
+		msg += "\n---------------";
+		log.info("start:   " + timer.getStartAsString());
+		log.info("stop:    " + timer.getStopAsString());
+		log.info("elapsed: " + timer.getElapsedString());
 		msg += "\n---------------";
 		msg += "\n\n\n";
 		log.info(msg);

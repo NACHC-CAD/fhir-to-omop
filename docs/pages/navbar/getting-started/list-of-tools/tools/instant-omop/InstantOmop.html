@@ -128,8 +128,36 @@ cdm_version=5.4
 vocabulary_version=v5.0 04-FEB-22
 cdm_version_concept_id=756265
 
+
+# ---
+# TERMINOLOGY STUFF
+# ---
+
+# dir where you downloaded your terminology files
+terminologyRootDir=D:\\NACHC\\Projects\\athena\\downloads\\vocabulary_download_v5_{8c94604f-71b9-47ea-aef2-04be2a7d52b1}_1646823567698\\
+
 </pre>
-			
+			<p>
+				<h3>Terminology Files from Athena</h3>
+				In order to get your terminology files you will need an Athena login.  
+				If you do not have one, instructions for getting one are <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetAthenaLogin.html">here</a>. 
+				Instructions for creating and downloading terminology files from Athena are <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/DownloadTerminology.html">here</a>. 
+			</p>
+			<p>
+				Note that the terminologyRootDir in the above app.properties segment is:
+				<pre>D:\\NACHC\\Projects\\athena\\downloads\\vocabulary_download_v5_{8c94604f-71b9-47ea-aef2-04be2a7d52b1}_1646823567698\\</pre>
+				Note the double backslashes to escape the "\" character.  
+				Note that the string ends with "\\".  
+				This is the directory where the files from Athena are located for this example.  
+			</p>
+				This folder looks like this:
+				<br/>
+				<img src="./img/terminology-dir.JPG" />
+			<p>
+			</p>
 		</div>
+		
+		
+		
 	</body>
 </html>
