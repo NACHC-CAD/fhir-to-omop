@@ -15,9 +15,9 @@
 # ---
 
 # local files
-pathToDriver <- "C:\\test\\jar\\sqlserver-jar"  # location of the mssql-jdbc-10.2.0.jre8.jar
-outputFolder <- "C:\\test\\ohdsi\\dqd"          # location where output file will be written
-outputFile <- "results.json"                    # file for results json
+pathToDriver <- "D:\\NACHC\\SYNTHEA\\DQD\\resources\\jar\\sqlserver-jar"  # location of the mssql-jdbc-10.2.0.jre8.jar
+outputFolder <- "D:\\NACHC\\SYNTHEA\\DQD\\output"                         # location where output file will be written
+outputFile <- "results.json"                                              # file for results json
 
 # database connectivity
 dbms <- "sql server"
