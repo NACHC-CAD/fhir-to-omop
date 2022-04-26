@@ -1,0 +1,133 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<!-- UPLOAD TO OMOP -->
+			<h1>Upload Your FHIR Patients into Your OMOP CDM Database</h1>		
+			<p>
+				The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/populate/PopulateOmopInstanceFromFhirFiles.java">PopulateOmopInstanceFromFhirFiles</a> tool 
+				can be used to populate an OMOP instance from a set of files representing FHIR patients.  
+				This tool is configured in the app.properties file.  
+				This tool will scan a root directory.  
+				Each directory in the root directory represents a patient.  
+				All of the files in that directory are Patient/[id]/$everything resources.  
+				Each Patient/[id]/$everything file is read.  
+				The set of files are parsed into a single 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/OmopPerson.java">OmopPerson</a> object.  
+				The OmopPerson object is composed of Data Value Objects (DVOs) that are exact 1:1 mappings to the OMOP CDM.  
+				The OmopPerson object is then written to the OMOP CDM Database.  
+			</p>
+			<p>
+				The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/populate/PopulateOmopInstanceFromFhirFiles.java">PopulateOmopInstanceFromFhirFiles</a> tool 
+				has a main method and can be called directly.  
+			</p>						
+			<p>
+				This tool can be run from the <a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Standalone Application</a> using the "download" or "d" option:
+				<br/>
+				fhir-to-omop upload
+				<br/>
+				fhir-to-omop u
+			<p>
+			
+			<h2>Prerequisites</h2>
+			Before running the upload tool you will need the following
+			<ul>
+				<li>An app.properties file with the information described below</li>
+				<li>
+					A running instance of Microsoft Sql Server you are able to connect to that has been initialized using the fhir-to-omop 
+					<a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/tools/instant-omop/InstantOmop.html">Instant OMOP Tool</a>
+				</li>
+				<li>
+					A set of FHIR Patients in the format created by the fhir-to-omop 
+					<a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/tools/download-patients/DownloadPatients.html">Download Tool</a>
+				</li>
+				<li>Java</li>
+			</ul>
+			
+			
+			<h3>The app.properties File</h3>
+			The following shows the settings in the app.properties file used for this example.  	
+			A complete app.properties file can be downloaded from <a download href="/fhir-to-omop/app.properties">here</a>. 
+			<br/>		
+
+<pre class="pre-scrollable">
+
+# ---
+# UPLOAD STUFF
+# ---
+
+# dir where your fhir patients live (this will be used to populate your omop instance
+downloadOutputDir=D:\\NACHC\\SYNTHEA\\TEST\\patients-test
+maxNumberOfWorkersForUpload=20
+maxNumberOfThreadsForUpload=20
+maxNumberOfConnectionsForUpload=20
+conceptCacheSize=1000000
+
+</pre>
+			
+			<p>
+				These parameters are used as follows
+				<ul>
+					<li>
+						<b>downloadOutputDir</b><br/>
+						This is the directory where the FHIR Patient/[ID]/$everything files live
+					</li>
+					<li>
+						<b>maxNumberOfWorkersForUpload</b><br/>
+						The upload tool uses a constant number of workers to maintain a constant rate of activity.  
+						Each worker has a number of threads.  
+						Each thread uploads a single patient.  
+					</li>
+					<li>
+						<b>maxNumberOfThreadsForUpload</b><br/>
+						The number of threads to assign to each worker. 
+						Each thread will upload a single patient.  
+					</li>
+					<li>
+						<b>conceptCacheSize</b><br/>
+						The upload tool maps the concepts provided by the FHIR resource to OMOP concepts.  
+						The FHIR system and code values are used to get a concept, and the (OMOP) concept.concept_id is used to populate the OMOP records.  
+						This variable limits the size of that cache.  
+					</li>
+				</ul>
+			</p>
+
+			<h2>Running the Application</h2>
+
+			<p>
+				The Upload Tool can be run from the Standalone application as shown below by entering the command shown below.  
+				The second screen shot shows what the application should look like when it has finished. 
+				<pre class="pre-scrollable">fhir-to-omop.bat u</pre>
+				<img src="./img/upload-before.JPG" />
+				<br/>
+				<img src="./img/upload-after.JPG" />
+			</p>
+			
+			<h2>Results</h2>
+			<p>
+				Congratulations! Your OMOP instance should now be populated with your FHIR Patients.  
+				You should be able to browse the OMOP database and use the OHDSI tools to browse, analyze, and otherwise use your data.  
+			</p>
+			<img src="./img/person.JPG" />
+			<br/>
+			<img src="./img/visit.JPG" />
+			<br/>
+			<img src="./img/observation.JPG" />
+		</div>
+	</body>
+
+</html>
