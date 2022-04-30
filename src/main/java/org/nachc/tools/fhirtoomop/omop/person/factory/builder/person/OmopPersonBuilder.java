@@ -36,7 +36,6 @@ public class OmopPersonBuilder {
 		dvo.setPersonId(personId);
 		// person_source_value
 		dvo.setPersonSourceValue(patient.getId());
-		//
 		// mappings
 		mapRace(patient, dvo, conn);
 		mapEthnicity(patient, dvo, conn);

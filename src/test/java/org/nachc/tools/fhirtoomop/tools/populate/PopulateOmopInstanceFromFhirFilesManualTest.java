@@ -28,7 +28,7 @@ public class PopulateOmopInstanceFromFhirFilesManualTest {
 				if(cnt % 10000 == 0) {
 					log.info(cnt + "");
 				}
-				if(cnt % 100000 == 0) {
+				if(cnt % 10000 == 0) {
 					break;
 				}
 			}

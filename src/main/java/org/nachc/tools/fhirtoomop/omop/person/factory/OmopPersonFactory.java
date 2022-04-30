@@ -20,6 +20,7 @@ public class OmopPersonFactory {
 	public OmopPerson build(FhirPatient fhirPatient, Connection conn) {
 		OmopPerson rtn = new OmopPerson();
 		new OmopPersonBuilder(fhirPatient, rtn, conn).build();
+/*
 		new OmopVisitOccurrenceBuilder(fhirPatient, rtn, conn).build();
 		new OmopConditionOccurrenceBuilder(fhirPatient, rtn, conn).build();
 		new OmopDrugExposureBuilder(fhirPatient, rtn, conn).build();
@@ -29,6 +30,7 @@ public class OmopPersonFactory {
 		// post processing
 		new MeasurementPostProcessor(rtn, conn).build();
 		new ObservationPostProcessor(rtn, conn).build();
+*/
 		return rtn;
 	}
 
