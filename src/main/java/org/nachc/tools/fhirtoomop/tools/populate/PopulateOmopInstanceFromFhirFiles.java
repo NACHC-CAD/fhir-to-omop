@@ -29,7 +29,6 @@ public class PopulateOmopInstanceFromFhirFiles {
 	public void exec() {
 		String rootDir = AppParams.getFhirPatientsDirName();
 		log.info("Root Dir: " + rootDir);
-//		List<String> fileList = FileUtil.listResources(rootDir, PopulateOmopInstanceFromFhirFiles.class);
 		List<String> fileList = getFiles();
 		exec(fileList);
 	}

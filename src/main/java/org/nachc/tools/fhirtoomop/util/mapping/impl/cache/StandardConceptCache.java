@@ -44,7 +44,9 @@ public class StandardConceptCache {
 			throw new RuntimeException(exp);
 		} finally {
 			try {
-				rs.close();
+				if(rs != null) {
+					rs.close();
+				}
 			} catch (Exception exp) {
 				throw new RuntimeException(exp);
 			}

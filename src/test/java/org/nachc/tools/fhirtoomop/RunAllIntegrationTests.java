@@ -1,13 +1,18 @@
 package org.nachc.tools.fhirtoomop;
 
+import java.sql.Connection;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
 import org.yaorma.util.time.Timer;
 
 import com.googlecode.junittoolbox.SuiteClasses;
@@ -31,6 +36,13 @@ public class RunAllIntegrationTests {
 		log.info("Truncating tables...");
 		TruncateAllDataTables.exec();
 		log.info("Done truncating tables.");
+		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		try {
+			MappedConceptCache.init(conn);
+			StandardConceptCache.init(conn);
+		} finally {
+			OmopDatabaseConnectionFactory.close(conn);
+		}
 		log.info("***********************************************************");
 		log.info("Done with set up");
 		log.info("***********************************************************");
