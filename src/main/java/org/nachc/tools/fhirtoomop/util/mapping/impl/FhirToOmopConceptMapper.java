@@ -7,6 +7,7 @@ import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
@@ -41,6 +42,11 @@ public class FhirToOmopConceptMapper {
 			// look for concept in standard concept cacche
 			String omopVocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
 			dvo = StandardConceptCache.get(omopVocabularyId, code);
+			if(dvo != null) {
+				return dvo;
+			}
+			// look for concept in mapped concept cache
+			dvo = MappedConceptCache.get(omopVocabularyId, code);
 			if(dvo != null) {
 				return dvo;
 			}

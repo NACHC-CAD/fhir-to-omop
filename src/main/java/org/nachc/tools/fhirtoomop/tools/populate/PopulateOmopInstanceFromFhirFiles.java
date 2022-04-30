@@ -9,6 +9,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -53,8 +54,11 @@ public class PopulateOmopInstanceFromFhirFiles {
 		int numberOfPatients = 0;
 		WriteOmopPeopleToDatabase writer;
 		try {
+			log.info("CREATING MAPPED CONCEPT CACHCE...");
+			MappedConceptCache.init(connList.get(0));
 			log.info("CREATING STANDARD CONCEPT CACHCE...");
 			StandardConceptCache.init(connList.get(0));
+			log.info("Creating writer");
 			writer = new WriteOmopPeopleToDatabase(fileList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);
 			writer.exec();
 			numberOfPatients = Database.count("person", connList.get(0));

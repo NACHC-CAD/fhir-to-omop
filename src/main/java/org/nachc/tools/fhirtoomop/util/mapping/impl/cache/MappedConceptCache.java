@@ -11,18 +11,18 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class StandardConceptCache {
+public class MappedConceptCache {
 
 	private static HashMap<CacheKey, ConceptDvo> concepts;
 
 	public static void init(Connection conn) {
 		ResultSet rs = null;
 		try {
-			log.info("CREATING STANDARD CONCEPT CACHE...");
+			log.info("CREATING MAPPED CONCEPT CACHE...");
 			if (concepts == null) {
-				concepts =  new HashMap<CacheKey, ConceptDvo>();
+				concepts = new HashMap<CacheKey, ConceptDvo>();
 				log.info("Querying database...");
-				String sqlString = "select * from concept where standard_concept = 'S' and vocabulary_id in('SNOMED', 'RxNorm', 'LOINC', 'UCUM')";
+				String sqlString = getSqlString();
 				rs = Database.executeQuery(sqlString, conn);
 				log.info("Creating cache...");
 				int cnt = 0;
@@ -32,7 +32,7 @@ public class StandardConceptCache {
 					Dao.load(dvo, rs);
 					CacheKey key = new CacheKey(dvo.getVocabularyId(), dvo.getConceptCode());
 					concepts.put(key, dvo);
-					if(cnt % 100000 == 0) {
+					if (cnt % 100000 == 0) {
 						log.info("Got " + cnt + " concepts");
 					}
 				}
@@ -40,7 +40,7 @@ public class StandardConceptCache {
 			} else {
 				log.info("Concept cache has already been initialted: (" + concepts.size() + ") standard concepts.");
 			}
-		} catch(Exception exp) {
+		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		} finally {
 			try {
@@ -51,6 +51,21 @@ public class StandardConceptCache {
 		}
 	}
 
+	private static String getSqlString() {
+		String sqlString = "";
+		sqlString += "select \n";
+		sqlString += "  con2.* \n";
+		sqlString += "from \n";
+		sqlString += "  concept_relationship rel \n";
+		sqlString += "    join concept con1 on con1.concept_id = rel.concept_id_1 \n";
+		sqlString += "    join concept con2 on con2.concept_id = rel.concept_id_2 \n";
+		sqlString += "where 1=1 \n";
+		sqlString += "  and relationship_id = 'Maps to' \n";
+		sqlString += "  and con2.standard_concept = 'S' \n";
+		sqlString += "  and con1.vocabulary_id in('SNOMED', 'RxNorm', 'LOINC', 'UCUM')";
+		return sqlString;
+	}
+	
 	public static ConceptDvo get(String omopVocabularyId, String code) {
 		CacheKey key = new CacheKey(omopVocabularyId, code);
 		ConceptDvo rtn = concepts.get(key);

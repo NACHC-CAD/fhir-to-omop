@@ -23,12 +23,12 @@ public class OmopPersonFactory {
 		new OmopVisitOccurrenceBuilder(fhirPatient, rtn, conn).build();
 		new OmopConditionOccurrenceBuilder(fhirPatient, rtn, conn).build();
 		new OmopDrugExposureBuilder(fhirPatient, rtn, conn).build();
-//		new OmopObservationBuilder(fhirPatient, rtn, conn).build();
+		new OmopObservationBuilder(fhirPatient, rtn, conn).build();
 		new OmopProcedureBuilder(fhirPatient, rtn, conn).build();
 		new OmopFhirResourceBuilder(fhirPatient, rtn, conn).build();
 		// post processing
-//		new MeasurementPostProcessor(rtn, conn).build();
-//		new ObservationPostProcessor(rtn, conn).build();
+		new MeasurementPostProcessor(rtn, conn).build();
+		new ObservationPostProcessor(rtn, conn).build();
 		return rtn;
 	}
 
