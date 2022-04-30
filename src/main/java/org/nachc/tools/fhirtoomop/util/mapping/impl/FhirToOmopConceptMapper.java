@@ -176,9 +176,9 @@ public class FhirToOmopConceptMapper {
 		try {
 			log.info("Maybe adding a new concept...");
 			Database.update("begin transaction", conn);
-			int secsToSleep = 3;
-			log.info("Waiting " + secsToSleep + " seconds for existing threads to finish or get to this lock...");
-			TimeUtil.sleep(secsToSleep);
+//			int secsToSleep = 3;
+//			log.info("Waiting " + secsToSleep + " seconds for existing threads to finish or get to this lock...");
+//			TimeUtil.sleep(secsToSleep);
 			rtn = findExistingTempConcept(system, code, conn);
 			if (rtn == null) {
 				log.info("ADDING NEW CONCEPT: " + system + " (" + code + ")");
