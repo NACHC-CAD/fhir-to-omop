@@ -49,6 +49,12 @@
 			<version>0.0.14</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.nachc.cad.tools</groupId>
+			<artifactId>thread-tool</artifactId>
+			<version>0.0.2</version>
+		</dependency>
+
 		<!-- 
 		*
 		* BASIC TOOLS

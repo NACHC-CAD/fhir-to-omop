@@ -27,6 +27,8 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 	
 	private static final int patientsPerWorker = 10;
 	
+	private static final int numberOfThreadsPerWorker = 10;
+	
 	private static final int numberOfConnections = 10;
 	
 	@Test
@@ -37,7 +39,7 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 		try {
 			timer.start();
 			List<String> resources = FileUtil.listResources(DIR, getClass());
-			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, workers, patientsPerWorker);
+			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, workers, patientsPerWorker, numberOfThreadsPerWorker);
 			writer.exec();
 			timer.stop();
 		} finally {

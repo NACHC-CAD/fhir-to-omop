@@ -8,7 +8,6 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
 import org.nachc.tools.fhirtoomop.omop.write.singlepatient.WriteOmopPersonToDatabase;
-import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabaseWorker;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,26 +19,19 @@ public class WriteOmopPeopleToDatabaseRunnable implements Runnable {
 
 	private Connection conn;
 
-	private WriteOmopPeopleToDatabaseWorker worker;
-
-	public WriteOmopPeopleToDatabaseRunnable(WriteOmopPeopleToDatabaseWorker worker, FhirPatientResources resources, Connection conn) {
-		this.worker = worker;
+	public WriteOmopPeopleToDatabaseRunnable(FhirPatientResources resources, Connection conn) {
 		this.resources = resources;
 		this.conn = conn;
 	}
 
 	@Override
 	public void run() {
-		try {
-			FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
-			log.info("Done parsing file");
-			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
-			WriteOmopPersonToDatabase.exec(omopPerson, conn);
-			Database.commit(conn);
-			log.info("DONE WRITING PATIENT TO DATABASE");
-		} finally {
-			this.worker.done();
-		}
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
+		log.info("Done parsing file");
+		OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
+		WriteOmopPersonToDatabase.exec(omopPerson, conn);
+		Database.commit(conn);
+		log.info("DONE WRITING PATIENT TO DATABASE");
 	}
 
 }

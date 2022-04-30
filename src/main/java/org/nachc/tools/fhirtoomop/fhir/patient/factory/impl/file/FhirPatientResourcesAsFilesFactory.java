@@ -25,4 +25,10 @@ public class FhirPatientResourcesAsFilesFactory {
 		return rtn;
 	}
 
+	public static FhirPatientResources getForPatient(String dirName) {
+		List<String> fileList = FileUtil.listResources(dirName, FhirPatientResourcesAsFilesFactory.class);
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		return resources;
+	}
+	
 }

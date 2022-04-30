@@ -20,16 +20,20 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 	
 	private static final String DIR = "/test/fhir/test-sets/test-set-10";
 	
-	private int NUM_OF_CONNS = 4;
+	private int NUM_OF_WORKERS = 4;
 
-	private int MAX_PER_BATCH = 2;
+	private int NUM_PATIENTS = 2;
+	
+	private int NUM_THREADS = 2;
+
+	private int NUM_OF_CONNS = 2;
 	
 	@Test
 	public void shouldGetPatients() {
 		log.info("Starting tests...");
 		List<String> resources = FileUtil.listResources(DIR, getClass());
 		List<Connection> conns = getConnections();
-		WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_CONNS, MAX_PER_BATCH);
+		WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_WORKERS, NUM_PATIENTS, NUM_THREADS);
 		writer.exec();
 		log.info("Done.");
 	}

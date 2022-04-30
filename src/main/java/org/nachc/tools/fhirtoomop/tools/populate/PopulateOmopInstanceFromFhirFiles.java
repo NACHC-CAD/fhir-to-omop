@@ -36,11 +36,12 @@ public class PopulateOmopInstanceFromFhirFiles {
 		TruncateAllDataTables.exec();
 		log.info("Populating OMOP instance from files...");
 		int maxConns = AppParams.getMaxNumberOfConnectionsForUpload();
-		int maxThreads = AppParams.getMaxNumberOfThreadsForUpload();
-		int maxWorkers = AppParams.getMaxNumberOfWorkersForUpload();
+		int numberOfThreadsPerWorker = AppParams.getMaxNumberOfThreadsForUpload();
+		int numberOfPatientsPerWorker = numberOfThreadsPerWorker;
+		int numberOfWorkers = AppParams.getMaxNumberOfWorkersForUpload();
 		log.info("maxConns: " + maxConns);
-		log.info("maxThreads: " + maxThreads);
-		log.info("maxWorkers: " + maxWorkers);
+		log.info("maxThreads: " + numberOfThreadsPerWorker);
+		log.info("maxWorkers: " + numberOfWorkers);
 		log.info("Getting all files (this can take a couple of minutes).");
 		log.info("(last updated 2022-04-23 -- Using Executors)");
 		List<Connection> connList = getConnections(maxConns);
@@ -51,7 +52,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		int numberOfPatients = 0;
 		WriteOmopPeopleToDatabase writer;
 		try {
-			writer = new WriteOmopPeopleToDatabase(fileList, connList, maxWorkers, maxThreads);
+			writer = new WriteOmopPeopleToDatabase(fileList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);
 			writer.exec();
 			numberOfPatients = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + numberOfPatients + " patients");
