@@ -256,7 +256,6 @@ public class OmopObservationBuilder {
 		if (unitsSystem == null || unitsCode == null) {
 			ConceptDvo unitsConceptDvo = new ConceptDvo();
 			unitsConceptDvo.setConceptId(0);
-			ConceptCache.ACTIVE_CACHE.add(unitsSystem, unitsCode, unitsConceptDvo);
 			return unitsConceptDvo;
 		} else {
 			ConceptDvo unitsConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(unitsSystem, unitsCode, conn);

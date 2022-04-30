@@ -20,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FhirToOmopConceptMapper {
 
+	private static Object lock = new Object();
+
 	//
 	// passthrough method
 	//
@@ -35,48 +37,50 @@ public class FhirToOmopConceptMapper {
 	}
 
 	public static ConceptDvo getOmopConceptForFhirCoding(String system, String code, Connection conn) {
-		if (system == null || code == null) {
-			return null;
-		} else {
-			ConceptDvo dvo = null;
-			// look for concept in standard concept cacche
-			String omopVocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
-			dvo = StandardConceptCache.get(omopVocabularyId, code);
-			if(dvo != null) {
-				return dvo;
+		synchronized (lock) {
+			if (system == null || code == null) {
+				return null;
+			} else {
+				ConceptDvo dvo = null;
+				// look for concept in standard concept cacche
+				String omopVocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
+				dvo = StandardConceptCache.get(omopVocabularyId, code);
+				if (dvo != null) {
+					return dvo;
+				}
+				// look for concept in mapped concept cache
+				dvo = MappedConceptCache.get(omopVocabularyId, code);
+				if (dvo != null) {
+					return dvo;
+				}
+				// look for concept in cache
+				dvo = ConceptCache.ACTIVE_CACHE.get(system, code);
+				if (dvo != null) {
+					return dvo;
+				}
+				// look for a standard concept
+				dvo = getStandardConcept(system, code, conn);
+				if (dvo != null) {
+					ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
+					return dvo;
+				}
+				// look for a mapping to a standard concept
+				dvo = getStandardConceptFromMapping(system, code, conn);
+				if (dvo != null) {
+					ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
+					return dvo;
+				}
+				// look for a non-standard concept
+				dvo = getNonStandardConcept(system, code, conn);
+				if (dvo != null) {
+					ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
+					return dvo;
+				}
+				// create a new concept with id > 1B
+				ConceptDvo newConceptDvo = addTempConcept(system, code, conn);
+				ConceptCache.ACTIVE_CACHE.add(system, code, newConceptDvo);
+				return newConceptDvo;
 			}
-			// look for concept in mapped concept cache
-			dvo = MappedConceptCache.get(omopVocabularyId, code);
-			if(dvo != null) {
-				return dvo;
-			}
-			// look for concept in cache
-			dvo = ConceptCache.ACTIVE_CACHE.get(system, code);
-			if (dvo != null) {
-				return dvo;
-			}
-			// look for a standard concept
-			dvo = getStandardConcept(system, code, conn);
-			if (dvo != null) {
-				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
-				return dvo;
-			}
-			// look for a mapping to a standard concept
-			dvo = getStandardConceptFromMapping(system, code, conn);
-			if (dvo != null) {
-				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
-				return dvo;
-			}
-			// look for a non-standard concept
-			dvo = getNonStandardConcept(system, code, conn);
-			if (dvo != null) {
-				ConceptCache.ACTIVE_CACHE.add(system, code, dvo);
-				return dvo;
-			}
-			// create a new concept with id > 1B
-			ConceptDvo newConceptDvo = addTempConcept(system, code, conn);
-			ConceptCache.ACTIVE_CACHE.add(system, code, newConceptDvo);
-			return newConceptDvo;
 		}
 	}
 
