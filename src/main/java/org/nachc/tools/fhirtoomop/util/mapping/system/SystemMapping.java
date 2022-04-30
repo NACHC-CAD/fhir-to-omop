@@ -1,5 +1,8 @@
 package org.nachc.tools.fhirtoomop.util.mapping.system;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,6 +29,15 @@ public class SystemMapping {
 			}
 			return system;
 		}
+	}
+	
+	public static List<String> getVocabularyIdList() {
+		ArrayList<String> rtn = new ArrayList<String>();
+		rtn.add("SNOMED");
+		rtn.add("RxNorm");
+		rtn.add("LOINC");
+		rtn.add("UCUM");
+		return rtn;
 	}
 
 }

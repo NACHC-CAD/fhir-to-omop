@@ -22,7 +22,7 @@ public class StandardConceptCache {
 			if (concepts == null) {
 				concepts =  new HashMap<CacheKey, ConceptDvo>();
 				log.info("Querying database...");
-				String sqlString = "select * from concept where standard_concept = 'S'";
+				String sqlString = "select * from concept where standard_concept = 'S' and vocabulary_id in('SNOMED', 'RxNorm', 'LOINC', 'UCUM')";
 				rs = Database.executeQuery(sqlString, conn);
 				log.info("Creating cache...");
 				int cnt = 0;
@@ -49,6 +49,12 @@ public class StandardConceptCache {
 				throw new RuntimeException(exp);
 			}
 		}
+	}
+
+	public static ConceptDvo get(String omopVocabularyId, String code) {
+		CacheKey key = new CacheKey(omopVocabularyId, code);
+		ConceptDvo rtn = concepts.get(key);
+		return rtn;
 	}
 
 }
