@@ -69,30 +69,39 @@ public class PopulateOmopInstanceFromFhirFiles {
 		log.info("Got " + fileList.size() + " patients.");
 		log.info("Got " + connList.size() + " connections.");
 		Timer timer = new Timer();
-		timer.start();
-		int numberOfPatients = 0;
+		int numberOfPatientsBefore = -1;
+		int numberOfPatientsAfter = -1;
 		WriteOmopPeopleToDatabase writer;
 		try {
+			numberOfPatientsBefore = Database.count("person", connList.get(0));
 			log.info("CREATING MAPPED CONCEPT CACHCE...");
 			MappedConceptCache.init(connList.get(0));
 			log.info("CREATING STANDARD CONCEPT CACHCE...");
 			StandardConceptCache.init(connList.get(0));
 			log.info("Creating writer");
+			timer.start();
 			writer = new WriteOmopPeopleToDatabase(fileList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);
 			writer.exec();
-			numberOfPatients = Database.count("person", connList.get(0));
-			log.info("Doing updates for " + numberOfPatients + " patients");
+			numberOfPatientsAfter = Database.count("person", connList.get(0));
+			log.info("Doing updates for " + numberOfPatientsAfter + " patients");
 			updatePrevVisit();
 		} finally {
 			closeConnections(connList);
 			timer.stop();
+			log.info("***************************************************************");
+			log.info("! ! ! DONE WRITING PATIENTS TO DATABASE ! ! !");
 			log.info("------------");
-			log.info(timer.getStartAsString());
-			log.info(timer.getStopAsString());
-			log.info(timer.getElapsedString());
+			log.info("START:   " + timer.getStartAsString());
+			log.info("STOP:    " + timer.getStopAsString());
+			log.info("ELAPSED: " + timer.getElapsedString());
+			log.info("PATIENT COUNTS");
+			log.info("BEFORE:  " + numberOfPatientsBefore);
+			log.info("AFTER:   " + numberOfPatientsAfter);
 			log.info("------------");
+			log.info("! ! ! DONE WRITING PATIENTS TO DATABASE ! ! !");
+			log.info("***************************************************************");
 			log.info("");
-			log.info("Your OMOP database now has " + numberOfPatients + " patients.");
+			log.info("Your OMOP database now has " + numberOfPatientsAfter + " patients.");
 		}
 		log.info("Done populating from files.");
 	}
