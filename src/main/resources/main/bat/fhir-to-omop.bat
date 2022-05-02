@@ -19,4 +19,3 @@ echo.
 echo Done.
 echo.
 echo.
-git

@@ -39,6 +39,29 @@
 			The MS Sql Server JDBC Driver jar file can be downloaded directly from <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/mssql-jdbc-10.2.0.jre8.jar" download>here</a>, or from 
 			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/download-jdbc-driver.png" />             
 
+			<h1>Enable TCP/IP</h1>
+			<p>
+				Some (all/most?) installations of MS Sql Server do not enable TCP/IP connectivity by default.  
+				This needs to be configured manually.  
+				Do the following to activate TCP/IP connectivity for MS Sql Server.  
+			</p>
+			
+			<h3>Start Sql Server Configuration Manager</h3>
+			<img class="bordered" width="400px" src="./sqlserver/start-sql-server-config.JPG" />
+			
+			<h3>Enable TCP/IP</h3>
+			TCP/IP connectivity can be enabled in the SQl Server Configuration Manager as shown below.
+			<p>
+				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip.JPG" />
+			</p>
+			
+			<h3>Check TCP/IP Port</h3>
+			While we're here, we can check what port MS Sql Server is listening on (default is 1433).  
+			Right click on "TCP/IP Enabled" and select "Properties" to display the TCP/IP Properties window shown below.  
+			<p>
+				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip-show-port.JPG" />
+			</p>			
+			
 		</div>
 	</body>
 
