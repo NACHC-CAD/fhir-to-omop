@@ -1,0 +1,20 @@
+
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\synthea_1m_fhir_3_0_May_24.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_1_20170524T232103.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_2_20170525T073836.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_3_20170525T161555.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_4_20170526T004637.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_5_20170526T091439.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_6_20170526T173337.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_7_20170527T015508.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_8_20170527T102552.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_9_20170527T185007.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_10_20170528T030916.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_11_20170528T113605.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+tar -xvzf C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\output_12_20170528T195303.tar.gz -C C:\_WORKSPACES\_FHIR_TO_OMOP\_SERVERS\synthea\PROD\synthea_1m_fhir_3_0_May_24\extracted 
+
+
+
+
+
+

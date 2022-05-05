@@ -1,0 +1,71 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+			<div align="center">
+				<h1>
+					FHIR Servers Used in the Implementation and
+					<br/>
+					Testing of fhir-to-omop
+				</h1>
+			</div>
+
+			<table class="table">
+				
+				<!-- header -->
+				<tr>
+					<th>Server</th>
+					<th>Description</th>
+				</tr>
+
+				<tr>
+					<td>
+						<a href="https://synthea.mitre.org/">SyntheticMass</a>
+					</td>
+					<td>
+						<p>
+							SyntheticMass is a FHIR Patient Server that is provided by Miter.  
+							Information for this server is 
+							<a href="https://synthea.mitre.org/">here</a>.  
+							Synthiticmass is an amazing resource that was used throughout the development of fhir-to-omop.  
+						</p>
+						<p>
+							We were initailly able to download approximately 1 million records in a day.  
+							Since that time SyntheticMass has been throttled to limit users to 100 patients per day.  
+						</p>
+						<p>
+							Fortunately, the SyntheticMass project has made all of their patient data available as a single download.  
+							This download contains patients as FHIR resources, as well as all patients as CSV and C-CDA.  
+						</p>
+						<p>
+							The complete SynthicMass file can be downloaded from here:
+							<a download href="http://hdx.mitre.org/downloads/syntheticmass/synthea_1m_fhir_3_0_May_24.tar.gz">http://hdx.mitre.org/downloads/syntheticmass/synthea_1m_fhir_3_0_May_24.tar.gz</a>
+						</p>
+						<p>
+							The .bat file here can be used to extract the files. 
+							Rename the source and destination files.  
+							Rename the file to include a .bat extention to execute the file.  
+							<a download href="./synthea/extract-synthea.txt">extract-synthea.txt</a>.
+						</p>
+					</td>
+				</tr>
+
+			</table>
+
+
+		</div>
+	</body>
+</html>
