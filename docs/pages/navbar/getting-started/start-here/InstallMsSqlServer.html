@@ -61,10 +61,39 @@
 			<p>
 				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip-show-port.JPG" />
 			</p>			
-			
+
+			<h3>Enable Mixed Mode Authentication</h3>
+			<p>
+				By default, some installations of MS Sql Server have mixed mode authentication disabled.  
+				To authenticate using a username/password (i.e. not using Windows authentication), mixed mode authentication needs to be enabled.  
+				Enable mixed mode as shown below
+			</p>
+
+			<p>
+			</p>
+				Open Sql Server Management Studio (SSMS), select the server, then select Properties.  
+			<p>
+				<img src="./sqlserver/enable-mixed-mode/select-properties.jpg" />
+			</p>
+			<p>
+			</p>
+				<br/>
+				Select Security, then select the radio button for "SQL Server and Windows Authentication mode"
+			<p>
+				<img src="./sqlserver/enable-mixed-mode/set-security.jpg" />
+			</p>
+			<p>
+			</p>
+				<br/>
+				Restart Sql Server: Open the Windows Services utility and restart the Sql Server service.  
+			<p>
+				<img src="./sqlserver/enable-mixed-mode/restart.JPG" />
+			</p>
+
 		</div>
 	</body>
 
 </html>
+
 
 
