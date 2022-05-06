@@ -1,5 +1,7 @@
 package org.nachc.tools.fhirtoomop;
 
+import static org.junit.Assert.assertTrue;
+
 import java.sql.Connection;
 
 import org.junit.AfterClass;
@@ -71,6 +73,9 @@ public class RunAllIntegrationTests {
 		log.info("");
 		int patientCount = GetCountForTable.exec("person");
 		log.info("There are now " + patientCount + " patients in your OMOP database.");
+		int connCount = OmopDatabaseConnectionFactory.getConnectionCount();
+		log.info("Open connections after tear down: " + connCount);
+		assertTrue(connCount == 0);
 		log.info("");
 		log.info("Done.");
 	}

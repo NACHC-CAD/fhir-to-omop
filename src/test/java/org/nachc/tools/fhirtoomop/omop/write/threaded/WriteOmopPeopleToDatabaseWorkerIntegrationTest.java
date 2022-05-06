@@ -31,8 +31,12 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 		log.info("Starting tests...");
 		List<String> resources = FileUtil.listResources(DIR, getClass());
 		List<Connection> conns = getConnections();
-		WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_WORKERS, NUM_PATIENTS, NUM_THREADS);
-		writer.exec();
+		try {
+			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_WORKERS, NUM_PATIENTS, NUM_THREADS);
+			writer.exec();
+		} finally {
+			closeConnections(conns);
+		}
 		log.info("Done.");
 	}
 

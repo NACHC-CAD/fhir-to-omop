@@ -116,7 +116,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 
 	private void closeConnections(List<Connection> connList) {
 		for (Connection conn : connList) {
-			Database.close(conn);
+			OmopDatabaseConnectionFactory.close(conn);
 		}
 	}
 
