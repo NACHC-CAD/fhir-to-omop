@@ -21,7 +21,7 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 	private static final String DIR_PATH = "/test/fhir/test-sets/test-set-02";
 
 	@Test
-	public void shouldTwoWritePatientToDatabase() {
+	public void shouldWriteTwoPatientToDatabase() {
 		log.info("Starting test...");
 		List<String> dirList = FileUtil.listResources(DIR_PATH, getClass());
 		// get a connection

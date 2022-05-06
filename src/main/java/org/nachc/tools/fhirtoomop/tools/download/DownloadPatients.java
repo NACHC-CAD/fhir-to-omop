@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DownloadPatients {
 
-	private static String DIR_PATH = AppParams.getDownloadPatientIdDir();
+	private static String DIR_PATH = AppParams.getDownloadInputDir();
 
 	public static void main(String[] args) {
 		getPatients();

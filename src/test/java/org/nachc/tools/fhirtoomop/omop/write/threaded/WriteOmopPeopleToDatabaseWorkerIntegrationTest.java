@@ -16,9 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 
-//	private static final String DIR = "D:\\NACHC\\SYNTHEA\\TEST\\SYNTHEA_MICRO\\synthea-micro-patients";
-	
-	private static final String DIR = "/test/fhir/test-sets/test-set-10";
+	private static final String DIR = "/test/fhir/test-sets/test-set-02";
 	
 	private int NUM_OF_WORKERS = 4;
 

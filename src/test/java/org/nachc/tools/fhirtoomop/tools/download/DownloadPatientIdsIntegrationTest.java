@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DownloadPatientIdsIntegrationTest {
 
-	private static final int MAX_PATIENTS_TO_GET = 2500;
+	private static final int MAX_PATIENTS_TO_GET = 200;
 
 	@Test
 	public void shouldGetPatientIds() {

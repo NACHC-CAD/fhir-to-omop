@@ -143,7 +143,7 @@ public class AppParams {
 	// ---
 
 	public static File getFhirPatientIdDir() {
-		String dirName = AppParams.get("downloadPatientIdDir");
+		String dirName = AppParams.getDownloadPatientIdDir();
 		File file = new File(dirName);
 		return file;
 	}
@@ -184,4 +184,8 @@ public class AppParams {
 		return PROPS.getProperty("downloadPatientIdDir");
 	}
 
+	public static String getDownloadInputDir() {
+		return PROPS.getProperty("downloadInputDir");
+	}
+	
 }
