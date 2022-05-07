@@ -16,6 +16,7 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
+			<!-- install sql server -->
 			<h1>Install Microsoft Sql Server</h1>
 			Follow the instructions at the link below to install a Microsoft Sql Server.
 			Select the SQL Server on-premises option.  
@@ -25,7 +26,8 @@
 			<br/>
 			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/sqlserver-download.PNG" />             
 			<br/>
-			
+
+			<!-- install ssms -->			
 			<h1>Install Microsoft Sql Server Management Studio (SSMS)</h1>
 			Follow the instructions at the link below to install a Microsoft Sql Server Management Studio.
 			<br/>
@@ -35,10 +37,7 @@
 			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/ssms-download.PNG" />             
 			<br/>
 
-			<h1>Download the MS Sql Server JDBC Driver</h1>
-			The MS Sql Server JDBC Driver jar file can be downloaded directly from <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/mssql-jdbc-10.2.0.jre8.jar" download>here</a>, or from 
-			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/download-jdbc-driver.png" />             
-
+			<!-- enable tcp/ip -->			
 			<h1>Enable TCP/IP</h1>
 			<p>
 				Some (all/most?) installations of MS Sql Server do not enable TCP/IP connectivity by default.  
@@ -62,7 +61,7 @@
 				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip-show-port.JPG" />
 			</p>			
 
-			<h3>Enable Mixed Mode Authentication</h3>
+			<h1>Enable Mixed Mode Authentication</h1>
 			<p>
 				By default, some installations of MS Sql Server have mixed mode authentication disabled.  
 				To authenticate using a username/password (i.e. not using Windows authentication), mixed mode authentication needs to be enabled.  
@@ -89,11 +88,20 @@
 			<p>
 				<img src="./sqlserver/enable-mixed-mode/restart.JPG" />
 			</p>
-			<h3>Install DLLs for Microsoft Sql Server JDBC Connectivity</h3>
+
+			<!-- jdbc driver -->
+			<h1>Download the MS Sql Server JDBC Driver</h1>
+			The MS Sql Server JDBC Driver jar file can be downloaded directly from <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/mssql-jdbc-10.2.0.jre8.jar" download>here</a>, or from 
+			Microsoft <a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/release-notes-for-the-jdbc-driver">here</a>.  
+			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/download-jdbc-driver.png" />             
+
+
+			<!-- dlls for jdbc -->
+			<h1>Install DLLs for Microsoft Sql Server JDBC Connectivity</h1>
 			<p>
 			</p>
 			Some instalations of MS Sql Server do not include the DLLs required for JDBC Connectivity.  
-			These files can be downloaded from Microsoft 
+			These files can be downloaded from Microsoft and are included in the JDBC Driver download described above.  
 			<a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/release-notes-for-the-jdbc-driver?view=sql-server-ver15">here</a>. The copy of the files we used is 
 			<a download href="./sqlserver/sqljdbc-dll/sqljdbc_10.2.0.0_enu.zip">here</a>.  
 			After the files have been downloaded, unzip the zip file (we unzip to directory shown below).  
