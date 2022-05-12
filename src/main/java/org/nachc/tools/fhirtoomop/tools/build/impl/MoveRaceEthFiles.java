@@ -28,36 +28,25 @@ public class MoveRaceEthFiles {
 		for (String fileName : fileNames) {
 			log.info(fileName);
 			try {
-				log.info("Getting dest file name...");
-				log.info("filename: " + fileName);
 				String sep = FileSystems.getDefault().getSeparator();
-				log.info("sep: " + sep);
 				int start = fileName.lastIndexOf(sep);
 				if(start == -1) {
 					start = fileName.lastIndexOf("/");
 				}
 				int end = fileName.length();
-				log.info("start/end" + start + "/" + end);
 				String dstFileName = fileName.substring(start, end);
-				log.info("Creating dstFile: " + dstFileName);
 				File file = new File(DST_DIR, dstFileName);
-				log.info("File: " + FileUtil.getCanonicalPath(file));
 				if(fileName.endsWith("Eth.txt")) {
 					sql = sql.replace("<ETH_FILE>", FileUtil.getCanonicalPath(file));
-					log.info("Did <ETH_FILE> substitution");
 				}
 				if(fileName.endsWith("Race.txt")) {
 					sql = sql.replace("<RACE_FILE>", FileUtil.getCanonicalPath(file));
-					log.info("Did <RACE_FILE> substitution");
 				}
-				log.info("Getting text...");
 				String txt = FileUtil.getAsString(fileName);
 				log.info("Writing to: " + FileUtil.getCanonicalPath(file));
 				FileUtil.write(txt, file);
-				log.info("Done with write...");
 			} catch (Exception exp) {
 				log.info("Skipping: " + fileName);
-				exp.printStackTrace();
 			}
 		}
 		this.sqlFile = new File(DST_DIR, "load-mapping-data.sql");
