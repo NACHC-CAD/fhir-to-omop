@@ -13,10 +13,13 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
+import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
+
+import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -60,13 +63,16 @@ public class CreateOmopInstanceTool {
 			// create the cdm_source record (uses app.parameters values)
 			CreateCdmSourceRecord.exec(conn);
 			Database.commit(conn);
+			// move the race eth files
+			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
+			raceFiles.exec();
+			// load the terminologies
+			logMsg("LOADING TERMINOLOGY");
+			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
+			LoadTerminology.exec(conn);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
-			// load terminology
-			logMsg("LOADING TERMINOLOGY");
-			LoadMappingTables.exec(conn);
-			LoadTerminology.exec(conn);
 			// create the indexes
 			CreateDatabaseIndexes.exec(conn);
 			timer.stop();

@@ -1,7 +1,7 @@
 truncate table fhir_to_omop_race;
 
 bulk insert fhir_to_omop_race 
-from 'C:\\test\\fhir-to-omop\\RaceAndEthnicityCDC-OMOP-MAPPING-Race.txt'
+from '<RACE_FILE>'
 with (
   FIELDTERMINATOR = '\t',
   FIELDQUOTE = '"',
@@ -13,7 +13,7 @@ with (
 truncate table fhir_to_omop_ethnicity;
 
 bulk insert fhir_to_omop_ethnicity 
-from 'C:\\test\\fhir-to-omop\\RaceAndEthnicityCDC-OMOP-MAPPING-Eth.txt'
+from '<ETH_FILE>'
 with (
   FIELDTERMINATOR = '\t',
   FIELDQUOTE = '"',
@@ -22,11 +22,11 @@ with (
 )
 ;
 
-select * from fhir_to_omop_ethnicity;
+select top 5 * from fhir_to_omop_ethnicity;
 
 select count(*) from fhir_to_omop_ethnicity;
 
-select * from fhir_to_omop_race;
+select top 5 * from fhir_to_omop_race;
 
 select count(*) from fhir_to_omop_race;
 

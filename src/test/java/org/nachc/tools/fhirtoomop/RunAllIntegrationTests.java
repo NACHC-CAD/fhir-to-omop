@@ -25,6 +25,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RunWith(WildcardPatternSuite.class)
 @SuiteClasses({ "**/*IntegrationTest.class" })
+// @SuiteClasses({ "omop/**/*.IntegrationTest.class" })
+// @SuiteClasses({ "./omop/**/*.IntegrationTest.class" })
+// @SuiteClasses({ "omop/**/*.IntegrationTest.class" })
+// @SuiteClasses({ "omop/**/**/*.IntegrationTest.class" })
+
 public class RunAllIntegrationTests {
 
 	private static Timer TIMER = new Timer();

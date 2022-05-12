@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.build.impl;
 
+import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 
@@ -13,9 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LoadMappingTables {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/terminology/mappings/race-eth/load-mapping-data.sql");
-
-	public static void exec(Connection conn) {
+	public static void exec(File sqlFile, Connection conn) {
+		log.info("-----------------------");
+		log.info("LOAD RACE/ETH SQL FILE: " + FileUtil.getCanonicalPath(sqlFile));
+		log.info("-----------------------");
+		InputStream IS = FileUtil.getInputStream(sqlFile);
 		String dbName = AppParams.getDbName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
