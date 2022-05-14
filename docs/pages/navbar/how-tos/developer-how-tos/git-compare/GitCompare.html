@@ -1,0 +1,47 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Git: Use Github Web Interface to Compare forks and branches</h1>
+			<p>
+				To get to the interface that allows you to compare a fork or branch in github, you need to first pretend you would like to create a pull request.  
+			</p>
+			<p>
+				Navigate to the repository and branch that contains the latest version of your project.  
+				Select the "Contribute" drop down as shown below.  
+				If the selected branch does not contain any changes, the opption to create a pull request will not be available.  
+			</p>
+			<img width="800px" src="./img/select-contribute.png" />
+			<p>
+				Select a branch that does have changes and then select "Open pull request"
+			</p>
+			<img width="800px" src="./img/open-pull-request.png" />
+			<p>
+				After selecting "Open pull request", the initial screen will look something like the first screen shot below.   
+			</p>
+			<p>
+				Scroll towards the bottom of the page to see the changes as shown in the second screen shot below.  
+			</p>
+			<img width="800px" src="./img/compare-01.PNG" />
+			<br/>
+			<img width="800px" src="./img/compare-02.PNG" />
+
+		</div>
+	</body>
+</html>
+
+
