@@ -61,7 +61,8 @@ DataQualityDashboard::executeDqChecks (
   writeToTable = writeToTable,
   checkLevels = checkLevels,
   tablesToExclude = tablesToExclude,
-  checkNames = checkNames
+  checkNames = checkNames,
+  cdmVersion = "5.4"
 )
 
 # (OPTIONAL) inspect logs
