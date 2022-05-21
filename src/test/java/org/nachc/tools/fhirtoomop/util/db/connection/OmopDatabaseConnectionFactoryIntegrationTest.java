@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.db.connection;
 import static org.junit.Assert.assertTrue;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
@@ -30,6 +31,9 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
 			String schemaName = AppParams.getFullyQualifiedDbName();
+			log.info("Got Schema: " + schemaName);
+		} catch(Exception exp) {
+			throw new RuntimeException(exp);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

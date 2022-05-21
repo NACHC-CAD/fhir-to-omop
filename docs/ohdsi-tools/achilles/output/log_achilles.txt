@@ -806,3 +806,9 @@
 2022-05-21 07:12:01	[Main thread]	INFO	Achilles	achilles	Analysis 2201 (Number of note records, by note_type_concept_id) -- START
 2022-05-21 07:12:01	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.006 secs
 2022-05-21 07:12:01	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2201 (0.007997 secs)
+2022-05-21 07:12:34	[Main thread]	INFO	Achilles	achilles	Merging scratch Achilles tables
+2022-05-21 07:12:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.358 secs
+2022-05-21 07:12:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0719 secs
+2022-05-21 07:12:35	[Main thread]	INFO	Achilles	achilles	Done. Achilles results can now be found in schema synthea_micro_achilles_results.dbo
+2022-05-21 07:12:35	[Main thread]	INFO	DatabaseConnector	connect	Connecting using SQL Server driver
+2022-05-21 07:12:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0252 secs
