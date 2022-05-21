@@ -26,9 +26,16 @@ public class FhirPatientResourcesAsFilesFactory {
 	}
 
 	public static FhirPatientResources getForPatient(String dirName) {
-		List<String> fileList = FileUtil.listResources(dirName, FhirPatientResourcesAsFilesFactory.class);
-		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
-		return resources;
+		if(dirName.endsWith(".json")) {
+			List<String> fileList = new ArrayList<String>();
+			fileList.add(dirName);
+			FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+			return resources;
+		} else {
+			List<String> fileList = FileUtil.listResources(dirName, FhirPatientResourcesAsFilesFactory.class);
+			FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+			return resources;
+		}
 	}
 	
 }

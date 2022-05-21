@@ -109,6 +109,12 @@ public class AppParams {
 		return fileName;
 	}
 
+	// directory where fhir patients live
+	public static String getSyntheaPatientsDirName() {
+		String fileName = PROPS.getProperty("syntheaPatientsDir");
+		return fileName;
+	}
+
 	// max number of connections to use for upload
 	public static int getMaxNumberOfConnectionsForUpload() {
 		String str = PROPS.getProperty("maxNumberOfConnectionsForUpload");
