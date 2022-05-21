@@ -1,0 +1,28 @@
+DBMS:
+sql server
+
+Error:
+com.microsoft.sqlserver.jdbc.SQLServerException: Cannot drop the index 'synthea_micro_achilles_results.dbo.idx_ar_aid', because it does not exist or you do not have permission.
+
+SQL:
+drop index synthea_micro_achilles_results.dbo.idx_ar_aid
+
+R version:
+R version 4.1.3 (2022-03-10)
+
+Platform:
+x86_64-w64-mingw32
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- Achilles (1.7)
+- DatabaseConnector (5.0.2)
+- SqlRender (1.9.0)

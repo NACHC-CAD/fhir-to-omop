@@ -1,0 +1,47 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Install, Run, and View Achilles</h1>
+			Achilles is a data quality tool the github page for Achilles is 
+			<a href="https://github.com/OHDSI/Achilles">here</a>.  
+			This document is based on the documentation available for Achilles  
+			<a href="https://ohdsi.github.io/Achilles/">here</a>. 
+			Achilles can be completely installed an run on windows following the instructions on this page.  
+			<p>
+				To install and run Achilles run the following scripts.  
+			<ul>
+				<li>
+					<b>install-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/install-achilles.r" download>here</a> 
+					to install components required for Achilles.  
+				</li>
+				<li>
+					<b>init-params-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/init-params-achilles.r" download>here</a> 
+					to initialise the parameters for Achilles.  
+				</li>
+				<li>
+					<b>run-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/run-achilles.r" download>here</a> 
+					to run Achilles.  
+				</li>
+			<br/>
+			<br/>
+
+			</p>
+		</div>
+	</body>
+</html>
+
