@@ -53,8 +53,6 @@ public class PopulateOmopInstanceFromFhirFiles {
 	}
 	
 	public void exec(List<String> fileList) {
-		log.info("TRUNCATING DATA TABLES");
-		TruncateAllDataTables.exec();
 		log.info("Populating OMOP instance from files...");
 		int maxConns = AppParams.getMaxNumberOfConnectionsForUpload();
 		int numberOfThreadsPerWorker = AppParams.getMaxNumberOfThreadsForUpload();
@@ -73,11 +71,22 @@ public class PopulateOmopInstanceFromFhirFiles {
 		int numberOfPatientsAfter = -1;
 		WriteOmopPeopleToDatabase writer;
 		try {
-			numberOfPatientsBefore = Database.count("person", connList.get(0));
+			// populate the caches
 			log.info("CREATING MAPPED CONCEPT CACHCE...");
 			MappedConceptCache.init(connList.get(0));
 			log.info("CREATING STANDARD CONCEPT CACHCE...");
 			StandardConceptCache.init(connList.get(0));
+			// truncate existing data
+			log.info("TRUNCATING DATA TABLES");
+			TruncateAllDataTables.exec();
+			// do the priming step
+			log.info("Doing priming step...");
+			new PrimeUploadProcess().exec();
+			// truncate data uploaded by priming step
+			log.info("TRUNCATING DATA TABLES");
+			TruncateAllDataTables.exec();
+			// do the upload
+			numberOfPatientsBefore = Database.count("person", connList.get(0));
 			log.info("Creating writer");
 			timer.start();
 			writer = new WriteOmopPeopleToDatabase(fileList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);

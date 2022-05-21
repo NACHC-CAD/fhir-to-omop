@@ -24,7 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RunWith(WildcardPatternSuite.class)
-@SuiteClasses({ "**/*IntegrationTest.class" })
+
+// @SuiteClasses({ "**/*IntegrationTest.class" })
+@SuiteClasses({ "EmptyIntegrationTest.class" })
+// @SuiteClasses({ "omop/write/threaded/WriteOmopPeopleToDatabaseWorkerIntegrationTest.class" })
+// @SuiteClasses({ "omop/write/threaded/**/*IntegrationTest.class" })
 // @SuiteClasses({ "omop/**/*.IntegrationTest.class" })
 // @SuiteClasses({ "./omop/**/*.IntegrationTest.class" })
 // @SuiteClasses({ "omop/**/*.IntegrationTest.class" })
