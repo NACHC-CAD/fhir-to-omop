@@ -26,12 +26,16 @@ public class WriteOmopPeopleToDatabaseRunnable implements Runnable {
 
 	@Override
 	public void run() {
-		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
-		log.info("Done parsing file");
-		OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
-		WriteOmopPersonToDatabase.exec(omopPerson, conn);
-		Database.commit(conn);
-		log.info("DONE WRITING PATIENT TO DATABASE");
+		try {
+			FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
+			log.info("Done parsing file");
+			OmopPerson omopPerson = new OmopPersonFactory().build(fhirPatient, conn);
+			WriteOmopPersonToDatabase.exec(omopPerson, conn);
+			Database.commit(conn);
+			log.info("DONE WRITING PATIENT TO DATABASE");
+		} catch(Exception exp) {
+			exp.printStackTrace();
+		}
 	}
 
 }

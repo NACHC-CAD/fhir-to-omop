@@ -20,14 +20,11 @@ import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 
 import com.nach.core.util.file.FileUtil;
-import com.nach.core.util.string.StringUtil;
 
 public class FhirPatientFactory {
 
-	private static FhirPatient testPatient;
-	
 	private FhirPatientResources resources;
-	
+
 	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
 
 	public FhirPatientFactory(FhirPatientResources resources) {
@@ -35,18 +32,14 @@ public class FhirPatientFactory {
 	}
 
 	public FhirPatient build() {
-		if(testPatient != null) {
-			return testPatient;
-		} else {
-			for (InputStream is : resources.getResources()) {
-				String str = FileUtil.getAsString(is);
-				BundleParser bundleParser = new BundleParser(str);
-				this.bundleParserList.add(bundleParser);
-			}
-			return doBuild();
+		for (InputStream is : resources.getResources()) {
+			String str = FileUtil.getAsString(is);
+			BundleParser bundleParser = new BundleParser(str);
+			this.bundleParserList.add(bundleParser);
 		}
+		return doBuild();
 	}
-	
+
 	// ---
 	//
 	// all private past here
@@ -62,10 +55,9 @@ public class FhirPatientFactory {
 		buildMedicationList(rtn);
 		buildObservationList(rtn);
 		buildProcedureList(rtn);
-		testPatient = rtn;
 		return rtn;
 	}
-	
+
 	private void buildResourceTypes(FhirPatient rtn) {
 		for (BundleParser parser : this.bundleParserList) {
 			rtn.getResourceTypes().addAll(parser.getResourceTypes());

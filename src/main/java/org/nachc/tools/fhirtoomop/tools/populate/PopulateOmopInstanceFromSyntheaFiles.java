@@ -32,22 +32,9 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 	}
 
 	private List<String> getDirList() {
-		File rootDir = FileUtil.getFile(AppParams.getSyntheaPatientsDirName());
-		log.info("Root Dir: " + rootDir);
-		File[] files = rootDir.listFiles();
-		List<String> fileNames = new ArrayList<String>();
-		int cnt = 0;
-		try {
-			for (File file : files) {
-				cnt++;
-				fileNames.add(file.getCanonicalPath());
-				if (cnt % 10000 == 0) {
-					log.info(cnt + "");
-				}
-			}
-		} catch (Exception exp) {
-			throw new RuntimeException(exp);
-		}
+		String rootDirName = AppParams.getSyntheaPatientsDirName();
+		log.info("Root Dir: " + rootDirName);
+		List<String> fileNames = FileUtil.listResources(rootDirName, getClass());
 		return fileNames;
 	}
 
@@ -62,7 +49,7 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 		log.info("maxWorkers: " + numberOfWorkers);
 		log.info("Getting all files (this can take a couple of minutes).");
 		List<Connection> connList = getConnections(maxConns);
-		log.info("Got " + dirList.size() + " patients.");
+		log.info("Got " + dirList.size() + " directories.");
 		log.info("Got " + connList.size() + " connections.");
 		Timer timer = new Timer();
 		int numberOfPatientsBefore = -1;
@@ -98,8 +85,6 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 					}
 				}
 			}
-			writer = new WriteOmopPeopleToDatabase(dirList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);
-			writer.exec();
 			numberOfPatientsAfter = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + numberOfPatientsAfter + " patients");
 			updatePrevVisit();

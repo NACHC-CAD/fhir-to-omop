@@ -44,47 +44,75 @@ public class WriteOmopPersonToDatabase {
 			dvo.setPatientId(patientId);
 			dvo.setResourceType(fhirResource);
 			dvo.setResourceName(resourceName);
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
 	private static void writePatient(OmopPerson person, Connection conn) {
 		PersonDvo dvo = person.getPerson();
-		Dao.insert(dvo, conn);
+		try {
+			Dao.insert(dvo, conn);
+		} catch(Exception exp) {
+			exp.printStackTrace();
+		}
 	}
 
 	private static void writeVisitOccurrence(OmopPerson person, Connection conn) {
 		List<VisitOccurrenceDvo> visitList = person.getVisitOccurrenceList();
 		for (VisitOccurrenceDvo dvo : visitList) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
 	private static void writeConditionOccurrences(OmopPerson person, Connection conn) {
 		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
 		for (ConditionOccurrenceDvo dvo : conList) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
 	private static void writeDrugExposures(OmopPerson person, Connection conn) {
 		List<DrugExposureDvo> drugExposureList = person.getDrugExposureList();
 		for (DrugExposureDvo dvo : drugExposureList) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
 	private static void writeMeasurements(OmopPerson person, Connection conn) {
 		List<MeasurementDvo> measList = person.getMeasurementList();
 		for (MeasurementDvo dvo : measList) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
 	private static void writeProcedures(OmopPerson person, Connection conn) {
 		List<ProcedureOccurrenceDvo> list = person.getProcedureOccurrenceList();
 		for (ProcedureOccurrenceDvo dvo : list) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 	}
 
@@ -93,7 +121,11 @@ public class WriteOmopPersonToDatabase {
 		List<ObservationDvo> observationList = person.getObservationList();
 		log.debug("Doing write...");
 		for (ObservationDvo dvo : observationList) {
-			Dao.insert(dvo, conn);
+			try {
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
 		}
 		log.debug("DONE");
 	}

@@ -8,6 +8,7 @@ import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatientIds;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatients;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
+import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromSyntheaFiles;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.file.FileUtil;
@@ -73,6 +74,9 @@ public class FhirToOmopMain {
 			case "upload":
 			case "u":
 				new PopulateOmopInstanceFromFhirFiles().exec();
+				break;
+			case "syn":
+				PopulateOmopInstanceFromSyntheaFiles.main(null);
 				break;
 			default:
 				wrongParam();
