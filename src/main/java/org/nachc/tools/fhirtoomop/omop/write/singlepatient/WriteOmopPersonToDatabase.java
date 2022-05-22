@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.FhirResourceDvo;
@@ -65,6 +66,9 @@ public class WriteOmopPersonToDatabase {
 		List<VisitOccurrenceDvo> visitList = person.getVisitOccurrenceList();
 		for (VisitOccurrenceDvo dvo : visitList) {
 			try {
+				if(dvo.getVisitStartDate() == null) {
+					dvo.setVisitStartDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();
@@ -76,6 +80,9 @@ public class WriteOmopPersonToDatabase {
 		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
 		for (ConditionOccurrenceDvo dvo : conList) {
 			try {
+				if(dvo.getConditionStartDate() == null) {
+					dvo.setConditionStartDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();
@@ -87,6 +94,9 @@ public class WriteOmopPersonToDatabase {
 		List<DrugExposureDvo> drugExposureList = person.getDrugExposureList();
 		for (DrugExposureDvo dvo : drugExposureList) {
 			try {
+				if(dvo.getDrugExposureStartDate() == null) {
+					dvo.setDrugExposureStartDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();
@@ -98,6 +108,9 @@ public class WriteOmopPersonToDatabase {
 		List<MeasurementDvo> measList = person.getMeasurementList();
 		for (MeasurementDvo dvo : measList) {
 			try {
+				if(dvo.getMeasurementDate() == null) {
+					dvo.setMeasurementDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();
@@ -109,6 +122,9 @@ public class WriteOmopPersonToDatabase {
 		List<ProcedureOccurrenceDvo> list = person.getProcedureOccurrenceList();
 		for (ProcedureOccurrenceDvo dvo : list) {
 			try {
+				if(dvo.getProcedureDate() == null) {
+					dvo.setProcedureDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();
@@ -122,6 +138,9 @@ public class WriteOmopPersonToDatabase {
 		log.debug("Doing write...");
 		for (ObservationDvo dvo : observationList) {
 			try {
+				if(dvo.getObservationDate() == null) {
+					dvo.setObservationDate(AppParams.getDateNotFound());
+				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
 				exp.printStackTrace();

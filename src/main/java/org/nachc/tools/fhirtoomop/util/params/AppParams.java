@@ -2,7 +2,10 @@ package org.nachc.tools.fhirtoomop.util.params;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Properties;
+
+import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.props.PropertiesUtil;
 import com.nach.core.util.string.StringUtil;
@@ -192,6 +195,10 @@ public class AppParams {
 
 	public static String getDownloadInputDir() {
 		return PROPS.getProperty("downloadInputDir");
+	}
+
+	public static Date getDateNotFound() {
+		return TimeUtil.getDateForYyyy_Mm_Dd("1700-01-01");
 	}
 	
 }
