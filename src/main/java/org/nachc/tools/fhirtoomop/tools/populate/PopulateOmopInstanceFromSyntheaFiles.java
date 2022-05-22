@@ -1,6 +1,5 @@
 package org.nachc.tools.fhirtoomop.tools.populate;
 
-import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -74,10 +73,10 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 			numberOfPatientsBefore = Database.count("person", connList.get(0));
 			log.info("Creating writer");
 			timer.start();
-			for(String str : dirList) {
+			for (String str : dirList) {
 				List<String> subDirList = FileUtil.listResources(str, getClass());
-				for(String subDirName : subDirList) {
-					if(subDirName.endsWith("fhir")) {
+				for (String subDirName : subDirList) {
+					if (subDirName.endsWith("fhir")) {
 						log.info("WRITING DATA FOR: " + subDirName);
 						List<String> fileList = FileUtil.listResources(subDirName, getClass());
 						writer = new WriteOmopPeopleToDatabase(fileList, connList, numberOfWorkers, numberOfPatientsPerWorker, numberOfThreadsPerWorker);
