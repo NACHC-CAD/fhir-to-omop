@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.build;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.tools.build.impl.AddConstraints;
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
@@ -71,13 +72,14 @@ public class CreateOmopInstanceTool {
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
 			LoadTerminology.exec(conn);
-			// init achilles
-			InitAchilles.exec(conn);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
-			// create the indexes
+			// create the indexes and add constraints
 			CreateDatabaseIndexes.exec(conn);
+			AddConstraints.exec();
+			// init achilles
+			InitAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

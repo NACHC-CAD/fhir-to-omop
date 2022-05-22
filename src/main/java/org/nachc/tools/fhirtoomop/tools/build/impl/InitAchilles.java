@@ -27,13 +27,22 @@ public class InitAchilles {
 	}
 	
 	public static void exec(Connection conn) {
+		String msg = "";
+		msg += "\n\n\n";
+		msg += "\n------------------------------------------------";
+		msg += "\n* ";
+		msg += "\n* INITIALIZING ACHILLES ";
+		msg += "\n* ";
+		msg += "\n------------------------------------------------";
+		msg += "\n\n\n";
+		log.info(msg);
 		String databaseName = AppParams.getDbName();
 		String vocabSchema = databaseName + ".dbo";
 		String resultsSchema = databaseName + "_achilles_results" + ".dbo";
 		String sqlString = FileUtil.getAsString(PATH);
 		sqlString = sqlString.replace("<ACHILLES_RESULTS_SCHEMA>", resultsSchema);
 		sqlString = sqlString.replace("<VOCAB_SCHEMA>", vocabSchema);
-		String msg = "EXECUTING SQL SCRIPT:";
+		msg = "EXECUTING SQL SCRIPT:";
 		msg += "\n-----------------------------------------------\n\n";
 		msg += sqlString.trim();
 		msg += "\n-----------------------------------------------";

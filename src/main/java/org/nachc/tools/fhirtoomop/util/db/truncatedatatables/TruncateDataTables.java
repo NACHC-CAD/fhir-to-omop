@@ -16,12 +16,15 @@ public class TruncateDataTables {
 //			log.info("FOREIGN KEYS DISABLED");
 			// delete from the datatables
 			for(String tableName : tableNames) {
+				log.info("TRUNCATING TABLE: " + tableName);
 				String sqlString = "truncate table " + tableName;
 				log.info(sqlString);
 				Database.update(sqlString, conn);
 				log.info("TRUNCATED TABLE: " + tableName);
 			}
+			log.info("Done with deletes, moving on...");
 		} finally {
+//			log.info("ENABLING FOREIGN KEYS...");
 //			Database.update("EXEC sp_MSforeachtable \"ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all\"", conn);
 //			log.info("FOREIGN KEYS ENABLED");
 		}

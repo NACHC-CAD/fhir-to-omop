@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
+import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.ConditionOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
@@ -78,18 +79,37 @@ public class WriteOmopPersonToDatabase {
 
 	private static void writeConditionOccurrences(OmopPerson person, Connection conn) {
 		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
+		int retryCount = 5;
 		for (ConditionOccurrenceDvo dvo : conList) {
-			try {
-				if(dvo.getConditionStartDate() == null) {
-					dvo.setConditionStartDate(AppParams.getDateNotFound());
+			int cnt = 0;
+			while(cnt < retryCount) {
+				cnt++;
+				try {
+					writeSingleConditionOccurrences(dvo, conn);
+					break;
+				} catch(Exception exp) {
+					if(cnt < retryCount) {
+						Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
+						dvo.setConditionOccurrenceId(id);
+					} else {
+						exp.printStackTrace();
+					}
 				}
-				Dao.insert(dvo, conn);
-			} catch(Exception exp) {
-				exp.printStackTrace();
 			}
 		}
 	}
 
+	private static void writeSingleConditionOccurrences(ConditionOccurrenceDvo dvo, Connection conn) {
+		try {
+			if(dvo.getConditionStartDate() == null) {
+				dvo.setConditionStartDate(AppParams.getDateNotFound());
+			}
+			Dao.insert(dvo, conn);
+		} catch(Exception exp) {
+			throw new RuntimeException(exp);
+		}
+	}
+	
 	private static void writeDrugExposures(OmopPerson person, Connection conn) {
 		List<DrugExposureDvo> drugExposureList = person.getDrugExposureList();
 		for (DrugExposureDvo dvo : drugExposureList) {
