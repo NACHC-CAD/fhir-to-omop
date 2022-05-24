@@ -1,2 +1,2 @@
-2022-05-21 07:12:35	[Main thread]	INFO	DatabaseConnector	connect	Connecting using SQL Server driver
-2022-05-21 07:12:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0252 secs
+2022-05-23 19:04:45	[Main thread]	INFO	DatabaseConnector	connect	Connecting using SQL Server driver
+2022-05-23 19:04:45	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0252 secs
