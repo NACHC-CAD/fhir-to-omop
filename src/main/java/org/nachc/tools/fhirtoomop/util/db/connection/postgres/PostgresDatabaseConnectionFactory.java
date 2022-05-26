@@ -15,11 +15,11 @@ public class PostgresDatabaseConnectionFactory {
 			String url = AppParams.getPostgresBootstrapUrl();
 			String uid = AppParams.getPostgresBootstrapUid();
 			String pwd = AppParams.getPostgresBootstrapPwd();
-			url += "OHDSI";
+			url += "/postgres";
+			url += "?" + "user=" + uid;
+			url += "&" + "password=" + pwd;
 			log.info("Getting connection for url: \n" + url);
-			log.info("uid: " + uid);
-			log.info("pwd: " + pwd);
-			Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/postgres?&user=postgres&password=stripedbass");
+			Connection conn = DriverManager.getConnection(url);
 			return conn;
 		} catch (Exception exp) {
 			throw (new RuntimeException(exp));
