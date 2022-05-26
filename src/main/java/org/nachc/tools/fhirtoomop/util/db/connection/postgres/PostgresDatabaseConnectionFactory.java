@@ -27,4 +27,21 @@ public class PostgresDatabaseConnectionFactory {
 
 	}
 
+	public static Connection getOhdsiConnection() {
+		try {
+			String url = AppParams.getPostgresBootstrapUrl();
+			String uid = AppParams.getPostgresBootstrapUid();
+			String pwd = AppParams.getPostgresBootstrapPwd();
+			url += "/OHDSI";
+			url += "?" + "user=" + uid;
+			url += "&" + "password=" + pwd;
+			log.info("Getting connection for url: \n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+
+	}
+
 }
