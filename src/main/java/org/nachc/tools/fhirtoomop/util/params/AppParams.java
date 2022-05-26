@@ -94,6 +94,24 @@ public class AppParams {
 		return rtn;
 	}
 
+	// ---
+	//
+	// postgres stuff
+	//
+	// ---
+	
+	public static String getPostgresBootstrapUrl() {
+		return PROPS.getProperty("postgresBootstrapUrl");
+	}
+	
+	public static String getPostgresBootstrapUid() {
+		return PROPS.getProperty("postgresBootstrapUid");
+	}
+	
+	public static String getPostgresBootstrapPwd() {
+		return PROPS.getProperty("postgresBootstrapPwd");
+	}
+		
 	// terminology stuff
 
 	public static String getTerminologyRootDir() {

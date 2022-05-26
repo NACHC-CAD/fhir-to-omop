@@ -113,6 +113,13 @@
 		    <version>10.2.0.jre8</version>
 		</dependency>
 
+		<!-- POSTGRESQL DRIVER https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.3.6</version>
+		</dependency>
+		
 		<!-- CALL R FROM JAVA: https://mvnrepository.com/artifact/org.rosuda/jri -->
 		<dependency>
 			<groupId>com.github.jbytecode</groupId>
