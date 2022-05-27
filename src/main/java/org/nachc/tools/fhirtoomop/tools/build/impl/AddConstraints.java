@@ -13,9 +13,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AddConstraints {
 
-	private static final String CONSTRAINTS = "/sqlserver/omop/OMOPCDM_sql_server_5.4_constraints.sql";
-	
 	private static final String PK = "/sqlserver/omop/OMOPCDM_sql_server_5.4_primary_keys.sql";
+	
+	private static final String CONSTRAINTS = "/sqlserver/omop/OMOPCDM_sql_server_5.4_constraints.sql";
 	
 	public static void main(String[] args) {
 		exec();
@@ -33,9 +33,9 @@ public class AddConstraints {
 			sqlString = FileUtil.getAsString(PK);
 			Database.executeSqlScript(sqlString, conn);
 			// add constraints
-//			logMsg("ADDING CONSTRAINTS");
-//			sqlString = FileUtil.getAsString(CONSTRAINTS);
-//			Database.executeSqlScript(sqlString, conn);
+			logMsg("ADDING CONSTRAINTS");
+			sqlString = FileUtil.getAsString(CONSTRAINTS);
+			Database.executeSqlScript(sqlString, conn);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

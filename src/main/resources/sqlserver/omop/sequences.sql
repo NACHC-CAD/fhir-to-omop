@@ -47,4 +47,10 @@ start with 0
 increment by 1
 ;
 
+drop sequence if exists observation_period_observation_period_id;
+create sequence observation_period_observation_period_id
+start with 0
+increment by 1
+;
+
 

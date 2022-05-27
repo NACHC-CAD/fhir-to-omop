@@ -11,11 +11,13 @@ import org.nachc.tools.omop.yaorma.dvo.DrugExposureDvo;
 import org.nachc.tools.omop.yaorma.dvo.FhirResourceDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
+import org.nachc.tools.omop.yaorma.dvo.ObservationPeriodDvo;
 import org.nachc.tools.omop.yaorma.dvo.PersonDvo;
 import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.nachc.tools.omop.yaorma.dvo.VisitOccurrenceDvo;
 import org.yaorma.dao.Dao;
 import org.yaorma.database.Database;
+import org.yaorma.util.time.TimeUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -58,11 +60,27 @@ public class WriteOmopPersonToDatabase {
 		PersonDvo dvo = person.getPerson();
 		try {
 			Dao.insert(dvo, conn);
+			writeObservationPeriod(dvo, conn);
 		} catch(Exception exp) {
 			exp.printStackTrace();
 		}
 	}
 
+	private static void writeObservationPeriod(PersonDvo personDvo, Connection conn) {
+		try {
+			ObservationPeriodDvo dvo = new ObservationPeriodDvo();
+			dvo.setObservationPeriodStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1900-01-01"));
+			dvo.setObservationPeriodEndDate(TimeUtil.getDateForYyyy_Mm_Dd("2100-01-01"));
+			dvo.setPersonId(personDvo.getPersonId());
+			int id = FhirToOmopIdGenerator.getId("observation_period", "observation_period_id", conn);
+			dvo.setObservationPeriodId(id);
+			dvo.setPeriodTypeConceptId(44814724);
+			Dao.insert(dvo, conn);
+		} catch(Exception exp) {
+			exp.printStackTrace();
+		}
+	}
+	
 	private static void writeVisitOccurrence(OmopPerson person, Connection conn) {
 		List<VisitOccurrenceDvo> visitList = person.getVisitOccurrenceList();
 		for (VisitOccurrenceDvo dvo : visitList) {

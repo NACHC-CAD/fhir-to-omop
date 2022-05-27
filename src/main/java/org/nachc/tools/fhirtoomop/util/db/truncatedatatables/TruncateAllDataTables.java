@@ -19,6 +19,12 @@ public class TruncateAllDataTables {
 
 	private static final String[] TABLE_NAMES = DatatableList.getDatatableArray();
 
+	public static void main(String[] args) {
+		log.info("Truncating tables...");
+		exec();
+		log.info("Done.");
+	}
+	
 	public static void exec() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {

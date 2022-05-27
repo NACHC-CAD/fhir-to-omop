@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
+import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDatasource;
+import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDependencies;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatientIds;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatients;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
@@ -77,6 +79,12 @@ public class FhirToOmopMain {
 				break;
 			case "syn":
 				PopulateOmopInstanceFromSyntheaFiles.main(null);
+				break;
+			case "atlas":
+				InstallAtlasDependencies.exec();
+				break;
+			case "atlas2":
+				InstallAtlasDatasource.exec();
 				break;
 			default:
 				wrongParam();
