@@ -11,7 +11,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class InitAchilles {
+public class CreateAtlasSqlServerDependencies {
 
 	private static final String PATH = "/sqlserver/omop/achilles/init-achilles.sql";
 

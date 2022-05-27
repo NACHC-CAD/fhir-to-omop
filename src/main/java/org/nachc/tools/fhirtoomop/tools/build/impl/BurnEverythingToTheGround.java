@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.build.impl;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.BurnAtlasToTheGround;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
@@ -12,7 +13,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BurnEverythingToTheGround {
 
+	public static void main(String[] args) {
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			exec(conn);
+		} finally {
+			Database.close(conn);
+		}
+	}
+
 	public static void exec(Connection conn) {
+		doSqlServerDrop(conn);
+		BurnAtlasToTheGround.exec();
+	}
+	
+	
+	public static void doSqlServerDrop(Connection conn) {
 		// drop the database
 		String databaseName = AppParams.getFullyQualifiedDbName();
 		databaseName = AppParams.getCatalogPart(databaseName);
@@ -34,15 +50,6 @@ public class BurnEverythingToTheGround {
 		}
 		log.warn("LOGIN DROPPED: " + uid);
 		log.info("Done.");
-	}
-
-	public static void main(String[] args) {
-		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
-		try {
-			exec(conn);
-		} finally {
-			Database.close(conn);
-		}
 	}
 
 	private static boolean loginExists(Connection conn, String uid) {

@@ -1,4 +1,5 @@
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort
 (
@@ -9,6 +10,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats(
   cohort_definition_id int NOT NULL,
@@ -16,6 +18,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_inclusion', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion(
   cohort_definition_id int NOT NULL,
@@ -26,6 +29,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result(
   cohort_definition_id int NOT NULL,
@@ -35,6 +39,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats(
   cohort_definition_id int NOT NULL,
@@ -46,6 +51,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats(
   cohort_definition_id int NOT NULL,
@@ -55,6 +61,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_cache;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_cache', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_cache (
 	design_hash int NOT NULL,
@@ -64,6 +71,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_cache (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats_cache;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats_cache', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats_cache (
   design_hash int NOT NULL,
@@ -71,6 +79,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_censor_stats_cache (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result_cache;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result_cache', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result_cache (
   design_hash int NOT NULL,
@@ -80,6 +89,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_result_cache (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats_cache;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats_cache', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats_cache (
   design_hash int NOT NULL,
@@ -91,6 +101,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_inclusion_stats_cache (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats_cache;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats_cache', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats_cache (
   design_hash int NOT NULL,
@@ -100,6 +111,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_summary_stats_cache (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.feas_study_inclusion_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.feas_study_inclusion_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_inclusion_stats(
   study_id int NOT NULL,
@@ -111,6 +123,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_inclusion_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.feas_study_index_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.feas_study_index_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_index_stats(
   study_id int NOT NULL,
@@ -119,6 +132,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_index_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.feas_study_result;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.feas_study_result', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_result(
   study_id int NOT NULL,
@@ -127,6 +141,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.feas_study_result(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.heracles_analysis;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.heracles_analysis', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.heracles_analysis
 (
@@ -141,6 +156,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.heracles_analysis
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.HERACLES_HEEL_results;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.HERACLES_HEEL_results', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.HERACLES_HEEL_results 
 ( 
@@ -150,6 +166,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.HERACLES_HEEL_results
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.heracles_results;
 --HINT PARTITION(cohort_definition_id int)
 --HINT BUCKET(analysis_id, 64)
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.heracles_results', 'U') IS NULL
@@ -167,6 +184,7 @@ create table <ACHILLES_RESULTS_SCHEMA>.heracles_results
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.heracles_results_dist;
 --HINT PARTITION(cohort_definition_id int)
 --HINT BUCKET(analysis_id, 64)
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.heracles_results_dist', 'U') IS NULL
@@ -193,6 +211,7 @@ create table <ACHILLES_RESULTS_SCHEMA>.heracles_results_dist
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.heracles_periods;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.heracles_periods', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.heracles_periods
 (
@@ -204,6 +223,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.heracles_periods
 	period_end_date date
 );
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cohort_sample_element;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cohort_sample_element', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_sample_element(
     cohort_sample_id int NOT NULL,
@@ -214,6 +234,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cohort_sample_element(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.ir_analysis_dist;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.ir_analysis_dist', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_dist (
   analysis_id int NOT NULL,
@@ -234,6 +255,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_dist (
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.ir_analysis_result;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.ir_analysis_result', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_result(
   analysis_id int NOT NULL,
@@ -246,6 +268,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_result(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.ir_analysis_strata_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.ir_analysis_strata_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_strata_stats(
   analysis_id int NOT NULL,
@@ -258,6 +281,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_analysis_strata_stats(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.ir_strata;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.ir_strata', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_strata(
   analysis_id int NOT NULL,
@@ -267,6 +291,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.ir_strata(
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.cc_results;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.cc_results', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cc_results
 (
@@ -297,6 +322,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.cc_results
   missing_means_zero INTEGER
 );
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_codes;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.pathway_analysis_codes', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_codes
 (
@@ -306,6 +332,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_codes
 	is_combo int NOT NULL
 );
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_events;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.pathway_analysis_events', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_events
 (
@@ -319,6 +346,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_events
 );
 
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_paths;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.pathway_analysis_paths', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_paths
 (
@@ -337,6 +365,7 @@ CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_paths
   count_value BIGINT NOT NULL
 );
 
+DROP TABLE IF EXISTS <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_stats;
 IF OBJECT_ID('<ACHILLES_RESULTS_SCHEMA>.pathway_analysis_stats', 'U') IS NULL
 CREATE TABLE <ACHILLES_RESULTS_SCHEMA>.pathway_analysis_stats
 (

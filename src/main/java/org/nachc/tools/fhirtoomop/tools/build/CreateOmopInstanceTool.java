@@ -12,7 +12,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
-import org.nachc.tools.fhirtoomop.tools.build.impl.InitAchilles;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAtlasSqlServerDependencies;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
@@ -78,8 +78,6 @@ public class CreateOmopInstanceTool {
 			// create the indexes and add constraints
 			CreateDatabaseIndexes.exec(conn);
 			AddConstraints.exec();
-			// init achilles
-			InitAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

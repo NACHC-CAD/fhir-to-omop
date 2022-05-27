@@ -20,10 +20,23 @@ public class CreateDatabaseUser {
 		// create the log in
 		log.info("Creating login: " + uid);
 		Database.update("create login " + uid + " with password = '" + pwd + "'", conn);
+		// create user
+		addPrivs(db, uid, conn);
+		addPrivs(db + "_dqd_results", uid, conn);
+		addPrivs(db + "_achilles_results", uid, conn);
+		addPrivs(db + "_achilles_temp", uid, conn);
+		// done
+		Database.update("use " + db, conn);
+		log.info("Done creating database user.");
+	}
+
+	private static void addPrivs(String schemaName, String uid, Connection conn) {
+		// switch to the database
+		Database.update("use " + schemaName, conn);
 		// create the user
 		log.info("Creating user: " + uid);
-		Database.update("create user " + uid + " for login " + uid + " with default_schema = " + db, conn);
-		// create privileges
+		Database.update("create user " + uid + " for login " + uid + " with default_schema = " + schemaName, conn);
+		// add the privs
 		log.info("Adding privileges...");
 		Database.update("exec sp_addrolemember N'db_accessadmin', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_backupoperator', N'" + uid + "'", conn);
@@ -32,7 +45,6 @@ public class CreateDatabaseUser {
 		Database.update("exec sp_addrolemember N'db_ddladmin', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_owner', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_securityadmin', N'" + uid + "'", conn);
-		log.info("Done creating database user.");
 	}
-
+	
 }
