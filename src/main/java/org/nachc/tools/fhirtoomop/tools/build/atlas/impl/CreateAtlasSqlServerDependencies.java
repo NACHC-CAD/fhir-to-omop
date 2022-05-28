@@ -24,6 +24,7 @@ public class CreateAtlasSqlServerDependencies {
 	public static void exec() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
+			BurnAtlasToTheGround.dropSqlServerDbObjects();
 			String databaseName = AppParams.getDbName();
 			createDatabase(databaseName + "_achilles_results", conn);
 			createDatabase(databaseName + "_achilles_temp", conn);

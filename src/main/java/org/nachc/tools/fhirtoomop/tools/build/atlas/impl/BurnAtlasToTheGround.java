@@ -29,18 +29,18 @@ public class BurnAtlasToTheGround {
 		dropSqlServerDbObjects();
 	}
 	
-	private static void dropPosgresDbObjects() {
+	public static void dropPosgresDbObjects() {
 		log.info("Burning Atlas to the ground...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			String sqlString;
 			// drop the database
 			log.info("Dropping database...");
-			sqlString = FileUtil.getAsString(DROP_DB);
+			sqlString = getDropDbSqlString();
 			Database.update(sqlString, conn);
 			// drop other objects
 			log.info("Dropping other postgres objects...");
-			sqlString = FileUtil.getAsString(DROP_OBJS);
+			sqlString = getDropObjsSqlString();
 			Database.executeSqlScript(sqlString, conn);
 		} finally {
 			Database.close(conn);
@@ -48,7 +48,7 @@ public class BurnAtlasToTheGround {
 		log.info("Done burning Atlas to the ground.");
 	}
 
-	private static void dropSqlServerDbObjects() {
+	public static void dropSqlServerDbObjects() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			String databaseName = AppParams.getFullyQualifiedDbName();
@@ -60,4 +60,19 @@ public class BurnAtlasToTheGround {
 		}
 	}
 
+	private static String getDropDbSqlString() {
+		String sqlString = FileUtil.getAsString(DROP_DB);
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.get("ohdsiDbName"));
+		return sqlString;
+	}
+	
+	private static String getDropObjsSqlString() {
+		String sqlString = FileUtil.getAsString(DROP_OBJS);
+		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
+		sqlString = sqlString.replace("<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
+		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
+		sqlString = sqlString.replace("<ohdsiAppUserUid>", AppParams.get("ohdsiAppUserUid"));
+		return sqlString;
+	}
+	
 }

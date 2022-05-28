@@ -9,7 +9,7 @@ public class CreateAtlasPostgresDependencies {
 		log.info("Installing Atlas Dependencies...");
 		// get rid of any previous instance
 		log.info("Burning Atlas to the ground...");
-		BurnAtlasToTheGround.exec();
+		BurnAtlasToTheGround.dropPosgresDbObjects();
 		// create the users
 		log.info("Creating PostgreSql users for Atlas...");
 		AtlasInstallInitPostgresCreateUsers.exec();
