@@ -15,5 +15,5 @@ pathToDriver <- "D:\\NACHC\\SYNTHEA\\DQD\\resources\\jar\\sqlserver-jar"  # loca
 extraSettings <- ";databaseName=master;integratedSecurity=true;encrypt=false"
 
 cdmVersion <- "5.4" 
-cdmDatabaseSchema <- "synthea_micro.dbo",
+cdmDatabaseSchema <- "synthea_micro.dbo"
 resultsDatabaseSchema <- "synthea_micro_achilles_results.dbo"
