@@ -17,3 +17,6 @@ extraSettings <- ";databaseName=master;integratedSecurity=true;encrypt=false"
 cdmVersion <- "5.4" 
 cdmDatabaseSchema <- "synthea_micro.dbo"
 resultsDatabaseSchema <- "synthea_micro_achilles_results.dbo"
+
+
+
