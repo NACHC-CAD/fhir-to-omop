@@ -2,7 +2,9 @@ package org.nachc.tools.fhirtoomop.tools.build.atlas.impl;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -17,10 +19,17 @@ public class BurnAtlasToTheGround {
 	private static final String DROP_OBJS = "/sqlserver/omop/atlas/burn-atlas-to-the-ground.sql";
 	
 	public static void main(String[] args) {
+		log.info("Starting main...");
 		exec();
+		log.info("Done.");
 	}
 	
 	public static void exec() {
+		dropPosgresDbObjects();
+		dropSqlServerDbObjects();
+	}
+	
+	private static void dropPosgresDbObjects() {
 		log.info("Burning Atlas to the ground...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
@@ -38,4 +47,17 @@ public class BurnAtlasToTheGround {
 		}
 		log.info("Done burning Atlas to the ground.");
 	}
+
+	private static void dropSqlServerDbObjects() {
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			String databaseName = AppParams.getFullyQualifiedDbName();
+			databaseName = AppParams.getCatalogPart(databaseName);
+			Database.update("drop database if exists " + databaseName + "_achilles_results", conn);
+			Database.update("drop database if exists " + databaseName + "_achilles_temp", conn);
+		} finally {
+			OmopDatabaseConnectionFactory.close(conn);
+		}
+	}
+
 }

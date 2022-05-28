@@ -27,8 +27,6 @@ public class CreateDatabase {
 		String databaseName = AppParams.getDbName();
 		createDatabase(databaseName, conn);
 		createDatabase(databaseName + "_dqd_results", conn);
-		createDatabase(databaseName + "_achilles_results", conn);
-		createDatabase(databaseName + "_achilles_temp", conn);
 		Database.commit(conn);
 		log.info("Done creating databases.");
 	}

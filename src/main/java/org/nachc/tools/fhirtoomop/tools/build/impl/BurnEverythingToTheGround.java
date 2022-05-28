@@ -14,17 +14,20 @@ import lombok.extern.slf4j.Slf4j;
 public class BurnEverythingToTheGround {
 
 	public static void main(String[] args) {
+		log.info("Burning everything to the ground...");
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			exec(conn);
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done.");
 	}
 
 	public static void exec(Connection conn) {
 		doSqlServerDrop(conn);
 		BurnAtlasToTheGround.exec();
+		log.info("Done burning everything to the ground.");
 	}
 	
 	
@@ -36,8 +39,6 @@ public class BurnEverythingToTheGround {
 		Database.update("use master", conn);
 		Database.update("drop database if exists " + databaseName, conn);
 		Database.update("drop database if exists " + databaseName + "_dqd_results", conn);
-		Database.update("drop database if exists " + databaseName + "_achilles_results", conn);
-		Database.update("drop database if exists " + databaseName + "_achilles_temp", conn);
 		log.warn("DATABASE DROPPED: " + databaseName);
 		// drop the login
 		String uid = AppParams.getUid();

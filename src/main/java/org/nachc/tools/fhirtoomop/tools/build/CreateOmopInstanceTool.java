@@ -12,16 +12,11 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAtlasSqlServerDependencies;
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
-
-import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -69,9 +64,9 @@ public class CreateOmopInstanceTool {
 			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
 			raceFiles.exec();
 			// load the terminologies
-			logMsg("LOADING TERMINOLOGY");
-			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-			LoadTerminology.exec(conn);
+//			logMsg("LOADING TERMINOLOGY");
+//			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
+//			LoadTerminology.exec(conn);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
@@ -107,7 +102,7 @@ public class CreateOmopInstanceTool {
 		log.info(msg);
 		log.info("Done.");
 	}
-	
+
 	private static void logMsg(String msg) {
 		String logMsg = "";
 		logMsg += "\n\n\n";

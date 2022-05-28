@@ -23,8 +23,7 @@ public class CreateDatabaseUser {
 		// create user
 		addPrivs(db, uid, conn);
 		addPrivs(db + "_dqd_results", uid, conn);
-		addPrivs(db + "_achilles_results", uid, conn);
-		addPrivs(db + "_achilles_temp", uid, conn);
+		Database.commit(conn);
 		// done
 		Database.update("use " + db, conn);
 		log.info("Done creating database user.");
