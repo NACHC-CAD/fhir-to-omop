@@ -82,8 +82,8 @@
 					<li><b>PostgreSql Objects:</b> Create the initial PostgreSql objects (users, database, and webapi schema)</li>
 					<li><b>PostgreSql Server:</b> A PostgreSql server is registered manually using pgAdmin 4</li>
 					<li><b>Deploy WebAPI:</b> The initial deployment of WebAPI creates the tables in the webapi PostgreSql schema</li>
-					<li><b>Run Achilles:</b> The Achilles R-scripts are run to create the underlying Achilles data</li>
 					<li><b>PostgreSql Data Source:</b> The Datasource script needs to be run after the initial deployment of WebAPI creates the necessary webapi tables</li>
+					<li><b>Run Achilles:</b> The Achilles R-scripts are run to create the underlying Achilles data</li>
 					<li><b>Deploy Atlas:</b> The Atlas application can then be deployed to Tomcat</li>
 				</ul>
 			</p>
@@ -5999,7 +5999,6 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
 		*
 		-->
 		
-		<br/>
 		<h4>Download the WebAPI Application</h4>
 		Use Git to clone and checkout the latest version of WebAPI as shown below.  
 <pre class="pre-scrollable">
@@ -6378,7 +6377,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
 					<b>Increase multi-part Upload Size:</b> The size of a multi-part submission needs to be increased in apache/webapps/manage/WEB-INF/web.xml
 				</li>
 			</ul>  
-			<br/><br/>
+			<br/>
 			<h4>Create an Admin User</h4>	
 			Navigate to and open apache/conf/tomcat-users.xml.  
 			<br/>
@@ -6408,7 +6407,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
       &lt;file-size-threshold&gt;0&lt;/file-size-threshold&gt;
     &lt;/multipart-config&gt;
 </pre>
-	<br/><br/>
+	
 	
 			<!-- 
 			*
@@ -6417,6 +6416,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
 			* -->
 			
 			<h3>Start Tomcat and Deploy the WebAPI Application</h3>
+			<h4>Start Tomcat</h4>
 			Start Tomcat by navigating to apache/bin and execute the following
 
 <pre class="pre-scrollable">
@@ -6430,7 +6430,7 @@ catalina.bat start
 catalina.bat stop
 </pre>
 
-			<br/><br/>
+			<h4>Deploy the WebAPI Application</h4>
 			Open the Tomcat Web Application Manager in a browser window using
 
 <pre class="pre-scrollable">
@@ -6454,8 +6454,9 @@ http://localhost:8080/manager/html
 			Note, after deploying the WebAPI for the first time, the source and source_daimon tables will be created in PostgreSql.  
 			<br/>
 			<img width="800px" src="./img/tomcat-07.JPG" />
-
-			<h3>Run the Create Atlas Datasource Script from the fhir-to-omop Tool</h3>
+			
+			<br/><br/>
+			<h3><b>PostgreSql Data Source: Run the Create Atlas Datasource Script (atlas2) from the <nobr>fhir-to-omop</nobr> Tool</b></h3>
 			Now that the source and source_daimon tables exist, the script to create the Atlas data sources can be run.  
 			This script can be run using the fhir-to-omop tool as shown below.  
 <pre class="pre-scrollable">
@@ -6581,9 +6582,11 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
 			Run each of these scripts from RStudio.  
 			The install-achilles.r script only needs to be run once.  
 			The other scripts can be run each time the data need to be refreshed.  
+			<br/>
+			<img width="800px" src="./img/achilles-01.JPG" />
 
-			
-
+			<br/><br/><br/><br/><br/>
+			<br/><br/><br/><br/><br/>
 		</div>
 	</body>
 </html>
