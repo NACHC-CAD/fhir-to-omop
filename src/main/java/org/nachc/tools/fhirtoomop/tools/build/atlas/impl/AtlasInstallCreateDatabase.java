@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.build.atlas.impl;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -28,17 +29,17 @@ public class AtlasInstallCreateDatabase {
 			String sqlString;
 			// drop if exists
 			log.info("getting sql string for drop...");
-			sqlString = FileUtil.getAsString(DROP_PATH);
+			sqlString = getDropSql();
 			log.info("doing drop...");
 			Database.update(sqlString, conn);
 			// create the database
 			log.info("getting sql string for create...");
-			sqlString = FileUtil.getAsString(CREATE_PATH);
+			sqlString = getCreateSql();
 			log.info("creating database...");
 			Database.update(sqlString, conn);
 			// database updates (privs etc)
 			log.info("getting sql string for create...");
-			sqlString = FileUtil.getAsString(UPDATE_PATH);
+			sqlString = getUpdateSql();
 			log.info("doing updates for database...");
 			Database.update(sqlString, conn);
 			// done
@@ -47,6 +48,27 @@ public class AtlasInstallCreateDatabase {
 		} finally {
 			Database.close(conn);
 		}
+	}
+	
+	private static String getDropSql() {
+		String sqlString = FileUtil.getAsString(DROP_PATH);	
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.get("ohdsiDbName"));
+		return sqlString;
+	}
+	
+	private static String getCreateSql() {
+		String sqlString = FileUtil.getAsString(CREATE_PATH);
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.get("ohdsiDbName"));
+		sqlString = sqlString.replace("<ohdsiDbOwner>", AppParams.get("ohdsiDbOwner"));
+		return sqlString;
+	}
+	
+	private static String getUpdateSql() {
+		String sqlString = FileUtil.getAsString(UPDATE_PATH);
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.get("ohdsiDbName"));
+		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
+		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
+		return sqlString;
 	}
 	
 }
