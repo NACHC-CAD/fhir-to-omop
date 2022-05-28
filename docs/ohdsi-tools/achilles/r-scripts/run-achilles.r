@@ -17,10 +17,10 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(
 
 
 Achilles::achilles(
-  cdmVersion = "5.4", 
+  cdmVersion = cdmVersion, 
   connectionDetails = connectionDetails,
-  cdmDatabaseSchema = "synthea_micro.dbo",
-  resultsDatabaseSchema = "synthea_micro_achilles_results.dbo"
+  cdmDatabaseSchema = cdmDatabaseSchema,
+  resultsDatabaseSchema = resultsDatabaseSchema
 )
 
 

@@ -48,12 +48,7 @@
 						<a href="/fhir-to-omop/pages/navbar/getting-started/start-here/InstallMsSqlServer.html">Install MS Sql Server</a>
 					</li>
 					<li>
-						<b>PostgreSql:</b>PostgreSql and pgAdmin 4 are required for this process.  
-						Install instructions for PostgreSql and pgAdmin 4 are here:
-						<a href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetPostgreSql.html">Install PostgreSql</a>
-					</li>
-					<li>
-						<b>Tomcat:</b>Apache Tomcat is used as the web server to host the WebAPI and Atlas applications.  
+						<b>PostgreSql:</b> PostgreSql and pgAdmin 4 are required for this process.  
 						Install instructions for PostgreSql and pgAdmin 4 are here:
 						<a href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetPostgreSql.html">Install PostgreSql</a>
 					</li>
@@ -62,6 +57,11 @@
 						This instance can be a pre-existing instance, or can be an instance created using the fhir-to-omop tools.  
 						Instructions for creating an OMOP/CDM instance using fhir-to-omop tools can be found here: 
 						<a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Create CDM using fhir-to-omop</a>
+					</li>
+					<li>
+						<b>R and RStudio:</b> R and RStudio are used to run the Achilles scripts.  
+						Instructions for downloading and installing R and RStudio can be found here:
+						<a href="/fhir-to-omop/pages/navbar/getting-started/start-here/GetR.html">Download and Install R and RStudio</a>
 					</li>
 					<li>
 						<b>fhir-to-omop:</b> The fhir-to-omop tool is used to automate some of the steps required to set up Atlas.  
@@ -77,19 +77,27 @@
 				<h3>Install Atlas Overview</h3>
 				The following steps are taken to install and run Atlas.  
 				<ul>
-					<li>CDM: Create your instance of the OMOP CDM database in MS Sql Server</li>
-					<li>PostgreSql Objects: Create the initial PostgreSql objects (users, database, and webapi schema)</li>
-					<li>PostgreSql Server: A PostgreSql server is registered manually using pgAdmin 4</li>
-					<li>Deploy WebAPI: The initial deployment of WebAPI creates the tables in the webapi PostgreSql schema</li>
-					<li>Run Achilles: The Achilles R-scripts are run to create the underlying Achilles data</li>
-					<li>PostgreSql Data Source: The Datasource script needs to be run after the initial deployment of WebAPI creates the necessary webapi tables</li>
-					<li>Deploy Atlas: The Atlas application can then be deployed to Tomcat</li>
+					<li><b>fhir-to-omop:</b> Download and Configure the fhir-to-omop Standalone Application</li>
+					<li><b>CDM:</b> Create your instance of the OMOP CDM database in MS Sql Server</li>
+					<li><b>PostgreSql Objects:</b> Create the initial PostgreSql objects (users, database, and webapi schema)</li>
+					<li><b>PostgreSql Server:</b> A PostgreSql server is registered manually using pgAdmin 4</li>
+					<li><b>Deploy WebAPI:</b> The initial deployment of WebAPI creates the tables in the webapi PostgreSql schema</li>
+					<li><b>Run Achilles:</b> The Achilles R-scripts are run to create the underlying Achilles data</li>
+					<li><b>PostgreSql Data Source:</b> The Datasource script needs to be run after the initial deployment of WebAPI creates the necessary webapi tables</li>
+					<li><b>Deploy Atlas:</b> The Atlas application can then be deployed to Tomcat</li>
 				</ul>
 			</p>
 			
 			<h1>Install Atlas</h1>
 			The following steps detail how to install Atlas after the initial prerequisites have been installed.  
-			<h3>Download and Configure the fhir-to-omop Tools</h3>
+			
+			<!-- 
+			*
+			* INSTALL FHIR-TO-OMOP TOOLS
+			*
+			* -->
+
+			<h3><b>fhir-to-omop: Download and Configure the fhir-to-omop Standalone Application</b></h3>
 			<p>
 				Download the latest version of the fhir-to-omop.zip file from the 
 				<a href="https://github.com/NACHC-CAD/fhir-to-omop">releases page</a>. 
@@ -112,13 +120,25 @@ postgresBootstrapUid=postgres
 postgresBootstrapPwd=stripedbass
 </pre>
 			
-			<h3>Create an OMOP/CDM instance</h3>
+			<!-- 
+			*
+			* CDM: CREATE OMOP/CDM INSTANCE
+			*
+			* -->
+
+			<h3><b>CDM: Create an OMOP/CDM instance</b></h3>
 			Prior to installing Atlas you will need to have an instance of the OMOP/CDM database up and running.  
 			If you do not already have this, the fhir-to-omop tools can be used to create an OMOP/CDM instance and populate it with data.  
 			This process is described here: 
 			<a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">The fhir-to-omop Standalone Application</a>
 			
-			<h3>Create PostgreSql and MS Sql Server Atlas Objects</h3>
+			<!-- 
+			*
+			* POSTGRESQL OBJECTS
+			*
+			* -->
+
+			<h3><b>PostgreSql Objects: Create PostgreSql and MS Sql Server Atlas Objects</b></h3>
 			A number of users, the OHDSI database, and the webapi schema need to be created in PostgreSql for the Atlas application.  
 			A number of databases and tables are also created in the MS SqlServer by this script that are required by Atlas.  
 			These database objects can be created by running the "fhir-to-omop atlas" tool.  
@@ -5932,8 +5952,14 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
 		<br/>
 		<img width="600px" src="./img/atlas-sql-server-03.jpg" />
 		
+		<!-- 
+		*
+		* POSTGRESQL SERVER
+		*
+		* -->
+
 		<br/>
-		<h3>Create PostgreSql Server</h3>
+		<h3><b>PostgreSql Server: Create PostgreSql Server</b></h3>
 		The PostgreSql Server needs to be created manually using pgAdmin 4.  
 		To create the PostgreSql Server, open pgAdmin 4, Select Servers->Register->Server... 
 		and then fill out the information as shown below.  
@@ -5961,7 +5987,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
 		*
 		-->
 
-		<h3>Download, Build, and Deploy the WebAPI Application</h3>
+		<h3><b>Deploy WebAPI: Download, Build, and Deploy the WebAPI Application</b></h3>
 		<p>
 			This section will walk through the process to download, build, and deploy the WebAPI application to Tomcat.  
 			The first time the WebAPI application is deployed, the tables required for the creation of the Atlas Datasource records will be created.  
@@ -6007,6 +6033,9 @@ git checkout v2.11.0
       &lt;datasource.url&gt;jdbc:postgresql://localhost:5432/OHDSI&lt;/datasource.url&gt;
       &lt;datasource.username&gt;ohdsi_admin_user&lt;/datasource.username&gt;
       &lt;datasource.password&gt;stripedbass&lt;/datasource.password&gt;
+      ...
+      &lt;flyway.datasource.password&gt;stripedbass&lt;/flyway.datasource.password&gt;
+      
 </pre>
 		</p>
 		
@@ -6323,14 +6352,238 @@ Downloaded from ohdsi: https://repo.ohdsi.org/nexus/content/groups/public/com/od
 
 D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
 </pre>
-		</p>
-		<br/>
-		<h4>Deploy the WebAPI Application to Tomcat</h4>
-		Start Tomcat by navigating to the Tomcat bin directory and execut the start command.  
+
+			<br/>
+
+			<!-- 
+			*
+			* INSTALL TOMCAT
+			*
+			* -->
+
+			<h3>Install and Configure Apache Tomcat 8</h3>
+			Apache Tomcat can be downlaoded from <a href="https://tomcat.apache.org/download-80.cgi">https://tomcat.apache.org/download-80.cgi</a>.
+			Older versions are available in the <a href="https://archive.apache.org/dist/tomcat/tomcat-8/">archive</a>.  
+			The install of Atlas documented here was implemented and testing using Tomcat 8.5.78.  
+			Install Tomcat by extracting the contents of the zip file (here the extracted file was renamed to apache).  
+			<br/>
+			<img width="800px" src="./img/tomcat-01.JPG" />
+			<br/><br/>
+			Two modifications need to be made to Tomcat to enable the deployment of Atlas.
+			<ul>
+				<li>
+					<b>Create an Admin User:</b> An admin user needs to be created so we can deploy our Atlas application.  
+				</li>
+				<li>
+					<b>Increase multi-part Upload Size:</b> The size of a multi-part submission needs to be increased in apache/webapps/manage/WEB-INF/web.xml
+				</li>
+			</ul>  
+			<br/><br/>
+			<h4>Create an Admin User</h4>	
+			Navigate to and open apache/conf/tomcat-users.xml.  
+			<br/>
+			<img width="800px" src="./img/tomcat-03.JPG" />
+			<br/><br/>
+			Add the following lines to the &lt;tomcat-users&gt; section.  
+			
+<pre class="pre-scrollable">
+  &lt;role rolename="manager-gui"/&gt;
+  &lt;user username="tomcat" password="mypassword" roles="manager-gui"/&gt;
+</pre>
+			<br/>
+			<h4>Increase multi-part Upload Size</h4>
+			Navigate to and open apache/webapps/manage/WEB-INF/web.xml.  
+			<br/>
+			<img width="800px" src="./img/tomcat-02.JPG" />
+			<br/><br/>
+			Change the following lines to read as shown below (we are increasing the size by a factor of 10).  
+			These lines are towards the beginning of the file.  
+			<br/>
+
+<pre class="pre-scrollable">
+    &lt;multipart-config&gt;
+      &lt;!-- 50MB max --&gt;
+      &lt;max-file-size&gt;524288000&lt;/max-file-size&gt;
+      &lt;max-request-size&gt;524288000&lt;/max-request-size&gt;
+      &lt;file-size-threshold&gt;0&lt;/file-size-threshold&gt;
+    &lt;/multipart-config&gt;
+</pre>
+	<br/><br/>
+	
+			<!-- 
+			*
+			* START TOMCAT
+			*
+			* -->
+			
+			<h3>Start Tomcat and Deploy the WebAPI Application</h3>
+			Start Tomcat by navigating to apache/bin and execute the following
+
 <pre class="pre-scrollable">
 catalina.bat start
 </pre>
-		
+
+			This will launch the Apache Tomcat server in a new cmd window.  
+			Note, to stop Tomcat execute the following
+
+<pre class="pre-scrollable">
+catalina.bat stop
+</pre>
+
+			<br/><br/>
+			Open the Tomcat Web Application Manager in a browser window using
+
+<pre class="pre-scrollable">
+http://localhost:8080/manager/html
+</pre>
+
+			<img width="800px" src="./img/tomcat-04.JPG" />	
+			
+			<br/><br/>
+			Scroll down to the "WAR file to deploy" section.  
+			Select "Choose File" and navigate to the war file created by the Maven (MVN) build.  
+			The war file will be in the WebAPI/target folder.  
+			After selecting the war file, select "Deploy" to deploy the WebAPI application.  
+			
+			<img width="800px" src="./img/tomcat-05.JPG" /> 
+			<br/><br/>
+			Select the war file in WebAPI/target as shown below
+			<img width="800px" src="./img/tomcat-06.JPG" /> 
+			<br/><br/>
+			
+			Note, after deploying the WebAPI for the first time, the source and source_daimon tables will be created in PostgreSql.  
+			<br/>
+			<img width="800px" src="./img/tomcat-07.JPG" />
+
+			<h3>Run the Create Atlas Datasource Script from the fhir-to-omop Tool</h3>
+			Now that the source and source_daimon tables exist, the script to create the Atlas data sources can be run.  
+			This script can be run using the fhir-to-omop tool as shown below.  
+<pre class="pre-scrollable">
+fhir-to-omop>fhir-to-omop.bat atlas2
+</pre>
+			<img width="800px" src="./img/tomcat-08.JPG" />
+			<br/><br/>
+			
+			Output from a typical run is shown below.  
+			
+<pre class="pre-scrollable">
+
+D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>fhir-to-omop.bat atlas2
+
+
+# ----------------------------------------
+#
+# running fhir to omop
+#
+# ----------------------------------------
+
+Working Directory: D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop
+Welcome to fhir-to-omop
+10:43:55,162 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+10:43:55,162 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+10:43:55,162 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [jar:file:/D:/_WORKSPACES/_ECLIPSE_WORKSPACE/workspace/fhir-to-omop/target/fhir-to-omop/fhir-to-omop.jar!/logback.xml]
+10:43:55,162 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs multiple times on the classpath.
+10:43:55,162 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/D:/_WORKSPACES/_ECLIPSE_WORKSPACE/workspace/fhir-to-omop/target/fhir-to-omop/fhir-to-omop.jar!/logback.xml]
+10:43:55,162 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/D:/_WORKSPACES/_ECLIPSE_WORKSPACE/workspace/fhir-to-omop/target/fhir-to-omop/lib/thread-tool-0.0.2.jar!/logback.xml]
+10:43:55,172 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@e45f292 - URL [jar:file:/D:/_WORKSPACES/_ECLIPSE_WORKSPACE/workspace/fhir-to-omop/target/fhir-to-omop/fhir-to-omop.jar!/logback.xml] is not of type file
+10:43:55,242 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+10:43:55,243 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+10:43:55,247 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+10:43:55,250 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+10:43:55,277 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [ch.qos.logback] to ERROR
+10:43:55,277 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [ca.uhn.fhir] to ERROR
+10:43:55,277 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to INFO
+10:43:55,277 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+10:43:55,277 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+10:43:55,278 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@5f2108b5 - Registering current configuration as safe fallback point
+
+Getting config file from: D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop
+------------
+app.properties:
+D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop\app.properties
+Exists: true
+InputStream: java.io.FileInputStream@1e397ed7
+------------
+2022-05-28 10:43:55,290 10:43:55.290 [main] INFO  (PostgresDatabaseConnectionFactory.java:38) - Getting connection for url:
+jdbc:postgresql://localhost:5433/OHDSI?user=postgres&password=stripedbass
+2022-05-28 10:43:55,483 10:43:55.483 [main] INFO  (InstallAtlasDatasource.java:26) - Deleting from webapi.source_daimon
+2022-05-28 10:43:55,490 10:43:55.490 [main] INFO  (InstallAtlasDatasource.java:30) - Deleting from webapi.source
+2022-05-28 10:43:55,491 10:43:55.491 [main] INFO  (InstallAtlasDatasource.java:34) - getting sql script...
+2022-05-28 10:43:55,492 10:43:55.492 [main] INFO  (InstallAtlasDatasource.java:36) - executing script...
+INSERT INTO webapi.source (source_id, source_name, source_key, source_connection, source_dialect)
+SELECT nextval('webapi.source_sequence'), 'Localhost CDM', 'MY_CDM', 'jdbc:sqlserver://localhost:1433;encrypt=false;databaseName=synthea_micro;user=synthea_micro;password=Sneaker01', 'sql server'
+
+INSERT INTO webapi.source_daimon (source_daimon_id, source_id, daimon_type, table_qualifier, priority)
+SELECT nextval('webapi.source_daimon_sequence'), source_id, 0, 'synthea_micro', 0
+FROM webapi.source
+WHERE source_key = 'MY_CDM'
+
+
+INSERT INTO webapi.source_daimon (source_daimon_id, source_id, daimon_type, table_qualifier, priority)
+SELECT nextval('webapi.source_daimon_sequence'), source_id, 1, 'synthea_micro.dbo', 1
+FROM webapi.source
+WHERE source_key = 'MY_CDM'
+
+
+INSERT INTO webapi.source_daimon (source_daimon_id, source_id, daimon_type, table_qualifier, priority)
+SELECT nextval('webapi.source_daimon_sequence'), source_id, 2, 'synthea_micro_achilles_results.dbo', 1
+FROM webapi.source
+WHERE source_key = 'MY_CDM'
+
+
+INSERT INTO webapi.source_daimon (source_daimon_id, source_id, daimon_type, table_qualifier, priority)
+SELECT nextval('webapi.source_daimon_sequence'), source_id, 5, 'synthea_micro_achilles_temp.dbo', 0
+FROM webapi.source
+WHERE source_key = 'MY_CDM'
+
+
+2022-05-28 10:43:55,499 10:43:55.499 [main] INFO  (InstallAtlasDatasource.java:41) - Done creating data source.
+
+
+Done.
+
+
+
+D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
+</pre>
+
+			<!-- 
+			*
+			* RUN ACHILLES
+			*
+			* -->
+
+			<h3><b>Run Achilles: Run the Achilles Scripts</b></h3>
+			Now that all of our data tables have been created, we can run Achilles to populate the Achilles (Data Source) tables.  
+			Data from these tables are used to populate the reports in the "Data Sources" section of Atlas.  
+			<br/><br/>
+
+			<p>
+				To install and run Achilles run the following scripts.  
+				<ul>
+					<li>
+						<b>install-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/install-achilles.r" download>here</a> 
+						to install components required for Achilles.  
+						This script only needs to be run once.  
+					</li>
+					<li>
+						<b>init-params-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/init-params-achilles.r" download>here</a> 
+						to initialise the parameters for Achilles.  
+					</li>
+					<li>
+						<b>run-achilles.r:</b> Run the R script <a href="../../../../ohdsi-tools/achilles/r-scripts/run-achilles.r" download>here</a> 
+						to run Achilles.  
+					</li>
+				</ul>
+			</p>
+			
+			Edit the init-params-achilles.r script to use your settings.  
+			Run each of these scripts from RStudio.  
+			The install-achilles.r script only needs to be run once.  
+			The other scripts can be run each time the data need to be refreshed.  
+
+			
+
 		</div>
 	</body>
 </html>
