@@ -84,8 +84,9 @@
 					<li><b>Deploy WebAPI:</b> The initial deployment of WebAPI creates the tables in the webapi PostgreSql schema</li>
 					<li><b>PostgreSql Data Source:</b> The Datasource script needs to be run after the initial deployment of WebAPI creates the necessary webapi tables</li>
 					<li><b>Run Achilles:</b> The Achilles R-scripts are run to create the underlying Achilles data</li>
-					<li><b>Deploy Atlas:</b> The Atlas application can then be deployed to Tomcat</li>
+					<li><b>Deploy Atlas:</b> The Atlas application can then be downloaded and deployed to Tomcat</li>
 				</ul>
+			Each of these steps are described in detail below.  
 			</p>
 			
 			<h1>Install Atlas</h1>
@@ -6361,6 +6362,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
 			* -->
 
 			<h3>Install and Configure Apache Tomcat 8</h3>
+			<h4>Download Apache Tomcat</h4>
 			Apache Tomcat can be downlaoded from <a href="https://tomcat.apache.org/download-80.cgi">https://tomcat.apache.org/download-80.cgi</a>.
 			Older versions are available in the <a href="https://archive.apache.org/dist/tomcat/tomcat-8/">archive</a>.  
 			The install of Atlas documented here was implemented and testing using Tomcat 8.5.78.  
@@ -6377,7 +6379,6 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
 					<b>Increase multi-part Upload Size:</b> The size of a multi-part submission needs to be increased in apache/webapps/manage/WEB-INF/web.xml
 				</li>
 			</ul>  
-			<br/>
 			<h4>Create an Admin User</h4>	
 			Navigate to and open apache/conf/tomcat-users.xml.  
 			<br/>
@@ -6389,7 +6390,7 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\WebAPI>
   &lt;role rolename="manager-gui"/&gt;
   &lt;user username="tomcat" password="mypassword" roles="manager-gui"/&gt;
 </pre>
-			<br/>
+
 			<h4>Increase multi-part Upload Size</h4>
 			Navigate to and open apache/webapps/manage/WEB-INF/web.xml.  
 			<br/>
@@ -6584,6 +6585,116 @@ D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\fhir-to-omop\target\fhir-to-omop>
 			The other scripts can be run each time the data need to be refreshed.  
 			<br/>
 			<img width="800px" src="./img/achilles-01.JPG" />
+
+			<br/>
+			<h3><b>Deploy Atlas: Download and Deploy Atlas to Apache Tomcat</b></h3>
+			<h4>Clone and Checkout Atlas from Github</h4>
+			Deploying Atlas from this point consists of downloading Atlas from Github, running the npm builder, 
+			and then copying the Atlas project to the Tomcat webapps folder and renameing it to "atlas" (lower case "a") 
+			as described below. More information on installing Atlas can be found 
+			<a href="https://github.com/OHDSI/Atlas/wiki/Atlas-Setup-Guide">here</a>.
+			<br/>
+			<h4>Clone and Checkout Atlas</h4> 
+			Clone and checkout Atlas from Github by running the following commads from a cmd prompt as shown below.  
+<pre class="pre-scrollable">
+https://github.com/OHDSI/Atlas
+cd Atlas
+git checkout v2.11.0
+</pre>
+			<img width="800px" src="./img/atlas-01.JPG" />
+			<br/>
+			<h4>Run the NPM build for Atlas</h4>
+			The NPM build can now be run by executing the following from the Atlas directory that was created by cloning the application from Github.  
+<pre class="pre-scrollable">
+npm run build
+</pre>
+
+			Full output from a sample run is shown below.  
+
+<pre class="pre-scrollable">
+
+D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\Atlas&gt;npm run build
+
+&gt; atlas@2.11.0 build
+&gt; npm run prep && npm run build:dev
+
+
+&gt; atlas@2.11.0 prep
+&gt; npm i && npm run clean && npm run genversion
+
+npm WARN deprecated querystring@0.2.1: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+npm WARN deprecated @babel/polyfill@7.12.1:  This package has been deprecated in favor of separate inclusion of a polyfill and regenerator-runtime (when needed). See the @babel/polyfill docs (https://babeljs.io/docs/en/babel-polyfill) for more information.
+npm WARN deprecated core-js@2.6.12: core-js@&lt;3.4 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Please, upgrade your dependencies to the actual version of core-js.
+
+added 377 packages, and audited 378 packages in 26s
+
+22 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+&gt; atlas@2.11.0 clean
+&gt; rimraf ./js/assets/bundle && rimraf ./js/assets/fonts && rimraf ./js/assets/images
+
+
+&gt; atlas@2.11.0 genversion
+&gt; genversion -s js/version/version.js && r_js -convert js/version js/ && rimraf js/version
+
+
+&gt; atlas@2.11.0 build:dev
+&gt; node build/optimize.js && npm run compress
+
+[BABEL] Note: The code generator has deoptimised the styling of undefined as it exceeds the max of 500KB.
+[BABEL] Note: The code generator has deoptimised the styling of undefined as it exceeds the max of 500KB.
+
+&gt; atlas@2.11.0 compress
+&gt; terser ./js/assets/bundle/bundle.js -o ./js/assets/bundle/bundle.js -c --source-map
+
+npm notice
+npm notice New minor version of npm available! 8.3.1 -&gt; 8.11.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v8.11.0
+npm notice Run npm install -g npm@8.11.0 to update!
+npm notice
+
+D:\_WORKSPACES\_ECLIPSE_WORKSPACE\workspace\Atlas&gt;
+</pre>
+			
+			<img width="800px" src="./img/atlas-02.JPG" />
+			<br/>
+			<h4>Deploy Atlas to Tomcat</h4>
+			Stop and restart Tomcat if it is currently running.  
+			Copy the entire Atlas folder to apache/webapps.  
+			<br/><br/>
+			Copy this dir:
+			<br/>
+			<img width="800px" src="./img/atlas-03.JPG" />
+			<br/><br/>
+			To this dir (rename Atlas to atlas):
+			<br/>
+			<img width="800px" src="./img/atlas-04.JPG" />
+			<br/><br/>
+			Restart Tomcat (note, in v2.11.0 there is a bug that causes an exception regarding not finding an achilles_heel_results table).  
+			This exception can be ignored.  
+<pre class="pre-scrollable">
+catalina.bat start
+</pre>
+			Open a broser and navigate to the application, select Data Sources, Select your Data Source, Select the "Person" report.  
+			<br/>
+
+<pre class="pre-scrollable">
+http://localhost:8080/atlas
+</pre>
+			The data from your CDM should be represented in this report.  
+			This is what the report looks like for our synthea_micro data set.  
+			<img width="800px" src="./img/atlas-application-screenshot.JPG" />
+
+
+
 
 			<br/><br/><br/><br/><br/>
 			<br/><br/><br/><br/><br/>
