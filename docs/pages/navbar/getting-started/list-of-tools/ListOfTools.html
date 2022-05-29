@@ -313,9 +313,103 @@
 			These tools can be used individually.
 			Each tool has a simplest complete example that exists as a JUnit integration test in the fhir-to-omop project.  
 			This integration test is listed at the bottom of the description for each entry in the list below.  
-			<p>
-				Utilities documentation is forthcoming.  
-			</p>
+
+			<table class="table">
+
+				<!-- OAUTH Authentication -->
+				<tr>
+					<td>
+						OAUTH Authentication
+					</td>
+					<td>
+						The fhir-to-omop tools use dynamic class loading to allow for any authentication method to be integrated into this framework.  
+						Authentication is done in the FhirServerAuthenticator class.
+						This class dynamically loads the implementation of the HttpClientAuthenticator interface specified in the app.properties file.  
+						The HeaderTokenAuthenticator class is an implementation of HttpClientAuthenticator that is provided by this framework.  
+						This is the authenticator that has been used to authenticate to the SyntheticMass FHIR patient server.  
+						Other authenticators will be made available as requirements dictate as new servers become supported.  
+						The 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/tools/download/authenticate/FhirServerAuthenticatorIntegrationTest.java">FhirServerAuthenticatorIntegrationTest</a> 
+						class demonstrates how this authentication is implemented.  
+					</td>
+				</tr>
+
+				<!-- FHIR Parser Classes -->
+				<tr>
+					<td>
+						FHIR Parser Classes
+					</td>
+					<td>
+						The 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser">org.nachc.tools.fhirtoomop.fhir.parser</a> 
+						package contains a series of Parser classes.  
+						These classes use the 
+						<a href="https://hapifhir.io/">HAPI FHIR API</a> to parse FHIR resources.  
+						The Parser classes encapsulate HAPI FHIR API functionality and simplify common tasks
+						such as reducing indirection and aggregating functionality in to single method calls.  
+					</td>
+				</tr>
+
+				<!-- FHIR Patient -->
+				<tr>
+					<td>
+						FHIR Patient
+					</td>
+					<td>
+						The 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/patient/FhirPatient.java">FhirPatient</a>  
+						class is a Data Value Object (DVO) that represents a FHIR Patient resource.  
+						The FhirPatient is composed of a series of FhirParser objects that represent the different components of a FhirPatient.  
+						For example, for each FhirPatient instance, there is a single PatientParser representing the patient data 
+						and lists of EncounterParser, ConditionParser, MedicationRequestParser, etc. objects that compose each FhirPatient instance.  
+					</td>
+				</tr>
+
+				<!-- FHIR Patient Factory -->
+				<tr>
+					<td>
+						FHIR Patient Factory
+					</td>
+					<td>
+						The 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/patient/factory/FhirPatientFactory.java">FhirPatientFactory</a> class builds a FhirPatient from a 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/patient/factory/FhirPatientResources.java">FhirPatientResources</a>.  
+						The FhirPatientResources class represents a list of resources that represent a single FHIR 
+						<a href="https://build.fhir.org/operation-patient-everything.html">Patient/[id]/$everything resource</a>.  
+						FhirPatientResources is an interface and can be used for any FHIR resource that can be converted into an InputStream 
+						(e.g. FhirPatientResources can use files or pull data directly from a FHIR REST service).  
+						Use of the FhirPatientFactory is demonstrated in the 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/fhir/patient/factory/FhirPatientFactoryIntegrationTest.java">FhirPatientFactoryIntegrationTest</a> class.
+					</td>
+				</tr>
+
+				<!-- OMOP CDM DVO Classes -->
+				<tr>
+					<td>
+						DVO Classes
+					</td>
+					<td>
+						The 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/omop/yaorma/dvo">org.nachc.tools.omop.yaorma.dvo</a> 
+						package contains a series of Data Value Objects (DVOs).  
+						These DVOs represent a one-to-one mapping of the OMOP Common Data Model (CDM).  
+						Each DVO represents an OMOP CDM table.  
+						Each DVO has a field that represents each attribute of the OMOP CDM entity it represents.  
+						These classes are used to compose the OmopPerson class described below.  
+						These classes can be written to the database directly, or can be used to otherwise persist the information they contain 
+						(for example, they could be used to write the data to csv files etc.).  
+					</td>
+				</tr>
+
+				<!-- blank row deliberately included to give bottom line -->
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+
+			</table>
 
 			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	
