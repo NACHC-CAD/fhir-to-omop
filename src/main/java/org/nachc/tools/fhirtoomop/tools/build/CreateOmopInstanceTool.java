@@ -12,6 +12,8 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
+import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -64,9 +66,9 @@ public class CreateOmopInstanceTool {
 			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
 			raceFiles.exec();
 			// load the terminologies
-//			logMsg("LOADING TERMINOLOGY");
-//			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-//			LoadTerminology.exec(conn);
+			logMsg("LOADING TERMINOLOGY");
+			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
+			LoadTerminology.exec(conn);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
