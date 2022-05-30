@@ -120,7 +120,8 @@
 			Things like populating an OMOP instance with the entire contents of a FHIR Patient server. 
 			All of the Tools listed in this section can be launched from the 
 			<a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Standalone Application</a>.  
-			
+			The fhir-to-omop standalone command for each tool is shown below the title of each description (e.g. fhir-to-omop i will Build a complete OMOP CDM Database).  
+						
 			<table class="table">
 
 				<!-- header -->
@@ -137,6 +138,8 @@
 					<td>
 						<p>
 							Build a complete OMOP CDM Database
+							<br/>
+							(fhir-to-omop i)
 						</p>
 						<p>
 							The 
@@ -196,6 +199,8 @@
 					<td>
 						<p>
 							Get a list of all of the IDs for all of the patients on a FHIR server.
+							<br/>
+							(fhir-to-omop ids)
 						</p>
 						<p>
 							Before you can ask for a patient, you'll need to know what patients exist on a server.  
@@ -226,7 +231,7 @@
 					</td>
 				</tr>
 
-				<!-- blank row deliberately included to give bottom line -->
+				<!-- download -->
 				<tr>
 					<td>
 						Download Patients from Your FHIR Server
@@ -234,6 +239,8 @@
 					<td>
 						<p>
 							Download a set of patients from a FHIR Server.  
+							<br/>
+							(fhir-to-omop d)
 						</p>
 						<p>
 							The 
@@ -262,9 +269,14 @@
 				<!-- upload -->
 				<tr>
 					<td>
-						Upload Your FHIR Patients into Your OMOP CDM Database
+						Upload Patients
 					</td>
 					<td>
+						<p>
+							Upload Your FHIR Patients into Your OMOP CDM Database
+							<br/>
+							(fhir-to-omop u)
+						</p>
 						<p>
 							The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/tools/populate/PopulateOmopInstanceFromFhirFiles.java">PopulateOmopInstanceFromFhirFiles</a> tool 
 							can be used to populate an OMOP instance from a set of files representing FHIR patients.  
@@ -291,6 +303,61 @@
 						<p>
 					</td>
 				</tr>
+
+				<!-- Atlas Init -->
+				<tr>
+					<td>
+						Atlas: Initialization
+					</td>
+					<td>
+						<p>
+							Initialize Atlas MS Sql Server Database and PostgreSql Database
+							<br/>
+							(fhir-to-omop atlas)
+						</p>
+						<p>
+							This tool is provided to automate the creation of the database objects (e.g. users, permissions, schemas, tables, etc.) 
+							required for installation of Atlas.  
+							Detailed instructions for installing Atlas are provided 
+							<a href="/fhir-to-omop/pages/navbar/ohdsi-tools/atlas/Atlas.html">here</a>.  
+						</p>
+						<p>
+							This tool can be run from the <a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Standalone Application</a> using the "download" or "d" option:
+							<br/>
+							fhir-to-omop atlas
+						</p>
+					</td>
+				</tr>
+
+				<!-- Atlas: Datasources -->
+				<tr>
+					<td>
+						Atlas: Datasources
+					</td>
+					<td>
+						<p>
+							Initialize Atlas MS Sql Server Datasources
+							<br/>
+							(fhir-to-omop atlas2)
+						</p>
+						<p>
+							This tool is provided to automate the creation of the database objects (e.g. users, permissions, schemas, tables, etc.) 
+							required for the Atlas Data Sources functionality. 
+							This needs to be a separate process from the Atlas initialization 
+							as other steps need to be peformed before this step can be completed 
+							(e.g. the Postgres server needs to be created manually before this process can be executed).   
+							Detailed instructions for installing Atlas are provided 
+							<a href="/fhir-to-omop/pages/navbar/ohdsi-tools/atlas/Atlas.html">here</a>.  
+						</p>
+						<p>
+							This tool can be run from the <a href="/fhir-to-omop/pages/navbar/getting-started/list-of-tools/Standalone.html">Standalone Application</a> using the "download" or "d" option:
+							<br/>
+							fhir-to-omop atlas2
+						<p>
+					</td>
+				</tr>
+
+
 
 				<!-- blank row deliberately included to give bottom line -->
 				<tr>

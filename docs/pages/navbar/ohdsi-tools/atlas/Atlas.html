@@ -113,12 +113,35 @@
 			
 <pre class="pre-scrollable">
 # ---
-# PostgreSQL Stuff
+# Atlas Stuff
 # ---
 
+# bootstrap connection for atlas postgres
 postgresBootstrapUrl=jdbc:postgresql://localhost:5432
 postgresBootstrapUid=postgres
 postgresBootstrapPwd=stripedbass
+
+# users for atlas postgres 
+ohdsiAdminUserUid=ohdsi_admin_user
+ohdsiAdminUserPwd=stripedbass
+ohdsiAdminUid=ohdsi_admin
+ohdsiAdminPwd=stripedbass
+ohdsiAppUserUid=ohdsi_app_user
+ohdsiAppUserPwd=stripedbass
+ohdsiAppUid=ohdsi_app
+ohdsiAppPwd=stripedbass
+
+# atlas database name
+ohdsiDbName=OHDSI
+ohdsiDbOwner=ohdsi_admin
+
+# atlas data source
+atlasDataSourceName=Localhost CDM
+atlasDataSourceKey=MY_CDM
+atlasCdm=synthea_micro.dbo
+atlasResults=synthea_micro_achilles_results.dbo
+atlasTemp=synthea_micro_achilles_temp.dbo
+atlasCdmUrl=jdbc:sqlserver://localhost:1433;encrypt=false;databaseName=synthea_micro;user=synthea_micro;password=Sneaker01
 </pre>
 			
 			<!-- 
