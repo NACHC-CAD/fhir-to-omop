@@ -383,7 +383,7 @@
 					</td>
 				</tr>
 
-				<!-- OMOP CDM DVO Classes -->
+				<!-- DVO Classes -->
 				<tr>
 					<td>
 						DVO Classes
@@ -398,6 +398,116 @@
 						These classes are used to compose the OmopPerson class described below.  
 						These classes can be written to the database directly, or can be used to otherwise persist the information they contain 
 						(for example, they could be used to write the data to csv files etc.).  
+					</td>
+				</tr>
+
+				<!-- OmopPerson -->
+				<tr>
+					<td>
+						OMOP Person
+					</td>
+					<td>
+						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/OmopPerson.java">OmopPerson</a> class represents all of the OMOP CDM data for a single person.  
+						The OmopPerson object is composed of collections of DVO objects that are one-to-one mappings to the OMOP CDM.  
+						Instances of OmopPerson are created from a FhirPatient object by the OmopPersonFactory class described below.  
+					</td>
+				</tr>
+
+				<!-- OmopPersonFactory -->
+				<tr>
+					<td>
+						OMOP Person Factory
+					</td>
+					<td>
+						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/OmopPersonFactory.java">OmopPersonFactory</a> 
+						class takes an instance of a FhirPerson and creates an OmopPerson instance.  
+						Each component of the OmopPerson is built by its respective Builder class.  
+						Builder classes are found in the 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder">org.nachc.tools.fhirtoomop.omop.person.factory.builder</a> package.  
+						The functionality of the OmopPersonFactory class is demonstrated in the 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/person/OmopPersonBuilderIntegrationTest.java">OmopPersonBuilderIntegrationTest</a> class.  
+					</td>
+				</tr>
+
+				<!-- Write OMOP Person to CDM -->
+				<tr>
+					<td>
+						Write OMOP Person to CDM Database
+					</td>
+					<td>
+						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/write/singlepatient/WriteOmopPersonToDatabase.java">WriteOmopPersonToDatabase</a> class writes a single OmopPerson to an instance of the CDM as specified in the app.parameters file.  
+						The functionality of this class is demonstrated in the 
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/omop/write/singlepatient/WriteOmopPersonToDatabaseIntegrationTest.java">WriteOmopPeopleToDatabaseIntegrationTest</a> class.  
+						This class is used in a multi-threaded environment to write up to 200 patients per second to an OMOP instance 
+						(approximately 1.5 million patients in 2 hours).  
+					</td>
+				</tr>
+
+				<!-- Write OMOP people to database -->
+				<tr>
+					<td>
+						Write OMOP People to CDM Database (Threading Implementation)
+					</td>
+					<td>
+						The <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/write/threaded/WriteOmopPeopleToDatabase.java">WriteOmopPeopleToDatabase</a> class 
+						implements the threading model used by the fhir-to-omop tools to write FHIR Patients to OMOP.  
+						This threading model is very efficient and is capable of processing 1.5 million FHIR Patients in approximately 2 hours.  
+						This includes the entire process including reading the file from disc, parsing the FHIR content using HAPI FHIR, 
+						mapping of FHIR systems and codes to OMOP vocabulary_id values and OMOP concept_id values, 
+						and the inserts in to the OMOP data tables to populate the OMOP database.  
+						This threading model is based on the ThreadTool framework described below.  
+						The functionality of the WriteOmopPeopleToDatabase class is demonstrated in the  
+						<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/omop/write/threaded/WriteOmopPeopleToDatabaseIntegrationTest.java">WriteOmopPeopleToDatabaseIntegrationTest</a> class.
+					</td>
+				</tr>
+
+				<!-- ThreadTool -->
+				<tr>
+					<td>
+						thread-tool (Threading Framework)						
+					</td>
+					<td>
+						The <a href="https://github.com/NACHC-CAD/thread-tool">thread-tool</a> project
+						is a framework that can be used to easily create very efficient multi-threaded applications.  
+						This framework provides several advantages over other strategies for implementing multi-threaded applications in Java
+						<ul>
+							<li>
+								<b>Simplicity and Ease of Use:</b> 
+								The implementer using this framework only needs to implement a class that extends the ThreadToolUser
+								and then create and execute a ThreadRunner.  
+								The details of implementation of a Java threading model are encapsulated by the framework thereby eliminating errors 
+								that often occur when multi-threaded applications are written in Java from scratch.  
+							</li>
+							<li>
+								<b>Sustained Continuous High Throughput</b> 
+								Other threading models in Java tend to create a set of threads and run that set of threads until each finishes.  
+								Only then is another set of threads created and executed.  
+								This leads to spikes and troughs in activity.  
+								As a new set of threads is started all threads are running and peak activity is achieved.  
+								As each thread finishes, activity diminishes until only a few or one stragglers are running.  
+								At this point activity is minimized until the final thread finishes and a new batch is created and started.  
+								The ThreadTool prevents these periods of inactivity by creating groups of threads.  
+								A constant number of groups of threads are kept running at all times.  
+								As one group finishes, it is replaced by a new group of threads.  
+								When one group of threads is left with only a few stragglers, the other thread groups are still running.  
+								Thereby a relatively constant and maximum level of activity is maintained.   
+							</li>
+							<li>
+								<b>Reuse:</b> This framework can be used anywhere high performance multi-threading is required. 
+								The thread-tool framework can be included in any Java project using the following Maven dependency declaration.  
+<pre class="pre-scrollable">
+&lt;dependency&gt;
+	&lt;groupId&gt;org.nachc.cad.tools&lt;/groupId&gt;
+	&lt;artifactId&gt;thread-tool&lt;/artifactId&gt;
+	&lt;version&gt;0.0.2&lt;/version&gt;
+&lt;/dependency&gt;
+</pre> 
+							</li>
+						</ul>
+						Functionality of the thread-tool framework is demonstrated in the 
+						<a href="https://github.com/NACHC-CAD/thread-tool/blob/main/src/test/java/org/nachc/tools/threadtool/ThreadRunnerIntegrationTest.java">ThreadRunnerIntegrationTest</a> 
+						class of the 
+						<a href="https://github.com/NACHC-CAD/thread-tool">thread-tool</a> project. 
 					</td>
 				</tr>
 
