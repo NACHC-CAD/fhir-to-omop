@@ -13,6 +13,7 @@ public class DatatableList {
 			"observation",
 			"note",
 			"visit_detail",
+			"observation_period",
 			"observation",
 			"condition_occurrence",
 			"visit_occurrence",

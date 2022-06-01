@@ -13,9 +13,7 @@ import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation.translate.OmopMeasurementFromObservation;
 import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
-import org.nachc.tools.fhirtoomop.util.mapping.OperatorMapping;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.FhirToOmopConceptMapper;
-import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.nachc.tools.omop.yaorma.dvo.ObservationDvo;
@@ -116,10 +114,10 @@ public class OmopObservationBuilder {
 		dvo.setObservationSourceValue(parser.getId());
 		// value as coding
 		Coding valueCoding = parser.getValueCoding();
-		if(valueCoding != null) {
+		if (valueCoding != null) {
 			ConceptDvo valueConceptDvo = FhirToOmopConceptMapper.getOmopConceptForFhirCoding(valueCoding, conn);
 			Integer valueConceptId = valueConceptDvo == null ? null : valueConceptDvo.getConceptId();
-			if(valueConceptId != null) {
+			if (valueConceptId != null) {
 				dvo.setValueAsConceptId(valueConceptId);
 				dvo.setValueAsString(valueConceptDvo.getConceptName());
 			}
@@ -139,7 +137,7 @@ public class OmopObservationBuilder {
 		try {
 			VisitOccurrenceDvo visit = this.omopPerson.getVisitOccurrenceByFhirId(parser.getEncounterId());
 			dvo.setVisitOccurrenceId(visit.getVisitOccurrenceId());
-		} catch(NullPointerException npe) {
+		} catch (NullPointerException npe) {
 			log.error("COULD NOT GET VISIT ID");
 		}
 		// add to appropriate list
@@ -180,7 +178,7 @@ public class OmopObservationBuilder {
 		if (dvo.getValueAsNumber() == null && dvo.getValueAsConceptId() == null && dvo.getValueAsConceptId() == null && dvo.getUnitConceptId() == 0) {
 			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
-		if(dvo.getUnitConceptId() == 0) {
+		if (dvo.getUnitConceptId() == 0) {
 			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
 	}

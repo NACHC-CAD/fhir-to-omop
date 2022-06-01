@@ -14,7 +14,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ConceptCache {
 
-	public static final ConceptCache ACTIVE_CACHE = new ConceptCache();
+	public static ConceptCache ACTIVE_CACHE = new ConceptCache();
+	
+	public static void reset() {
+		ACTIVE_CACHE = new ConceptCache();
+	}
 	
 	private int SIZE = AppParams.getConceptCacheSize();
 

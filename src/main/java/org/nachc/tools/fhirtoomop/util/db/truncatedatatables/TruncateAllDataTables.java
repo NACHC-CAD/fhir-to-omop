@@ -7,6 +7,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountsForAllTablesInSchema;
 import org.nachc.tools.fhirtoomop.util.db.datatables.DatatableList;
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -38,6 +39,8 @@ public class TruncateAllDataTables {
 			// delete two-billionaires
 			log.info("Deleting two-billionaires...");
 			Database.update("delete from concept where concept_id > 2000000000", conn);
+			// clean the cache
+			ConceptCache.reset();
 			// commit
 			Database.commit(conn);
 			log.info("Getting counts...");

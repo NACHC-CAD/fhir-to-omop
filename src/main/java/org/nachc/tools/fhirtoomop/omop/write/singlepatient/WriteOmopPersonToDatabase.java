@@ -67,15 +67,15 @@ public class WriteOmopPersonToDatabase {
 	}
 
 	private static void writeObservationPeriod(PersonDvo personDvo, Connection conn) {
+		ObservationPeriodDvo dvo = new ObservationPeriodDvo();
 		try {
-			ObservationPeriodDvo dvo = new ObservationPeriodDvo();
 			dvo.setObservationPeriodStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1900-01-01"));
 			dvo.setObservationPeriodEndDate(TimeUtil.getDateForYyyy_Mm_Dd("2100-01-01"));
 			dvo.setPersonId(personDvo.getPersonId());
 			int id = FhirToOmopIdGenerator.getId("observation_period", "observation_period_id", conn);
 			dvo.setObservationPeriodId(id);
 			dvo.setPeriodTypeConceptId(44814724);
-			Dao.insert(dvo, conn);
+//			Dao.insert(dvo, conn);
 		} catch(Exception exp) {
 			exp.printStackTrace();
 		}

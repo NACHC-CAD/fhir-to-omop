@@ -165,7 +165,9 @@ public class FhirToOmopConceptMapper {
 	}
 
 	private static ConceptDvo addTempConcept(String system, String code, Connection conn) {
-		return doInsertOfNewConcept(system, code);
+		ConceptDvo rtn = doInsertOfNewConcept(system, code);
+		Database.commit(conn);
+		return rtn;
 	}
 
 	private static ConceptDvo doInsertOfNewConcept(String system, String code) {
