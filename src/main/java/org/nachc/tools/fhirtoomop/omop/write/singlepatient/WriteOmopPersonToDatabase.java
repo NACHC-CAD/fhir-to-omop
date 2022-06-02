@@ -75,7 +75,7 @@ public class WriteOmopPersonToDatabase {
 			int id = FhirToOmopIdGenerator.getId("observation_period", "observation_period_id", conn);
 			dvo.setObservationPeriodId(id);
 			dvo.setPeriodTypeConceptId(44814724);
-//			Dao.insert(dvo, conn);
+			Dao.insert(dvo, conn);
 		} catch(Exception exp) {
 			exp.printStackTrace();
 		}

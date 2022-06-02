@@ -36,11 +36,6 @@ public class TruncateAllDataTables {
 			TruncateDataTables.truncateTables(tableNames, conn);
 			// commit
 			Database.commit(conn);
-			// delete two-billionaires
-			log.info("Deleting two-billionaires...");
-			Database.update("delete from concept where concept_id > 2000000000", conn);
-			// clean the cache
-			ConceptCache.reset();
 			// commit
 			Database.commit(conn);
 			log.info("Getting counts...");

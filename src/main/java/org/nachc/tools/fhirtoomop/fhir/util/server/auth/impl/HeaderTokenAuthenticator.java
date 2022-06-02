@@ -56,6 +56,8 @@ public class HeaderTokenAuthenticator implements HttpClientAuthenticator {
 		http.addHeader("Accept", "application/json");
 		http.addHeader("Content-Type", "application/json");
 		http.doPost(msg);
+		int responseCode = http.getStatusCode();
+		log.info("Response code: " + responseCode);
 		String response = http.getResponse();
 		log.info("Request: " + http.getUrl());
 		log.info("Response: \n" + response);

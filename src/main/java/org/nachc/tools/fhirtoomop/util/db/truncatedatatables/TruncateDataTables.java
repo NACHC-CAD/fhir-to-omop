@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.util.db.truncatedatatables;
 import java.sql.Connection;
 import java.util.List;
 
+import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +23,12 @@ public class TruncateDataTables {
 				Database.update(sqlString, conn);
 				log.info("TRUNCATED TABLE: " + tableName);
 			}
+			// delete two-billionaires
+			log.info("Deleting two-billionaires...");
+			Database.update("delete from concept where concept_id > 2000000000", conn);
+			// clean the cache
+			log.info("Cleaning cache...");
+			ConceptCache.reset();
 			log.info("Doing commit...");
 			Database.commit(conn);
 			log.info("Done with deletes, moving on...");
