@@ -69,9 +69,13 @@ public class MappedConceptCache {
 	}
 	
 	public static ConceptDvo get(String omopVocabularyId, String code) {
-		CacheKey key = new CacheKey(omopVocabularyId, code);
-		ConceptDvo rtn = concepts.get(key);
-		return rtn;
+		if(concepts == null) { 
+			return null;
+		} else {
+			CacheKey key = new CacheKey(omopVocabularyId, code);
+			ConceptDvo rtn = concepts.get(key);
+			return rtn;
+		}
 	}
 
 }
