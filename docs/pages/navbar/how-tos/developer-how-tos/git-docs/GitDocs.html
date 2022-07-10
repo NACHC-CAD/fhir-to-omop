@@ -1,0 +1,76 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Git: Add HTML Documents to a Github Repository</h1>
+			<p>
+				This document will walk through the process of adding html documents to a github repository like this on.  
+			</p>
+
+			<h2>Step 1: Clone and Checkout Your Project</h2>
+			<p>
+				Clone and checkout your project locally so you can easily add files and edit the project.  
+				<br/>
+				<img width="800px" src="./img/checkout-project.JPG" />
+			</p>
+			
+			<h2>Step 2: Create a docs folder and add framework resources</h2>
+			<p>
+				We will be hosting our documentation from the repository that it documents.  
+				Github supports publishing html documentation from a docs folder.  
+				We will be using the added docs folder as a home for our documentation.  
+				For this example we will just be adding an index.html page.  
+				<br/>
+				<img width="800px" src="./img/docs-folder.JPG" />
+			</p>
+			<h2>Step 3: Deploy the Documentation</h2>
+			<p>
+				From your repository's homepage select "Settings"
+				<br/>
+				<img width="800px" src="./img/select-settings.jpg" />
+				<br/><br/>
+				Select "Pages"
+				<br/>
+				<img width="800px" src="./img/select-pages.jpg" />
+				<br/><br/>
+				Select the branch and folder that will be the root directory for the documentation, then select save.  
+				Note: It can take upto 10 minutes for the documentation to be propegated through the system.  
+				<img width="800px" src="./img/select-docs-source.jpg" />
+				<br/><br/>
+				Note (copy) the url that is displayed.  
+				<br/>
+				<img width="800px" src="./img/url.jpg" />
+			</p>
+			<h2>Step 4: Add a Link to the Documentation to Your Repository</h2>
+			<p>
+				From your repository's homepage, select the gear icon next to the About section header.  
+				<img width="800px" src="./img/about.jpg" />
+				<br/><br/>
+				Paste the url from the previous step into the url box.  
+				<br/>
+				<img width="800px" src="./img/paste-url.jpg" />
+				<br/><br/>
+				A link to your documentation will now appear in the About section.  
+				<br/>
+				<img width="800px" src="./img/about-link.jpg" />
+			</p>
+
+		</div>
+
+	</body>
+
+</html>
