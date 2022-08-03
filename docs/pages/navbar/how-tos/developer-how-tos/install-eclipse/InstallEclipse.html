@@ -34,8 +34,10 @@
 				<br/>
 			</p>
 			
-			<h2>Download and Install the Eclipse IDE and Integrations</h2>
-			The entire Eclipse environment can be downloaded as a single zip from Google Docs (curlewconsulting@gmail.com):
+			<h2>Download and Install the Eclipse IDE and Integrations: 
+			<br/>
+			Yaorma Eclipse Suite (YES)</h2>
+			The entire YES Eclipse environment can be downloaded as a single zip from Google Docs (curlewconsulting@gmail.com):
 			<br/>
 			<a href="https://drive.google.com/drive/folders/1txmjzHY4B-W0A5VkdF3soBLWNKqoChwS?usp=sharing">https://drive.google.com/drive/folders/1txmjzHY4B-W0A5VkdF3soBLWNKqoChwS?usp=sharing</a>
 			<br/>
@@ -45,6 +47,25 @@
 			When you click the link, you will get a message similar to the following.  Click the Download link to get the zip file.  
 			<br/>
 			<img width="600px" src="./img/download.JPG" />
+			<br/>
+			<br/>
+			After the zip file has downloaded, extract it to the root dir of your C: drive 
+			(or install to a location of your choice and create a logical link C:\_YES to that location using something like mklink C:\_YES D:\path\to\_YES).  
+			<br/>
+			<br/>
+			<img width="400px" src="./img/extract.JPG" />
+			<h2>Launch Eclipse</h2>
+			To launch Eclipse, navigate to C:\_YES folder and double click the Eclipse Shortcut.
+			<br/>
+			<img width="600px" src="./img/open-eclipse.JPG" />
+			<br/><br/>
+			When Eclipse launches, you should see the HelloWorld class of the HelloWorld application included with the install.  
+			There might be errors for the Lombok annotations.  Run the Maven build 
+			(right click on the hello-world project on the left, select Maven->Update Project) 
+			to refresh the project and these errors should resolve.  
+			To run the hello-world Java application, right click anywhere on in the white space of the HelloWorld.java window 
+			and select Run As->Java Application
+			<img width="1200px" src="./img/hello-world-app.JPG" />
 			
 		</div>
 	</body>
