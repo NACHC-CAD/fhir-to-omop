@@ -51,7 +51,7 @@
 			<br/>
 			<br/>
 			After the zip file has downloaded, extract it to the root dir of your C: drive 
-			(or install to a location of your choice and create a logical link C:\_YES to that location using something like mklink C:\_YES D:\path\to\_YES).  
+			(or install to a location of your choice and create a logical link C:\_YES to that location using something like mklink /D C:\_YES D:\path\to\_YES).  
 			<br/>
 			<br/>
 			<img width="400px" src="./img/extract.JPG" />
@@ -62,8 +62,10 @@
 			You may already have some of these paths/settings configured and they don't need to be changed. 
 			However, it is recommended to use these settings to ensure as much consistency as possible.  
 			<br/>
-			<br/>			
-
+			<br/>
+			
+			<!-- config path -->			
+			<h3>Configure the Path Environment Variable</h3>
 			Add the following to the beginning of your path
 			<ul>
 				<li>C:\_YES\tools\java\jdk-11.0.11\bin</li>
@@ -74,12 +76,22 @@
 			<img width="400px" src="./img/path.jpg" />
 			<br/>
 			<br/>
+			
+			<!-- config java_home -->
+			<h3>Configure the JAVA_HOME Environment Variable</h3>
 			Add the following JAVA_HOME environment variable
 			<ul>
 				<li>C:\_YES\tools\java\jdk-11.0.11</li>
 			</ul>
 			<img width="400px" src="./img/java-home.jpg" />
 			<br/>
+			<br/>
+			
+			<!-- configure git -->
+			<h3>Configure the Git SSL Certificate</h3>
+			Open a cmd window and execute the following command to configure ssl for git and github access using git.  
+			<pre class="prescrollable">git config --system http.sslcainfo "C:\_YES\tools\git\Git-2.27.0\mingw64\ssl\certs\ca-bundle.crt"</pre>
+			
 
 			<!-- launch eclipse -->
 			<h2>Launch Eclipse</h2>

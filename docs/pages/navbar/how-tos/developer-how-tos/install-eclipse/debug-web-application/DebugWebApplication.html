@@ -1,1 +1,39 @@
-debug web app
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Install, Run, and Debug a Web Application in Eclipse</h1>
+			<br/>
+			This page will demonstrate how to download the source code for a web application from github, 
+			import the application into Eclipse, deploy the application to the Eclipse Wildfly host, 
+			and then run and debug (step through) the source code using Eclipse.  
+			
+			<h2>Download the Source Code of an Application from Github</h2>
+			For this example we will be using the web-security-example application developed by NACHC.  
+			This application shows how to implement basic web security (e.g. authentication) using the Shiro framework.  
+			<br/>
+			This application can be downloaded from 
+			<a href="https://github.com/NACHC-CAD/web-security-example">https://github.com/NACHC-CAD/web-security-example</a>.  
+			To download this application using git, open a cmd window and navigate to the C:\_YES\workspace and enter the command shown below.  
+			This will pull the source code for the NACHC web-security-example application down to your local host.  
+			<pre class="prescrollable">git clone https://github.com/NACHC-CAD/web-security-example</pre>
+			<br/>
+			<img width="600px" src="./img/clone.JPG" />
+			
+		</div>
+	</body>
+</html>
