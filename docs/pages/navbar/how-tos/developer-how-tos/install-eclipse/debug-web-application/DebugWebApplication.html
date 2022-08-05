@@ -22,6 +22,12 @@
 			import the application into Eclipse, deploy the application to the Eclipse Wildfly host, 
 			and then run and debug (step through) the source code using Eclipse.  
 			
+			<!-- 
+			*
+			* download source code
+			*
+			* -->
+			
 			<h2>Download the Source Code of an Application from Github</h2>
 			For this example we will be using the web-security-example application developed by NACHC.  
 			This application shows how to implement basic web security (e.g. authentication) using the Shiro framework.  
@@ -33,7 +39,85 @@
 			<pre class="prescrollable">git clone https://github.com/NACHC-CAD/web-security-example</pre>
 			<br/>
 			<img width="600px" src="./img/clone.JPG" />
+
+			<!-- 
+			*
+			* import into eclipse
+			*
+			* -->
+
+			<h2>Import into Eclipse</h2>
+			Import the project into Eclipse according to the following.  
+			Open Eclipse by double clicking on the Eclipse shortcut in the C:\_YES folder.  
+			Select File->Import->Existing Maven Projects.  
+			Navigate to the C:\_YES\workspace\web-security-example folder and select Finish.  
+			<br/>
+			<img width="600px" src="./img/import.JPG" />
 			
+			<!-- 
+			*
+			* start wildfly
+			*
+			* -->
+
+			<h2>Start Wildfly in Eclipse in Debug Mode</h2>
+			Start Wildfly in debug mode by selecting the Server tab on the bottom pain. 
+			Right click on the Wildfly server and select Debug.  
+			<br/> 
+			<img width="600px" src="./img/start-server.JPG" />	
+			<br/>
+			<br/>
+			Right click on the Wildfly server again and select Add/Remove
+			<br/>
+			<img width="600px" src="./img/add-to-server.JPG" />				
+			<br/>
+			<br/>
+			Select the web-security-example application, Add, then Finish
+			<img width="600px" src="./img/add-to-server2.JPG" />				
+
+			<!-- 
+			*
+			* test the application
+			*
+			* -->
+
+			<h2>Test the Application</h2>
+			Test the application by opening a browser and navigating to 
+			<br/>
+			<pre class="prescrollable">http://localhost:8080/web-security-example</pre>
+			The application is hard coded to accept foo/bar as the username/password.  
+			Enter a nonsense username password other than foo/bar to test that the application does not let you in.  
+			<br/>
+			<img width="600px" src="./img/logon.JPG" />
+			
+			<!-- 
+			*
+			* set a break point
+			*
+			* -->
+
+			<h2>Set a Break Point</h2>
+			Open the MyAppRealm.java file (org/nachc/examples/websecurity/shiro/util/realm/MyAppRealm).  
+			Double click on the space beside the linenumber to set a breakpoint on line 24.  
+			<br/>
+			<img width="600px" src="./img/set-breakpoint.jpg" />
+			<br/>
+			<br/>
+			Go back to the browser window, leave the username/password blank, and click Log On. 
+			<br/>
+			<img width="600px" src="./img/logon.JPG" />
+			<br/><br/> 
+			Switching back to Eclipse, you should see that the application has stopped at the break point. 
+			When asked if you want to switch to the debug view select no (for now).   
+			You can now step through the code using the controls shown in the image below.  
+			<br/>
+			<img width="600px" src="./img/stepping.jpg" />
+			<br/>
+			<br/>
+			When the login process is completed, you should see the index page of this example application as shown below.  
+			<br/>
+			<img width="600px" src="./img/index.JPG" />
+						
 		</div>
 	</body>
 </html>
