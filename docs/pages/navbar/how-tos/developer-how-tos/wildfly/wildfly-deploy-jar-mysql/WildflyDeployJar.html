@@ -16,7 +16,7 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>Deploy a Database Driver Jar File to Wildfly</h1>
+			<h1>Deploy a Database Driver Jar File to Wildfly (MySql)</h1>
 			Before a JDBC connection or connection pool can be created, 
 			the database driver needs to be deployed to Wildfly.  
 			This document details how to deploy and configure the jar file for the database driver.  
@@ -76,11 +76,7 @@
 		<h2>Add the Deployment Descriptor for the Database Driver to standalone.xml</h2>
 		Add the following lines to the standalone.xml file below where the "h2" driver is defined
 <pre class="prescrollable">
-&lt;!-- added driver for mysql --&gt;
-&lt;driver name="mysql" module="com.mysql"&gt;
-	&lt;driver-class&gt;com.mysql.cj.jdbc.Driver&lt;/driver-class&gt;
-	&lt;xa-datasource-class&gt;com.mysql.cj.jdbc.MysqlXADataSource&lt;/xa-datasource-class&gt;
-&lt;/driver&gt;										
+&lt;driver name="mysql" module="com.mysql" /&gt;
 </pre>
 			
 		<h2>Confirm the Driver Has Been Successfully Deployed</h2>

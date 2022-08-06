@@ -1,0 +1,93 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Deploy a Database Driver Jar File to Wildfly (Databricks)</h1>
+			Before a JDBC connection or connection pool can be created, 
+			the database driver needs to be deployed to Wildfly.  
+			This document details how to deploy and configure the jar file for the database driver.  
+			Database drivers for the most common versions used by this project are included.  
+			
+			<h2>Database Drivers</h2>
+			The following are the most common database drivers used by this project.  
+			
+			<table class="table">
+				<!-- blank row to give border at end of table -->
+				<tr>
+					<td>
+						Databricks
+					</td>
+					<td>
+						Download <a download href="./databricks/main/SparkJDBC42.jar">SparkJDBC42.jar</a>
+					</td>
+				</tr>
+				
+				<!-- blank row to give border at end of table -->
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+
+			</table>
+			
+			<h2>Download and Install the Database Driver Jar File</h2>
+			Download the appropriate jar file (we will be using Databricks as an exmaple here).  
+			Move the jar file to C:\_YES\server\wildfly\wildfly-24.0.1.Final\modules\system\layers\base\com\databricks\main.  
+			<br/>
+			<img width="600px" src="./img/jar-file.JPG" />
+			<br/>
+			<br/>
+			
+			<h2>Add the module.xml File</h2>
+			Add a module.xml file to the folder that contains the jar file.  
+			The module.xml file needs to contain the following.  
+			The file for mysql can be downloaded from 
+			<a download href="./databricks/main/module.xml">here</a>.  
+<pre class="prescrollable">
+&lt;module xmlns="urn:jboss:module:1.5" name="com.databricks"&gt;
+    &lt;resources&gt;
+        &lt;resource-root path="SparkJDBC42.jar" /&gt;
+    &lt;/resources&gt;
+    &lt;dependencies&gt;
+        &lt;module name="javax.api"/&gt;
+        &lt;module name="javax.transaction.api"/&gt;
+    &lt;/dependencies&gt;
+&lt;/module&gt;
+</pre>
+
+		<img width="600px" src="./img/module.JPG" />
+		
+		<h2>Add the Deployment Descriptor for the Database Driver to standalone.xml</h2>
+		Add the following lines to the standalone.xml file below where the "h2" driver is defined
+<pre class="prescrollable">
+&lt;driver name="databricks" module="com.databricks"/&gt;
+</pre>
+			
+		<h2>Confirm the Driver Has Been Successfully Deployed</h2>
+		Restart the server and navigate to Configuration->Subsystems->Datasources & Drivers->JDBC Drivers. 
+		The databricks JDBC driver should appear in the JDBC Driver column.  
+		<br/>
+		
+		<img width="1000px" src="./img/success.JPG" />
+			
+		</div>
+
+	</body>
+
+</html>
