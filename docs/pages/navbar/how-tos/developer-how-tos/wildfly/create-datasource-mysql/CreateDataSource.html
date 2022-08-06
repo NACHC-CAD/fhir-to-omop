@@ -1,0 +1,57 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Create a Wildfly Datasource (MySql)</h1>
+			This document details how to deploy and configure a datasource (database connection) for MySql.  
+			<br/>
+			To create a datasource simply add something similar to the following to standalone.xml.  
+			Note that this datasource uses the jar file module created using the instructions 
+			<a href="../wildfly-deploy-jar-mysql/WildflyDeployJar.html">here</a>.  
+			<br/><br/>
+			You will need to modify the URL and password to use the valid values for your system.  
+			<br/><br/>
+<pre class="prescrollable">
+&lt;datasource jndi-name="java:/MySqlDS" pool-name="MySqlDS"&gt;
+    &lt;connection-url&gt;jdbc:mysql://localhost:3306/cosmos?rewriteBatchedStatements=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&lt;/connection-url&gt;
+    &lt;driver&gt;mysql&lt;/driver&gt;
+    &lt;security&gt;
+        &lt;user-name&gt;cosmos&lt;/user-name&gt;
+        &lt;password&gt;MySecretPassword&lt;/password&gt;
+    &lt;/security&gt;
+    &lt;validation&gt;
+        &lt;valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/&gt;
+        &lt;background-validation&gt;true&lt;/background-validation&gt;
+        &lt;exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/&gt;
+    &lt;/validation&gt;
+&lt;/datasource&gt;
+</pre>
+		Navigate to Configuration-&gt;Subsystems-&gt;Datasources &amp; Drivers-&gt;Datasources.  
+		You should now see the MySqlDS.
+		<br/><br/>
+		<img width="800px" src="./img/deployed.JPG" />
+		<br/><br/>
+		Select View-&gt;Test Connection to test the connection.  
+		<br/><br/>
+		<img width="800px" src="./img/test.JPG" />		
+		
+		
+		</div>
+	
+	</body>
+
+</html>
