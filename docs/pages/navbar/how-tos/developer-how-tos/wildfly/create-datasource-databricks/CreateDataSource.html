@@ -16,32 +16,27 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>Create a Wildfly Datasource (MySql)</h1>
-			This document details how to deploy and configure a datasource (database connection) for MySql.  
+			<h1>Create a Wildfly Datasource (Databricks)</h1>
+			This document details how to deploy and configure a datasource (database connection) for Databricks.  
 			<br/>
 			To create a datasource simply add something similar to the following to standalone.xml.  
 			Note that this datasource uses the jar file module created using the instructions 
-			<a href="../wildfly-deploy-jar-mysql/WildflyDeployJar.html">here</a>.  
+			<a href="../wildfly-deploy-jar-databricks/WildflyDeployJar.html">here</a>.  
 			<br/><br/>
 			You will need to modify the URL and password to use the valid values for your system.  
 			<br/><br/>
 <pre class="prescrollable">
-&lt;datasource jndi-name="java:/MySqlDS" pool-name="MySqlDS"&gt;
-    &lt;connection-url&gt;jdbc:mysql://localhost:3306/MyDatabaseName?rewriteBatchedStatements=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&lt;/connection-url&gt;
-    &lt;driver&gt;mysql&lt;/driver&gt;
+&lt;datasource jndi-name="java:/DatabricksDS" pool-name="DatabricksDS"&gt;
+    &lt;connection-url&gt;jdbc:spark://my-data-bricks-server.cloud.databricks.com:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/SomeNumberFromDatabricks/SomeNameFromDatabricks;AuthMech=3&lt;/connection-url&gt;
+    &lt;driver&gt;databricks&lt;/driver&gt;
     &lt;security&gt;
-        &lt;user-name&gt;cosmos&lt;/user-name&gt;
-        &lt;password&gt;MySecretPassword&lt;/password&gt;
+        &lt;user-name&gt;token&lt;/user-name&gt;
+        &lt;password&gt;MyDatabricksToken&lt;/password&gt;
     &lt;/security&gt;
-    &lt;validation&gt;
-        &lt;valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"/&gt;
-        &lt;background-validation&gt;true&lt;/background-validation&gt;
-        &lt;exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"/&gt;
-    &lt;/validation&gt;
 &lt;/datasource&gt;
 </pre>
 		Navigate to Configuration-&gt;Subsystems-&gt;Datasources &amp; Drivers-&gt;Datasources.  
-		You should now see the MySqlDS.
+		You should now see the DatabricksDS.
 		<br/><br/>
 		<img width="800px" src="./img/deployed.JPG" />
 		<br/><br/>
