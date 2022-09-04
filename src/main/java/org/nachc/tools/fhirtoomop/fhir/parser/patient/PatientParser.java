@@ -7,6 +7,7 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.hl7.fhir.dstu3.model.Enumerations.AdministrativeGender;
 import org.hl7.fhir.dstu3.model.Extension;
+import org.hl7.fhir.dstu3.model.HumanName;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.nachc.tools.fhirtoomop.fhir.parser.coding.CodingParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.extension.ExtensionParser;
@@ -31,6 +32,32 @@ public class PatientParser {
 		}
 	}
 
+	public String getFirstName() {
+		List<HumanName> nameList = patient.getName();
+		if(nameList == null || nameList.size() == 0) {
+			return null;
+		}
+		HumanName name = nameList.get(0);
+		if(name == null) {
+			return null;
+		}
+		String rtn = name.getGivenAsSingleString();
+		return rtn;
+	}
+	
+	public String getLastName() {
+		List<HumanName> nameList = patient.getName();
+		if(nameList == null || nameList.size() == 0) {
+			return null;
+		}
+		HumanName name = nameList.get(0);
+		if(name == null) {
+			return null;
+		}
+		String rtn = name.getFamily();
+		return rtn;
+	}
+	
 	public Coding getRace() {
 		ExtensionParser ex = getExtension("http://hl7.org/fhir/us/core/StructureDefinition/us-core-race");
 		Coding rtn = ex.getCoding();
@@ -102,6 +129,14 @@ public class PatientParser {
 	public AdministrativeGender getGender() {
 		AdministrativeGender ag = this.patient.getGender();
 		return ag;
+	}
+
+	public String getGenderDisplay() {
+		AdministrativeGender ag = this.patient.getGender();
+		if(ag == null) {
+			return "<null>";
+		}
+		return ag.getDisplay();
 	}
 
 	public Date getBirthDate() {
