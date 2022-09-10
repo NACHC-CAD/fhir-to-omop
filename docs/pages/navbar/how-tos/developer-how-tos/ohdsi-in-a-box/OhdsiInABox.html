@@ -1,0 +1,85 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>OHDSI-in-a-box</h1>
+			
+			<h2>Introduction</h2>
+			
+			<p>
+				OHDSI-in-a-box is a turnkey solution provided by Amazon AWS. 
+				OHDSI-in a box is intended as a development solution and is not intended for production use.  
+				This guide will walk through the process of setting up a complete OHDSI stack using OHDSI-in-a-box.  
+				This guide is based on the excellent video provided by James Wiggins at 
+				<a href="https://www.youtube.com/watch?v=9JbgyE4rW2w">https://www.youtube.com/watch?v=9JbgyE4rW2w</a>.
+			</p>
+			
+			<h2>Create an Instance of OHDSI-in-a-box</h2>
+			
+			Navigate to <a href="https://aws.amazon.com/">AWS</a> and login to your instance.  
+			<img width="800px" src="./img/aws-logon.JPG" />
+			<br/><br/>
+
+			Navigate to the Github repository for the 
+			<a href="https://github.com/OHDSI/OHDSI-in-a-Box">OHDSI-in-a-box project</a>.  
+			Select the launch option for the region and operation system you want for your instance.  
+			For this example we will be creating a Windows instance (Linux is also available) in the US East (N. Virginia) region.  
+			
+			<img src="./img/launch-stack.JPG" />
+			<br/><br/>
+
+			Accept the defaults on the first page.  			
+			<img src="./img/launch-stack-page01.JPG" />
+			<br/><br/>
+			
+			On the second screen enter a password, select a network and sub-net (it doesn't really matter which one) and modify other parameters if desired.  
+			For this example we've accepted all of the defaults except for the disc space and machine type.  
+			We've opted for a 2TB disc and a t2.large machine.   
+			<img src="./img/launch-stack-page02.JPG" />
+			<br/><br/>
+						
+			On the third screen accept all defaults.  
+			<img src="./img/launch-stack-page03.JPG" />
+			<br/><br/>
+						
+			On the final confirmation screen accept all defaults and check the acknowledge box.  
+			<img src="./img/launch-stack-page04.JPG" />
+			<br/><br/>
+
+			Go get a cup of coffee.  It will take a few minutes (5 - 10 maybe) to create the instance.  
+			<img src="./img/launch-stack-page05.JPG" />
+			<br/><br/>
+
+			Click on the outputs tab of the screen you are currently on (you are currently on the events tab).  
+			Click on the link in the Value column to navigate to the EC2 console (it will be filtered to show only your newly created OHDSI instance).  
+			<img src="./img/outputs.JPG" />
+			<br/><br/>
+
+			When the instance is completed you should an instance state of Running and an indication that the Status Check has passed.  
+			<img src="./img/running.JPG" />
+			<br/><br/>
+
+			You can now RDP connect to your new OHDSI-in-a-box Server.  
+			Get the IP address from the EC2 console (the screen you saw when you clicked on the link above).  
+			The user name is ohdsi (unless you changed it in step 1).  
+			The password is the password you entered in step 1.  
+			<img src="./img/rdp.JPG" />
+			<br/><br/>
+
+		</div>
+	</body>
+</html>
