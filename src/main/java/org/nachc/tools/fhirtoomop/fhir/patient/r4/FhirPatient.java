@@ -167,7 +167,6 @@ public class FhirPatient {
 		for (BundleEntryComponent entry : entries) {
 			Resource resource = entry.getResource();
 			String resourceId = resource.getId();
-			log.info(id + "\t" + resourceId);
 			if (resource.getClass().equals(cls) && resourceId != null && resourceId.contains(id)) {
 				return (T) resource;
 			}

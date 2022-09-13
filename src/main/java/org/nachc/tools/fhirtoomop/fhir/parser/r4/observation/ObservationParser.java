@@ -339,4 +339,16 @@ public class ObservationParser {
 		}
 	}
 
+	public String getValueDisplay() {
+		if(this.getValueAsNumber() != null) {
+			return this.getValueAsNumber() + "";
+		}
+		if(this.getValueAsString() != null) {
+			return this.getValueAsString();
+		}
+		if(this.getValueCoding() != null) {
+			return this.getValueCodingDisplay();
+		}
+		return null;
+	}
 }
