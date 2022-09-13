@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
@@ -48,7 +49,7 @@ public class FhirPatientEverythingFetcherIntegrationTest {
 		log.info("Created fhirPatient: " + patientId);
 		assertTrue(patientId.equals(PATIENT_ID));
 		// get the next url and the next page for the patient
-		BundleParser bundle = new BundleParser(json);
+		IBundleParser bundle = new BundleParser(json);
 		String nextUrl = bundle.getNextUrl();
 		FhirPatientEverythingNextFetcher nextFetcher = new FhirPatientEverythingNextFetcher();
 		String pageTwoJson = nextFetcher.fetchNext(nextUrl);

@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.MedicationRequest;
-import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
-import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.parser.r4.encounter.EncounterParser;
+import org.nachc.tools.fhirtoomop.fhir.patient.r4.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.util.id.FhirUtil;
 
 public class MedicationRequestParser {

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 import org.nachc.tools.fhirtoomop.fhir.util.server.auth.HttpClientAuthenticator;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
@@ -28,7 +29,7 @@ public class FhirServerAuthenticatorIntegrationTest {
 		// auth after init and after refresh
 		HttpRequestClient client;
 		String response;
-		BundleParser bundle;
+		IBundleParser bundle;
 		String nextUrl;
 		// auth after init
 		client = new HttpRequestClient(url);

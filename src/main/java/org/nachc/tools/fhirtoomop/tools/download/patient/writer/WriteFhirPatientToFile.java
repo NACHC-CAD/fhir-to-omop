@@ -2,7 +2,9 @@ package org.nachc.tools.fhirtoomop.tools.download.patient.writer;
 
 import java.io.File;
 
+import org.hl7.fhir.r4.model.Bundle;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingFetcher;
 import org.nachc.tools.fhirtoomop.tools.download.patient.fetcher.FhirPatientEverythingNextFetcher;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -16,8 +18,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WriteFhirPatientToFile {
 
-	private static final int RETRY_MAX = Integer.parseInt(AppParams.get("downloadRetryCount"));
+	private static final int RETRY_MAX;;
 
+	static {
+		if(AppParams.get("downloadRetryCount") != null) {
+			RETRY_MAX = Integer.parseInt(AppParams.get("downloadRetryCount"));
+		} else {
+			RETRY_MAX = 1;
+		}
+	}
+	
 	private int cnt = 0;
 
 	public void exec(String patientId, String token, File outputDir) {
@@ -58,7 +68,12 @@ public class WriteFhirPatientToFile {
 
 	private void getNext(String json, String patientId, String token, File outputDir, int numberOfAttempts) {
 		cnt++;
-		BundleParser parser = new BundleParser(json);
+		IBundleParser parser;
+		try {
+			parser = new BundleParser(json);
+		} catch(Exception exp) {
+			parser = new  org.nachc.tools.fhirtoomop.fhir.parser.r4.bundle.BundleParser(json);
+		}
 		String nextUrl = parser.getNextUrl();
 		if (nextUrl != null) {
 			log.info("Getting next: " + nextUrl);

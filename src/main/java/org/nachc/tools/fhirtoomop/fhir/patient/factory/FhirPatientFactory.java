@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.fhir.patient.factory;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.hl7.fhir.dstu3.model.Observation;
 import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Procedure;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.medicationrequest.MedicationRequestParser;
@@ -18,6 +20,7 @@ import org.nachc.tools.fhirtoomop.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -27,6 +30,17 @@ public class FhirPatientFactory {
 
 	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
 
+	public static FhirPatient build(File dir) {
+		FhirPatientResources resources =  FhirPatientResourcesAsFilesFactory.getForPatient(dir);
+		return build(resources);
+	}
+
+	
+	public static FhirPatient build(FhirPatientResources resources) {
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
+		return fhirPatient;
+	}
+	
 	public FhirPatientFactory(FhirPatientResources resources) {
 		this.resources = resources;
 	}
@@ -59,7 +73,7 @@ public class FhirPatientFactory {
 	}
 
 	private void buildResourceTypes(FhirPatient rtn) {
-		for (BundleParser parser : this.bundleParserList) {
+		for (IBundleParser parser : this.bundleParserList) {
 			rtn.getResourceTypes().addAll(parser.getResourceTypes());
 		}
 	}

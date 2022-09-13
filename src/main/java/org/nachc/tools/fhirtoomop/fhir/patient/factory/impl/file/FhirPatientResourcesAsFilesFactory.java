@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,5 +38,12 @@ public class FhirPatientResourcesAsFilesFactory {
 			return resources;
 		}
 	}
+
+	public static FhirPatientResources getForPatient(File dir) {
+		List<String> fileList = FileUtil.listResources(dir);
+		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
+		return resources;
+	}
+	
 	
 }

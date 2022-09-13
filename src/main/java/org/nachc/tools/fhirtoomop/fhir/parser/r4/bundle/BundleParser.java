@@ -3,17 +3,19 @@ package org.nachc.tools.fhirtoomop.fhir.parser.r4.bundle;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.instance.model.api.IAnyResource;
 import org.hl7.fhir.r4.model.Bundle;
 import org.hl7.fhir.r4.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.r4.model.Bundle.BundleLinkComponent;
 import org.hl7.fhir.r4.model.Resource;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class BundleParser {
+public class BundleParser implements IBundleParser {
 
 	//
 	// instance variables
@@ -70,7 +72,7 @@ public class BundleParser {
 		return types;
 	}
 
-	public <T extends Resource> T getResourceForType(Class<T> cls) {
+	public <T extends IAnyResource> T getResourceForType(Class<T> cls) {
 		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {
@@ -82,7 +84,7 @@ public class BundleParser {
 		return null;
 	}
 
-	public <T extends Resource> List<T> getResourceListForType(Class<T> cls) {
+	public <T extends IAnyResource> List<T> getResourceListForType(Class<T> cls) {
 		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {

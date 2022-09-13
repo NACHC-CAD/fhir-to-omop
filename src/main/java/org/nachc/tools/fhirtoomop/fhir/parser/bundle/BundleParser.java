@@ -7,13 +7,14 @@ import org.hl7.fhir.dstu3.model.Bundle;
 import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
 import org.hl7.fhir.dstu3.model.Bundle.BundleLinkComponent;
 import org.hl7.fhir.dstu3.model.Resource;
+import org.hl7.fhir.instance.model.api.IAnyResource;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class BundleParser {
+public class BundleParser implements IBundleParser {
 
 	//
 	// instance variables
@@ -45,10 +46,12 @@ public class BundleParser {
 	// trivial getters
 	//
 	
+	@Override
 	public String getJson() {
 		return this.jsonString;
 	}
 	
+	@Override
 	public Bundle getBundle() {
 		return this.bundle;
 	}
@@ -59,6 +62,7 @@ public class BundleParser {
 	//
 	// ---
 
+	@Override
 	public List<String> getResourceTypes() {
 		List<String> types = new ArrayList<String>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
@@ -70,7 +74,8 @@ public class BundleParser {
 		return types;
 	}
 
-	public <T extends Resource> T getResourceForType(Class<T> cls) {
+	@Override
+	public <T extends IAnyResource> T getResourceForType(Class<T> cls) {
 		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {
@@ -82,7 +87,8 @@ public class BundleParser {
 		return null;
 	}
 
-	public <T extends Resource> List<T> getResourceListForType(Class<T> cls) {
+	@Override
+	public <T extends IAnyResource> List<T> getResourceListForType(Class<T> cls) {
 		List<T> rtn = new ArrayList<T>();
 		List<BundleEntryComponent> entries = bundle.getEntry();
 		for (BundleEntryComponent entry : entries) {
@@ -98,6 +104,7 @@ public class BundleParser {
 		return this.bundle.getLink();
 	}
 
+	@Override
 	public String getNextUrl() {
 		List<BundleLinkComponent> linkList = this.getLinks();
 		if (linkList == null) {

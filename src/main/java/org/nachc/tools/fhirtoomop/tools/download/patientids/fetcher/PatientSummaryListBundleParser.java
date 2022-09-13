@@ -9,6 +9,7 @@ import org.hl7.fhir.dstu3.model.Patient;
 import org.hl7.fhir.dstu3.model.Resource;
 import org.hl7.fhir.dstu3.model.ResourceType;
 import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.IBundleParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.patientsummary.PatientSummaryParser;
 
 import com.nach.core.util.fhir.parser.FhirJsonParser;
@@ -22,7 +23,7 @@ public class PatientSummaryListBundleParser {
 
 	private Bundle bundle;
 
-	private BundleParser bundleParser;
+	private IBundleParser bundleParser;
 
 	private String nextUrl;
 

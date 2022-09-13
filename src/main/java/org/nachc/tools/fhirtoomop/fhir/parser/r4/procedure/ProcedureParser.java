@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Procedure;
-import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.patient.r4.FhirPatient;
 import org.nachc.tools.fhirtoomop.fhir.util.id.FhirUtil;
 import org.yaorma.util.time.TimeUtil;
 
