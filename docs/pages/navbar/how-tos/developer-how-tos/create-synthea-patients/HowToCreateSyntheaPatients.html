@@ -1,0 +1,51 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>How to Generate Synthea Patients</h1>
+			
+			<h2>Introduction</h2>
+			<p>
+				This page will show how to create a set of synthetic patients using synthea.  
+				This was needed for our hiv-cds work as the SynthicMass data set did not have any patients with HIV tests.  
+				This guide is based on the guide provided by the Synthea project at 
+				<a href="https://github.com/synthetichealth/synthea/wiki/Developer-Setup-and-Running">
+					https://github.com/synthetichealth/synthea/wiki/Developer-Setup-and-Running
+				</a>			
+			</p>
+			
+			<h2>How to Generate Synthea Paients</h2>
+			Checkout the Synthe project from 
+			<a href="https://github.com/synthetichealth/synthea.git">
+				https://github.com/synthetichealth/synthea.git 
+			</a> 
+			using git clone as shown below and then run the commands shown below.   
+<pre class="preformatted">
+git clone https://github.com/synthetichealth/synthea.git 
+cd synthea
+gradlew.bat compileJava
+run_synthea
+run_synthea -p 10000 Massachusetts
+</pre>
+			The above was run using Java 11.0.11:<br/>
+			java version "11.0.11" 2021-04-20 LTS<br/>
+			Java(TM) SE Runtime Environment 18.9 (build 11.0.11+9-LTS-194)<br/>
+			Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.11+9-LTS-194, mixed mode)<br/>
+		</div>
+	</body>
+</html>
+
