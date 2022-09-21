@@ -45,6 +45,124 @@ run_synthea -p 10000 Massachusetts
 			java version "11.0.11" 2021-04-20 LTS<br/>
 			Java(TM) SE Runtime Environment 18.9 (build 11.0.11+9-LTS-194)<br/>
 			Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.11+9-LTS-194, mixed mode)<br/>
+			
+			<br/>
+			
+			Once the process has run we can switch to the synthea/output/fhir directory 
+			and the use something like the grep command below to see patients with hiv tests.  
+			
+<pre class="pre-scrollable">grep -ri hiv | grep -i test</pre>
+
+<pre class="pre-scrollable">
+
+gresh@LAPTOP-K0O3MVMP /cygdrive/c/_YES/workspace/synthea/output/fhir
+$ grep -ri hiv | grep -i test
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Sidney996_Klein929_6dd1e703-704f-0b99-196a-c4b17379326f.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Teodoro374_Valadez233_5282879f-0fc4-02f5-be13-8b5da5481a06.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Korey682_Parisian75_371719e2-2d52-9202-4fc4-cb01eac3e1e0.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Asa127_Schroeder447_830373f4-cdad-34f3-6eed-7f7a62eecfd0.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Cristopher265_King743_a65d9fca-cb45-9a38-25d9-e930ba87a43c.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Leland44_Becker968_c8fcc072-1077-0bb1-e0c4-50c522f72f16.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fermin479_Bednar518_c5312ee3-530f-f2f0-23b8-3a364f9ecfff.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Dolores502_Romo23_17a10830-69fa-f8eb-d299-deb9f7e0c9c2.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Geoffrey157_Daugherty69_7c145858-42ef-107e-851c-911fb436a7c3.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Fernande593_Littel644_1d06124a-c2f7-eeee-90ab-e7d71bd8c9ad.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Coy949_Berge125_fbfc7ee6-44ab-43a1-52a7-95390fa1bec7.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Elroy493_Connelly992_ce0437de-179f-488b-da8f-4d7a082a96ff.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Lance203_Connelly992_e3363978-5636-72d9-6a8d-38b85fd2a6ae.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:          "display": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:        "text": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:            "display": "HIV 1 and 2 tests - Meaningful Use set"
+Chet188_Ledner144_84010bde-97f7-7a9a-da52-400e24b38007.json:          "text": "HIV 1 and 2 tests - Meaningful Use set"
+
+gresh@LAPTOP-K0O3MVMP /cygdrive/c/_YES/workspace/synthea/output/fhir
+$
+</pre>
+
+		An example of a patient with an hiv test can be found 
+		<a href="./img/Glenn0_Hermiston71_d7e5852a-974c-6d45-f81d-5a87bbd05d2a.json">
+			here
+		</a>.  
+		<br/><br/>
+		
+		A zip file containing all of the patients created by this process can be downloaded from the 
+		<a download href="https://drive.google.com/drive/folders/1kvBO-uno4I-GBFMHoZ9hZVTcEZiMQS4b">
+			patients-with-hiv-tests 
+		</a> on our Google Drive.  
+			
 		</div>
 	</body>
 </html>
