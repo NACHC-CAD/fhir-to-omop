@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<properties>
-		<version>1.1.001-SNAPSHOT</version>
+		<version>1.0.004</version>
     </properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -42,10 +42,10 @@
 	</scm>  
   
 	<distributionManagement>
-	  <snapshotRepository>
-	    <id>ossrh</id>
-	    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-	  </snapshotRepository>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<repositories>
@@ -54,6 +54,10 @@
 	        <name>bedatadriven</name>
 	        <url>https://nexus.bedatadriven.com/content/groups/public/</url>
 	    </repository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>		
 	</repositories>
 
 	<!-- 
@@ -68,13 +72,13 @@
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>${version}</version>
+			<version>1.0.004</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>thread-tool</artifactId>
-			<version>${version}</version>
+			<version>1.0.004</version>
 		</dependency>
 
 		<!-- 
@@ -165,7 +169,25 @@
 	-->
 
 	<build>
-	
+
+		<!-- 
+		* 
+		* EXCLUDE AUTHENTICATION INFO FROM DEPLOYMENT BUILD 
+		*
+		-->
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<excludes>
+					<exclude>auth/app.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
 		<pluginManagement>
 			<plugins>
 
@@ -278,6 +300,42 @@
 				  <configuration>
 				    <skipTests>true</skipTests>
 				  </configuration>
+			</plugin>
+
+
+			<!-- 
+			*
+			* Generate sources and java docs (required for mvn distribution) 
+			*
+			* -->
+			
+			<!-- source -->
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-source-plugin</artifactId>
+			  <version>2.2.1</version>
+			  <executions>
+			    <execution>
+			      <id>attach-sources</id>
+			      <goals>
+			        <goal>jar-no-fork</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+			<!-- javadoc -->
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-javadoc-plugin</artifactId>
+			  <version>2.9.1</version>
+			  <executions>
+			    <execution>
+			      <id>attach-javadocs</id>
+			      <goals>
+			        <goal>jar</goal>
+			      </goals>
+			    </execution>
+			  </executions>
 			</plugin>
 
 		</plugins>

@@ -1,0 +1,1 @@
+mvn -f pom-deploy.xml clean install deploy
