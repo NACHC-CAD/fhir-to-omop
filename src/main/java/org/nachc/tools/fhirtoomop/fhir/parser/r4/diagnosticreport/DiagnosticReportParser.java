@@ -1,9 +1,10 @@
 package org.nachc.tools.fhirtoomop.fhir.parser.r4.diagnosticreport;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.DiagnosticReport;
-import org.hl7.fhir.r4.model.Reference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +15,10 @@ public class DiagnosticReportParser {
 
 	private DiagnosticReport diagnosticReport;
 	
+	public DiagnosticReportParser(DiagnosticReport diagnosticReport) {
+		this.diagnosticReport = diagnosticReport;
+	}
+	
 	public String getId() {
 		try {
 			return this.diagnosticReport.getId();
@@ -22,8 +27,18 @@ public class DiagnosticReportParser {
 		}
 	}
 	
-	public void getResultList() {
-		List<Reference> resultList = diagnosticReport.getResult();
+	public List<String> getCodes() {
+		try {
+			ArrayList<String> rtn = new ArrayList<String>();
+			List<Coding> codings = this.diagnosticReport.getCode().getCoding();
+			for(Coding coding : codings) {
+				String code = coding.getCode();
+				rtn.add(code);
+			}
+			return rtn;
+		} catch(Exception exp) {
+			return new ArrayList<String>();
+		}
 	}
 
 }

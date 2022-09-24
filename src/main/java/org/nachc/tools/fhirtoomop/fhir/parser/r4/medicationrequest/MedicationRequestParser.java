@@ -110,12 +110,14 @@ public class MedicationRequestParser {
 
 	public String getEncounterId() {
 		try {
-			String ref = this.medicationRequest.getContext().getReference();
-			if (ref.indexOf('/') < 0) {
-				return ref;
-			} else {
-				return ref.split("/")[1];
-			}
+//			String ref = this.medicationRequest.getContext().getReference();
+//			if (ref.indexOf('/') < 0) {
+//				return ref;
+//			} else {
+//				return ref.split("/")[1];
+//			}
+			String rtn = this.medicationRequest.getEncounter().getId();
+			return rtn;
 		} catch (Exception exp) {
 			return null;
 		}

@@ -163,6 +163,75 @@ $
 			patients-with-hiv-tests 
 		</a> on our Google Drive.  
 			
+		We can also observe that our test patient contains a resource with the code 75622-1
+		as shown below.  
+<pre class="pre-scrollable">
+    "resource": {
+      "resourceType": "DiagnosticReport",
+      "id": "1000c0a2-a22c-22d3-f1f6-27f14acce6ff",
+      "meta": {
+        "profile": [ "http://hl7.org/fhir/us/core/StructureDefinition/us-core-diagnosticreport-lab" ]
+      },
+      "status": "final",
+      "category": [ {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+          "code": "LAB",
+          "display": "Laboratory"
+        } ]
+      } ],
+      "code": {
+        "coding": [ {
+          "system": "http://loinc.org",
+          "code": "75622-1",
+          "display": "HIV 1 and 2 tests - Meaningful Use set"
+        } ],
+        "text": "HIV 1 and 2 tests - Meaningful Use set"
+      },
+      "subject": {
+        "reference": "urn:uuid:d7e5852a-974c-6d45-f81d-5a87bbd05d2a"
+      },
+      "encounter": {
+        "reference": "urn:uuid:5f39cae4-aeaf-27f3-d2e4-a2761ebbbf73"
+      },
+      "effectiveDateTime": "1990-01-03T17:02:56-05:00",
+      "issued": "1990-01-03T17:02:56.296-05:00",
+      "performer": [ {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|3bd5eda0-16da-3ba5-8500-4dfd6ae118b8",
+        "display": "NORWOOD HOSPITAL"
+      } ],
+      "result": [ {
+        "reference": "urn:uuid:1df74fd9-1148-4b45-9910-6eda4ca41395",
+        "display": "HIV 1 Ab [Presence] in Serum"
+      } ]
+    },
+</pre>	
+			
+			We can then observe that this code (75622-1) can be found in the ValueSet resources 
+			<ul>
+				<li>
+					valueset-nachc-a2-de1-codes-grouper.json
+					<br/>
+					(HIVTestCodesGrouper)
+				</li>
+				<li>
+					valueset-nachc-a2-de2.json
+					<br/>
+					(HIV1HIV2AbAgtestsCodes)
+				</li>
+			</ul>	
+			
+			These resources are available from the hiv-cds project 
+			<a href="https://github.com/cqframework/hiv-cds/tree/master/input/vocabulary/valueset/generated">
+				here
+			</a> 
+			
+			and a copy of these resources are available as part of the smart-on-fhir application available 
+			<a href="https://github.com/NACHC-CAD/smart-on-fhir-examples/tree/main/docs/_ETC/hiv-cds/vocabulary/valueset/generated">
+				here 
+			</a>.
+			
+			
 		</div>
 	</body>
 </html>

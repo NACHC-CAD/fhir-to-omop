@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<properties>
-		<version>0.0.14</version>
+		<version>1.1.001-SNAPSHOT</version>
     </properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -25,7 +25,7 @@
 	      <distribution>repo</distribution>
 	    </license>
 	</licenses>
-  
+
    <developers>
 	    <developer>
 		    <name>John Gresh</name>
@@ -68,7 +68,13 @@
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>0.0.14</version>
+			<version>${version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.nachc.cad.tools</groupId>
+			<artifactId>thread-tool</artifactId>
+			<version>${version}</version>
 		</dependency>
 
 		<!-- 
@@ -129,6 +135,13 @@
 		    <version>10.2.0.jre8</version>
 		</dependency>
 
+		<!-- POSTGRESQL DRIVER https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.3.6</version>
+		</dependency>
+		
 		<!-- CALL R FROM JAVA: https://mvnrepository.com/artifact/org.rosuda/jri -->
 		<dependency>
 			<groupId>com.github.jbytecode</groupId>
@@ -152,7 +165,7 @@
 	-->
 
 	<build>
-	
+
 		<!-- 
 		* 
 		* EXCLUDE AUTHENTICATION INFO FROM DEPLOYMENT BUILD 
@@ -173,15 +186,17 @@
 
 		<pluginManagement>
 			<plugins>
+
+				<!-- compiler -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.1</version>
+					<version>3.8.0</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<release>11</release>
 					</configuration>
-				</plugin>
+				</plugin>		
+
 			</plugins>
 		</pluginManagement>
 
@@ -282,6 +297,7 @@
 				    <skipTests>true</skipTests>
 				  </configuration>
 			</plugin>
+
 
 			<!-- 
 			*

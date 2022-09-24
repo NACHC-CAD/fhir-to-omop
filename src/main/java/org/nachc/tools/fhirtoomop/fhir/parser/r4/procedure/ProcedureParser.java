@@ -25,12 +25,14 @@ public class ProcedureParser {
 
 	public String getEncounterId() {
 		try {
-			String ref = this.proc.getContext().getReference();
-			if (ref.indexOf('/') < 0) {
-				return ref;
-			} else {
-				return ref.split("/")[1];
-			}
+//			String ref = this.proc.getContext().getReference();
+//			if (ref.indexOf('/') < 0) {
+//				return ref;
+//			} else {
+//				return ref.split("/")[1];
+//			}
+			String rtn = this.proc.getEncounter().getId();
+			return rtn;
 		} catch (Exception exp) {
 			return null;
 		}

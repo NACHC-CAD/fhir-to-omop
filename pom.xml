@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<properties>
-		<version>0.1.002-SNAPSHOT</version>
+		<version>1.1.001-SNAPSHOT</version>
     </properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -25,7 +25,29 @@
 	      <distribution>repo</distribution>
 	    </license>
 	</licenses>
+
+   <developers>
+	    <developer>
+		    <name>John Gresh</name>
+		    <email>johngresh@curlewconsulting.com</email>
+		    <organization>NACHC</organization>
+		    <organizationUrl>https.www.nachc.org</organizationUrl>
+	    </developer>
+    </developers>
   
+	<scm>
+		<connection>scm:git:git://github.com/NACHC-CAD/fhir-to-omop</connection>
+		<developerConnection>scm:git:ssh://github.com:NACHC-CAD/fhir-to-omop.git</developerConnection>
+		<url>http://github.com/NACHC-CAD/fhir-to-omop/tree/master</url>
+	</scm>  
+  
+	<distributionManagement>
+	  <snapshotRepository>
+	    <id>ossrh</id>
+	    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+	  </snapshotRepository>
+	</distributionManagement>
+
 	<repositories>
 	    <repository>
 	        <id>bedatadriven</id>
@@ -46,13 +68,13 @@
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>0.1.002-SNAPSHOT</version>
+			<version>${version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>thread-tool</artifactId>
-			<version>0.0.2</version>
+			<version>${version}</version>
 		</dependency>
 
 		<!-- 
@@ -146,15 +168,17 @@
 	
 		<pluginManagement>
 			<plugins>
+
+				<!-- compiler -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.1</version>
+					<version>3.8.0</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<release>11</release>
 					</configuration>
-				</plugin>
+				</plugin>		
+
 			</plugins>
 		</pluginManagement>
 

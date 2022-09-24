@@ -27,10 +27,10 @@ import com.nach.core.util.file.FileUtil;
 
 public class FhirPatientFactory {
 
-	private FhirPatientResources resources;
-
-	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
-
+	//
+	// static methods
+	//
+	
 	public static FhirPatient build(File dir) {
 		FhirPatientResources resources =  FhirPatientResourcesAsFilesFactory.getForPatient(dir);
 		return build(resources);
@@ -42,10 +42,26 @@ public class FhirPatientFactory {
 		return fhirPatient;
 	}
 	
+	//
+	// instance variables
+	//
+	
+	private FhirPatientResources resources;
+
+	private List<BundleParser> bundleParserList = new ArrayList<BundleParser>();
+
+	//
+	// constructor(s)
+	//
+	
 	public FhirPatientFactory(FhirPatientResources resources) {
 		this.resources = resources;
 	}
 
+	//
+	// build method
+	//
+	
 	public FhirPatient build() {
 		for (InputStream is : resources.getResources()) {
 			String str = FileUtil.getAsString(is);

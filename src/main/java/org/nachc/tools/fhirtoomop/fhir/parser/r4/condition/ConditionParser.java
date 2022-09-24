@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.hl7.fhir.r4.model.Coding;
 import org.hl7.fhir.r4.model.Condition;
-import org.hl7.fhir.r4.model.Condition.ConditionClinicalStatus;
-import org.hl7.fhir.r4.model.Condition.ConditionVerificationStatus;
+// import org.hl7.fhir.r4.model.Condition.ConditionClinicalStatus;
+// import org.hl7.fhir.r4.model.Condition.ConditionVerificationStatus;
 import org.nachc.tools.fhirtoomop.fhir.util.id.FhirUtil;
 
 public class ConditionParser {
@@ -58,6 +58,7 @@ public class ConditionParser {
 		}
 	}
 
+	/*
 	public Date getAssertedDate() {
 		return this.con.getAssertedDate();
 	}
@@ -69,5 +70,6 @@ public class ConditionParser {
 	public ConditionVerificationStatus verificationStatus() {
 		return this.con.getVerificationStatus();
 	}
+	*/
 
 }

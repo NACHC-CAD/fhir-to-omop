@@ -134,12 +134,14 @@ public class ObservationParser {
 
 	public String getEncounterId() {
 		try {
-			String ref = this.obs.getContext().getReference();
-			if (ref.indexOf('/') < 0) {
-				return ref;
-			} else {
-				return ref.split("/")[1];
-			}
+//			String ref = this.obs.getContext().getReference();
+//			if (ref.indexOf('/') < 0) {
+//				return ref;
+//			} else {
+//				return ref.split("/")[1];
+//			}
+			String rtn = this.obs.getEncounter().getId();
+			return rtn;
 		} catch (Exception exp) {
 			return null;
 		}
