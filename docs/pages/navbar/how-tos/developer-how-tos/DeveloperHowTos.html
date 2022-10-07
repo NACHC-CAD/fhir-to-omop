@@ -79,34 +79,106 @@
 				<!-- eclipse: install eclipse env -->
 				<tr>
 					<td>
-						IDE (Eclipse)
+						IDE (Eclipse):
+						<br/>
+						Install Eclipse
 					</td>
 					<td>
+						<i>Fully Automated:</i>
+						<br/>
 						<a href="./install-eclipse/InstallEclipse.html">
-							Install a Fully Automated, Fully Featured Eclipse Environment
+							How to install Eclipse Using _YES (Yaorma Eclipse Setup)
 						</a>
 						<br/>
-						This how-to describes how to install a fully configured and fully featured Eclipse environment.  
-						This environment can be installed by simply downloading a single zip file and unzipping it on your local machine.  
+						A fully automated installer of an integrated Eclipse environment is provided here.  
+						This installer was created using 
+						<a href="https://sourceforge.net/projects/nsisbi/">NSISBI</a> 
+						(Nullsoft Scriptable Install System BI version).  
+						More information on NSIS is available at 
+						<a href="https://nsis.sourceforge.io/Main_Page">https://nsis.sourceforge.io/Main_Page</a>.  
+						Some individual example scripts are available at 
+						<a href="https://github.com/NACHC-CAD/nsis-examples">https://github.com/NACHC-CAD/nsis-examples</a>.  
+						The script used to create the installer is open source and available in git hub at 
+						<a href="https://github.com/NACHC-CAD/nsis-yes-install">https://github.com/NACHC-CAD/nsis-yes-install</a>.  
 						This install is for Windows.  
-						<br/>
-						<br/>
-						This Install includes the following
+						<br/>						
+						The installer includes all of the following.  
 						<ul>
-							<li>Eclipse</li>
-							<li>Git and Git Integration</li>
-							<li>Maven and Maven Integration</li>
-							<li>Wildfly and Wildfly Integration</li>
-							<li>Lombok and Lobmok Integration</li>
+							<li>
+								Software
+								<ul>
+									<li>
+										A complete Git client 
+									</li>
+									<li>
+										A complete Maven(MVN) install
+									</li>
+									<li>
+										Several JDK/JRE instances
+									</li>
+									<li>
+										Batch files to help with common everyday tasks
+									</li>
+									<li>
+										A complete Wildfly (JBoss) installation
+									</li>
+									<li>
+										Wildfly/Eclipse integration to enable stepping through server side code
+									</li>
+									<li>
+										An example standalone application
+									</li>
+									<li>
+										An example deployable web application
+									</li>
+									<li>
+										Lobok/Eclipse integration
+									</li>
+								</ul>
+							</li>
+							<li>
+								Configuration: This installation will create/modify the following environment variables
+								<ul>
+									<li>
+										The path environment variable will be updated to include the new Git, Maven, Java, and .bat file installs
+									</li>
+									<li>
+										The JAVA_HOME environment variable will be set to point to the newly installed version of Java
+									</li>
+									<li>
+										A JAVA_VERSION environment variable will be set to enable cmd line switching of the current Java version
+									</li>
+									<li>
+										Git will be configured to use the newly installed certificate for Git
+									</li>
+									<li>
+										A logical link will be created as the default location of the _YES install if the default location is not used.   
+										(having all installations have the same root directory enables automation of some functionality)
+									</li>
+								</ul>
+							</li>
 						</ul>
+
+						<!-- eclipse from zip file -->
+						<i>From a zip file (manual updates of environment variables):</i>
 						<br/>
+						<a href="./install-eclipse/InstallEclipse.html">
+							How to Install a Fully Featured Eclipse Environment from a zip file (manual configuration required)
+						</a>
+						<br/>
+						This version of the installer only provides the zip file.  
+						All other configuration will need to be done manually if this option is selected.  
+						This how-to describes the steps to manually configure the Eclipse environment.  
+						This install is for Windows.  
 					</td>
 				</tr>
 
 				<!-- debug a web application -->
 				<tr>
 					<td>
-						IDE (Eclipse)
+						IDE (Eclipse):
+						<br/>
+						Debug a Web Application in Eclipse
 					</td>
 					<td>
 						<a href="./install-eclipse/debug-web-application/DebugWebApplication.html">
