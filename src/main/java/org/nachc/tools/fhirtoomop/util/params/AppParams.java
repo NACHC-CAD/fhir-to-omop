@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import org.yaorma.util.time.TimeUtil;
 
+import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.props.PropertiesUtil;
 import com.nach.core.util.string.StringUtil;
 
@@ -20,11 +21,35 @@ public class AppParams {
 	private static Properties PROPS = null;
 
 	static {
-		try {
-			PROPS = PropertiesUtil.getAsProperties(DEFAULT);
-		} catch (Exception exp) {
+		// init props
+		PROPS = getProps();
+		// init props for dev env
+		if(PROPS == null) {
+			PROPS = getPropsInTestEnv();
+		}
+		// log if props could not be created (it is set in the code for some applications)
+		if(PROPS == null) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
+		}
+	}
+	
+	private static Properties getProps() {
+		try {
+			PROPS = PropertiesUtil.getAsProperties(DEFAULT);
+			return PROPS;
+		} catch(Exception exp) {
+			return null;
+		}
+	}
+
+	private static Properties getPropsInTestEnv() {
+		try {
+			File file = FileUtil.getFile(DEFAULT, true);
+			PROPS = PropertiesUtil.getAsProperties(file);
+			return PROPS;
+		} catch(Exception exp) {
+			return null;
 		}
 	}
 
