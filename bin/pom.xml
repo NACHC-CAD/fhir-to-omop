@@ -1,0 +1,342 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	
+	<properties>
+		<version>1.0.004</version>
+    </properties>
+
+	<groupId>org.nachc.cad.tools</groupId>
+	<artifactId>fhirtoomop</artifactId>
+	<version>${version}</version>
+	
+	<packaging>jar</packaging>
+
+    <name>fhir-to-omop Project</name>
+	<description>This project contains the fhir-to-omop tools. Documentation is here: https://nachc-cad.github.io/fhir-to-omop/index.html</description>
+	<url>https://github.com/NACHC-CAD/fhir-to-omop</url>
+
+	<licenses>
+	    <license>
+	      <name>Apache License, Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+	</licenses>
+
+   <developers>
+	    <developer>
+		    <name>John Gresh</name>
+		    <email>johngresh@curlewconsulting.com</email>
+		    <organization>NACHC</organization>
+		    <organizationUrl>https.www.nachc.org</organizationUrl>
+	    </developer>
+    </developers>
+  
+	<scm>
+		<connection>scm:git:git://github.com/NACHC-CAD/fhir-to-omop</connection>
+		<developerConnection>scm:git:ssh://github.com:NACHC-CAD/fhir-to-omop.git</developerConnection>
+		<url>http://github.com/NACHC-CAD/fhir-to-omop/tree/master</url>
+	</scm>  
+  
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+	    <repository>
+	        <id>bedatadriven</id>
+	        <name>bedatadriven</name>
+	        <url>https://nexus.bedatadriven.com/content/groups/public/</url>
+	    </repository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>		
+	</repositories>
+
+	<!-- 
+	*
+	* dependencies
+	*
+	-->
+
+	<dependencies>
+		
+		<!-- CORE NACHC FRAMEWORK STUFF -->
+		<dependency>
+			<groupId>org.nachc.cad.tools</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0.004</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.nachc.cad.tools</groupId>
+			<artifactId>thread-tool</artifactId>
+			<version>1.0.004</version>
+		</dependency>
+
+		<!-- 
+		*
+		* BASIC TOOLS
+		*
+		* -->
+
+		<!-- LOMBOK (Lombok jar also needs to be added to Eclipse IDE) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+
+		<!-- SLF4J LOGBACK CLASSIC https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.30</version>
+		</dependency>
+
+		<!-- JUNIT https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- JUNIT-TOOLBOX https://mvnrepository.com/artifact/com.googlecode.junit-toolbox/junit-toolbox -->
+		<dependency>
+			<groupId>com.googlecode.junit-toolbox</groupId>
+			<artifactId>junit-toolbox</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- MYSQL DRIVER https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.19</version>
+		</dependency>
+
+		<!-- MS SQL SERVER DRIVER https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+		    <version>10.2.0.jre8</version>
+		</dependency>
+
+		<!-- POSTGRESQL DRIVER https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.3.6</version>
+		</dependency>
+		
+		<!-- CALL R FROM JAVA: https://mvnrepository.com/artifact/org.rosuda/jri -->
+		<dependency>
+			<groupId>com.github.jbytecode</groupId>
+			<artifactId>RCaller</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.renjin/renjin-script-engine -->
+		<dependency>
+			<groupId>org.renjin</groupId>
+			<artifactId>renjin-script-engine</artifactId>
+			<version>0.9.2722</version>
+		</dependency>
+
+	</dependencies>
+
+	<!-- 
+	*
+	* build
+	*
+	-->
+
+	<build>
+
+		<!-- 
+		* 
+		* EXCLUDE AUTHENTICATION INFO FROM DEPLOYMENT BUILD 
+		*
+		-->
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+
+				<!-- compiler -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.0</version>
+					<configuration>
+						<release>11</release>
+					</configuration>
+				</plugin>		
+
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+
+			<!-- copy resources from the resources dir -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/fhir-to-omop</outputDirectory>
+							<resources>
+								<resource>
+									<directory>resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- include dependencies in the jar files -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/fhir-to-omop/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- create the jar file -->			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.nachc.tools.fhirtoomop.main.FhirToOmopMain</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>.</Class-Path>
+						</manifestEntries>
+					</archive>
+					<finalName>fhir-to-omop/fhir-to-omop</finalName>
+				</configuration>
+			</plugin>
+
+			<!-- copy the bat file and the app.properties example file -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-antrun-plugin</artifactId>
+			    <version>1.8</version>
+			    <executions>
+			        <execution>
+			            <phase>test</phase>
+			            <goals>
+			                <goal>run</goal>
+			            </goals>
+			            <configuration>
+			                <tasks>
+			                    <echo>Copying files</echo>
+			                    <copy file="${basedir}/src/main/resources/main/bat/fhir-to-omop.bat" tofile="${basedir}/target/fhir-to-omop/fhir-to-omop.bat"/>
+			                    <copy file="${basedir}/src/main/resources/main/example-params/app.properties" tofile="${basedir}/target/fhir-to-omop/app.properties"/>
+			                    </tasks>
+			                </configuration>
+			            </execution>
+			        </executions>
+			</plugin>
+    		
+    		<!-- don't run the integration tests -->	
+			<plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-surefire-plugin</artifactId>
+				  <version>3.0.0-M5</version>
+				  <configuration>
+				    <skipTests>true</skipTests>
+				  </configuration>
+			</plugin>
+
+
+			<!-- 
+			*
+			* Generate sources and java docs (required for mvn distribution) 
+			*
+			* -->
+			
+			<!-- source -->
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-source-plugin</artifactId>
+			  <version>2.2.1</version>
+			  <executions>
+			    <execution>
+			      <id>attach-sources</id>
+			      <goals>
+			        <goal>jar-no-fork</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+			<!-- javadoc -->
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-javadoc-plugin</artifactId>
+			  <version>2.9.1</version>
+			  <executions>
+			    <execution>
+			      <id>attach-javadocs</id>
+			      <goals>
+			        <goal>jar</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
+

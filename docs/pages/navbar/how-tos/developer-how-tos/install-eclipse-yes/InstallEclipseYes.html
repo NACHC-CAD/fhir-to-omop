@@ -1,0 +1,115 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>_YES: Yaorma Eclipse Setup - Install a Fully Automated, Fully Featured Eclipse Environment</h1>
+
+			<h3>
+				The fully featured Eclipse environment can be installed by downloading and running the 
+				<a href="https://drive.google.com/drive/folders/1txmjzHY4B-W0A5VkdF3soBLWNKqoChwS">YesEclipseEnvironmentInstaller.exec</a>.  
+			</h3>
+
+			A fully automated installer of an integrated Eclipse environment is provided here.  
+			This installer was created using 
+			<a href="https://sourceforge.net/projects/nsisbi/">NSISBI</a> 
+			(Nullsoft Scriptable Install System BI version).  
+			More information on NSIS is available at 
+			<a href="https://nsis.sourceforge.io/Main_Page">https://nsis.sourceforge.io/Main_Page</a>.  
+			Some individual example scripts are available at 
+			<a href="https://github.com/NACHC-CAD/nsis-examples">https://github.com/NACHC-CAD/nsis-examples</a>.  
+			The script used to create the installer is open source and available in git hub at 
+			<a href="https://github.com/NACHC-CAD/nsis-yes-install">https://github.com/NACHC-CAD/nsis-yes-install</a>.  
+			This install is for Windows.  
+			<br/>						
+			The installer includes all of the following.  
+			<ul>
+				<li>
+					Software
+					<ul>
+						<li>
+							A complete Git client 
+						</li>
+						<li>
+							A complete Maven(MVN) install
+						</li>
+						<li>
+							Several JDK/JRE instances
+						</li>
+						<li>
+							Batch files to help with common everyday tasks
+						</li>
+						<li>
+							A complete Wildfly (JBoss) installation
+						</li>
+						<li>
+							Wildfly/Eclipse integration to enable stepping through server side code
+						</li>
+						<li>
+							An example standalone application
+						</li>
+						<li>
+							An example deployable web application
+						</li>
+						<li>
+							Lobok/Eclipse integration
+						</li>
+					</ul>
+				</li>
+				<li>
+					Configuration: This installation will create/modify the following environment variables
+					<ul>
+						<li>
+							The path environment variable will be updated to include the new Git, Maven, Java, and .bat file installs
+						</li>
+						<li>
+							The JAVA_HOME environment variable will be set to point to the newly installed version of Java
+						</li>
+						<li>
+							A JAVA_VERSION environment variable will be set to enable cmd line switching of the current Java version
+						</li>
+						<li>
+							Git will be configured to use the newly installed certificate for Git
+						</li>
+						<li>
+							A logical link will be created as the default location of the _YES install if the default location is not used.   
+							(having all installations have the same root directory enables automation of some functionality)
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<h3>
+				Features of the _YES Eclipse Environment
+			</h3>
+
+			<h3>The Installer</h3>
+			The Installer can be downloaded from Google Drive  
+			<a href="https://drive.google.com/drive/folders/1txmjzHY4B-W0A5VkdF3soBLWNKqoChwS">here</a>.
+			
+			<br/>
+			<img width="800px;" src="./img/download-yes.jpg" />
+			<br/><br/>
+			
+			After downloading, run the .exe file as administrator.  The default instalation location is C:\_YES.  
+			If a different location is selected, a logical link at C:\_YES is created that points to the installed version.  
+			For the installation described here, the installation is to D:\_YES and the logical link is created.  
+			Note that the .zip file is also available if a manual installation is preferred.  
+
+
+		</div>
+	</body>
+</html>
