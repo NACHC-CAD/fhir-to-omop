@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<properties>
-		<version>1.0.004</version>
+		<version>1.1.009</version>
     </properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -72,13 +72,13 @@
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0.004</version>
+			<version>1.1.009</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>thread-tool</artifactId>
-			<version>1.0.004</version>
+			<version>1.1.009</version>
 		</dependency>
 
 		<!-- 
