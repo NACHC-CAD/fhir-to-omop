@@ -61,8 +61,8 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 			log.info("CREATING STANDARD CONCEPT CACHCE...");
 			StandardConceptCache.init(connList.get(0));
 			// truncate existing data
-			log.info("TRUNCATING DATA TABLES");
-			TruncateAllDataTables.exec();
+//			log.info("TRUNCATING DATA TABLES");
+//			TruncateAllDataTables.exec();
 			// do the priming step
 			log.info("Doing priming step...");
 			new PrimeUploadProcess().exec();

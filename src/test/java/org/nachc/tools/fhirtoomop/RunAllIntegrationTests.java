@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
+import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
@@ -61,31 +62,36 @@ public class RunAllIntegrationTests {
 
 	@AfterClass
 	public static void cleanup() {
-		log.info("");
-		log.info("");
-		log.info("Truncating data tables...");
-		TruncateAllDataTables.exec();
-		log.info("Populating with patients using config file (PopulateOmopInstanceFromFhirFiles)...");
-		new PopulateOmopInstanceFromFhirFiles().exec();
-		log.info("");
-		log.info("");
-		log.info("***********************************************************");
-		log.info("* * * ");
-		log.info("* * * Done with integration tests.");
-		log.info("* * *");
-		log.info("***********************************************************");
-		log.info("");
-		TIMER.stop();
-		log.info("Start:   " + TIMER.getStartAsString());
-		log.info("Stop:    " + TIMER.getStopAsString());
-		log.info("Elapsed: " + TIMER.getElapsedString());
-		log.info("");
-		int patientCount = GetCountForTable.exec("person");
-		log.info("There are now " + patientCount + " patients in your OMOP database.");
-		int connCount = OmopDatabaseConnectionFactory.getConnectionCount();
-		log.info("Open connections after tear down: " + connCount);
-		assertTrue(connCount == 0);
-		log.info("");
+		try {
+			log.info("");
+			log.info("");
+//			truncate tables is done by PopulateOmopInstanceFromFhirFiles
+//			log.info("Truncating data tables...");
+//			TruncateAllDataTables.exec();
+			log.info("Populating with patients using config file (PopulateOmopInstanceFromFhirFiles)...");
+			new PopulateOmopInstanceFromFhirFiles().exec();
+			log.info("");
+			log.info("");
+			log.info("***********************************************************");
+			log.info("* * * ");
+			log.info("* * * Done with integration tests.");
+			log.info("* * *");
+			log.info("***********************************************************");
+			log.info("");
+			TIMER.stop();
+			log.info("Start:   " + TIMER.getStartAsString());
+			log.info("Stop:    " + TIMER.getStopAsString());
+			log.info("Elapsed: " + TIMER.getElapsedString());
+			log.info("");
+			int patientCount = GetCountForTable.exec("person");
+			log.info("There are now " + patientCount + " patients in your OMOP database.");
+			int connCount = OmopDatabaseConnectionFactory.getConnectionCount();
+			log.info("Open connections after tear down: " + connCount);
+			assertTrue(connCount == 0);
+			log.info("");
+		} finally {
+			FixSequences.exec();
+		}
 		log.info("Done.");
 	}
 

@@ -13,16 +13,20 @@ public class FhirToOmopIdGenerator {
 
 	private static HashMap<String, Integer> keys = new HashMap<String, Integer>();
 
+	private static final Object LOCK = new Object();
+	
 	public synchronized static Integer getId(String tableName, String idName, Connection conn) {
-		String keyName = tableName + "." + idName;
-		Integer key = keys.get(keyName);
-		if (key == null) {
-			key = getIdFromDatabase(tableName, idName, conn);
-		} else {
-			key++;
+		synchronized (LOCK) {
+			String keyName = tableName + "." + idName;
+			Integer key = keys.get(keyName);
+			if (key == null) {
+				key = getIdFromDatabase(tableName, idName, conn);
+			} else {
+				key++;
+			}
+			keys.put(keyName, key);
+			return key;
 		}
-		keys.put(keyName, key);
-		return key;
 	}
 
 	public static Integer getIdFromDatabase(String tableName, String idName, Connection conn) {

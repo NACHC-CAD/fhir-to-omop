@@ -11,6 +11,7 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
+import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
 import org.yaorma.database.Database;
@@ -45,7 +46,11 @@ public class WriteOmopPersonToDatabaseIntegrationTest {
 			log.info("after: " + after);
 			assertTrue(after > before);
 		} finally {
-			OmopDatabaseConnectionFactory.close(conn);
+			try {
+				FixSequences.exec();
+			} finally {
+				OmopDatabaseConnectionFactory.close(conn);
+			}
 		}
 		log.info("Done.");
 	}

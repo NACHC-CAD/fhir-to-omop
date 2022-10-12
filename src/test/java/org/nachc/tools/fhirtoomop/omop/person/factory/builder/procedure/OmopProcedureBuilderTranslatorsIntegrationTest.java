@@ -28,7 +28,8 @@ public class OmopProcedureBuilderTranslatorsIntegrationTest {
 	@Test
 	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
-		TruncateAllDataTables.exec();
+//		this test should work without needing to truncate
+//		TruncateAllDataTables.exec();
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
 		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();

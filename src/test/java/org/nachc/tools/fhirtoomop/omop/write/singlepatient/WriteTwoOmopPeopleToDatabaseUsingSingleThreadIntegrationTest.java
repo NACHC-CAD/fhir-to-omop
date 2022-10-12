@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
+import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 
 import com.nach.core.util.file.FileUtil;
@@ -42,7 +43,11 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 				WriteOmopPersonToDatabase.exec(omopPerson, conn);
 			}
 		} finally {
-			OmopDatabaseConnectionFactory.close(conn);
+			try {
+				FixSequences.exec();
+			} finally {
+				OmopDatabaseConnectionFactory.close(conn);
+			}
 		}
 		log.info("Done.");
 	}

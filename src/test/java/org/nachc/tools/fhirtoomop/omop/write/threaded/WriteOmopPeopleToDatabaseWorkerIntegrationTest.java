@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
+import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 
 import com.nach.core.util.file.FileUtil;
@@ -35,7 +36,11 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 			WriteOmopPeopleToDatabase writer = new WriteOmopPeopleToDatabase(resources, conns, NUM_OF_WORKERS, NUM_PATIENTS, NUM_THREADS);
 			writer.exec();
 		} finally {
-			closeConnections(conns);
+			try {
+				FixSequences.exec();
+			} finally {
+				closeConnections(conns);
+			}
 		}
 		log.info("Done.");
 	}
