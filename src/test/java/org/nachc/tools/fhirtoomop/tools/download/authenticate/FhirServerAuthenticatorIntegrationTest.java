@@ -17,11 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 public class FhirServerAuthenticatorIntegrationTest {
 
 	@Test
-	public void placeHolder() {
-		// TODO: SYNTHEA HAS BEEN SHUT DOWN :(
-		log.info("PLACE HOLDER: SYNTHEA HAS BEEN SHUT DOWN, NEED TO FIND NEW EXAMPLE.");
-	}
-	
 	public void shouldAuthenticateRequest() {
 		log.info("Starting test..");
 		String url = AppParams.getFhirPatientServerUrl();
