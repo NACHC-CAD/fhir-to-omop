@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,11 @@ public class FhirPatientResourcesAsFiles implements FhirPatientResources {
 	private List<String> fileList;
 	
 	private List<InputStream> resources;
+	
+	public FhirPatientResourcesAsFiles(File singleFile) {
+		this.fileList = new ArrayList<String>();
+		this.fileList.add(FileUtil.getCanonicalPath(singleFile));
+	}
 	
 	public FhirPatientResourcesAsFiles(List<String> fileList) {
 		this.fileList = fileList;

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.codeGenerator.generateOrmForSchema.GenerateOrmForSchema;
+import org.yaorma.codeGenerator.impl.mssqlserver.MsSqlServerOrmCodeGenerator;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -25,7 +26,7 @@ public class GenerateOrm {
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/main/java/org/nachc/tools/omop/yaorma/dvo");
 			FileUtil.clearContents(destDir);
-			GenerateOrmForSchema.execute(conn, schemaName, packageName, destDir);
+			GenerateOrmForSchema.execute(conn, schemaName, packageName, destDir, new MsSqlServerOrmCodeGenerator());
 			log.info("Done with generate dvos.");
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);

@@ -22,6 +22,10 @@ public class PatientParser {
 	public PatientParser(Patient patient) {
 		this.patient = patient;
 	}
+	
+	public Patient getPatient() {
+		return this.patient;
+	}
 
 	public String getId() {
 		try {

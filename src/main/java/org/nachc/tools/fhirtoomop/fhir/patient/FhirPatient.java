@@ -3,16 +3,18 @@ package org.nachc.tools.fhirtoomop.fhir.patient;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hl7.fhir.dstu3.model.MedicationRequest;
-import org.hl7.fhir.dstu3.model.Observation;
+import org.hl7.fhir.instance.model.api.IAnyResource;
+import org.hl7.fhir.dstu3.model.Bundle;
+import org.hl7.fhir.dstu3.model.Bundle.BundleEntryComponent;
+import org.hl7.fhir.dstu3.model.Resource;
 import org.nachc.tools.fhirtoomop.fhir.parser.condition.ConditionParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.encounter.EncounterParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.medicationrequest.MedicationRequestParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.ObservationParser;
-import org.nachc.tools.fhirtoomop.fhir.parser.observation.component.ObservationComponentParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.observation.type.ObservationType;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
+import org.nachc.tools.fhirtoomop.fhir.parser.bundle.BundleParser;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,6 +22,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FhirPatient {
+
+	private List<BundleParser> bundleParserList;
 
 	private PatientParser patient;
 
@@ -106,6 +110,63 @@ public class FhirPatient {
 		for (EncounterParser enc : encounterList) {
 			if (encounterId.equals(enc.getEncounterId())) {
 				return enc;
+			}
+		}
+		return null;
+	}
+
+	// ---
+	//
+	// get a list of resources for a given type.
+	//
+	// ---
+
+	public <T extends IAnyResource> List<T> getResourceListForType(Class<T> cls) {
+		List<T> rtn = new ArrayList<T>();
+		for (BundleParser parser : this.bundleParserList) {
+			getResourceListForType(cls, parser.getBundle(), rtn);
+		}
+		return rtn;
+	}
+
+	public <T extends IAnyResource> List<T> getResourceListForType(Class<T> cls, Bundle bundle, List<T> rtn) {
+		List<BundleEntryComponent> entries = bundle.getEntry();
+		for (BundleEntryComponent entry : entries) {
+			Resource resource = entry.getResource();
+			if (resource.getClass().equals(cls)) {
+				rtn.add((T) resource);
+			}
+		}
+		return rtn;
+	}
+
+	// ---
+	//
+	// get a list of resources for a given type.
+	//
+	// ---
+
+	public <T extends IAnyResource> T getResourceForType(Class<T> cls, String id) {
+		T rtn = null;
+		for (BundleParser parser : this.bundleParserList) {
+			rtn = getResourceForType(cls, id, parser.getBundle());
+			if (rtn != null) {
+				return rtn;
+			}
+		}
+		return rtn;
+	}
+
+	public <T extends IAnyResource> T getResourceForType(Class<T> cls, String id, Bundle bundle) {
+		if(id == null) {
+			return null;
+		}
+		List<BundleEntryComponent> entries = bundle.getEntry();
+		for (BundleEntryComponent entry : entries) {
+			Resource resource = entry.getResource();
+			String resourceId = resource.getId();
+			if (resource.getClass().equals(cls) && resourceId != null && resourceId.contains(id)) {
+				return (T) resource;
 			}
 		}
 		return null;

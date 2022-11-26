@@ -23,6 +23,10 @@ public class PatientParser {
 		this.patient = patient;
 	}
 
+	public Patient getPatient() {
+		return this.patient;
+	}
+	
 	public String getId() {
 		try {
 			String patientId = patient.getIdElement().getIdPart();

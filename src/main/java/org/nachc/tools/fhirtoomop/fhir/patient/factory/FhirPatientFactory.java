@@ -20,6 +20,7 @@ import org.nachc.tools.fhirtoomop.fhir.parser.observation.ObservationParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.patient.PatientParser;
 import org.nachc.tools.fhirtoomop.fhir.parser.procedure.ProcedureParser;
 import org.nachc.tools.fhirtoomop.fhir.patient.FhirPatient;
+import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 
 import com.nach.core.util.file.FileUtil;
@@ -35,6 +36,11 @@ public class FhirPatientFactory {
 		return build(resources);
 	}
 
+	public static FhirPatient buildFromSingleFile(File file) {
+		FhirPatientResources resources = new FhirPatientResourcesAsFiles(file);
+		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
+		return fhirPatient;
+	}
 	
 	public static FhirPatient build(FhirPatientResources resources) {
 		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
@@ -62,6 +68,7 @@ public class FhirPatientFactory {
 
 	private FhirPatient doBuild() {
 		FhirPatient rtn = new FhirPatient();
+		rtn.setBundleParserList(this.bundleParserList);
 		buildResourceTypes(rtn);
 		buildPatient(rtn);
 		buildEncounterList(rtn);
