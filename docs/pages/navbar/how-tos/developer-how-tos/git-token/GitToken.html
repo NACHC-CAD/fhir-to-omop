@@ -1,0 +1,38 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>Git: Create a Github Token</h1>
+			<p>
+				To create a github token, log into the github account you want the token for and 
+				select settings from the gear menu in the upper right hand corner of the page as shown below.  
+				<br/>
+				<img width="800px" src="./img/select-settings.png" />
+				<br/><br/>
+				Select "Developer settings" from the menu on the left.  
+				<br/>
+				<img width="800px" src="./img/developer-settings.png" />
+				<br/><br/>
+				Select "Personal access tokens", "Tokens (clasic)", then "Generate new token".  
+				<br/>
+				<img width="800px" src="./img/generate-token.png" />
+				<br/><br/>
+				Copy the token and save it in a text file someplace safe.
+			</p>
+		</div>
+	</body>
+</html>
