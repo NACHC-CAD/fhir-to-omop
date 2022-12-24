@@ -12,7 +12,7 @@ DO NOT USE POM XML TO RECREATE THIS FILE WITH OUT ADDING THE EXCLUDE FOR auth/ap
 	<modelVersion>4.0.0</modelVersion>
 	
 	<properties>
-		<version>1.0.004</version>
+		<version>1.1.011</version>
     </properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -79,13 +79,13 @@ DO NOT USE POM XML TO RECREATE THIS FILE WITH OUT ADDING THE EXCLUDE FOR auth/ap
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>1.0.004</version>
+			<version>1.1.011</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>thread-tool</artifactId>
-			<version>1.0.004</version>
+			<version>1.1.011</version>
 		</dependency>
 
 		<!-- 
