@@ -20,7 +20,7 @@ import com.nach.core.util.json.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FhirPatientEverythingFetcherIntegrationTest {
+public class FhirPatientEverythingFetcherSyntheaTest {
 
 	private static final String PATIENT_ID = "5acc8bb4-2d14-4461-a560-228d96459cc3";
 

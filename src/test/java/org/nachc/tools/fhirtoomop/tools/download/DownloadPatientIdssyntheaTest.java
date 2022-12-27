@@ -5,7 +5,7 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DownloadPatientIdsIntegrationTest {
+public class DownloadPatientIdssyntheaTest {
 
 	private static final int MAX_PATIENTS_TO_GET = 20;
 

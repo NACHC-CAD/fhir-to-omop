@@ -45,5 +45,6 @@ public class OmopProcedureBuilderIntegrationTest {
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
+		log.info("Done.");
 	}
 }

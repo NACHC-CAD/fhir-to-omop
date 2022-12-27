@@ -11,7 +11,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FhirPatientDownloaderIntegrationTest {
+public class FhirPatientDownloaderSyntheaTest {
 
 	private static final String DIR_PATH = "/test/fhir/patient-ids/patient-ids-2";
 

@@ -14,7 +14,7 @@ import com.nach.core.util.json.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FhirServerAuthenticatorIntegrationTest {
+public class FhirServerAuthenticatorSyntheaTest {
 
 	@Test
 	public void shouldAuthenticateRequest() {
