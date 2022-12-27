@@ -123,16 +123,22 @@ public class SyntheaPatientSummaryListFetcher {
 			String msg = "";
 			msg += "\n-----------------------------------------------------------------------------------";
 			msg += "\nAN EXCEPTION OCCURED, THIS IS LIKELY A TIMEOUT ERROR FROM SYNTHEA, RETRYING...";
+			msg += "\nAttempt: " + this.numberOfTries;
 			msg += "\n" + url;
 			msg += "\n" + json;
 			msg += "\nRETRYING NOW...";
 			msg += "\n-----------------------------------------------------------------------------------";
 			log.info("Error:" + msg);
-			if (this.numberOfTries > 5) {
+			if (this.numberOfTries > 3) {
 				log.info("GETTING A NEW TOKEN");
 				String tokenMsg = "\n";
 				FhirServerAuthenticator.refresh();
 				FhirServerAuthenticator.auth(client);
+			}
+			if(this.numberOfTries > 5) {
+				log.info("Could not connect to data source, giving up after 5 tries and throwing a runtime exception.");
+				log.info("The end.");
+				throw new RuntimeException("Giving up after 5 tries", exp);
 			}
 			return init(howMany, true);
 		}
