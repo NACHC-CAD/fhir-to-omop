@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
 
+import javax.batch.operations.BatchRuntimeException;
+
 import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
@@ -22,14 +24,19 @@ public class AppParams {
 	private static Properties PROPS = null;
 
 	static {
-		// init props
-		PROPS = getProps();
-		// init props for dev env
-		if (PROPS == null) {
-			PROPS = getPropsInTestEnv();
-		}
-		// log if props could not be created (it is set in the code for some applications)
-		if (PROPS == null) {
+		try {
+			// init props
+			PROPS = getProps();
+			// init props for dev env
+			if (PROPS == null) {
+				PROPS = getPropsInTestEnv();
+			}
+			// log if props could not be created (it is set in the code for some applications)
+			if (PROPS == null) {
+				System.out.println("Could not load default properties.");
+				System.out.println("A properties file will need to be provided by the user.");
+			}
+		} catch(Throwable thr) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
 		}
@@ -49,6 +56,7 @@ public class AppParams {
 			PROPS = PropertiesUtil.getAsProperties(is, fileName);
 			return PROPS;
 		} catch (Exception exp) {
+			log.info("Exception thrown: " + exp.getMessage());
 			throw new RuntimeException(exp);
 		}
 	}
@@ -98,7 +106,13 @@ public class AppParams {
 	// ---
 
 	public static String get(String key) {
-		return PROPS.getProperty(key);
+		try {
+			return PROPS.getProperty(key);
+		} catch (Throwable thr) {
+			log.info("Could not load property: " + key);
+			log.info("PROPS: " + PROPS);
+			throw new BatchRuntimeException("Could not load property", thr);
+		}
 	}
 
 	// ---
@@ -108,27 +122,27 @@ public class AppParams {
 	// ---
 
 	public static String getBootstrapUrl() {
-		return PROPS.getProperty("bootstrapUrl");
+		return get("bootstrapUrl");
 	}
 
 	public static String getUrl() {
-		return PROPS.getProperty("url");
+		return get("url");
 	}
 
 	public static String getUid() {
-		return PROPS.getProperty("uid");
+		return get("uid");
 	}
 
 	public static String getPwd() {
-		return PROPS.getProperty("pwd");
+		return get("pwd");
 	}
 
 	public static String getFullyQualifiedDbName() {
-		return PROPS.getProperty("syntheaDb");
+		return get("syntheaDb");
 	}
 
 	public static String getDbName() {
-		String rtn = PROPS.getProperty("syntheaDb");
+		String rtn = get("syntheaDb");
 		return getCatalogPart(rtn);
 	}
 
@@ -155,21 +169,21 @@ public class AppParams {
 	// ---
 
 	public static String getPostgresBootstrapUrl() {
-		return PROPS.getProperty("postgresBootstrapUrl");
+		return get("postgresBootstrapUrl");
 	}
 
 	public static String getPostgresBootstrapUid() {
-		return PROPS.getProperty("postgresBootstrapUid");
+		return get("postgresBootstrapUid");
 	}
 
 	public static String getPostgresBootstrapPwd() {
-		return PROPS.getProperty("postgresBootstrapPwd");
+		return get("postgresBootstrapPwd");
 	}
 
 	// terminology stuff
 
 	public static String getTerminologyRootDir() {
-		return PROPS.getProperty("terminologyRootDir");
+		return get("terminologyRootDir");
 	}
 
 	// ---
@@ -180,33 +194,33 @@ public class AppParams {
 
 	// directory where fhir patients live
 	public static String getFhirPatientsDirName() {
-		String fileName = PROPS.getProperty("fhirPatientsDir");
+		String fileName = get("fhirPatientsDir");
 		return fileName;
 	}
 
 	// directory where fhir patients live
 	public static String getSyntheaPatientsDirName() {
-		String fileName = PROPS.getProperty("syntheaPatientsDir");
+		String fileName = get("syntheaPatientsDir");
 		return fileName;
 	}
 
 	// max number of connections to use for upload
 	public static int getMaxNumberOfConnectionsForUpload() {
-		String str = PROPS.getProperty("maxNumberOfConnectionsForUpload");
+		String str = get("maxNumberOfConnectionsForUpload");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	// max number of threads to use for upload
 	public static int getMaxNumberOfThreadsForUpload() {
-		String str = PROPS.getProperty("maxNumberOfThreadsForUpload");
+		String str = get("maxNumberOfThreadsForUpload");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	// cache size
 	public static int getConceptCacheSize() {
-		String str = PROPS.getProperty("conceptCacheSize");
+		String str = get("conceptCacheSize");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
@@ -234,39 +248,39 @@ public class AppParams {
 	}
 
 	public static int getDownloadNumberOfPatientsPerThread() {
-		String str = PROPS.getProperty("downloadNumberOfPatientsPerThread");
+		String str = get("downloadNumberOfPatientsPerThread");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	public static int getDownloadMaxNumberOfActiveWorkers() {
-		String str = PROPS.getProperty("downloadMaxNumberOfActiveWorkers");
+		String str = get("downloadMaxNumberOfActiveWorkers");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	public static int getDownloadNumberOfPatientsPerWorker() {
-		String str = PROPS.getProperty("downloadNumberOfPatientsPerWorker");
+		String str = get("downloadNumberOfPatientsPerWorker");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	public static String getDownloadOutputDir() {
-		return PROPS.getProperty("downloadOutputDir");
+		return get("downloadOutputDir");
 	}
 
 	public static int getDownloadRetryCount() {
-		String str = PROPS.getProperty("downloadRetryCount");
+		String str = get("downloadRetryCount");
 		Integer rtn = StringUtil.parseInt(str);
 		return rtn;
 	}
 
 	public static String getDownloadPatientIdDir() {
-		return PROPS.getProperty("downloadPatientIdDir");
+		return get("downloadPatientIdDir");
 	}
 
 	public static String getDownloadInputDir() {
-		return PROPS.getProperty("downloadInputDir");
+		return get("downloadInputDir");
 	}
 
 	public static Date getDateNotFound() {
