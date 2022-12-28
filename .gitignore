@@ -26,7 +26,6 @@ hs_err_pid*
 
 # maven and eclipse
 /target/
-/src/main/resources/auth/
 .classpath
 .project
 /.settings/

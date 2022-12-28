@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.params;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
@@ -16,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AppParams {
 
-	private static final String DEFAULT = "auth/app.properties";
+	private static final String SRC = "auth/app.properties";
 
 	private static Properties PROPS = null;
 
@@ -24,32 +25,44 @@ public class AppParams {
 		// init props
 		PROPS = getProps();
 		// init props for dev env
-		if(PROPS == null) {
+		if (PROPS == null) {
 			PROPS = getPropsInTestEnv();
 		}
 		// log if props could not be created (it is set in the code for some applications)
-		if(PROPS == null) {
+		if (PROPS == null) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
 		}
 	}
-	
+
 	private static Properties getProps() {
 		try {
-			PROPS = PropertiesUtil.getAsProperties(DEFAULT);
+			File srcFile = FileUtil.getFile(SRC, false);
+			String fileName = FileUtil.getAsString(srcFile);
+			fileName = fileName.trim();
+			log.info(fileName);
+			//			fileName = "C:\\_WORKSPACES\\nachc\\_CURRENT\\KEYS\\application-auth\\fhir-to-omop\\app.properties";
+			log.info(fileName);
+			File file = new File(fileName);
+			log.info("App Properties File Exists: " + file.exists());
+			InputStream is = new FileInputStream(file);
+			PROPS = PropertiesUtil.getAsProperties(is, fileName);
 			return PROPS;
-		} catch(Exception exp) {
-			return null;
+		} catch (Exception exp) {
+			throw new RuntimeException(exp);
 		}
 	}
 
 	private static Properties getPropsInTestEnv() {
 		try {
-			File file = FileUtil.getFile(DEFAULT, true);
-			PROPS = PropertiesUtil.getAsProperties(file);
+			File srcFile = FileUtil.getFile(SRC, true);
+			String fileName = FileUtil.getAsString(srcFile);
+			File file = new File(fileName);
+			InputStream is = new FileInputStream(file);
+			PROPS = PropertiesUtil.getAsProperties(is, fileName);
 			return PROPS;
-		} catch(Exception exp) {
-			return null;
+		} catch (Exception exp) {
+			throw new RuntimeException(exp);
 		}
 	}
 
@@ -59,15 +72,31 @@ public class AppParams {
 	 * properties locally
 	 * 
 	 */
-	public static void setProps(InputStream is) {
-		PROPS = PropertiesUtil.getAsProperties(is, "User's app.properties");
+	public static void setProps(InputStream srcIs) {
+		try {
+			String fileName = FileUtil.getAsString(srcIs);
+			fileName = fileName.trim();
+			log.info("SETTING PROPS FROM: " + fileName);
+			File file = new File(fileName);
+			InputStream is = new FileInputStream(file);
+			PROPS = PropertiesUtil.getAsProperties(is, fileName);
+		} catch (Exception exp) {
+			throw new RuntimeException(exp);
+		}
 	}
 
-	public static void resetToDefault() {
-		PROPS = PropertiesUtil.getAsProperties(DEFAULT);
-	}
+	// ---
+	// 
+	// METHODS TO GET PROPERTIES
+	//
+	// ---	
 
-	// passthrough method
+	// ---
+	//
+	// get property using a key
+	//
+	// ---
+
 	public static String get(String key) {
 		return PROPS.getProperty(key);
 	}
@@ -124,19 +153,19 @@ public class AppParams {
 	// postgres stuff
 	//
 	// ---
-	
+
 	public static String getPostgresBootstrapUrl() {
 		return PROPS.getProperty("postgresBootstrapUrl");
 	}
-	
+
 	public static String getPostgresBootstrapUid() {
 		return PROPS.getProperty("postgresBootstrapUid");
 	}
-	
+
 	public static String getPostgresBootstrapPwd() {
 		return PROPS.getProperty("postgresBootstrapPwd");
 	}
-		
+
 	// terminology stuff
 
 	public static String getTerminologyRootDir() {
@@ -199,7 +228,7 @@ public class AppParams {
 		File file = new File(dirName);
 		return file;
 	}
-	
+
 	public static String getFhirPatientServerUrl() {
 		return AppParams.get("fhirPatientServerUrl");
 	}
@@ -243,5 +272,5 @@ public class AppParams {
 	public static Date getDateNotFound() {
 		return TimeUtil.getDateForYyyy_Mm_Dd("1700-01-01");
 	}
-	
+
 }

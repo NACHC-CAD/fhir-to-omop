@@ -12,8 +12,15 @@ import lombok.extern.slf4j.Slf4j;
 public class PostgresDatabaseConnectionFactoryIntegrationTest {
 
 	@Test
-	public void shouldGetBootstrapConnection() {
+	public void shouldGetConnections() {
 		log.info("Starting test...");
+		getBootstrapConnection();
+		shouldGetOhdsiConnection();
+		log.info("Done.");
+	}
+	
+	public void getBootstrapConnection() {
+		log.info("Getting Bootstrap Connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			String sqlString = "SELECT current_user, user, session_user, current_database(), current_catalog, version()";
@@ -22,12 +29,10 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done.");
 	}
 
-	@Test
 	public void shouldGetOhdsiConnection() {
-		log.info("Starting test...");
+		log.info("Getting OHDSI Connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			String sqlString = "SELECT current_user, user, session_user, current_database(), current_catalog, version()";

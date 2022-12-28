@@ -29,7 +29,7 @@ public class FhirToOmopMain {
 				System.out.println("Got parameter: " + paramTwo);
 			} 
 			// get the config file
-			File dir = new File("./");
+			File dir = new File("./auth");
 			String fileName = FileUtil.getCanonicalPath(dir);
 			System.out.println("Getting config file from: " + fileName);
 			File file = new File(fileName, "app.properties");
