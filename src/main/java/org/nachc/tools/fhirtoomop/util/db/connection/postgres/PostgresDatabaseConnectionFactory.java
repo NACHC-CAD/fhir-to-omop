@@ -44,4 +44,22 @@ public class PostgresDatabaseConnectionFactory {
 
 	}
 
+	public static Connection getDbConnection() {
+		try {
+			String url = AppParams.getPostgresBootstrapUrl();
+			String uid = AppParams.getPostgresBootstrapUid();
+			String pwd = AppParams.getPostgresBootstrapPwd();
+			String db = AppParams.getDbName();
+			url += "/" + db;
+			url += "?" + "user=" + uid;
+			url += "&" + "password=" + pwd;
+			log.info("Getting connection for url: \n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+
+	}
+
 }
