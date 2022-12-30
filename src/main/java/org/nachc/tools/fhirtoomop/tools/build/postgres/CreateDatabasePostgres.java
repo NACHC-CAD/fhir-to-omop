@@ -23,7 +23,7 @@ public class CreateDatabasePostgres {
 		log.info("Done.");
 	}
 	
-	public static void exec(Connection conn) {
+	private static void exec(Connection conn) {
 		log.info("Creating databases...");
 		String databaseName = AppParams.getDbName();
 		createDatabase(databaseName, conn);

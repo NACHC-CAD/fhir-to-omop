@@ -25,14 +25,14 @@ public class BurnEverythingToTheGroundPostgres {
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
+	private static void exec(Connection conn) {
 		doSqlDatabaseDrops(conn);
 		BurnAtlasToTheGround.exec();
 		log.info("Done burning everything to the ground.");
 	}
 	
 	
-	public static void doSqlDatabaseDrops(Connection conn) {
+	private static void doSqlDatabaseDrops(Connection conn) {
 		// drop the database
 		String databaseName = AppParams.getFullyQualifiedDbName();
 		databaseName = AppParams.getCatalogPart(databaseName);
@@ -55,6 +55,7 @@ public class BurnEverythingToTheGroundPostgres {
 		log.info("Done.");
 	}
 
+	/*
 	private static boolean loginExists(Connection conn, String uid) {
 		String sqlString = "select * from sys.server_principals sp where sp.name = ?";
 		Data data = Database.query(sqlString, uid, conn);
@@ -64,5 +65,6 @@ public class BurnEverythingToTheGroundPostgres {
 			return false;
 		}
 	}
+	*/
 
 }

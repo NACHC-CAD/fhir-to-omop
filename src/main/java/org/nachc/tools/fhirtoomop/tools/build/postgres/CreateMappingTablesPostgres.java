@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.build.postgres;
 
+import java.io.InputStream;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
@@ -11,9 +12,11 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabaseTablesPostgres {
+public class CreateMappingTablesPostgres {
 
-	private static final String SQL = FileUtil.getAsString("/postgres/omop/cdm/OMOPCDM_postgresql_5.4_ddl.sql");
+//	TODO: FINISH THIS THOUGHT
+	
+	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/terminology/mappings/race-eth/mapping-ddl.sql");
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
@@ -26,16 +29,14 @@ public class CreateDatabaseTablesPostgres {
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
-		log.info("Running script...");
+	private static void exec(Connection conn) {
 		String dbName = AppParams.getDbName();
-		log.info("DB NAME: " + dbName);
-		String sqlString = SQL;
-		sqlString = sqlString.replace("@cdmDatabaseSchema", "public");
-		log.info("Running script:\n\n" + sqlString + "\n\n");
-		Database.executeSqlScript(sqlString, conn);
+		log.info("Using: " + dbName);
+		Database.update("use " + dbName, conn);
+		log.info("Running script...");
+		Database.executeSqlScript(IS, conn);
 		log.info("Done running script.");
-		log.info("Done creating database tables.");
+		log.info("Done creating database tables.");		
 	}
-
+	
 }

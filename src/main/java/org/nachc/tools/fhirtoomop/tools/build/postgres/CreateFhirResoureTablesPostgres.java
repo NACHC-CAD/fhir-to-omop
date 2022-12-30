@@ -11,9 +11,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabaseTablesPostgres {
+public class CreateFhirResoureTablesPostgres {
 
-	private static final String SQL = FileUtil.getAsString("/postgres/omop/cdm/OMOPCDM_postgresql_5.4_ddl.sql");
+	private static final String SQL = FileUtil.getAsString("/postgres/fhir/fhir-resources-ddl.sql");
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
@@ -26,13 +26,11 @@ public class CreateDatabaseTablesPostgres {
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
-		log.info("Running script...");
+	private static void exec(Connection conn) {
 		String dbName = AppParams.getDbName();
-		log.info("DB NAME: " + dbName);
+		log.info("Running script...");
 		String sqlString = SQL;
 		sqlString = sqlString.replace("@cdmDatabaseSchema", "public");
-		log.info("Running script:\n\n" + sqlString + "\n\n");
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
 		log.info("Done creating database tables.");
