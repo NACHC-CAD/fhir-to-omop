@@ -2,25 +2,16 @@ package org.nachc.tools.fhirtoomop.tools.build;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.build.impl.AddConstraints;
-import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseUser;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.AddConstraintsPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.BurnEverythingToTheGroundPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateCdmSourceRecordPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateDatabasePostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateDatabaseTablesPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateFhirResoureTablesPostgres;
-import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateMappingTablesPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.LoadMappingTablesPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.LoadTerminologyPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.MoveRaceEthFilesPostgres;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -59,8 +50,8 @@ public class CreateOmopInstanceToolPostgres {
 			CreateDatabasePostgres.main(null);
 			conn = PostgresDatabaseConnectionFactory.getDbConnection();
 			// create the user
-//			logMsg("CREATING USER");
-//			CreateDatabaseUser.exec(conn);
+			//			logMsg("CREATING USER");
+			//			CreateDatabaseUser.exec(conn);
 			// create the tables
 			logMsg("CREATING TABLES");
 			CreateDatabaseTablesPostgres.exec(conn);
@@ -68,21 +59,21 @@ public class CreateOmopInstanceToolPostgres {
 			CreateFhirResoureTablesPostgres.main(null);
 			CreateMappingTablesPostgres.main(null);
 			// create the cdm_source record (uses app.parameters values)
-//			CreateCdmSourceRecord.exec(conn);
+			CreateCdmSourceRecordPostgres.main(null);
 			Database.commit(conn);
 			// move the race eth files
-//			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
-//			raceFiles.exec();
+			MoveRaceEthFilesPostgres raceFiles = new MoveRaceEthFilesPostgres();
+			raceFiles.exec();
 			// load the terminologies
-//			logMsg("LOADING TERMINOLOGY");
-//			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-//			LoadTerminology.exec(conn);
+			logMsg("LOADING TERMINOLOGY");
+			LoadMappingTablesPostgres.exec(raceFiles.getSqlFile(), conn);
+			LoadTerminologyPostgres.main(null);
 			// create the sequences
-//			logMsg("CREATING SEQUENCES");
-//			CreateSequencesForPrimaryKeys.exec(conn);
+			//			logMsg("CREATING SEQUENCES");
+			//			CreateSequencesForPrimaryKeys.exec(conn);
 			// create the indexes and add constraints
-//			CreateDatabaseIndexes.exec(conn);
-			AddConstraintsPostgres.exec(conn);
+			//			CreateDatabaseIndexes.exec(conn);
+			//			AddConstraintsPostgres.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

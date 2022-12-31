@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.build.postgres;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 
@@ -12,9 +13,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateMappingTablesPostgres {
+public class LoadTerminologyPostgres {
 
-	private static final String SQL = FileUtil.getAsString("/postgres/terminology/mappings/race-eth/mapping-ddl.sql");
+	private static final String SQL_STRING = FileUtil.getAsString("/postgres/athena/load-terminology.sql");
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
@@ -24,16 +25,17 @@ public class CreateMappingTablesPostgres {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done.");
+		log.info("Done loading terminologies.");
 	}
 
-	private static void exec(Connection conn) {
+	public static void exec(Connection conn) {
+		String rootDir = AppParams.getTerminologyRootDir();
+		String sqlString = SQL_STRING.replace("@terminologiesRootFolder/", rootDir);
+		InputStream is = new ByteArrayInputStream(sqlString.getBytes());
 		log.info("Running script...");
-		String sqlString = SQL;
-		sqlString = sqlString.replace("@cdmDatabaseSchema", "public");
-		Database.executeSqlScript(sqlString, conn);
+		Database.executeSqlScript(is, conn);
 		log.info("Done running script.");
-		log.info("Done creating database tables.");		
+		log.info("Done creating database tables.");
 	}
-	
+
 }
