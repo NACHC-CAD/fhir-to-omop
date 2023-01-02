@@ -2,13 +2,15 @@ package org.nachc.tools.fhirtoomop.tools.build;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.AddConstraintsPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.BurnEverythingToTheGroundPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateCdmSourceRecordPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateDatabaseIndexesPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateDatabasePostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateDatabaseTablesPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateFhirResoureTablesPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateMappingTablesPostgres;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateSequencesForPrimaryKeysPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.LoadMappingTablesPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.LoadTerminologyPostgres;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.MoveRaceEthFilesPostgres;
@@ -55,7 +57,6 @@ public class CreateOmopInstanceToolPostgres {
 			// create the tables
 			logMsg("CREATING TABLES");
 			CreateDatabaseTablesPostgres.exec(conn);
-			//TODO: (JEG) -- Need to look at this
 			CreateFhirResoureTablesPostgres.main(null);
 			CreateMappingTablesPostgres.main(null);
 			// create the cdm_source record (uses app.parameters values)
@@ -69,11 +70,11 @@ public class CreateOmopInstanceToolPostgres {
 			LoadMappingTablesPostgres.exec(raceFiles.getSqlFile(), conn);
 			LoadTerminologyPostgres.main(null);
 			// create the sequences
-			//			logMsg("CREATING SEQUENCES");
-			//			CreateSequencesForPrimaryKeys.exec(conn);
+			logMsg("CREATING SEQUENCES");
+			CreateSequencesForPrimaryKeysPostgres.main(null);
 			// create the indexes and add constraints
-			//			CreateDatabaseIndexes.exec(conn);
-			//			AddConstraintsPostgres.exec(conn);
+			AddConstraintsPostgres.exec(conn);
+			CreateDatabaseIndexesPostgres.main(null);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

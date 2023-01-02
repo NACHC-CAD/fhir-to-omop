@@ -16,6 +16,10 @@ public class CreatePreloadIndexes {
 
 	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/indexes/sqlserver-indexes.sql");
 
+	public static void main(String[] arags) {
+		exec(OmopDatabaseConnectionFactory.getOmopConnection());
+	}
+	
 	public static void exec(Connection conn) {
 		String dbName = AppParams.getDbName();
 		log.info("Using: " + dbName);
@@ -26,8 +30,4 @@ public class CreatePreloadIndexes {
 		log.info("Done creating database tables.");		
 	}
 
-	public static void main(String[] arags) {
-		exec(OmopDatabaseConnectionFactory.getOmopConnection());
-	}
-	
 }
