@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun-" default="main"  >
+<target name="main">
+  <echo>Copying files</echo>
+  <copy file="C:\_YES\workspace\fhir-to-omop/src/main/resources/main/bat/fhir-to-omop.bat" tofile="C:\_YES\workspace\fhir-to-omop/target/fhir-to-omop/fhir-to-omop.bat"/>
+  <copy file="C:\_YES\workspace\fhir-to-omop/src/main/resources/auth/app.properties" tofile="C:\_YES\workspace\fhir-to-omop/target/fhir-to-omop/auth/app.properties"/>
+</target>
+</project>

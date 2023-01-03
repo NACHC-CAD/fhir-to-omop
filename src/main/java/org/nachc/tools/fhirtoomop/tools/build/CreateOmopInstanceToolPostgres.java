@@ -68,12 +68,12 @@ public class CreateOmopInstanceToolPostgres {
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTablesPostgres.exec(raceFiles.getSqlFile(), conn);
-			LoadTerminologyPostgres.main(null);
+//			LoadTerminologyPostgres.main(null);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeysPostgres.main(null);
 			// create the indexes and add constraints
-			AddConstraintsPostgres.exec(conn);
+//			AddConstraintsPostgres.exec(conn);
 			CreateDatabaseIndexesPostgres.main(null);
 			timer.stop();
 			log.info("Done creating instance");

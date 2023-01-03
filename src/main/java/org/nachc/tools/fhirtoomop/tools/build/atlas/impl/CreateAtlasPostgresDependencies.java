@@ -5,6 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateAtlasPostgresDependencies {
 
+	public static void main(String[] args) {
+		exec();
+	}
+	
 	public static void exec() {
 		log.info("Installing Atlas Dependencies...");
 		// get rid of any previous instance

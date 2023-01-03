@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date %d{HH:mm:ss.SSS} [%thread] %-5level \(%file:%line\) - %message%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="ch.qos.logback" level="ERROR" />
+	<logger name="ca.uhn.fhir" level="ERROR" />
+	
+	<root level="info">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration>
+

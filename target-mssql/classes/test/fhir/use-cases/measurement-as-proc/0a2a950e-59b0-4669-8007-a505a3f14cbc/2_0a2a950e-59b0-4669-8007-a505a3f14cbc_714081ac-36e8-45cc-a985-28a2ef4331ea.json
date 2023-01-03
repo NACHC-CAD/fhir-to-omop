@@ -1,0 +1,4263 @@
+{
+	"resourceType": "Bundle",
+	"type": "searchset",
+	"entry": [
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "39156-5",
+							"display": "Body Mass Index",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Mass Index"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "92dddf2e-b76d-44de-8b19-2796591eba59",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.566794+00:00",
+					"versionId": "MTU1NDgwODMzNTU2Njc5NDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "kg/m2",
+					"system": "http://unitsofmeasure.org",
+					"unit": "kg/m2",
+					"value": 27.722538979280664
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "32623-1",
+							"display": "Platelet mean volume [Entitic volume] in Blood by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Platelet mean volume [Entitic volume] in Blood by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "92ee0865-3a5a-452f-8765-3c9ea58647ab",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.352332+00:00",
+					"versionId": "MTU1NDgwODMzMTM1MjMzMjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "fL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "fL",
+					"value": 10.757368434602148
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "8302-2",
+							"display": "Body Height",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Height"
+				},
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "9407230a-6067-4c52-a5b8-a32dd01b63e5",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.437133+00:00",
+					"versionId": "MTU1NDgwODMzMzQzNzEzMzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "cm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "cm",
+					"value": 177.8850105730578
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "procedure",
+								"display": "procedure",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "33756-8",
+							"display": "Polyp size greatest dimension by CAP cancer protocols",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Polyp size greatest dimension by CAP cancer protocols"
+				},
+				"context": {
+					"reference": "Encounter/c8eaa239-4352-41f8-97d9-2b63bf9d5cfb"
+				},
+				"effectiveDateTime": "2015-11-20T15:21:35-05:00",
+				"id": "946f0e26-00f1-452a-aad3-1c1d06e1893f",
+				"issued": "2015-11-20T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.432483+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMjQ4MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mm",
+					"value": 6.652052411521913
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "9474d771-7bf9-45c8-b9ed-3a16130cbd34",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451004+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAwNDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 83.89852661961132
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "94a0d1f0-e200-443f-aa4a-74dd31453c22",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.312561+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMjU2MTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 9.306784231437977
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "96546e50-7cbb-498e-946d-3896aa9e6e5c",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.566797+00:00",
+					"versionId": "MTU1NDgwODMzNTU2Njc5NzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 95.6373917033951
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "968047b2-8dfa-4e40-bd81-5f98c7cb8b61",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.322519+00:00",
+					"versionId": "MTU1NDgwODMzMDMyMjUxOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 139.89981081402567
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "986db909-559b-484b-bd4e-f0108a7bad36",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.393579+00:00",
+					"versionId": "MTU1NDgwODMzMjM5MzU3OTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 69.88739240412546
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "785-6",
+							"display": "MCH [Entitic mass] by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "MCH [Entitic mass] by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "987298d9-fbf4-4b91-a198-9754918c59c8",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349409+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQwOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "pg",
+					"system": "http://unitsofmeasure.org",
+					"unit": "pg",
+					"value": 31.80947007605811
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6299-2",
+							"display": "Urea Nitrogen",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Urea Nitrogen"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "9b0e37f4-9202-4a99-93c7-944c9043864c",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451003+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAwMzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 11.01289184248942
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2093-3",
+							"display": "Total Cholesterol",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Total Cholesterol"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "a171d143-9802-4331-bfdf-64d65d422033",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.395332+00:00",
+					"versionId": "MTU1NDgwODMzMjM5NTMzMjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 194.87313066701603
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "32623-1",
+							"display": "Platelet mean volume [Entitic volume] in Blood by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Platelet mean volume [Entitic volume] in Blood by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "a24c4432-b77a-44c4-87e2-da2967a915b1",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.558295+00:00",
+					"versionId": "MTU1NDgwODMzNTU1ODI5NTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "fL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "fL",
+					"value": 12.29673114289198
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "8302-2",
+							"display": "Body Height",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Height"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "a3960393-7a60-43e7-b105-c64a414a4580",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.306272+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNjI3MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "cm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "cm",
+					"value": 177.8850105730578
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2085-9",
+							"display": "High Density Lipoprotein Cholesterol",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "High Density Lipoprotein Cholesterol"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "a48551fe-45e9-4877-bc75-e040e444205f",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451006+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAwNjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 65.840523349588
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "777-3",
+							"display": "Platelets [#/volume] in Blood by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Platelets [#/volume] in Blood by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "a7ca9109-e701-4ade-86e2-63fb6460b96b",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.352333+00:00",
+					"versionId": "MTU1NDgwODMzMTM1MjMzMzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "10*3/uL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "10*3/uL",
+					"value": 253.0826880304225
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "18262-6",
+							"display": "Low Density Lipoprotein Cholesterol",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Low Density Lipoprotein Cholesterol"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "a97a6e2f-74bd-4358-ba18-6ee817e1868b",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.402798+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMjc5ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 94.87503650744449
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "a9a9be3f-1ae2-47b6-b0fb-66725d82334f",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.402801+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMjgwMTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 10.016987401027958
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "39156-5",
+							"display": "Body Mass Index",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Mass Index"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "a9e91bef-5ba1-46a8-b5cb-ec480e03ca70",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.312428+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMjQyODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "kg/m2",
+					"system": "http://unitsofmeasure.org",
+					"unit": "kg/m2",
+					"value": 29.46159625847538
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "aa4a1ea6-ef88-47da-be48-0b07a47b516a",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.400763+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMDc2MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 142.5629246100006
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "21000-5",
+							"display": "Erythrocyte distribution width [Entitic volume] by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Erythrocyte distribution width [Entitic volume] by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "ab2d2016-3b2f-463b-9d39-ed0549323c58",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.563443+00:00",
+					"versionId": "MTU1NDgwODMzNTU2MzQ0MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "fL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "fL",
+					"value": 45.49584973995957
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "55284-4",
+							"display": "Blood Pressure",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Blood Pressure"
+				},
+				"component": [
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8462-4",
+									"display": "Diastolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Diastolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 87.27033599911101
+						}
+					},
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8480-6",
+									"display": "Systolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Systolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 116.81122616693152
+						}
+					}
+				],
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "ac28dda5-6b7b-4217-8f1b-fd50311debbf",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.400765+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMDc2NTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "ad903dbc-2b03-4439-82df-ec56a99088bd",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.437135+00:00",
+					"versionId": "MTU1NDgwODMzMzQzNzEzNTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 137.70140256253381
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "4548-4",
+							"display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "add477c7-6a33-4caa-951e-5227e13fe2e5",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.452013+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MjAxMzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "%",
+					"system": "http://unitsofmeasure.org",
+					"unit": "%",
+					"value": 6.239105887773209
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "aef9804a-75b6-4038-aafe-583e9462da68",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.433780+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMzc4MDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 0.2619761006692469
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6299-2",
+							"display": "Urea Nitrogen",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Urea Nitrogen"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "af27a127-879f-410a-88cd-fffcb1aac30e",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.559400+00:00",
+					"versionId": "MTU1NDgwODMzNTU1OTQwMDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 15.900971586297503
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "718-7",
+							"display": "Hemoglobin [Mass/volume] in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin [Mass/volume] in Blood"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "af9db49f-8580-4e06-ab66-2d9a70c116bf",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349411+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQxMTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "g/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "g/dL",
+					"value": 13.690965929061187
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6690-2",
+							"display": "Leukocytes [#/volume] in Blood by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Leukocytes [#/volume] in Blood by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "b0010ca9-e844-4e67-a910-a69d212884bc",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.345962+00:00",
+					"versionId": "MTU1NDgwODMzMTM0NTk2MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "10*3/uL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "10*3/uL",
+					"value": 9.412590818528145
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2571-8",
+							"display": "Triglycerides",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Triglycerides"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "b09c0583-a644-4d78-8d90-dd4403dd68b3",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.441472+00:00",
+					"versionId": "MTU1NDgwODMzNDQ0MTQ3MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 133.72865905280474
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2093-3",
+							"display": "Total Cholesterol",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Total Cholesterol"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "b1c7f8ea-5bb7-44f4-8a67-5f621616e553",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.441621+00:00",
+					"versionId": "MTU1NDgwODMzNDQ0MTYyMTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 194.34812495663328
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "b2a39f45-7c98-44d4-bc31-db1e9d91d9c6",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.312453+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMjQ1MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 65.64838829708738
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "b5b85ec6-11ef-49a6-9540-0999f89e5b1c",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.322522+00:00",
+					"versionId": "MTU1NDgwODMzMDMyMjUyMjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 3.887434163274806
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6299-2",
+							"display": "Urea Nitrogen",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Urea Nitrogen"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "b7cb3784-a6f9-45ab-94e5-9cfc40006190",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.322521+00:00",
+					"versionId": "MTU1NDgwODMzMDMyMjUyMTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 7.84916026190421
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "8302-2",
+							"display": "Body Height",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Height"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "b9232909-2979-4b6e-9162-fc2a066efd65",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.400762+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMDc2MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "cm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "cm",
+					"value": 177.8850105730578
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "survey",
+								"display": "survey",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72166-2",
+							"display": "Tobacco smoking status NHIS",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Tobacco smoking status NHIS"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "b9772e82-636d-4833-a43e-d86d86543192",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349407+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQwNzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueCodeableConcept": {
+					"coding": [
+						{
+							"code": "266919005",
+							"display": "Never smoker",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Never smoker"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "20565-8",
+							"display": "Carbon Dioxide",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Carbon Dioxide"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "bffb4b58-2da4-4499-a6a8-76d5fbb325de",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.341278+00:00",
+					"versionId": "MTU1NDgwODMzMTM0MTI3ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 28.800107179363252
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "c1ba5f6f-17bd-4a6f-913d-0f11937e527a",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.441466+00:00",
+					"versionId": "MTU1NDgwODMzNDQ0MTQ2NjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 143.91391094177072
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "c3e22c92-ed3b-4087-9161-de0892b6ef93",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349416+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQxNjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 1.6765974329764712
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2069-3",
+							"display": "Chloride",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Chloride"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "c5bcbf41-f4c8-46ff-baa3-84fce7193fd0",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.439697+00:00",
+					"versionId": "MTU1NDgwODMzMzQzOTY5NzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 104.77733263877744
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2069-3",
+							"display": "Chloride",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Chloride"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "c6a76bb7-9a2f-43ba-99b0-ddd146a36912",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.313929+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMzkyOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 109.58084968123032
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "55284-4",
+							"display": "Blood Pressure",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Blood Pressure"
+				},
+				"component": [
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8462-4",
+									"display": "Diastolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Diastolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 78.69783642429485
+						}
+					},
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8480-6",
+									"display": "Systolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Systolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 138.69714068518365
+						}
+					}
+				],
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "c94ca7a3-60a0-48a8-a438-4ef0ffac0002",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.312571+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMjU3MTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2069-3",
+							"display": "Chloride",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Chloride"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "cab5111c-7f4e-49f4-b269-606e81174ab1",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.393550+00:00",
+					"versionId": "MTU1NDgwODMzMjM5MzU1MDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 108.88286259917788
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "cbfb9f4e-cc91-4e9b-986e-2d6f0877af29",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.306809+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNjgwOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 2.898816095449388
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "20565-8",
+							"display": "Carbon Dioxide",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Carbon Dioxide"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "cc372154-15b7-413d-a404-24b328759a20",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.314086+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNDA4NjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 23.415977378915237
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "cc454703-ffc0-48ac-a11d-1e5fb3b15d53",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.306543+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNjU0MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 9.642463226327706
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "ce80e30a-b737-47b1-9e8e-069355be169b",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.442863+00:00",
+					"versionId": "MTU1NDgwODMzMzQ0Mjg2MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 9.618173903190703
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "8302-2",
+							"display": "Body Height",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Height"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "cee8e83c-a007-487d-be91-4f6e94f609d8",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.314087+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNDA4NzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "cm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "cm",
+					"value": 177.8850105730578
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "4548-4",
+							"display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "cf2b47d1-11eb-4f1d-a2be-13ecf896ceac",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.566791+00:00",
+					"versionId": "MTU1NDgwODMzNTU2Njc5MTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "%",
+					"system": "http://unitsofmeasure.org",
+					"unit": "%",
+					"value": 6.295777172451276
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "786-4",
+							"display": "MCHC [Mass/volume] by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "MCHC [Mass/volume] by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "d0b979c5-50ca-42ea-b720-7d50994b09c9",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.352334+00:00",
+					"versionId": "MTU1NDgwODMzMTM1MjMzNDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "g/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "g/dL",
+					"value": 35.95170966524977
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "39156-5",
+							"display": "Body Mass Index",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Mass Index"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "d23d87ad-455b-4ada-ac47-301a103ff868",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.336183+00:00",
+					"versionId": "MTU1NDgwODMzMTMzNjE4MzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "kg/m2",
+					"system": "http://unitsofmeasure.org",
+					"unit": "kg/m2",
+					"value": 29.46159625847538
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "d472c445-0a96-4be0-90e5-58af6d80ddb9",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.399217+00:00",
+					"versionId": "MTU1NDgwODMzMjM5OTIxNzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 0.9325441870680287
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "57905-2",
+							"display": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin.gastrointestinal [Presence] in Stool by Immunologic method"
+				},
+				"context": {
+					"reference": "Encounter/c8eaa239-4352-41f8-97d9-2b63bf9d5cfb"
+				},
+				"effectiveDateTime": "2015-11-20T15:21:35-05:00",
+				"id": "d4d39f8b-b431-4f9e-8454-c9bcb447d642",
+				"issued": "2015-11-20T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.427717+00:00",
+					"versionId": "MTU1NDgwODMzMzQyNzcxNzAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "ng/mL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "ng/mL",
+					"value": 6.503519564020663
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6299-2",
+							"display": "Urea Nitrogen",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Urea Nitrogen"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "d51ae6c4-fba4-4f3f-8b43-73224eca8b7e",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.432482+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMjQ4MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 13.810843388024102
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6298-4",
+							"display": "Potassium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Potassium"
+				},
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "d59e8069-b7a0-4357-9c7f-84b86352e767",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.427458+00:00",
+					"versionId": "MTU1NDgwODMzMzQyNzQ1ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 4.372610418120906
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "20565-8",
+							"display": "Carbon Dioxide",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Carbon Dioxide"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "d69ef7d5-6789-4213-870a-4fbddbc840e3",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.313928+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMzkyODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 25.091445911333214
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2069-3",
+							"display": "Chloride",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Chloride"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "d99a37f2-2ee4-4989-9ee6-c0475549538f",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.559075+00:00",
+					"versionId": "MTU1NDgwODMzNTU1OTA3NTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 103.53650268959048
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "29463-7",
+							"display": "Body Weight",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Weight"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "dc529c54-6aaf-4406-858d-aa33d337fb49",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451010+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAxMDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "kg",
+					"system": "http://unitsofmeasure.org",
+					"unit": "kg",
+					"value": 89.32469536888566
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "debb12c0-42e8-439e-9d71-c74f13734de1",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.402795+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMjc5NTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 8.7559679457909
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "18262-6",
+							"display": "Low Density Lipoprotein Cholesterol",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Low Density Lipoprotein Cholesterol"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "dee529ba-5c83-4ab0-86fd-40d752dae161",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451008+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAwODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 101.76186979648432
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6298-4",
+							"display": "Potassium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Potassium"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "e0beec50-88bc-4539-93b4-fb76b83c268c",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.306788+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNjc4ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 4.010626374197338
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "e43309de-85a7-4c54-a001-2dfce35981e5",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.442869+00:00",
+					"versionId": "MTU1NDgwODMzMzQ0Mjg2OTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 0.2954147422858653
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "e58745a7-fd94-4759-9d52-8f113a8e9702",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.433768+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMzc2ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 8.634921073118651
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "e6141560-34ab-42aa-bc6e-5f4447891263",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.428709+00:00",
+					"versionId": "MTU1NDgwODMzMzQyODcwOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 136.85128801153297
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "55284-4",
+							"display": "Blood Pressure",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Blood Pressure"
+				},
+				"component": [
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8462-4",
+									"display": "Diastolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Diastolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 87.63989344115589
+						}
+					},
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8480-6",
+									"display": "Systolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Systolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 109.39308518056043
+						}
+					}
+				],
+				"context": {
+					"reference": "Encounter/31f5e4e8-6024-44eb-af93-5c03bad9f312"
+				},
+				"effectiveDateTime": "2015-01-24T15:21:35-05:00",
+				"id": "e7a5949d-c49c-4ba6-ac36-11d119085218",
+				"issued": "2015-01-24T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.433488+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMzQ4ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6298-4",
+							"display": "Potassium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Potassium"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "ed44bd13-8cc1-40bb-a5c1-e2cfdf6e1c54",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.395748+00:00",
+					"versionId": "MTU1NDgwODMzMjM5NTc0ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 3.738738270113924
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "21000-5",
+							"display": "Erythrocyte distribution width [Entitic volume] by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Erythrocyte distribution width [Entitic volume] by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "ee218567-968f-4f4e-bd5c-c718b28dc75f",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349412+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQxMjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "fL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "fL",
+					"value": 42.774092334665355
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72514-3",
+							"display": "Pain severity - 0-10 verbal numeric rating [Score] - Reported",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Pain severity - 0-10 verbal numeric rating [Score] - Reported"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "ef59e280-b3d7-43d3-a595-cb1869f42ee2",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.400769+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMDc2OTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "{score}",
+					"system": "http://unitsofmeasure.org",
+					"unit": "{score}",
+					"value": 1.0619714954847144
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "786-4",
+							"display": "MCHC [Mass/volume] by Automated count",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "MCHC [Mass/volume] by Automated count"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "efe1ee84-ef5a-45c7-a999-1836c803c9bc",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.569116+00:00",
+					"versionId": "MTU1NDgwODMzNTU2OTExNjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "g/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "g/dL",
+					"value": 35.1846801595574
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "29463-7",
+							"display": "Body Weight",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Weight"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"effectiveDateTime": "2011-01-01T15:21:35-05:00",
+				"id": "f00196ab-1b07-4551-84be-0ec9f65408e7",
+				"issued": "2011-01-01T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.314088+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNDA4ODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "kg",
+					"system": "http://unitsofmeasure.org",
+					"unit": "kg",
+					"value": 93.22555585543819
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "6298-4",
+							"display": "Potassium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Potassium"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "f086012f-ba8d-4194-9263-bb4c296a9da9",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.393176+00:00",
+					"versionId": "MTU1NDgwODMzMjM5MzE3NjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 4.751722044670089
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "20565-8",
+							"display": "Carbon Dioxide",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Carbon Dioxide"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "f0e1fa11-d280-4c77-bee1-eda4dbc99c9a",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.566792+00:00",
+					"versionId": "MTU1NDgwODMzNTU2Njc5MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 26.747389004749635
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "survey",
+								"display": "survey",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "72166-2",
+							"display": "Tobacco smoking status NHIS",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Tobacco smoking status NHIS"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "f1408c6a-2ccc-4b88-8bf7-a868a75f91ee",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.313926+00:00",
+					"versionId": "MTU1NDgwODMzMDMxMzkyNjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueCodeableConcept": {
+					"coding": [
+						{
+							"code": "266919005",
+							"display": "Never smoker",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Never smoker"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "4548-4",
+							"display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "f2063acc-5cf5-4229-a1d1-3d6c81df2474",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.349406+00:00",
+					"versionId": "MTU1NDgwODMzMTM0OTQwNjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "%",
+					"system": "http://unitsofmeasure.org",
+					"unit": "%",
+					"value": 6.214233429568516
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "f35f0946-2395-4366-9349-54f778549548",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.440952+00:00",
+					"versionId": "MTU1NDgwODMzNDQ0MDk1MjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 8.959810728058
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/8e2aef66-6ad3-4ce6-be8b-719f20a49a59"
+				},
+				"effectiveDateTime": "2016-01-30T15:21:35-05:00",
+				"id": "f36d5e10-008d-4e47-9d9b-3b028de05355",
+				"issued": "2016-01-30T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.432480+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMjQ4MDAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 66.00666115982058
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "55284-4",
+							"display": "Blood Pressure",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Blood Pressure"
+				},
+				"component": [
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8462-4",
+									"display": "Diastolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Diastolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 88.68252268827477
+						}
+					},
+					{
+						"code": {
+							"coding": [
+								{
+									"code": "8480-6",
+									"display": "Systolic Blood Pressure",
+									"system": "http://loinc.org"
+								}
+							],
+							"text": "Systolic Blood Pressure"
+						},
+						"valueQuantity": {
+							"code": "mmHg",
+							"system": "http://unitsofmeasure.org",
+							"unit": "mmHg",
+							"value": 121.93102882352487
+						}
+					}
+				],
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "f47dde12-e91a-4ee6-96b0-7f906cf62fd6",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.402796+00:00",
+					"versionId": "MTU1NDgwODMzMjQwMjc5NjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "4548-4",
+							"display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+				},
+				"context": {
+					"reference": "Encounter/428ffef2-9c45-4a91-b5e9-955ef28abd06"
+				},
+				"effectiveDateTime": "2014-01-18T15:21:35-05:00",
+				"id": "f5907287-951a-4954-b954-c01447a0de45",
+				"issued": "2014-01-18T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.432485+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMjQ4NTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "%",
+					"system": "http://unitsofmeasure.org",
+					"unit": "%",
+					"value": 6.023293411816731
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "49765-1",
+							"display": "Calcium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Calcium"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"effectiveDateTime": "2018-02-10T15:21:35-05:00",
+				"id": "f6ad825c-cfd7-42c7-b8d4-1543cd230a62",
+				"issued": "2018-02-10T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.563441+00:00",
+					"versionId": "MTU1NDgwODMzNTU2MzQ0MTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 8.888135219908579
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2947-0",
+							"display": "Sodium",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Sodium"
+				},
+				"context": {
+					"reference": "Encounter/66c77d21-f738-4f5f-8684-698617d2de11"
+				},
+				"effectiveDateTime": "2009-12-26T15:21:35-05:00",
+				"id": "fb3cb885-a69b-4699-9265-a7820abe8bcb",
+				"issued": "2009-12-26T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.306608+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNjYwODAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mmol/L",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mmol/L",
+					"value": 136.28608596849995
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "2339-0",
+							"display": "Glucose",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Glucose"
+				},
+				"context": {
+					"reference": "Encounter/95caa924-fa22-4fa1-8e28-23ae06f56961"
+				},
+				"effectiveDateTime": "2012-01-07T15:21:35-05:00",
+				"id": "fba7cb5d-3b78-4c85-a7a7-a861e88d93cb",
+				"issued": "2012-01-07T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.334366+00:00",
+					"versionId": "MTU1NDgwODMzMTMzNDM2NjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "mg/dL",
+					"system": "http://unitsofmeasure.org",
+					"unit": "mg/dL",
+					"value": 72.90577578750182
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "laboratory",
+								"display": "laboratory",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "4548-4",
+							"display": "Hemoglobin A1c/Hemoglobin.total in Blood",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Hemoglobin A1c/Hemoglobin.total in Blood"
+				},
+				"context": {
+					"reference": "Encounter/7b1101ef-7cb7-4ca9-b10e-a5bf67f99394"
+				},
+				"effectiveDateTime": "2013-01-12T15:21:35-05:00",
+				"id": "fcc18a6e-6ee4-42a0-b6f7-9ef44ea55195",
+				"issued": "2013-01-12T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:12.393839+00:00",
+					"versionId": "MTU1NDgwODMzMjM5MzgzOTAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "%",
+					"system": "http://unitsofmeasure.org",
+					"unit": "%",
+					"value": 6.36403837120916
+				}
+			}
+		},
+		{
+			"resource": {
+				"category": [
+					{
+						"coding": [
+							{
+								"code": "vital-signs",
+								"display": "vital-signs",
+								"system": "http://hl7.org/fhir/observation-category"
+							}
+						]
+					}
+				],
+				"code": {
+					"coding": [
+						{
+							"code": "8302-2",
+							"display": "Body Height",
+							"system": "http://loinc.org"
+						}
+					],
+					"text": "Body Height"
+				},
+				"context": {
+					"reference": "Encounter/05a03da1-30a2-4aef-bb4c-d07485c9f805"
+				},
+				"effectiveDateTime": "2017-02-04T15:21:35-05:00",
+				"id": "fe2756f4-c652-418f-b1a9-0ad96449fa05",
+				"issued": "2017-02-04T15:21:35.838-05:00",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:14.451012+00:00",
+					"versionId": "MTU1NDgwODMzNDQ1MTAxMjAwMA"
+				},
+				"resourceType": "Observation",
+				"status": "final",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				},
+				"valueQuantity": {
+					"code": "cm",
+					"system": "http://unitsofmeasure.org",
+					"unit": "cm",
+					"value": 177.8850105730578
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/2369c429-0344-4e18-86c6-fba0bfa7b117"
+				},
+				"id": "296e0740-f340-4adb-ba6b-dd3143c57ba3",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.315732+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNTczMjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-11-26T15:50:35-05:00",
+					"start": "2009-11-26T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "1015401000000102",
+							"display": "Fecal occult blood test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Fecal occult blood test"
+				},
+				"context": {
+					"reference": "Encounter/c8eaa239-4352-41f8-97d9-2b63bf9d5cfb"
+				},
+				"id": "30b910f6-f144-4aa4-bb9c-7aae44d5813e",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.442870+00:00",
+					"versionId": "MTU1NDgwODMzMzQ0Mjg3MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-11-20T15:36:35-05:00",
+					"start": "2015-11-20T15:21:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/28c43bfd-5cc7-4bf3-a83d-bded3395d606"
+					},
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/4d3ed295-8edb-4888-9005-31ee24200734"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/ed03ba91-fd2e-4243-94f4-bf4d002cdf95"
+				},
+				"id": "37880d04-2bec-4efc-b665-68b613f98217",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:11.352331+00:00",
+					"versionId": "MTU1NDgwODMzMTM1MjMzMTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2011-01-01T15:36:35-05:00",
+					"start": "2011-01-01T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "1015401000000102",
+							"display": "Fecal occult blood test",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Fecal occult blood test"
+				},
+				"context": {
+					"reference": "Encounter/2369c429-0344-4e18-86c6-fba0bfa7b117"
+				},
+				"id": "67cd132b-02dc-47b3-b57e-104611276ded",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.317694+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNzY5NDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-11-26T15:36:35-05:00",
+					"start": "2009-11-26T15:21:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/28c43bfd-5cc7-4bf3-a83d-bded3395d606"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/84bb36c6-a5c0-43b9-b4da-125b710e78af"
+				},
+				"id": "8142f602-f1ac-4bd1-a633-c9b475c9e0ea",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.307417+00:00",
+					"versionId": "MTU1NDgwODMzMDMwNzQxNzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2010-11-21T15:58:35-05:00",
+					"start": "2010-11-21T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274031008",
+							"display": "Rectal polypectomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Rectal polypectomy"
+				},
+				"context": {
+					"reference": "Encounter/2369c429-0344-4e18-86c6-fba0bfa7b117"
+				},
+				"id": "981a656b-9ddb-482e-a77f-7e107f2fa8b0",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:10.317692+00:00",
+					"versionId": "MTU1NDgwODMzMDMxNzY5MjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2009-11-26T15:36:35-05:00",
+					"start": "2009-11-26T15:21:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/28c43bfd-5cc7-4bf3-a83d-bded3395d606"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "428191000124101",
+							"display": "Documentation of current medications",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Documentation of current medications"
+				},
+				"context": {
+					"reference": "Encounter/6e755a6e-f261-48a9-8917-1514ed59c45d"
+				},
+				"id": "bf4e29d5-b3e7-45fa-a1f7-20049e5e9d8b",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.563440+00:00",
+					"versionId": "MTU1NDgwODMzNTU2MzQ0MDAwMA"
+				},
+				"performedPeriod": {
+					"end": "2018-02-10T15:36:35-05:00",
+					"start": "2018-02-10T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/c8eaa239-4352-41f8-97d9-2b63bf9d5cfb"
+				},
+				"id": "d530daee-d1fa-4488-a4dc-47c9a1be8472",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.432487+00:00",
+					"versionId": "MTU1NDgwODMzMzQzMjQ4NzAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-11-20T15:59:35-05:00",
+					"start": "2015-11-20T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "274031008",
+							"display": "Rectal polypectomy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Rectal polypectomy"
+				},
+				"context": {
+					"reference": "Encounter/c8eaa239-4352-41f8-97d9-2b63bf9d5cfb"
+				},
+				"id": "e598c27a-6af6-4efd-8cb6-7f968d83384a",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:13.441096+00:00",
+					"versionId": "MTU1NDgwODMzMzQ0MTA5NjAwMA"
+				},
+				"performedPeriod": {
+					"end": "2015-11-20T15:36:35-05:00",
+					"start": "2015-11-20T15:21:35-05:00"
+				},
+				"reasonReference": [
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/28c43bfd-5cc7-4bf3-a83d-bded3395d606"
+					},
+					{
+						"display": "Polyp of colon",
+						"reference": "Condition/4d3ed295-8edb-4888-9005-31ee24200734"
+					}
+				],
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		},
+		{
+			"resource": {
+				"code": {
+					"coding": [
+						{
+							"code": "73761001",
+							"display": "Colonoscopy",
+							"system": "http://snomed.info/sct"
+						}
+					],
+					"text": "Colonoscopy"
+				},
+				"context": {
+					"reference": "Encounter/b5854910-266e-4d29-b63a-dd451a8c2273"
+				},
+				"id": "f360fbc8-8087-4d33-9890-754c6651b0ed",
+				"meta": {
+					"lastUpdated": "2019-04-09T11:12:15.563435+00:00",
+					"versionId": "MTU1NDgwODMzNTU2MzQzNTAwMA"
+				},
+				"performedPeriod": {
+					"end": "2017-02-12T15:46:35-05:00",
+					"start": "2017-02-12T15:21:35-05:00"
+				},
+				"resourceType": "Procedure",
+				"status": "completed",
+				"subject": {
+					"reference": "Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc"
+				}
+			}
+		}
+	],
+	"link": [
+		{
+			"url": "https://syntheticmass.mitre.org/v1/fhir/Patient/0a2a950e-59b0-4669-8007-a505a3f14cbc/$everything?_count=100&page_token=CoIBcHJvamVjdHMvc3ludGhlYS9sb2NhdGlvbnMvdXMtY2VudHJhbDEvZGF0YXNldHMvMjAxOTAyL2ZoaXJTdG9yZXMvc3ludGhldGljLW1hc3MvZmhpci9QYXRpZW50LzBhMmE5NTBlLTU5YjAtNDY2OS04MDA3LWE1MDVhM2YxNGNiYyBk",
+			"relation": "previous"
+		}
+	],
+	"total": 292
+}
