@@ -33,12 +33,12 @@ public class A01_CreateAtlasDatabaseUsers {
 	public static void exec(Connection conn) {
 		log.info("getting sql script...");
 		log.info("executing script...");
-		String sqlString = getCreateUsersScript();
+		String sqlString = getSqlString();
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done with init postgres users for Atlas.");
 	}
 
-	private static String getCreateUsersScript() {
+	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
 		sqlString = replace(sqlString, "<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
 		sqlString = replace(sqlString, "<ohdsiAdminUserPwd>", AppParams.get("ohdsiAdminUserPwd"));

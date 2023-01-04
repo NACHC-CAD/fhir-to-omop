@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.build.postgres.teardown;
+package org.nachc.tools.fhirtoomop.tools.build.postgres.build;
 
 import java.sql.Connection;
 
@@ -12,14 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
- * This class deletes the database users for the PostgreSQL database used by Atlas/WebAPI.  
+ * This class creates the PostgreSQL database used by Atlas/WebAPI for the Atlas/WebAPI data (i.e. not CDM).  
  *
  */
 
 @Slf4j
-public class A01_TearDownAtlasDatabaseUsers {
+public class A02_CreateAtlasDatabase {
 
-	private static final String FILE_PATH = "/postgres/teardown/A01_TearDownAtlasDatabaseUsers.sql";
+	private static final String FILE_PATH = "/postgres/build/A02_CreateAtlasDatabase.sql";
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
@@ -29,23 +29,22 @@ public class A01_TearDownAtlasDatabaseUsers {
 			Database.close(conn);
 		}
 	}
-	
+
 	public static void exec(Connection conn) {
-		log.info("Doing teardown for Atlas database users...");
 		log.info("getting sql script...");
 		log.info("executing script...");
-		String sqlString = getDropUsersSqlString();
+		String sqlString = getSqlString();
 		Database.executeSqlScript(sqlString, conn);
-		log.info("Done with teardown for Atlas database users.");
+		log.info("Done with init postgres users for Atlas.");
 	}
-	
-	private static String getDropUsersSqlString() {
+
+	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.get("ohdsiDbName"));
+		sqlString = sqlString.replace("<ohdsiDbOwner>", AppParams.get("ohdsiDbOwner"));
 		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
-		sqlString = sqlString.replace("<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
 		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
-		sqlString = sqlString.replace("<ohdsiAppUserUid>", AppParams.get("ohdsiAppUserUid"));
 		return sqlString;
 	}
-	
+
 }
