@@ -10,7 +10,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CDM01_CreateDatabase {
+public class CDM01_CreateCdmDatabase {
 
 	public static void main(String[] args) {
 	}
