@@ -22,7 +22,7 @@ public class CDM04_LoadTerminology {
 	}
 
 	public static void exec() {
-		log.info("Loading terminologies.");
+		log.info("Loading terminologies...");
 		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
 		log.info("Got connection...");
 		try {
@@ -36,7 +36,7 @@ public class CDM04_LoadTerminology {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done creating database tables.");
+		log.info("Done loading terminologies...");
 	}
 
 }
