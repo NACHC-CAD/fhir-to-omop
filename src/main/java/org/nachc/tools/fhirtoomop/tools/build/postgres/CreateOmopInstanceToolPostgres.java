@@ -9,6 +9,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A04_CreateAchillesD
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateFhirResourcesTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM04_CreateMappingTables;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
@@ -35,6 +36,7 @@ public class CreateOmopInstanceToolPostgres {
 		CDM01_CreateCdmDatabase.exec();
 		CDM02_CreateCdmDatabaseTables.exec();
 		CDM03_CreateFhirResourcesTables.exec();
+		CDM04_CreateMappingTables.exec();
 		log.info("Done.");
 	}
 
