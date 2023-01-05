@@ -6,10 +6,12 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A01_CreateAtlasData
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A02_CreateAtlasDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A03_CreateAtlasWebApiSchema;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A04_CreateAchillesDatabases;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A05_CreateCdmSourceRecordInCdmForAtlas;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateFhirResourcesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM04_CreateMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM05_LoadFhirRaceEthMappings;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
@@ -29,14 +31,16 @@ public class CreateOmopInstanceToolPostgres {
 
 	private static void exec(Connection conn) {
 		log.info("CREATING OMOP INSTANCE FOR POSTGRESQL");
-		A01_CreateAtlasDatabaseUsers.exec(conn);
-		A02_CreateAtlasDatabase.exec(conn);
-		A03_CreateAtlasWebApiSchema.exec(conn);
-		A04_CreateAchillesDatabases.exec(conn);
 		CDM01_CreateCdmDatabase.exec();
 		CDM02_CreateCdmDatabaseTables.exec();
 		CDM03_CreateFhirResourcesTables.exec();
 		CDM04_CreateMappingTables.exec();
+		CDM05_LoadFhirRaceEthMappings.exec();
+		A01_CreateAtlasDatabaseUsers.exec(conn);
+		A02_CreateAtlasDatabase.exec(conn);
+		A03_CreateAtlasWebApiSchema.exec(conn);
+		A04_CreateAchillesDatabases.exec(conn);
+		A05_CreateCdmSourceRecordInCdmForAtlas.exec();
 		log.info("Done.");
 	}
 

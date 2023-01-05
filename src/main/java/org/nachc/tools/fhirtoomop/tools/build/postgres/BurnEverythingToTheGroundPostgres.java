@@ -28,11 +28,11 @@ public class BurnEverythingToTheGroundPostgres {
 
 	private static void exec(Connection conn) {
 		log.info("BURNING POSTGRES OMOP INSTANCE TO THE GROUND...");
-		CDM01_TeardownDatabase.exec();
 		A04_TearDownAchillesDatabases.exec(conn);
 		A03_TearDownAtlasWebApiSchema.exec(conn);
 		A02_TearDownAtlasDatabase.exec(conn);
 		A01_TearDownAtlasDatabaseUsers.exec(conn);
+		CDM01_TeardownDatabase.exec();
 		log.info("Done.");
 	}
 
