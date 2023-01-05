@@ -10,9 +10,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CDM04_CreateMappingTables {
+public class FHIR01_CreateMappingTables {
 
-	private static final String SQL = FileUtil.getAsString("/postgres/build/CDM04_CreateMappingTables.sql");
+	private static final String SQL = FileUtil.getAsString("/postgres/build/FHIR01_CreateMappingTables.sql");
 
 	public static void main(String[] args) {
 		exec();

@@ -16,13 +16,13 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CDM05_LoadFhirRaceEthMappings {
+public class FHIR02_LoadFhirRaceEthMappings {
 
 	private File sqlFile;
 
 	private static final String DST_DIR = "/temp/fhir-to-omop";
 
-	private static final String SQL_FILE = "/postgres/build/CDM05_LoadFhirRaceEthMappings.sql";
+	private static final String SQL_FILE = "/postgres/build/FHIR02_LoadFhirRaceEthMappings.sql";
 
 	private static final String DATA_DIR = "/postgres/build/fhir/mappings/race-eth";
 
@@ -38,7 +38,7 @@ public class CDM05_LoadFhirRaceEthMappings {
 		log.info("Creating FHIR race/eth mappings table.");
 		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
 		try {
-			CDM05_LoadFhirRaceEthMappings loadRaceFiles = new CDM05_LoadFhirRaceEthMappings();
+			FHIR02_LoadFhirRaceEthMappings loadRaceFiles = new FHIR02_LoadFhirRaceEthMappings();
 			loadRaceFiles.createMappingSqlFile();
 			loadRaceFiles.loadMappings(loadRaceFiles.getSqlFile(), conn);
 		} finally {
