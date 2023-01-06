@@ -12,26 +12,27 @@ import lombok.extern.slf4j.Slf4j;
 public class A04_CreateAchillesDatabases {
 
 	public static void main(String[] args) {
-		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
+		exec();
+	}
+
+	public static void exec() {
+		log.info("Done creating Achilles databases.");
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
-			exec(conn);
+			String databaseName = AppParams.getDbName();
+			createDatabase(databaseName + "_achilles_results", conn);
+			createDatabase(databaseName + "_achilles_temp", conn);
+			Database.commit(conn);
 		} finally {
 			Database.close(conn);
 		}
-	}
-
-	public static void exec(Connection conn) {
-		String databaseName = AppParams.getDbName();
-		createDatabase(databaseName + "_achilles_results", conn);
-		createDatabase(databaseName + "_achilles_temp", conn);
-		Database.commit(conn);
 		log.info("Done creating Achilles databases.");
 	}
 
 	private static void createDatabase(String databaseName, Connection conn) {
 		log.info("Creating database: " + databaseName);
-		Database.update("drop database if exists " + databaseName, conn);
-		Database.update("create database " + databaseName, conn);
+		Database.update("drop schema if exists " + databaseName, conn);
+		Database.update("create schema " + databaseName, conn);
 	}
 
 }

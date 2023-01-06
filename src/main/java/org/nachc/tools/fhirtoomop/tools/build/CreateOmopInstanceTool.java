@@ -40,6 +40,7 @@ public class CreateOmopInstanceTool {
 	}
 
 	public static void createOmopInstance() {
+		log.info("Creating MS SqlServer OMOP instance...");
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		Timer timer = new Timer();
 		try {

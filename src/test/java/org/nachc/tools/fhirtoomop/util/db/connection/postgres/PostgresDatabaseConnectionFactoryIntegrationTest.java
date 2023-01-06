@@ -16,6 +16,7 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 		log.info("Starting test...");
 		getBootstrapConnection();
 		shouldGetOhdsiConnection();
+		shouldGetOhdsiDb();
 		log.info("Done.");
 	}
 	
@@ -29,6 +30,7 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done testing bootstrap connection.");
 	}
 
 	public void shouldGetOhdsiConnection() {
@@ -41,7 +43,20 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done.");
+		log.info("Done testing OHDSI connection.");
+	}
+
+	public void shouldGetOhdsiDb() {
+		log.info("Getting DB Connection...");
+		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
+		try {
+			String sqlString = "SELECT current_user, user, session_user, current_database(), current_catalog, version()";
+			Data data = Database.query(sqlString, conn);
+			log.info("Current user is: " + data.get(0).get("currentUser"));
+		} finally {
+			Database.close(conn);
+		}
+		log.info("Done testing DB connection.");
 	}
 
 }

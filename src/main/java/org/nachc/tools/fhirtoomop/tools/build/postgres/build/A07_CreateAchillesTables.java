@@ -3,7 +3,6 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres.build;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -11,16 +10,16 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A03_CreateAtlasWebApiSchema {
+public class A07_CreateAchillesTables {
 
-	private static final String FILE_PATH = "/postgres/build/A03_CreateAtlasWebApiSchema.sql";
+	private static final String FILE_PATH = "/postgres/build/A07_CreateAchillesTables.sql";
 
 	public static void main(String[] args) {
 		exec();
 	}
 
 	public static void exec() {
-		log.info("Creating Atlas webapi schema.");
+		log.info("Creating Achilles tables.");
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			log.info("getting sql script...");
@@ -30,14 +29,11 @@ public class A03_CreateAtlasWebApiSchema {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done creating Atlas webapi schema.");
+		log.info("Done creating Achilles tables.");
 	}
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
-		sqlString = sqlString.replace("<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
-		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
 		return sqlString;
 	}
 
