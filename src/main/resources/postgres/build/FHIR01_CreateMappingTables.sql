@@ -1,6 +1,6 @@
-drop table if exists fhir_to_omop_race;
+drop table if exists <ohdsiDbName>.fhir_to_omop_race;
 
-create table fhir_to_omop_race (
+create table <ohdsiDbName>.fhir_to_omop_race (
 	omop_code integer,
 	omop_display varchar(255),
 	depth integer,
@@ -12,9 +12,9 @@ create table fhir_to_omop_race (
 	definition varchar(1024)
 );
 
-drop table if exists fhir_to_omop_ethnicity;
+drop table if exists <ohdsiDbName>.fhir_to_omop_ethnicity;
 
-create table fhir_to_omop_ethnicity (
+create table <ohdsiDbName>.fhir_to_omop_ethnicity (
 	omop_code integer,
 	omop_display varchar(255),
 	depth integer,

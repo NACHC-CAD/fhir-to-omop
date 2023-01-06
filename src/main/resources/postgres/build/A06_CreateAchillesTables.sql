@@ -3,6 +3,8 @@
  * 
  * http://localhost:8080/WebAPI/ddl/results?dialect=postgresql&schema=omop_fhir_to_omop_build_achilles_results&vocabSchema=omop_fhir_to_omop_build&tempSchema=omop_fhir_to_omop_build_achilles_temp&initConceptHierarchy=true
  * 
+ * The hardcoded schemaname was then replaced with @TODO: FINISH THIS THOUGHT
+ * 
  */
 
 CREATE TABLE IF NOT EXISTS omop_fhir_to_omop_build_achilles_results.cohort

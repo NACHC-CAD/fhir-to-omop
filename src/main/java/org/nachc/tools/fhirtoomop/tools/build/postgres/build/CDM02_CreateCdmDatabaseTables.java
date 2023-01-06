@@ -21,14 +21,14 @@ public class CDM02_CreateCdmDatabaseTables {
 
 	public static void exec() {
 		log.info("Creating CDM database tables...");
-		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");
 			String dbName = AppParams.getDbName();
 			log.info("DB NAME: " + dbName);
 			String sqlString = SQL;
-			sqlString = sqlString.replace("@cdmDatabaseSchema", "public");
+			sqlString = sqlString.replace("@cdmDatabaseSchema", dbName);
 			log.info("Running script:\n\n" + sqlString + "\n\n");
 			Database.executeSqlScript(sqlString, conn);
 			log.info("Done running script.");

@@ -1,7 +1,7 @@
 
-truncate table cdm_source;
+truncate table <ohdsiDbName>.cdm_source;
 
-insert into cdm_source (
+insert into <ohdsiDbName>.cdm_source (
    cdm_source_name, 
    cdm_source_abbreviation,
    cdm_holder,
@@ -27,8 +27,8 @@ insert into cdm_source (
    @cdm_version_concept_id
 );
 
-truncate table care_site;
-insert into care_site (
+truncate table <ohdsiDbName>.care_site;
+insert into <ohdsiDbName>.care_site (
 	care_site_id,
 	care_site_name,
 	place_of_service_concept_id,
@@ -44,8 +44,8 @@ insert into care_site (
 	null
 );
 
-truncate table provider;
-insert into provider (
+truncate table <ohdsiDbName>.provider;
+insert into <ohdsiDbName>.provider (
 	provider_id,
 	provider_name
 ) values (
@@ -53,8 +53,8 @@ insert into provider (
 	'Not Available'
 );
 
-truncate table location;
-insert into location (
+truncate table <ohdsiDbName>.location;
+insert into <ohdsiDbName>.location (
 	location_id,
 	address_1,
 	city,

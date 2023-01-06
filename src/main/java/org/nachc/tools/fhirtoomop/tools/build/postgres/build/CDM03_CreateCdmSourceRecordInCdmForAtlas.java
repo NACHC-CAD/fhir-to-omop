@@ -11,9 +11,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A05_CreateCdmSourceRecordInCdmForAtlas {
+public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 
-	private static final String PATH = "/postgres/build/A05_CreateCdmSourceRecordInCdmForAtlas.sql";
+	private static final String PATH = "/postgres/build/CDM03_CreateCdmSourceRecordInCdmForAtlas.sql";
 	
 	public static void main(String[] args) {
 		exec();
@@ -21,7 +21,7 @@ public class A05_CreateCdmSourceRecordInCdmForAtlas {
 
 	public static void exec() {
 		log.info("Creating CDM source record in CDM for Atlas record");
-		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		log.info("Got connection...");
 		try {
 			String sqlString = FileUtil.getAsString(PATH);
@@ -45,7 +45,9 @@ public class A05_CreateCdmSourceRecordInCdmForAtlas {
 	}
 
 	private static String replace(String sqlString, String name) {
-		return sqlString.replace("@" + name, AppParams.get(name));
+		sqlString = sqlString.replace("@" + name, AppParams.get(name));
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDbName());
+		return sqlString;
 	}
 
 }

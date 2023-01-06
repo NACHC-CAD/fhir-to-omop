@@ -11,9 +11,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A06_CreateAtlasSourceRecordsInWebApi {
+public class A99_CreateAtlasSourceRecordsInWebApi {
 
-	private static final String FILE_PATH = "/postgres/build/A06_CreateAtlasSourceRecordsInWebApi.sql";
+	private static final String FILE_PATH = "/postgres/build/A99_CreateAtlasSourceRecordsInWebApi.sql";
 	
 	public static void main(String[] args) {
 		log.info("Starting main...");

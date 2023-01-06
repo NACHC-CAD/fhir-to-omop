@@ -36,7 +36,7 @@ public class FHIR02_LoadFhirRaceEthMappings {
 
 	public static void exec() {
 		log.info("Creating FHIR race/eth mappings table.");
-		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			FHIR02_LoadFhirRaceEthMappings loadRaceFiles = new FHIR02_LoadFhirRaceEthMappings();
 			loadRaceFiles.createMappingSqlFile();
@@ -94,11 +94,19 @@ public class FHIR02_LoadFhirRaceEthMappings {
 		log.info("-----------------------");
 		log.info("LOAD RACE/ETH SQL FILE: " + FileUtil.getCanonicalPath(sqlFile));
 		log.info("-----------------------");
-		InputStream IS = FileUtil.getInputStream(sqlFile);
+		String sqlString = getSqlString(sqlFile);
 		log.info("Running script...");
-		Database.executeSqlScript(IS, conn);
+		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
 		log.info("Done creating database tables.");
 	}
 
+	private static String getSqlString(File sqlFile) {
+		String sqlString = FileUtil.getAsString(sqlFile);
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDbName());
+		return sqlString;
+	}
+
+	
+	
 }
