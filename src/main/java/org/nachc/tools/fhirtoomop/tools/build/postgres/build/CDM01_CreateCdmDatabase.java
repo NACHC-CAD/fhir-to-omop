@@ -17,7 +17,7 @@ public class CDM01_CreateCdmDatabase {
 	}
 
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			log.info("Creating databases...");
 			String databaseName = AppParams.getDbName();
@@ -31,8 +31,8 @@ public class CDM01_CreateCdmDatabase {
 	
 	private static void createDatabase(String databaseName, Connection conn) {
 		log.info("Creating database: " + databaseName);
-		Database.update("drop database if exists " + databaseName, conn);
-		Database.update("create database " + databaseName, conn);
+		Database.update("drop schema if exists " + databaseName, conn);
+		Database.update("create schema " + databaseName, conn);
 	}
 	
 }
