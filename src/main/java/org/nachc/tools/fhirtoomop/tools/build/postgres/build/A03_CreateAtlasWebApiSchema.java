@@ -21,7 +21,8 @@ public class A03_CreateAtlasWebApiSchema {
 
 	public static void exec() {
 		log.info("Creating Atlas webapi schema.");
-		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
+//		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			log.info("getting sql script...");
 			log.info("executing script...");

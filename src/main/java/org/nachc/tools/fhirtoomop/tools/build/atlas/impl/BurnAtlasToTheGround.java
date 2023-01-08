@@ -53,8 +53,8 @@ public class BurnAtlasToTheGround {
 		try {
 			String databaseName = AppParams.getFullyQualifiedDbName();
 			databaseName = AppParams.getCatalogPart(databaseName);
-			Database.update("drop database if exists " + databaseName + "_achilles_results", conn);
-			Database.update("drop database if exists " + databaseName + "_achilles_temp", conn);
+			Database.update("drop database if exists " + databaseName + "_ach_results", conn);
+			Database.update("drop database if exists " + databaseName + "_ach_temp", conn);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

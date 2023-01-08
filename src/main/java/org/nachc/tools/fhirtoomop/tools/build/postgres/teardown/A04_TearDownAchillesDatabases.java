@@ -22,8 +22,8 @@ public class A04_TearDownAchillesDatabases {
 
 	public static void exec(Connection conn) {
 		String databaseName = AppParams.getDbName();
-		dropDatabase(databaseName + "_achilles_results", conn);
-		dropDatabase(databaseName + "_achilles_temp", conn);
+		dropDatabase(databaseName + "_ach_results", conn);
+		dropDatabase(databaseName + "_ach_temp", conn);
 		Database.commit(conn);
 		log.info("Done tearing down Achilles databases.");
 	}

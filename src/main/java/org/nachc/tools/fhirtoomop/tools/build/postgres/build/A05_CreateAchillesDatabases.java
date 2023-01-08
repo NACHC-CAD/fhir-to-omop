@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A04_CreateAchillesDatabases {
+public class A05_CreateAchillesDatabases {
 
 	public static void main(String[] args) {
 		exec();
@@ -20,8 +20,8 @@ public class A04_CreateAchillesDatabases {
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			String databaseName = AppParams.getDbName();
-			createDatabase(databaseName + "_achilles_results", conn);
-			createDatabase(databaseName + "_achilles_temp", conn);
+			createDatabase(databaseName + "_ach_results", conn);
+			createDatabase(databaseName + "_ach_temp", conn);
 			Database.commit(conn);
 		} finally {
 			Database.close(conn);

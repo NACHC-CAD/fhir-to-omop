@@ -11,9 +11,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A06_CreateAchillesTables {
+public class A04_CreateAtlasWebApiTables {
 
-	private static final String FILE_PATH = "/postgres/build/A06_CreateAchillesTables.sql";
+	private static final String FILE_PATH = "/postgres/build/A04_CreateAtlasWebApiTables.sql";
 
 	public static void main(String[] args) {
 		exec();

@@ -26,8 +26,8 @@ public class CreateAtlasDatabases {
 		try {
 			BurnAtlasToTheGround.dropSqlServerDbObjects();
 			String databaseName = AppParams.getDbName();
-			createDatabase(databaseName + "_achilles_results", conn);
-			createDatabase(databaseName + "_achilles_temp", conn);
+			createDatabase(databaseName + "_ach_results", conn);
+			createDatabase(databaseName + "_ach_temp", conn);
 			runInitScript(conn);
 			Database.commit(conn);
 		} finally {
@@ -73,7 +73,7 @@ public class CreateAtlasDatabases {
 		log.info(msg);
 		String databaseName = AppParams.getDbName();
 		String vocabSchema = databaseName + ".dbo";
-		String resultsSchema = databaseName + "_achilles_results" + ".dbo";
+		String resultsSchema = databaseName + "_ach_results" + ".dbo";
 		String sqlString = FileUtil.getAsString(PATH);
 		sqlString = sqlString.replace("<ACHILLES_RESULTS_SCHEMA>", resultsSchema);
 		sqlString = sqlString.replace("<VOCAB_SCHEMA>", vocabSchema);
