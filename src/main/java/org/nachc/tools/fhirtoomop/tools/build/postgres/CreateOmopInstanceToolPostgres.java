@@ -14,7 +14,10 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateCdmSour
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM99_LoadTerminology;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX03_CreateCdmConstraints;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR01_CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR02_LoadFhirRaceEthMappings;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
@@ -50,7 +53,10 @@ public class CreateOmopInstanceToolPostgres {
 		FHIR01_CreateMappingTables.exec();
 		FHIR02_LoadFhirRaceEthMappings.exec();
 		FHIR03_CreateFhirResourcesTables.exec();
-//		CDM99_LoadTerminology.exec();
+		IDX01_CreateCdmPrimaryKeys.exec();
+		IDX02_CreateCdmIndexes.exec();
+		IDX03_CreateCdmConstraints.exec();
+		VOC99_LoadTerminology.exec();
 		log.info("Done.");
 	}
 

@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class A08_CreateAtlasSourceRecordsInWebApi {
 
-	private static final String FILE_PATH = "/postgres/build/A99_CreateAtlasSourceRecordsInWebApi.sql";
+	private static final String FILE_PATH = "/postgres/build/A08_CreateAtlasSourceRecordsInWebApi.sql";
 	
 	public static void main(String[] args) {
 		log.info("Starting main...");

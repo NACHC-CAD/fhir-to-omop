@@ -13,9 +13,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CDM99_LoadTerminology {
+public class VOC99_LoadTerminology {
 
-	private static final String SQL_STRING = FileUtil.getAsString("/postgres/build/CDM99_LoadTerminology.sql");
+	private static final String SQL_STRING = FileUtil.getAsString("/postgres/build/VOC99_LoadTerminology.sql");
 
 	public static void main(String[] args) {
 		exec();
