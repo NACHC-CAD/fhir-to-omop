@@ -1,4 +1,4 @@
-copy domain
+copy <dbName>.domain
 from '@terminologiesRootFolder/DOMAIN.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -7,7 +7,7 @@ from '@terminologiesRootFolder/DOMAIN.csv'
 ;
 
 
-copy concept
+copy <dbName>.concept
 from '@terminologiesRootFolder/CONCEPT.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -15,7 +15,7 @@ from '@terminologiesRootFolder/CONCEPT.csv'
   CSV HEADER
 ;
 
-copy concept_relationship
+copy <dbName>.concept_relationship
 from '@terminologiesRootFolder/CONCEPT_RELATIONSHIP.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -23,7 +23,7 @@ from '@terminologiesRootFolder/CONCEPT_RELATIONSHIP.csv'
   CSV HEADER
 ;
 
-copy concept_ancestor
+copy <dbName>.concept_ancestor
 from '@terminologiesRootFolder/CONCEPT_ANCESTOR.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -31,7 +31,7 @@ from '@terminologiesRootFolder/CONCEPT_ANCESTOR.csv'
   CSV HEADER
 ;
 
-copy concept_synonym
+copy <dbName>.concept_synonym
 from '@terminologiesRootFolder/CONCEPT_SYNONYM.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -39,7 +39,7 @@ from '@terminologiesRootFolder/CONCEPT_SYNONYM.csv'
   CSV HEADER
 ;
 
-copy drug_strength
+copy <dbName>.drug_strength
 from '@terminologiesRootFolder/DRUG_STRENGTH.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -47,7 +47,7 @@ from '@terminologiesRootFolder/DRUG_STRENGTH.csv'
   CSV HEADER
 ;
 
-copy relationship
+copy <dbName>.relationship
 from '@terminologiesRootFolder/RELATIONSHIP.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -55,7 +55,7 @@ from '@terminologiesRootFolder/RELATIONSHIP.csv'
   CSV HEADER
 ;
 
-copy concept_class
+copy <dbName>.concept_class
 from '@terminologiesRootFolder/CONCEPT_CLASS.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 
@@ -63,7 +63,7 @@ from '@terminologiesRootFolder/CONCEPT_CLASS.csv'
   CSV HEADER
 ;
 
-copy vocabulary
+copy <dbName>.vocabulary
 from '@terminologiesRootFolder/VOCABULARY.csv'
   DELIMITER E'\t'
   QUOTE E'\b' 

@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class VOC99_LoadTerminology {
 
-	private static final String SQL_STRING = FileUtil.getAsString("/postgres/build/VOC99_LoadTerminology.sql");
+	private static final String FILE_PATH = "/postgres/build/VOC99_LoadTerminology.sql";
 
 	public static void main(String[] args) {
 		exec();
@@ -23,12 +23,11 @@ public class VOC99_LoadTerminology {
 
 	public static void exec() {
 		log.info("Loading terminologies...");
-		Connection conn = PostgresDatabaseConnectionFactory.getDbConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Done loading terminologies.");
-			String rootDir = AppParams.getTerminologyRootDir();
-			String sqlString = SQL_STRING.replace("@terminologiesRootFolder/", rootDir);
+			String sqlString = getSqlString();
 			InputStream is = new ByteArrayInputStream(sqlString.getBytes());
 			log.info("Running script...");
 			Database.executeSqlScript(is, conn);
@@ -37,6 +36,14 @@ public class VOC99_LoadTerminology {
 			Database.close(conn);
 		}
 		log.info("Done loading terminologies...");
+	}
+
+	private static String getSqlString() {
+		String rootDir = AppParams.getTerminologyRootDir();
+		String sqlString = FileUtil.getAsString(FILE_PATH);
+		sqlString = sqlString.replace("<dbName>", AppParams.getDbName());
+		sqlString = sqlString.replace("@terminologiesRootFolder/", rootDir);		
+		return sqlString;
 	}
 
 }
