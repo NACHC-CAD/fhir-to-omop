@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.build.postgres;
+package org.nachc.tools.fhirtoomop.tools.build.postgres.synthea.csv;
 
 import java.sql.Connection;
 
@@ -26,7 +26,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateOmopInstanceToolPostgres {
+public class CreateOmopInstanceToolPostgresSyntheaCsv {
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();

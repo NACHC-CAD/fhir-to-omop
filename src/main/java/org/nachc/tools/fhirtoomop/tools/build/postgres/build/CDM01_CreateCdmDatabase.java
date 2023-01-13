@@ -23,6 +23,7 @@ public class CDM01_CreateCdmDatabase {
 			String databaseName = AppParams.getDbName();
 			createDatabase(databaseName, conn);
 			createDatabase(databaseName + "_dqd_results", conn);
+			createDatabase("synthea_native", conn);
 			log.info("Done creating databases.");
 		} finally {
 			Database.close(conn);
