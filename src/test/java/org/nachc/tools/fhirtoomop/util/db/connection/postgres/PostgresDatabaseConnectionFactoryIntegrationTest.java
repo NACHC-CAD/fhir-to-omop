@@ -15,8 +15,9 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 	public void shouldGetConnections() {
 		log.info("Starting test...");
 		getBootstrapConnection();
-		shouldGetOhdsiConnection();
-		shouldGetOhdsiDb();
+		// these only work for postgresql full set up for atlas
+//		shouldGetOhdsiConnection();
+//		shouldGetOhdsiDb();
 		log.info("Done.");
 	}
 	
