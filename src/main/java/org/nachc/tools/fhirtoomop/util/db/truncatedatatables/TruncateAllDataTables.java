@@ -27,7 +27,13 @@ public class TruncateAllDataTables {
 	}
 	
 	public static void exec() {
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		exec(null);
+	}
+	
+	public static void exec(Connection conn) {
+		if(conn == null) {
+			conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		}
 		try {
 			// get the params
 			String schemaName = AppParams.getFullyQualifiedDbName();

@@ -1,6 +1,7 @@
 package org.nachc.tools.fhirtoomop.util.mapping;
 
 import java.sql.Connection;
+import java.util.List;
 
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.nachc.tools.omop.yaorma.dvo.FhirToOmopRaceDvo;
@@ -19,8 +20,13 @@ public class RaceMapping {
 		if(mapping != null) {
 			Integer omopId = mapping.getOmopCode();
 			if(omopId != null) {
-				ConceptDvo rtn = Dao.find(new ConceptDvo(), "concept_id", omopId + "", conn);
-				return rtn;
+				String sqlString = "select * from concept where concept_id = " + omopId;
+				List<ConceptDvo> list = Dao.findListBySql(new ConceptDvo(), sqlString, conn);
+				if(list.size() > 0) {
+					return list.get(0);
+				} else {
+					return null;
+				}
 			}
 		}
 		return null;

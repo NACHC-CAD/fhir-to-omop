@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
@@ -22,6 +23,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PopulateOmopInstanceFromFhirFiles {
 
+	private List<Connection> connectionList = null;
+	
+	public PopulateOmopInstanceFromFhirFiles() {
+		log.info("No database connections provided");
+	}
+	
+	public PopulateOmopInstanceFromFhirFiles(List<Connection> connectionList) {
+		log.info("Using provided database connections");
+		this.connectionList = connectionList;
+	}
+	
 	public static void main(String[] args) {
 		new PopulateOmopInstanceFromFhirFiles().exec();
 	}
@@ -81,10 +93,10 @@ public class PopulateOmopInstanceFromFhirFiles {
 //			TruncateAllDataTables.exec();
 			// do the priming step
 			log.info("Doing priming step...");
-			new PrimeUploadProcess().exec();
+			new PrimeUploadProcess(this.connectionList).exec();
 			// truncate data uploaded by priming step
-			log.info("TRUNCATING DATA TABLES");
-			TruncateAllDataTables.exec();
+//			log.info("TRUNCATING DATA TABLES");
+//			TruncateAllDataTables.exec(connectionList.get(0));
 			// do the upload
 			numberOfPatientsBefore = Database.count("person", connList.get(0));
 			log.info("Creating writer");
@@ -116,11 +128,13 @@ public class PopulateOmopInstanceFromFhirFiles {
 	}
 
 	private List<Connection> getConnections(int maxConns) {
-		List<Connection> rtn = new ArrayList<Connection>();
-		for (int i = 0; i < maxConns; i++) {
-			rtn.add(OmopDatabaseConnectionFactory.getOmopConnection());
+		if(this.connectionList == null) {
+			this.connectionList = new ArrayList<Connection>();
+			for (int i = 0; i < maxConns; i++) {
+				this.connectionList.add(OmopDatabaseConnectionFactory.getOmopConnection());
+			}
 		}
-		return rtn;
+		return this.connectionList;
 	}
 
 	private void closeConnections(List<Connection> connList) {
@@ -140,10 +154,17 @@ public class PopulateOmopInstanceFromFhirFiles {
 		log.info("Updating prev visit records...");
 		String filePath = "/sqlserver/omop/update-prev-visit.sql";
 		InputStream is = FileUtil.getInputStream(filePath);
-		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		Connection conn = null;
+		if("postgres".equals(AppParams.get("cdmDbType"))) {
+			conn = PostgresDatabaseConnectionFactory.getCdmConnection();
+		} else {
+			conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		}
 		try {
-			String dbName = AppParams.getDbName();
-			Database.update("use " + dbName, conn);
+			if("mssql".equals(AppParams.get("cdmDbType"))) {
+				String dbName = AppParams.getDbName();
+				Database.update("use " + dbName, conn);
+			}
 			Database.executeSqlScript(is, conn);
 		} finally {
 			Database.close(conn);

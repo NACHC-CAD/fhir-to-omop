@@ -51,7 +51,7 @@ public class CreateOmopInstanceToolPostgresSyntheaCsvPostProcessing {
 		FHIR02_LoadFhirRaceEthMappings.exec();
 		FHIR03_CreateFhirResourcesTables.exec();
 		VOC99_LoadTerminology.exec();
-		IDX01_CreateCdmPrimaryKeys.exec();
+//		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
 		IDX03_CreateCdmConstraints.exec();
 		log.info("Done.");

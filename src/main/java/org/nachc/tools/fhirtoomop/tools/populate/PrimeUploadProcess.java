@@ -23,6 +23,18 @@ public class PrimeUploadProcess {
 	private int NUM_THREADS = 2;
 
 	private int NUM_OF_CONNS = 2;
+	
+	private List<Connection> connectionList = null;
+	
+	private boolean closeConnections = true;
+	
+	public PrimeUploadProcess() {
+	}
+
+	public PrimeUploadProcess(List<Connection> connectionList) {
+		this.connectionList = connectionList;
+		closeConnections = false;
+	}
 
 	public void exec() {
 		log.info("Starting tests...");
@@ -39,17 +51,21 @@ public class PrimeUploadProcess {
 	}
 
 	private List<Connection> getConnections() {
-		List<Connection> rtn = new ArrayList<Connection>();
-		for (int i = 0; i < NUM_OF_CONNS; i++) {
-			Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
-			rtn.add(conn);
+		if(this.connectionList == null) {
+			this.connectionList = new ArrayList<Connection>();
+			for (int i = 0; i < NUM_OF_CONNS; i++) {
+				Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+				this.connectionList.add(conn);
+			}
 		}
-		return rtn;
+		return this.connectionList;
 	}
 
 	private void closeConnections(List<Connection> connList) {
-		for (Connection conn : connList) {
-			OmopDatabaseConnectionFactory.close(conn);
+		if(closeConnections == true) {
+			for (Connection conn : connList) {
+				OmopDatabaseConnectionFactory.close(conn);
+			}
 		}
 	}
 

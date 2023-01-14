@@ -6,10 +6,12 @@ import java.util.List;
 import org.hl7.fhir.dstu3.model.Coding;
 import org.nachc.tools.fhirtoomop.omop.util.id.FhirToOmopIdGenerator;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.ConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.system.SystemMapping;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.nachc.tools.omop.yaorma.dvo.ConceptDvo;
 import org.yaorma.dao.Dao;
 import org.yaorma.database.Database;
@@ -173,7 +175,12 @@ public class FhirToOmopConceptMapper {
 	private static ConceptDvo doInsertOfNewConcept(String system, String code) {
 		ConceptDvo rtn = null;
 		log.info("GETTING CONNECTION...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = null;
+		if("postgres".equals(AppParams.get("cdmDbType"))) {
+			conn = PostgresDatabaseConnectionFactory.getCdmConnection();
+		} else {
+			conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		}
 		log.info("GOT CONNECTION.");
 		try {
 			log.info("Maybe adding a new concept...");

@@ -44,6 +44,25 @@ public class PostgresDatabaseConnectionFactory {
 
 	}
 
+	public static Connection getCdmConnection() {
+		try {
+			String url = AppParams.getPostgresBootstrapUrl();
+			String uid = AppParams.getPostgresBootstrapUid();
+			String pwd = AppParams.getPostgresBootstrapPwd();
+			String schema = AppParams.get("atlasCdm");
+			url += "/OHDSI";
+			url += "?" + "user=" + uid;
+			url += "&" + "password=" + pwd;
+			url += "&" + "currentSchema=" + schema;
+			log.info("Getting connection for url: \n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+
+	}
+
 	public static Connection getDbConnection() {
 		try {
 			String url = AppParams.getPostgresBootstrapUrl();
