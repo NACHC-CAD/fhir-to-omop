@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for drug_era
+// Data Value Object (DVO) for DRUG_ERA
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class DrugEraDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "drug_era";
+    public static final String TABLE_NAME = "DRUG_ERA";
     
     //
     // schemaName
@@ -29,13 +29,13 @@ public class DrugEraDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "drug_concept_id",
-        "drug_era_end_date",
         "drug_era_id",
+        "person_id",
+        "drug_concept_id",
         "drug_era_start_date",
+        "drug_era_end_date",
         "drug_exposure_count",
-        "gap_days",
-        "person_id"
+        "gap_days"
     };
     
     //
@@ -43,7 +43,6 @@ public class DrugEraDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "drug_era_id"
     };
     
     //
@@ -51,13 +50,13 @@ public class DrugEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "drugConceptId",
-        "drugEraEndDate",
         "drugEraId",
+        "personId",
+        "drugConceptId",
         "drugEraStartDate",
+        "drugEraEndDate",
         "drugExposureCount",
-        "gapDays",
-        "personId"
+        "gapDays"
     };
     
     //
@@ -65,13 +64,13 @@ public class DrugEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DrugConceptId",
-        "DrugEraEndDate",
         "DrugEraId",
+        "PersonId",
+        "DrugConceptId",
         "DrugEraStartDate",
+        "DrugEraEndDate",
         "DrugExposureCount",
-        "GapDays",
-        "PersonId"
+        "GapDays"
     };
     
     
@@ -81,47 +80,23 @@ public class DrugEraDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer drugConceptId;
-    
-    private String drugEraEndDate;
-    
     private Integer drugEraId;
     
-    private String drugEraStartDate;
+    private Integer personId;
+    
+    private Integer drugConceptId;
+    
+    private Date drugEraStartDate;
+    
+    private Date drugEraEndDate;
     
     private Integer drugExposureCount;
     
     private Integer gapDays;
     
-    private Integer personId;
-    
-    private ConceptDvo drugConceptDvo;
-    
-    private PersonDvo personDvo;
-    
     //
     // trivial getters and setters
     //
-    
-    // drugConceptId
-    
-    public void setDrugConceptId(Integer val) {
-        this.drugConceptId = val;
-    }
-    
-    public Integer getDrugConceptId() {
-        return this.drugConceptId;
-    }
-    
-    // drugEraEndDate
-    
-    public void setDrugEraEndDate(String val) {
-        this.drugEraEndDate = val;
-    }
-    
-    public String getDrugEraEndDate() {
-        return this.drugEraEndDate;
-    }
     
     // drugEraId
     
@@ -133,14 +108,44 @@ public class DrugEraDvo implements Dvo {
         return this.drugEraId;
     }
     
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // drugConceptId
+    
+    public void setDrugConceptId(Integer val) {
+        this.drugConceptId = val;
+    }
+    
+    public Integer getDrugConceptId() {
+        return this.drugConceptId;
+    }
+    
     // drugEraStartDate
     
-    public void setDrugEraStartDate(String val) {
+    public void setDrugEraStartDate(Date val) {
         this.drugEraStartDate = val;
     }
     
-    public String getDrugEraStartDate() {
+    public Date getDrugEraStartDate() {
         return this.drugEraStartDate;
+    }
+    
+    // drugEraEndDate
+    
+    public void setDrugEraEndDate(Date val) {
+        this.drugEraEndDate = val;
+    }
+    
+    public Date getDrugEraEndDate() {
+        return this.drugEraEndDate;
     }
     
     // drugExposureCount
@@ -161,36 +166,6 @@ public class DrugEraDvo implements Dvo {
     
     public Integer getGapDays() {
         return this.gapDays;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
-    // drugConceptDvo
-    
-    public void setDrugConceptDvo(ConceptDvo dvo) {
-        this.drugConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getDrugConceptDvo() {
-        return this.drugConceptDvo;
-    }
-    
-    // personDvo
-    
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
-    }
-    
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
     }
     
     //
@@ -239,7 +214,6 @@ public class DrugEraDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getDrugEraId()  == null ? null: getDrugEraId() + ""
         };
         return rtn;
     }

@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for provider
+// Data Value Object (DVO) for PROVIDER
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ProviderDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "provider";
+    public static final String TABLE_NAME = "PROVIDER";
     
     //
     // schemaName
@@ -29,19 +29,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "care_site_id",
-        "dea",
-        "gender_concept_id",
-        "gender_source_concept_id",
-        "gender_source_value",
-        "npi",
         "provider_id",
         "provider_name",
-        "provider_source_value",
+        "npi",
+        "dea",
         "specialty_concept_id",
-        "specialty_source_concept_id",
+        "care_site_id",
+        "year_of_birth",
+        "gender_concept_id",
+        "provider_source_value",
         "specialty_source_value",
-        "year_of_birth"
+        "specialty_source_concept_id",
+        "gender_source_value",
+        "gender_source_concept_id"
     };
     
     //
@@ -49,7 +49,6 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "provider_id"
     };
     
     //
@@ -57,19 +56,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "careSiteId",
-        "dea",
-        "genderConceptId",
-        "genderSourceConceptId",
-        "genderSourceValue",
-        "npi",
         "providerId",
         "providerName",
-        "providerSourceValue",
+        "npi",
+        "dea",
         "specialtyConceptId",
-        "specialtySourceConceptId",
+        "careSiteId",
+        "yearOfBirth",
+        "genderConceptId",
+        "providerSourceValue",
         "specialtySourceValue",
-        "yearOfBirth"
+        "specialtySourceConceptId",
+        "genderSourceValue",
+        "genderSourceConceptId"
     };
     
     //
@@ -77,19 +76,19 @@ public class ProviderDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "CareSiteId",
-        "Dea",
-        "GenderConceptId",
-        "GenderSourceConceptId",
-        "GenderSourceValue",
-        "Npi",
         "ProviderId",
         "ProviderName",
-        "ProviderSourceValue",
+        "Npi",
+        "Dea",
         "SpecialtyConceptId",
-        "SpecialtySourceConceptId",
+        "CareSiteId",
+        "YearOfBirth",
+        "GenderConceptId",
+        "ProviderSourceValue",
         "SpecialtySourceValue",
-        "YearOfBirth"
+        "SpecialtySourceConceptId",
+        "GenderSourceValue",
+        "GenderSourceConceptId"
     };
     
     
@@ -99,125 +98,35 @@ public class ProviderDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer careSiteId;
-    
-    private String dea;
-    
-    private Integer genderConceptId;
-    
-    private Integer genderSourceConceptId;
-    
-    private String genderSourceValue;
-    
-    private String npi;
-    
     private Integer providerId;
     
     private String providerName;
     
-    private String providerSourceValue;
+    private String npi;
+    
+    private String dea;
     
     private Integer specialtyConceptId;
     
-    private Integer specialtySourceConceptId;
-    
-    private String specialtySourceValue;
+    private Integer careSiteId;
     
     private Integer yearOfBirth;
     
-    private CareSiteDvo careSiteDvo;
+    private Integer genderConceptId;
     
-    private ConceptDvo genderConceptDvo;
+    private String providerSourceValue;
     
-    private ConceptDvo genderSourceConceptDvo;
+    private String specialtySourceValue;
     
-    private ConceptDvo specialtyConceptDvo;
+    private Integer specialtySourceConceptId;
     
-    private ConceptDvo specialtySourceConceptDvo;
+    private String genderSourceValue;
     
-    private ArrayList<ConditionOccurrenceDvo> conditionOccurrenceProviderList = new ArrayList<ConditionOccurrenceDvo>();
-    
-    private ArrayList<DeviceExposureDvo> deviceExposureProviderList = new ArrayList<DeviceExposureDvo>();
-    
-    private ArrayList<DrugExposureDvo> drugExposureProviderList = new ArrayList<DrugExposureDvo>();
-    
-    private ArrayList<MeasurementDvo> measurementProviderList = new ArrayList<MeasurementDvo>();
-    
-    private ArrayList<NoteDvo> noteProviderList = new ArrayList<NoteDvo>();
-    
-    private ArrayList<ObservationDvo> observationProviderList = new ArrayList<ObservationDvo>();
-    
-    private ArrayList<PersonDvo> personProviderList = new ArrayList<PersonDvo>();
-    
-    private ArrayList<ProcedureOccurrenceDvo> procedureOccurrenceProviderList = new ArrayList<ProcedureOccurrenceDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailProviderList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceProviderList = new ArrayList<VisitOccurrenceDvo>();
+    private Integer genderSourceConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // careSiteId
-    
-    public void setCareSiteId(Integer val) {
-        this.careSiteId = val;
-    }
-    
-    public Integer getCareSiteId() {
-        return this.careSiteId;
-    }
-    
-    // dea
-    
-    public void setDea(String val) {
-        this.dea = val;
-    }
-    
-    public String getDea() {
-        return this.dea;
-    }
-    
-    // genderConceptId
-    
-    public void setGenderConceptId(Integer val) {
-        this.genderConceptId = val;
-    }
-    
-    public Integer getGenderConceptId() {
-        return this.genderConceptId;
-    }
-    
-    // genderSourceConceptId
-    
-    public void setGenderSourceConceptId(Integer val) {
-        this.genderSourceConceptId = val;
-    }
-    
-    public Integer getGenderSourceConceptId() {
-        return this.genderSourceConceptId;
-    }
-    
-    // genderSourceValue
-    
-    public void setGenderSourceValue(String val) {
-        this.genderSourceValue = val;
-    }
-    
-    public String getGenderSourceValue() {
-        return this.genderSourceValue;
-    }
-    
-    // npi
-    
-    public void setNpi(String val) {
-        this.npi = val;
-    }
-    
-    public String getNpi() {
-        return this.npi;
-    }
     
     // providerId
     
@@ -239,14 +148,24 @@ public class ProviderDvo implements Dvo {
         return this.providerName;
     }
     
-    // providerSourceValue
+    // npi
     
-    public void setProviderSourceValue(String val) {
-        this.providerSourceValue = val;
+    public void setNpi(String val) {
+        this.npi = val;
     }
     
-    public String getProviderSourceValue() {
-        return this.providerSourceValue;
+    public String getNpi() {
+        return this.npi;
+    }
+    
+    // dea
+    
+    public void setDea(String val) {
+        this.dea = val;
+    }
+    
+    public String getDea() {
+        return this.dea;
     }
     
     // specialtyConceptId
@@ -259,24 +178,14 @@ public class ProviderDvo implements Dvo {
         return this.specialtyConceptId;
     }
     
-    // specialtySourceConceptId
+    // careSiteId
     
-    public void setSpecialtySourceConceptId(Integer val) {
-        this.specialtySourceConceptId = val;
+    public void setCareSiteId(Integer val) {
+        this.careSiteId = val;
     }
     
-    public Integer getSpecialtySourceConceptId() {
-        return this.specialtySourceConceptId;
-    }
-    
-    // specialtySourceValue
-    
-    public void setSpecialtySourceValue(String val) {
-        this.specialtySourceValue = val;
-    }
-    
-    public String getSpecialtySourceValue() {
-        return this.specialtySourceValue;
+    public Integer getCareSiteId() {
+        return this.careSiteId;
     }
     
     // yearOfBirth
@@ -289,134 +198,64 @@ public class ProviderDvo implements Dvo {
         return this.yearOfBirth;
     }
     
-    // careSiteDvo
+    // genderConceptId
     
-    public void setCareSiteDvo(CareSiteDvo dvo) {
-        this.careSiteDvo = dvo;
+    public void setGenderConceptId(Integer val) {
+        this.genderConceptId = val;
     }
     
-    public CareSiteDvo getCareSiteDvo() {
-        return this.careSiteDvo;
+    public Integer getGenderConceptId() {
+        return this.genderConceptId;
     }
     
-    // genderConceptDvo
+    // providerSourceValue
     
-    public void setGenderConceptDvo(ConceptDvo dvo) {
-        this.genderConceptDvo = dvo;
+    public void setProviderSourceValue(String val) {
+        this.providerSourceValue = val;
     }
     
-    public ConceptDvo getGenderConceptDvo() {
-        return this.genderConceptDvo;
+    public String getProviderSourceValue() {
+        return this.providerSourceValue;
     }
     
-    // genderSourceConceptDvo
+    // specialtySourceValue
     
-    public void setGenderSourceConceptDvo(ConceptDvo dvo) {
-        this.genderSourceConceptDvo = dvo;
+    public void setSpecialtySourceValue(String val) {
+        this.specialtySourceValue = val;
     }
     
-    public ConceptDvo getGenderSourceConceptDvo() {
-        return this.genderSourceConceptDvo;
+    public String getSpecialtySourceValue() {
+        return this.specialtySourceValue;
     }
     
-    // specialtyConceptDvo
+    // specialtySourceConceptId
     
-    public void setSpecialtyConceptDvo(ConceptDvo dvo) {
-        this.specialtyConceptDvo = dvo;
+    public void setSpecialtySourceConceptId(Integer val) {
+        this.specialtySourceConceptId = val;
     }
     
-    public ConceptDvo getSpecialtyConceptDvo() {
-        return this.specialtyConceptDvo;
+    public Integer getSpecialtySourceConceptId() {
+        return this.specialtySourceConceptId;
     }
     
-    // specialtySourceConceptDvo
+    // genderSourceValue
     
-    public void setSpecialtySourceConceptDvo(ConceptDvo dvo) {
-        this.specialtySourceConceptDvo = dvo;
+    public void setGenderSourceValue(String val) {
+        this.genderSourceValue = val;
     }
     
-    public ConceptDvo getSpecialtySourceConceptDvo() {
-        return this.specialtySourceConceptDvo;
+    public String getGenderSourceValue() {
+        return this.genderSourceValue;
     }
     
-    public ArrayList<ConditionOccurrenceDvo> getConditionOccurrenceProviderList() {
-        return conditionOccurrenceProviderList;
+    // genderSourceConceptId
+    
+    public void setGenderSourceConceptId(Integer val) {
+        this.genderSourceConceptId = val;
     }
     
-    public void setConditionOccurrenceProviderList(ArrayList<ConditionOccurrenceDvo> list) {
-        this.conditionOccurrenceProviderList = list;
-    }
-    
-    public ArrayList<DeviceExposureDvo> getDeviceExposureProviderList() {
-        return deviceExposureProviderList;
-    }
-    
-    public void setDeviceExposureProviderList(ArrayList<DeviceExposureDvo> list) {
-        this.deviceExposureProviderList = list;
-    }
-    
-    public ArrayList<DrugExposureDvo> getDrugExposureProviderList() {
-        return drugExposureProviderList;
-    }
-    
-    public void setDrugExposureProviderList(ArrayList<DrugExposureDvo> list) {
-        this.drugExposureProviderList = list;
-    }
-    
-    public ArrayList<MeasurementDvo> getMeasurementProviderList() {
-        return measurementProviderList;
-    }
-    
-    public void setMeasurementProviderList(ArrayList<MeasurementDvo> list) {
-        this.measurementProviderList = list;
-    }
-    
-    public ArrayList<NoteDvo> getNoteProviderList() {
-        return noteProviderList;
-    }
-    
-    public void setNoteProviderList(ArrayList<NoteDvo> list) {
-        this.noteProviderList = list;
-    }
-    
-    public ArrayList<ObservationDvo> getObservationProviderList() {
-        return observationProviderList;
-    }
-    
-    public void setObservationProviderList(ArrayList<ObservationDvo> list) {
-        this.observationProviderList = list;
-    }
-    
-    public ArrayList<PersonDvo> getPersonProviderList() {
-        return personProviderList;
-    }
-    
-    public void setPersonProviderList(ArrayList<PersonDvo> list) {
-        this.personProviderList = list;
-    }
-    
-    public ArrayList<ProcedureOccurrenceDvo> getProcedureOccurrenceProviderList() {
-        return procedureOccurrenceProviderList;
-    }
-    
-    public void setProcedureOccurrenceProviderList(ArrayList<ProcedureOccurrenceDvo> list) {
-        this.procedureOccurrenceProviderList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailProviderList() {
-        return visitDetailProviderList;
-    }
-    
-    public void setVisitDetailProviderList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailProviderList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceProviderList() {
-        return visitOccurrenceProviderList;
-    }
-    
-    public void setVisitOccurrenceProviderList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceProviderList = list;
+    public Integer getGenderSourceConceptId() {
+        return this.genderSourceConceptId;
     }
     
     //
@@ -465,7 +304,6 @@ public class ProviderDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getProviderId()  == null ? null: getProviderId() + ""
         };
         return rtn;
     }

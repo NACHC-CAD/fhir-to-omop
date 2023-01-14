@@ -30,8 +30,8 @@ public class FhirResourceDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "patient_id",
-        "resource_name",
-        "resource_type"
+        "resource_type",
+        "resource_name"
     };
     
     //
@@ -47,8 +47,8 @@ public class FhirResourceDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "patientId",
-        "resourceName",
-        "resourceType"
+        "resourceType",
+        "resourceName"
     };
     
     //
@@ -57,8 +57,8 @@ public class FhirResourceDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "PatientId",
-        "ResourceName",
-        "ResourceType"
+        "ResourceType",
+        "ResourceName"
     };
     
     
@@ -70,9 +70,9 @@ public class FhirResourceDvo implements Dvo {
     
     private String patientId;
     
-    private String resourceName;
-    
     private String resourceType;
+    
+    private String resourceName;
     
     //
     // trivial getters and setters
@@ -88,16 +88,6 @@ public class FhirResourceDvo implements Dvo {
         return this.patientId;
     }
     
-    // resourceName
-    
-    public void setResourceName(String val) {
-        this.resourceName = val;
-    }
-    
-    public String getResourceName() {
-        return this.resourceName;
-    }
-    
     // resourceType
     
     public void setResourceType(String val) {
@@ -106,6 +96,16 @@ public class FhirResourceDvo implements Dvo {
     
     public String getResourceType() {
         return this.resourceType;
+    }
+    
+    // resourceName
+    
+    public void setResourceName(String val) {
+        this.resourceName = val;
+    }
+    
+    public String getResourceName() {
+        return this.resourceName;
     }
     
     //

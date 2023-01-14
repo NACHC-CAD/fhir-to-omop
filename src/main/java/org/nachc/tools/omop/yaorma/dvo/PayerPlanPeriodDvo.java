@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for payer_plan_period
+// Data Value Object (DVO) for PAYER_PLAN_PERIOD
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class PayerPlanPeriodDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "payer_plan_period";
+    public static final String TABLE_NAME = "PAYER_PLAN_PERIOD";
     
     //
     // schemaName
@@ -29,23 +29,23 @@ public class PayerPlanPeriodDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "family_source_value",
-        "payer_concept_id",
-        "payer_plan_period_end_date",
         "payer_plan_period_id",
-        "payer_plan_period_start_date",
-        "payer_source_concept_id",
-        "payer_source_value",
         "person_id",
+        "payer_plan_period_start_date",
+        "payer_plan_period_end_date",
+        "payer_concept_id",
+        "payer_source_value",
+        "payer_source_concept_id",
         "plan_concept_id",
-        "plan_source_concept_id",
         "plan_source_value",
+        "plan_source_concept_id",
         "sponsor_concept_id",
-        "sponsor_source_concept_id",
         "sponsor_source_value",
+        "sponsor_source_concept_id",
+        "family_source_value",
         "stop_reason_concept_id",
-        "stop_reason_source_concept_id",
-        "stop_reason_source_value"
+        "stop_reason_source_value",
+        "stop_reason_source_concept_id"
     };
     
     //
@@ -53,7 +53,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "payer_plan_period_id"
     };
     
     //
@@ -61,23 +60,23 @@ public class PayerPlanPeriodDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "familySourceValue",
-        "payerConceptId",
-        "payerPlanPeriodEndDate",
         "payerPlanPeriodId",
-        "payerPlanPeriodStartDate",
-        "payerSourceConceptId",
-        "payerSourceValue",
         "personId",
+        "payerPlanPeriodStartDate",
+        "payerPlanPeriodEndDate",
+        "payerConceptId",
+        "payerSourceValue",
+        "payerSourceConceptId",
         "planConceptId",
-        "planSourceConceptId",
         "planSourceValue",
+        "planSourceConceptId",
         "sponsorConceptId",
-        "sponsorSourceConceptId",
         "sponsorSourceValue",
+        "sponsorSourceConceptId",
+        "familySourceValue",
         "stopReasonConceptId",
-        "stopReasonSourceConceptId",
-        "stopReasonSourceValue"
+        "stopReasonSourceValue",
+        "stopReasonSourceConceptId"
     };
     
     //
@@ -85,23 +84,23 @@ public class PayerPlanPeriodDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "FamilySourceValue",
-        "PayerConceptId",
-        "PayerPlanPeriodEndDate",
         "PayerPlanPeriodId",
-        "PayerPlanPeriodStartDate",
-        "PayerSourceConceptId",
-        "PayerSourceValue",
         "PersonId",
+        "PayerPlanPeriodStartDate",
+        "PayerPlanPeriodEndDate",
+        "PayerConceptId",
+        "PayerSourceValue",
+        "PayerSourceConceptId",
         "PlanConceptId",
-        "PlanSourceConceptId",
         "PlanSourceValue",
+        "PlanSourceConceptId",
         "SponsorConceptId",
-        "SponsorSourceConceptId",
         "SponsorSourceValue",
+        "SponsorSourceConceptId",
+        "FamilySourceValue",
         "StopReasonConceptId",
-        "StopReasonSourceConceptId",
-        "StopReasonSourceValue"
+        "StopReasonSourceValue",
+        "StopReasonSourceConceptId"
     };
     
     
@@ -111,93 +110,43 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String familySourceValue;
-    
-    private Integer payerConceptId;
-    
-    private Date payerPlanPeriodEndDate;
-    
     private Integer payerPlanPeriodId;
-    
-    private Date payerPlanPeriodStartDate;
-    
-    private Integer payerSourceConceptId;
-    
-    private String payerSourceValue;
     
     private Integer personId;
     
-    private Integer planConceptId;
+    private Date payerPlanPeriodStartDate;
     
-    private Integer planSourceConceptId;
+    private Date payerPlanPeriodEndDate;
+    
+    private Integer payerConceptId;
+    
+    private String payerSourceValue;
+    
+    private Integer payerSourceConceptId;
+    
+    private Integer planConceptId;
     
     private String planSourceValue;
     
-    private Integer sponsorConceptId;
+    private Integer planSourceConceptId;
     
-    private Integer sponsorSourceConceptId;
+    private Integer sponsorConceptId;
     
     private String sponsorSourceValue;
     
-    private Integer stopReasonConceptId;
+    private Integer sponsorSourceConceptId;
     
-    private Integer stopReasonSourceConceptId;
+    private String familySourceValue;
+    
+    private Integer stopReasonConceptId;
     
     private String stopReasonSourceValue;
     
-    private ConceptDvo payerConceptDvo;
-    
-    private PersonDvo payerPlanPeriodDvo;
-    
-    private ConceptDvo payerSourceConceptDvo;
-    
-    private PersonDvo personDvo;
-    
-    private ConceptDvo planConceptDvo;
-    
-    private ConceptDvo planSourceConceptDvo;
-    
-    private ConceptDvo sponsorConceptDvo;
-    
-    private ConceptDvo sponsorSourceConceptDvo;
-    
-    private ConceptDvo stopReasonConceptDvo;
-    
-    private ConceptDvo stopReasonSourceConceptDvo;
+    private Integer stopReasonSourceConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // familySourceValue
-    
-    public void setFamilySourceValue(String val) {
-        this.familySourceValue = val;
-    }
-    
-    public String getFamilySourceValue() {
-        return this.familySourceValue;
-    }
-    
-    // payerConceptId
-    
-    public void setPayerConceptId(Integer val) {
-        this.payerConceptId = val;
-    }
-    
-    public Integer getPayerConceptId() {
-        return this.payerConceptId;
-    }
-    
-    // payerPlanPeriodEndDate
-    
-    public void setPayerPlanPeriodEndDate(Date val) {
-        this.payerPlanPeriodEndDate = val;
-    }
-    
-    public Date getPayerPlanPeriodEndDate() {
-        return this.payerPlanPeriodEndDate;
-    }
     
     // payerPlanPeriodId
     
@@ -207,36 +156,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     public Integer getPayerPlanPeriodId() {
         return this.payerPlanPeriodId;
-    }
-    
-    // payerPlanPeriodStartDate
-    
-    public void setPayerPlanPeriodStartDate(Date val) {
-        this.payerPlanPeriodStartDate = val;
-    }
-    
-    public Date getPayerPlanPeriodStartDate() {
-        return this.payerPlanPeriodStartDate;
-    }
-    
-    // payerSourceConceptId
-    
-    public void setPayerSourceConceptId(Integer val) {
-        this.payerSourceConceptId = val;
-    }
-    
-    public Integer getPayerSourceConceptId() {
-        return this.payerSourceConceptId;
-    }
-    
-    // payerSourceValue
-    
-    public void setPayerSourceValue(String val) {
-        this.payerSourceValue = val;
-    }
-    
-    public String getPayerSourceValue() {
-        return this.payerSourceValue;
     }
     
     // personId
@@ -249,6 +168,56 @@ public class PayerPlanPeriodDvo implements Dvo {
         return this.personId;
     }
     
+    // payerPlanPeriodStartDate
+    
+    public void setPayerPlanPeriodStartDate(Date val) {
+        this.payerPlanPeriodStartDate = val;
+    }
+    
+    public Date getPayerPlanPeriodStartDate() {
+        return this.payerPlanPeriodStartDate;
+    }
+    
+    // payerPlanPeriodEndDate
+    
+    public void setPayerPlanPeriodEndDate(Date val) {
+        this.payerPlanPeriodEndDate = val;
+    }
+    
+    public Date getPayerPlanPeriodEndDate() {
+        return this.payerPlanPeriodEndDate;
+    }
+    
+    // payerConceptId
+    
+    public void setPayerConceptId(Integer val) {
+        this.payerConceptId = val;
+    }
+    
+    public Integer getPayerConceptId() {
+        return this.payerConceptId;
+    }
+    
+    // payerSourceValue
+    
+    public void setPayerSourceValue(String val) {
+        this.payerSourceValue = val;
+    }
+    
+    public String getPayerSourceValue() {
+        return this.payerSourceValue;
+    }
+    
+    // payerSourceConceptId
+    
+    public void setPayerSourceConceptId(Integer val) {
+        this.payerSourceConceptId = val;
+    }
+    
+    public Integer getPayerSourceConceptId() {
+        return this.payerSourceConceptId;
+    }
+    
     // planConceptId
     
     public void setPlanConceptId(Integer val) {
@@ -257,16 +226,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     public Integer getPlanConceptId() {
         return this.planConceptId;
-    }
-    
-    // planSourceConceptId
-    
-    public void setPlanSourceConceptId(Integer val) {
-        this.planSourceConceptId = val;
-    }
-    
-    public Integer getPlanSourceConceptId() {
-        return this.planSourceConceptId;
     }
     
     // planSourceValue
@@ -279,6 +238,16 @@ public class PayerPlanPeriodDvo implements Dvo {
         return this.planSourceValue;
     }
     
+    // planSourceConceptId
+    
+    public void setPlanSourceConceptId(Integer val) {
+        this.planSourceConceptId = val;
+    }
+    
+    public Integer getPlanSourceConceptId() {
+        return this.planSourceConceptId;
+    }
+    
     // sponsorConceptId
     
     public void setSponsorConceptId(Integer val) {
@@ -287,16 +256,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     public Integer getSponsorConceptId() {
         return this.sponsorConceptId;
-    }
-    
-    // sponsorSourceConceptId
-    
-    public void setSponsorSourceConceptId(Integer val) {
-        this.sponsorSourceConceptId = val;
-    }
-    
-    public Integer getSponsorSourceConceptId() {
-        return this.sponsorSourceConceptId;
     }
     
     // sponsorSourceValue
@@ -309,6 +268,26 @@ public class PayerPlanPeriodDvo implements Dvo {
         return this.sponsorSourceValue;
     }
     
+    // sponsorSourceConceptId
+    
+    public void setSponsorSourceConceptId(Integer val) {
+        this.sponsorSourceConceptId = val;
+    }
+    
+    public Integer getSponsorSourceConceptId() {
+        return this.sponsorSourceConceptId;
+    }
+    
+    // familySourceValue
+    
+    public void setFamilySourceValue(String val) {
+        this.familySourceValue = val;
+    }
+    
+    public String getFamilySourceValue() {
+        return this.familySourceValue;
+    }
+    
     // stopReasonConceptId
     
     public void setStopReasonConceptId(Integer val) {
@@ -317,16 +296,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     public Integer getStopReasonConceptId() {
         return this.stopReasonConceptId;
-    }
-    
-    // stopReasonSourceConceptId
-    
-    public void setStopReasonSourceConceptId(Integer val) {
-        this.stopReasonSourceConceptId = val;
-    }
-    
-    public Integer getStopReasonSourceConceptId() {
-        return this.stopReasonSourceConceptId;
     }
     
     // stopReasonSourceValue
@@ -339,104 +308,14 @@ public class PayerPlanPeriodDvo implements Dvo {
         return this.stopReasonSourceValue;
     }
     
-    // payerConceptDvo
+    // stopReasonSourceConceptId
     
-    public void setPayerConceptDvo(ConceptDvo dvo) {
-        this.payerConceptDvo = dvo;
+    public void setStopReasonSourceConceptId(Integer val) {
+        this.stopReasonSourceConceptId = val;
     }
     
-    public ConceptDvo getPayerConceptDvo() {
-        return this.payerConceptDvo;
-    }
-    
-    // payerPlanPeriodDvo
-    
-    public void setPayerPlanPeriodDvo(PersonDvo dvo) {
-        this.payerPlanPeriodDvo = dvo;
-    }
-    
-    public PersonDvo getPayerPlanPeriodDvo() {
-        return this.payerPlanPeriodDvo;
-    }
-    
-    // payerSourceConceptDvo
-    
-    public void setPayerSourceConceptDvo(ConceptDvo dvo) {
-        this.payerSourceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getPayerSourceConceptDvo() {
-        return this.payerSourceConceptDvo;
-    }
-    
-    // personDvo
-    
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
-    }
-    
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
-    }
-    
-    // planConceptDvo
-    
-    public void setPlanConceptDvo(ConceptDvo dvo) {
-        this.planConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getPlanConceptDvo() {
-        return this.planConceptDvo;
-    }
-    
-    // planSourceConceptDvo
-    
-    public void setPlanSourceConceptDvo(ConceptDvo dvo) {
-        this.planSourceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getPlanSourceConceptDvo() {
-        return this.planSourceConceptDvo;
-    }
-    
-    // sponsorConceptDvo
-    
-    public void setSponsorConceptDvo(ConceptDvo dvo) {
-        this.sponsorConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getSponsorConceptDvo() {
-        return this.sponsorConceptDvo;
-    }
-    
-    // sponsorSourceConceptDvo
-    
-    public void setSponsorSourceConceptDvo(ConceptDvo dvo) {
-        this.sponsorSourceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getSponsorSourceConceptDvo() {
-        return this.sponsorSourceConceptDvo;
-    }
-    
-    // stopReasonConceptDvo
-    
-    public void setStopReasonConceptDvo(ConceptDvo dvo) {
-        this.stopReasonConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getStopReasonConceptDvo() {
-        return this.stopReasonConceptDvo;
-    }
-    
-    // stopReasonSourceConceptDvo
-    
-    public void setStopReasonSourceConceptDvo(ConceptDvo dvo) {
-        this.stopReasonSourceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getStopReasonSourceConceptDvo() {
-        return this.stopReasonSourceConceptDvo;
+    public Integer getStopReasonSourceConceptId() {
+        return this.stopReasonSourceConceptId;
     }
     
     //
@@ -485,7 +364,6 @@ public class PayerPlanPeriodDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getPayerPlanPeriodId()  == null ? null: getPayerPlanPeriodId() + ""
         };
         return rtn;
     }

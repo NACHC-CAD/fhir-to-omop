@@ -112,7 +112,7 @@ public class OmopPersonBuilder {
 		dvo.setYearOfBirth(patient.getBirthYear());
 		dvo.setMonthOfBirth(patient.getBirthMonth());
 		dvo.setDayOfBirth(patient.getBirthDay());
-		dvo.setBirthDatetime(patient.getBirthDateAsString());
+		dvo.setBirthDatetime(patient.getBirthDate());
 	}
 
 }

@@ -90,9 +90,9 @@ public class OmopProcedureBuilder {
 			dvo.setProcedureConceptId(0);
 		}
 		dvo.setProcedureDate(proc.getStartDate());
-		dvo.setProcedureDatetime(proc.getStartDateAsString());
+		dvo.setProcedureDatetime(proc.getStartDate());
 		dvo.setProcedureEndDate(proc.getEndDate());
-		dvo.setProcedureEndDatetime(proc.getEndDateAsString());
+		dvo.setProcedureEndDatetime(proc.getEndDate());
 		// TODO: (JEG) hard coding this to primary procedure for now
 		dvo.setProcedureTypeConceptId(44786630);
 		// clean up

@@ -238,7 +238,7 @@ public class OmopObservationBuilder {
 		dvo.setPersonId(omopPatientId);
 		// date
 		dvo.setObservationDate(parser.getStartDate());
-		dvo.setObservationDatetime(TimeUtil.format(dvo.getObservationDate(), "yyyy-MM-dd"));
+		dvo.setObservationDatetime(dvo.getObservationDate());
 		if (dvo.getObservationDate() == null) {
 			String encounterId = parser.getEncounterId();
 			VisitOccurrenceDvo visitDvo = this.omopPerson.getVisitOccurrenceByFhirId(encounterId);

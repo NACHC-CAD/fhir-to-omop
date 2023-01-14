@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for episode_event
+// Data Value Object (DVO) for EPISODE_EVENT
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class EpisodeEventDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "episode_event";
+    public static final String TABLE_NAME = "EPISODE_EVENT";
     
     //
     // schemaName
@@ -29,9 +29,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "episode_event_field_concept_id",
         "episode_id",
-        "event_id"
+        "event_id",
+        "episode_event_field_concept_id"
     };
     
     //
@@ -46,9 +46,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "episodeEventFieldConceptId",
         "episodeId",
-        "eventId"
+        "eventId",
+        "episodeEventFieldConceptId"
     };
     
     //
@@ -56,9 +56,9 @@ public class EpisodeEventDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "EpisodeEventFieldConceptId",
         "EpisodeId",
-        "EventId"
+        "EventId",
+        "EpisodeEventFieldConceptId"
     };
     
     
@@ -68,29 +68,15 @@ public class EpisodeEventDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer episodeEventFieldConceptId;
-    
     private String episodeId;
     
     private String eventId;
     
-    private ConceptDvo episodeEventFieldConceptDvo;
-    
-    private EpisodeDvo episodeDvo;
+    private Integer episodeEventFieldConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // episodeEventFieldConceptId
-    
-    public void setEpisodeEventFieldConceptId(Integer val) {
-        this.episodeEventFieldConceptId = val;
-    }
-    
-    public Integer getEpisodeEventFieldConceptId() {
-        return this.episodeEventFieldConceptId;
-    }
     
     // episodeId
     
@@ -112,24 +98,14 @@ public class EpisodeEventDvo implements Dvo {
         return this.eventId;
     }
     
-    // episodeEventFieldConceptDvo
+    // episodeEventFieldConceptId
     
-    public void setEpisodeEventFieldConceptDvo(ConceptDvo dvo) {
-        this.episodeEventFieldConceptDvo = dvo;
+    public void setEpisodeEventFieldConceptId(Integer val) {
+        this.episodeEventFieldConceptId = val;
     }
     
-    public ConceptDvo getEpisodeEventFieldConceptDvo() {
-        return this.episodeEventFieldConceptDvo;
-    }
-    
-    // episodeDvo
-    
-    public void setEpisodeDvo(EpisodeDvo dvo) {
-        this.episodeDvo = dvo;
-    }
-    
-    public EpisodeDvo getEpisodeDvo() {
-        return this.episodeDvo;
+    public Integer getEpisodeEventFieldConceptId() {
+        return this.episodeEventFieldConceptId;
     }
     
     //

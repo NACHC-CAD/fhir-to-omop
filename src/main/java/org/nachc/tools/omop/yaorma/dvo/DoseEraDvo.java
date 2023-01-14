@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for dose_era
+// Data Value Object (DVO) for DOSE_ERA
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class DoseEraDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "dose_era";
+    public static final String TABLE_NAME = "DOSE_ERA";
     
     //
     // schemaName
@@ -29,13 +29,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "dose_era_end_date",
         "dose_era_id",
-        "dose_era_start_date",
-        "dose_value",
-        "drug_concept_id",
         "person_id",
-        "unit_concept_id"
+        "drug_concept_id",
+        "unit_concept_id",
+        "dose_value",
+        "dose_era_start_date",
+        "dose_era_end_date"
     };
     
     //
@@ -43,7 +43,6 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "dose_era_id"
     };
     
     //
@@ -51,13 +50,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "doseEraEndDate",
         "doseEraId",
-        "doseEraStartDate",
-        "doseValue",
-        "drugConceptId",
         "personId",
-        "unitConceptId"
+        "drugConceptId",
+        "unitConceptId",
+        "doseValue",
+        "doseEraStartDate",
+        "doseEraEndDate"
     };
     
     //
@@ -65,13 +64,13 @@ public class DoseEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DoseEraEndDate",
         "DoseEraId",
-        "DoseEraStartDate",
-        "DoseValue",
-        "DrugConceptId",
         "PersonId",
-        "UnitConceptId"
+        "DrugConceptId",
+        "UnitConceptId",
+        "DoseValue",
+        "DoseEraStartDate",
+        "DoseEraEndDate"
     };
     
     
@@ -81,39 +80,23 @@ public class DoseEraDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String doseEraEndDate;
-    
     private Integer doseEraId;
-    
-    private String doseEraStartDate;
-    
-    private String doseValue;
-    
-    private Integer drugConceptId;
     
     private Integer personId;
     
+    private Integer drugConceptId;
+    
     private Integer unitConceptId;
     
-    private ConceptDvo drugConceptDvo;
+    private String doseValue;
     
-    private PersonDvo personDvo;
+    private Date doseEraStartDate;
     
-    private ConceptDvo unitConceptDvo;
+    private Date doseEraEndDate;
     
     //
     // trivial getters and setters
     //
-    
-    // doseEraEndDate
-    
-    public void setDoseEraEndDate(String val) {
-        this.doseEraEndDate = val;
-    }
-    
-    public String getDoseEraEndDate() {
-        return this.doseEraEndDate;
-    }
     
     // doseEraId
     
@@ -123,36 +106,6 @@ public class DoseEraDvo implements Dvo {
     
     public Integer getDoseEraId() {
         return this.doseEraId;
-    }
-    
-    // doseEraStartDate
-    
-    public void setDoseEraStartDate(String val) {
-        this.doseEraStartDate = val;
-    }
-    
-    public String getDoseEraStartDate() {
-        return this.doseEraStartDate;
-    }
-    
-    // doseValue
-    
-    public void setDoseValue(String val) {
-        this.doseValue = val;
-    }
-    
-    public String getDoseValue() {
-        return this.doseValue;
-    }
-    
-    // drugConceptId
-    
-    public void setDrugConceptId(Integer val) {
-        this.drugConceptId = val;
-    }
-    
-    public Integer getDrugConceptId() {
-        return this.drugConceptId;
     }
     
     // personId
@@ -165,6 +118,16 @@ public class DoseEraDvo implements Dvo {
         return this.personId;
     }
     
+    // drugConceptId
+    
+    public void setDrugConceptId(Integer val) {
+        this.drugConceptId = val;
+    }
+    
+    public Integer getDrugConceptId() {
+        return this.drugConceptId;
+    }
+    
     // unitConceptId
     
     public void setUnitConceptId(Integer val) {
@@ -175,34 +138,34 @@ public class DoseEraDvo implements Dvo {
         return this.unitConceptId;
     }
     
-    // drugConceptDvo
+    // doseValue
     
-    public void setDrugConceptDvo(ConceptDvo dvo) {
-        this.drugConceptDvo = dvo;
+    public void setDoseValue(String val) {
+        this.doseValue = val;
     }
     
-    public ConceptDvo getDrugConceptDvo() {
-        return this.drugConceptDvo;
+    public String getDoseValue() {
+        return this.doseValue;
     }
     
-    // personDvo
+    // doseEraStartDate
     
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
+    public void setDoseEraStartDate(Date val) {
+        this.doseEraStartDate = val;
     }
     
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
+    public Date getDoseEraStartDate() {
+        return this.doseEraStartDate;
     }
     
-    // unitConceptDvo
+    // doseEraEndDate
     
-    public void setUnitConceptDvo(ConceptDvo dvo) {
-        this.unitConceptDvo = dvo;
+    public void setDoseEraEndDate(Date val) {
+        this.doseEraEndDate = val;
     }
     
-    public ConceptDvo getUnitConceptDvo() {
-        return this.unitConceptDvo;
+    public Date getDoseEraEndDate() {
+        return this.doseEraEndDate;
     }
     
     //
@@ -251,7 +214,6 @@ public class DoseEraDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getDoseEraId()  == null ? null: getDoseEraId() + ""
         };
         return rtn;
     }

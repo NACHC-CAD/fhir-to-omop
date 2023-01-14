@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for metadata
+// Data Value Object (DVO) for METADATA
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class MetadataDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "metadata";
+    public static final String TABLE_NAME = "METADATA";
     
     //
     // schemaName
@@ -29,15 +29,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "metadata_concept_id",
-        "metadata_date",
-        "metadata_datetime",
         "metadata_id",
+        "metadata_concept_id",
         "metadata_type_concept_id",
         "name",
+        "value_as_string",
         "value_as_concept_id",
         "value_as_number",
-        "value_as_string"
+        "metadata_date",
+        "metadata_datetime"
     };
     
     //
@@ -45,7 +45,6 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "metadata_id"
     };
     
     //
@@ -53,15 +52,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "metadataConceptId",
-        "metadataDate",
-        "metadataDatetime",
         "metadataId",
+        "metadataConceptId",
         "metadataTypeConceptId",
         "name",
+        "valueAsString",
         "valueAsConceptId",
         "valueAsNumber",
-        "valueAsString"
+        "metadataDate",
+        "metadataDatetime"
     };
     
     //
@@ -69,15 +68,15 @@ public class MetadataDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "MetadataConceptId",
-        "MetadataDate",
-        "MetadataDatetime",
         "MetadataId",
+        "MetadataConceptId",
         "MetadataTypeConceptId",
         "Name",
+        "ValueAsString",
         "ValueAsConceptId",
         "ValueAsNumber",
-        "ValueAsString"
+        "MetadataDate",
+        "MetadataDatetime"
     };
     
     
@@ -87,63 +86,27 @@ public class MetadataDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer metadataConceptId;
-    
-    private Date metadataDate;
-    
-    private String metadataDatetime;
-    
     private Integer metadataId;
+    
+    private Integer metadataConceptId;
     
     private Integer metadataTypeConceptId;
     
     private String name;
     
+    private String valueAsString;
+    
     private Integer valueAsConceptId;
     
     private String valueAsNumber;
     
-    private String valueAsString;
+    private Date metadataDate;
     
-    private ConceptDvo metadataConceptDvo;
-    
-    private ConceptDvo metadataTypeConceptDvo;
-    
-    private ConceptDvo valueAsConceptDvo;
+    private Date metadataDatetime;
     
     //
     // trivial getters and setters
     //
-    
-    // metadataConceptId
-    
-    public void setMetadataConceptId(Integer val) {
-        this.metadataConceptId = val;
-    }
-    
-    public Integer getMetadataConceptId() {
-        return this.metadataConceptId;
-    }
-    
-    // metadataDate
-    
-    public void setMetadataDate(Date val) {
-        this.metadataDate = val;
-    }
-    
-    public Date getMetadataDate() {
-        return this.metadataDate;
-    }
-    
-    // metadataDatetime
-    
-    public void setMetadataDatetime(String val) {
-        this.metadataDatetime = val;
-    }
-    
-    public String getMetadataDatetime() {
-        return this.metadataDatetime;
-    }
     
     // metadataId
     
@@ -153,6 +116,16 @@ public class MetadataDvo implements Dvo {
     
     public Integer getMetadataId() {
         return this.metadataId;
+    }
+    
+    // metadataConceptId
+    
+    public void setMetadataConceptId(Integer val) {
+        this.metadataConceptId = val;
+    }
+    
+    public Integer getMetadataConceptId() {
+        return this.metadataConceptId;
     }
     
     // metadataTypeConceptId
@@ -175,6 +148,16 @@ public class MetadataDvo implements Dvo {
         return this.name;
     }
     
+    // valueAsString
+    
+    public void setValueAsString(String val) {
+        this.valueAsString = val;
+    }
+    
+    public String getValueAsString() {
+        return this.valueAsString;
+    }
+    
     // valueAsConceptId
     
     public void setValueAsConceptId(Integer val) {
@@ -195,44 +178,24 @@ public class MetadataDvo implements Dvo {
         return this.valueAsNumber;
     }
     
-    // valueAsString
+    // metadataDate
     
-    public void setValueAsString(String val) {
-        this.valueAsString = val;
+    public void setMetadataDate(Date val) {
+        this.metadataDate = val;
     }
     
-    public String getValueAsString() {
-        return this.valueAsString;
+    public Date getMetadataDate() {
+        return this.metadataDate;
     }
     
-    // metadataConceptDvo
+    // metadataDatetime
     
-    public void setMetadataConceptDvo(ConceptDvo dvo) {
-        this.metadataConceptDvo = dvo;
+    public void setMetadataDatetime(Date val) {
+        this.metadataDatetime = val;
     }
     
-    public ConceptDvo getMetadataConceptDvo() {
-        return this.metadataConceptDvo;
-    }
-    
-    // metadataTypeConceptDvo
-    
-    public void setMetadataTypeConceptDvo(ConceptDvo dvo) {
-        this.metadataTypeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getMetadataTypeConceptDvo() {
-        return this.metadataTypeConceptDvo;
-    }
-    
-    // valueAsConceptDvo
-    
-    public void setValueAsConceptDvo(ConceptDvo dvo) {
-        this.valueAsConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getValueAsConceptDvo() {
-        return this.valueAsConceptDvo;
+    public Date getMetadataDatetime() {
+        return this.metadataDatetime;
     }
     
     //
@@ -281,7 +244,6 @@ public class MetadataDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getMetadataId()  == null ? null: getMetadataId() + ""
         };
         return rtn;
     }

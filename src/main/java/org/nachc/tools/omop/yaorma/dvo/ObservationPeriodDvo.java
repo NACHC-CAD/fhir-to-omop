@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for observation_period
+// Data Value Object (DVO) for OBSERVATION_PERIOD
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ObservationPeriodDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "observation_period";
+    public static final String TABLE_NAME = "OBSERVATION_PERIOD";
     
     //
     // schemaName
@@ -29,11 +29,11 @@ public class ObservationPeriodDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "observation_period_end_date",
         "observation_period_id",
+        "person_id",
         "observation_period_start_date",
-        "period_type_concept_id",
-        "person_id"
+        "observation_period_end_date",
+        "period_type_concept_id"
     };
     
     //
@@ -41,7 +41,6 @@ public class ObservationPeriodDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "observation_period_id"
     };
     
     //
@@ -49,11 +48,11 @@ public class ObservationPeriodDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "observationPeriodEndDate",
         "observationPeriodId",
+        "personId",
         "observationPeriodStartDate",
-        "periodTypeConceptId",
-        "personId"
+        "observationPeriodEndDate",
+        "periodTypeConceptId"
     };
     
     //
@@ -61,11 +60,11 @@ public class ObservationPeriodDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ObservationPeriodEndDate",
         "ObservationPeriodId",
+        "PersonId",
         "ObservationPeriodStartDate",
-        "PeriodTypeConceptId",
-        "PersonId"
+        "ObservationPeriodEndDate",
+        "PeriodTypeConceptId"
     };
     
     
@@ -75,33 +74,19 @@ public class ObservationPeriodDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Date observationPeriodEndDate;
-    
     private Integer observationPeriodId;
-    
-    private Date observationPeriodStartDate;
-    
-    private Integer periodTypeConceptId;
     
     private Integer personId;
     
-    private ConceptDvo periodTypeConceptDvo;
+    private Date observationPeriodStartDate;
     
-    private PersonDvo personDvo;
+    private Date observationPeriodEndDate;
+    
+    private Integer periodTypeConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // observationPeriodEndDate
-    
-    public void setObservationPeriodEndDate(Date val) {
-        this.observationPeriodEndDate = val;
-    }
-    
-    public Date getObservationPeriodEndDate() {
-        return this.observationPeriodEndDate;
-    }
     
     // observationPeriodId
     
@@ -111,26 +96,6 @@ public class ObservationPeriodDvo implements Dvo {
     
     public Integer getObservationPeriodId() {
         return this.observationPeriodId;
-    }
-    
-    // observationPeriodStartDate
-    
-    public void setObservationPeriodStartDate(Date val) {
-        this.observationPeriodStartDate = val;
-    }
-    
-    public Date getObservationPeriodStartDate() {
-        return this.observationPeriodStartDate;
-    }
-    
-    // periodTypeConceptId
-    
-    public void setPeriodTypeConceptId(Integer val) {
-        this.periodTypeConceptId = val;
-    }
-    
-    public Integer getPeriodTypeConceptId() {
-        return this.periodTypeConceptId;
     }
     
     // personId
@@ -143,24 +108,34 @@ public class ObservationPeriodDvo implements Dvo {
         return this.personId;
     }
     
-    // periodTypeConceptDvo
+    // observationPeriodStartDate
     
-    public void setPeriodTypeConceptDvo(ConceptDvo dvo) {
-        this.periodTypeConceptDvo = dvo;
+    public void setObservationPeriodStartDate(Date val) {
+        this.observationPeriodStartDate = val;
     }
     
-    public ConceptDvo getPeriodTypeConceptDvo() {
-        return this.periodTypeConceptDvo;
+    public Date getObservationPeriodStartDate() {
+        return this.observationPeriodStartDate;
     }
     
-    // personDvo
+    // observationPeriodEndDate
     
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
+    public void setObservationPeriodEndDate(Date val) {
+        this.observationPeriodEndDate = val;
     }
     
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
+    public Date getObservationPeriodEndDate() {
+        return this.observationPeriodEndDate;
+    }
+    
+    // periodTypeConceptId
+    
+    public void setPeriodTypeConceptId(Integer val) {
+        this.periodTypeConceptId = val;
+    }
+    
+    public Integer getPeriodTypeConceptId() {
+        return this.periodTypeConceptId;
     }
     
     //
@@ -209,7 +184,6 @@ public class ObservationPeriodDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getObservationPeriodId()  == null ? null: getObservationPeriodId() + ""
         };
         return rtn;
     }

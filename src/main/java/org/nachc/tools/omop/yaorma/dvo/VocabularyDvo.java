@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for vocabulary
+// Data Value Object (DVO) for VOCABULARY
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class VocabularyDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "vocabulary";
+    public static final String TABLE_NAME = "VOCABULARY";
     
     //
     // schemaName
@@ -29,11 +29,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "vocabulary_concept_id",
         "vocabulary_id",
         "vocabulary_name",
         "vocabulary_reference",
-        "vocabulary_version"
+        "vocabulary_version",
+        "vocabulary_concept_id"
     };
     
     //
@@ -41,7 +41,6 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "vocabulary_id"
     };
     
     //
@@ -49,11 +48,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "vocabularyConceptId",
         "vocabularyId",
         "vocabularyName",
         "vocabularyReference",
-        "vocabularyVersion"
+        "vocabularyVersion",
+        "vocabularyConceptId"
     };
     
     //
@@ -61,11 +60,11 @@ public class VocabularyDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "VocabularyConceptId",
         "VocabularyId",
         "VocabularyName",
         "VocabularyReference",
-        "VocabularyVersion"
+        "VocabularyVersion",
+        "VocabularyConceptId"
     };
     
     
@@ -75,8 +74,6 @@ public class VocabularyDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer vocabularyConceptId;
-    
     private String vocabularyId;
     
     private String vocabularyName;
@@ -85,21 +82,11 @@ public class VocabularyDvo implements Dvo {
     
     private String vocabularyVersion;
     
-    private ArrayList<SourceToConceptMapDvo> sourceToConceptMapTargetVocabularyList = new ArrayList<SourceToConceptMapDvo>();
+    private Integer vocabularyConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // vocabularyConceptId
-    
-    public void setVocabularyConceptId(Integer val) {
-        this.vocabularyConceptId = val;
-    }
-    
-    public Integer getVocabularyConceptId() {
-        return this.vocabularyConceptId;
-    }
     
     // vocabularyId
     
@@ -141,12 +128,14 @@ public class VocabularyDvo implements Dvo {
         return this.vocabularyVersion;
     }
     
-    public ArrayList<SourceToConceptMapDvo> getSourceToConceptMapTargetVocabularyList() {
-        return sourceToConceptMapTargetVocabularyList;
+    // vocabularyConceptId
+    
+    public void setVocabularyConceptId(Integer val) {
+        this.vocabularyConceptId = val;
     }
     
-    public void setSourceToConceptMapTargetVocabularyList(ArrayList<SourceToConceptMapDvo> list) {
-        this.sourceToConceptMapTargetVocabularyList = list;
+    public Integer getVocabularyConceptId() {
+        return this.vocabularyConceptId;
     }
     
     //
@@ -195,7 +184,6 @@ public class VocabularyDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getVocabularyId()  == null ? null: getVocabularyId() + ""
         };
         return rtn;
     }

@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for drug_strength
+// Data Value Object (DVO) for DRUG_STRENGTH
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class DrugStrengthDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "drug_strength";
+    public static final String TABLE_NAME = "DRUG_STRENGTH";
     
     //
     // schemaName
@@ -29,18 +29,18 @@ public class DrugStrengthDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "amount_unit_concept_id",
-        "amount_value",
-        "box_size",
-        "denominator_unit_concept_id",
-        "denominator_value",
         "drug_concept_id",
         "ingredient_concept_id",
-        "invalid_reason",
-        "numerator_unit_concept_id",
+        "amount_value",
+        "amount_unit_concept_id",
         "numerator_value",
+        "numerator_unit_concept_id",
+        "denominator_value",
+        "denominator_unit_concept_id",
+        "box_size",
+        "valid_start_date",
         "valid_end_date",
-        "valid_start_date"
+        "invalid_reason"
     };
     
     //
@@ -55,18 +55,18 @@ public class DrugStrengthDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "amountUnitConceptId",
-        "amountValue",
-        "boxSize",
-        "denominatorUnitConceptId",
-        "denominatorValue",
         "drugConceptId",
         "ingredientConceptId",
-        "invalidReason",
-        "numeratorUnitConceptId",
+        "amountValue",
+        "amountUnitConceptId",
         "numeratorValue",
+        "numeratorUnitConceptId",
+        "denominatorValue",
+        "denominatorUnitConceptId",
+        "boxSize",
+        "validStartDate",
         "validEndDate",
-        "validStartDate"
+        "invalidReason"
     };
     
     //
@@ -74,18 +74,18 @@ public class DrugStrengthDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "AmountUnitConceptId",
-        "AmountValue",
-        "BoxSize",
-        "DenominatorUnitConceptId",
-        "DenominatorValue",
         "DrugConceptId",
         "IngredientConceptId",
-        "InvalidReason",
-        "NumeratorUnitConceptId",
+        "AmountValue",
+        "AmountUnitConceptId",
         "NumeratorValue",
+        "NumeratorUnitConceptId",
+        "DenominatorValue",
+        "DenominatorUnitConceptId",
+        "BoxSize",
+        "ValidStartDate",
         "ValidEndDate",
-        "ValidStartDate"
+        "InvalidReason"
     };
     
     
@@ -95,93 +95,33 @@ public class DrugStrengthDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer amountUnitConceptId;
-    
-    private String amountValue;
-    
-    private Integer boxSize;
-    
-    private Integer denominatorUnitConceptId;
-    
-    private String denominatorValue;
-    
     private Integer drugConceptId;
     
     private Integer ingredientConceptId;
     
-    private String invalidReason;
+    private String amountValue;
     
-    private Integer numeratorUnitConceptId;
+    private Integer amountUnitConceptId;
     
     private String numeratorValue;
     
-    private Date validEndDate;
+    private Integer numeratorUnitConceptId;
+    
+    private String denominatorValue;
+    
+    private Integer denominatorUnitConceptId;
+    
+    private Integer boxSize;
     
     private Date validStartDate;
     
-    private ConceptDvo amountUnitConceptDvo;
+    private Date validEndDate;
     
-    private ConceptDvo denominatorUnitConceptDvo;
-    
-    private ConceptDvo drugConceptDvo;
-    
-    private ConceptDvo ingredientConceptDvo;
-    
-    private ConceptDvo numeratorUnitConceptDvo;
+    private String invalidReason;
     
     //
     // trivial getters and setters
     //
-    
-    // amountUnitConceptId
-    
-    public void setAmountUnitConceptId(Integer val) {
-        this.amountUnitConceptId = val;
-    }
-    
-    public Integer getAmountUnitConceptId() {
-        return this.amountUnitConceptId;
-    }
-    
-    // amountValue
-    
-    public void setAmountValue(String val) {
-        this.amountValue = val;
-    }
-    
-    public String getAmountValue() {
-        return this.amountValue;
-    }
-    
-    // boxSize
-    
-    public void setBoxSize(Integer val) {
-        this.boxSize = val;
-    }
-    
-    public Integer getBoxSize() {
-        return this.boxSize;
-    }
-    
-    // denominatorUnitConceptId
-    
-    public void setDenominatorUnitConceptId(Integer val) {
-        this.denominatorUnitConceptId = val;
-    }
-    
-    public Integer getDenominatorUnitConceptId() {
-        return this.denominatorUnitConceptId;
-    }
-    
-    // denominatorValue
-    
-    public void setDenominatorValue(String val) {
-        this.denominatorValue = val;
-    }
-    
-    public String getDenominatorValue() {
-        return this.denominatorValue;
-    }
     
     // drugConceptId
     
@@ -203,24 +143,24 @@ public class DrugStrengthDvo implements Dvo {
         return this.ingredientConceptId;
     }
     
-    // invalidReason
+    // amountValue
     
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
+    public void setAmountValue(String val) {
+        this.amountValue = val;
     }
     
-    public String getInvalidReason() {
-        return this.invalidReason;
+    public String getAmountValue() {
+        return this.amountValue;
     }
     
-    // numeratorUnitConceptId
+    // amountUnitConceptId
     
-    public void setNumeratorUnitConceptId(Integer val) {
-        this.numeratorUnitConceptId = val;
+    public void setAmountUnitConceptId(Integer val) {
+        this.amountUnitConceptId = val;
     }
     
-    public Integer getNumeratorUnitConceptId() {
-        return this.numeratorUnitConceptId;
+    public Integer getAmountUnitConceptId() {
+        return this.amountUnitConceptId;
     }
     
     // numeratorValue
@@ -233,14 +173,44 @@ public class DrugStrengthDvo implements Dvo {
         return this.numeratorValue;
     }
     
-    // validEndDate
+    // numeratorUnitConceptId
     
-    public void setValidEndDate(Date val) {
-        this.validEndDate = val;
+    public void setNumeratorUnitConceptId(Integer val) {
+        this.numeratorUnitConceptId = val;
     }
     
-    public Date getValidEndDate() {
-        return this.validEndDate;
+    public Integer getNumeratorUnitConceptId() {
+        return this.numeratorUnitConceptId;
+    }
+    
+    // denominatorValue
+    
+    public void setDenominatorValue(String val) {
+        this.denominatorValue = val;
+    }
+    
+    public String getDenominatorValue() {
+        return this.denominatorValue;
+    }
+    
+    // denominatorUnitConceptId
+    
+    public void setDenominatorUnitConceptId(Integer val) {
+        this.denominatorUnitConceptId = val;
+    }
+    
+    public Integer getDenominatorUnitConceptId() {
+        return this.denominatorUnitConceptId;
+    }
+    
+    // boxSize
+    
+    public void setBoxSize(Integer val) {
+        this.boxSize = val;
+    }
+    
+    public Integer getBoxSize() {
+        return this.boxSize;
     }
     
     // validStartDate
@@ -253,54 +223,24 @@ public class DrugStrengthDvo implements Dvo {
         return this.validStartDate;
     }
     
-    // amountUnitConceptDvo
+    // validEndDate
     
-    public void setAmountUnitConceptDvo(ConceptDvo dvo) {
-        this.amountUnitConceptDvo = dvo;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public ConceptDvo getAmountUnitConceptDvo() {
-        return this.amountUnitConceptDvo;
+    public Date getValidEndDate() {
+        return this.validEndDate;
     }
     
-    // denominatorUnitConceptDvo
+    // invalidReason
     
-    public void setDenominatorUnitConceptDvo(ConceptDvo dvo) {
-        this.denominatorUnitConceptDvo = dvo;
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
     }
     
-    public ConceptDvo getDenominatorUnitConceptDvo() {
-        return this.denominatorUnitConceptDvo;
-    }
-    
-    // drugConceptDvo
-    
-    public void setDrugConceptDvo(ConceptDvo dvo) {
-        this.drugConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getDrugConceptDvo() {
-        return this.drugConceptDvo;
-    }
-    
-    // ingredientConceptDvo
-    
-    public void setIngredientConceptDvo(ConceptDvo dvo) {
-        this.ingredientConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getIngredientConceptDvo() {
-        return this.ingredientConceptDvo;
-    }
-    
-    // numeratorUnitConceptDvo
-    
-    public void setNumeratorUnitConceptDvo(ConceptDvo dvo) {
-        this.numeratorUnitConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getNumeratorUnitConceptDvo() {
-        return this.numeratorUnitConceptDvo;
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     //

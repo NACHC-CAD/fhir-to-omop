@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for care_site
+// Data Value Object (DVO) for CARE_SITE
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class CareSiteDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "care_site";
+    public static final String TABLE_NAME = "CARE_SITE";
     
     //
     // schemaName
@@ -31,9 +31,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "care_site_id",
         "care_site_name",
-        "care_site_source_value",
-        "location_id",
         "place_of_service_concept_id",
+        "location_id",
+        "care_site_source_value",
         "place_of_service_source_value"
     };
     
@@ -42,7 +42,6 @@ public class CareSiteDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "care_site_id"
     };
     
     //
@@ -52,9 +51,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "careSiteId",
         "careSiteName",
-        "careSiteSourceValue",
-        "locationId",
         "placeOfServiceConceptId",
+        "locationId",
+        "careSiteSourceValue",
         "placeOfServiceSourceValue"
     };
     
@@ -65,9 +64,9 @@ public class CareSiteDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "CareSiteId",
         "CareSiteName",
-        "CareSiteSourceValue",
-        "LocationId",
         "PlaceOfServiceConceptId",
+        "LocationId",
+        "CareSiteSourceValue",
         "PlaceOfServiceSourceValue"
     };
     
@@ -82,25 +81,13 @@ public class CareSiteDvo implements Dvo {
     
     private String careSiteName;
     
-    private String careSiteSourceValue;
+    private Integer placeOfServiceConceptId;
     
     private Integer locationId;
     
-    private Integer placeOfServiceConceptId;
+    private String careSiteSourceValue;
     
     private String placeOfServiceSourceValue;
-    
-    private LocationDvo locationDvo;
-    
-    private ConceptDvo placeOfServiceConceptDvo;
-    
-    private ArrayList<PersonDvo> personCareSiteList = new ArrayList<PersonDvo>();
-    
-    private ArrayList<ProviderDvo> providerCareSiteList = new ArrayList<ProviderDvo>();
-    
-    private ArrayList<VisitDetailDvo> visitDetailCareSiteList = new ArrayList<VisitDetailDvo>();
-    
-    private ArrayList<VisitOccurrenceDvo> visitOccurrenceCareSiteList = new ArrayList<VisitOccurrenceDvo>();
     
     //
     // trivial getters and setters
@@ -126,14 +113,14 @@ public class CareSiteDvo implements Dvo {
         return this.careSiteName;
     }
     
-    // careSiteSourceValue
+    // placeOfServiceConceptId
     
-    public void setCareSiteSourceValue(String val) {
-        this.careSiteSourceValue = val;
+    public void setPlaceOfServiceConceptId(Integer val) {
+        this.placeOfServiceConceptId = val;
     }
     
-    public String getCareSiteSourceValue() {
-        return this.careSiteSourceValue;
+    public Integer getPlaceOfServiceConceptId() {
+        return this.placeOfServiceConceptId;
     }
     
     // locationId
@@ -146,14 +133,14 @@ public class CareSiteDvo implements Dvo {
         return this.locationId;
     }
     
-    // placeOfServiceConceptId
+    // careSiteSourceValue
     
-    public void setPlaceOfServiceConceptId(Integer val) {
-        this.placeOfServiceConceptId = val;
+    public void setCareSiteSourceValue(String val) {
+        this.careSiteSourceValue = val;
     }
     
-    public Integer getPlaceOfServiceConceptId() {
-        return this.placeOfServiceConceptId;
+    public String getCareSiteSourceValue() {
+        return this.careSiteSourceValue;
     }
     
     // placeOfServiceSourceValue
@@ -164,58 +151,6 @@ public class CareSiteDvo implements Dvo {
     
     public String getPlaceOfServiceSourceValue() {
         return this.placeOfServiceSourceValue;
-    }
-    
-    // locationDvo
-    
-    public void setLocationDvo(LocationDvo dvo) {
-        this.locationDvo = dvo;
-    }
-    
-    public LocationDvo getLocationDvo() {
-        return this.locationDvo;
-    }
-    
-    // placeOfServiceConceptDvo
-    
-    public void setPlaceOfServiceConceptDvo(ConceptDvo dvo) {
-        this.placeOfServiceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getPlaceOfServiceConceptDvo() {
-        return this.placeOfServiceConceptDvo;
-    }
-    
-    public ArrayList<PersonDvo> getPersonCareSiteList() {
-        return personCareSiteList;
-    }
-    
-    public void setPersonCareSiteList(ArrayList<PersonDvo> list) {
-        this.personCareSiteList = list;
-    }
-    
-    public ArrayList<ProviderDvo> getProviderCareSiteList() {
-        return providerCareSiteList;
-    }
-    
-    public void setProviderCareSiteList(ArrayList<ProviderDvo> list) {
-        this.providerCareSiteList = list;
-    }
-    
-    public ArrayList<VisitDetailDvo> getVisitDetailCareSiteList() {
-        return visitDetailCareSiteList;
-    }
-    
-    public void setVisitDetailCareSiteList(ArrayList<VisitDetailDvo> list) {
-        this.visitDetailCareSiteList = list;
-    }
-    
-    public ArrayList<VisitOccurrenceDvo> getVisitOccurrenceCareSiteList() {
-        return visitOccurrenceCareSiteList;
-    }
-    
-    public void setVisitOccurrenceCareSiteList(ArrayList<VisitOccurrenceDvo> list) {
-        this.visitOccurrenceCareSiteList = list;
     }
     
     //
@@ -264,7 +199,6 @@ public class CareSiteDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getCareSiteId()  == null ? null: getCareSiteId() + ""
         };
         return rtn;
     }

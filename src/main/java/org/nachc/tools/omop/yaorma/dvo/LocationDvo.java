@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for location
+// Data Value Object (DVO) for LOCATION
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class LocationDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "location";
+    public static final String TABLE_NAME = "LOCATION";
     
     //
     // schemaName
@@ -29,18 +29,18 @@ public class LocationDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
+        "location_id",
         "address_1",
         "address_2",
         "city",
+        "state",
+        "zip",
+        "county",
+        "location_source_value",
         "country_concept_id",
         "country_source_value",
-        "county",
         "latitude",
-        "location_id",
-        "location_source_value",
-        "longitude",
-        "state",
-        "zip"
+        "longitude"
     };
     
     //
@@ -48,7 +48,6 @@ public class LocationDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "location_id"
     };
     
     //
@@ -56,18 +55,18 @@ public class LocationDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
+        "locationId",
         "address1",
         "address2",
         "city",
+        "state",
+        "zip",
+        "county",
+        "locationSourceValue",
         "countryConceptId",
         "countrySourceValue",
-        "county",
         "latitude",
-        "locationId",
-        "locationSourceValue",
-        "longitude",
-        "state",
-        "zip"
+        "longitude"
     };
     
     //
@@ -75,18 +74,18 @@ public class LocationDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
+        "LocationId",
         "Address1",
         "Address2",
         "City",
+        "State",
+        "Zip",
+        "County",
+        "LocationSourceValue",
         "CountryConceptId",
         "CountrySourceValue",
-        "County",
         "Latitude",
-        "LocationId",
-        "LocationSourceValue",
-        "Longitude",
-        "State",
-        "Zip"
+        "Longitude"
     };
     
     
@@ -96,39 +95,43 @@ public class LocationDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer locationId;
+    
     private String address1;
     
     private String address2;
     
     private String city;
     
-    private Integer countryConceptId;
-    
-    private String countrySourceValue;
-    
-    private String county;
-    
-    private String latitude;
-    
-    private Integer locationId;
-    
-    private String locationSourceValue;
-    
-    private String longitude;
-    
     private String state;
     
     private String zip;
     
-    private ConceptDvo countryConceptDvo;
+    private String county;
     
-    private ArrayList<CareSiteDvo> careSiteLocationList = new ArrayList<CareSiteDvo>();
+    private String locationSourceValue;
     
-    private ArrayList<PersonDvo> personLocationList = new ArrayList<PersonDvo>();
+    private Integer countryConceptId;
+    
+    private String countrySourceValue;
+    
+    private String latitude;
+    
+    private String longitude;
     
     //
     // trivial getters and setters
     //
+    
+    // locationId
+    
+    public void setLocationId(Integer val) {
+        this.locationId = val;
+    }
+    
+    public Integer getLocationId() {
+        return this.locationId;
+    }
     
     // address1
     
@@ -160,76 +163,6 @@ public class LocationDvo implements Dvo {
         return this.city;
     }
     
-    // countryConceptId
-    
-    public void setCountryConceptId(Integer val) {
-        this.countryConceptId = val;
-    }
-    
-    public Integer getCountryConceptId() {
-        return this.countryConceptId;
-    }
-    
-    // countrySourceValue
-    
-    public void setCountrySourceValue(String val) {
-        this.countrySourceValue = val;
-    }
-    
-    public String getCountrySourceValue() {
-        return this.countrySourceValue;
-    }
-    
-    // county
-    
-    public void setCounty(String val) {
-        this.county = val;
-    }
-    
-    public String getCounty() {
-        return this.county;
-    }
-    
-    // latitude
-    
-    public void setLatitude(String val) {
-        this.latitude = val;
-    }
-    
-    public String getLatitude() {
-        return this.latitude;
-    }
-    
-    // locationId
-    
-    public void setLocationId(Integer val) {
-        this.locationId = val;
-    }
-    
-    public Integer getLocationId() {
-        return this.locationId;
-    }
-    
-    // locationSourceValue
-    
-    public void setLocationSourceValue(String val) {
-        this.locationSourceValue = val;
-    }
-    
-    public String getLocationSourceValue() {
-        return this.locationSourceValue;
-    }
-    
-    // longitude
-    
-    public void setLongitude(String val) {
-        this.longitude = val;
-    }
-    
-    public String getLongitude() {
-        return this.longitude;
-    }
-    
     // state
     
     public void setState(String val) {
@@ -250,30 +183,64 @@ public class LocationDvo implements Dvo {
         return this.zip;
     }
     
-    // countryConceptDvo
+    // county
     
-    public void setCountryConceptDvo(ConceptDvo dvo) {
-        this.countryConceptDvo = dvo;
+    public void setCounty(String val) {
+        this.county = val;
     }
     
-    public ConceptDvo getCountryConceptDvo() {
-        return this.countryConceptDvo;
+    public String getCounty() {
+        return this.county;
     }
     
-    public ArrayList<CareSiteDvo> getCareSiteLocationList() {
-        return careSiteLocationList;
+    // locationSourceValue
+    
+    public void setLocationSourceValue(String val) {
+        this.locationSourceValue = val;
     }
     
-    public void setCareSiteLocationList(ArrayList<CareSiteDvo> list) {
-        this.careSiteLocationList = list;
+    public String getLocationSourceValue() {
+        return this.locationSourceValue;
     }
     
-    public ArrayList<PersonDvo> getPersonLocationList() {
-        return personLocationList;
+    // countryConceptId
+    
+    public void setCountryConceptId(Integer val) {
+        this.countryConceptId = val;
     }
     
-    public void setPersonLocationList(ArrayList<PersonDvo> list) {
-        this.personLocationList = list;
+    public Integer getCountryConceptId() {
+        return this.countryConceptId;
+    }
+    
+    // countrySourceValue
+    
+    public void setCountrySourceValue(String val) {
+        this.countrySourceValue = val;
+    }
+    
+    public String getCountrySourceValue() {
+        return this.countrySourceValue;
+    }
+    
+    // latitude
+    
+    public void setLatitude(String val) {
+        this.latitude = val;
+    }
+    
+    public String getLatitude() {
+        return this.latitude;
+    }
+    
+    // longitude
+    
+    public void setLongitude(String val) {
+        this.longitude = val;
+    }
+    
+    public String getLongitude() {
+        return this.longitude;
     }
     
     //
@@ -322,7 +289,6 @@ public class LocationDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getLocationId()  == null ? null: getLocationId() + ""
         };
         return rtn;
     }

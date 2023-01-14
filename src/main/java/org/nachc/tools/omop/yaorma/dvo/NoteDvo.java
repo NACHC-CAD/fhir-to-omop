@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for note
+// Data Value Object (DVO) for NOTE
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class NoteDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "note";
+    public static final String TABLE_NAME = "NOTE";
     
     //
     // schemaName
@@ -29,22 +29,22 @@ public class NoteDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "encoding_concept_id",
-        "language_concept_id",
-        "note_class_concept_id",
+        "note_id",
+        "person_id",
         "note_date",
         "note_datetime",
-        "note_event_field_concept_id",
-        "note_event_id",
-        "note_id",
-        "note_source_value",
-        "note_text",
-        "note_title",
         "note_type_concept_id",
-        "person_id",
+        "note_class_concept_id",
+        "note_title",
+        "note_text",
+        "encoding_concept_id",
+        "language_concept_id",
         "provider_id",
+        "visit_occurrence_id",
         "visit_detail_id",
-        "visit_occurrence_id"
+        "note_source_value",
+        "note_event_id",
+        "note_event_field_concept_id"
     };
     
     //
@@ -52,7 +52,6 @@ public class NoteDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "note_id"
     };
     
     //
@@ -60,22 +59,22 @@ public class NoteDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "encodingConceptId",
-        "languageConceptId",
-        "noteClassConceptId",
+        "noteId",
+        "personId",
         "noteDate",
         "noteDatetime",
-        "noteEventFieldConceptId",
-        "noteEventId",
-        "noteId",
-        "noteSourceValue",
-        "noteText",
-        "noteTitle",
         "noteTypeConceptId",
-        "personId",
+        "noteClassConceptId",
+        "noteTitle",
+        "noteText",
+        "encodingConceptId",
+        "languageConceptId",
         "providerId",
+        "visitOccurrenceId",
         "visitDetailId",
-        "visitOccurrenceId"
+        "noteSourceValue",
+        "noteEventId",
+        "noteEventFieldConceptId"
     };
     
     //
@@ -83,22 +82,22 @@ public class NoteDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "EncodingConceptId",
-        "LanguageConceptId",
-        "NoteClassConceptId",
+        "NoteId",
+        "PersonId",
         "NoteDate",
         "NoteDatetime",
-        "NoteEventFieldConceptId",
-        "NoteEventId",
-        "NoteId",
-        "NoteSourceValue",
-        "NoteText",
-        "NoteTitle",
         "NoteTypeConceptId",
-        "PersonId",
+        "NoteClassConceptId",
+        "NoteTitle",
+        "NoteText",
+        "EncodingConceptId",
+        "LanguageConceptId",
         "ProviderId",
+        "VisitOccurrenceId",
         "VisitDetailId",
-        "VisitOccurrenceId"
+        "NoteSourceValue",
+        "NoteEventId",
+        "NoteEventFieldConceptId"
     };
     
     
@@ -108,59 +107,121 @@ public class NoteDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private Integer noteId;
+    
+    private Integer personId;
+    
+    private Date noteDate;
+    
+    private Date noteDatetime;
+    
+    private Integer noteTypeConceptId;
+    
+    private Integer noteClassConceptId;
+    
+    private String noteTitle;
+    
+    private String noteText;
+    
     private Integer encodingConceptId;
     
     private Integer languageConceptId;
     
-    private Integer noteClassConceptId;
-    
-    private Date noteDate;
-    
-    private String noteDatetime;
-    
-    private Integer noteEventFieldConceptId;
-    
-    private String noteEventId;
-    
-    private Integer noteId;
-    
-    private String noteSourceValue;
-    
-    private String noteText;
-    
-    private String noteTitle;
-    
-    private Integer noteTypeConceptId;
-    
-    private Integer personId;
-    
     private Integer providerId;
-    
-    private Integer visitDetailId;
     
     private Integer visitOccurrenceId;
     
-    private ConceptDvo encodingConceptDvo;
+    private Integer visitDetailId;
     
-    private ConceptDvo languageConceptDvo;
+    private String noteSourceValue;
     
-    private ConceptDvo noteClassConceptDvo;
+    private String noteEventId;
     
-    private ConceptDvo noteEventFieldConceptDvo;
-    
-    private ConceptDvo noteTypeConceptDvo;
-    
-    private PersonDvo personDvo;
-    
-    private ProviderDvo providerDvo;
-    
-    private VisitDetailDvo visitDetailDvo;
-    
-    private VisitOccurrenceDvo visitOccurrenceDvo;
+    private Integer noteEventFieldConceptId;
     
     //
     // trivial getters and setters
     //
+    
+    // noteId
+    
+    public void setNoteId(Integer val) {
+        this.noteId = val;
+    }
+    
+    public Integer getNoteId() {
+        return this.noteId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
+    
+    // noteDate
+    
+    public void setNoteDate(Date val) {
+        this.noteDate = val;
+    }
+    
+    public Date getNoteDate() {
+        return this.noteDate;
+    }
+    
+    // noteDatetime
+    
+    public void setNoteDatetime(Date val) {
+        this.noteDatetime = val;
+    }
+    
+    public Date getNoteDatetime() {
+        return this.noteDatetime;
+    }
+    
+    // noteTypeConceptId
+    
+    public void setNoteTypeConceptId(Integer val) {
+        this.noteTypeConceptId = val;
+    }
+    
+    public Integer getNoteTypeConceptId() {
+        return this.noteTypeConceptId;
+    }
+    
+    // noteClassConceptId
+    
+    public void setNoteClassConceptId(Integer val) {
+        this.noteClassConceptId = val;
+    }
+    
+    public Integer getNoteClassConceptId() {
+        return this.noteClassConceptId;
+    }
+    
+    // noteTitle
+    
+    public void setNoteTitle(String val) {
+        this.noteTitle = val;
+    }
+    
+    public String getNoteTitle() {
+        return this.noteTitle;
+    }
+    
+    // noteText
+    
+    public void setNoteText(String val) {
+        this.noteText = val;
+    }
+    
+    public String getNoteText() {
+        return this.noteText;
+    }
     
     // encodingConceptId
     
@@ -182,116 +243,6 @@ public class NoteDvo implements Dvo {
         return this.languageConceptId;
     }
     
-    // noteClassConceptId
-    
-    public void setNoteClassConceptId(Integer val) {
-        this.noteClassConceptId = val;
-    }
-    
-    public Integer getNoteClassConceptId() {
-        return this.noteClassConceptId;
-    }
-    
-    // noteDate
-    
-    public void setNoteDate(Date val) {
-        this.noteDate = val;
-    }
-    
-    public Date getNoteDate() {
-        return this.noteDate;
-    }
-    
-    // noteDatetime
-    
-    public void setNoteDatetime(String val) {
-        this.noteDatetime = val;
-    }
-    
-    public String getNoteDatetime() {
-        return this.noteDatetime;
-    }
-    
-    // noteEventFieldConceptId
-    
-    public void setNoteEventFieldConceptId(Integer val) {
-        this.noteEventFieldConceptId = val;
-    }
-    
-    public Integer getNoteEventFieldConceptId() {
-        return this.noteEventFieldConceptId;
-    }
-    
-    // noteEventId
-    
-    public void setNoteEventId(String val) {
-        this.noteEventId = val;
-    }
-    
-    public String getNoteEventId() {
-        return this.noteEventId;
-    }
-    
-    // noteId
-    
-    public void setNoteId(Integer val) {
-        this.noteId = val;
-    }
-    
-    public Integer getNoteId() {
-        return this.noteId;
-    }
-    
-    // noteSourceValue
-    
-    public void setNoteSourceValue(String val) {
-        this.noteSourceValue = val;
-    }
-    
-    public String getNoteSourceValue() {
-        return this.noteSourceValue;
-    }
-    
-    // noteText
-    
-    public void setNoteText(String val) {
-        this.noteText = val;
-    }
-    
-    public String getNoteText() {
-        return this.noteText;
-    }
-    
-    // noteTitle
-    
-    public void setNoteTitle(String val) {
-        this.noteTitle = val;
-    }
-    
-    public String getNoteTitle() {
-        return this.noteTitle;
-    }
-    
-    // noteTypeConceptId
-    
-    public void setNoteTypeConceptId(Integer val) {
-        this.noteTypeConceptId = val;
-    }
-    
-    public Integer getNoteTypeConceptId() {
-        return this.noteTypeConceptId;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
     // providerId
     
     public void setProviderId(Integer val) {
@@ -300,16 +251,6 @@ public class NoteDvo implements Dvo {
     
     public Integer getProviderId() {
         return this.providerId;
-    }
-    
-    // visitDetailId
-    
-    public void setVisitDetailId(Integer val) {
-        this.visitDetailId = val;
-    }
-    
-    public Integer getVisitDetailId() {
-        return this.visitDetailId;
     }
     
     // visitOccurrenceId
@@ -322,94 +263,44 @@ public class NoteDvo implements Dvo {
         return this.visitOccurrenceId;
     }
     
-    // encodingConceptDvo
+    // visitDetailId
     
-    public void setEncodingConceptDvo(ConceptDvo dvo) {
-        this.encodingConceptDvo = dvo;
+    public void setVisitDetailId(Integer val) {
+        this.visitDetailId = val;
     }
     
-    public ConceptDvo getEncodingConceptDvo() {
-        return this.encodingConceptDvo;
+    public Integer getVisitDetailId() {
+        return this.visitDetailId;
     }
     
-    // languageConceptDvo
+    // noteSourceValue
     
-    public void setLanguageConceptDvo(ConceptDvo dvo) {
-        this.languageConceptDvo = dvo;
+    public void setNoteSourceValue(String val) {
+        this.noteSourceValue = val;
     }
     
-    public ConceptDvo getLanguageConceptDvo() {
-        return this.languageConceptDvo;
+    public String getNoteSourceValue() {
+        return this.noteSourceValue;
     }
     
-    // noteClassConceptDvo
+    // noteEventId
     
-    public void setNoteClassConceptDvo(ConceptDvo dvo) {
-        this.noteClassConceptDvo = dvo;
+    public void setNoteEventId(String val) {
+        this.noteEventId = val;
     }
     
-    public ConceptDvo getNoteClassConceptDvo() {
-        return this.noteClassConceptDvo;
+    public String getNoteEventId() {
+        return this.noteEventId;
     }
     
-    // noteEventFieldConceptDvo
+    // noteEventFieldConceptId
     
-    public void setNoteEventFieldConceptDvo(ConceptDvo dvo) {
-        this.noteEventFieldConceptDvo = dvo;
+    public void setNoteEventFieldConceptId(Integer val) {
+        this.noteEventFieldConceptId = val;
     }
     
-    public ConceptDvo getNoteEventFieldConceptDvo() {
-        return this.noteEventFieldConceptDvo;
-    }
-    
-    // noteTypeConceptDvo
-    
-    public void setNoteTypeConceptDvo(ConceptDvo dvo) {
-        this.noteTypeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getNoteTypeConceptDvo() {
-        return this.noteTypeConceptDvo;
-    }
-    
-    // personDvo
-    
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
-    }
-    
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
-    }
-    
-    // providerDvo
-    
-    public void setProviderDvo(ProviderDvo dvo) {
-        this.providerDvo = dvo;
-    }
-    
-    public ProviderDvo getProviderDvo() {
-        return this.providerDvo;
-    }
-    
-    // visitDetailDvo
-    
-    public void setVisitDetailDvo(VisitDetailDvo dvo) {
-        this.visitDetailDvo = dvo;
-    }
-    
-    public VisitDetailDvo getVisitDetailDvo() {
-        return this.visitDetailDvo;
-    }
-    
-    // visitOccurrenceDvo
-    
-    public void setVisitOccurrenceDvo(VisitOccurrenceDvo dvo) {
-        this.visitOccurrenceDvo = dvo;
-    }
-    
-    public VisitOccurrenceDvo getVisitOccurrenceDvo() {
-        return this.visitOccurrenceDvo;
+    public Integer getNoteEventFieldConceptId() {
+        return this.noteEventFieldConceptId;
     }
     
     //
@@ -458,7 +349,6 @@ public class NoteDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getNoteId()  == null ? null: getNoteId() + ""
         };
         return rtn;
     }

@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for concept_relationship
+// Data Value Object (DVO) for CONCEPT_RELATIONSHIP
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ConceptRelationshipDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "concept_relationship";
+    public static final String TABLE_NAME = "CONCEPT_RELATIONSHIP";
     
     //
     // schemaName
@@ -31,10 +31,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "concept_id_1",
         "concept_id_2",
-        "invalid_reason",
         "relationship_id",
+        "valid_start_date",
         "valid_end_date",
-        "valid_start_date"
+        "invalid_reason"
     };
     
     //
@@ -51,10 +51,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "conceptId1",
         "conceptId2",
-        "invalidReason",
         "relationshipId",
+        "validStartDate",
         "validEndDate",
-        "validStartDate"
+        "invalidReason"
     };
     
     //
@@ -64,10 +64,10 @@ public class ConceptRelationshipDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "ConceptId1",
         "ConceptId2",
-        "InvalidReason",
         "RelationshipId",
+        "ValidStartDate",
         "ValidEndDate",
-        "ValidStartDate"
+        "InvalidReason"
     };
     
     
@@ -81,15 +81,13 @@ public class ConceptRelationshipDvo implements Dvo {
     
     private Integer conceptId2;
     
-    private String invalidReason;
-    
     private String relationshipId;
-    
-    private Date validEndDate;
     
     private Date validStartDate;
     
-    private RelationshipDvo relationshipDvo;
+    private Date validEndDate;
+    
+    private String invalidReason;
     
     //
     // trivial getters and setters
@@ -115,16 +113,6 @@ public class ConceptRelationshipDvo implements Dvo {
         return this.conceptId2;
     }
     
-    // invalidReason
-    
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
-    }
-    
-    public String getInvalidReason() {
-        return this.invalidReason;
-    }
-    
     // relationshipId
     
     public void setRelationshipId(String val) {
@@ -133,16 +121,6 @@ public class ConceptRelationshipDvo implements Dvo {
     
     public String getRelationshipId() {
         return this.relationshipId;
-    }
-    
-    // validEndDate
-    
-    public void setValidEndDate(Date val) {
-        this.validEndDate = val;
-    }
-    
-    public Date getValidEndDate() {
-        return this.validEndDate;
     }
     
     // validStartDate
@@ -155,14 +133,24 @@ public class ConceptRelationshipDvo implements Dvo {
         return this.validStartDate;
     }
     
-    // relationshipDvo
+    // validEndDate
     
-    public void setRelationshipDvo(RelationshipDvo dvo) {
-        this.relationshipDvo = dvo;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public RelationshipDvo getRelationshipDvo() {
-        return this.relationshipDvo;
+    public Date getValidEndDate() {
+        return this.validEndDate;
+    }
+    
+    // invalidReason
+    
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
+    }
+    
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     //

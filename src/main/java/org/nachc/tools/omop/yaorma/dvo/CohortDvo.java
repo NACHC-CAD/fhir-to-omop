@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for cohort
+// Data Value Object (DVO) for COHORT
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class CohortDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "cohort";
+    public static final String TABLE_NAME = "COHORT";
     
     //
     // schemaName
@@ -30,9 +30,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "cohort_definition_id",
-        "cohort_end_date",
+        "subject_id",
         "cohort_start_date",
-        "subject_id"
+        "cohort_end_date"
     };
     
     //
@@ -40,7 +40,6 @@ public class CohortDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "cohort_definition_id"
     };
     
     //
@@ -49,9 +48,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "cohortDefinitionId",
-        "cohortEndDate",
+        "subjectId",
         "cohortStartDate",
-        "subjectId"
+        "cohortEndDate"
     };
     
     //
@@ -60,9 +59,9 @@ public class CohortDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "CohortDefinitionId",
-        "CohortEndDate",
+        "SubjectId",
         "CohortStartDate",
-        "SubjectId"
+        "CohortEndDate"
     };
     
     
@@ -74,13 +73,11 @@ public class CohortDvo implements Dvo {
     
     private Integer cohortDefinitionId;
     
-    private Date cohortEndDate;
+    private Integer subjectId;
     
     private Date cohortStartDate;
     
-    private Integer subjectId;
-    
-    private ArrayList<CohortDefinitionDvo> cohortDefinitionCohortDefinitionList = new ArrayList<CohortDefinitionDvo>();
+    private Date cohortEndDate;
     
     //
     // trivial getters and setters
@@ -96,14 +93,14 @@ public class CohortDvo implements Dvo {
         return this.cohortDefinitionId;
     }
     
-    // cohortEndDate
+    // subjectId
     
-    public void setCohortEndDate(Date val) {
-        this.cohortEndDate = val;
+    public void setSubjectId(Integer val) {
+        this.subjectId = val;
     }
     
-    public Date getCohortEndDate() {
-        return this.cohortEndDate;
+    public Integer getSubjectId() {
+        return this.subjectId;
     }
     
     // cohortStartDate
@@ -116,22 +113,14 @@ public class CohortDvo implements Dvo {
         return this.cohortStartDate;
     }
     
-    // subjectId
+    // cohortEndDate
     
-    public void setSubjectId(Integer val) {
-        this.subjectId = val;
+    public void setCohortEndDate(Date val) {
+        this.cohortEndDate = val;
     }
     
-    public Integer getSubjectId() {
-        return this.subjectId;
-    }
-    
-    public ArrayList<CohortDefinitionDvo> getCohortDefinitionCohortDefinitionList() {
-        return cohortDefinitionCohortDefinitionList;
-    }
-    
-    public void setCohortDefinitionCohortDefinitionList(ArrayList<CohortDefinitionDvo> list) {
-        this.cohortDefinitionCohortDefinitionList = list;
+    public Date getCohortEndDate() {
+        return this.cohortEndDate;
     }
     
     //
@@ -180,7 +169,6 @@ public class CohortDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getCohortDefinitionId()  == null ? null: getCohortDefinitionId() + ""
         };
         return rtn;
     }

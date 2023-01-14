@@ -144,32 +144,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 	}
 
 	private void updatePrevVisit() {
-		log.info("* * *");
-		log.info("* * *");
-		log.info("* * *");
-		log.info("UPDATING PREVIOUS VISIT RECORDS");
-		log.info("* * *");
-		log.info("* * *");
-		log.info("* * *");
-		log.info("Updating prev visit records...");
-		String filePath = "/sqlserver/omop/update-prev-visit.sql";
-		InputStream is = FileUtil.getInputStream(filePath);
-		Connection conn = null;
-		if("postgres".equals(AppParams.get("cdmDbType"))) {
-			conn = PostgresDatabaseConnectionFactory.getCdmConnection();
-		} else {
-			conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
-		}
-		try {
-			if("mssql".equals(AppParams.get("cdmDbType"))) {
-				String dbName = AppParams.getDbName();
-				Database.update("use " + dbName, conn);
-			}
-			Database.executeSqlScript(is, conn);
-		} finally {
-			Database.close(conn);
-		}
-		log.info("Done updating prev visit.");
+		PopulatePreviousVisitTable.exec();
 	}
 
 }

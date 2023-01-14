@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for concept_ancestor
+// Data Value Object (DVO) for CONCEPT_ANCESTOR
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ConceptAncestorDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "concept_ancestor";
+    public static final String TABLE_NAME = "CONCEPT_ANCESTOR";
     
     //
     // schemaName
@@ -31,8 +31,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] COLUMN_NAMES = {
         "ancestor_concept_id",
         "descendant_concept_id",
-        "max_levels_of_separation",
-        "min_levels_of_separation"
+        "min_levels_of_separation",
+        "max_levels_of_separation"
     };
     
     //
@@ -49,8 +49,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] JAVA_NAMES = {
         "ancestorConceptId",
         "descendantConceptId",
-        "maxLevelsOfSeparation",
-        "minLevelsOfSeparation"
+        "minLevelsOfSeparation",
+        "maxLevelsOfSeparation"
     };
     
     //
@@ -60,8 +60,8 @@ public class ConceptAncestorDvo implements Dvo {
     public static final String[] JAVA_NAMES_PROPER = {
         "AncestorConceptId",
         "DescendantConceptId",
-        "MaxLevelsOfSeparation",
-        "MinLevelsOfSeparation"
+        "MinLevelsOfSeparation",
+        "MaxLevelsOfSeparation"
     };
     
     
@@ -75,13 +75,9 @@ public class ConceptAncestorDvo implements Dvo {
     
     private Integer descendantConceptId;
     
-    private Integer maxLevelsOfSeparation;
-    
     private Integer minLevelsOfSeparation;
     
-    private ConceptDvo ancestorConceptDvo;
-    
-    private ConceptDvo descendantConceptDvo;
+    private Integer maxLevelsOfSeparation;
     
     //
     // trivial getters and setters
@@ -107,16 +103,6 @@ public class ConceptAncestorDvo implements Dvo {
         return this.descendantConceptId;
     }
     
-    // maxLevelsOfSeparation
-    
-    public void setMaxLevelsOfSeparation(Integer val) {
-        this.maxLevelsOfSeparation = val;
-    }
-    
-    public Integer getMaxLevelsOfSeparation() {
-        return this.maxLevelsOfSeparation;
-    }
-    
     // minLevelsOfSeparation
     
     public void setMinLevelsOfSeparation(Integer val) {
@@ -127,24 +113,14 @@ public class ConceptAncestorDvo implements Dvo {
         return this.minLevelsOfSeparation;
     }
     
-    // ancestorConceptDvo
+    // maxLevelsOfSeparation
     
-    public void setAncestorConceptDvo(ConceptDvo dvo) {
-        this.ancestorConceptDvo = dvo;
+    public void setMaxLevelsOfSeparation(Integer val) {
+        this.maxLevelsOfSeparation = val;
     }
     
-    public ConceptDvo getAncestorConceptDvo() {
-        return this.ancestorConceptDvo;
-    }
-    
-    // descendantConceptDvo
-    
-    public void setDescendantConceptDvo(ConceptDvo dvo) {
-        this.descendantConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getDescendantConceptDvo() {
-        return this.descendantConceptDvo;
+    public Integer getMaxLevelsOfSeparation() {
+        return this.maxLevelsOfSeparation;
     }
     
     //

@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for concept_synonym
+// Data Value Object (DVO) for CONCEPT_SYNONYM
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ConceptSynonymDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "concept_synonym";
+    public static final String TABLE_NAME = "CONCEPT_SYNONYM";
     
     //
     // schemaName
@@ -74,10 +74,6 @@ public class ConceptSynonymDvo implements Dvo {
     
     private Integer languageConceptId;
     
-    private ConceptDvo conceptDvo;
-    
-    private ConceptDvo languageConceptDvo;
-    
     //
     // trivial getters and setters
     //
@@ -110,26 +106,6 @@ public class ConceptSynonymDvo implements Dvo {
     
     public Integer getLanguageConceptId() {
         return this.languageConceptId;
-    }
-    
-    // conceptDvo
-    
-    public void setConceptDvo(ConceptDvo dvo) {
-        this.conceptDvo = dvo;
-    }
-    
-    public ConceptDvo getConceptDvo() {
-        return this.conceptDvo;
-    }
-    
-    // languageConceptDvo
-    
-    public void setLanguageConceptDvo(ConceptDvo dvo) {
-        this.languageConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getLanguageConceptDvo() {
-        return this.languageConceptDvo;
     }
     
     //

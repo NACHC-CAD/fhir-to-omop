@@ -2,7 +2,7 @@
 // Data Value Object (DVO) for PERSON
 //
 
-package org.nachc.tools.omop.yaorma.dvo;
+package org.nachc.tools.omop.orm.ormgenerator.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ public class PersonDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "synthea_omop";
     
     //
     // columnNames

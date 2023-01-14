@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for domain
+// Data Value Object (DVO) for DOMAIN
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class DomainDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "domain";
+    public static final String TABLE_NAME = "DOMAIN";
     
     //
     // schemaName
@@ -29,9 +29,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "domain_concept_id",
         "domain_id",
-        "domain_name"
+        "domain_name",
+        "domain_concept_id"
     };
     
     //
@@ -39,7 +39,6 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "domain_id"
     };
     
     //
@@ -47,9 +46,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "domainConceptId",
         "domainId",
-        "domainName"
+        "domainName",
+        "domainConceptId"
     };
     
     //
@@ -57,9 +56,9 @@ public class DomainDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DomainConceptId",
         "DomainId",
-        "DomainName"
+        "DomainName",
+        "DomainConceptId"
     };
     
     
@@ -69,29 +68,15 @@ public class DomainDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer domainConceptId;
-    
     private String domainId;
     
     private String domainName;
     
-    private ConceptDvo domainConceptDvo;
-    
-    private ArrayList<CostDvo> costCostDomainList = new ArrayList<CostDvo>();
+    private Integer domainConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // domainConceptId
-    
-    public void setDomainConceptId(Integer val) {
-        this.domainConceptId = val;
-    }
-    
-    public Integer getDomainConceptId() {
-        return this.domainConceptId;
-    }
     
     // domainId
     
@@ -113,22 +98,14 @@ public class DomainDvo implements Dvo {
         return this.domainName;
     }
     
-    // domainConceptDvo
+    // domainConceptId
     
-    public void setDomainConceptDvo(ConceptDvo dvo) {
-        this.domainConceptDvo = dvo;
+    public void setDomainConceptId(Integer val) {
+        this.domainConceptId = val;
     }
     
-    public ConceptDvo getDomainConceptDvo() {
-        return this.domainConceptDvo;
-    }
-    
-    public ArrayList<CostDvo> getCostCostDomainList() {
-        return costCostDomainList;
-    }
-    
-    public void setCostCostDomainList(ArrayList<CostDvo> list) {
-        this.costCostDomainList = list;
+    public Integer getDomainConceptId() {
+        return this.domainConceptId;
     }
     
     //
@@ -177,7 +154,6 @@ public class DomainDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getDomainId()  == null ? null: getDomainId() + ""
         };
         return rtn;
     }

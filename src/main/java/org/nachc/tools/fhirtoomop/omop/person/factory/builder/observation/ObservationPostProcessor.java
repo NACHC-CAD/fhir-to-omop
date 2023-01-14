@@ -78,7 +78,7 @@ public class ObservationPostProcessor {
 			dvo.setUnitConceptId(OmopConceptConstants.getIsScalarMeasurementUnitsConceptId());
 		}
 		if (dvo.getObservationDatetime() == null && dvo.getObservationDate() != null) {
-			dvo.setObservationDatetime(TimeUtil.format(dvo.getObservationDate(), "yyyy-MM-dd"));
+			dvo.setObservationDatetime(dvo.getObservationDate());
 		}
 		if (dvo.getObservationEventId() == null && dvo.getObsEventFieldConceptId() == null) {
 			dvo.setObservationEventId(dvo.getObservationId() + "");

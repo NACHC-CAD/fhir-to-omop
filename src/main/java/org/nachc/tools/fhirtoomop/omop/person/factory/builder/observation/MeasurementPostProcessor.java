@@ -6,6 +6,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
+import org.yaorma.util.time.TimeUtil;
 
 public class MeasurementPostProcessor {
 
@@ -62,8 +63,8 @@ public class MeasurementPostProcessor {
 				dvo.setMeasurementSourceConceptId(0);
 			}
 			// time
-			if (dvo.getMeasurementTime() == null) {
-				dvo.setMeasurementTime(dvo.getMeasurementDatetime());
+			if (dvo.getMeasurementTime() == null && dvo.getMeasurementDatetime() != null) {
+				dvo.setMeasurementTime(TimeUtil.format(dvo.getMeasurementDatetime()));
 			}
 			// unit
 			if (dvo.getUnitSourceConceptId() == null) {
@@ -82,8 +83,8 @@ public class MeasurementPostProcessor {
 			if (dvo.getValueSourceValue() == null) {
 				dvo.setValueSourceValue(dvo.getValueAsNumber());
 			}
-			if (dvo.getValueSourceValue() == null && dvo.getValueAsConceptDvo() != null) {
-				dvo.setValueSourceValue(dvo.getValueAsConceptDvo().toString());
+			if (dvo.getValueSourceValue() == null && dvo.getValueAsConceptId() != null) {
+				dvo.setValueSourceValue(dvo.getValueAsConceptId().toString());
 			}
 			if (dvo.getValueSourceValue() == null) {
 				dvo.setValueSourceValue("Not Available");

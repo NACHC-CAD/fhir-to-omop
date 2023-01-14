@@ -22,7 +22,7 @@ public class GenerateOrm {
 	public static void generateDvos() {
 		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
 		try {
-			String schemaName = AppParams.getFullyQualifiedDbName();
+			String schemaName = AppParams.getDbName();
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/main/java/org/nachc/tools/omop/yaorma/dvo");
 			FileUtil.clearContents(destDir);

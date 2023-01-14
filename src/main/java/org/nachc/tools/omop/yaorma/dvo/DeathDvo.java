@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for death
+// Data Value Object (DVO) for DEATH
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class DeathDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "death";
+    public static final String TABLE_NAME = "DEATH";
     
     //
     // schemaName
@@ -29,13 +29,13 @@ public class DeathDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "cause_concept_id",
-        "cause_source_concept_id",
-        "cause_source_value",
+        "person_id",
         "death_date",
         "death_datetime",
         "death_type_concept_id",
-        "person_id"
+        "cause_concept_id",
+        "cause_source_value",
+        "cause_source_concept_id"
     };
     
     //
@@ -50,13 +50,13 @@ public class DeathDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "causeConceptId",
-        "causeSourceConceptId",
-        "causeSourceValue",
+        "personId",
         "deathDate",
         "deathDatetime",
         "deathTypeConceptId",
-        "personId"
+        "causeConceptId",
+        "causeSourceValue",
+        "causeSourceConceptId"
     };
     
     //
@@ -64,13 +64,13 @@ public class DeathDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "CauseConceptId",
-        "CauseSourceConceptId",
-        "CauseSourceValue",
+        "PersonId",
         "DeathDate",
         "DeathDatetime",
         "DeathTypeConceptId",
-        "PersonId"
+        "CauseConceptId",
+        "CauseSourceValue",
+        "CauseSourceConceptId"
     };
     
     
@@ -80,60 +80,32 @@ public class DeathDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer causeConceptId;
-    
-    private Integer causeSourceConceptId;
-    
-    private String causeSourceValue;
+    private Integer personId;
     
     private Date deathDate;
     
-    private String deathDatetime;
+    private Date deathDatetime;
     
     private Integer deathTypeConceptId;
     
-    private Integer personId;
+    private Integer causeConceptId;
     
-    private ConceptDvo causeConceptDvo;
+    private String causeSourceValue;
     
-    private ConceptDvo causeSourceConceptDvo;
-    
-    private ConceptDvo deathTypeConceptDvo;
-    
-    private PersonDvo personDvo;
+    private Integer causeSourceConceptId;
     
     //
     // trivial getters and setters
     //
     
-    // causeConceptId
+    // personId
     
-    public void setCauseConceptId(Integer val) {
-        this.causeConceptId = val;
+    public void setPersonId(Integer val) {
+        this.personId = val;
     }
     
-    public Integer getCauseConceptId() {
-        return this.causeConceptId;
-    }
-    
-    // causeSourceConceptId
-    
-    public void setCauseSourceConceptId(Integer val) {
-        this.causeSourceConceptId = val;
-    }
-    
-    public Integer getCauseSourceConceptId() {
-        return this.causeSourceConceptId;
-    }
-    
-    // causeSourceValue
-    
-    public void setCauseSourceValue(String val) {
-        this.causeSourceValue = val;
-    }
-    
-    public String getCauseSourceValue() {
-        return this.causeSourceValue;
+    public Integer getPersonId() {
+        return this.personId;
     }
     
     // deathDate
@@ -148,11 +120,11 @@ public class DeathDvo implements Dvo {
     
     // deathDatetime
     
-    public void setDeathDatetime(String val) {
+    public void setDeathDatetime(Date val) {
         this.deathDatetime = val;
     }
     
-    public String getDeathDatetime() {
+    public Date getDeathDatetime() {
         return this.deathDatetime;
     }
     
@@ -166,54 +138,34 @@ public class DeathDvo implements Dvo {
         return this.deathTypeConceptId;
     }
     
-    // personId
+    // causeConceptId
     
-    public void setPersonId(Integer val) {
-        this.personId = val;
+    public void setCauseConceptId(Integer val) {
+        this.causeConceptId = val;
     }
     
-    public Integer getPersonId() {
-        return this.personId;
+    public Integer getCauseConceptId() {
+        return this.causeConceptId;
     }
     
-    // causeConceptDvo
+    // causeSourceValue
     
-    public void setCauseConceptDvo(ConceptDvo dvo) {
-        this.causeConceptDvo = dvo;
+    public void setCauseSourceValue(String val) {
+        this.causeSourceValue = val;
     }
     
-    public ConceptDvo getCauseConceptDvo() {
-        return this.causeConceptDvo;
+    public String getCauseSourceValue() {
+        return this.causeSourceValue;
     }
     
-    // causeSourceConceptDvo
+    // causeSourceConceptId
     
-    public void setCauseSourceConceptDvo(ConceptDvo dvo) {
-        this.causeSourceConceptDvo = dvo;
+    public void setCauseSourceConceptId(Integer val) {
+        this.causeSourceConceptId = val;
     }
     
-    public ConceptDvo getCauseSourceConceptDvo() {
-        return this.causeSourceConceptDvo;
-    }
-    
-    // deathTypeConceptDvo
-    
-    public void setDeathTypeConceptDvo(ConceptDvo dvo) {
-        this.deathTypeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getDeathTypeConceptDvo() {
-        return this.deathTypeConceptDvo;
-    }
-    
-    // personDvo
-    
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
-    }
-    
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
+    public Integer getCauseSourceConceptId() {
+        return this.causeSourceConceptId;
     }
     
     //

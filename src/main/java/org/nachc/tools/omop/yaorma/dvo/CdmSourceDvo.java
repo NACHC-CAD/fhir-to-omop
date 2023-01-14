@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for cdm_source
+// Data Value Object (DVO) for CDM_SOURCE
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class CdmSourceDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "cdm_source";
+    public static final String TABLE_NAME = "CDM_SOURCE";
     
     //
     // schemaName
@@ -29,16 +29,16 @@ public class CdmSourceDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "cdm_etl_reference",
-        "cdm_holder",
-        "cdm_release_date",
-        "cdm_source_abbreviation",
         "cdm_source_name",
-        "cdm_version",
-        "cdm_version_concept_id",
+        "cdm_source_abbreviation",
+        "cdm_holder",
         "source_description",
         "source_documentation_reference",
+        "cdm_etl_reference",
         "source_release_date",
+        "cdm_release_date",
+        "cdm_version",
+        "cdm_version_concept_id",
         "vocabulary_version"
     };
     
@@ -54,16 +54,16 @@ public class CdmSourceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "cdmEtlReference",
-        "cdmHolder",
-        "cdmReleaseDate",
-        "cdmSourceAbbreviation",
         "cdmSourceName",
-        "cdmVersion",
-        "cdmVersionConceptId",
+        "cdmSourceAbbreviation",
+        "cdmHolder",
         "sourceDescription",
         "sourceDocumentationReference",
+        "cdmEtlReference",
         "sourceReleaseDate",
+        "cdmReleaseDate",
+        "cdmVersion",
+        "cdmVersionConceptId",
         "vocabularyVersion"
     };
     
@@ -72,16 +72,16 @@ public class CdmSourceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "CdmEtlReference",
-        "CdmHolder",
-        "CdmReleaseDate",
-        "CdmSourceAbbreviation",
         "CdmSourceName",
-        "CdmVersion",
-        "CdmVersionConceptId",
+        "CdmSourceAbbreviation",
+        "CdmHolder",
         "SourceDescription",
         "SourceDocumentationReference",
+        "CdmEtlReference",
         "SourceReleaseDate",
+        "CdmReleaseDate",
+        "CdmVersion",
+        "CdmVersionConceptId",
         "VocabularyVersion"
     };
     
@@ -92,62 +92,40 @@ public class CdmSourceDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String cdmEtlReference;
-    
-    private String cdmHolder;
-    
-    private Date cdmReleaseDate;
+    private String cdmSourceName;
     
     private String cdmSourceAbbreviation;
     
-    private String cdmSourceName;
-    
-    private String cdmVersion;
-    
-    private Integer cdmVersionConceptId;
+    private String cdmHolder;
     
     private String sourceDescription;
     
     private String sourceDocumentationReference;
     
+    private String cdmEtlReference;
+    
     private Date sourceReleaseDate;
     
-    private String vocabularyVersion;
+    private Date cdmReleaseDate;
     
-    private ConceptDvo cdmVersionConceptDvo;
+    private String cdmVersion;
+    
+    private Integer cdmVersionConceptId;
+    
+    private String vocabularyVersion;
     
     //
     // trivial getters and setters
     //
     
-    // cdmEtlReference
+    // cdmSourceName
     
-    public void setCdmEtlReference(String val) {
-        this.cdmEtlReference = val;
+    public void setCdmSourceName(String val) {
+        this.cdmSourceName = val;
     }
     
-    public String getCdmEtlReference() {
-        return this.cdmEtlReference;
-    }
-    
-    // cdmHolder
-    
-    public void setCdmHolder(String val) {
-        this.cdmHolder = val;
-    }
-    
-    public String getCdmHolder() {
-        return this.cdmHolder;
-    }
-    
-    // cdmReleaseDate
-    
-    public void setCdmReleaseDate(Date val) {
-        this.cdmReleaseDate = val;
-    }
-    
-    public Date getCdmReleaseDate() {
-        return this.cdmReleaseDate;
+    public String getCdmSourceName() {
+        return this.cdmSourceName;
     }
     
     // cdmSourceAbbreviation
@@ -160,34 +138,14 @@ public class CdmSourceDvo implements Dvo {
         return this.cdmSourceAbbreviation;
     }
     
-    // cdmSourceName
+    // cdmHolder
     
-    public void setCdmSourceName(String val) {
-        this.cdmSourceName = val;
+    public void setCdmHolder(String val) {
+        this.cdmHolder = val;
     }
     
-    public String getCdmSourceName() {
-        return this.cdmSourceName;
-    }
-    
-    // cdmVersion
-    
-    public void setCdmVersion(String val) {
-        this.cdmVersion = val;
-    }
-    
-    public String getCdmVersion() {
-        return this.cdmVersion;
-    }
-    
-    // cdmVersionConceptId
-    
-    public void setCdmVersionConceptId(Integer val) {
-        this.cdmVersionConceptId = val;
-    }
-    
-    public Integer getCdmVersionConceptId() {
-        return this.cdmVersionConceptId;
+    public String getCdmHolder() {
+        return this.cdmHolder;
     }
     
     // sourceDescription
@@ -210,6 +168,16 @@ public class CdmSourceDvo implements Dvo {
         return this.sourceDocumentationReference;
     }
     
+    // cdmEtlReference
+    
+    public void setCdmEtlReference(String val) {
+        this.cdmEtlReference = val;
+    }
+    
+    public String getCdmEtlReference() {
+        return this.cdmEtlReference;
+    }
+    
     // sourceReleaseDate
     
     public void setSourceReleaseDate(Date val) {
@@ -220,6 +188,36 @@ public class CdmSourceDvo implements Dvo {
         return this.sourceReleaseDate;
     }
     
+    // cdmReleaseDate
+    
+    public void setCdmReleaseDate(Date val) {
+        this.cdmReleaseDate = val;
+    }
+    
+    public Date getCdmReleaseDate() {
+        return this.cdmReleaseDate;
+    }
+    
+    // cdmVersion
+    
+    public void setCdmVersion(String val) {
+        this.cdmVersion = val;
+    }
+    
+    public String getCdmVersion() {
+        return this.cdmVersion;
+    }
+    
+    // cdmVersionConceptId
+    
+    public void setCdmVersionConceptId(Integer val) {
+        this.cdmVersionConceptId = val;
+    }
+    
+    public Integer getCdmVersionConceptId() {
+        return this.cdmVersionConceptId;
+    }
+    
     // vocabularyVersion
     
     public void setVocabularyVersion(String val) {
@@ -228,16 +226,6 @@ public class CdmSourceDvo implements Dvo {
     
     public String getVocabularyVersion() {
         return this.vocabularyVersion;
-    }
-    
-    // cdmVersionConceptDvo
-    
-    public void setCdmVersionConceptDvo(ConceptDvo dvo) {
-        this.cdmVersionConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getCdmVersionConceptDvo() {
-        return this.cdmVersionConceptDvo;
     }
     
     //

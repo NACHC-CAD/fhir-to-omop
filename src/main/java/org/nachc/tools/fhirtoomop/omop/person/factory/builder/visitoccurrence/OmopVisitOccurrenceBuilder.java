@@ -59,8 +59,8 @@ public class OmopVisitOccurrenceBuilder {
 		if(dvo.getVisitEndDate() == null) {
 			dvo.setVisitEndDate(dvo.getVisitStartDate());
 		}
-		dvo.setVisitStartDatetime(TimeUtil.format(dvo.getVisitStartDate(), "yyyy-MM-dd"));
-		dvo.setVisitEndDatetime(TimeUtil.format(dvo.getVisitEndDate(), "yyyy-MM-dd"));
+		dvo.setVisitStartDatetime(dvo.getVisitStartDate());
+		dvo.setVisitEndDatetime(dvo.getVisitEndDate());
 		dvo.setVisitSourceValue(enc.getEncounterId());
 		// visit concept
 		Coding encounterType = enc.getEncounterType();

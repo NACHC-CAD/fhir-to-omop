@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for condition_era
+// Data Value Object (DVO) for CONDITION_ERA
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ConditionEraDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "condition_era";
+    public static final String TABLE_NAME = "CONDITION_ERA";
     
     //
     // schemaName
@@ -29,12 +29,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "condition_concept_id",
-        "condition_era_end_date",
         "condition_era_id",
+        "person_id",
+        "condition_concept_id",
         "condition_era_start_date",
-        "condition_occurrence_count",
-        "person_id"
+        "condition_era_end_date",
+        "condition_occurrence_count"
     };
     
     //
@@ -42,7 +42,6 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "condition_era_id"
     };
     
     //
@@ -50,12 +49,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conditionConceptId",
-        "conditionEraEndDate",
         "conditionEraId",
+        "personId",
+        "conditionConceptId",
         "conditionEraStartDate",
-        "conditionOccurrenceCount",
-        "personId"
+        "conditionEraEndDate",
+        "conditionOccurrenceCount"
     };
     
     //
@@ -63,12 +62,12 @@ public class ConditionEraDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConditionConceptId",
-        "ConditionEraEndDate",
         "ConditionEraId",
+        "PersonId",
+        "ConditionConceptId",
         "ConditionEraStartDate",
-        "ConditionOccurrenceCount",
-        "PersonId"
+        "ConditionEraEndDate",
+        "ConditionOccurrenceCount"
     };
     
     
@@ -78,45 +77,21 @@ public class ConditionEraDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conditionConceptId;
-    
-    private String conditionEraEndDate;
-    
     private Integer conditionEraId;
-    
-    private String conditionEraStartDate;
-    
-    private Integer conditionOccurrenceCount;
     
     private Integer personId;
     
-    private ConceptDvo conditionConceptDvo;
+    private Integer conditionConceptId;
     
-    private PersonDvo personDvo;
+    private Date conditionEraStartDate;
+    
+    private Date conditionEraEndDate;
+    
+    private Integer conditionOccurrenceCount;
     
     //
     // trivial getters and setters
     //
-    
-    // conditionConceptId
-    
-    public void setConditionConceptId(Integer val) {
-        this.conditionConceptId = val;
-    }
-    
-    public Integer getConditionConceptId() {
-        return this.conditionConceptId;
-    }
-    
-    // conditionEraEndDate
-    
-    public void setConditionEraEndDate(String val) {
-        this.conditionEraEndDate = val;
-    }
-    
-    public String getConditionEraEndDate() {
-        return this.conditionEraEndDate;
-    }
     
     // conditionEraId
     
@@ -126,26 +101,6 @@ public class ConditionEraDvo implements Dvo {
     
     public Integer getConditionEraId() {
         return this.conditionEraId;
-    }
-    
-    // conditionEraStartDate
-    
-    public void setConditionEraStartDate(String val) {
-        this.conditionEraStartDate = val;
-    }
-    
-    public String getConditionEraStartDate() {
-        return this.conditionEraStartDate;
-    }
-    
-    // conditionOccurrenceCount
-    
-    public void setConditionOccurrenceCount(Integer val) {
-        this.conditionOccurrenceCount = val;
-    }
-    
-    public Integer getConditionOccurrenceCount() {
-        return this.conditionOccurrenceCount;
     }
     
     // personId
@@ -158,24 +113,44 @@ public class ConditionEraDvo implements Dvo {
         return this.personId;
     }
     
-    // conditionConceptDvo
+    // conditionConceptId
     
-    public void setConditionConceptDvo(ConceptDvo dvo) {
-        this.conditionConceptDvo = dvo;
+    public void setConditionConceptId(Integer val) {
+        this.conditionConceptId = val;
     }
     
-    public ConceptDvo getConditionConceptDvo() {
-        return this.conditionConceptDvo;
+    public Integer getConditionConceptId() {
+        return this.conditionConceptId;
     }
     
-    // personDvo
+    // conditionEraStartDate
     
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
+    public void setConditionEraStartDate(Date val) {
+        this.conditionEraStartDate = val;
     }
     
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
+    public Date getConditionEraStartDate() {
+        return this.conditionEraStartDate;
+    }
+    
+    // conditionEraEndDate
+    
+    public void setConditionEraEndDate(Date val) {
+        this.conditionEraEndDate = val;
+    }
+    
+    public Date getConditionEraEndDate() {
+        return this.conditionEraEndDate;
+    }
+    
+    // conditionOccurrenceCount
+    
+    public void setConditionOccurrenceCount(Integer val) {
+        this.conditionOccurrenceCount = val;
+    }
+    
+    public Integer getConditionOccurrenceCount() {
+        return this.conditionOccurrenceCount;
     }
     
     //
@@ -224,7 +199,6 @@ public class ConditionEraDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getConditionEraId()  == null ? null: getConditionEraId() + ""
         };
         return rtn;
     }

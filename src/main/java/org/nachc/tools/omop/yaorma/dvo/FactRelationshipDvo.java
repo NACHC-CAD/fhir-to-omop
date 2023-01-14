@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for fact_relationship
+// Data Value Object (DVO) for FACT_RELATIONSHIP
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class FactRelationshipDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "fact_relationship";
+    public static final String TABLE_NAME = "FACT_RELATIONSHIP";
     
     //
     // schemaName
@@ -30,8 +30,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] COLUMN_NAMES = {
         "domain_concept_id_1",
-        "domain_concept_id_2",
         "fact_id_1",
+        "domain_concept_id_2",
         "fact_id_2",
         "relationship_concept_id"
     };
@@ -49,8 +49,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] JAVA_NAMES = {
         "domainConceptId1",
-        "domainConceptId2",
         "factId1",
+        "domainConceptId2",
         "factId2",
         "relationshipConceptId"
     };
@@ -61,8 +61,8 @@ public class FactRelationshipDvo implements Dvo {
     
     public static final String[] JAVA_NAMES_PROPER = {
         "DomainConceptId1",
-        "DomainConceptId2",
         "FactId1",
+        "DomainConceptId2",
         "FactId2",
         "RelationshipConceptId"
     };
@@ -76,19 +76,13 @@ public class FactRelationshipDvo implements Dvo {
     
     private Integer domainConceptId1;
     
-    private Integer domainConceptId2;
-    
     private Integer factId1;
+    
+    private Integer domainConceptId2;
     
     private Integer factId2;
     
     private Integer relationshipConceptId;
-    
-    private ConceptDvo domainConceptId1Dvo;
-    
-    private ConceptDvo domainConceptId2Dvo;
-    
-    private ConceptDvo relationshipConceptDvo;
     
     //
     // trivial getters and setters
@@ -104,16 +98,6 @@ public class FactRelationshipDvo implements Dvo {
         return this.domainConceptId1;
     }
     
-    // domainConceptId2
-    
-    public void setDomainConceptId2(Integer val) {
-        this.domainConceptId2 = val;
-    }
-    
-    public Integer getDomainConceptId2() {
-        return this.domainConceptId2;
-    }
-    
     // factId1
     
     public void setFactId1(Integer val) {
@@ -122,6 +106,16 @@ public class FactRelationshipDvo implements Dvo {
     
     public Integer getFactId1() {
         return this.factId1;
+    }
+    
+    // domainConceptId2
+    
+    public void setDomainConceptId2(Integer val) {
+        this.domainConceptId2 = val;
+    }
+    
+    public Integer getDomainConceptId2() {
+        return this.domainConceptId2;
     }
     
     // factId2
@@ -142,36 +136,6 @@ public class FactRelationshipDvo implements Dvo {
     
     public Integer getRelationshipConceptId() {
         return this.relationshipConceptId;
-    }
-    
-    // domainConceptId1Dvo
-    
-    public void setDomainConceptId1Dvo(ConceptDvo dvo) {
-        this.domainConceptId1Dvo = dvo;
-    }
-    
-    public ConceptDvo getDomainConceptId1Dvo() {
-        return this.domainConceptId1Dvo;
-    }
-    
-    // domainConceptId2Dvo
-    
-    public void setDomainConceptId2Dvo(ConceptDvo dvo) {
-        this.domainConceptId2Dvo = dvo;
-    }
-    
-    public ConceptDvo getDomainConceptId2Dvo() {
-        return this.domainConceptId2Dvo;
-    }
-    
-    // relationshipConceptDvo
-    
-    public void setRelationshipConceptDvo(ConceptDvo dvo) {
-        this.relationshipConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getRelationshipConceptDvo() {
-        return this.relationshipConceptDvo;
     }
     
     //

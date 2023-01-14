@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for relationship
+// Data Value Object (DVO) for RELATIONSHIP
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class RelationshipDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "relationship";
+    public static final String TABLE_NAME = "RELATIONSHIP";
     
     //
     // schemaName
@@ -29,12 +29,12 @@ public class RelationshipDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "defines_ancestry",
-        "is_hierarchical",
-        "relationship_concept_id",
         "relationship_id",
         "relationship_name",
-        "reverse_relationship_id"
+        "is_hierarchical",
+        "defines_ancestry",
+        "reverse_relationship_id",
+        "relationship_concept_id"
     };
     
     //
@@ -42,7 +42,6 @@ public class RelationshipDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "relationship_id"
     };
     
     //
@@ -50,12 +49,12 @@ public class RelationshipDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "definesAncestry",
-        "isHierarchical",
-        "relationshipConceptId",
         "relationshipId",
         "relationshipName",
-        "reverseRelationshipId"
+        "isHierarchical",
+        "definesAncestry",
+        "reverseRelationshipId",
+        "relationshipConceptId"
     };
     
     //
@@ -63,12 +62,12 @@ public class RelationshipDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "DefinesAncestry",
-        "IsHierarchical",
-        "RelationshipConceptId",
         "RelationshipId",
         "RelationshipName",
-        "ReverseRelationshipId"
+        "IsHierarchical",
+        "DefinesAncestry",
+        "ReverseRelationshipId",
+        "RelationshipConceptId"
     };
     
     
@@ -78,55 +77,21 @@ public class RelationshipDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String definesAncestry;
-    
-    private String isHierarchical;
-    
-    private Integer relationshipConceptId;
-    
     private String relationshipId;
     
     private String relationshipName;
     
+    private String isHierarchical;
+    
+    private String definesAncestry;
+    
     private String reverseRelationshipId;
     
-    private ConceptDvo relationshipConceptDvo;
-    
-    private ArrayList<ConceptRelationshipDvo> conceptRelationshipRelationshipList = new ArrayList<ConceptRelationshipDvo>();
+    private Integer relationshipConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // definesAncestry
-    
-    public void setDefinesAncestry(String val) {
-        this.definesAncestry = val;
-    }
-    
-    public String getDefinesAncestry() {
-        return this.definesAncestry;
-    }
-    
-    // isHierarchical
-    
-    public void setIsHierarchical(String val) {
-        this.isHierarchical = val;
-    }
-    
-    public String getIsHierarchical() {
-        return this.isHierarchical;
-    }
-    
-    // relationshipConceptId
-    
-    public void setRelationshipConceptId(Integer val) {
-        this.relationshipConceptId = val;
-    }
-    
-    public Integer getRelationshipConceptId() {
-        return this.relationshipConceptId;
-    }
     
     // relationshipId
     
@@ -148,6 +113,26 @@ public class RelationshipDvo implements Dvo {
         return this.relationshipName;
     }
     
+    // isHierarchical
+    
+    public void setIsHierarchical(String val) {
+        this.isHierarchical = val;
+    }
+    
+    public String getIsHierarchical() {
+        return this.isHierarchical;
+    }
+    
+    // definesAncestry
+    
+    public void setDefinesAncestry(String val) {
+        this.definesAncestry = val;
+    }
+    
+    public String getDefinesAncestry() {
+        return this.definesAncestry;
+    }
+    
     // reverseRelationshipId
     
     public void setReverseRelationshipId(String val) {
@@ -158,22 +143,14 @@ public class RelationshipDvo implements Dvo {
         return this.reverseRelationshipId;
     }
     
-    // relationshipConceptDvo
+    // relationshipConceptId
     
-    public void setRelationshipConceptDvo(ConceptDvo dvo) {
-        this.relationshipConceptDvo = dvo;
+    public void setRelationshipConceptId(Integer val) {
+        this.relationshipConceptId = val;
     }
     
-    public ConceptDvo getRelationshipConceptDvo() {
-        return this.relationshipConceptDvo;
-    }
-    
-    public ArrayList<ConceptRelationshipDvo> getConceptRelationshipRelationshipList() {
-        return conceptRelationshipRelationshipList;
-    }
-    
-    public void setConceptRelationshipRelationshipList(ArrayList<ConceptRelationshipDvo> list) {
-        this.conceptRelationshipRelationshipList = list;
+    public Integer getRelationshipConceptId() {
+        return this.relationshipConceptId;
     }
     
     //
@@ -222,7 +199,6 @@ public class RelationshipDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getRelationshipId()  == null ? null: getRelationshipId() + ""
         };
         return rtn;
     }

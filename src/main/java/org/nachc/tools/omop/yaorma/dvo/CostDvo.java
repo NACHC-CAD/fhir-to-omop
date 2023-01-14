@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for cost
+// Data Value Object (DVO) for COST
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class CostDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "cost";
+    public static final String TABLE_NAME = "COST";
     
     //
     // schemaName
@@ -29,28 +29,28 @@ public class CostDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "amount_allowed",
-        "cost_domain_id",
-        "cost_event_id",
         "cost_id",
+        "cost_event_id",
+        "cost_domain_id",
         "cost_type_concept_id",
         "currency_concept_id",
-        "drg_concept_id",
-        "drg_source_value",
-        "paid_by_patient",
-        "paid_by_payer",
-        "paid_by_primary",
-        "paid_dispensing_fee",
-        "paid_ingredient_cost",
-        "paid_patient_coinsurance",
-        "paid_patient_copay",
-        "paid_patient_deductible",
-        "payer_plan_period_id",
-        "revenue_code_concept_id",
-        "revenue_code_source_value",
         "total_charge",
         "total_cost",
-        "total_paid"
+        "total_paid",
+        "paid_by_payer",
+        "paid_by_patient",
+        "paid_patient_copay",
+        "paid_patient_coinsurance",
+        "paid_patient_deductible",
+        "paid_by_primary",
+        "paid_ingredient_cost",
+        "paid_dispensing_fee",
+        "payer_plan_period_id",
+        "amount_allowed",
+        "revenue_code_concept_id",
+        "revenue_code_source_value",
+        "drg_concept_id",
+        "drg_source_value"
     };
     
     //
@@ -58,7 +58,6 @@ public class CostDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "cost_id"
     };
     
     //
@@ -66,28 +65,28 @@ public class CostDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "amountAllowed",
-        "costDomainId",
-        "costEventId",
         "costId",
+        "costEventId",
+        "costDomainId",
         "costTypeConceptId",
         "currencyConceptId",
-        "drgConceptId",
-        "drgSourceValue",
-        "paidByPatient",
-        "paidByPayer",
-        "paidByPrimary",
-        "paidDispensingFee",
-        "paidIngredientCost",
-        "paidPatientCoinsurance",
-        "paidPatientCopay",
-        "paidPatientDeductible",
-        "payerPlanPeriodId",
-        "revenueCodeConceptId",
-        "revenueCodeSourceValue",
         "totalCharge",
         "totalCost",
-        "totalPaid"
+        "totalPaid",
+        "paidByPayer",
+        "paidByPatient",
+        "paidPatientCopay",
+        "paidPatientCoinsurance",
+        "paidPatientDeductible",
+        "paidByPrimary",
+        "paidIngredientCost",
+        "paidDispensingFee",
+        "payerPlanPeriodId",
+        "amountAllowed",
+        "revenueCodeConceptId",
+        "revenueCodeSourceValue",
+        "drgConceptId",
+        "drgSourceValue"
     };
     
     //
@@ -95,28 +94,28 @@ public class CostDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "AmountAllowed",
-        "CostDomainId",
-        "CostEventId",
         "CostId",
+        "CostEventId",
+        "CostDomainId",
         "CostTypeConceptId",
         "CurrencyConceptId",
-        "DrgConceptId",
-        "DrgSourceValue",
-        "PaidByPatient",
-        "PaidByPayer",
-        "PaidByPrimary",
-        "PaidDispensingFee",
-        "PaidIngredientCost",
-        "PaidPatientCoinsurance",
-        "PaidPatientCopay",
-        "PaidPatientDeductible",
-        "PayerPlanPeriodId",
-        "RevenueCodeConceptId",
-        "RevenueCodeSourceValue",
         "TotalCharge",
         "TotalCost",
-        "TotalPaid"
+        "TotalPaid",
+        "PaidByPayer",
+        "PaidByPatient",
+        "PaidPatientCopay",
+        "PaidPatientCoinsurance",
+        "PaidPatientDeductible",
+        "PaidByPrimary",
+        "PaidIngredientCost",
+        "PaidDispensingFee",
+        "PayerPlanPeriodId",
+        "AmountAllowed",
+        "RevenueCodeConceptId",
+        "RevenueCodeSourceValue",
+        "DrgConceptId",
+        "DrgSourceValue"
     };
     
     
@@ -126,43 +125,15 @@ public class CostDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String amountAllowed;
-    
-    private String costDomainId;
+    private Integer costId;
     
     private Integer costEventId;
     
-    private Integer costId;
+    private String costDomainId;
     
     private Integer costTypeConceptId;
     
     private Integer currencyConceptId;
-    
-    private Integer drgConceptId;
-    
-    private String drgSourceValue;
-    
-    private String paidByPatient;
-    
-    private String paidByPayer;
-    
-    private String paidByPrimary;
-    
-    private String paidDispensingFee;
-    
-    private String paidIngredientCost;
-    
-    private String paidPatientCoinsurance;
-    
-    private String paidPatientCopay;
-    
-    private String paidPatientDeductible;
-    
-    private Integer payerPlanPeriodId;
-    
-    private Integer revenueCodeConceptId;
-    
-    private String revenueCodeSourceValue;
     
     private String totalCharge;
     
@@ -170,38 +141,46 @@ public class CostDvo implements Dvo {
     
     private String totalPaid;
     
-    private DomainDvo costDomainDvo;
+    private String paidByPayer;
     
-    private ConceptDvo costTypeConceptDvo;
+    private String paidByPatient;
     
-    private ConceptDvo currencyConceptDvo;
+    private String paidPatientCopay;
     
-    private ConceptDvo drgConceptDvo;
+    private String paidPatientCoinsurance;
     
-    private ConceptDvo revenueCodeConceptDvo;
+    private String paidPatientDeductible;
+    
+    private String paidByPrimary;
+    
+    private String paidIngredientCost;
+    
+    private String paidDispensingFee;
+    
+    private Integer payerPlanPeriodId;
+    
+    private String amountAllowed;
+    
+    private Integer revenueCodeConceptId;
+    
+    private String revenueCodeSourceValue;
+    
+    private Integer drgConceptId;
+    
+    private String drgSourceValue;
     
     //
     // trivial getters and setters
     //
     
-    // amountAllowed
+    // costId
     
-    public void setAmountAllowed(String val) {
-        this.amountAllowed = val;
+    public void setCostId(Integer val) {
+        this.costId = val;
     }
     
-    public String getAmountAllowed() {
-        return this.amountAllowed;
-    }
-    
-    // costDomainId
-    
-    public void setCostDomainId(String val) {
-        this.costDomainId = val;
-    }
-    
-    public String getCostDomainId() {
-        return this.costDomainId;
+    public Integer getCostId() {
+        return this.costId;
     }
     
     // costEventId
@@ -214,14 +193,14 @@ public class CostDvo implements Dvo {
         return this.costEventId;
     }
     
-    // costId
+    // costDomainId
     
-    public void setCostId(Integer val) {
-        this.costId = val;
+    public void setCostDomainId(String val) {
+        this.costDomainId = val;
     }
     
-    public Integer getCostId() {
-        return this.costId;
+    public String getCostDomainId() {
+        return this.costDomainId;
     }
     
     // costTypeConceptId
@@ -242,136 +221,6 @@ public class CostDvo implements Dvo {
     
     public Integer getCurrencyConceptId() {
         return this.currencyConceptId;
-    }
-    
-    // drgConceptId
-    
-    public void setDrgConceptId(Integer val) {
-        this.drgConceptId = val;
-    }
-    
-    public Integer getDrgConceptId() {
-        return this.drgConceptId;
-    }
-    
-    // drgSourceValue
-    
-    public void setDrgSourceValue(String val) {
-        this.drgSourceValue = val;
-    }
-    
-    public String getDrgSourceValue() {
-        return this.drgSourceValue;
-    }
-    
-    // paidByPatient
-    
-    public void setPaidByPatient(String val) {
-        this.paidByPatient = val;
-    }
-    
-    public String getPaidByPatient() {
-        return this.paidByPatient;
-    }
-    
-    // paidByPayer
-    
-    public void setPaidByPayer(String val) {
-        this.paidByPayer = val;
-    }
-    
-    public String getPaidByPayer() {
-        return this.paidByPayer;
-    }
-    
-    // paidByPrimary
-    
-    public void setPaidByPrimary(String val) {
-        this.paidByPrimary = val;
-    }
-    
-    public String getPaidByPrimary() {
-        return this.paidByPrimary;
-    }
-    
-    // paidDispensingFee
-    
-    public void setPaidDispensingFee(String val) {
-        this.paidDispensingFee = val;
-    }
-    
-    public String getPaidDispensingFee() {
-        return this.paidDispensingFee;
-    }
-    
-    // paidIngredientCost
-    
-    public void setPaidIngredientCost(String val) {
-        this.paidIngredientCost = val;
-    }
-    
-    public String getPaidIngredientCost() {
-        return this.paidIngredientCost;
-    }
-    
-    // paidPatientCoinsurance
-    
-    public void setPaidPatientCoinsurance(String val) {
-        this.paidPatientCoinsurance = val;
-    }
-    
-    public String getPaidPatientCoinsurance() {
-        return this.paidPatientCoinsurance;
-    }
-    
-    // paidPatientCopay
-    
-    public void setPaidPatientCopay(String val) {
-        this.paidPatientCopay = val;
-    }
-    
-    public String getPaidPatientCopay() {
-        return this.paidPatientCopay;
-    }
-    
-    // paidPatientDeductible
-    
-    public void setPaidPatientDeductible(String val) {
-        this.paidPatientDeductible = val;
-    }
-    
-    public String getPaidPatientDeductible() {
-        return this.paidPatientDeductible;
-    }
-    
-    // payerPlanPeriodId
-    
-    public void setPayerPlanPeriodId(Integer val) {
-        this.payerPlanPeriodId = val;
-    }
-    
-    public Integer getPayerPlanPeriodId() {
-        return this.payerPlanPeriodId;
-    }
-    
-    // revenueCodeConceptId
-    
-    public void setRevenueCodeConceptId(Integer val) {
-        this.revenueCodeConceptId = val;
-    }
-    
-    public Integer getRevenueCodeConceptId() {
-        return this.revenueCodeConceptId;
-    }
-    
-    // revenueCodeSourceValue
-    
-    public void setRevenueCodeSourceValue(String val) {
-        this.revenueCodeSourceValue = val;
-    }
-    
-    public String getRevenueCodeSourceValue() {
-        return this.revenueCodeSourceValue;
     }
     
     // totalCharge
@@ -404,54 +253,144 @@ public class CostDvo implements Dvo {
         return this.totalPaid;
     }
     
-    // costDomainDvo
+    // paidByPayer
     
-    public void setCostDomainDvo(DomainDvo dvo) {
-        this.costDomainDvo = dvo;
+    public void setPaidByPayer(String val) {
+        this.paidByPayer = val;
     }
     
-    public DomainDvo getCostDomainDvo() {
-        return this.costDomainDvo;
+    public String getPaidByPayer() {
+        return this.paidByPayer;
     }
     
-    // costTypeConceptDvo
+    // paidByPatient
     
-    public void setCostTypeConceptDvo(ConceptDvo dvo) {
-        this.costTypeConceptDvo = dvo;
+    public void setPaidByPatient(String val) {
+        this.paidByPatient = val;
     }
     
-    public ConceptDvo getCostTypeConceptDvo() {
-        return this.costTypeConceptDvo;
+    public String getPaidByPatient() {
+        return this.paidByPatient;
     }
     
-    // currencyConceptDvo
+    // paidPatientCopay
     
-    public void setCurrencyConceptDvo(ConceptDvo dvo) {
-        this.currencyConceptDvo = dvo;
+    public void setPaidPatientCopay(String val) {
+        this.paidPatientCopay = val;
     }
     
-    public ConceptDvo getCurrencyConceptDvo() {
-        return this.currencyConceptDvo;
+    public String getPaidPatientCopay() {
+        return this.paidPatientCopay;
     }
     
-    // drgConceptDvo
+    // paidPatientCoinsurance
     
-    public void setDrgConceptDvo(ConceptDvo dvo) {
-        this.drgConceptDvo = dvo;
+    public void setPaidPatientCoinsurance(String val) {
+        this.paidPatientCoinsurance = val;
     }
     
-    public ConceptDvo getDrgConceptDvo() {
-        return this.drgConceptDvo;
+    public String getPaidPatientCoinsurance() {
+        return this.paidPatientCoinsurance;
     }
     
-    // revenueCodeConceptDvo
+    // paidPatientDeductible
     
-    public void setRevenueCodeConceptDvo(ConceptDvo dvo) {
-        this.revenueCodeConceptDvo = dvo;
+    public void setPaidPatientDeductible(String val) {
+        this.paidPatientDeductible = val;
     }
     
-    public ConceptDvo getRevenueCodeConceptDvo() {
-        return this.revenueCodeConceptDvo;
+    public String getPaidPatientDeductible() {
+        return this.paidPatientDeductible;
+    }
+    
+    // paidByPrimary
+    
+    public void setPaidByPrimary(String val) {
+        this.paidByPrimary = val;
+    }
+    
+    public String getPaidByPrimary() {
+        return this.paidByPrimary;
+    }
+    
+    // paidIngredientCost
+    
+    public void setPaidIngredientCost(String val) {
+        this.paidIngredientCost = val;
+    }
+    
+    public String getPaidIngredientCost() {
+        return this.paidIngredientCost;
+    }
+    
+    // paidDispensingFee
+    
+    public void setPaidDispensingFee(String val) {
+        this.paidDispensingFee = val;
+    }
+    
+    public String getPaidDispensingFee() {
+        return this.paidDispensingFee;
+    }
+    
+    // payerPlanPeriodId
+    
+    public void setPayerPlanPeriodId(Integer val) {
+        this.payerPlanPeriodId = val;
+    }
+    
+    public Integer getPayerPlanPeriodId() {
+        return this.payerPlanPeriodId;
+    }
+    
+    // amountAllowed
+    
+    public void setAmountAllowed(String val) {
+        this.amountAllowed = val;
+    }
+    
+    public String getAmountAllowed() {
+        return this.amountAllowed;
+    }
+    
+    // revenueCodeConceptId
+    
+    public void setRevenueCodeConceptId(Integer val) {
+        this.revenueCodeConceptId = val;
+    }
+    
+    public Integer getRevenueCodeConceptId() {
+        return this.revenueCodeConceptId;
+    }
+    
+    // revenueCodeSourceValue
+    
+    public void setRevenueCodeSourceValue(String val) {
+        this.revenueCodeSourceValue = val;
+    }
+    
+    public String getRevenueCodeSourceValue() {
+        return this.revenueCodeSourceValue;
+    }
+    
+    // drgConceptId
+    
+    public void setDrgConceptId(Integer val) {
+        this.drgConceptId = val;
+    }
+    
+    public Integer getDrgConceptId() {
+        return this.drgConceptId;
+    }
+    
+    // drgSourceValue
+    
+    public void setDrgSourceValue(String val) {
+        this.drgSourceValue = val;
+    }
+    
+    public String getDrgSourceValue() {
+        return this.drgSourceValue;
     }
     
     //
@@ -500,7 +439,6 @@ public class CostDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getCostId()  == null ? null: getCostId() + ""
         };
         return rtn;
     }

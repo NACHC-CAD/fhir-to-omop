@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for source_to_concept_map
+// Data Value Object (DVO) for SOURCE_TO_CONCEPT_MAP
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class SourceToConceptMapDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "source_to_concept_map";
+    public static final String TABLE_NAME = "SOURCE_TO_CONCEPT_MAP";
     
     //
     // schemaName
@@ -29,15 +29,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "invalid_reason",
         "source_code",
-        "source_code_description",
         "source_concept_id",
         "source_vocabulary_id",
+        "source_code_description",
         "target_concept_id",
         "target_vocabulary_id",
+        "valid_start_date",
         "valid_end_date",
-        "valid_start_date"
+        "invalid_reason"
     };
     
     //
@@ -52,15 +52,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "invalidReason",
         "sourceCode",
-        "sourceCodeDescription",
         "sourceConceptId",
         "sourceVocabularyId",
+        "sourceCodeDescription",
         "targetConceptId",
         "targetVocabularyId",
+        "validStartDate",
         "validEndDate",
-        "validStartDate"
+        "invalidReason"
     };
     
     //
@@ -68,15 +68,15 @@ public class SourceToConceptMapDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "InvalidReason",
         "SourceCode",
-        "SourceCodeDescription",
         "SourceConceptId",
         "SourceVocabularyId",
+        "SourceCodeDescription",
         "TargetConceptId",
         "TargetVocabularyId",
+        "ValidStartDate",
         "ValidEndDate",
-        "ValidStartDate"
+        "InvalidReason"
     };
     
     
@@ -86,43 +86,27 @@ public class SourceToConceptMapDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String invalidReason;
-    
     private String sourceCode;
-    
-    private String sourceCodeDescription;
     
     private Integer sourceConceptId;
     
     private String sourceVocabularyId;
     
+    private String sourceCodeDescription;
+    
     private Integer targetConceptId;
     
     private String targetVocabularyId;
     
-    private Date validEndDate;
-    
     private Date validStartDate;
     
-    private ConceptDvo sourceConceptDvo;
+    private Date validEndDate;
     
-    private ConceptDvo targetConceptDvo;
-    
-    private VocabularyDvo targetVocabularyDvo;
+    private String invalidReason;
     
     //
     // trivial getters and setters
     //
-    
-    // invalidReason
-    
-    public void setInvalidReason(String val) {
-        this.invalidReason = val;
-    }
-    
-    public String getInvalidReason() {
-        return this.invalidReason;
-    }
     
     // sourceCode
     
@@ -132,16 +116,6 @@ public class SourceToConceptMapDvo implements Dvo {
     
     public String getSourceCode() {
         return this.sourceCode;
-    }
-    
-    // sourceCodeDescription
-    
-    public void setSourceCodeDescription(String val) {
-        this.sourceCodeDescription = val;
-    }
-    
-    public String getSourceCodeDescription() {
-        return this.sourceCodeDescription;
     }
     
     // sourceConceptId
@@ -164,6 +138,16 @@ public class SourceToConceptMapDvo implements Dvo {
         return this.sourceVocabularyId;
     }
     
+    // sourceCodeDescription
+    
+    public void setSourceCodeDescription(String val) {
+        this.sourceCodeDescription = val;
+    }
+    
+    public String getSourceCodeDescription() {
+        return this.sourceCodeDescription;
+    }
+    
     // targetConceptId
     
     public void setTargetConceptId(Integer val) {
@@ -184,16 +168,6 @@ public class SourceToConceptMapDvo implements Dvo {
         return this.targetVocabularyId;
     }
     
-    // validEndDate
-    
-    public void setValidEndDate(Date val) {
-        this.validEndDate = val;
-    }
-    
-    public Date getValidEndDate() {
-        return this.validEndDate;
-    }
-    
     // validStartDate
     
     public void setValidStartDate(Date val) {
@@ -204,34 +178,24 @@ public class SourceToConceptMapDvo implements Dvo {
         return this.validStartDate;
     }
     
-    // sourceConceptDvo
+    // validEndDate
     
-    public void setSourceConceptDvo(ConceptDvo dvo) {
-        this.sourceConceptDvo = dvo;
+    public void setValidEndDate(Date val) {
+        this.validEndDate = val;
     }
     
-    public ConceptDvo getSourceConceptDvo() {
-        return this.sourceConceptDvo;
+    public Date getValidEndDate() {
+        return this.validEndDate;
     }
     
-    // targetConceptDvo
+    // invalidReason
     
-    public void setTargetConceptDvo(ConceptDvo dvo) {
-        this.targetConceptDvo = dvo;
+    public void setInvalidReason(String val) {
+        this.invalidReason = val;
     }
     
-    public ConceptDvo getTargetConceptDvo() {
-        return this.targetConceptDvo;
-    }
-    
-    // targetVocabularyDvo
-    
-    public void setTargetVocabularyDvo(VocabularyDvo dvo) {
-        this.targetVocabularyDvo = dvo;
-    }
-    
-    public VocabularyDvo getTargetVocabularyDvo() {
-        return this.targetVocabularyDvo;
+    public String getInvalidReason() {
+        return this.invalidReason;
     }
     
     //

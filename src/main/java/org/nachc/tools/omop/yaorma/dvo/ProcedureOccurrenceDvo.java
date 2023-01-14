@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for procedure_occurrence
+// Data Value Object (DVO) for PROCEDURE_OCCURRENCE
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ProcedureOccurrenceDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "procedure_occurrence";
+    public static final String TABLE_NAME = "PROCEDURE_OCCURRENCE";
     
     //
     // schemaName
@@ -29,22 +29,22 @@ public class ProcedureOccurrenceDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "modifier_concept_id",
-        "modifier_source_value",
+        "procedure_occurrence_id",
         "person_id",
         "procedure_concept_id",
         "procedure_date",
         "procedure_datetime",
         "procedure_end_date",
         "procedure_end_datetime",
-        "procedure_occurrence_id",
-        "procedure_source_concept_id",
-        "procedure_source_value",
         "procedure_type_concept_id",
-        "provider_id",
+        "modifier_concept_id",
         "quantity",
+        "provider_id",
+        "visit_occurrence_id",
         "visit_detail_id",
-        "visit_occurrence_id"
+        "procedure_source_value",
+        "procedure_source_concept_id",
+        "modifier_source_value"
     };
     
     //
@@ -52,7 +52,6 @@ public class ProcedureOccurrenceDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "procedure_occurrence_id"
     };
     
     //
@@ -60,22 +59,22 @@ public class ProcedureOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "modifierConceptId",
-        "modifierSourceValue",
+        "procedureOccurrenceId",
         "personId",
         "procedureConceptId",
         "procedureDate",
         "procedureDatetime",
         "procedureEndDate",
         "procedureEndDatetime",
-        "procedureOccurrenceId",
-        "procedureSourceConceptId",
-        "procedureSourceValue",
         "procedureTypeConceptId",
-        "providerId",
+        "modifierConceptId",
         "quantity",
+        "providerId",
+        "visitOccurrenceId",
         "visitDetailId",
-        "visitOccurrenceId"
+        "procedureSourceValue",
+        "procedureSourceConceptId",
+        "modifierSourceValue"
     };
     
     //
@@ -83,22 +82,22 @@ public class ProcedureOccurrenceDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ModifierConceptId",
-        "ModifierSourceValue",
+        "ProcedureOccurrenceId",
         "PersonId",
         "ProcedureConceptId",
         "ProcedureDate",
         "ProcedureDatetime",
         "ProcedureEndDate",
         "ProcedureEndDatetime",
-        "ProcedureOccurrenceId",
-        "ProcedureSourceConceptId",
-        "ProcedureSourceValue",
         "ProcedureTypeConceptId",
-        "ProviderId",
+        "ModifierConceptId",
         "Quantity",
+        "ProviderId",
+        "VisitOccurrenceId",
         "VisitDetailId",
-        "VisitOccurrenceId"
+        "ProcedureSourceValue",
+        "ProcedureSourceConceptId",
+        "ModifierSourceValue"
     };
     
     
@@ -108,9 +107,7 @@ public class ProcedureOccurrenceDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer modifierConceptId;
-    
-    private String modifierSourceValue;
+    private Integer procedureOccurrenceId;
     
     private Integer personId;
     
@@ -118,66 +115,42 @@ public class ProcedureOccurrenceDvo implements Dvo {
     
     private Date procedureDate;
     
-    private String procedureDatetime;
+    private Date procedureDatetime;
     
     private Date procedureEndDate;
     
-    private String procedureEndDatetime;
-    
-    private Integer procedureOccurrenceId;
-    
-    private Integer procedureSourceConceptId;
-    
-    private String procedureSourceValue;
+    private Date procedureEndDatetime;
     
     private Integer procedureTypeConceptId;
     
-    private Integer providerId;
+    private Integer modifierConceptId;
     
     private Integer quantity;
     
-    private Integer visitDetailId;
+    private Integer providerId;
     
     private Integer visitOccurrenceId;
     
-    private ConceptDvo modifierConceptDvo;
+    private Integer visitDetailId;
     
-    private PersonDvo personDvo;
+    private String procedureSourceValue;
     
-    private ConceptDvo procedureConceptDvo;
+    private Integer procedureSourceConceptId;
     
-    private ConceptDvo procedureSourceConceptDvo;
-    
-    private ConceptDvo procedureTypeConceptDvo;
-    
-    private ProviderDvo providerDvo;
-    
-    private VisitDetailDvo visitDetailDvo;
-    
-    private VisitOccurrenceDvo visitOccurrenceDvo;
+    private String modifierSourceValue;
     
     //
     // trivial getters and setters
     //
     
-    // modifierConceptId
+    // procedureOccurrenceId
     
-    public void setModifierConceptId(Integer val) {
-        this.modifierConceptId = val;
+    public void setProcedureOccurrenceId(Integer val) {
+        this.procedureOccurrenceId = val;
     }
     
-    public Integer getModifierConceptId() {
-        return this.modifierConceptId;
-    }
-    
-    // modifierSourceValue
-    
-    public void setModifierSourceValue(String val) {
-        this.modifierSourceValue = val;
-    }
-    
-    public String getModifierSourceValue() {
-        return this.modifierSourceValue;
+    public Integer getProcedureOccurrenceId() {
+        return this.procedureOccurrenceId;
     }
     
     // personId
@@ -212,11 +185,11 @@ public class ProcedureOccurrenceDvo implements Dvo {
     
     // procedureDatetime
     
-    public void setProcedureDatetime(String val) {
+    public void setProcedureDatetime(Date val) {
         this.procedureDatetime = val;
     }
     
-    public String getProcedureDatetime() {
+    public Date getProcedureDatetime() {
         return this.procedureDatetime;
     }
     
@@ -232,42 +205,12 @@ public class ProcedureOccurrenceDvo implements Dvo {
     
     // procedureEndDatetime
     
-    public void setProcedureEndDatetime(String val) {
+    public void setProcedureEndDatetime(Date val) {
         this.procedureEndDatetime = val;
     }
     
-    public String getProcedureEndDatetime() {
+    public Date getProcedureEndDatetime() {
         return this.procedureEndDatetime;
-    }
-    
-    // procedureOccurrenceId
-    
-    public void setProcedureOccurrenceId(Integer val) {
-        this.procedureOccurrenceId = val;
-    }
-    
-    public Integer getProcedureOccurrenceId() {
-        return this.procedureOccurrenceId;
-    }
-    
-    // procedureSourceConceptId
-    
-    public void setProcedureSourceConceptId(Integer val) {
-        this.procedureSourceConceptId = val;
-    }
-    
-    public Integer getProcedureSourceConceptId() {
-        return this.procedureSourceConceptId;
-    }
-    
-    // procedureSourceValue
-    
-    public void setProcedureSourceValue(String val) {
-        this.procedureSourceValue = val;
-    }
-    
-    public String getProcedureSourceValue() {
-        return this.procedureSourceValue;
     }
     
     // procedureTypeConceptId
@@ -280,14 +223,14 @@ public class ProcedureOccurrenceDvo implements Dvo {
         return this.procedureTypeConceptId;
     }
     
-    // providerId
+    // modifierConceptId
     
-    public void setProviderId(Integer val) {
-        this.providerId = val;
+    public void setModifierConceptId(Integer val) {
+        this.modifierConceptId = val;
     }
     
-    public Integer getProviderId() {
-        return this.providerId;
+    public Integer getModifierConceptId() {
+        return this.modifierConceptId;
     }
     
     // quantity
@@ -300,14 +243,14 @@ public class ProcedureOccurrenceDvo implements Dvo {
         return this.quantity;
     }
     
-    // visitDetailId
+    // providerId
     
-    public void setVisitDetailId(Integer val) {
-        this.visitDetailId = val;
+    public void setProviderId(Integer val) {
+        this.providerId = val;
     }
     
-    public Integer getVisitDetailId() {
-        return this.visitDetailId;
+    public Integer getProviderId() {
+        return this.providerId;
     }
     
     // visitOccurrenceId
@@ -320,84 +263,44 @@ public class ProcedureOccurrenceDvo implements Dvo {
         return this.visitOccurrenceId;
     }
     
-    // modifierConceptDvo
+    // visitDetailId
     
-    public void setModifierConceptDvo(ConceptDvo dvo) {
-        this.modifierConceptDvo = dvo;
+    public void setVisitDetailId(Integer val) {
+        this.visitDetailId = val;
     }
     
-    public ConceptDvo getModifierConceptDvo() {
-        return this.modifierConceptDvo;
+    public Integer getVisitDetailId() {
+        return this.visitDetailId;
     }
     
-    // personDvo
+    // procedureSourceValue
     
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
+    public void setProcedureSourceValue(String val) {
+        this.procedureSourceValue = val;
     }
     
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
+    public String getProcedureSourceValue() {
+        return this.procedureSourceValue;
     }
     
-    // procedureConceptDvo
+    // procedureSourceConceptId
     
-    public void setProcedureConceptDvo(ConceptDvo dvo) {
-        this.procedureConceptDvo = dvo;
+    public void setProcedureSourceConceptId(Integer val) {
+        this.procedureSourceConceptId = val;
     }
     
-    public ConceptDvo getProcedureConceptDvo() {
-        return this.procedureConceptDvo;
+    public Integer getProcedureSourceConceptId() {
+        return this.procedureSourceConceptId;
     }
     
-    // procedureSourceConceptDvo
+    // modifierSourceValue
     
-    public void setProcedureSourceConceptDvo(ConceptDvo dvo) {
-        this.procedureSourceConceptDvo = dvo;
+    public void setModifierSourceValue(String val) {
+        this.modifierSourceValue = val;
     }
     
-    public ConceptDvo getProcedureSourceConceptDvo() {
-        return this.procedureSourceConceptDvo;
-    }
-    
-    // procedureTypeConceptDvo
-    
-    public void setProcedureTypeConceptDvo(ConceptDvo dvo) {
-        this.procedureTypeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getProcedureTypeConceptDvo() {
-        return this.procedureTypeConceptDvo;
-    }
-    
-    // providerDvo
-    
-    public void setProviderDvo(ProviderDvo dvo) {
-        this.providerDvo = dvo;
-    }
-    
-    public ProviderDvo getProviderDvo() {
-        return this.providerDvo;
-    }
-    
-    // visitDetailDvo
-    
-    public void setVisitDetailDvo(VisitDetailDvo dvo) {
-        this.visitDetailDvo = dvo;
-    }
-    
-    public VisitDetailDvo getVisitDetailDvo() {
-        return this.visitDetailDvo;
-    }
-    
-    // visitOccurrenceDvo
-    
-    public void setVisitOccurrenceDvo(VisitOccurrenceDvo dvo) {
-        this.visitOccurrenceDvo = dvo;
-    }
-    
-    public VisitOccurrenceDvo getVisitOccurrenceDvo() {
-        return this.visitOccurrenceDvo;
+    public String getModifierSourceValue() {
+        return this.modifierSourceValue;
     }
     
     //
@@ -446,7 +349,6 @@ public class ProcedureOccurrenceDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getProcedureOccurrenceId()  == null ? null: getProcedureOccurrenceId() + ""
         };
         return rtn;
     }

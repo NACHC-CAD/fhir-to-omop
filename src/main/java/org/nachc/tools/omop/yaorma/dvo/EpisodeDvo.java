@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for episode
+// Data Value Object (DVO) for EPISODE
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class EpisodeDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "episode";
+    public static final String TABLE_NAME = "EPISODE";
     
     //
     // schemaName
@@ -29,19 +29,19 @@ public class EpisodeDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "episode_concept_id",
-        "episode_end_date",
-        "episode_end_datetime",
         "episode_id",
-        "episode_number",
-        "episode_object_concept_id",
-        "episode_parent_id",
-        "episode_source_concept_id",
-        "episode_source_value",
+        "person_id",
+        "episode_concept_id",
         "episode_start_date",
         "episode_start_datetime",
+        "episode_end_date",
+        "episode_end_datetime",
+        "episode_parent_id",
+        "episode_number",
+        "episode_object_concept_id",
         "episode_type_concept_id",
-        "person_id"
+        "episode_source_value",
+        "episode_source_concept_id"
     };
     
     //
@@ -49,7 +49,6 @@ public class EpisodeDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "episode_id"
     };
     
     //
@@ -57,19 +56,19 @@ public class EpisodeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "episodeConceptId",
-        "episodeEndDate",
-        "episodeEndDatetime",
         "episodeId",
-        "episodeNumber",
-        "episodeObjectConceptId",
-        "episodeParentId",
-        "episodeSourceConceptId",
-        "episodeSourceValue",
+        "personId",
+        "episodeConceptId",
         "episodeStartDate",
         "episodeStartDatetime",
+        "episodeEndDate",
+        "episodeEndDatetime",
+        "episodeParentId",
+        "episodeNumber",
+        "episodeObjectConceptId",
         "episodeTypeConceptId",
-        "personId"
+        "episodeSourceValue",
+        "episodeSourceConceptId"
     };
     
     //
@@ -77,19 +76,19 @@ public class EpisodeDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "EpisodeConceptId",
-        "EpisodeEndDate",
-        "EpisodeEndDatetime",
         "EpisodeId",
-        "EpisodeNumber",
-        "EpisodeObjectConceptId",
-        "EpisodeParentId",
-        "EpisodeSourceConceptId",
-        "EpisodeSourceValue",
+        "PersonId",
+        "EpisodeConceptId",
         "EpisodeStartDate",
         "EpisodeStartDatetime",
+        "EpisodeEndDate",
+        "EpisodeEndDatetime",
+        "EpisodeParentId",
+        "EpisodeNumber",
+        "EpisodeObjectConceptId",
         "EpisodeTypeConceptId",
-        "PersonId"
+        "EpisodeSourceValue",
+        "EpisodeSourceConceptId"
     };
     
     
@@ -99,47 +98,55 @@ public class EpisodeDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
+    private String episodeId;
+    
+    private Integer personId;
+    
     private Integer episodeConceptId;
+    
+    private Date episodeStartDate;
+    
+    private Date episodeStartDatetime;
     
     private Date episodeEndDate;
     
-    private String episodeEndDatetime;
+    private Date episodeEndDatetime;
     
-    private String episodeId;
+    private String episodeParentId;
     
     private Integer episodeNumber;
     
     private Integer episodeObjectConceptId;
     
-    private String episodeParentId;
-    
-    private Integer episodeSourceConceptId;
+    private Integer episodeTypeConceptId;
     
     private String episodeSourceValue;
     
-    private Date episodeStartDate;
-    
-    private String episodeStartDatetime;
-    
-    private Integer episodeTypeConceptId;
-    
-    private Integer personId;
-    
-    private ConceptDvo episodeConceptDvo;
-    
-    private ConceptDvo episodeObjectConceptDvo;
-    
-    private ConceptDvo episodeSourceConceptDvo;
-    
-    private ConceptDvo episodeTypeConceptDvo;
-    
-    private PersonDvo personDvo;
-    
-    private ArrayList<EpisodeEventDvo> episodeEventEpisodeList = new ArrayList<EpisodeEventDvo>();
+    private Integer episodeSourceConceptId;
     
     //
     // trivial getters and setters
     //
+    
+    // episodeId
+    
+    public void setEpisodeId(String val) {
+        this.episodeId = val;
+    }
+    
+    public String getEpisodeId() {
+        return this.episodeId;
+    }
+    
+    // personId
+    
+    public void setPersonId(Integer val) {
+        this.personId = val;
+    }
+    
+    public Integer getPersonId() {
+        return this.personId;
+    }
     
     // episodeConceptId
     
@@ -149,6 +156,26 @@ public class EpisodeDvo implements Dvo {
     
     public Integer getEpisodeConceptId() {
         return this.episodeConceptId;
+    }
+    
+    // episodeStartDate
+    
+    public void setEpisodeStartDate(Date val) {
+        this.episodeStartDate = val;
+    }
+    
+    public Date getEpisodeStartDate() {
+        return this.episodeStartDate;
+    }
+    
+    // episodeStartDatetime
+    
+    public void setEpisodeStartDatetime(Date val) {
+        this.episodeStartDatetime = val;
+    }
+    
+    public Date getEpisodeStartDatetime() {
+        return this.episodeStartDatetime;
     }
     
     // episodeEndDate
@@ -163,22 +190,22 @@ public class EpisodeDvo implements Dvo {
     
     // episodeEndDatetime
     
-    public void setEpisodeEndDatetime(String val) {
+    public void setEpisodeEndDatetime(Date val) {
         this.episodeEndDatetime = val;
     }
     
-    public String getEpisodeEndDatetime() {
+    public Date getEpisodeEndDatetime() {
         return this.episodeEndDatetime;
     }
     
-    // episodeId
+    // episodeParentId
     
-    public void setEpisodeId(String val) {
-        this.episodeId = val;
+    public void setEpisodeParentId(String val) {
+        this.episodeParentId = val;
     }
     
-    public String getEpisodeId() {
-        return this.episodeId;
+    public String getEpisodeParentId() {
+        return this.episodeParentId;
     }
     
     // episodeNumber
@@ -201,24 +228,14 @@ public class EpisodeDvo implements Dvo {
         return this.episodeObjectConceptId;
     }
     
-    // episodeParentId
+    // episodeTypeConceptId
     
-    public void setEpisodeParentId(String val) {
-        this.episodeParentId = val;
+    public void setEpisodeTypeConceptId(Integer val) {
+        this.episodeTypeConceptId = val;
     }
     
-    public String getEpisodeParentId() {
-        return this.episodeParentId;
-    }
-    
-    // episodeSourceConceptId
-    
-    public void setEpisodeSourceConceptId(Integer val) {
-        this.episodeSourceConceptId = val;
-    }
-    
-    public Integer getEpisodeSourceConceptId() {
-        return this.episodeSourceConceptId;
+    public Integer getEpisodeTypeConceptId() {
+        return this.episodeTypeConceptId;
     }
     
     // episodeSourceValue
@@ -231,102 +248,14 @@ public class EpisodeDvo implements Dvo {
         return this.episodeSourceValue;
     }
     
-    // episodeStartDate
+    // episodeSourceConceptId
     
-    public void setEpisodeStartDate(Date val) {
-        this.episodeStartDate = val;
+    public void setEpisodeSourceConceptId(Integer val) {
+        this.episodeSourceConceptId = val;
     }
     
-    public Date getEpisodeStartDate() {
-        return this.episodeStartDate;
-    }
-    
-    // episodeStartDatetime
-    
-    public void setEpisodeStartDatetime(String val) {
-        this.episodeStartDatetime = val;
-    }
-    
-    public String getEpisodeStartDatetime() {
-        return this.episodeStartDatetime;
-    }
-    
-    // episodeTypeConceptId
-    
-    public void setEpisodeTypeConceptId(Integer val) {
-        this.episodeTypeConceptId = val;
-    }
-    
-    public Integer getEpisodeTypeConceptId() {
-        return this.episodeTypeConceptId;
-    }
-    
-    // personId
-    
-    public void setPersonId(Integer val) {
-        this.personId = val;
-    }
-    
-    public Integer getPersonId() {
-        return this.personId;
-    }
-    
-    // episodeConceptDvo
-    
-    public void setEpisodeConceptDvo(ConceptDvo dvo) {
-        this.episodeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getEpisodeConceptDvo() {
-        return this.episodeConceptDvo;
-    }
-    
-    // episodeObjectConceptDvo
-    
-    public void setEpisodeObjectConceptDvo(ConceptDvo dvo) {
-        this.episodeObjectConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getEpisodeObjectConceptDvo() {
-        return this.episodeObjectConceptDvo;
-    }
-    
-    // episodeSourceConceptDvo
-    
-    public void setEpisodeSourceConceptDvo(ConceptDvo dvo) {
-        this.episodeSourceConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getEpisodeSourceConceptDvo() {
-        return this.episodeSourceConceptDvo;
-    }
-    
-    // episodeTypeConceptDvo
-    
-    public void setEpisodeTypeConceptDvo(ConceptDvo dvo) {
-        this.episodeTypeConceptDvo = dvo;
-    }
-    
-    public ConceptDvo getEpisodeTypeConceptDvo() {
-        return this.episodeTypeConceptDvo;
-    }
-    
-    // personDvo
-    
-    public void setPersonDvo(PersonDvo dvo) {
-        this.personDvo = dvo;
-    }
-    
-    public PersonDvo getPersonDvo() {
-        return this.personDvo;
-    }
-    
-    public ArrayList<EpisodeEventDvo> getEpisodeEventEpisodeList() {
-        return episodeEventEpisodeList;
-    }
-    
-    public void setEpisodeEventEpisodeList(ArrayList<EpisodeEventDvo> list) {
-        this.episodeEventEpisodeList = list;
+    public Integer getEpisodeSourceConceptId() {
+        return this.episodeSourceConceptId;
     }
     
     //
@@ -375,7 +304,6 @@ public class EpisodeDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getEpisodeId()  == null ? null: getEpisodeId() + ""
         };
         return rtn;
     }

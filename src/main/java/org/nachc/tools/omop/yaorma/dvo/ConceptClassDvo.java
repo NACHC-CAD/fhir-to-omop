@@ -1,5 +1,5 @@
 //
-// Data Value Object (DVO) for concept_class
+// Data Value Object (DVO) for CONCEPT_CLASS
 //
 
 package org.nachc.tools.omop.yaorma.dvo;
@@ -16,7 +16,7 @@ public class ConceptClassDvo implements Dvo {
     // tableName
     //
     
-    public static final String TABLE_NAME = "concept_class";
+    public static final String TABLE_NAME = "CONCEPT_CLASS";
     
     //
     // schemaName
@@ -29,9 +29,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] COLUMN_NAMES = {
-        "concept_class_concept_id",
         "concept_class_id",
-        "concept_class_name"
+        "concept_class_name",
+        "concept_class_concept_id"
     };
     
     //
@@ -39,7 +39,6 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] PRIMARY_KEY_COLUMN_NAMES = {
-        "concept_class_id"
     };
     
     //
@@ -47,9 +46,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES = {
-        "conceptClassConceptId",
         "conceptClassId",
-        "conceptClassName"
+        "conceptClassName",
+        "conceptClassConceptId"
     };
     
     //
@@ -57,9 +56,9 @@ public class ConceptClassDvo implements Dvo {
     //
     
     public static final String[] JAVA_NAMES_PROPER = {
-        "ConceptClassConceptId",
         "ConceptClassId",
-        "ConceptClassName"
+        "ConceptClassName",
+        "ConceptClassConceptId"
     };
     
     
@@ -69,27 +68,15 @@ public class ConceptClassDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private Integer conceptClassConceptId;
-    
     private String conceptClassId;
     
     private String conceptClassName;
     
-    private ConceptDvo conceptClassConceptDvo;
+    private Integer conceptClassConceptId;
     
     //
     // trivial getters and setters
     //
-    
-    // conceptClassConceptId
-    
-    public void setConceptClassConceptId(Integer val) {
-        this.conceptClassConceptId = val;
-    }
-    
-    public Integer getConceptClassConceptId() {
-        return this.conceptClassConceptId;
-    }
     
     // conceptClassId
     
@@ -111,14 +98,14 @@ public class ConceptClassDvo implements Dvo {
         return this.conceptClassName;
     }
     
-    // conceptClassConceptDvo
+    // conceptClassConceptId
     
-    public void setConceptClassConceptDvo(ConceptDvo dvo) {
-        this.conceptClassConceptDvo = dvo;
+    public void setConceptClassConceptId(Integer val) {
+        this.conceptClassConceptId = val;
     }
     
-    public ConceptDvo getConceptClassConceptDvo() {
-        return this.conceptClassConceptDvo;
+    public Integer getConceptClassConceptId() {
+        return this.conceptClassConceptId;
     }
     
     //
@@ -167,7 +154,6 @@ public class ConceptClassDvo implements Dvo {
     
     public String[] getPrimaryKeyValues() {
         String[] rtn = new String[] {
-            getConceptClassId()  == null ? null: getConceptClassId() + ""
         };
         return rtn;
     }
