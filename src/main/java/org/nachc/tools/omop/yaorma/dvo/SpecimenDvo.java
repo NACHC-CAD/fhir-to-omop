@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class SpecimenDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -116,7 +117,7 @@ public class SpecimenDvo implements Dvo {
     
     private Date specimenDatetime;
     
-    private String quantity;
+    private BigDecimal quantity;
     
     private Integer unitConceptId;
     
@@ -200,11 +201,11 @@ public class SpecimenDvo implements Dvo {
     
     // quantity
     
-    public void setQuantity(String val) {
+    public void setQuantity(BigDecimal val) {
         this.quantity = val;
     }
     
-    public String getQuantity() {
+    public BigDecimal getQuantity() {
         return this.quantity;
     }
     

@@ -38,7 +38,7 @@ public class ObservationPostProcessor {
 		}
 		// observation event
 		if (dvo.getObservationEventId() == null && dvo.getObservationId() != null) {
-			dvo.setObservationEventId(dvo.getObservationId().toString());
+			dvo.setObservationEventId(new Long(dvo.getObservationId()));
 		}
 		if (dvo.getObsEventFieldConceptId() == null) {
 			dvo.setObsEventFieldConceptId(OmopConceptConstants.getObservationTableConceptId());
@@ -81,7 +81,7 @@ public class ObservationPostProcessor {
 			dvo.setObservationDatetime(dvo.getObservationDate());
 		}
 		if (dvo.getObservationEventId() == null && dvo.getObsEventFieldConceptId() == null) {
-			dvo.setObservationEventId(dvo.getObservationId() + "");
+			dvo.setObservationEventId(new Long(dvo.getObservationId()));
 			dvo.setObsEventFieldConceptId(OmopConceptConstants.getObservationTableConceptId());
 		}
 	}

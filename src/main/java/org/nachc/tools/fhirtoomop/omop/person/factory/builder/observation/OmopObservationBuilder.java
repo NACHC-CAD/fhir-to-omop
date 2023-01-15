@@ -215,7 +215,7 @@ public class OmopObservationBuilder {
 			// type
 			dvo.setObservationTypeConceptId(OmopConceptConstants.getObsIsFromEhrEncounterRecord());
 			// set the parent id
-			dvo.setObservationEventId(parent.getObservationId() == null ? null : parent.getObservationId() + "");
+			dvo.setObservationEventId(parent.getObservationId() == null ? null : new Long(parent.getObservationId()));
 			// create the proxy and add it to the return
 			if (isMeasurement(parser)) {
 				fixMeas(parser, dvo);

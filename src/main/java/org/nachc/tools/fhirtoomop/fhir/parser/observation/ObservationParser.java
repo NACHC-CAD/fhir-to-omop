@@ -275,11 +275,11 @@ public class ObservationParser {
 		}
 	}
 
-	public String getValueAsNumber() {
+	public BigDecimal getValueAsNumber() {
 		try {
 			Quantity q = getValueQuantity();
 			BigDecimal bd = q.getValue();
-			return bd.toString();
+			return bd;
 		} catch (Exception exp) {
 			return null;
 		}

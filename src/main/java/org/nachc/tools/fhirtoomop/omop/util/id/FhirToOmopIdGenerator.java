@@ -15,7 +15,7 @@ public class FhirToOmopIdGenerator {
 
 	private static final Object LOCK = new Object();
 
-	public synchronized static Integer getId(String tableName, String idName, Connection conn) {
+	public static Integer getId(String tableName, String idName, Connection conn) {
 		synchronized (LOCK) {
 			String keyName = tableName + "." + idName;
 			Integer key = keys.get(keyName);
@@ -30,31 +30,39 @@ public class FhirToOmopIdGenerator {
 	}
 
 	public static Integer getIdFromDatabase(String tableName, String idName, Connection conn) {
-		String cdmDbType = AppParams.get("cdmDbType");
-		if ("postgres".equals(cdmDbType)) {
-			String schemaName = AppParams.getDbName();
-			String seqName = tableName + "_" + idName;
-			seqName = schemaName + "." + seqName;
-			String sqlString = "select nextval('" + seqName + "') as val";
-			String str = Database.queryForFirst(sqlString, "val", conn);
-			Integer rtn = Integer.parseInt(str);
-			return rtn;
-		} else {
-			String seqName = tableName + "_" + idName;
-			String sqlString = "select next value for " + seqName + " as val";
-			String str = Database.queryForFirst(sqlString, "val", conn);
-			Integer rtn = Integer.parseInt(str);
-			return rtn;
+		synchronized (LOCK) {
+			String cdmDbType = AppParams.get("cdmDbType");
+			if ("postgres".equals(cdmDbType)) {
+				Database.commit(conn);
+				String schemaName = AppParams.getDbName();
+				String seqName = tableName + "_" + idName;
+				seqName = schemaName + "." + seqName;
+				String sqlString = "select nextval('" + seqName + "') as val";
+				String str = Database.queryForFirst(sqlString, "val", conn);
+				Integer rtn = Integer.parseInt(str);
+				Database.commit(conn);
+				return rtn;
+			} else {
+				String seqName = tableName + "_" + idName;
+				String sqlString = "select next value for " + seqName + " as val";
+				String str = Database.queryForFirst(sqlString, "val", conn);
+				Integer rtn = Integer.parseInt(str);
+				return rtn;
+			}
 		}
 	}
 
 	public static void invalidateKey(String tableName, String idName) {
-		String key = tableName + "." + idName;
-		keys.remove(key);
+		synchronized (LOCK) {
+			String key = tableName + "." + idName;
+			keys.remove(key);
+		}
 	}
 
 	public static void invalidateAllKeys() {
-		keys = new HashMap<String, Integer>();
+		synchronized (LOCK) {
+			keys = new HashMap<String, Integer>();
+		}
 	}
 
 }

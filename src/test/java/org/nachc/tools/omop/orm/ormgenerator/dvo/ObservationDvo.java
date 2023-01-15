@@ -2,12 +2,11 @@
 // Data Value Object (DVO) for OBSERVATION
 //
 
-package org.nachc.tools.omop.yaorma.dvo;
+package org.nachc.tools.omop.orm.ormgenerator.dvo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
-import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -23,7 +22,7 @@ public class ObservationDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "cdm_f2o_build";
+    public static final String SCHEMA_NAME = "synthea_omop";
     
     //
     // columnNames
@@ -135,7 +134,7 @@ public class ObservationDvo implements Dvo {
     
     private Integer observationTypeConceptId;
     
-    private BigDecimal valueAsNumber;
+    private Float valueAsNumber;
     
     private String valueAsString;
     
@@ -231,11 +230,11 @@ public class ObservationDvo implements Dvo {
     
     // valueAsNumber
     
-    public void setValueAsNumber(BigDecimal val) {
+    public void setValueAsNumber(Float val) {
         this.valueAsNumber = val;
     }
     
-    public BigDecimal getValueAsNumber() {
+    public Float getValueAsNumber() {
         return this.valueAsNumber;
     }
     

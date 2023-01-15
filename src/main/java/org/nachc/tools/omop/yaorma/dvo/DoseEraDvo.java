@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class DoseEraDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -88,7 +89,7 @@ public class DoseEraDvo implements Dvo {
     
     private Integer unitConceptId;
     
-    private String doseValue;
+    private BigDecimal doseValue;
     
     private Date doseEraStartDate;
     
@@ -140,11 +141,11 @@ public class DoseEraDvo implements Dvo {
     
     // doseValue
     
-    public void setDoseValue(String val) {
+    public void setDoseValue(BigDecimal val) {
         this.doseValue = val;
     }
     
-    public String getDoseValue() {
+    public BigDecimal getDoseValue() {
         return this.doseValue;
     }
     

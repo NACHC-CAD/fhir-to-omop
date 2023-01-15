@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class MeasurementDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -144,15 +145,15 @@ public class MeasurementDvo implements Dvo {
     
     private Integer operatorConceptId;
     
-    private String valueAsNumber;
+    private BigDecimal valueAsNumber;
     
     private Integer valueAsConceptId;
     
     private Integer unitConceptId;
     
-    private String rangeLow;
+    private BigDecimal rangeLow;
     
-    private String rangeHigh;
+    private BigDecimal rangeHigh;
     
     private Integer providerId;
     
@@ -170,7 +171,7 @@ public class MeasurementDvo implements Dvo {
     
     private String valueSourceValue;
     
-    private String measurementEventId;
+    private Long measurementEventId;
     
     private Integer measEventFieldConceptId;
     
@@ -260,11 +261,11 @@ public class MeasurementDvo implements Dvo {
     
     // valueAsNumber
     
-    public void setValueAsNumber(String val) {
+    public void setValueAsNumber(BigDecimal val) {
         this.valueAsNumber = val;
     }
     
-    public String getValueAsNumber() {
+    public BigDecimal getValueAsNumber() {
         return this.valueAsNumber;
     }
     
@@ -290,21 +291,21 @@ public class MeasurementDvo implements Dvo {
     
     // rangeLow
     
-    public void setRangeLow(String val) {
+    public void setRangeLow(BigDecimal val) {
         this.rangeLow = val;
     }
     
-    public String getRangeLow() {
+    public BigDecimal getRangeLow() {
         return this.rangeLow;
     }
     
     // rangeHigh
     
-    public void setRangeHigh(String val) {
+    public void setRangeHigh(BigDecimal val) {
         this.rangeHigh = val;
     }
     
-    public String getRangeHigh() {
+    public BigDecimal getRangeHigh() {
         return this.rangeHigh;
     }
     
@@ -390,11 +391,11 @@ public class MeasurementDvo implements Dvo {
     
     // measurementEventId
     
-    public void setMeasurementEventId(String val) {
+    public void setMeasurementEventId(Long val) {
         this.measurementEventId = val;
     }
     
-    public String getMeasurementEventId() {
+    public Long getMeasurementEventId() {
         return this.measurementEventId;
     }
     

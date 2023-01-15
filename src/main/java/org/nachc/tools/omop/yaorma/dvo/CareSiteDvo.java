@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class CareSiteDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames

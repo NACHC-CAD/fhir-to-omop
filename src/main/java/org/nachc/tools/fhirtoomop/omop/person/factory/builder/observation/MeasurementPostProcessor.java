@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.omop.person.factory.builder.observation;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.util.constants.OmopConceptConstants;
 import org.nachc.tools.omop.yaorma.dvo.MeasurementDvo;
 import org.yaorma.util.time.TimeUtil;
+
 
 public class MeasurementPostProcessor {
 
@@ -24,14 +26,14 @@ public class MeasurementPostProcessor {
 		for (MeasurementDvo dvo : measList) {
 			// event
 			if (dvo.getMeasurementEventId() == null && dvo.getMeasEventFieldConceptId() == null) {
-				dvo.setMeasurementEventId(dvo.getMeasurementId() + "");
+				dvo.setMeasurementEventId(new Long(dvo.getMeasurementId()));
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
 			if (dvo.getMeasEventFieldConceptId() == null) {
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
 			if (dvo.getMeasurementEventId() == null) {
-				dvo.setMeasurementEventId(dvo.getMeasurementId() + "");
+				dvo.setMeasurementEventId(new Long(dvo.getMeasurementId()));
 				dvo.setMeasEventFieldConceptId(OmopConceptConstants.getMeasurementTable());
 			}
 			// provider
@@ -46,10 +48,10 @@ public class MeasurementPostProcessor {
 				dvo.setRangeLow(dvo.getValueAsNumber());
 			}
 			if (dvo.getRangeHigh() == null) {
-				dvo.setRangeHigh("0");
+				dvo.setRangeHigh(new BigDecimal(0));
 			}
 			if (dvo.getRangeLow() == null) {
-				dvo.setRangeLow("0");
+				dvo.setRangeLow(new BigDecimal(0));
 			}
 			// value as concept
 			if (dvo.getValueAsConceptId() == null) {
@@ -81,7 +83,7 @@ public class MeasurementPostProcessor {
 				dvo.setValueSourceValue(dvo.getMeasurementSourceValue());
 			}
 			if (dvo.getValueSourceValue() == null) {
-				dvo.setValueSourceValue(dvo.getValueAsNumber());
+				dvo.setValueSourceValue(dvo.getValueAsNumber() == null? null : dvo.getValueAsNumber() + "");
 			}
 			if (dvo.getValueSourceValue() == null && dvo.getValueAsConceptId() != null) {
 				dvo.setValueSourceValue(dvo.getValueAsConceptId().toString());

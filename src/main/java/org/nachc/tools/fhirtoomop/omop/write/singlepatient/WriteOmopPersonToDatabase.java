@@ -122,7 +122,10 @@ public class WriteOmopPersonToDatabase {
 			if(dvo.getConditionStartDate() == null) {
 				dvo.setConditionStartDate(AppParams.getDateNotFound());
 			}
+			dvo.setConditionOccurrenceId(id);
 			Dao.insert(dvo, conn);
+			Database.commit(conn);
+			log.info("Committed condition_occurrence");
 		} catch(Exception exp) {
 			throw new RuntimeException(exp);
 		}

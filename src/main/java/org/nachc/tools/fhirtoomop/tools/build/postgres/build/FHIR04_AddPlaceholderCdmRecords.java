@@ -22,19 +22,19 @@ public class FHIR04_AddPlaceholderCdmRecords {
 	private static final String FILE_PATH = "/postgres/build/FHIR04_AddPlaceholderCdmRecords.sql";
 
 	public static void main(String[] args) {
-		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
+		exec();
+	}
+
+	public static void exec() {
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
-			exec(conn);
+			log.info("getting sql script...");
+			log.info("executing script...");
+			String sqlString = getSqlString();
+			Database.executeSqlScript(sqlString, conn);
 		} finally {
 			Database.close(conn);
 		}
-	}
-
-	public static void exec(Connection conn) {
-		log.info("getting sql script...");
-		log.info("executing script...");
-		String sqlString = getSqlString();
-		Database.executeSqlScript(sqlString, conn);
 		log.info("Done with init postgres users for Atlas.");
 	}
 

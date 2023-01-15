@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class EpisodeEventDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -68,9 +69,9 @@ public class EpisodeEventDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String episodeId;
+    private Long episodeId;
     
-    private String eventId;
+    private Long eventId;
     
     private Integer episodeEventFieldConceptId;
     
@@ -80,21 +81,21 @@ public class EpisodeEventDvo implements Dvo {
     
     // episodeId
     
-    public void setEpisodeId(String val) {
+    public void setEpisodeId(Long val) {
         this.episodeId = val;
     }
     
-    public String getEpisodeId() {
+    public Long getEpisodeId() {
         return this.episodeId;
     }
     
     // eventId
     
-    public void setEventId(String val) {
+    public void setEventId(Long val) {
         this.eventId = val;
     }
     
-    public String getEventId() {
+    public Long getEventId() {
         return this.eventId;
     }
     

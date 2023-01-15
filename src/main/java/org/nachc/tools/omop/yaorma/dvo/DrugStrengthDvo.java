@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class DrugStrengthDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -99,15 +100,15 @@ public class DrugStrengthDvo implements Dvo {
     
     private Integer ingredientConceptId;
     
-    private String amountValue;
+    private BigDecimal amountValue;
     
     private Integer amountUnitConceptId;
     
-    private String numeratorValue;
+    private BigDecimal numeratorValue;
     
     private Integer numeratorUnitConceptId;
     
-    private String denominatorValue;
+    private BigDecimal denominatorValue;
     
     private Integer denominatorUnitConceptId;
     
@@ -145,11 +146,11 @@ public class DrugStrengthDvo implements Dvo {
     
     // amountValue
     
-    public void setAmountValue(String val) {
+    public void setAmountValue(BigDecimal val) {
         this.amountValue = val;
     }
     
-    public String getAmountValue() {
+    public BigDecimal getAmountValue() {
         return this.amountValue;
     }
     
@@ -165,11 +166,11 @@ public class DrugStrengthDvo implements Dvo {
     
     // numeratorValue
     
-    public void setNumeratorValue(String val) {
+    public void setNumeratorValue(BigDecimal val) {
         this.numeratorValue = val;
     }
     
-    public String getNumeratorValue() {
+    public BigDecimal getNumeratorValue() {
         return this.numeratorValue;
     }
     
@@ -185,11 +186,11 @@ public class DrugStrengthDvo implements Dvo {
     
     // denominatorValue
     
-    public void setDenominatorValue(String val) {
+    public void setDenominatorValue(BigDecimal val) {
         this.denominatorValue = val;
     }
     
-    public String getDenominatorValue() {
+    public BigDecimal getDenominatorValue() {
         return this.denominatorValue;
     }
     

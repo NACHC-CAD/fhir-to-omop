@@ -14,6 +14,8 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateCdmSour
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR04_AddPlaceholderCdmRecords;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR05_CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX03_CreateCdmConstraints;
@@ -53,10 +55,12 @@ public class CreateOmopInstanceToolPostgres {
 		FHIR01_CreateMappingTables.exec();
 		FHIR02_LoadFhirRaceEthMappings.exec();
 		FHIR03_CreateFhirResourcesTables.exec();
+		FHIR04_AddPlaceholderCdmRecords.exec();
+		FHIR05_CreateSequencesForPrimaryKeys.exec();
 		VOC99_LoadTerminology.exec();
 		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
-		IDX03_CreateCdmConstraints.exec();
+//		IDX03_CreateCdmConstraints.exec();
 		log.info("Done.");
 	}
 

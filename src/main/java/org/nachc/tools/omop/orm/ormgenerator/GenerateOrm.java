@@ -33,6 +33,7 @@ public class GenerateOrm {
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
+		log.info("Done.");
 	}
 
 }

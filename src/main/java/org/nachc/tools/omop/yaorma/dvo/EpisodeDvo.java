@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class EpisodeDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -98,7 +99,7 @@ public class EpisodeDvo implements Dvo {
     
     private HashMap<String, String> descriptions = new HashMap<String, String>();
     
-    private String episodeId;
+    private Long episodeId;
     
     private Integer personId;
     
@@ -112,7 +113,7 @@ public class EpisodeDvo implements Dvo {
     
     private Date episodeEndDatetime;
     
-    private String episodeParentId;
+    private Long episodeParentId;
     
     private Integer episodeNumber;
     
@@ -130,11 +131,11 @@ public class EpisodeDvo implements Dvo {
     
     // episodeId
     
-    public void setEpisodeId(String val) {
+    public void setEpisodeId(Long val) {
         this.episodeId = val;
     }
     
-    public String getEpisodeId() {
+    public Long getEpisodeId() {
         return this.episodeId;
     }
     
@@ -200,11 +201,11 @@ public class EpisodeDvo implements Dvo {
     
     // episodeParentId
     
-    public void setEpisodeParentId(String val) {
+    public void setEpisodeParentId(Long val) {
         this.episodeParentId = val;
     }
     
-    public String getEpisodeParentId() {
+    public Long getEpisodeParentId() {
         return this.episodeParentId;
     }
     

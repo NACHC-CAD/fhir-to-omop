@@ -7,6 +7,7 @@ package org.nachc.tools.omop.yaorma.dvo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Date;
+import java.math.BigDecimal;
 
 import org.yaorma.dvo.Dvo;
 
@@ -22,7 +23,7 @@ public class CostDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "synthea_omop.dbo";
+    public static final String SCHEMA_NAME = "cdm_f2o_build";
     
     //
     // columnNames
@@ -135,31 +136,31 @@ public class CostDvo implements Dvo {
     
     private Integer currencyConceptId;
     
-    private String totalCharge;
+    private BigDecimal totalCharge;
     
-    private String totalCost;
+    private BigDecimal totalCost;
     
-    private String totalPaid;
+    private BigDecimal totalPaid;
     
-    private String paidByPayer;
+    private BigDecimal paidByPayer;
     
-    private String paidByPatient;
+    private BigDecimal paidByPatient;
     
-    private String paidPatientCopay;
+    private BigDecimal paidPatientCopay;
     
-    private String paidPatientCoinsurance;
+    private BigDecimal paidPatientCoinsurance;
     
-    private String paidPatientDeductible;
+    private BigDecimal paidPatientDeductible;
     
-    private String paidByPrimary;
+    private BigDecimal paidByPrimary;
     
-    private String paidIngredientCost;
+    private BigDecimal paidIngredientCost;
     
-    private String paidDispensingFee;
+    private BigDecimal paidDispensingFee;
     
     private Integer payerPlanPeriodId;
     
-    private String amountAllowed;
+    private BigDecimal amountAllowed;
     
     private Integer revenueCodeConceptId;
     
@@ -225,111 +226,111 @@ public class CostDvo implements Dvo {
     
     // totalCharge
     
-    public void setTotalCharge(String val) {
+    public void setTotalCharge(BigDecimal val) {
         this.totalCharge = val;
     }
     
-    public String getTotalCharge() {
+    public BigDecimal getTotalCharge() {
         return this.totalCharge;
     }
     
     // totalCost
     
-    public void setTotalCost(String val) {
+    public void setTotalCost(BigDecimal val) {
         this.totalCost = val;
     }
     
-    public String getTotalCost() {
+    public BigDecimal getTotalCost() {
         return this.totalCost;
     }
     
     // totalPaid
     
-    public void setTotalPaid(String val) {
+    public void setTotalPaid(BigDecimal val) {
         this.totalPaid = val;
     }
     
-    public String getTotalPaid() {
+    public BigDecimal getTotalPaid() {
         return this.totalPaid;
     }
     
     // paidByPayer
     
-    public void setPaidByPayer(String val) {
+    public void setPaidByPayer(BigDecimal val) {
         this.paidByPayer = val;
     }
     
-    public String getPaidByPayer() {
+    public BigDecimal getPaidByPayer() {
         return this.paidByPayer;
     }
     
     // paidByPatient
     
-    public void setPaidByPatient(String val) {
+    public void setPaidByPatient(BigDecimal val) {
         this.paidByPatient = val;
     }
     
-    public String getPaidByPatient() {
+    public BigDecimal getPaidByPatient() {
         return this.paidByPatient;
     }
     
     // paidPatientCopay
     
-    public void setPaidPatientCopay(String val) {
+    public void setPaidPatientCopay(BigDecimal val) {
         this.paidPatientCopay = val;
     }
     
-    public String getPaidPatientCopay() {
+    public BigDecimal getPaidPatientCopay() {
         return this.paidPatientCopay;
     }
     
     // paidPatientCoinsurance
     
-    public void setPaidPatientCoinsurance(String val) {
+    public void setPaidPatientCoinsurance(BigDecimal val) {
         this.paidPatientCoinsurance = val;
     }
     
-    public String getPaidPatientCoinsurance() {
+    public BigDecimal getPaidPatientCoinsurance() {
         return this.paidPatientCoinsurance;
     }
     
     // paidPatientDeductible
     
-    public void setPaidPatientDeductible(String val) {
+    public void setPaidPatientDeductible(BigDecimal val) {
         this.paidPatientDeductible = val;
     }
     
-    public String getPaidPatientDeductible() {
+    public BigDecimal getPaidPatientDeductible() {
         return this.paidPatientDeductible;
     }
     
     // paidByPrimary
     
-    public void setPaidByPrimary(String val) {
+    public void setPaidByPrimary(BigDecimal val) {
         this.paidByPrimary = val;
     }
     
-    public String getPaidByPrimary() {
+    public BigDecimal getPaidByPrimary() {
         return this.paidByPrimary;
     }
     
     // paidIngredientCost
     
-    public void setPaidIngredientCost(String val) {
+    public void setPaidIngredientCost(BigDecimal val) {
         this.paidIngredientCost = val;
     }
     
-    public String getPaidIngredientCost() {
+    public BigDecimal getPaidIngredientCost() {
         return this.paidIngredientCost;
     }
     
     // paidDispensingFee
     
-    public void setPaidDispensingFee(String val) {
+    public void setPaidDispensingFee(BigDecimal val) {
         this.paidDispensingFee = val;
     }
     
-    public String getPaidDispensingFee() {
+    public BigDecimal getPaidDispensingFee() {
         return this.paidDispensingFee;
     }
     
@@ -345,11 +346,11 @@ public class CostDvo implements Dvo {
     
     // amountAllowed
     
-    public void setAmountAllowed(String val) {
+    public void setAmountAllowed(BigDecimal val) {
         this.amountAllowed = val;
     }
     
-    public String getAmountAllowed() {
+    public BigDecimal getAmountAllowed() {
         return this.amountAllowed;
     }
     

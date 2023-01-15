@@ -89,14 +89,14 @@ public class PopulateOmopInstanceFromFhirFiles {
 			log.info("CREATING STANDARD CONCEPT CACHCE...");
 			StandardConceptCache.init(connList.get(0));
 			// truncate existing data
-//			log.info("TRUNCATING DATA TABLES");
-//			TruncateAllDataTables.exec();
+			log.info("TRUNCATING DATA TABLES");
+			TruncateAllDataTables.exec(PostgresDatabaseConnectionFactory.getCdmConnection());
 			// do the priming step
 			log.info("Doing priming step...");
 			new PrimeUploadProcess(this.connectionList).exec();
 			// truncate data uploaded by priming step
-//			log.info("TRUNCATING DATA TABLES");
-//			TruncateAllDataTables.exec(connectionList.get(0));
+			log.info("TRUNCATING DATA TABLES");
+			TruncateAllDataTables.exec(PostgresDatabaseConnectionFactory.getCdmConnection());
 			// do the upload
 			numberOfPatientsBefore = Database.count("person", connList.get(0));
 			log.info("Creating writer");
@@ -105,7 +105,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 			writer.exec();
 			numberOfPatientsAfter = Database.count("person", connList.get(0));
 			log.info("Doing updates for " + numberOfPatientsAfter + " patients");
-			updatePrevVisit();
+//			updatePrevVisit();
 		} finally {
 			closeConnections(connList);
 			timer.stop();

@@ -102,6 +102,7 @@ public class FhirToOmopConceptMapper {
 			}
 			String[] params = { system, conceptCode };
 			List<ConceptDvo> list = Dao.findListBySql(new ConceptDvo(), sqlString, params, conn);
+			log.info("Got " + list.size() + " concepts");
 			if (list.size() > 0) {
 				return list.get(0);
 			} else {
