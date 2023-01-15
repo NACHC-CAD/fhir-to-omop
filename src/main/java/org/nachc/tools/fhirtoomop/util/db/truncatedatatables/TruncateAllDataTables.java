@@ -50,8 +50,10 @@ public class TruncateAllDataTables {
 			for (Row row : data) {
 				log.info("\t" + row.get("rowCount") + "\t" + row.get("tableName"));
 			}
+			log.info("Done with truncate");
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
+			log.info("Connection closed.");
 		}
 	}
 

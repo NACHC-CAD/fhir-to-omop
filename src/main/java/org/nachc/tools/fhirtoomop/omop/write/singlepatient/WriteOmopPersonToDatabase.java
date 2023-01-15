@@ -97,6 +97,21 @@ public class WriteOmopPersonToDatabase {
 
 	private static void writeConditionOccurrences(OmopPerson person, Connection conn) {
 		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
+		for (ConditionOccurrenceDvo dvo : conList) {
+			try {
+				if(dvo.getConditionStartDate() == null) {
+					dvo.setConditionStartDate(AppParams.getDateNotFound());
+				}
+				Dao.insert(dvo, conn);
+			} catch(Exception exp) {
+				exp.printStackTrace();
+			}
+		}
+	}
+
+	/*
+	private static void writeConditionOccurrences(OmopPerson person, Connection conn) {
+		List<ConditionOccurrenceDvo> conList = person.getConditionOccurrenceList();
 		int retryCount = 5;
 		for (ConditionOccurrenceDvo dvo : conList) {
 			int cnt = 0;
@@ -116,18 +131,23 @@ public class WriteOmopPersonToDatabase {
 			}
 		}
 	}
-
+	*/
+	
+	/*
 	private static void writeSingleConditionOccurrences(ConditionOccurrenceDvo dvo, Connection conn) {
 		try {
 			if(dvo.getConditionStartDate() == null) {
 				dvo.setConditionStartDate(AppParams.getDateNotFound());
 			}
+			Database.commit(conn);
 			Dao.insert(dvo, conn);
 			Database.commit(conn);
 		} catch(Exception exp) {
+			Database.rollback(conn);
 			throw new RuntimeException(exp);
 		}
 	}
+	*/
 	
 	private static void writeDrugExposures(OmopPerson person, Connection conn) {
 		List<DrugExposureDvo> drugExposureList = person.getDrugExposureList();
