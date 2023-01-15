@@ -222,7 +222,7 @@ public class FhirToOmopConceptMapper {
 
 	private static ConceptDvo addTempConceptTransaction(String system, String code, Connection conn) {
 		String vocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
-		Integer id = getIdFromDatabase("concept", "concept_id", conn);
+		Integer id = FhirToOmopIdGenerator.getId("concept", "concept_id", false);
 		ConceptDvo dvo = new ConceptDvo();
 		dvo.setConceptId(id);
 		dvo.setVocabularyId(vocabularyId);
@@ -238,31 +238,6 @@ public class FhirToOmopConceptMapper {
 		log.info("New concept created " + dvo.getConceptId() + ": (" + vocabularyId + "): " + code + "\t");
 		log.info("+++++++++++++++++++++");
 		return dvo;
-	}
-
-	private static final Object LOCK = new Object();
-	
-	private static Integer getIdFromDatabase(String tableName, String idName, Connection conn) {
-		synchronized (LOCK) {
-			String cdmDbType = AppParams.get("cdmDbType");
-			if ("postgres".equals(cdmDbType)) {
-				Database.commit(conn);
-				String schemaName = AppParams.getDbName();
-				String seqName = tableName + "_" + idName;
-				seqName = schemaName + "." + seqName;
-				String sqlString = "select nextval('" + seqName + "') as val";
-				String str = Database.queryForFirst(sqlString, "val", conn);
-				Integer rtn = Integer.parseInt(str);
-				Database.commit(conn);
-				return rtn;
-			} else {
-				String seqName = tableName + "_" + idName;
-				String sqlString = "select next value for " + seqName + " as val";
-				String str = Database.queryForFirst(sqlString, "val", conn);
-				Integer rtn = Integer.parseInt(str);
-				return rtn;
-			}
-		}
 	}
 
 
