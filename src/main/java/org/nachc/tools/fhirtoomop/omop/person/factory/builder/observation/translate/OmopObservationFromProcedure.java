@@ -49,7 +49,7 @@ public class OmopObservationFromProcedure {
 
 	public ObservationDvo build() {
 		ObservationDvo dvo = new ObservationDvo();
-		int measurementId = FhirToOmopIdGenerator.getId("observation", "observation_id", conn);
+		int measurementId = FhirToOmopIdGenerator.getId("observation", "observation_id");
 		dvo.setObservationId(measurementId);
 		dvo.setPersonId(omopPerson.getPersonId());
 		dvo.setObservationConceptId(conceptDvo.getConceptId());

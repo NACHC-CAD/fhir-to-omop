@@ -61,7 +61,7 @@ public class OmopDrugExposureBuilder {
 	private DrugExposureDvo getDrugExposureDvo(MedicationRequestParser medReq) {
 		DrugExposureDvo dvo = new DrugExposureDvo();
 		// primary key
-		Integer drugExposureId = FhirToOmopIdGenerator.getId("drug_exposure", "drug_exposure_id", conn);
+		Integer drugExposureId = FhirToOmopIdGenerator.getId("drug_exposure", "drug_exposure_id");
 		dvo.setDrugExposureId(drugExposureId);
 		// patient id
 		Integer omopPatientId = this.omopPerson.getPerson().getPersonId();

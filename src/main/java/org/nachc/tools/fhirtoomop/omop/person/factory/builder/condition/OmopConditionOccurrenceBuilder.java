@@ -47,7 +47,7 @@ public class OmopConditionOccurrenceBuilder {
 		List<ConditionOccurrenceDvo> rtn = new ArrayList<ConditionOccurrenceDvo>();
 		List<ConditionParser> conList = fhirPatient.getConditionList();
 		for (ConditionParser con : conList) {
-			Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
+			Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id");
 			ConditionOccurrenceDvo dvo = new ConditionOccurrenceDvo();
 			dvo.setPersonId(personId);
 			dvo.setConditionOccurrenceId(id);

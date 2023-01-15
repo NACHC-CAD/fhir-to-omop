@@ -72,7 +72,7 @@ public class WriteOmopPersonToDatabase {
 			dvo.setObservationPeriodStartDate(TimeUtil.getDateForYyyy_Mm_Dd("1900-01-01"));
 			dvo.setObservationPeriodEndDate(TimeUtil.getDateForYyyy_Mm_Dd("2100-01-01"));
 			dvo.setPersonId(personDvo.getPersonId());
-			int id = FhirToOmopIdGenerator.getId("observation_period", "observation_period_id", conn);
+			int id = FhirToOmopIdGenerator.getId("observation_period", "observation_period_id");
 			dvo.setObservationPeriodId(id);
 			dvo.setPeriodTypeConceptId(44814724);
 			Dao.insert(dvo, conn);
@@ -107,7 +107,7 @@ public class WriteOmopPersonToDatabase {
 					break;
 				} catch(Exception exp) {
 					if(cnt < retryCount) {
-						Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id", conn);
+						Integer id = FhirToOmopIdGenerator.getId("condition_occurrence", "condition_occurrence_id");
 						dvo.setConditionOccurrenceId(id);
 					} else {
 						exp.printStackTrace();
@@ -124,7 +124,6 @@ public class WriteOmopPersonToDatabase {
 			}
 			Dao.insert(dvo, conn);
 			Database.commit(conn);
-			log.info("Committed condition_occurrence");
 		} catch(Exception exp) {
 			throw new RuntimeException(exp);
 		}

@@ -40,7 +40,7 @@ public class OmopVisitOccurrenceBuilder {
 		List<VisitOccurrenceDvo> rtn = new ArrayList<VisitOccurrenceDvo>();
 		List<EncounterParser> encounterList = fhirPatient.getEncounterList();
 		for (EncounterParser enc : encounterList) {
-			Integer visitOccurrenceId = FhirToOmopIdGenerator.getId("visit_occurrence", "visit_occurrence_id", conn);
+			Integer visitOccurrenceId = FhirToOmopIdGenerator.getId("visit_occurrence", "visit_occurrence_id");
 			VisitOccurrenceDvo dvo = getVisitOccurrenceDvo(enc, person, visitOccurrenceId);
 			rtn.add(dvo);
 		}

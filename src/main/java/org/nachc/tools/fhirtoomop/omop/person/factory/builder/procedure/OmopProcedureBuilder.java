@@ -74,7 +74,7 @@ public class OmopProcedureBuilder {
 	private void addAsProcedure(ProcedureParser proc, ConceptDvo procConcept) {
 		ProcedureOccurrenceDvo dvo = new ProcedureOccurrenceDvo();
 		// primary key
-		Integer procId = FhirToOmopIdGenerator.getId("procedure_occurrence", "procedure_occurrence_id", conn);
+		Integer procId = FhirToOmopIdGenerator.getId("procedure_occurrence", "procedure_occurrence_id");
 		dvo.setProcedureOccurrenceId(procId);
 		// patient id
 		Integer omopPatientId = this.omopPerson.getPerson().getPersonId();

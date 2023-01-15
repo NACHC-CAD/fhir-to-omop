@@ -32,7 +32,7 @@ public class OmopMeasurementFromObservation {
 	public MeasurementDvo buildMeasurement() {
 		// create the dvo and set primary key
 		MeasurementDvo dvo = new MeasurementDvo();
-		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id", conn);
+		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id");
 		dvo.setMeasurementId(measurementId);
 		// person
 		dvo.setPersonId(obs.getPersonId());

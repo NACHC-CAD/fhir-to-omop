@@ -222,7 +222,7 @@ public class FhirToOmopConceptMapper {
 
 	private static ConceptDvo addTempConceptTransaction(String system, String code, Connection conn) {
 		String vocabularyId = SystemMapping.getOmopSystemForFhirSystem(system);
-		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id", conn);
+		int id = FhirToOmopIdGenerator.getIdFromDatabase("concept", "concept_id");
 		ConceptDvo dvo = new ConceptDvo();
 		dvo.setConceptId(id);
 		dvo.setVocabularyId(vocabularyId);

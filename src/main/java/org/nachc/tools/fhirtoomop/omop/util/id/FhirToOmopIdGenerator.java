@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.omop.util.id;
 import java.sql.Connection;
 import java.util.HashMap;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
@@ -14,13 +15,17 @@ public class FhirToOmopIdGenerator {
 	private static HashMap<String, Integer> keys = new HashMap<String, Integer>();
 
 	private static final Object LOCK = new Object();
+	
+	// TODO: FIX THIS
+	private static final Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 
-	public static Integer getId(String tableName, String idName, Connection conn) {
+	public static Integer getId(String tableName, String idName) {
 		synchronized (LOCK) {
 			String keyName = tableName + "." + idName;
-			Integer key = keys.get(keyName);
+//			Integer key = keys.get(keyName);
+			Integer key = null;
 			if (key == null) {
-				key = getIdFromDatabase(tableName, idName, conn);
+				key = getIdFromDatabase(tableName, idName);
 			} else {
 				key++;
 			}
@@ -29,7 +34,7 @@ public class FhirToOmopIdGenerator {
 		}
 	}
 
-	public static Integer getIdFromDatabase(String tableName, String idName, Connection conn) {
+	public static Integer getIdFromDatabase(String tableName, String idName) {
 		synchronized (LOCK) {
 			String cdmDbType = AppParams.get("cdmDbType");
 			if ("postgres".equals(cdmDbType)) {

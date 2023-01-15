@@ -49,7 +49,7 @@ public class OmopConditionFromProcedure {
 
 	public ConditionOccurrenceDvo build() {
 		ConditionOccurrenceDvo dvo = new ConditionOccurrenceDvo();
-		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id", conn);
+		int measurementId = FhirToOmopIdGenerator.getId("measurement", "measurement_id");
 		dvo.setConditionOccurrenceId(measurementId);
 		dvo.setPersonId(omopPerson.getPersonId());
 		dvo.setConditionConceptId(conceptDvo.getConceptId());

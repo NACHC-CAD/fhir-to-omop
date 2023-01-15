@@ -232,7 +232,7 @@ public class OmopObservationBuilder {
 	private ObservationDvo getBasicInformation(ObservationParser parser, boolean isSingle) {
 		ObservationDvo dvo = new ObservationDvo();
 		// observation id
-		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id", conn));
+		dvo.setObservationId(FhirToOmopIdGenerator.getId("observation", "observation_id"));
 		// person
 		Integer omopPatientId = this.omopPerson.getPerson().getPersonId();
 		dvo.setPersonId(omopPatientId);

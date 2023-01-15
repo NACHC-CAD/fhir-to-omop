@@ -32,7 +32,7 @@ public class OmopPersonBuilder {
 		PersonDvo dvo = new PersonDvo();
 		PatientParser patient = fhirPatient.getPatient();
 		// person_id
-		Integer personId = FhirToOmopIdGenerator.getId("person", "person_id", this.conn);
+		Integer personId = FhirToOmopIdGenerator.getId("person", "person_id");
 		dvo.setPersonId(personId);
 		// person_source_value
 		dvo.setPersonSourceValue(patient.getId());
