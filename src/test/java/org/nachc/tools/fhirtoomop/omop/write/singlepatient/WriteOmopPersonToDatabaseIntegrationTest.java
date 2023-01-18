@@ -33,7 +33,7 @@ public class WriteOmopPersonToDatabaseIntegrationTest {
 		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 		// get a connection
 		log.info("Getting connection...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection");
 		try {
 			int before = Database.count("person", conn);

@@ -20,7 +20,7 @@ public class GenerateOrm {
 	}
 
 	public static void generateDvos() {
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String schemaName = AppParams.getDbName();
 			String packageName = "org.nachc.tools.omop.yaorma.dvo";

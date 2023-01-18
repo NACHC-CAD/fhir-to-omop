@@ -1,5 +1,5 @@
-INSERT INTO webapi.source (is_cache_enabled, source_id, source_name, source_key, source_connection, source_dialect) 
-SELECT false, nextval('webapi.source_sequence'), '<atlasDataSourceName>', '<atlasDataSourceKey>', '<atlasCdmUrl>', 'sql server';
+INSERT INTO webapi.source (source_id, source_name, source_key, source_connection, source_dialect) 
+SELECT nextval('webapi.source_sequence'), '<atlasDataSourceName>', '<atlasDataSourceKey>', '<atlasCdmUrl>', 'sql server';
 
 -- CHECK THIS LINE IF THERE IS AN ERROR (USE synthea_micro instead of synthea_micro.dbo)
 INSERT INTO webapi.source_daimon (source_daimon_id, source_id, daimon_type, table_qualifier, priority) 

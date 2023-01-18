@@ -20,7 +20,7 @@ public class GenerateOrmForPersonManualTest {
 
 	public static void main(String[] args) throws Exception {
 		log.info("Generating person Dvo...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String schemaName = AppParams.getDbName();
 			String packageName = "org.nachc.tools.omop.orm.ormgenerator.dvo";

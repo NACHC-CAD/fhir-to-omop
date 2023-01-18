@@ -48,7 +48,7 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 	private List<Connection> getConnections() {
 		List<Connection> rtn = new ArrayList<Connection>();
 		for (int i = 0; i < NUM_OF_CONNS; i++) {
-			Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+			Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 			rtn.add(conn);
 		}	
 		return rtn;

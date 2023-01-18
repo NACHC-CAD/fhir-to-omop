@@ -111,7 +111,7 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 	private List<Connection> getConnections(int maxConns) {
 		List<Connection> rtn = new ArrayList<Connection>();
 		for (int i = 0; i < maxConns; i++) {
-			rtn.add(OmopDatabaseConnectionFactory.getOmopConnection());
+			rtn.add(OmopDatabaseConnectionFactory.getCdmConnection());
 		}
 		return rtn;
 	}

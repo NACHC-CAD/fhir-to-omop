@@ -48,7 +48,7 @@ public class RunAllIntegrationTests {
 		log.info("Truncating tables...");
 		TruncateAllDataTables.exec();
 		log.info("Done truncating tables.");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			MappedConceptCache.init(conn);
 			StandardConceptCache.init(conn);

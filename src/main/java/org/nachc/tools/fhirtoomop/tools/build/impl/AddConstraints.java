@@ -22,7 +22,7 @@ public class AddConstraints {
 	}
 	
 	public static void exec() {
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString;
 			String databaseName = AppParams.getDbName();

@@ -14,7 +14,7 @@ public class StandardConceptCacheIntegrationTest {
 	@Test
 	public void shouldCreateCache() {
 		log.info("Starting test...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		Timer timer = new Timer();
 		try {
 			timer.start();

@@ -27,7 +27,7 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 		List<String> dirList = FileUtil.listResources(DIR_PATH, getClass());
 		// get a connection
 		log.info("Getting connection...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection");
 		try {
 			int cnt = 0;

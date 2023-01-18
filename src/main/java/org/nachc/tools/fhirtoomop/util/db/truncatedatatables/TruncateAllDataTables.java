@@ -32,7 +32,7 @@ public class TruncateAllDataTables {
 	
 	public static void exec(Connection conn) {
 		if(conn == null) {
-			conn = OmopDatabaseConnectionFactory.getOmopConnection();
+			conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		}
 		try {
 			// get the params

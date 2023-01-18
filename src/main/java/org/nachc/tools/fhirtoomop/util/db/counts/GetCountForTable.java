@@ -8,7 +8,7 @@ import org.yaorma.database.Database;
 public class GetCountForTable {
 
 	public static int exec(String tableName) {
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			int cnt = Database.count(tableName, conn);
 			return cnt;

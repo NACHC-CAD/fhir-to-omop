@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import javax.batch.operations.BatchRuntimeException;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.type.ConnectionDbmsType;
 import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
@@ -285,6 +286,12 @@ public class AppParams {
 
 	public static Date getDateNotFound() {
 		return TimeUtil.getDateForYyyy_Mm_Dd("1700-01-01");
+	}
+
+	public static ConnectionDbmsType getDbmsType() {
+		String typeString = get("cdmDbType");
+		ConnectionDbmsType rtn = ConnectionDbmsType.get(typeString);
+		return rtn;
 	}
 
 }

@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.omop.util.id;
 import java.sql.Connection;
 import java.util.HashMap;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -14,7 +15,7 @@ public class FhirToOmopIdGenerator {
 
 	private static final Object LOCK = new Object();
 
-	private static final Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
+	private static final Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 	
 	private static volatile HashMap<String, Integer> KEYS = new HashMap<String, Integer>();
 

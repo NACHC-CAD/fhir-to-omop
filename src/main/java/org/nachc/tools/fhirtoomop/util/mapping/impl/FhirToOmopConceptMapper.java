@@ -180,7 +180,7 @@ public class FhirToOmopConceptMapper {
 		if("postgres".equals(AppParams.get("cdmDbType"))) {
 			conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		} else {
-			conn = OmopDatabaseConnectionFactory.getOmopConnection();
+			conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		}
 		log.info("GOT CONNECTION.");
 		try {

@@ -54,7 +54,7 @@ public class PrimeUploadProcess {
 		if(this.connectionList == null) {
 			this.connectionList = new ArrayList<Connection>();
 			for (int i = 0; i < NUM_OF_CONNS; i++) {
-				Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+				Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 				this.connectionList.add(conn);
 			}
 		}

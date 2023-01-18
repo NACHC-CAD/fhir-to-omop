@@ -17,7 +17,7 @@ public class CreatePreloadIndexes {
 	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/indexes/sqlserver-indexes.sql");
 
 	public static void main(String[] arags) {
-		exec(OmopDatabaseConnectionFactory.getOmopConnection());
+		exec(OmopDatabaseConnectionFactory.getCdmConnection());
 	}
 	
 	public static void exec(Connection conn) {

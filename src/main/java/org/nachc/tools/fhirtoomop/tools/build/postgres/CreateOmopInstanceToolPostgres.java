@@ -60,7 +60,8 @@ public class CreateOmopInstanceToolPostgres {
 		VOC99_LoadTerminology.exec();
 		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
-//		IDX03_CreateCdmConstraints.exec();
+		// IDX03_CreateCdmConstraints.exec();
+		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
 		log.info("Done.");
 	}
 

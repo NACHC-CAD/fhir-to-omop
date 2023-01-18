@@ -40,7 +40,7 @@ public class OmopVisitOccurrenceFactoryIntegrationTest {
 		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();
 		// get a connection
 		log.info("Getting connection...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection");
 		try {
 			// create the omop person

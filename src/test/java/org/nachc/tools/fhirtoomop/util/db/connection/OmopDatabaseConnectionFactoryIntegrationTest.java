@@ -20,7 +20,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 	@Test
 	public void shouldGetConnection() {
 		log.info("Starting test...");
-		Connection conn = OmopDatabaseConnectionFactory.getOmopConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString = "select * from master.information_schema.tables order by table_name";
 			Data data = Database.query(sqlString, conn);
