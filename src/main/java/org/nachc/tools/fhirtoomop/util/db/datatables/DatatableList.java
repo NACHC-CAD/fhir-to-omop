@@ -17,6 +17,7 @@ public class DatatableList {
 			"observation",
 			"condition_occurrence",
 			"visit_occurrence",
+			"provider",
 			"person",
 			"fhir_resource"
 	};
