@@ -12,7 +12,7 @@ import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PopulateWithTestDataFromFhir {
+public class PopulateWithTestDataFromFhirPostgres {
 
 	public static void main(String[] args) {
 		log.info("Starting main...");

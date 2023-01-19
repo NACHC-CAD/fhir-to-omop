@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A03_TearDownAtla
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A04_TearDownAchillesDatabases;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.CDM01_TeardownDatabase;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateSyntheaNativeSchema;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class BurnEverythingToTheGroundPostgres {
 		A02_TearDownAtlasDatabase.exec(conn);
 		A01_TearDownAtlasDatabaseUsers.exec(conn);
 		CDM01_TeardownDatabase.exec();
+		TruncateSyntheaNativeSchema.exec();
 		log.info("Done.");
 	}
 
