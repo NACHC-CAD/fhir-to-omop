@@ -57,7 +57,7 @@ public class CreateOmopInstanceToolPostgres {
 		FHIR03_CreateFhirResourcesTables.exec();
 		FHIR04_AddPlaceholderCdmRecords.exec();
 		FHIR05_CreateSequencesForPrimaryKeys.exec();
-		VOC99_LoadTerminology.exec();
+//		VOC99_LoadTerminology.exec();
 		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
 		// IDX03_CreateCdmConstraints.exec();

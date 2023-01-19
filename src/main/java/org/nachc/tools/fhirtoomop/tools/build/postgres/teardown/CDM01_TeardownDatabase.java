@@ -19,7 +19,6 @@ public class CDM01_TeardownDatabase {
 	}
 
 	public static void exec() {
-		// we use our own connection here to avoid "DROP DATABASE cannot run inside a transaction block" exception
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			log.info("Dropping CDM databases...");
