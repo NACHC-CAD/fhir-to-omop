@@ -19,8 +19,15 @@ public class CDM01_TeardownDatabase {
 	}
 
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = null;
+		// TODO: FIX THIS (need to figure out how to use boot strap connection and specify drop of /DATABASE/schema)
 		try {
+			try {
+				conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+			} catch(Exception exp) {
+				log.info("Could not open connection, probably already deleted database: " + exp.getMessage());
+				return;
+			}
 			log.info("Dropping CDM databases...");
 			String databaseName = AppParams.getDbName();
 			dropSchema(databaseName, conn);
