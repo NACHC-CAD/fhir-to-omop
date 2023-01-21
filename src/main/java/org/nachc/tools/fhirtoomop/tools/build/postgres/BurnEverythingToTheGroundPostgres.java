@@ -2,8 +2,6 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A01_CreateAtlasDatabaseUsers;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A02_CreateAtlasDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A01_TearDownAtlasDatabaseUsers;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A02_TearDownAtlasDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A03_TearDownAtlasWebApiSchema;
@@ -27,7 +25,7 @@ public class BurnEverythingToTheGroundPostgres {
 		}
 	}
 
-	private static void exec(Connection conn) {
+	public static void exec(Connection conn) {
 		log.info("BURNING POSTGRES OMOP INSTANCE TO THE GROUND...");
 		A04_TearDownAchillesDatabases.exec(conn);
 		A03_TearDownAtlasWebApiSchema.exec(conn);
