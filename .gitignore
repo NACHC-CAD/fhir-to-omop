@@ -15,7 +15,8 @@
 *.war
 *.nar
 *.ear
-*.zip
+# inculde zip files (e.g. test files)
+# *.zip
 *.tar.gz
 *.rar
 
