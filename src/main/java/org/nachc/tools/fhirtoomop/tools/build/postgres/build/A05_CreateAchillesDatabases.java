@@ -20,8 +20,8 @@ public class A05_CreateAchillesDatabases {
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		try {
 			String databaseName = AppParams.getDbName();
-			createDatabase(databaseName + "_ach_results", conn);
-			createDatabase(databaseName + "_ach_temp", conn);
+			createDatabase(databaseName + "_ach_res", conn);
+			createDatabase(databaseName + "_ach_tem", conn);
 			Database.commit(conn);
 		} finally {
 			Database.close(conn);
