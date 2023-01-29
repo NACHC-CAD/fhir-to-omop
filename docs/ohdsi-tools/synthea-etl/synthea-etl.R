@@ -1,9 +1,3 @@
-# ---
-#
-# Datafile was downloaded from: https://synthea.mitre.org/downloads
-#
-# ---
-
 
 devtools::install_github("OHDSI/ETL-Synthea")
 
@@ -31,11 +25,11 @@ cd <- DatabaseConnector::createConnectionDetails(
   pathToDriver = "D:\\_WORKSPACES\\nachc\\_CURRENT\\drivers\\postgresql\\42.3.3"  
 )
 
-cdmSchema      <- "cdm_f2o_build"
+cdmSchema      <- "etl_synthea_1k"
 cdmVersion     <- "5.4"
 syntheaVersion <- "2.7.0"
-syntheaSchema  <- "synthea_native"
-syntheaFileLoc <- "C:\\_YES\\workspace\\synthea-etl\\10k_synthea_covid19_csv\\10k_synthea_covid19_csv"
+syntheaSchema  <- "etl_synthea_1k_synthea_native"
+syntheaFileLoc <- "D:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv"
 vocabFileLoc   <- "C:\\fhir-to-omop\\terminology\\zip"
 
 ETLSyntheaBuilder::CreateCDMTables(connectionDetails = cd, cdmSchema = cdmSchema, cdmVersion = cdmVersion)

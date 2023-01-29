@@ -15,8 +15,8 @@ pathToDriver <- "D:\\_WORKSPACES\\nachc\\_CURRENT\\drivers\\postgresql\\42.3.3"
 extraSettings <- ""
 
 cdmVersion <- "5.4" 
-cdmDatabaseSchema <- "cdm_f2o_build"
-resultsDatabaseSchema <- "cdm_f2o_build_ach_results"
+cdmDatabaseSchema <- "etl_synthea_1k"
+resultsDatabaseSchema <- "etl_synthea_1k_ach_res"
 
 
 
