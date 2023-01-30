@@ -57,10 +57,13 @@ git clone https://github.com/OHDSI/Atlas
 rename Atlas atlas
 cd atlas
 git checkout v2.12.0
+call npm run build
 cd ..
 echo.
 echo.
+echo ---------------------
 echo Done.
+echo ---------------------
 echo.
 echo.
 
