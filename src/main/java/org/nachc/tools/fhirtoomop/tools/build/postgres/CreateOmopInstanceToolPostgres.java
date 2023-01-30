@@ -32,6 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateOmopInstanceToolPostgres {
 
 	public static void main(String[] args) {
+		exec();
+	}
+
+	public static void exec() {
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			exec(conn);
@@ -39,7 +43,7 @@ public class CreateOmopInstanceToolPostgres {
 			Database.close(conn);
 		}
 	}
-
+	
 	private static void exec(Connection conn) {
 		log.info("CREATING OMOP INSTANCE FOR POSTGRESQL...");
 		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
