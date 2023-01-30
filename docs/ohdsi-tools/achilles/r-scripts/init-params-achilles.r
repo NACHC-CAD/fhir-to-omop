@@ -6,17 +6,17 @@
 #
 # ---
 
-dbms <- "sql server"
-user <- "synthea_micro" 
-password <- "Sneaker01" 
-server <- "localhost" 
-port <- "1433"
-pathToDriver <- "D:\\NACHC\\SYNTHEA\\DQD\\resources\\jar\\sqlserver-jar"  # location of the mssql-jdbc-10.2.0.jre8.jar
-extraSettings <- ";databaseName=master;integratedSecurity=true;encrypt=false"
+dbms <- "postgresql"
+user <- "ohdsi_admin_user" 
+password <- "app1" 
+server <- "localhost/OHDSI" 
+port <- "5432"
+pathToDriver <- "C:\\_YES\\databases\\postgres\\drivers\\42.3.3"  
+extraSettings <- ""
 
 cdmVersion <- "5.4" 
-cdmDatabaseSchema <- "synthea_micro.dbo"
-resultsDatabaseSchema <- "synthea_micro_achilles_results.dbo"
+cdmDatabaseSchema <- "etl_synthea_1k"
+resultsDatabaseSchema <- "etl_synthea_1k_ach_res"
 
 
 

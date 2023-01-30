@@ -3,7 +3,7 @@ devtools::install_github("OHDSI/ETL-Synthea")
 
 library(ETLSyntheaBuilder)
 
-# We are loading a version 5.4 CDM into a local PostgreSQL database called "synthea10".
+# We are loading a version 5.4 CDM into a local PostgreSQL database schema called "OHDSI/etl_synthea_1k".
 # The ETLSyntheaBuilder package leverages the OHDSI/CommonDataModel package for CDM creation.
 # Valid CDM versions are determined by executing CommonDataModel::listSupportedVersions().
 # The strings representing supported CDM versions are currently "5.3" and "5.4". 
@@ -11,8 +11,9 @@ library(ETLSyntheaBuilder)
 # the only other version we support is 3.0.0.
 # The schema to load the Synthea tables is called "native".
 # The schema to load the Vocabulary and CDM tables is "cdm_synthea10".  
-# The username and pw are "postgres" and "lollipop".
-# The Synthea and Vocabulary CSV files are located in /tmp/synthea/output/csv and /tmp/Vocabulary_20181119, respectively.
+# The username and pw are "postgres" and "ohdsi".
+# The Synthea files are in included in the fhir-to-omop install and are located at C:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv
+# The Vocabulary CSV files need to be downloaded to the directory 
 
 # For those interested in seeing the CDM changes from 5.3 to 5.4, please see: http://ohdsi.github.io/CommonDataModel/cdm54Changes.html
 
@@ -22,15 +23,15 @@ cd <- DatabaseConnector::createConnectionDetails(
   user     = "postgres", 
   password = "ohdsi", 
   port     = 5432, 
-  pathToDriver = "D:\\_WORKSPACES\\nachc\\_CURRENT\\drivers\\postgresql\\42.3.3"  
+  pathToDriver = "C:\\_YES\\databases\\postgres\\drivers\\42.3.3"  
 )
 
 cdmSchema      <- "etl_synthea_1k"
 cdmVersion     <- "5.4"
 syntheaVersion <- "2.7.0"
 syntheaSchema  <- "etl_synthea_1k_synthea_native"
-syntheaFileLoc <- "D:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv"
-vocabFileLoc   <- "C:\\fhir-to-omop\\terminology\\zip"
+syntheaFileLoc <- "C:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv"
+vocabFileLoc   <- "C:\\_YES\\tools\\terminology\\fhir-to-omop\\for-testing"
 
 ETLSyntheaBuilder::CreateCDMTables(connectionDetails = cd, cdmSchema = cdmSchema, cdmVersion = cdmVersion)
 

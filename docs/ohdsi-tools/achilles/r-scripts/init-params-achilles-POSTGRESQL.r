@@ -11,7 +11,7 @@ user <- "ohdsi_admin_user"
 password <- "app1" 
 server <- "localhost/OHDSI" 
 port <- "5432"
-pathToDriver <- "D:\\_WORKSPACES\\nachc\\_CURRENT\\drivers\\postgresql\\42.3.3"  
+pathToDriver <- "C:\\_YES\\databases\\postgres\\drivers\\42.3.3"  
 extraSettings <- ""
 
 cdmVersion <- "5.4" 
