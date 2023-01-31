@@ -16,10 +16,115 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<!-- introduction -->
-			<h1>Start Here: Installing and First Steps with fhir-to-omop Tools</h1>
+			<h1>Start Here: Automated build of a standardized WebAPI, Atlas, and fhir-to-omop developer's environment</h1>
 			<p>
-				This page will show you the steps to install and get started with fhir-to-omop as a developer. 
+				An automated build of a complete WebAPI, Atlas, and fhir-to-omop development environment has been created.  
+				The overview/quick-start guide is available at the Ponos link below and has links to more detailed information.  
+			</p>
+			
+			<h3>
+				<a href="./Ponos.html">Ponos: An Automated Build for an Atlas Development Environment</a>
+			</h3>
+			
+			<p>
+				Ponos automates the build of an environment that can be used to run and develop Atlas as much as is possible.  
+				The Ponos automated build consists of the following steps. 
+				Each of the steps can be run individually as needed.  
+				All of the steps can be run to create a complete installation of Atlas 
+				and the tools needed for Atlas development.  
+				<ul>
+					<li>
+						<b>Download and Install the basic tools needed for Java development</b>  
+						<br/>
+						An NSIS Windows installer is provided that can be run to install everything needed for basic Java/Web development.  
+						This installer builds the _YES (Yaorma Eclipse Setup) environment. 
+						This includes the following
+						<ul>
+							<li>
+								A Git client
+							</li>	
+							<li>
+								Maven (MVN)
+							</li>
+							<li>
+								Java 8 and Java 11
+							</li>
+								An Installer for NPM
+							<li>
+								An Installer for PostgreSQL
+							</li>
+							<li>
+								The JDBC driver required for PostgreSQL
+							</li>
+							<li>
+								An Apache Tomcat server
+							</li>
+							<li>
+								A Wildfly server
+							</li>
+							<li>
+								A configured instance of Eclipse that is pre-integrated with Tomcat and Wildfly
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Install R Components Using Standard Installers</b>
+						<br/>
+						Installers for R are provided.  
+						By using these version of the installers we can be assured the we have all of the correct versions. 
+						These installers include the following
+						<ul>
+							<li>
+								R for Windows
+							</li>
+							<li>
+								RTools
+							</li>
+							<li>
+								RStudio
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Install NPM</b>
+						<br/>
+						NPM needs to be installed. 
+						This is done using the standardized installer provided when the basic tools (_YES) were down loaded in step 1 above.  
+					</li>
+					<li>
+						<b>Install PostgreSQL</b>
+						<br/>
+						PostgreSQL is installed using the standard installer provided when the basic tools (_YES) were down loaded in step 1 above. 
+					</li>
+					<li>
+						<b>Install and Build the WebAPI, Atlas, and fhir-to-omop projects</b>
+						<br/>
+						A script is provided that will clone, checkout to a common version, and build 
+						<ul>
+							<li>Atlas</li>
+							<li>WebAPI</li>
+							<li>fhir-to-omop</li>
+						</ul>
+					</li>
+					<li>
+					</li>
+					<li>
+					</li>
+				</ul> 
+			</p>
+
+			<!-- old version -->
+			<h1>Don't Start Here: Manually Installing and First Steps with fhir-to-omop Tools</h1>
+			<h3>
+				This section gives instructions on how to manually install some of the tools needed for WebAPI, Atlas, and fhir-to-omop.  
+			</h3>
+			
+			<h3>Introduction</h3>
+			<p>
+				This section will show you the steps to install and get started with fhir-to-omop as a developer. 
+				This section is retained as it was used to guide the development of the automated, and thereby standardized, 
+				build of the WebAPI/Atlas/fhir-to-omop development environment. 
+				You should really use the automated build described above.   
 			</p>
 			<p>
 				Getting started with fhir-to-omop means different things to different users.  
