@@ -65,6 +65,12 @@
 							<li>
 								A configured instance of Eclipse that is pre-integrated with Tomcat and Wildfly
 							</li>
+							<li>
+								This install will update your path environment variable to point to the correct version of Java for this work
+							</li>
+							<li>
+								This install provides some .bat files for some common tasks such as changing the version of Java being used
+							</li>
 						</ul>
 					</li>
 					<li>
@@ -97,9 +103,10 @@
 						PostgreSQL is installed using the standard installer provided when the basic tools (_YES) were down loaded in step 1 above. 
 					</li>
 					<li>
-						<b>Install and Build the WebAPI, Atlas, and fhir-to-omop projects</b>
+						<b>Install, Build, and deploy the WebAPI, Atlas, and fhir-to-omop projects</b>
 						<br/>
-						A script is provided that will clone, checkout to a common version, and build 
+						A script is provided that will clone, checkout to a common version, and build the following.  
+						This process also deploys WebAPI and Atlas to our common instance of Tomcat.  
 						<ul>
 							<li>Atlas</li>
 							<li>WebAPI</li>
@@ -107,8 +114,60 @@
 						</ul>
 					</li>
 					<li>
+						<b>Create Everything Needed to Initialize Your Environment using the fhir-to-omop atlas tool</b>
+						<br/>
+						All of the steps required to set up the databases, users, etc. for Atlas have been automated 
+						and can be run using the fhir-to-omop atlas tool.  
+						This includes the following
+						<ul>
+							<li>
+								Clean up (deleting) the old environment
+							</li>
+							<li>
+								Create the Atlas database users
+							</li>
+							<li>
+								Create the WebAPI schema
+							</li>
+							<li>
+								Create the WebAPI schema tables
+							</li>
+							<li>
+								Create the Achilles schemas
+							</li>
+							<li>
+								Create the Achilles schema tables
+							</li>
+							<li>
+								Grant all required privileges
+							</li>
+							<li>
+								Create Atlas source records in the webapi scheam
+							</li>
+							<li>
+								Create an instance of the Common Data Model (CDM)
+							</li>
+							<li>
+								Create the Synthea native schema (the ETL-synthea tool is used to populate the CDM with test data)
+							</li>
+						</ul>
 					</li>
 					<li>
+						<b>Populate the CDM with test data using ETL-Synthea</b>
+						<br/>
+						Preconfigured R scripts that run out of the box are provided.  
+						These scripts are used to populate our instance of the CDM with test data.   
+					</li>
+					<li>
+						<b>Run Achilles</b>
+						Preconfigured R scripts that run out of the box are provided.  
+						These scripts run Achilles to populate our CDM with required data.  
+					</li>
+					<li>
+						<b>Start Tomcat and Launch Atlas</b>
+						<br/>
+						At this point we have done everything needed to run Atlas.  
+						We can now start our instance of Tomcat and start Atlas in a web browser.  
 					</li>
 				</ul> 
 			</p>
