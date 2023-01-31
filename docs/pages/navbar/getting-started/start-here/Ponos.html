@@ -84,7 +84,7 @@
 				<li>
 					<b>Install, Build, and deploy the WebAPI, Atlas, and fhir-to-omop projects</b>
 					<br/>
-					<a download href="/ohdsi-tools/atlas/install-atlas-projects.bat">Download the install-atlas-project.bat file</a>
+					<a download href="/fhir-to-omop/ohdsi-tools/atlas/install-atlas-projects.bat">Download the install-atlas-project.bat file</a>
 					<br/>
 					Download the install-atlas-project.bat file.  
 					<br/>
@@ -104,13 +104,40 @@
 				<li>
 					<b>Populate the CDM with test data using ETL-Synthea</b>
 					<br/>
+					<a download href="/fhir-to-omop/ohdsi-tools/synthea-etl/synthea-etl.R">Download the synthea-etl.R script</a>
+					<br/>
+					Use the above link to download the synthea-etl.R script.  
+					<br/>
+					Open the script in RStudio. Wait a moment and a very small link will appear at the top of the RStudio screen.  
+					<br/>
+					SELECT THE INSTALL OPTION! 
+					If you don't, things will go awry.  
 				</li>
 				<li>
 					<b>Run Achilles</b>
-					<br/>
+					Download the three R scripts listed below and run them in the order shown here.  
+					<ul>
+						<li>
+							<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/install-achilles.r">install-achilles.r</a>
+						</li>
+						<li>
+							<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/init-params-achilles.r">init-params-achilles.r</a>
+						</li>
+						<li>
+							<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/run-achilles.r">run-achilles.r</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<b>Start Tomcat and Launch Atlas</b>
+					<br/>
+					And we're done!<br/>
+					Navigate to C:\_YES\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\bin
+					<br/>
+					Run the following, wait a few moments for Tomcat to start, and then open Atlas in a browser using 
+					<a href="http://localhost:8080/atlas">http://localhost:8080/atlas</a>  
+					<br/>
+					catalina.bat start
 					<br/>
 				</li>
 			</ul>
