@@ -16,14 +16,24 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 			<h1 align="center">
-				Ponos Quick Start Guide: Download and Install NPM
+				Ponos Quick Start Guide: Download and Install PostgreSQL
 			</h1>
 
-			<h3>Run the NPM installer</h3>
+			<h3>Run the PostgreSQL installer</h3>
 			
-			The NPM installer is included in the _YES install.  
-			Navigate to C:\_YES\tools\npm and run the installer there.  
-			
+			The PostgreSQL installer is included in the _YES install.  
+			Navigate to C:\_YES\databases\postgres and run the installer there.  
+			Accept all of the defaults EXCEPT: 
+			<ul>
+				<li>
+					UNCHECK THE "Stack Builder" OPTION.  
+				</li>
+				<li>
+					Use "ohdsi" as the password if you want everything to run out of the box.  
+					You can choose another password but you will then need to modify the configuration files 
+					(0/5, would not recommend).
+				</li>
+			</ul>
 			<img width="800" src="./img/01-install.jpg" />
 
 		</div>
