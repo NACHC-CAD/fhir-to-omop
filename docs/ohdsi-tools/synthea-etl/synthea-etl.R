@@ -1,21 +1,15 @@
+# ---
+#
+# This file has been addapted from the documentation for the ETL-Synthea project:
+# https://github.com/OHDSI/ETL-Synthea
+#
+# The SHA code used to specify the version used here is for the 2022-12-02 commit.  
+#
+# ---
 
-devtools::install_github("OHDSI/ETL-Synthea")
+devtools::install_github("OHDSI/ETL-Synthea@bae1c8eca8dba7ba1129f6c5f758b985c5458405")
 
 library(ETLSyntheaBuilder)
-
-# We are loading a version 5.4 CDM into a local PostgreSQL database schema called "OHDSI/etl_synthea_1k".
-# The ETLSyntheaBuilder package leverages the OHDSI/CommonDataModel package for CDM creation.
-# Valid CDM versions are determined by executing CommonDataModel::listSupportedVersions().
-# The strings representing supported CDM versions are currently "5.3" and "5.4". 
-# The Synthea version we use in this example is 2.7.0.  Since Synthea's MASTER branch is always active,
-# the only other version we support is 3.0.0.
-# The schema to load the Synthea tables is called "native".
-# The schema to load the Vocabulary and CDM tables is "cdm_synthea10".  
-# The username and pw are "postgres" and "ohdsi".
-# The Synthea files are in included in the fhir-to-omop install and are located at C:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv
-# The Vocabulary CSV files need to be downloaded to the directory 
-
-# For those interested in seeing the CDM changes from 5.3 to 5.4, please see: http://ohdsi.github.io/CommonDataModel/cdm54Changes.html
 
 cd <- DatabaseConnector::createConnectionDetails(
   dbms     = "postgresql", 
