@@ -1,0 +1,82 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+			<h1 align="center">
+				Ponos Quick Start Guide: Creating an AWS EC2 Instance to Host Atlas
+			</h1>
+			
+			<h3>Introduction</h3>
+			<p>
+			This page shows how to create an AWS EC2 instance that can be used as a host for the automated build of the Atlas development environment.  
+			The AWS EC2 instance is used as an example here to demonstrate the installation is complete and can be run on a new untouched Windows machine.  
+			The Ponos standardized automated installation can be run on any modern Windows machine.  
+			This guide assumes you have an AWS account and can navigate to the EC2 page.  
+			</p>
+			
+			<h3>Create an AWS EC2 Instance to Host Atlas</h3>
+			Login to you AWS account and navigate to the EC2 page.  Select Launch Instances.  
+			<br/>
+			
+			<img width="800" src="./img/02-launch.jpg" />
+			<br/>
+			<br/>
+			Configure your new instance:
+			<ul>
+				<li>
+					Give it a name, here we are using _YES_DEMO_01
+				</li>
+				<li>
+					Select Windows.  For this example we are using Microsoft Windows Server 2022 Base
+				</li>
+				<li>
+					Select your instance type.  For this example we are using t3.2xlarge
+				</li>
+				<li>
+					Select or create a key pair.  
+				</li>
+				<li>
+					Set your network preferences.  For this example we are limiting access to my current IP for RDP.  
+				</li>
+				<li>
+					INCREASE DEFAULT STORAGE SIZE: The default is 30G, this isn't enough.  For this example we are increasing the storage size to 300G.  
+				</li>
+				<li>
+					After you've set your configuration, select Launch Instance.  Go get coffee, it will take about 5 minutes before the new instance is ready.  
+				</li>
+			</ul>
+			<img width="800" src="./img/02-launch.jpg" />
+			<br/>
+			<br/>
+			
+			Select Actions->Security->Get Windows password to use your key file to create a password for the Administrator account. 
+			Copy and save the password to a safe place.  
+			<br/>
+			
+			<img width="800" src="./img/03-launch-password.jpg" />
+			<br/>
+			<br/>
+			
+			Get the Public IPv4 address for your instance from the EC2. 
+			Launch Remote Desktop Connection and use the IP address and the password you created for the Administrator account to launch a connection to your new machine.  
+			<br/>
+			<img width="800" src="./img/04-new-server.jpg" />
+			<br/><br/>
+			
+			
+		</div>
+	</body>
+</html>
