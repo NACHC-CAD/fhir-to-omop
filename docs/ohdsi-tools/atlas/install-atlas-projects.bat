@@ -19,6 +19,7 @@ echo Cloning fhir-to-omop
 rmdir fhir-to-omop
 git clone https://github.com/NACHC-CAD/fhir-to-omop
 cd fhir-to-omop
+git checkout v1.2.001
 call mvn clean 
 call mvn install
 echo Done with fhir-to-omop mvn clean install 
