@@ -1,7 +1,7 @@
 :: -----------------------
 ::
 :: bat file to install and build projects for WebAPI and Atlas
-::   TODO: NEED TO ADD TAG AND CHECKOUT FOR fhir-to-omop
+:: This is v1.2.002
 ::
 :: -----------------------
 
@@ -19,7 +19,7 @@ echo Cloning fhir-to-omop
 rmdir fhir-to-omop
 git clone https://github.com/NACHC-CAD/fhir-to-omop
 cd fhir-to-omop
-git checkout v1.2.001
+git checkout v1.2.002
 call mvn clean 
 call mvn install
 echo Done with fhir-to-omop mvn clean install 
@@ -64,14 +64,24 @@ echo.
 echo.
 
 ::
-:: Move WebAPI and atlas to tomcat webapps folder
+:: Delete existing Tomcat deployments
 ::
 
 echo.
 echo.
-echo Moving web apps (WebAPI and atlas) to tomcat webapps directory
+echo Deleting existing Atlas Tomcat deployment
+@RD /S /Q "D:\_YES\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\webapps\atlas"
+echo Deleting existing WebAPI deployment
+del /F /Q "D:\_YES\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\webapps\WebAPI.war"
+echo Done deleting existing Tomcat deployments
+
+::
+:: Move WebAPI and atlas to tomcat webapps folder
+::
+
+echo Moving web apps (WebAPI and atlas) to tomcat webapps directory (this takes a little time)...
 copy .\WebAPI\target\WebAPI.war .\..\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\webapps
-robocopy .\atlas .\..\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\webapps\atlas /E 
+robocopy .\atlas .\..\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\webapps\atlas /E /NFL /NDL /NJH /NJS /nc /ns /np
 echo Done moving web app files. 
 
 ::
