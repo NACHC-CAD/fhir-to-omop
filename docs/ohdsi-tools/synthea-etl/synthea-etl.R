@@ -25,7 +25,7 @@ cdmVersion     <- "5.4"
 syntheaVersion <- "2.7.0"
 syntheaSchema  <- "etl_synthea_1k_synthea_native"
 syntheaFileLoc <- "C:\\_YES\\workspace\\fhir-to-omop\\src\\main\\resources\\test\\fhir\\csv\\synthmass-1k\\synthea_sample_data_csv_apr2020\\csv"
-vocabFileLoc   <- "C:\\_YES\\tools\\terminology\\fhir-to-omop\\for-testing"
+vocabFileLoc   <- "C:\\_YES\\tools\\terminology\\fhir-to-omop\\for-testing\\csv"
 
 ETLSyntheaBuilder::CreateCDMTables(connectionDetails = cd, cdmSchema = cdmSchema, cdmVersion = cdmVersion)
 
