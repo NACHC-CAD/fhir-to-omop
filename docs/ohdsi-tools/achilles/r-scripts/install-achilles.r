@@ -1,7 +1,7 @@
 # --- 
 #
-# Script to istall dependencies
-# This script will istall the dependencies required to run Achilles.  
+# Script to install dependencies
+# This script will install the dependencies required to run Achilles.  
 # This script only needs to be run once for a given R instance (computer).  
 #
 # The SHA used for CohortMethod is for the 2022-08-14 commit.  

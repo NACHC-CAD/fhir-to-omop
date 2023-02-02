@@ -1,0 +1,72 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+			<h1 align="center">
+				Ponos Quick Start Guide: Run Achilles
+			</h1>
+
+			<h3>Run the install, init-params, and achilles Scripts</h3>
+
+			Download the three R scripts listed below and run them in the order shown here.  
+			<ul>
+				<li>
+					<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/install-achilles.r">install-achilles.r</a>
+				</li>
+				<li>
+					<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/init-params-achilles.r">init-params-achilles.r</a>
+				</li>
+				<li>
+					<a download href="/fhir-to-omop/ohdsi-tools/achilles/r-scripts/run-achilles.r">run-achilles.r</a>
+				</li>
+			</ul>
+
+			<img width="800" src="./img/01-download.jpg" />
+			<br/>
+			<br/>
+
+			<h3>Run install-achilles.r</h3>
+			Open the install-achilles.r script in R, select all, and press the run button.  
+			<br/>
+			You will be asked several times if you want to restart R
+			<br/>
+			SELECT NO, DO NOT RESTART R!
+			<br/>
+			
+			<img width="800" src="./img/02-run-install.jpg" />
+			<br/>
+			<br/>
+			
+			<h3>Run init-params-achilles.r</h3>
+			Open the init-params-achilles.r script in R, select all, and press the run button.  
+			<br/>
+
+			<img width="800" src="./img/03-run-init.jpg" />
+			<br/>
+			<br/>
+			
+			<h3>Run Achilles</h3>
+			Open the run-achilles.r script in R, select all, and press the run button.  
+			<br/>
+
+			<img width="800" src="./img/04-run-achilles.jpg" />
+			<br/>
+			<br/>
+			
+		</div>
+	</body>
+</html>
+
