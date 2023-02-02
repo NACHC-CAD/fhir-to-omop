@@ -1,0 +1,70 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+			<h1 align="center">
+				Ponos Quick Start Guide: Run Tomcat and Launch Atlas
+			</h1>
+
+			<h3>Launch Tomcat</h3>
+
+			Open a cmd prompt and navigate to the bin dir of Tomcat:
+			<br/>
+			C:\_YES\servers\apache-tomcat\apache-tomcat-8.5.85-windows-x64\apache-tomcat-8.5.85\bin
+			<br/> 
+			You can use the "tom" command that is included in the bat files provided by the _YES install as shown below.  
+			<br/>
+			tom
+			<br/>
+			catalina.bat start
+			<br/>
+			<img width="800" src="./img/01a-start-tomcat.jpg" />
+			<br/>
+			<br/>
+			
+			This should open a new cmd window with a Java logo that will show the logging output of Tomcat.  
+			Wait a few minutes for Tomcat to start (i.e. for the logging output to stop).  
+			<img width="800" src="./img/01b-start-tomcat.jpg" />
+			
+			<h3>Launch Atlas</h3>
+			Open a web browser and navigate to http://localhost:8080/manager
+			<br/>
+			The user name and password are:
+			<br/>
+			tomcat
+			<br/>
+			admin
+			<br/>
+			<img width="800" src="./img/02-manager.jpg" />
+			<br/>
+			<br/>
+			Select the "atlas" link to launch Atlas.  This will launch Atlas.  
+			When Atlas is launched for the first time you will be asked to accept the SNOMED-CT license.  Do so.  
+			<br/>
+			<img width="800" src="./img/03-snomed.jpg" />
+			<br/>
+			<br/>
+			Select the "Data Sources" tab and then select "ETL-Synthea Build (from etl_synthea_1k.csv)" as your data source.  
+			<br/>
+			Select a report to confirm the data have been uploaded and Atlas is up and running correctly.  
+			The Person report is shown below.  
+			<br/>
+			<img width="800" src="./img/04-atlas.jpg" />
+
+		</div>
+	</body>
+</html>
+
