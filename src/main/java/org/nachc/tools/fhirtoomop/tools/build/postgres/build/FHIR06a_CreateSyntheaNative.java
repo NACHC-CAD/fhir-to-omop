@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class FHIR06_CreateSyntheaNative {
+public class FHIR06a_CreateSyntheaNative {
 
 	public static void main(String[] args) {
 		log.info("Starting main...");
