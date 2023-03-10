@@ -12,8 +12,8 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSyntheaNative;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
@@ -51,19 +51,19 @@ public class CreateOmopInstanceToolPostgres {
 		A07_GrantPrivileges.exec();
 		A08_CreateAtlasSourceRecordsInWebApi.exec();
 		CDM01_CreateCdmDatabase.exec();
-//		CDM02a_CreateCdmDatabaseTables.exec();
+		CDM02a_CreateCdmDatabaseTables.exec();
 //		CDM02b_CreateCdmDatabasePrimaryKeys.exec();
 //		CDM03_CreateCdmSourceRecordInCdmForAtlas.exec();
 //		FHIR01_CreateMappingTables.exec();
 //		FHIR02_LoadFhirRaceEthMappings.exec();
-//		FHIR03_CreateFhirResourcesTables.exec();
+		FHIR03_CreateFhirResourcesTables.exec();
 //		FHIR04_AddPlaceholderCdmRecords.exec();
 //		FHIR05_CreateSequencesForPrimaryKeys.exec();
 		FHIR06a_CreateSyntheaNative.exec();
 //		FHIR06b_CreateSyntheaNativeDatabaseTables.exec();
-//		VOC99_LoadTerminology.exec();
+		VOC99_LoadTerminology.exec();
 //		IDX01_CreateCdmPrimaryKeys.exec();
-//		IDX02_CreateCdmIndexes.exec();
+		IDX02_CreateCdmIndexes.exec();
 		// IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
 		log.info("Done.");

@@ -20,8 +20,13 @@ public class TruncateDataTables {
 				log.info("TRUNCATING TABLE: " + tableName);
 				String sqlString = "delete from " + tableName;
 				log.info(sqlString);
-				Database.update(sqlString, conn);
-				log.info("TRUNCATED TABLE: " + tableName);
+				try {
+					Database.update(sqlString, conn);
+					log.info("TRUNCATED TABLE: " + tableName);
+				} catch(Exception exp) {
+					log.error("COULD NOT TRUNCATE TABLE: " + tableName);
+					exp.printStackTrace();
+				}
 			}
 			// delete two-billionaires
 			log.info("Deleting two-billionaires...");

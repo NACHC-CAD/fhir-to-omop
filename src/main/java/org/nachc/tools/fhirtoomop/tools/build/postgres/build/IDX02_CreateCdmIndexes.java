@@ -5,6 +5,7 @@ import java.sql.Connection;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
+import org.yaorma.util.time.Timer;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -20,7 +21,9 @@ public class IDX02_CreateCdmIndexes {
 	}
 
 	public static void exec() {
-		log.info("Creating CDM database tables...");
+		log.info("Creating CDM INDEXES...");
+		Timer timer = new Timer();
+		timer.start();
 		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
 		log.info("Got connection...");
 		try {
@@ -35,7 +38,8 @@ public class IDX02_CreateCdmIndexes {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done creating CDM database tables.");
+		log.info("TIME TO CREATE INDEXES: " + timer.getElapsedString());
+		log.info("Done creating CDM INDEXES...");
 	}
 
 }

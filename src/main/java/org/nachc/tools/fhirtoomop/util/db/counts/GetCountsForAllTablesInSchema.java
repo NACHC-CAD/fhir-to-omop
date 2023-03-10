@@ -35,9 +35,13 @@ public class GetCountsForAllTablesInSchema {
 			log.debug("Getting counts for: " + schemaName + "." + tableName);
 			String sqlString = "select '" + schemaName + "." + tableName + "' as table_name, count(*) as row_count from " + schemaName + "." + tableName + "\n";
 			log.debug(sqlString);
-			Data dataForTable = Database.query(sqlString, conn);
-			log.debug("CNT = " + dataForTable.get(0).get("rowCount"));
-			data.addAll(dataForTable);
+			try {
+				Data dataForTable = Database.query(sqlString, conn);
+				log.info("CNT = " + dataForTable.get(0).get("rowCount"));
+				data.addAll(dataForTable);
+			} catch(Exception exp) {
+				log.info("CNT = " + "NA");
+			}
 		}
 		return data;
 	}
