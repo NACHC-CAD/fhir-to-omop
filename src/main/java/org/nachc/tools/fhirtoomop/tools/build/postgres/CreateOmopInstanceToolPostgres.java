@@ -12,12 +12,15 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN01_LoadSynthFiles;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN02_CreateIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSyntheaNative;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06b_CreateSyntheaNativeDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.yaorma.database.Database;
+import org.yaorma.util.time.Timer;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,6 +41,8 @@ public class CreateOmopInstanceToolPostgres {
 	}
 	
 	private static void exec(Connection conn) {
+		Timer timer = new Timer();
+		timer.start();
 		log.info("CREATING OMOP INSTANCE FOR POSTGRESQL...");
 		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
 		BurnEverythingToTheGroundPostgres.exec(conn);
@@ -67,7 +72,10 @@ public class CreateOmopInstanceToolPostgres {
 		IDX02_CreateCdmIndexes.exec();
 		// IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
-		
+		ETLSYN01_LoadSynthFiles.exec();
+		ETLSYN02_CreateIndexes.exec();
+		timer.stop();
+		log.info("\n\nBUILD TIME: " + timer.getElapsedString());
 		log.info("Done.");
 	}
 

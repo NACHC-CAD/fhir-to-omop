@@ -30,6 +30,10 @@ vocabFileLoc   <- "C:\\_YES\\tools\\terminology\\fhir-to-omop\\for-testing\\csv"
 
 print("Loading synthea tables...")
 ETLSyntheaBuilder::LoadSyntheaTables(connectionDetails = cd, syntheaSchema = syntheaSchema, syntheaFileLoc = syntheaFileLoc)
+
+print("Creating Vocab Mapping tables...")
+ETLSyntheaBuilder::CreateVocabTables(connectionDetails = cd, cdmSchema = cdmSchema, syntheaSchema = syntheaSchema, cdmVersion = cdmVersion, syntheaVersion = syntheaVersion)
+
 print("Done.")
 
 
