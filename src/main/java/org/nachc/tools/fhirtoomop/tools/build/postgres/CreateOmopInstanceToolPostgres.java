@@ -14,8 +14,8 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmData
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSyntheaNative;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06b_CreateSyntheaNativeDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.yaorma.database.Database;
 
@@ -60,12 +60,14 @@ public class CreateOmopInstanceToolPostgres {
 //		FHIR04_AddPlaceholderCdmRecords.exec();
 //		FHIR05_CreateSequencesForPrimaryKeys.exec();
 		FHIR06a_CreateSyntheaNative.exec();
-//		FHIR06b_CreateSyntheaNativeDatabaseTables.exec();
-		VOC99_LoadTerminology.exec();
+		FHIR06b_CreateSyntheaNativeDatabaseTables.exec();
+// 		UNCOMMENT TERMINOLOGY
+//		VOC99_LoadTerminology.exec();
 //		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
 		// IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
+		
 		log.info("Done.");
 	}
 
