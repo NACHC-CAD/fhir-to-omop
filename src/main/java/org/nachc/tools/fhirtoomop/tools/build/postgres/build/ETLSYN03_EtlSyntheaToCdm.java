@@ -9,7 +9,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ETLSYN01_LoadSynthFiles {
+public class ETLSYN03_EtlSyntheaToCdm {
 
 	public static void main(String[] args) {
 		exec();
@@ -20,7 +20,7 @@ public class ETLSYN01_LoadSynthFiles {
 			log.info("\n\n\n-----------------------------------");
 			log.info("LOADING TEST DATA USING ETL-Synthea R-SCRIPTS");
 			// get the file to run
-			File file = FileUtil.getFile("/postgres/build/r/load-synthea-files.R");
+			File file = FileUtil.getFile("/postgres/build/r/write-synthea-to-cdm.R");
 			String path = FileUtil.getCanonicalPath(file);
 			String cmd = "Rscript " + path;
 			log.info("Got file: " + path);

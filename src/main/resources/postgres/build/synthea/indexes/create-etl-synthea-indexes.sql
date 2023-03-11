@@ -1,5 +1,9 @@
 SET search_path = @cdm_schema, "$user", public; 
 
+-- 
+-- indexes used for query for condition_occurrence
+--
+
 drop index if exists source_to_standard_vocab_map_sctditvisvitsctir;
 create index source_to_standard_vocab_map_sctditvisvitsctir on source_to_standard_vocab_map(
 	source_code,
@@ -33,7 +37,6 @@ drop index if exists person_psv;
 create index person_psv on person (
 	person_source_value
 );
-
 
 
 
