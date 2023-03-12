@@ -26,9 +26,21 @@ public class ACH1_RunAchilles {
 		String fileName = FileUtil.getCanonicalPath(file);
 		log.info("File: " + fileName);
 		try {
-			Runtime.
-			   getRuntime().
-			   exec("cmd /c start \"\" " + fileName);
+			log.info("RUNNING PROCESS...");
+			ProcessBuilder lmBuilder = new ProcessBuilder(fileName);
+
+			lmBuilder.redirectErrorStream(true);
+			final Process lmProcess = lmBuilder.start();
+			InputStream is = lmProcess.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(isr);
+
+			String line;
+			while ((line = br.readLine()) != null) {
+				log.info(line);
+			}
+			int result = lmProcess.waitFor(); //result becomes 0
+			log.info("Result: " + result);
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		}
