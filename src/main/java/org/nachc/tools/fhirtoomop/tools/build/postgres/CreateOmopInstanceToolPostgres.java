@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A05_CreateAchillesD
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH1_RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN01_LoadSynthFiles;
@@ -77,6 +78,7 @@ public class CreateOmopInstanceToolPostgres {
 		ETLSYN01_LoadSynthFiles.exec();
 		ETLSYN02_CreateIndexes.exec();
 		ETLSYN03_EtlSyntheaToCdm.exec();
+		ACH1_RunAchilles.exec();
 		timer.stop();
 		log.info("\n\nBUILD TIME: " + timer.getElapsedString());
 		log.info("Done.");

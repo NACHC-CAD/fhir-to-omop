@@ -1,0 +1,2 @@
+2023-03-11 18:09:35	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2023-03-11 18:09:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.914 secs

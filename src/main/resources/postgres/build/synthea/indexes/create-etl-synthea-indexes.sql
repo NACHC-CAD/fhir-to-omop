@@ -39,5 +39,70 @@ create index person_psv on person (
 );
 
 
+-- 
+-- indexes used for query for cost
+--
+
+SET search_path = etl_synthea_1k_synthea_native, "$user", public; 
+
+-- procedure
+
+drop index if exists procedures_ep1;
+create index procedures_ep1 on procedures (
+	encounter,
+	patient
+);
+
+drop index if exists procedures_pe1;
+create index procedures_pe1 on procedures (
+	patient,
+	encounter
+);
+
+drop index if exists procedures_code1;
+create index procedures_code1 on procedures (
+	code
+);
+
+-- immunizations
+
+drop index if exists immunizations_ep1;
+create index immunizations_ep1 on immunizations (
+	encounter,
+	patient
+);
+
+drop index if exists immunizations_pe1;
+create index immunizations_pe1 on immunizations (
+	patient,
+	encounter
+);
+
+drop index if exists immunizations_code1;
+create index immunizations_code1 on immunizations (
+	code
+);
+
+-- medications
+drop index if exists medications_ep1;
+create index medications_ep1 on medications (
+	encounter,
+	patient
+);
+
+drop index if exists medications_pe1;
+create index medications_pe1 on medications (
+	patient,
+	encounter
+);
+
+drop index if exists medications_code1;
+create index medications_code1 on medications (
+	code
+);
+
+
+
+
 
 
