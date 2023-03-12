@@ -75,9 +75,11 @@ public class CreateOmopInstanceToolPostgres {
 		IDX02_CreateCdmIndexes.exec();
 		// IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
+		 
 		ETLSYN01_LoadSynthFiles.exec();
 		ETLSYN02_CreateIndexes.exec();
 		ETLSYN03_EtlSyntheaToCdm.exec();
+
 		ACH1_RunAchilles.exec();
 		timer.stop();
 		log.info("\n\nBUILD TIME: " + timer.getElapsedString());
