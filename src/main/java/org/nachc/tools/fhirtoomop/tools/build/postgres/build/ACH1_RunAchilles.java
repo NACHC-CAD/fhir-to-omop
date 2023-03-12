@@ -19,71 +19,75 @@ public class ACH1_RunAchilles {
 	}
 
 	public static void exec() {
+		// run the install script
+		log.info("---------------------");
+		log.info("START: Installing Achilles...");
+		run(FileUtil.getFile("/postgres/build/r/achilles/install-achilles.r"));
+		log.info("DONE: Installing Achilles...");
+		log.info("---------------------");
+		// run achilles
+		log.info("---------------------");
+		log.info("START: Running Achilles...");
+		run(FileUtil.getFile("/postgres/build/r/achilles/run-achilles.r"));
+		log.info("DONE: Running Achilles...");
+		log.info("---------------------");
+	}
+
+	private static void run(File src) {
+		writeFile(src);
+		File bat = writeBatFile();
+		runBatFile(bat);
+	}
+	
+	private static void writeFile(File src) {
+		log.info("Writing source file to /temp/ponos");
+		File dir = new File("/temp/ponos");
+		FileUtil.rmdir(dir);
+		FileUtil.mkdirs(dir);
+		File file = new File(dir,"ponos.r");
+		String str = FileUtil.getAsString(src);
+		FileUtil.write(str, file);
+		log.info("Done writing file: " + FileUtil.getCanonicalPath(file));
+	}
+	
+	private static File writeBatFile() {
+		log.info("Writing bat...");
+		File file = new File("/temp/ponos/ponos.bat");
+		FileUtil.write("rscript /temp/ponos/ponos.r", file);
+		log.info("Done writing bat.");
+		return file;
+	}
+	
+	private static void runBatFile(File file) {
 		Timer timer = new Timer();
 		timer.start();
-		//		runRScript(FileUtil.getFile("/postgres/build/r/achilles/install-achilles.r"));
-		File file = FileUtil.getFile("/postgres/build/r/achilles/run-achilles.bat");
 		String fileName = FileUtil.getCanonicalPath(file);
 		log.info("File: " + fileName);
 		try {
 			log.info("RUNNING PROCESS...");
-			ProcessBuilder lmBuilder = new ProcessBuilder(fileName);
-
-			lmBuilder.redirectErrorStream(true);
-			final Process lmProcess = lmBuilder.start();
-			InputStream is = lmProcess.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			BufferedReader br = new BufferedReader(isr);
-
+			// start the process
+			ProcessBuilder processBuilder = new ProcessBuilder(fileName);
+			// redirect error to ouput to stdio
+			processBuilder.redirectErrorStream(true);
+			final Process process = processBuilder.start();
+			// create the reader
+			InputStream is = process.getInputStream();
+			InputStreamReader isReader = new InputStreamReader(is);
+			BufferedReader reader = new BufferedReader(isReader);
 			String line;
-			while ((line = br.readLine()) != null) {
+			// read the output
+			while ((line = reader.readLine()) != null) {
 				log.info(line);
 			}
-			int result = lmProcess.waitFor(); //result becomes 0
-			log.info("Result: " + result);
+			// wait for the process to finish
+			int exitCode = process.waitFor();
+			// done
+			log.info("EXIT CODE: " + exitCode);
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		}
-		log.info("TIME TO RUN ACHILLES: " + timer.getElapsedString());
-		log.info("Done running Ahcilles.");
-	}
-
-	private static void runRScript(File file) {
-		try {
-			log.info("\n\n\n-----------------------------------");
-			log.info("RUNNING ACHILLES USING R-SCRIPTS");
-			// get the file to run
-			String path = FileUtil.getCanonicalPath(file);
-			String cmd = "Rscript " + path;
-			log.info("Got file: " + path);
-			log.info("Running cmd: " + cmd);
-			// run r through runtime
-			Runtime rt = Runtime.getRuntime();
-			Process proc = rt.exec(cmd);
-			// echo output
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-			String s;
-			s = null;
-			while ((s = stdInput.readLine()) != null) {
-				log.info(s);
-			}
-			log.info("Done with Achilles, looking to see if there are any errors...");
-			// echo errors
-			BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
-			System.out.println("Here is the standard error of the command (if any):\n");
-			s = null;
-			boolean hasErrors = false;
-			while ((s = stdError.readLine()) != null) {
-				if (hasErrors == false) {
-					hasErrors = true;
-					log.error("ERRORS LOGGED DURING EXECUTION");
-				}
-				log.info(s);
-			}
-			log.info("Done processing R script");
-		} catch (Exception exp) {
-			throw (new RuntimeException(exp));
-		}
+		log.info("TIME TO RUN PROCESS: " + timer.getElapsedString());
+		log.info("Done running process.");
 	}
 
 }
