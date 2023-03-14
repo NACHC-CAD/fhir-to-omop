@@ -13,6 +13,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSour
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH1_RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN00_LoadDevTools;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN01_LoadSynthFiles;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN02_CreateIndexes;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN03_EtlSyntheaToCdm;
@@ -21,6 +22,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSynth
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06b_CreateSyntheaNativeDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC00_DownloadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.yaorma.database.Database;
@@ -51,6 +53,8 @@ public class CreateOmopInstanceToolPostgres {
 		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
 		BurnEverythingToTheGroundPostgres.exec(conn);
 		log.info("! ! ! CREATING OMOP INSTANCE FOR POSTGRESQL ! ! !");
+		ETLSYN00_LoadDevTools.exec();
+		VOC00_DownloadTerminology.exec();
 		A01_CreateAtlasDatabaseUsers.exec(conn);
 		A02_CreateAtlasDatabase.exec(conn);
 		A03_CreateAtlasWebApiSchema.exec();
