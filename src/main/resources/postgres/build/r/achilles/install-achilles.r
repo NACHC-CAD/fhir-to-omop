@@ -10,16 +10,16 @@
 # ---
 
 # install pkgbuild (you might need to run the following line individually)
-install.packages("pkgbuild")
+install.packages("pkgbuild", repos = "http://cran.us.r-project.org")
 
 # check pkgbuild
 pkgbuild::check_build_tools()
 
 # install remotes
-install.packages("remotes", INSTALL_opts = c("--no-multiarch"))
+install.packages("remotes", INSTALL_opts = c("--no-multiarch"), repos = "http://cran.us.r-project.org")
 
 # install sql renderer
-install.packages("SqlRender")
+install.packages("SqlRender", repos = "http://cran.us.r-project.org")
 library(SqlRender)
 
 # test that SqlRenderer was install and works

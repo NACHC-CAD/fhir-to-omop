@@ -10,6 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A05_CreateAchillesD
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH0_InstallAch;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH1_RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
@@ -53,8 +54,11 @@ public class CreateOmopInstanceToolPostgres {
 		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
 		BurnEverythingToTheGroundPostgres.exec(conn);
 		log.info("! ! ! CREATING OMOP INSTANCE FOR POSTGRESQL ! ! !");
+		// do the dependency installs up front so we can see if something goes awry early in the build
+		ACH0_InstallAch.exec();
 		ETLSYN00_LoadDevTools.exec();
 		VOC00_DownloadTerminology.exec();
+		// do the install
 		A01_CreateAtlasDatabaseUsers.exec(conn);
 		A02_CreateAtlasDatabase.exec(conn);
 		A03_CreateAtlasWebApiSchema.exec();
