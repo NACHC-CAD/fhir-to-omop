@@ -39,16 +39,10 @@
 					<i>Detailed Instructions:</i> 
 					<a href="./ponos/create-ec2-instance/CreateAwsEc2Instance.html">Detailed Instructions for Creating a New AWS EC2 Instance</a>
 				</li>
-				
-				
-				
-<!--  				
-				
-				
 				<li>
-					<b>Download and Install the basic tools needed for Java development</b>  
+					<b>Step 2: Download and Install the basic tools needed for Java development</b>  
 					<br/>
-					<a href="https://drive.google.com/drive/folders/1txmjzHY4B-W0A5VkdF3soBLWNKqoChwS">Download the _YES installer</a>
+					<a href="https://www.dropbox.com/s/qa79ump073zaxw5/YesEclipseEnvironmentInstaller-2023_03_15.exe?dl=1">Download the _YES installer</a>
 					<br/>
 					Download and run this installer to get your basic development tools including things like 
 					Java, MVN, Git, Eclipse, etc.  
@@ -57,42 +51,53 @@
 					<a href="./ponos/install-yes/InstallYes.html">Detailed Instructions for Downloading and installing the _YES development environment</a>
 				</li>
 				<li>
-					<b>Install R Components Using Standard Installers</b>
-					<br/>
-					<a href="https://drive.google.com/drive/folders/1DEEB-RxSs7FSbRb0xfYvf2hBHgyMuKrI?usp=share_link">Download the R Installers</a>
-					<br/>
-					Download the zip file that contains the R installers using the link above.  
-					Unzip the zip file and run each of the installers in the order of R for Windows, RTools, RStudio.  
-					<br/>
-					<i>Detailed Instructions:</i>
-					<a href="./ponos/install-r/InstallR.html">Detailed Instructions for Installing the R components</a>
+					<b>Step 3: Run Installers that have not been automated</b>
+					<ul>
+						<li>
+							<b>Install NPM</b>
+							<br/>
+							The NPM installer is included with the _YES install.  
+							Run the installer and accept all of the defaults. 
+							It is loacated at: 
+							<br/>
+							C:\_YES\tools\npm
+							<br/>
+							<i>Detailed Instructions:</i>
+							<a href="./ponos/install-npm/InstallNpm.html">Detailed Instructions for Installing NPM</a>
+						</li>
+						<li>
+							<b>Install PostgreSQL</b>
+							<br/>
+							The PostgreSQL installer is included with the _YES install.  
+							Run the installer and accept all of the defaults. 
+							<br/>
+							EXCEPT: Unclick the option for "Stack Builder" 
+							<br/>
+							It is located at: 
+							<br/>C:\_YES\databases\postgres
+							<br/>
+							<i>Detailed Instructions:</i>
+							<a href="./ponos/install-postgres/InstallPostgres.html">Detailed Instructions for Installing PostgreSQL</a>
+						</li>
+						<li>
+							<b>Install RTools</b>
+							<br/>
+							<a href="https://drive.google.com/drive/folders/1DEEB-RxSs7FSbRb0xfYvf2hBHgyMuKrI?usp=share_link">Download the R Installers</a>
+							<br/>
+							Download the zip file that contains the R installers using the link above.  
+							Unzip the zip file and run each of the installers in the order of R for Windows, RTools, RStudio.  
+							<br/>
+							<i>Detailed Instructions:</i>
+							<a href="./ponos/install-r/InstallR.html">Detailed Instructions for Installing the R components</a>
+						</li>
+					</ul>
 				</li>
-				<li>
-					<b>Install NPM</b>
-					<br/>
-					The NPM installer is included with the _YES install.  
-					<br/>
-					It is loacated at C:\_YES\tools\npm
-					<br/>
-					Run the installer and accept all of the defaults.  
-					<br/>
-					<i>Detailed Instructions:</i>
-					<a href="./ponos/install-npm/InstallNpm.html">Detailed Instructions for Installing NPM</a>
-				</li>
-				<li>
-					<b>Install PostgreSQL</b>
-					<br/>
-					The PostgreSQL installer is included with the _YES install.  
-					<br/>
-					It is located at C:\_YES\databases\postgres
-					<br/>
-					Run the installer and accept all of the defaults. 
-					<br/>
-					EXCEPT: Unclick the option for "Stack Builder"  
-					<br/>
-					<i>Detailed Instructions:</i>
-					<a href="./ponos/install-postgres/InstallPostgres.html">Detailed Instructions for Installing PostgreSQL</a>
-				</li>
+				
+				
+				
+<!--  				
+				
+				
 				<li>
 					<b>Install, Build, and deploy the WebAPI, Atlas, and fhir-to-omop projects</b>
 					<br/>
