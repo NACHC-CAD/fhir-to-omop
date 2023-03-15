@@ -70,10 +70,8 @@
 							<br/>
 							The PostgreSQL installer is included with the _YES install.  
 							Run the installer and accept all of the defaults. 
-							<br/>
-							EXCEPT: Unclick the option for "Stack Builder" 
-							<br/>
-							It is located at: 
+							EXCEPT: Unclick the option for "Stack Builder". 
+							The installer is located at: 
 							<br/>C:\_YES\databases\postgres
 							<br/>
 							<i>Detailed Instructions:</i>
@@ -82,7 +80,7 @@
 						<li>
 							<b>Install RTools</b>
 							<br/>
-							<a href="https://drive.google.com/drive/folders/1DEEB-RxSs7FSbRb0xfYvf2hBHgyMuKrI?usp=share_link">Download the R Installers</a>
+							<a href="https://www.dropbox.com/s/x9icnhxz9097ocu/r-install.zip?dl=1">Download the R Installers</a>
 							<br/>
 							Download the zip file that contains the R installers using the link above.  
 							Unzip the zip file and run each of the installers in the order of R for Windows, RTools, RStudio.  
@@ -92,30 +90,20 @@
 						</li>
 					</ul>
 				</li>
-				
-				
-				
-<!--  				
-				
-				
 				<li>
-					<b>Install, Build, and deploy the WebAPI, Atlas, and fhir-to-omop projects</b>
+					<b>Step 4: Run the installer for Atlas/WebAPI/fhir-to-omop</b>
 					<br/>
-					<a download href="/fhir-to-omop/ohdsi-tools/atlas/install-atlas-projects.bat">Download the install-atlas-project.bat file</a>
-					<br/>
-					Download the install-atlas-project.bat file.  
-					<br/>
-					Move this file to C:\_YES\workspace.
-					<br/>
-					Run this bat file from a cmd prompt.  
-					<br/>
+					Download the install-atlas-project.bat file by clicking this 
+					<a download href="/fhir-to-omop/ohdsi-tools/atlas/install-atlas-projects.bat">download link</a>.  
+					Move this file to C:\_YES\workspace.and run it from a cmd prompt.  
+					This step will install, build, and deploy the WebAPI, Atlas, and fhir-to-omop projects. 
 					NOTE: This process takes a little bit of time because it needs to install Every. Single. Solitary. Dependency. for these projects.  
 					<br/>
 					<i>Detailed Instructions:</i>
 					<a href="./ponos/install-projects/InstallProjects.html">Detailed Instructions for Installing the Github Projects</a>
 				</li>
 				<li>
-					<b>Create Everything Needed to Initialize Your Environment using the fhir-to-omop atlas tool</b>
+					<b>Step 5: Run the fhir-to-omop atlas tool</b>
 					<br/>
 					From a cmd prompt, navigate to C:\_YES\workspaces\fhir-to-omop\target\fhir-to-omop.  
 					<br/>
@@ -126,6 +114,12 @@
 					<i>Detailed Instructions:</i>
 					<a href="./ponos/atlas-dependencies/InstallAtlasDependencies.html">Detailed Instructions for Installing the Atlas Dependencies</a>
 				</li>
+				
+				
+				
+<!--  				
+				
+				
 				<li>
 					<b>Download the Terminology files used for this build</b>
 					<br/>
