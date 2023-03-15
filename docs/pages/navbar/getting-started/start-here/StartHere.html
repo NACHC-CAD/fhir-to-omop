@@ -16,29 +16,42 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>Start Here: Automated build of a standardized WebAPI, Atlas, and fhir-to-omop developer's environment</h1>
+			<h1>Start Here: Installation of Atlas, WebAPI, and Required Prerequisites</h1>
 			<p>
-				An automated build of a complete WebAPI, Atlas, and fhir-to-omop development environment has been created.  
-				The overview/quick-start guide is available at the Ponos link below and has links to more detailed information.  
+				This page provided a link to the Ponos installation of Atlas/WebAPI/CDM and a summary of this process.  
+				This page also details the steps to manually install all of the prerequisites for Atlas/WebAPI and then install Atlas/WebAPI.  
+				The manual process is fairly complicated and not recommended but is included here for reference.  
+				It is recommended to use the Ponos install process described at the link below.  
 			</p>
 			
 			<h3>
-				<a href="./Ponos.html">Ponos: An Automated Build for an Atlas Development Environment</a>
+				<a href="./Ponos.html">Ponos: An Automated Build for an Atlas Development or Production Environment</a>
 			</h3>
+			Click on this link for the <a href="./Ponos.html">Ponos Installation Process</a>.
 			
+			<h3>
+				An Overview of Ponos
+			</h3>
 			<p>
 				Ponos automates the build of an environment that can be used to run and develop Atlas as much as is possible.  
 				The Ponos automated build consists of the following steps. 
 				Each of the steps can be run individually as needed.  
 				All of the steps can be run to create a complete installation of Atlas 
 				and the tools needed for Atlas development.  
+			</p>
+
 				<ul>
 					<li>
-						<b>Download and Install the basic tools needed for Java development</b>  
+						<b>Provision a machine to host Atlas/WebAPI/CDM</b>
 						<br/>
-						An NSIS Windows installer is provided that can be run to install everything needed for basic Java/Web development.  
-						This installer builds the _YES (Yaorma Eclipse Setup) environment. 
-						This includes the following
+						We will need someplace to run our instance.  
+						The documentation for this project includes the set up of a brand new AWS EC2 Windows machine.  
+						This brand new Windows box is used as the starting point for a demonstration of a complete installation of Atlas/WebAPI/CDM with test data.  
+					</li>
+					<li>
+						<b>Download and run the _YES Installer</b>
+						<br/>
+						This installer installs most of the software required to run Atlas/WebAPI and create a CDM and optionally populate it with test data.
 						<ul>
 							<li>
 								A Git client
@@ -49,6 +62,7 @@
 							<li>
 								Java 8 and Java 11
 							</li>
+							<li>
 								An Installer for NPM
 							<li>
 								An Installer for PostgreSQL
@@ -66,59 +80,50 @@
 								A configured instance of Eclipse that is pre-integrated with Tomcat and Wildfly
 							</li>
 							<li>
+								An instance of R
+							</li>
+							<li>
+								An installer for RTools
+							</li>
+							<li>
 								This install will update your path environment variable to point to the correct version of Java for this work
 							</li>
 							<li>
 								This install provides some .bat files for some common tasks such as changing the version of Java being used
 							</li>
-						</ul>
+						</ul>					
 					</li>
 					<li>
-						<b>Install R Components Using Standard Installers</b>
+						<b>Run Installers that have not been automated</b>
 						<br/>
-						Installers for R are provided.  
-						By using these version of the installers we can be assured the we have all of the correct versions. 
-						These installers include the following
+						For various reasons, the installers listed below have not been included in the automated process.  
 						<ul>
 							<li>
-								R for Windows
+								Node Package Manager (NPM): This is used by the Atlas/WebAPI install. <br/>
+								This installer is included in the _YES distribution but needs to be run manually.  
+							</li>						
+							<li>
+								PostgreSql: This is the database that we will use for the webapi and CDM databases. <br/>
+								This installer is included in the _YES distribution but needs to be run manually.  
 							</li>
 							<li>
-								RTools
-							</li>
-							<li>
-								RStudio
+								RTools: <br/>
+								RTools is used by Achilles.  
+								The installer is over 4Gb and therefore not included in the _YES download (which is already big enough). 
+								A link to a standard version used for this process is provided so every installation using this process has the same instance of RTools.   
 							</li>
 						</ul>
 					</li>
 					<li>
-						<b>Install NPM</b>
+						<b>Run the installer for Atlas/WebAPI/fhir-to-omop</b>
 						<br/>
-						NPM needs to be installed. 
-						This is done using the standardized installer provided when the basic tools (_YES) were down loaded in step 1 above.  
+						This installer clones, checks out a specific version, and builds and deploys the Atlas, WebAPI, and fhir-to-omop applications from github.  
+						The fhir-to-omop project contains the tool that is used to build our instance of CDM.  
 					</li>
 					<li>
-						<b>Install PostgreSQL</b>
+						<b>Run the fhir-to-omop atlas tool</b>
 						<br/>
-						PostgreSQL is installed using the standard installer provided when the basic tools (_YES) were down loaded in step 1 above. 
-					</li>
-					<li>
-						<b>Install, Build, and deploy the WebAPI, Atlas, and fhir-to-omop projects</b>
-						<br/>
-						A script is provided that will clone, checkout to a common version, and build the following.  
-						This process also deploys WebAPI and Atlas to our common instance of Tomcat.  
-						<ul>
-							<li>Atlas</li>
-							<li>WebAPI</li>
-							<li>fhir-to-omop</li>
-						</ul>
-					</li>
-					<li>
-						<b>Create Everything Needed to Initialize Your Environment using the fhir-to-omop atlas tool</b>
-						<br/>
-						All of the steps required to set up the databases, users, etc. for Atlas have been automated 
-						and can be run using the fhir-to-omop atlas tool.  
-						This includes the following
+						This application builds a complete instance of CDM including
 						<ul>
 							<li>
 								Clean up (deleting) the old environment
@@ -150,29 +155,22 @@
 							<li>
 								Create the Synthea native schema (the ETL-synthea tool is used to populate the CDM with test data)
 							</li>
+							<li>
+								Download and install a complete set of terminology tables from a standard source (alternatively, a custom terminology source can be specified and used)
+							</li>
+							<li>
+								Install a complete test data set using ETL-Synthea
+							</li>
+							<li>
+								Run Achilles to populate the Achilles Tables used by Atlas
+							</li>
 						</ul>
 					</li>
-					<li>
-						<b>Populate the CDM with test data using ETL-Synthea</b>
-						<br/>
-						Preconfigured R scripts that run out of the box are provided.  
-						These scripts are used to populate our instance of the CDM with test data.   
-					</li>
-					<li>
-						<b>Run Achilles</b>
-						<br/>
-						Preconfigured R scripts that run out of the box are provided.  
-						These scripts run Achilles to populate our CDM with required data.  
-					</li>
-					<li>
-						<b>Start Tomcat and Launch Atlas</b>
-						<br/>
-						At this point we have done everything needed to run Atlas.  
-						We can now start our instance of Tomcat and start Atlas in a web browser.  
-					</li>
-				</ul> 
-			</p>
 
+
+
+				</ul>
+				
 			<!-- old version -->
 			<h1>Don't Start Here: Manually Installing and First Steps with fhir-to-omop Tools</h1>
 			<h3>
