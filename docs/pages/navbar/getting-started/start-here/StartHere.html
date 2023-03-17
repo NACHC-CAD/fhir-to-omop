@@ -16,7 +16,7 @@
 			<div id="navbarInclude"></div>
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
-			<h1>Start Here: Installation of Atlas, WebAPI, and Required Prerequisites</h1>
+			<h1>Start Here: Installation of Atlas, WebAPI, CDM, webapi, and Required Prerequisites</h1>
 			<p>
 				This page provided a link to the Ponos installation of Atlas/WebAPI/CDM and a summary of this process.  
 				This page also details the steps to manually install all of the prerequisites for Atlas/WebAPI and then install Atlas/WebAPI.  
@@ -25,13 +25,41 @@
 			</p>
 			
 			<h3>
-				<a href="./Ponos.html">Ponos: An Automated Build for an Atlas Development or Production Environment</a>
+				<a href="./Ponos.html">Ponos: An Automated Build for an OHDSI Development or Production Environment</a>
 			</h3>
 			Click on this link for the <a href="./Ponos.html">Ponos Installation Process</a>.
+
+			<h3>
+			
+			</h3>
 			
 			<h3>
 				An Overview of Ponos
 			</h3>
+
+			Ponos does a complete installation of Atlas, WebAPI, CDM, the webapi database, and all dependencies in 5 easy steps.  
+			<ul>
+				<li>
+					<b>Step 1:</b> Provision a machine to host Atlas/WebAPI/CDM/etc.
+				</li>
+				<li>
+					<b>Step 2:</b> Download and run the _YES Installer to intall basic Java development tools
+				</li>
+				<li>
+					<b>Step 3:</b> Run Installers that have not been automated (there's only 3: NPM, RTools, and PostgreSQL
+				</li>
+				<li>
+					<b>Step 4:</b> Run the installer for Atlas/WebAPI/fhir-to-omop to clone, build, and deploy the fhir-to-omop tool suite, WebAPI, and Atlas
+				</li>
+				<li>
+					<b>Step 5:</b> Run the fhir-to-omop atlas tool to run all of the manuall processes described below to create the CDM, webapi databases and all other dependencies required for Atlas/WebAPI/etc.
+				</li>
+			</ul>
+
+			<h3>
+				An Brief Description of Each of the Steps of Ponos
+			</h3>
+
 			<p>
 				Ponos automates the build of an environment that can be used to run and develop Atlas as much as is possible.  
 				The Ponos automated build consists of the following steps. 
@@ -170,9 +198,64 @@
 
 
 				</ul>
-				
+
+			<h1>Manual Installation of Atlas, WebAPI, and Dependencies</h1>
+			The existing process for installing Atlas, WebAPI, and the Dependencies is a manual process.  
+			Instructions for this process spread accross many projects.  
+			These instructions must be followed very carefully and executed in a specific order.  
+			This process is very time consuming and very prone to error.  
+			The manual process to install Atlas/WebAPI/etc. is defined by the resources listed below.  
+			The Ponos process automates this process.  
+
+			<br/><br/>
+			
+			<b>WebAPI Deployment: The following are the high-level steps for deploying WebAPI</b>
+			<br/>
+			Pre-requite software is listed here: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide</a>
+			<br/>
+			Install and configure a PostreSQL server, database and users for use when deploying WebAPI: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/PostgreSQL-Installation-Guide.">https://github.com/OHDSI/WebAPI/wiki/PostgreSQL-Installation-Guide.</a>
+			<br/>
+			Verify the database connectivity: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#test-the-database-connection">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#test-the-database-connection</a>
+			<br/>
+			Install WebAPI: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#installing-webapi">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#installing-webapi</a>
+			<br/>
+			Deploy WebAPI to Tomcat: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#deploy-webapi-to-tomcat">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#deploy-webapi-to-tomcat</a>
+			<br/>
+			Verify deployment: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#verify-webapi-deployment">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#verify-webapi-deployment</a>
+			<br/>
+			Troubleshooting FAQ: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#troubleshooting">https://github.com/OHDSI/WebAPI/wiki/WebAPI-Installation-Guide#troubleshooting</a>
+			<br/>
+			Configure the CDM for use with WebAPI: 
+			<br/>
+			<a href="https://github.com/OHDSI/WebAPI/wiki/CDM-Configuration">https://github.com/OHDSI/WebAPI/wiki/CDM-Configuration</a>
+			<br/>
+			<br/>
+			<b>Atlas deployment</b>
+			<br/>
+			The ATLAS setup guide is found here: 
+			<br/>
+			<a href="https://github.com/OHDSI/Atlas/wiki/Atlas-Setup-Guide. The high level steps include:">https://github.com/OHDSI/Atlas/wiki/Atlas-Setup-Guide. The high level steps include:</a>
+			<br/>
+			Troubleshooting guide: 
+			<br/>
+			<a href="https://github.com/OHDSI/Atlas/wiki/Atlas-Setup-Guide#troubleshooting">https://github.com/OHDSI/Atlas/wiki/Atlas-Setup-Guide#troubleshooting</a>
+			
 			<!-- old version -->
-			<h1>Don't Start Here: Manually Installing and First Steps with fhir-to-omop Tools</h1>
+			<h1>Manually Installing Dependencies and First Steps with fhir-to-omop Tools</h1>
 			<h3>
 				This section gives instructions on how to manually install some of the tools needed for WebAPI, Atlas, and fhir-to-omop.  
 			</h3>
