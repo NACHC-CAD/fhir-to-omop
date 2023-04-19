@@ -144,6 +144,15 @@
 			<version>42.3.6</version>
 		</dependency>
 
+		<!-- Databricks JDBC Driver -->
+		<dependency>
+		    <groupId>com.databricks</groupId>
+		    <artifactId>jdbc</artifactId>
+		    <version>1.0</version>
+		    <scope>system</scope>
+		    <systemPath>${project.basedir}/lib/SimbaSparkJDBC42-2.6.16.1020/SparkJDBC42.jar</systemPath>
+		</dependency>
+
 		<!-- CALL R FROM JAVA: https://mvnrepository.com/artifact/org.rosuda/jri -->
 		<dependency>
 			<groupId>com.github.jbytecode</groupId>
