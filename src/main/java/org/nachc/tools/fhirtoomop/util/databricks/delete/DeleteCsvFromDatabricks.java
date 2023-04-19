@@ -11,6 +11,11 @@ import lombok.extern.slf4j.Slf4j;
 public class DeleteCsvFromDatabricks {
 
 	public static DatabricksFileUtilResponse exec(String filePath) {
+		return exec(filePath, false);
+	}
+
+	
+	public static DatabricksFileUtilResponse exec(String filePath, Boolean recursive) {
 		if(filePath == null || filePath.trim().length() == 0) {
 			throw new RuntimeException("Invalid filePath: " + filePath);
 		}
@@ -32,7 +37,12 @@ public class DeleteCsvFromDatabricks {
 		// create the client and send the request
 		HttpRequestClient client = new HttpRequestClient(url);
 		client.setOauthToken(token);
-		String json = "{\"path\":\"" + filePath + "\"}";
+		String json = null;
+		if(recursive == true) {
+			json = "{\"path\":\"" + filePath + "\"}";
+		} else {
+			json = "{\"path\":\"" + filePath + "\",\"recursive\":\"true\"}";
+		}
 		log.info("Deleting file from Databricks: " + filePath);
 		log.info("url: " + client.getUrl());
 		log.info("json: \n" + json);
