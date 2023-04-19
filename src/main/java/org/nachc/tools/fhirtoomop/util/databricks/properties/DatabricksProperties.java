@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.databricks;
+package org.nachc.tools.fhirtoomop.util.databricks.properties;
 
 import java.io.File;
 import java.io.InputStream;
