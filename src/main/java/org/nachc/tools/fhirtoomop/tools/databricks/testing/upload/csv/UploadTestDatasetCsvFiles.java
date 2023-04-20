@@ -60,7 +60,7 @@ public class UploadTestDatasetCsvFiles {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done.");
+		log.info("Done uploading test data.");
 	}
 
 	private static void processDir(File dir, String schemaName, Connection conn) {
@@ -81,7 +81,7 @@ public class UploadTestDatasetCsvFiles {
 		log.info("Uploading csv file...");
 		UploadCsvToDatabricks.exec(databricksFilePath, file, SCHEMA_NAME);
 		log.info("Creating data table...");
-		CreateDatabricksTableFromCsv.exec(schemaName, parentName, databricksFilePath, conn);
+		// CreateDatabricksTableFromCsv.exec(schemaName, parentName, databricksFilePath, conn);
 		log.info("Done with upload");
 	}
 
