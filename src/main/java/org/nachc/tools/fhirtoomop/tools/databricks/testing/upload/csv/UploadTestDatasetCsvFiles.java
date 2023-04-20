@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.databricks.createtablefromcsv.CreateDatabricksTableFromCsv;
 import org.nachc.tools.fhirtoomop.util.databricks.delete.DeleteCsvFromDatabricks;
 import org.nachc.tools.fhirtoomop.util.databricks.upload.UploadCsvToDatabricks;
 import org.yaorma.database.Database;
@@ -22,44 +21,43 @@ public class UploadTestDatasetCsvFiles {
 	private static final File WORKING_DIR = new File("C:\\temp\\demo_cdm");
 
 	private static final InputStream ZIP_SRC = FileUtil.getInputStream("/databricks/demo_cdm.zip");
-	
+
 	private static final String SCHEMA_NAME = "demo_cdm";
 
 	public static void main(String[] args) {
-		exec();
-	}
-
-	public static void exec() {
 		Connection conn = null;
 		try {
-			// get database connection
 			conn = DatabricksConnectionFactory.getConnection();
-			// delete existing files
-			log.info("Deleting existing files...");
-			log.info("Doing delete...");
-			String databricksFileRootDir = "/ohdsi/demo_cdm";
-			log.info("Databricks file dir: " + databricksFileRootDir);
-			DeleteCsvFromDatabricks.exec(databricksFileRootDir, true);
-			// write files
-			log.info("Writing zip file to working dir...");
-			// clean up dirs
-			FileUtil.rmdir(WORKING_DIR);
-			FileUtil.mkdirs(WORKING_DIR);
-			// copy and extract the zip file
-			File zipFile = new File(WORKING_DIR, "demo_cdm.zip");
-			FileUtil.write(ZIP_SRC, zipFile);
-			ZipUtil.unzip(zipFile, WORKING_DIR);
-			// get the list of files
-			File srcDir = new File(WORKING_DIR, "demo_cdm");
-			List<File> dirs = FileUtil.list(srcDir);
-			log.info("Got " + dirs.size() + " dirs");
-			for (File dir : dirs) {
-				processDir(dir, SCHEMA_NAME, conn);
-			}
-			log.info("Got " + dirs.size() + " dirs");
+			exec(conn);
 		} finally {
 			Database.close(conn);
 		}
+	}
+
+	public static void exec(Connection conn) {
+		// delete existing files
+		log.info("Deleting existing files...");
+		log.info("Doing delete...");
+		String databricksFileRootDir = "/ohdsi/demo_cdm";
+		log.info("Databricks file dir: " + databricksFileRootDir);
+		DeleteCsvFromDatabricks.exec(databricksFileRootDir, true);
+		// write files
+		log.info("Writing zip file to working dir...");
+		// clean up dirs
+		FileUtil.rmdir(WORKING_DIR);
+		FileUtil.mkdirs(WORKING_DIR);
+		// copy and extract the zip file
+		File zipFile = new File(WORKING_DIR, "demo_cdm.zip");
+		FileUtil.write(ZIP_SRC, zipFile);
+		ZipUtil.unzip(zipFile, WORKING_DIR);
+		// get the list of files
+		File srcDir = new File(WORKING_DIR, "demo_cdm");
+		List<File> dirs = FileUtil.list(srcDir);
+		log.info("Got " + dirs.size() + " dirs");
+		for (File dir : dirs) {
+			processDir(dir, SCHEMA_NAME, conn);
+		}
+		log.info("Got " + dirs.size() + " dirs");
 		log.info("Done uploading test data.");
 	}
 

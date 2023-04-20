@@ -28,7 +28,7 @@ public class BuildDatabricksTestInstance {
 	}
 
 	public static void exec(String schemaName, Connection conn) {
-		DatabricksUtil.uploadTestDatasetCsvFiles();
+		DatabricksUtil.uploadTestDatasetCsvFiles(conn);
 		DatabricksUtil.createDatabricksSchemaFromCdmDdl(schemaName, conn);
 		// next step is to run the python script in the databricks notebook
 	}

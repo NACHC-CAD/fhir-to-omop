@@ -7,8 +7,8 @@ import org.nachc.tools.fhirtoomop.util.databricks.build.CreateDatabricksSchemaFr
 
 public class DatabricksUtil {
 
-	public static void uploadTestDatasetCsvFiles() {
-		UploadTestDatasetCsvFiles.exec();
+	public static void uploadTestDatasetCsvFiles(Connection conn) {
+		UploadTestDatasetCsvFiles.exec(conn);
 	}
 
 	public static void createDatabricksSchemaFromCdmDdl(String schemaName, Connection conn) {
