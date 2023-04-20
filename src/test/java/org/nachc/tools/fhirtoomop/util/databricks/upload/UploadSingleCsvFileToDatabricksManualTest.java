@@ -36,7 +36,7 @@ public class UploadSingleCsvFileToDatabricksManualTest {
 			log.info("Getting connection...");
 			conn = DatabricksConnectionFactory.getConnection();
 			log.info("Dropping schema...");
-			Database.update("drop database if exists " + SCHEMA_NAME, conn);
+			Database.update("drop database if exists " + SCHEMA_NAME + " cascade", conn);
 			log.info("Creating schema...");
 			Database.update("create database " + SCHEMA_NAME, conn);
 			log.info("Done creating schema.");
