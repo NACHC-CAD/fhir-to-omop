@@ -2,13 +2,10 @@ package org.nachc.tools.fhirtoomop.tools.databricks.testing.upload.csv;
 
 import java.io.File;
 import java.io.InputStream;
-import java.sql.Connection;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.delete.DeleteCsvFromDatabricks;
 import org.nachc.tools.fhirtoomop.util.databricks.upload.UploadCsvToDatabricks;
-import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.file.ZipUtil;
@@ -25,16 +22,10 @@ public class UploadTestDatasetCsvFiles {
 	private static final String SCHEMA_NAME = "demo_cdm";
 
 	public static void main(String[] args) {
-		Connection conn = null;
-		try {
-			conn = DatabricksConnectionFactory.getConnection();
-			exec(conn);
-		} finally {
-			Database.close(conn);
-		}
+		exec();
 	}
 
-	public static void exec(Connection conn) {
+	public static void exec() {
 		// delete existing files
 		log.info("Deleting existing files...");
 		log.info("Doing delete...");
@@ -55,21 +46,21 @@ public class UploadTestDatasetCsvFiles {
 		List<File> dirs = FileUtil.list(srcDir);
 		log.info("Got " + dirs.size() + " dirs");
 		for (File dir : dirs) {
-			processDir(dir, SCHEMA_NAME, conn);
+			processDir(dir, SCHEMA_NAME);
 		}
 		log.info("Got " + dirs.size() + " dirs");
 		log.info("Done uploading test data.");
 	}
 
-	private static void processDir(File dir, String schemaName, Connection conn) {
+	private static void processDir(File dir, String schemaName) {
 		log.info("Start processing dir: " + FileUtil.getCanonicalPath(dir));
 		for (File file : dir.listFiles()) {
-			uploadFile(file, schemaName, conn);
+			uploadFile(file, schemaName);
 		}
 		log.info("Done processing dir: " + FileUtil.getCanonicalPath(dir));
 	}
 
-	private static void uploadFile(File file, String schemaName, Connection conn) {
+	private static void uploadFile(File file, String schemaName) {
 		String fileName = file.getName();
 		String parentName = file.getParentFile().getName();
 		String databricksFilePath = "/ohdsi/demo_cdm/" + parentName + "/" + fileName;
@@ -79,7 +70,6 @@ public class UploadTestDatasetCsvFiles {
 		log.info("Uploading csv file...");
 		UploadCsvToDatabricks.exec(databricksFilePath, file, SCHEMA_NAME);
 		log.info("Creating data table...");
-		// CreateDatabricksTableFromCsv.exec(schemaName, parentName, databricksFilePath, conn);
 		log.info("Done with upload");
 	}
 
