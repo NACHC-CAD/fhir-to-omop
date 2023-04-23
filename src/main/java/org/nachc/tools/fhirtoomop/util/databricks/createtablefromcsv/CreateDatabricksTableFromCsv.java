@@ -2,7 +2,7 @@ package org.nachc.tools.fhirtoomop.util.databricks.createtablefromcsv;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
+import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +19,7 @@ public class CreateDatabricksTableFromCsv {
 		log.info("Dropping table...");
 		String sqlString = "drop table if exists " + schemaName + "." + tableName;
 		log.info("sqlString: \n" + sqlString);
-		Database.update(sqlString, conn);
+		DatabricksDatabase.update(sqlString, conn);
 		log.info("Done dropping table.");
 	}
 
@@ -28,7 +28,7 @@ public class CreateDatabricksTableFromCsv {
 		String sqlString = getSqlString(schemaName, tableName, pathToFile);
 		log.info("sqlString: \n" + sqlString);
 		log.info("Creating table...");
-		Database.update(sqlString, conn);
+		DatabricksDatabase.update(sqlString, conn);
 		log.info("Done creating table.");
 	}
 	

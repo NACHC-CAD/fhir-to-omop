@@ -38,5 +38,9 @@ public class DatabricksProperties {
 	public static String getToken() {
 		return PROPS.getProperty("Token");
 	}
+	
+	public static String getSchemaName() {
+		return PROPS.getProperty("SchemaName");
+	}
 
 }
