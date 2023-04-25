@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.util.databricks.database;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.TimeUtil;
 
@@ -35,5 +36,20 @@ public class DatabricksDatabase {
 			}
 		}
 	}
+
+	public static Connection checkConnection(Connection conn) {
+		try {
+			Database.query("select 1", conn);
+			log.info("Connection is good.");
+		} catch(Exception exp) {
+			log.info("Connection was bad, creating a new one.");
+			Database.close(conn);
+			log.info("Old connection closed.");
+			conn = DatabricksConnectionFactory.getConnection();
+			log.info("New connection created.");
+		}
+		return conn;
+	}
+
 	
 }

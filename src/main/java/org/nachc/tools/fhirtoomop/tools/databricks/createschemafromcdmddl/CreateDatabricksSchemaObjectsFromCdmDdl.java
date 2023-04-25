@@ -13,7 +13,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabricksSchemaFromCdmDdl {
+public class CreateDatabricksSchemaObjectsFromCdmDdl {
 
 	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_ddl.sql";
 
@@ -54,17 +54,7 @@ public class CreateDatabricksSchemaFromCdmDdl {
 	}
 	
 	private static Connection checkConnection(Connection conn) {
-		try {
-			Database.query("select 1", conn);
-			log.info("Connection is good.");
-		} catch(Exception exp) {
-			log.info("Connection was bad, creating a new one.");
-			Database.close(conn);
-			log.info("Old connection closed.");
-			conn = DatabricksConnectionFactory.getConnection();
-			log.info("New connection created.");
-		}
-		return conn;
+		return DatabricksDatabase.checkConnection(conn);
 	}
 
 }

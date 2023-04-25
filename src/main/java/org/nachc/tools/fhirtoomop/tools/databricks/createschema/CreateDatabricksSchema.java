@@ -10,7 +10,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabricksCsvSchema {
+public class CreateDatabricksSchema {
 
 	public static void main(String[] args) {
 		Connection conn = null;
