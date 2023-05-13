@@ -36,17 +36,42 @@ public class DatabricksDatabase {
 			}
 		}
 	}
-
-	public static Connection checkConnection(Connection conn) {
+	
+	public static boolean checkConnection(Connection conn) {
 		try {
 			Database.query("select 1", conn);
 			log.info("Connection is good.");
+			return true;
 		} catch(Exception exp) {
-			log.info("Connection was bad, creating a new one.");
+			log.info("Connection is bad");
+			return false;
+		}
+	}
+
+	public static void close(Connection conn) {
+		boolean connectionIsGood = checkConnection(conn);
+		if(connectionIsGood) {
 			Database.close(conn);
-			log.info("Old connection closed.");
+		} else {
+			log.info("* * * ");
+			log.info("*");
+			log.info("* CLOSE CALLED ON BAD CONNECTION");
+			log.info("*");
+			log.info("* * * ");
+			log.info("An attempt to close a connection that was bad was made.");
+			log.info("The connection was probably closed (timed out) by the server");
+		}
+	}
+	
+	public static Connection resetConnectionIfItIsBad(Connection conn) {
+		boolean connectionIsGood = checkConnection(conn);
+		if(connectionIsGood == false) {
+			log.info("* * * ");
+			log.info("*");
+			log.info("* BAD CONNECTION DETECTED, RETURNING A NEW CONNECTION");
+			log.info("*");
+			log.info("* * * ");
 			conn = DatabricksConnectionFactory.getConnection();
-			log.info("New connection created.");
 		}
 		return conn;
 	}

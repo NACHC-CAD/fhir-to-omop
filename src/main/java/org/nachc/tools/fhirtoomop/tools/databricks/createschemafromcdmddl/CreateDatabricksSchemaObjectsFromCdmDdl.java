@@ -54,7 +54,7 @@ public class CreateDatabricksSchemaObjectsFromCdmDdl {
 	}
 	
 	private static Connection checkConnection(Connection conn) {
-		return DatabricksDatabase.checkConnection(conn);
+		return DatabricksDatabase.resetConnectionIfItIsBad(conn);
 	}
 
 }
