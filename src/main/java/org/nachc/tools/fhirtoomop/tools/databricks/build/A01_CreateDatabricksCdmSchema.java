@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.databricks.createschema;
+package org.nachc.tools.fhirtoomop.tools.databricks.build;
 
 import java.sql.Connection;
 
@@ -10,21 +10,21 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabricksSchema {
+public class A01_CreateDatabricksCdmSchema {
 
 	public static void main(String[] args) {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
-			exec(conn);
+			String schemaName = DatabricksProperties.getSchemaName();
+			exec(schemaName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
-		String schemaName = DatabricksProperties.getSchemaName();
+	public static void exec(String schemaName, Connection conn) {
 		log.info("Got scheama name: " + schemaName);
 		log.info("Doing drop...");
 		String dropString = "drop database if exists " + schemaName + " cascade";

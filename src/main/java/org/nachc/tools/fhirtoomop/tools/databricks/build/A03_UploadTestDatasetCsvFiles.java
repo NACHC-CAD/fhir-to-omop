@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.databricks.uploaddemocdmfromcsv;
+package org.nachc.tools.fhirtoomop.tools.databricks.build;
 
 import java.io.File;
 import java.io.InputStream;
@@ -13,7 +13,7 @@ import com.nach.core.util.file.ZipUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UploadTestDatasetCsvFiles {
+public class A03_UploadTestDatasetCsvFiles {
 
 	private static final File WORKING_DIR = new File("C:\\temp\\demo_cdm");
 

@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.databricks.createschemafromcdmddl;
+package org.nachc.tools.fhirtoomop.tools.databricks.build;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabricksSchemaObjectsFromCdmDdl {
+public class A02_CreateDatabricksCdmSchemaObjectsFromCdmDdl {
 
 	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_ddl.sql";
 

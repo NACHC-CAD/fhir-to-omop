@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.databricks.createconstraintsfromcdmddl;
+package org.nachc.tools.fhirtoomop.tools.databricks.build;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -13,9 +13,9 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateConstraintsFromCdmDdl {
+public class CreatePrimaryKeysFromCdmDdl {
 
-	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_constraints.sql";
+	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_primary_keys.sql";
 
 	public static void main(String[] args) {
 		Connection conn = null;
