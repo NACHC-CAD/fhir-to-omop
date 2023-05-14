@@ -34,9 +34,10 @@ public class BuildDatabricksTestInstance {
 	}
 
 	public static void exec(String schemaName, Connection conn) {
+		log.info("CREATING DATABASE INSTANCE: " + schemaName);
 		DatabricksUtil.createDatabricksCdmSchema(schemaName, conn);
-		DatabricksUtil.createDatabricksCdmSchemaObjectsFromCdmDdl(conn);
-		DatabricksUtil.uploadTestDatasetCsvFiles();
+		DatabricksUtil.createDatabricksCdmSchemaObjectsFromCdmDdl(schemaName, conn);
+		DatabricksUtil.uploadTestDatasetCsvFiles(schemaName);
 		// next step is to run the python script in the databricks notebook
 	}
 

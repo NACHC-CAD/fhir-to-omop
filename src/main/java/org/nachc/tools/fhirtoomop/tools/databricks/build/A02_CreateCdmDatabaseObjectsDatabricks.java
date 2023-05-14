@@ -13,7 +13,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A02_CreateDatabricksCdmSchemaObjectsFromCdmDdl {
+public class A02_CreateCdmDatabaseObjectsDatabricks {
 
 	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_ddl.sql";
 
@@ -21,15 +21,15 @@ public class A02_CreateDatabricksCdmSchemaObjectsFromCdmDdl {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
-			exec(conn);
+			String schemaName = DatabricksProperties.getSchemaName();
+			exec(schemaName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
-		String schemaName = DatabricksProperties.getSchemaName();
+	public static void exec(String schemaName, Connection conn) {
 		// check the connection
 		conn = checkConnection(conn);
 		// get the sql from the ddl file

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.databricks.delete.DeleteCsvFromDatabricks;
+import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
 import org.nachc.tools.fhirtoomop.util.databricks.upload.UploadCsvToDatabricks;
 
 import com.nach.core.util.file.FileUtil;
@@ -13,27 +14,27 @@ import com.nach.core.util.file.ZipUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A03_UploadTestDatasetCsvFiles {
+public class A03_UploadTestDatasetCsvFilesDatabricks {
 
 	private static final File WORKING_DIR = new File("C:\\temp\\demo_cdm");
 
 	private static final InputStream ZIP_SRC = FileUtil.getInputStream("/databricks/demo_cdm.zip");
-
-	private static final String SCHEMA_NAME = "demo_cdm";
+	
+	private static final String DATABRICKS_FILE_ROOT = "/ohdsi/ponos/demo_cdm";
 
 	public static void main(String[] args) {
 		log.info("Uploading csv files...");
-		exec();
+		String schemaName = DatabricksProperties.getSchemaName();
+		exec(schemaName);
 		log.info("Done.");
 	}
 
-	public static void exec() {
+	public static void exec(String schemaName) {
 		// delete existing files
 		log.info("Deleting existing files...");
 		log.info("Doing delete...");
-		String databricksFileRootDir = "/ohdsi/demo_cdm";
-		log.info("Databricks file dir: " + databricksFileRootDir);
-		DeleteCsvFromDatabricks.exec(databricksFileRootDir, true);
+		log.info("Databricks file dir: " + DATABRICKS_FILE_ROOT);
+		DeleteCsvFromDatabricks.exec(DATABRICKS_FILE_ROOT, true);
 		// write files
 		log.info("Writing zip file to working dir...");
 		// clean up dirs
@@ -48,7 +49,7 @@ public class A03_UploadTestDatasetCsvFiles {
 		List<File> dirs = FileUtil.list(srcDir);
 		log.info("Got " + dirs.size() + " dirs");
 		for (File dir : dirs) {
-			processDir(dir, SCHEMA_NAME);
+			processDir(dir, schemaName);
 		}
 		log.info("Got " + dirs.size() + " dirs");
 		log.info("Done uploading test data.");
@@ -65,12 +66,12 @@ public class A03_UploadTestDatasetCsvFiles {
 	private static void uploadFile(File file, String schemaName) {
 		String fileName = file.getName();
 		String parentName = file.getParentFile().getName();
-		String databricksFilePath = "/ohdsi/demo_cdm/" + parentName + "/" + fileName;
+		String databricksFilePath = DATABRICKS_FILE_ROOT + "/" + parentName + "/" + fileName;
 		log.info("Doing upload for file...");
 		log.info(FileUtil.getCanonicalPath(file));
 		log.info("Path: " + databricksFilePath);
 		log.info("Uploading csv file...");
-		UploadCsvToDatabricks.exec(databricksFilePath, file, SCHEMA_NAME);
+		UploadCsvToDatabricks.exec(databricksFilePath, file, schemaName);
 		log.info("Creating data table...");
 		log.info("Done with upload");
 	}
