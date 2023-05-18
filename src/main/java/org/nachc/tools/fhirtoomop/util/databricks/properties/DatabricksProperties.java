@@ -42,5 +42,9 @@ public class DatabricksProperties {
 	public static String getSchemaName() {
 		return PROPS.getProperty("SchemaName");
 	}
+	
+	public static String getDatabricksFilesRoot() {
+		return PROPS.getProperty("DatabricksFilesRoot");
+	}
 
 }

@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateConstraintsFromCdmDdl {
 
-	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.4_constraints.sql";
+	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.3_constraints.sql";
 
 	public static void main(String[] args) {
 		Connection conn = null;

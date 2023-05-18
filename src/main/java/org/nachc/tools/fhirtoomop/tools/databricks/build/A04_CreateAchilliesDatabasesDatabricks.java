@@ -29,7 +29,7 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 		log.info("Done creating Achilles databases.");
 		try {
 			createDatabase(databaseName + "_ach_res", conn);
-			createDatabase(databaseName + "_ach_tem", conn);
+			createDatabase(databaseName + "_ach_tmp", conn);
 		} finally {
 			Database.close(conn);
 		}
@@ -38,7 +38,7 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 
 	private static void createDatabase(String databaseName, Connection conn) {
 		log.info("Creating database: " + databaseName);
-		Database.update("drop database if exists " + databaseName, conn);
+		Database.update("drop database if exists " + databaseName + " cascade", conn);
 		Database.update("create database " + databaseName, conn);
 	}
 }

@@ -13,32 +13,31 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreatePrimaryKeysFromCdmDdl {
+public class A05_CreateAchillesDatabaseObjectsDatabricks {
 
-	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.3_primary_keys.sql";
+	private static final String DDL_FILE = "/databricks/achilles/create-achilles-tables-ddl.sql";
 
 	public static void main(String[] args) {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
-			exec(conn);
+			String schemaName = DatabricksProperties.getSchemaName();
+			exec(schemaName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	public static void exec(Connection conn) {
-		String schemaName = DatabricksProperties.getSchemaName();
-		log.info("SCHEMA_NAME: " + schemaName);
+	public static void exec(String schemaName, Connection conn) {
 		// check the connection
 		conn = checkConnection(conn);
 		// get the sql from the ddl file
 		log.info("Getting ddl file...");
 		InputStream is = FileUtil.getInputStream(DDL_FILE);
 		String sqlString = FileUtil.getAsString(is);
-		sqlString = replace(sqlString, "@cdmDatabaseSchema", schemaName);
-		// execute the script
+		sqlString = replace(sqlString, "<DB_NAME>", schemaName);
+		// populate the database from the ddl sql
 		log.info("Creating database objects...");
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done creating database.");

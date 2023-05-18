@@ -12,12 +12,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UploadCsvToDatabricks {
 
-	public static boolean exec(String databricksFilePath, File file, String schemaName) {
+	public static boolean exec(String databricksFilePath, File file) {
 		// get parameters from properties file
 		String baseUrl = DatabricksProperties.getRestUrl();
 		String token = DatabricksProperties.getToken();
-		String uploadRoot = DatabricksProperties.getDatabricksUploadRoot();
-		String uploadFilePath = uploadRoot + databricksFilePath;
 		// get the parameters to create the database table
 		String tableName = file.getParentFile().getName();
 		// the base url is the url for the request
@@ -27,14 +25,14 @@ public class UploadCsvToDatabricks {
 		msg += "\n-------------------------";
 		msg += "\nFile:        " + FileUtil.getCanonicalPath(file);
 		msg += "\nURL:         " + url;
-		msg += "\nUpload Path: " + uploadFilePath;
+		msg += "\nUpload Path: " + databricksFilePath;
 		msg += "\n-------------------------";
 		// upload the file
 		log.info("Uploading file: " + msg);
-		boolean uploadSuccess = HttpFileUpload3.uploadFile(url, token, uploadFilePath, file);
+		boolean uploadSuccess = HttpFileUpload3.uploadFile(url, token, databricksFilePath, file);
 		log.info("success: " + uploadSuccess);
 		if (uploadSuccess == false) {
-			throw new RuntimeException("Data file upload failed: " + uploadFilePath);
+			throw new RuntimeException("Data file upload failed: " + databricksFilePath);
 		}
 		return uploadSuccess;
 	}

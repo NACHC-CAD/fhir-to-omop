@@ -19,8 +19,6 @@ ALTER TABLE @cdmDatabaseSchema.COST ADD CONSTRAINT xpk_COST  (cost_id);
 ALTER TABLE @cdmDatabaseSchema.DRUG_ERA ADD CONSTRAINT xpk_DRUG_ERA  (drug_era_id);
 ALTER TABLE @cdmDatabaseSchema.DOSE_ERA ADD CONSTRAINT xpk_DOSE_ERA  (dose_era_id);
 ALTER TABLE @cdmDatabaseSchema.CONDITION_ERA ADD CONSTRAINT xpk_CONDITION_ERA  (condition_era_id);
-ALTER TABLE @cdmDatabaseSchema.EPISODE ADD CONSTRAINT xpk_EPISODE  (episode_id);
-ALTER TABLE @cdmDatabaseSchema.METADATA ADD CONSTRAINT xpk_METADATA  (metadata_id);
 ALTER TABLE @cdmDatabaseSchema.CONCEPT ADD CONSTRAINT xpk_CONCEPT  (concept_id);
 ALTER TABLE @cdmDatabaseSchema.VOCABULARY ADD CONSTRAINT xpk_VOCABULARY  (vocabulary_id);
 ALTER TABLE @cdmDatabaseSchema.DOMAIN ADD CONSTRAINT xpk_DOMAIN  (domain_id);

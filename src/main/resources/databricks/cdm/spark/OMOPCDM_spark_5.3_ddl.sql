@@ -1,9 +1,8 @@
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.PERSON  
+CREATE TABLE @cdmDatabaseSchema.PERSON 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS person_id,
+AS
+SELECT 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS gender_concept_id,
 	CAST(NULL AS integer) AS year_of_birth,
 	CAST(NULL AS integer) AS month_of_birth,
@@ -20,23 +19,21 @@ CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS STRING) AS race_source_value,
 	CAST(NULL AS integer) AS race_source_concept_id,
 	CAST(NULL AS STRING) AS ethnicity_source_value,
-	CAST(NULL AS integer) AS ethnicity_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS ethnicity_source_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.OBSERVATION_PERIOD  
+CREATE TABLE @cdmDatabaseSchema.OBSERVATION_PERIOD 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS observation_period_id,
+AS
+SELECT 	CAST(NULL AS integer) AS observation_period_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS date) AS observation_period_start_date,
 	CAST(NULL AS date) AS observation_period_end_date,
-	CAST(NULL AS integer) AS period_type_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS period_type_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.VISIT_OCCURRENCE  
+CREATE TABLE @cdmDatabaseSchema.VISIT_OCCURRENCE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS visit_occurrence_id,
+AS
+SELECT 	CAST(NULL AS integer) AS visit_occurrence_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS visit_concept_id,
 	CAST(NULL AS date) AS visit_start_date,
@@ -48,17 +45,16 @@ CAST(NULL AS integer) AS visit_occurrence_id,
 	CAST(NULL AS integer) AS care_site_id,
 	CAST(NULL AS STRING) AS visit_source_value,
 	CAST(NULL AS integer) AS visit_source_concept_id,
-	CAST(NULL AS integer) AS admitted_from_concept_id,
-	CAST(NULL AS STRING) AS admitted_from_source_value,
-	CAST(NULL AS integer) AS discharged_to_concept_id,
-	CAST(NULL AS STRING) AS discharged_to_source_value,
-	CAST(NULL AS integer) AS preceding_visit_occurrence_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS admitting_source_concept_id,
+	CAST(NULL AS STRING) AS admitting_source_value,
+	CAST(NULL AS integer) AS discharge_to_concept_id,
+	CAST(NULL AS STRING) AS discharge_to_source_value,
+	CAST(NULL AS integer) AS preceding_visit_occurrence_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.VISIT_DETAIL  
+CREATE TABLE @cdmDatabaseSchema.VISIT_DETAIL 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS visit_detail_id,
+AS
+SELECT 	CAST(NULL AS integer) AS visit_detail_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS visit_detail_concept_id,
 	CAST(NULL AS date) AS visit_detail_start_date,
@@ -70,19 +66,18 @@ CAST(NULL AS integer) AS visit_detail_id,
 	CAST(NULL AS integer) AS care_site_id,
 	CAST(NULL AS STRING) AS visit_detail_source_value,
 	CAST(NULL AS integer) AS visit_detail_source_concept_id,
-	CAST(NULL AS integer) AS admitted_from_concept_id,
-	CAST(NULL AS STRING) AS admitted_from_source_value,
-	CAST(NULL AS STRING) AS discharged_to_source_value,
-	CAST(NULL AS integer) AS discharged_to_concept_id,
+	CAST(NULL AS STRING) AS admitting_source_value,
+	CAST(NULL AS integer) AS admitting_source_concept_id,
+	CAST(NULL AS STRING) AS discharge_to_source_value,
+	CAST(NULL AS integer) AS discharge_to_concept_id,
 	CAST(NULL AS integer) AS preceding_visit_detail_id,
-	CAST(NULL AS integer) AS parent_visit_detail_id,
-	CAST(NULL AS integer) AS visit_occurrence_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS visit_detail_parent_id,
+	CAST(NULL AS integer) AS visit_occurrence_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.CONDITION_OCCURRENCE  
+CREATE TABLE @cdmDatabaseSchema.CONDITION_OCCURRENCE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS condition_occurrence_id,
+AS
+SELECT 	CAST(NULL AS integer) AS condition_occurrence_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS condition_concept_id,
 	CAST(NULL AS date) AS condition_start_date,
@@ -97,13 +92,12 @@ CAST(NULL AS integer) AS condition_occurrence_id,
 	CAST(NULL AS integer) AS visit_detail_id,
 	CAST(NULL AS STRING) AS condition_source_value,
 	CAST(NULL AS integer) AS condition_source_concept_id,
-	CAST(NULL AS STRING) AS condition_status_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS condition_status_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.DRUG_EXPOSURE  
+CREATE TABLE @cdmDatabaseSchema.DRUG_EXPOSURE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS drug_exposure_id,
+AS
+SELECT 	CAST(NULL AS integer) AS drug_exposure_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS drug_concept_id,
 	CAST(NULL AS date) AS drug_exposure_start_date,
@@ -125,19 +119,16 @@ CAST(NULL AS integer) AS drug_exposure_id,
 	CAST(NULL AS STRING) AS drug_source_value,
 	CAST(NULL AS integer) AS drug_source_concept_id,
 	CAST(NULL AS STRING) AS route_source_value,
-	CAST(NULL AS STRING) AS dose_unit_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS dose_unit_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.PROCEDURE_OCCURRENCE  
+CREATE TABLE @cdmDatabaseSchema.PROCEDURE_OCCURRENCE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS procedure_occurrence_id,
+AS
+SELECT 	CAST(NULL AS integer) AS procedure_occurrence_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS procedure_concept_id,
 	CAST(NULL AS date) AS procedure_date,
 	CAST(NULL AS TIMESTAMP) AS procedure_datetime,
-	CAST(NULL AS date) AS procedure_end_date,
-	CAST(NULL AS TIMESTAMP) AS procedure_end_datetime,
 	CAST(NULL AS integer) AS procedure_type_concept_id,
 	CAST(NULL AS integer) AS modifier_concept_id,
 	CAST(NULL AS integer) AS quantity,
@@ -146,13 +137,12 @@ CAST(NULL AS integer) AS procedure_occurrence_id,
 	CAST(NULL AS integer) AS visit_detail_id,
 	CAST(NULL AS STRING) AS procedure_source_value,
 	CAST(NULL AS integer) AS procedure_source_concept_id,
-	CAST(NULL AS STRING) AS modifier_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS modifier_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.DEVICE_EXPOSURE  
+CREATE TABLE @cdmDatabaseSchema.DEVICE_EXPOSURE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS device_exposure_id,
+AS
+SELECT 	CAST(NULL AS integer) AS device_exposure_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS device_concept_id,
 	CAST(NULL AS date) AS device_exposure_start_date,
@@ -161,22 +151,17 @@ CAST(NULL AS integer) AS device_exposure_id,
 	CAST(NULL AS TIMESTAMP) AS device_exposure_end_datetime,
 	CAST(NULL AS integer) AS device_type_concept_id,
 	CAST(NULL AS STRING) AS unique_device_id,
-	CAST(NULL AS STRING) AS production_id,
 	CAST(NULL AS integer) AS quantity,
 	CAST(NULL AS integer) AS provider_id,
 	CAST(NULL AS integer) AS visit_occurrence_id,
 	CAST(NULL AS integer) AS visit_detail_id,
 	CAST(NULL AS STRING) AS device_source_value,
-	CAST(NULL AS integer) AS device_source_concept_id,
-	CAST(NULL AS integer) AS unit_concept_id,
-	CAST(NULL AS STRING) AS unit_source_value,
-	CAST(NULL AS integer) AS unit_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS device_source_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.MEASUREMENT  
+CREATE TABLE @cdmDatabaseSchema.MEASUREMENT 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS measurement_id,
+AS
+SELECT 	CAST(NULL AS integer) AS measurement_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS measurement_concept_id,
 	CAST(NULL AS date) AS measurement_date,
@@ -195,16 +180,12 @@ CAST(NULL AS integer) AS measurement_id,
 	CAST(NULL AS STRING) AS measurement_source_value,
 	CAST(NULL AS integer) AS measurement_source_concept_id,
 	CAST(NULL AS STRING) AS unit_source_value,
-	CAST(NULL AS integer) AS unit_source_concept_id,
-	CAST(NULL AS STRING) AS value_source_value,
-	CAST(NULL AS integer) AS measurement_event_id,
-	CAST(NULL AS integer) AS meas_event_field_concept_id  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS value_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.OBSERVATION  
+CREATE TABLE @cdmDatabaseSchema.OBSERVATION 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS observation_id,
+AS
+SELECT 	CAST(NULL AS integer) AS observation_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS observation_concept_id,
 	CAST(NULL AS date) AS observation_date,
@@ -221,28 +202,23 @@ CAST(NULL AS integer) AS observation_id,
 	CAST(NULL AS STRING) AS observation_source_value,
 	CAST(NULL AS integer) AS observation_source_concept_id,
 	CAST(NULL AS STRING) AS unit_source_value,
-	CAST(NULL AS STRING) AS qualifier_source_value,
-	CAST(NULL AS STRING) AS value_source_value,
-	CAST(NULL AS integer) AS observation_event_id,
-	CAST(NULL AS integer) AS obs_event_field_concept_id  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS qualifier_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.DEATH  
+CREATE TABLE @cdmDatabaseSchema.DEATH 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS person_id,
+AS
+SELECT 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS date) AS death_date,
 	CAST(NULL AS TIMESTAMP) AS death_datetime,
 	CAST(NULL AS integer) AS death_type_concept_id,
 	CAST(NULL AS integer) AS cause_concept_id,
 	CAST(NULL AS STRING) AS cause_source_value,
-	CAST(NULL AS integer) AS cause_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS cause_source_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.NOTE  
+CREATE TABLE @cdmDatabaseSchema.NOTE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS note_id,
+AS
+SELECT 	CAST(NULL AS integer) AS note_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS date) AS note_date,
 	CAST(NULL AS TIMESTAMP) AS note_datetime,
@@ -255,15 +231,12 @@ CAST(NULL AS integer) AS note_id,
 	CAST(NULL AS integer) AS provider_id,
 	CAST(NULL AS integer) AS visit_occurrence_id,
 	CAST(NULL AS integer) AS visit_detail_id,
-	CAST(NULL AS STRING) AS note_source_value,
-	CAST(NULL AS integer) AS note_event_id,
-	CAST(NULL AS integer) AS note_event_field_concept_id  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS note_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.NOTE_NLP  
+CREATE TABLE @cdmDatabaseSchema.NOTE_NLP 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS note_nlp_id,
+AS
+SELECT 	CAST(NULL AS integer) AS note_nlp_id,
 	CAST(NULL AS integer) AS note_id,
 	CAST(NULL AS integer) AS section_concept_id,
 	CAST(NULL AS STRING) AS snippet,
@@ -276,13 +249,12 @@ CAST(NULL AS integer) AS note_nlp_id,
 	CAST(NULL AS TIMESTAMP) AS nlp_datetime,
 	CAST(NULL AS STRING) AS term_exists,
 	CAST(NULL AS STRING) AS term_temporal,
-	CAST(NULL AS STRING) AS term_modifiers  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS term_modifiers WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.SPECIMEN  
+CREATE TABLE @cdmDatabaseSchema.SPECIMEN 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS specimen_id,
+AS
+SELECT 	CAST(NULL AS integer) AS specimen_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS specimen_concept_id,
 	CAST(NULL AS integer) AS specimen_type_concept_id,
@@ -296,51 +268,43 @@ CAST(NULL AS integer) AS specimen_id,
 	CAST(NULL AS STRING) AS specimen_source_value,
 	CAST(NULL AS STRING) AS unit_source_value,
 	CAST(NULL AS STRING) AS anatomic_site_source_value,
-	CAST(NULL AS STRING) AS disease_status_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS disease_status_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.FACT_RELATIONSHIP  
+CREATE TABLE @cdmDatabaseSchema.FACT_RELATIONSHIP 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS domain_concept_id_1,
+AS
+SELECT 	CAST(NULL AS integer) AS domain_concept_id_1,
 	CAST(NULL AS integer) AS fact_id_1,
 	CAST(NULL AS integer) AS domain_concept_id_2,
 	CAST(NULL AS integer) AS fact_id_2,
-	CAST(NULL AS integer) AS relationship_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS relationship_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.LOCATION  
+CREATE TABLE @cdmDatabaseSchema.LOCATION 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS location_id,
+AS
+SELECT 	CAST(NULL AS integer) AS location_id,
 	CAST(NULL AS STRING) AS address_1,
 	CAST(NULL AS STRING) AS address_2,
 	CAST(NULL AS STRING) AS city,
 	CAST(NULL AS STRING) AS state,
 	CAST(NULL AS STRING) AS zip,
 	CAST(NULL AS STRING) AS county,
-	CAST(NULL AS STRING) AS location_source_value,
-	CAST(NULL AS integer) AS country_concept_id,
-	CAST(NULL AS STRING) AS country_source_value,
-	CAST(NULL AS float) AS latitude,
-	CAST(NULL AS float) AS longitude  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS location_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CARE_SITE  
+CREATE TABLE @cdmDatabaseSchema.CARE_SITE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS care_site_id,
+AS
+SELECT 	CAST(NULL AS integer) AS care_site_id,
 	CAST(NULL AS STRING) AS care_site_name,
 	CAST(NULL AS integer) AS place_of_service_concept_id,
 	CAST(NULL AS integer) AS location_id,
 	CAST(NULL AS STRING) AS care_site_source_value,
-	CAST(NULL AS STRING) AS place_of_service_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS place_of_service_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.PROVIDER  
+CREATE TABLE @cdmDatabaseSchema.PROVIDER 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS provider_id,
+AS
+SELECT 	CAST(NULL AS integer) AS provider_id,
 	CAST(NULL AS STRING) AS provider_name,
 	CAST(NULL AS STRING) AS npi,
 	CAST(NULL AS STRING) AS dea,
@@ -352,13 +316,12 @@ CAST(NULL AS integer) AS provider_id,
 	CAST(NULL AS STRING) AS specialty_source_value,
 	CAST(NULL AS integer) AS specialty_source_concept_id,
 	CAST(NULL AS STRING) AS gender_source_value,
-	CAST(NULL AS integer) AS gender_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS gender_source_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.PAYER_PLAN_PERIOD  
+CREATE TABLE @cdmDatabaseSchema.PAYER_PLAN_PERIOD 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS payer_plan_period_id,
+AS
+SELECT 	CAST(NULL AS integer) AS payer_plan_period_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS date) AS payer_plan_period_start_date,
 	CAST(NULL AS date) AS payer_plan_period_end_date,
@@ -374,13 +337,12 @@ CAST(NULL AS integer) AS payer_plan_period_id,
 	CAST(NULL AS STRING) AS family_source_value,
 	CAST(NULL AS integer) AS stop_reason_concept_id,
 	CAST(NULL AS STRING) AS stop_reason_source_value,
-	CAST(NULL AS integer) AS stop_reason_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS stop_reason_source_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.COST  
+CREATE TABLE @cdmDatabaseSchema.COST 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS cost_id,
+AS
+SELECT 	CAST(NULL AS integer) AS cost_id,
 	CAST(NULL AS integer) AS cost_event_id,
 	CAST(NULL AS STRING) AS cost_domain_id,
 	CAST(NULL AS integer) AS cost_type_concept_id,
@@ -401,88 +363,55 @@ CAST(NULL AS integer) AS cost_id,
 	CAST(NULL AS integer) AS revenue_code_concept_id,
 	CAST(NULL AS STRING) AS revenue_code_source_value,
 	CAST(NULL AS integer) AS drg_concept_id,
-	CAST(NULL AS STRING) AS drg_source_value  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS drg_source_value WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.DRUG_ERA  
+CREATE TABLE @cdmDatabaseSchema.DRUG_ERA 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS drug_era_id,
+AS
+SELECT 	CAST(NULL AS integer) AS drug_era_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS drug_concept_id,
 	CAST(NULL AS date) AS drug_era_start_date,
 	CAST(NULL AS date) AS drug_era_end_date,
 	CAST(NULL AS integer) AS drug_exposure_count,
-	CAST(NULL AS integer) AS gap_days  WHERE 1 = 0;
+	CAST(NULL AS integer) AS gap_days WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.DOSE_ERA  
+CREATE TABLE @cdmDatabaseSchema.DOSE_ERA 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS dose_era_id,
+AS
+SELECT 	CAST(NULL AS integer) AS dose_era_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS drug_concept_id,
 	CAST(NULL AS integer) AS unit_concept_id,
 	CAST(NULL AS float) AS dose_value,
 	CAST(NULL AS date) AS dose_era_start_date,
-	CAST(NULL AS date) AS dose_era_end_date  WHERE 1 = 0;
+	CAST(NULL AS date) AS dose_era_end_date WHERE 1 = 0;
 --HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.CONDITION_ERA  
+CREATE TABLE @cdmDatabaseSchema.CONDITION_ERA 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS condition_era_id,
+AS
+SELECT 	CAST(NULL AS integer) AS condition_era_id,
 	CAST(NULL AS integer) AS person_id,
 	CAST(NULL AS integer) AS condition_concept_id,
 	CAST(NULL AS date) AS condition_era_start_date,
 	CAST(NULL AS date) AS condition_era_end_date,
-	CAST(NULL AS integer) AS condition_occurrence_count  WHERE 1 = 0;
---HINT DISTRIBUTE ON KEY (person_id)
-CREATE TABLE @cdmDatabaseSchema.EPISODE  
-USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS episode_id,
-	CAST(NULL AS integer) AS person_id,
-	CAST(NULL AS integer) AS episode_concept_id,
-	CAST(NULL AS date) AS episode_start_date,
-	CAST(NULL AS TIMESTAMP) AS episode_start_datetime,
-	CAST(NULL AS date) AS episode_end_date,
-	CAST(NULL AS TIMESTAMP) AS episode_end_datetime,
-	CAST(NULL AS integer) AS episode_parent_id,
-	CAST(NULL AS integer) AS episode_number,
-	CAST(NULL AS integer) AS episode_object_concept_id,
-	CAST(NULL AS integer) AS episode_type_concept_id,
-	CAST(NULL AS STRING) AS episode_source_value,
-	CAST(NULL AS integer) AS episode_source_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS condition_occurrence_count WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.EPISODE_EVENT  
+CREATE TABLE @cdmDatabaseSchema.METADATA 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS episode_id,
-	CAST(NULL AS integer) AS event_id,
-	CAST(NULL AS integer) AS episode_event_field_concept_id  WHERE 1 = 0;
---HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.METADATA  
-USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS metadata_id,
-	CAST(NULL AS integer) AS metadata_concept_id,
+AS
+SELECT 	CAST(NULL AS integer) AS metadata_concept_id,
 	CAST(NULL AS integer) AS metadata_type_concept_id,
 	CAST(NULL AS STRING) AS name,
 	CAST(NULL AS STRING) AS value_as_string,
 	CAST(NULL AS integer) AS value_as_concept_id,
-	CAST(NULL AS float) AS value_as_number,
 	CAST(NULL AS date) AS metadata_date,
-	CAST(NULL AS TIMESTAMP) AS metadata_datetime  WHERE 1 = 0;
+	CAST(NULL AS TIMESTAMP) AS metadata_datetime WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CDM_SOURCE  
+CREATE TABLE @cdmDatabaseSchema.CDM_SOURCE 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS cdm_source_name,
+AS
+SELECT 	CAST(NULL AS STRING) AS cdm_source_name,
 	CAST(NULL AS STRING) AS cdm_source_abbreviation,
 	CAST(NULL AS STRING) AS cdm_holder,
 	CAST(NULL AS STRING) AS source_description,
@@ -491,14 +420,12 @@ CAST(NULL AS STRING) AS cdm_source_name,
 	CAST(NULL AS date) AS source_release_date,
 	CAST(NULL AS date) AS cdm_release_date,
 	CAST(NULL AS STRING) AS cdm_version,
-	CAST(NULL AS integer) AS cdm_version_concept_id,
-	CAST(NULL AS STRING) AS vocabulary_version  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS vocabulary_version WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CONCEPT  
+CREATE TABLE @cdmDatabaseSchema.CONCEPT 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS concept_id,
+AS
+SELECT 	CAST(NULL AS integer) AS concept_id,
 	CAST(NULL AS STRING) AS concept_name,
 	CAST(NULL AS STRING) AS domain_id,
 	CAST(NULL AS STRING) AS vocabulary_id,
@@ -507,78 +434,70 @@ CAST(NULL AS integer) AS concept_id,
 	CAST(NULL AS STRING) AS concept_code,
 	CAST(NULL AS date) AS valid_start_date,
 	CAST(NULL AS date) AS valid_end_date,
-	CAST(NULL AS STRING) AS invalid_reason  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS invalid_reason WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.VOCABULARY  
+CREATE TABLE @cdmDatabaseSchema.VOCABULARY 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS vocabulary_id,
+AS
+SELECT 	CAST(NULL AS STRING) AS vocabulary_id,
 	CAST(NULL AS STRING) AS vocabulary_name,
 	CAST(NULL AS STRING) AS vocabulary_reference,
 	CAST(NULL AS STRING) AS vocabulary_version,
-	CAST(NULL AS integer) AS vocabulary_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS vocabulary_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.DOMAIN  
+CREATE TABLE @cdmDatabaseSchema.DOMAIN 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS domain_id,
+AS
+SELECT 	CAST(NULL AS STRING) AS domain_id,
 	CAST(NULL AS STRING) AS domain_name,
-	CAST(NULL AS integer) AS domain_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS domain_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CONCEPT_CLASS  
+CREATE TABLE @cdmDatabaseSchema.CONCEPT_CLASS 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS concept_class_id,
+AS
+SELECT 	CAST(NULL AS STRING) AS concept_class_id,
 	CAST(NULL AS STRING) AS concept_class_name,
-	CAST(NULL AS integer) AS concept_class_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS concept_class_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CONCEPT_RELATIONSHIP  
+CREATE TABLE @cdmDatabaseSchema.CONCEPT_RELATIONSHIP 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS concept_id_1,
+AS
+SELECT 	CAST(NULL AS integer) AS concept_id_1,
 	CAST(NULL AS integer) AS concept_id_2,
 	CAST(NULL AS STRING) AS relationship_id,
 	CAST(NULL AS date) AS valid_start_date,
 	CAST(NULL AS date) AS valid_end_date,
-	CAST(NULL AS STRING) AS invalid_reason  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS invalid_reason WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.RELATIONSHIP  
+CREATE TABLE @cdmDatabaseSchema.RELATIONSHIP 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS relationship_id,
+AS
+SELECT 	CAST(NULL AS STRING) AS relationship_id,
 	CAST(NULL AS STRING) AS relationship_name,
 	CAST(NULL AS STRING) AS is_hierarchical,
 	CAST(NULL AS STRING) AS defines_ancestry,
 	CAST(NULL AS STRING) AS reverse_relationship_id,
-	CAST(NULL AS integer) AS relationship_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS relationship_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CONCEPT_SYNONYM  
+CREATE TABLE @cdmDatabaseSchema.CONCEPT_SYNONYM 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS concept_id,
+AS
+SELECT 	CAST(NULL AS integer) AS concept_id,
 	CAST(NULL AS STRING) AS concept_synonym_name,
-	CAST(NULL AS integer) AS language_concept_id  WHERE 1 = 0;
+	CAST(NULL AS integer) AS language_concept_id WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.CONCEPT_ANCESTOR  
+CREATE TABLE @cdmDatabaseSchema.CONCEPT_ANCESTOR 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS ancestor_concept_id,
+AS
+SELECT 	CAST(NULL AS integer) AS ancestor_concept_id,
 	CAST(NULL AS integer) AS descendant_concept_id,
 	CAST(NULL AS integer) AS min_levels_of_separation,
-	CAST(NULL AS integer) AS max_levels_of_separation  WHERE 1 = 0;
+	CAST(NULL AS integer) AS max_levels_of_separation WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.SOURCE_TO_CONCEPT_MAP  
+CREATE TABLE @cdmDatabaseSchema.SOURCE_TO_CONCEPT_MAP 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS STRING) AS source_code,
+AS
+SELECT 	CAST(NULL AS STRING) AS source_code,
 	CAST(NULL AS integer) AS source_concept_id,
 	CAST(NULL AS STRING) AS source_vocabulary_id,
 	CAST(NULL AS STRING) AS source_code_description,
@@ -586,13 +505,12 @@ CAST(NULL AS STRING) AS source_code,
 	CAST(NULL AS STRING) AS target_vocabulary_id,
 	CAST(NULL AS date) AS valid_start_date,
 	CAST(NULL AS date) AS valid_end_date,
-	CAST(NULL AS STRING) AS invalid_reason  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS invalid_reason WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.DRUG_STRENGTH  
+CREATE TABLE @cdmDatabaseSchema.DRUG_STRENGTH 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS drug_concept_id,
+AS
+SELECT 	CAST(NULL AS integer) AS drug_concept_id,
 	CAST(NULL AS integer) AS ingredient_concept_id,
 	CAST(NULL AS float) AS amount_value,
 	CAST(NULL AS integer) AS amount_unit_concept_id,
@@ -603,25 +521,24 @@ CAST(NULL AS integer) AS drug_concept_id,
 	CAST(NULL AS integer) AS box_size,
 	CAST(NULL AS date) AS valid_start_date,
 	CAST(NULL AS date) AS valid_end_date,
-	CAST(NULL AS STRING) AS invalid_reason  WHERE 1 = 0;
+	CAST(NULL AS STRING) AS invalid_reason WHERE 1 = 0;
 --HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.COHORT  
+CREATE TABLE @cdmDatabaseSchema.COHORT_DEFINITION 
 USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS cohort_definition_id,
-	CAST(NULL AS integer) AS subject_id,
-	CAST(NULL AS date) AS cohort_start_date,
-	CAST(NULL AS date) AS cohort_end_date  WHERE 1 = 0;
---HINT DISTRIBUTE ON RANDOM
-CREATE TABLE @cdmDatabaseSchema.COHORT_DEFINITION  
-USING DELTA
- AS
-SELECT
-CAST(NULL AS integer) AS cohort_definition_id,
+AS
+SELECT 	CAST(NULL AS integer) AS cohort_definition_id,
 	CAST(NULL AS STRING) AS cohort_definition_name,
 	CAST(NULL AS STRING) AS cohort_definition_description,
 	CAST(NULL AS integer) AS definition_type_concept_id,
 	CAST(NULL AS STRING) AS cohort_definition_syntax,
 	CAST(NULL AS integer) AS subject_concept_id,
-	CAST(NULL AS date) AS cohort_initiation_date  WHERE 1 = 0;
+	CAST(NULL AS date) AS cohort_initiation_date WHERE 1 = 0;
+--HINT DISTRIBUTE ON RANDOM
+CREATE TABLE @cdmDatabaseSchema.ATTRIBUTE_DEFINITION 
+USING DELTA
+AS
+SELECT 	CAST(NULL AS integer) AS attribute_definition_id,
+	CAST(NULL AS STRING) AS attribute_name,
+	CAST(NULL AS STRING) AS attribute_description,
+	CAST(NULL AS integer) AS attribute_type_concept_id,
+	CAST(NULL AS STRING) AS attribute_syntax WHERE 1 = 0;
