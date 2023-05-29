@@ -10,7 +10,13 @@ import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * CDM 5.3
+ * 
+ * 
+ *
+ */
 @Slf4j
 public class A04_CreateAchilliesDatabasesDatabricks {
 
@@ -27,7 +33,12 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 	}
 
 	public static void exec(String databaseName, Connection conn) {
+		// check the connection 
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
+		// echo status
+		log.info("-------------------------------");
+		log.info("START: Creating test database(Synthea synthetic health database, CDM 5.3): " + databaseName);
+		log.info("-------------------------------");
 		try {
 			log.info("--- CREATING RESULTS SCHEMA ----------------------");
 			createDatabase(databaseName + "_ach_res", conn);

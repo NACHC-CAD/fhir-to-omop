@@ -9,6 +9,14 @@ import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * The only thing this class does is create the databricks schema to hold the CDM. 
+ * If the schema already exists it is dropped.  
+ * There is nothing version specific about this class as all it does is create an empty schema.  
+ *
+ */
+
 @Slf4j
 public class A01_CreateCdmDatabaseDatabricks {
 
@@ -25,16 +33,25 @@ public class A01_CreateCdmDatabaseDatabricks {
 	}
 
 	public static void exec(String schemaName, Connection conn) {
+		// check the connection 
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
-		log.info("Got scheama name: " + schemaName);
+		// echo status
+		log.info("-------------------------------");
+		log.info("Dropping and recreating schema: " + schemaName);
+		log.info("-------------------------------");
+		// drop the schema if it exists
 		log.info("Doing drop...");
 		String dropString = "drop database if exists " + schemaName + " cascade";
 		log.info(dropString);
 		DatabricksDatabase.update(dropString, conn);
+		// create the schema
 		log.info("Doing create...");
 		String sqlString = "create database " + schemaName;
 		DatabricksDatabase.update(sqlString, conn);
-		log.info("Done creating schema.");
+		// echo status
+		log.info("-------------------------------");
+		log.info("Done creating schema: " + schemaName);
+		log.info("-------------------------------");
 	}
 	
 }

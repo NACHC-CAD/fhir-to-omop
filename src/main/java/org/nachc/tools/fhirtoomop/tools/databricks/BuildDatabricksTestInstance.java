@@ -41,12 +41,12 @@ public class BuildDatabricksTestInstance {
 
 	public static void exec(String schemaName, String databricksFilesRoot, String achillesSchemaName, Connection conn) {
 		log.info("CREATING DATABASE INSTANCE: " + schemaName);
-//		// create the cdm
-//		A01_CreateCdmDatabaseDatabricks.exec(schemaName, conn);
-//		A02_CreateCdmDatabaseObjectsDatabricks.exec(schemaName, conn);
-//		// upload test data
-//		A03_UploadTestDatasetCsvFilesDatabricks.exec(schemaName, databricksFilesRoot, conn);
-//		// instal and populate achilles
+		// create the cdm
+		A01_CreateCdmDatabaseDatabricks.exec(schemaName, conn);
+		A02_CreateCdmDatabaseObjectsDatabricks.exec(schemaName, conn);
+		// upload test data
+		A03_UploadTestDatasetCsvFilesDatabricks.exec(schemaName, databricksFilesRoot, conn);
+		// instal and populate achilles
 		A04_CreateAchilliesDatabasesDatabricks.exec(schemaName, conn);
 		A05_CreateAchillesDatabaseObjectsDatabricks.exec(schemaName, conn);
 		A06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, schemaName, conn);

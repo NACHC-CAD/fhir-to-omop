@@ -12,6 +12,16 @@ import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * CDM 5.3
+ * 
+ * The only thing this class does is execute the DDL from the CommonDataModel to create the database objects (tables) for the CDM.  
+ * This script will drop the schema if it exists (making the A01 class somewhat academic, but it is useful for testing/debugging).  
+ * This script is for CDM 5.3.  
+ *
+ */
+
 @Slf4j
 public class A02_CreateCdmDatabaseObjectsDatabricks {
 
@@ -32,12 +42,16 @@ public class A02_CreateCdmDatabaseObjectsDatabricks {
 	public static void exec(String schemaName, Connection conn) {
 		// check the connection
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
+		// echo status
+		log.info("-------------------------------");
+		log.info("START: Executing CDM 5.3 script to create tables: " + schemaName);
+		log.info("-------------------------------");
 		// get the sql from the ddl file
 		log.info("Getting ddl file...");
 		InputStream is = FileUtil.getInputStream(DDL_FILE);
 		String sqlString = FileUtil.getAsString(is);
 		sqlString = replace(sqlString, "@cdmDatabaseSchema", schemaName);
-		// drop the existing schema
+		// drop the schema if it exists
 		log.info("Dropping existing database...");
 		DatabricksDatabase.update("drop database if exists " + schemaName + " cascade", conn);
 		// create the database
@@ -46,7 +60,10 @@ public class A02_CreateCdmDatabaseObjectsDatabricks {
 		// populate the database from the ddl sql
 		log.info("Creating database objects...");
 		Database.executeSqlScript(sqlString, conn);
-		log.info("Done creating database.");
+		// echo status
+		log.info("-------------------------------");
+		log.info("DONE: Executing CDM 5.3 script to create tables: " + schemaName);
+		log.info("-------------------------------");
 	}
 
 	private static String replace(String sqlString, String src, String dst) {
