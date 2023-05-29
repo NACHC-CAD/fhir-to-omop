@@ -20,7 +20,7 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 
 	private static final String FILE_NAME = "achilles_analysis_details.csv";
 	
-	private static final String TABLE_NAME = "achilles_analysis_details";
+	private static final String TABLE_NAME = "achilles_analysis";
 	
 	private static final String FILE_PATH = "/databricks/achilles/" + FILE_NAME;
 
@@ -29,7 +29,7 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
-			String databaseName = DatabricksProperties.getSchemaName();
+			String databaseName = DatabricksProperties.getAchillesResultsDatabaseName();
 			exec(databricksFilesRoot, databaseName, conn);
 		} finally {
 			Database.close(conn);
@@ -46,12 +46,15 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 		// delete existing files
 		log.info("Deleting existing files...");
 		DeleteCsvFromDatabricks.exec(databricksFilesRoot, true);
+		// upload the file
 		log.info("Databricks file dir: " + databricksFilesRoot);
 		InputStream is = FileUtil.getInputStream(FILE_PATH);
 		log.info("Got input stream: " + is);
 		String path = uploadFile(is, databricksFilesRoot, FILE_NAME);
+		// create the table
 		log.info("Creating table from FileStore csv file...");
 		createTable(databaseName, conn);
+		// populate the table from the file
 		WriteFileStoreCsvToTable.exec(path, databaseName, TABLE_NAME, conn);
 	}
 	
