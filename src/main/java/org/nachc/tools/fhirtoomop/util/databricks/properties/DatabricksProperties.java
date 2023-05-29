@@ -47,4 +47,8 @@ public class DatabricksProperties {
 		return PROPS.getProperty("DatabricksFilesRoot");
 	}
 
+	public static String getAchillesResultsDatabaseName() {
+		return PROPS.getProperty("AchillesResultsDatabaseName");
+	}
+	
 }

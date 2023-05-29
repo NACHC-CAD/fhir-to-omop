@@ -25,6 +25,7 @@ public class A01_CreateCdmDatabaseDatabricks {
 	}
 
 	public static void exec(String schemaName, Connection conn) {
+		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		log.info("Got scheama name: " + schemaName);
 		log.info("Doing drop...");
 		String dropString = "drop database if exists " + schemaName + " cascade";

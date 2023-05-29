@@ -31,7 +31,7 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 
 	public static void exec(String schemaName, Connection conn) {
 		// check the connection
-		conn = checkConnection(conn);
+		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		// get the sql from the ddl file
 		log.info("Getting ddl file...");
 		InputStream is = FileUtil.getInputStream(DDL_FILE);
@@ -47,8 +47,4 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 		return sqlString.replace(src, dst);
 	}
 	
-	private static Connection checkConnection(Connection conn) {
-		return DatabricksDatabase.resetConnectionIfItIsBad(conn);
-	}
-
 }

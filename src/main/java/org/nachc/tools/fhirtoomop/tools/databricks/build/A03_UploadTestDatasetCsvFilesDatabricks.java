@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.nachc.tools.fhirtoomop.util.databricks.delete.DeleteCsvFromDatabricks;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
 import org.nachc.tools.fhirtoomop.util.databricks.upload.UploadCsvToDatabricks;
@@ -39,6 +40,7 @@ public class A03_UploadTestDatasetCsvFilesDatabricks {
 	}
 
 	public static void exec(String schemaName, String databricksFilesRoot, Connection conn) {
+		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		String uploadRoot = DatabricksProperties.getDatabricksUploadRoot();
 		String databaseName = DatabricksProperties.getSchemaName();
 		databricksFilesRoot = uploadRoot + "/" + databricksFilesRoot + "/csv";
@@ -59,9 +61,14 @@ public class A03_UploadTestDatasetCsvFilesDatabricks {
 		File srcDir = new File(WORKING_DIR, "demo_cdm");
 		List<File> dirs = FileUtil.list(srcDir);
 		log.info("Got " + dirs.size() + " dirs");
-		// TODO: ADD TRUNCATE HERE
 		for (File dir : dirs) {
-			log.info("TABLE: " + dir.getName());
+			String tableName = dir.getName();
+			log.info("TABLE: " + tableName);
+			if("concept_recommended".equalsIgnoreCase(tableName)) {
+				// skip this file (i don't know where this table came from)
+				continue;
+			}
+			truncateTable(databaseName, tableName, conn);
 			processDir(dir, databricksFilesRoot, databaseName, conn);
 		}
 		log.info("Got " + dirs.size() + " dirs");
@@ -91,5 +98,9 @@ public class A03_UploadTestDatasetCsvFilesDatabricks {
 		return databricksFilePath;
 	}
 
+	private static void truncateTable(String databaseName, String tableName, Connection conn) {
+		String sqlString = "truncate table " + databaseName + "." + tableName;
+		Database.update(sqlString, conn);
+	}
 	
 }

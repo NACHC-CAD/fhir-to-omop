@@ -14,10 +14,13 @@ public class WriteFileStoreCsvToTable {
 			String viewName = createTemporaryView(path, databaseName, tableName, conn);
 			doInsert(databaseName, tableName, viewName, conn);
 			dropTempView(viewName, conn);
+		} else {
+			log.info("TABLE DOES NOT EXIST (SKIPPING): " + databaseName + "." + tableName);
 		}
 	}
 	
 	private static String createTemporaryView(String path, String databaseName, String tableName, Connection conn) {
+		log.info("Creating temporary view...");
 		String viewName = databaseName + "_" + tableName + "_tv";
 		String sqlString = "";
 		sqlString += "create temporary view " + viewName + " \n";
@@ -32,11 +35,14 @@ public class WriteFileStoreCsvToTable {
 	}
 	
 	private static void doInsert(String databaseName, String tableName, String viewName, Connection conn) {
+		log.info("Doing insert...");
+		log.info("TABLE NAME: " + databaseName + "." + tableName);
 		String sqlString = "";
 		sqlString += "insert into " + databaseName + "." + tableName + "( \n";
 		sqlString += "  select * from " + viewName + "\n";
 		sqlString += ")\n";
 		Database.update(sqlString, conn);
+		log.info("Done with insert.");
 	}
 	
 	private static void dropTempView(String viewName, Connection conn) {

@@ -38,6 +38,7 @@ public class DatabricksDatabase {
 	}
 	
 	public static boolean checkConnection(Connection conn) {
+		log.info("* * * CHECKING DATABRICKS CONNECTION * * *");
 		try {
 			Database.query("select 1", conn);
 			log.info("Connection is good.");

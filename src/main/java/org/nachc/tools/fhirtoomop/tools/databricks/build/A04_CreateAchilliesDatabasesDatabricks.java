@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.databricks.build;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -26,10 +27,14 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 	}
 
 	public static void exec(String databaseName, Connection conn) {
-		log.info("Done creating Achilles databases.");
+		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		try {
+			log.info("--- CREATING RESULTS SCHEMA ----------------------");
 			createDatabase(databaseName + "_ach_res", conn);
+			log.info("--- CREATING TEMP SCHEMA -------------------------");
 			createDatabase(databaseName + "_ach_tmp", conn);
+			log.info("--- DONE CREATING ACHILLES SCHEMAS ---------------");
+			log.info("Achilles schemas have been created (tables have not yet been created)");
 		} finally {
 			Database.close(conn);
 		}
@@ -37,8 +42,11 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 	}
 
 	private static void createDatabase(String databaseName, Connection conn) {
-		log.info("Creating database: " + databaseName);
+		log.info("DROPPING AND CREATING ACHILLES DATABASE: " + databaseName);
+		log.info("Dropping database: " + databaseName);
 		Database.update("drop database if exists " + databaseName + " cascade", conn);
+		log.info("Creating database: " + databaseName);
 		Database.update("create database " + databaseName, conn);
+		log.info("Done creating Achilles database (no tables created yet): " + databaseName);
 	}
 }

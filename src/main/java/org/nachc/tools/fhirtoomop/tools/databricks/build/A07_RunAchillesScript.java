@@ -13,44 +13,40 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A02_CreateCdmDatabaseObjectsDatabricks {
+public class A07_RunAchillesScript {
 
-	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.3_ddl.sql";
+	public static final String ACHILLES_SCRIPT = "/databricks/achilles/achilles.sql";
 
 	public static void main(String[] args) {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String schemaName = DatabricksProperties.getSchemaName();
-			exec(schemaName, conn);
+			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsDatabaseName();
+			exec(schemaName, achillesResultsDatabaseName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	public static void exec(String schemaName, Connection conn) {
+	public static void exec(String schemaName, String achillesResultsSchemaName, Connection conn) {
 		// check the connection
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		// get the sql from the ddl file
 		log.info("Getting ddl file...");
-		InputStream is = FileUtil.getInputStream(DDL_FILE);
+		InputStream is = FileUtil.getInputStream(ACHILLES_SCRIPT);
 		String sqlString = FileUtil.getAsString(is);
-		sqlString = replace(sqlString, "@cdmDatabaseSchema", schemaName);
-		// drop the existing schema
-		log.info("Dropping existing database...");
-		DatabricksDatabase.update("drop database if exists " + schemaName + " cascade", conn);
-		// create the database
-		log.info("Creating the database...");
-		DatabricksDatabase.update("create database " + schemaName, conn);
-		// populate the database from the ddl sql
-		log.info("Creating database objects...");
+		sqlString = replace(sqlString, "<CDM_DATABASE_NAME>", schemaName);
+		sqlString = replace(sqlString, "<ACHILLES_RESULTS_DATABASE_NAME>", achillesResultsSchemaName);
+		// populate the database from the script
+		log.info("Running Achilles Script...");
 		Database.executeSqlScript(sqlString, conn);
-		log.info("Done creating database.");
+		log.info("Done Running Achilles Script.");
 	}
 
 	private static String replace(String sqlString, String src, String dst) {
 		return sqlString.replace(src, dst);
 	}
-	
+
 }
