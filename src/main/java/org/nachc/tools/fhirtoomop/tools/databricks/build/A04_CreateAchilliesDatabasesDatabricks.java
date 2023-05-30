@@ -24,8 +24,8 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
-			String achillesTempDatabaseName = DatabricksProperties.getAchillesTempDatabaseName();
-			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsDatabaseName();
+			String achillesTempDatabaseName = DatabricksProperties.getAchillesTempSchemaName();
+			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsSchemaName();
 			exec(achillesTempDatabaseName, achillesResultsDatabaseName, conn);
 		} finally {
 			Database.close(conn);

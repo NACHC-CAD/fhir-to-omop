@@ -34,7 +34,7 @@ public class A07_RunAchillesScript {
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String schemaName = DatabricksProperties.getSchemaName();
-			String achillesResultsSchmeaName = DatabricksProperties.getAchillesResultsDatabaseName();
+			String achillesResultsSchmeaName = DatabricksProperties.getAchillesResultsSchemaName();
 			exec(schemaName, achillesResultsSchmeaName, conn);
 		} finally {
 			Database.close(conn);
@@ -60,7 +60,7 @@ public class A07_RunAchillesScript {
 		Database.executeSqlScript(sqlString, conn);
 		// echo status
 		log.info("-------------------------------");
-		log.info("START: Running Achilles (almost done) !!!");
+		log.info("DONE: Running Achilles !!!");
 		log.info("-------------------------------");
 	}
 

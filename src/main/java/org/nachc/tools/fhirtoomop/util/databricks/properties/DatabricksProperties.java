@@ -59,20 +59,20 @@ public class DatabricksProperties {
 	// Schema properties
 	//
 	
-	public static String getVocabSchemaName() {
-		return PROPS.getProperty("VocabSchemaName");
-	}
-	
 	public static String getSchemaName() {
 		return PROPS.getProperty("SchemaName");
 	}
 	
-	public static String getAchillesTempDatabaseName() {
-		return PROPS.getProperty("AchillesTempDatabaseName");
+	public static String getVocabSchemaName() {
+		return PROPS.getProperty("VocabSchemaName");
 	}
 	
-	public static String getAchillesResultsDatabaseName() {
-		return PROPS.getProperty("AchillesResultsDatabaseName");
+	public static String getAchillesTempSchemaName() {
+		return PROPS.getProperty("AchillesTempSchemaName");
+	}
+	
+	public static String getAchillesResultsSchemaName() {
+		return PROPS.getProperty("AchillesResultsSchemaName");
 	}
 
 }

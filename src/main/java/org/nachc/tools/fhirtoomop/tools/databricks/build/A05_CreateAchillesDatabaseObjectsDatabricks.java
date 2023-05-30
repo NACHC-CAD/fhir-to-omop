@@ -33,8 +33,8 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String vocabSchemaName = DatabricksProperties.getVocabSchemaName();
-			String achillesTempDatabaseName = DatabricksProperties.getAchillesTempDatabaseName();
-			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsDatabaseName();
+			String achillesTempDatabaseName = DatabricksProperties.getAchillesTempSchemaName();
+			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsSchemaName();
 			exec(vocabSchemaName, achillesTempDatabaseName, achillesResultsDatabaseName, conn);
 		} finally {
 			Database.close(conn);
@@ -47,16 +47,18 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		// echo status
 		log.info("-------------------------------");
-		log.info("START: Creating Achilles Databases (vocab, temp, and results): " + vocabSchemaName + ", " + achillesTempSchemaName, ", " + achillesResultsSchemaName);
+		log.info("START: Creating Achilles Databases (vocab, temp, and results): " + vocabSchemaName + ", " + achillesTempSchemaName +  ", " + achillesResultsSchemaName);
 		log.info("-------------------------------");
 		// get the sql from the ddl file
 		log.info("Getting ddl file...");
 		InputStream is = FileUtil.getInputStream(DDL_FILE);
 		String sqlString = FileUtil.getAsString(is);
 		// update the parameters
-		sqlString = replace(sqlString, "<VOCAB_SCHEMA_NAME>", vocabSchemaName);
-		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
-		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
+		// TODO: NEED TO FIX THIS!!!
+//		sqlString = replace(sqlString, "<VOCAB_SCHEMA_NAME>", vocabSchemaName);
+//		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
+//		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
+		sqlString = replace(sqlString, "<DB_NAME>", "demo_cdm");
 		// create the tables
 		log.info("Creating database objects...");
 		Database.executeSqlScript(sqlString, conn);

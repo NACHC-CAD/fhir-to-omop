@@ -43,7 +43,7 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
-			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsDatabaseName();
+			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsSchemaName();
 			exec(databricksFilesRoot, achillesResultsSchemaName, conn);
 		} finally {
 			Database.close(conn);

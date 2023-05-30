@@ -27,8 +27,8 @@ public class BuildDatabricksTestInstance {
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
 			String schemaName = DatabricksProperties.getSchemaName();
 			String vocabSchemaName = DatabricksProperties.getVocabSchemaName();
-			String achillesTempSchemaName = DatabricksProperties.getAchillesTempDatabaseName();
-			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsDatabaseName();
+			String achillesTempSchemaName = DatabricksProperties.getAchillesTempSchemaName();
+			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsSchemaName();
 			exec(databricksFilesRoot, schemaName, vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
 			log.info("Done building instance.");
 		} finally {
@@ -48,7 +48,7 @@ public class BuildDatabricksTestInstance {
 		A02_CreateCdmDatabaseObjectsDatabricks.exec(schemaName, conn);
 		// upload test data
 		A03_UploadTestDatasetCsvFilesDatabricks.exec(schemaName, databricksFilesRoot, conn);
-		// instal and populate achilles
+		// install and populate achilles
 		A04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
 		A05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
 		A06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, achillesResultsSchemaName, conn);
