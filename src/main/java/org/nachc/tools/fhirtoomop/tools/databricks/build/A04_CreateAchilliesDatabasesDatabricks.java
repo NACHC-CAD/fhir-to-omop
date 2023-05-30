@@ -24,32 +24,36 @@ public class A04_CreateAchilliesDatabasesDatabricks {
 		Connection conn = null;
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
-			String schemaName = DatabricksProperties.getSchemaName();
-			exec(schemaName, conn);
+			String achillesTempDatabaseName = DatabricksProperties.getAchillesTempDatabaseName();
+			String achillesResultsDatabaseName = DatabricksProperties.getAchillesResultsDatabaseName();
+			exec(achillesTempDatabaseName, achillesResultsDatabaseName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 
-	public static void exec(String databaseName, Connection conn) {
+	public static void exec(String tempDatabaseName, String resultsDatabaseName, Connection conn) {
 		// check the connection 
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
 		// echo status
 		log.info("-------------------------------");
-		log.info("START: Creating test database(Synthea synthetic health database, CDM 5.3): " + databaseName);
+		log.info("START: Creating Achilles Databases (temp and results): " + tempDatabaseName + ", " + resultsDatabaseName);
 		log.info("-------------------------------");
 		try {
-			log.info("--- CREATING RESULTS SCHEMA ----------------------");
-			createDatabase(databaseName + "_ach_res", conn);
 			log.info("--- CREATING TEMP SCHEMA -------------------------");
-			createDatabase(databaseName + "_ach_tmp", conn);
+			createDatabase(tempDatabaseName, conn);
+			log.info("--- CREATING RESULTS SCHEMA ----------------------");
+			createDatabase(resultsDatabaseName, conn);
 			log.info("--- DONE CREATING ACHILLES SCHEMAS ---------------");
 			log.info("Achilles schemas have been created (tables have not yet been created)");
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done creating Achilles databases.");
+		// echo status
+		log.info("-------------------------------");
+		log.info("DONE: Creating Achilles Databases (temp and results): " + tempDatabaseName + ", " + resultsDatabaseName);
+		log.info("-------------------------------");
 	}
 
 	private static void createDatabase(String databaseName, Connection conn) {

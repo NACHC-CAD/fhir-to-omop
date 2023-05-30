@@ -24,10 +24,12 @@ public class BuildDatabricksTestInstance {
 			log.info("Getting connection...");
 			conn = DatabricksConnectionFactory.getConnection();
 			log.info("Building Databricks instance...");
-			String schemaName = DatabricksProperties.getSchemaName();
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
-			String achillesSchemaName = DatabricksProperties.getAchillesResultsDatabaseName();
-			exec(schemaName, databricksFilesRoot, achillesSchemaName, conn);
+			String schemaName = DatabricksProperties.getSchemaName();
+			String vocabSchemaName = DatabricksProperties.getVocabSchemaName();
+			String achillesTempSchemaName = DatabricksProperties.getAchillesTempDatabaseName();
+			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsDatabaseName();
+			exec(databricksFilesRoot, schemaName, vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
 			log.info("Done building instance.");
 		} finally {
 			try {
@@ -39,7 +41,7 @@ public class BuildDatabricksTestInstance {
 		log.info("Done.");
 	}
 
-	public static void exec(String schemaName, String databricksFilesRoot, String achillesSchemaName, Connection conn) {
+	public static void exec(String databricksFilesRoot, String schemaName, String vocabSchemaName, String achillesTempSchemaName, String achillesResultsSchemaName, Connection conn) {
 		log.info("CREATING DATABASE INSTANCE: " + schemaName);
 		// create the cdm
 		A01_CreateCdmDatabaseDatabricks.exec(schemaName, conn);
@@ -47,11 +49,11 @@ public class BuildDatabricksTestInstance {
 		// upload test data
 		A03_UploadTestDatasetCsvFilesDatabricks.exec(schemaName, databricksFilesRoot, conn);
 		// instal and populate achilles
-		A04_CreateAchilliesDatabasesDatabricks.exec(schemaName, conn);
-		A05_CreateAchillesDatabaseObjectsDatabricks.exec(schemaName, conn);
-		A06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, schemaName, conn);
+		A04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
+		A05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
+		A06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, achillesResultsSchemaName, conn);
 		// run the achilles script
-		A07_RunAchillesScript.exec(schemaName, achillesSchemaName, conn);
+		A07_RunAchillesScript.exec(schemaName, achillesResultsSchemaName, conn);
 		log.info("Done running scripts.");
 	}
 

@@ -15,6 +15,20 @@ import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * 
+ * CDM ???
+ * I would think this would be versioned, but it looks like the file from the latest Achilles build works.  
+ * (I'm assuming it will work for both 5.3 and 5.4).  
+ * 
+ * This class creates and populates the achilles_analysis table.
+ * For some reason this table is not included in the script created when we run Achilles in sqlOnly mode.  
+ * Therefore, it needs to be created here from the csv file.  
+ * See: https://forums.ohdsi.org/t/error-running-achilles-against-databricks/18575 
+ * Note: The csv file is achilles_analysis_details.csv, the table is achilles_analysis (no _details in the table name).  
+ *
+ */
+
 @Slf4j
 public class A06_UploadAchillesAnalysisDetailsCsv {
 
@@ -29,16 +43,22 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 		try {
 			conn = DatabricksConnectionFactory.getConnection();
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
-			String databaseName = DatabricksProperties.getAchillesResultsDatabaseName();
-			exec(databricksFilesRoot, databaseName, conn);
+			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsDatabaseName();
+			exec(databricksFilesRoot, achillesResultsSchemaName, conn);
 		} finally {
 			Database.close(conn);
 		}
 		log.info("Done.");
 	}
 	
-	public static void exec(String databricksFilesRoot, String databaseName, Connection conn) {
+	public static void exec(String databricksFilesRoot, String achillesResultsSchemaName, Connection conn) {
+		// check the connection 
 		conn = DatabricksDatabase.resetConnectionIfItIsBad(conn);
+		// echo status
+		log.info("-------------------------------");
+		log.info("START: Creating achilles_analysis table from achilles_analysis_details.csv");
+		log.info("-------------------------------");
+		// uploading the csv file
 		log.info("Uplaoding achilles_analysis_details.csv");
 		String uploadRoot = DatabricksProperties.getDatabricksUploadRoot();
 		databricksFilesRoot = uploadRoot + "/" + databricksFilesRoot + "/etc/achilles";
@@ -53,9 +73,13 @@ public class A06_UploadAchillesAnalysisDetailsCsv {
 		String path = uploadFile(is, databricksFilesRoot, FILE_NAME);
 		// create the table
 		log.info("Creating table from FileStore csv file...");
-		createTable(databaseName, conn);
+		createTable(achillesResultsSchemaName, conn);
 		// populate the table from the file
-		WriteFileStoreCsvToTable.exec(path, databaseName, TABLE_NAME, conn);
+		WriteFileStoreCsvToTable.exec(path, achillesResultsSchemaName, TABLE_NAME, conn);
+		// echo status
+		log.info("-------------------------------");
+		log.info("START: Creating achilles_analysis table from achilles_analysis_details.csv");
+		log.info("-------------------------------");
 	}
 	
 	private static String uploadFile(InputStream is, String databricksFilesRoot, String fileName) {
