@@ -5,11 +5,10 @@ import java.sql.Connection;
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
-import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
+
 /**
  * 
  * CDM 5.3

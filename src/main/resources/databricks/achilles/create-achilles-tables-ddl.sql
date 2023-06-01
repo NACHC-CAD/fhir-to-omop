@@ -1,34 +1,3 @@
-/**
- * 
- * TODO: THERE IS SOMETHING GOOFY GOING ON WITH THIS SCRIPT AND heracles_periods
- * When I regenerate the script I get the following error when it runs:
- * Caused by: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 92321.0 failed 4 times, most recent failure: Lost task 0.3 in stage 92321.0 (TID 140794) (10.22.225.217 executor 262): org.apache.spark.SparkNumberFormatException: [CAST_INVALID_INPUT] The value 'Monthly' of the type "STRING" cannot be cast to "INT" because it is malformed. Correct the value as per the syntax, or change its target type. Use `try_cast` to tolerate malformed input and return NULL instead. If necessary set "spark.sql.ansi.enabled" to "false" to bypass this error.
-
-== SQL(line 5, position 1) ==
-INSERT OVERWRITE TABLE demo_cdm_ach_res.heracles_periods  SELECT * FROM insertion_temp
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-	at org.apache.spark.sql.errors.QueryExecutionErrors$.invalidInputInCastToNumberError(QueryExecutionErrors.scala:256)
-	at org.apache.spark.sql.catalyst.util.UTF8StringUtils$.withException(UTF8StringUtils.scala:51)
-
- * 
- */
-
-
-/**
- * 
- * This file was created by deploying an instance of Atlas and then running this in a browser:
- * http://localhost:8080/WebAPI/ddl/results?dialect=spark&schema=<ACHILLES_RESULTS_SCHEMA_NAME>&vocabSchema=<VOCAB_SCHEMA_NAME>&tempSchema=<ACHILLES_TEMP_SCHEMA_NAME>&initConceptHierarchy=true
- * 
- */
-
-/**
- * 
- * This file was created by deploying an instance of Atlas and then running this in a browser:
- * http://127.0.0.1/WebAPI/ddl/results?dialect=spark&schema=<DB_NAME>_ach_res&vocabSchema=<DB_NAME>&tempSchema=<DB_NAME>_ach_tmp&initConceptHierarchy=true
- * 
- */
-
 CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort
 USING DELTA
 AS
@@ -2621,7 +2590,7 @@ CAST('HEALTHCARE_UTILIZATION' as STRING) as analysis_type
 INSERT OVERWRITE TABLE <DB_NAME>_ach_res.heracles_analysis
  (analysis_id,analysis_name,stratum_1_name,stratum_2_name,stratum_3_name,stratum_4_name,stratum_5_name,analysis_type) SELECT * FROM insertion_temp;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6digits
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrdigits
 USING DELTA
 AS
 SELECT
@@ -2631,41 +2600,41 @@ FROM
  select 0 as n union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9
 ) digits;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6generate_dates
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
 USING DELTA
 AS
 SELECT
 y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) AS d_years,
  mths.n as d_months
 FROM
-<DB_NAME>_ach_tmp.pggdlwq6digits y1,
-<DB_NAME>_ach_tmp.pggdlwq6digits y10,
+<DB_NAME>_ach_tmp.jwfn9xhrdigits y1,
+<DB_NAME>_ach_tmp.jwfn9xhrdigits y10,
 (select 0 n union all select 1 union all select 9) y100,
 (select 1 n union all select 2) y1000,
 (select 1 n union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9 union all select 10 union all select 11 union all select 12) mths
  where y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) >= 1900 and y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) < 2100
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6yearly_dates
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhryearly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(01 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.pggdlwq6generate_dates
+<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
 where d_months = 1
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6monthly_dates
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(01 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.pggdlwq6generate_dates
+<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6weekly_dates
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates
 USING DELTA
 AS
 SELECT
@@ -2673,20 +2642,20 @@ date_add(to_date(cast(1900 as string) || '-' || cast(1 as string) || '-' || cast
 FROM
 (
  select d1.n + (10 * d10.n) + (100 * d100.n) + (1000 * d1000.n) as rn
- from <DB_NAME>_ach_tmp.pggdlwq6digits d1, <DB_NAME>_ach_tmp.pggdlwq6digits d10, <DB_NAME>_ach_tmp.pggdlwq6digits d100, <DB_NAME>_ach_tmp.pggdlwq6digits d1000
+ from <DB_NAME>_ach_tmp.jwfn9xhrdigits d1, <DB_NAME>_ach_tmp.jwfn9xhrdigits d10, <DB_NAME>_ach_tmp.jwfn9xhrdigits d100, <DB_NAME>_ach_tmp.jwfn9xhrdigits d1000
 ) seq;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6quarterly_dates
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(1 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.pggdlwq6generate_dates
+<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
  where d_months in (1,4,7,10)
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.pggdlwq6temp_period
+CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period
 USING DELTA
 AS
 SELECT
@@ -2698,14 +2667,14 @@ select CAST('Monthly' AS STRING) as period_name
  , CAST( 'mm' AS STRING) as period_type
  , md.generated_date as period_start_date
  , (md.generated_date + INTERVAL 1 month) as period_end_date
-from <DB_NAME>_ach_tmp.pggdlwq6monthly_dates md
+from <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates md
 UNION ALL
 select CAST('Weekly' AS STRING) as period_name
  , 2 as period_order
  , CAST('ww' AS STRING) as period_type
  , wd.generated_date as period_start_date
  , date_add(wd.generated_date, 7) as period_end_date
-from <DB_NAME>_ach_tmp.pggdlwq6weekly_dates wd
+from <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates wd
 where wd.generated_date >= to_date(cast(1900 as string) || '-' || cast(1 as string) || '-' || cast(1 as string)) and wd.generated_date < to_date(cast(2100 as string) || '-' || cast(1 as string) || '-' || cast(1 as string))
 UNION ALL
 select CAST('Quarterly' AS STRING) as period_name
@@ -2713,71 +2682,49 @@ select CAST('Quarterly' AS STRING) as period_name
  , CAST('qq' AS STRING) as period_type
  , qd.generated_date as period_start_date
  , (qd.generated_date + INTERVAL 3 month) as period_end_date
-from <DB_NAME>_ach_tmp.pggdlwq6quarterly_dates qd
+from <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates qd
 UNION ALL
 select CAST('Yearly' AS STRING) as period_name
  , 4 as period_order
  , CAST('yy' AS STRING) as period_type
  , yd.generated_date as period_start_date
  , (yd.generated_date + INTERVAL 1 year) as period_end_date
-from <DB_NAME>_ach_tmp.pggdlwq6yearly_dates yd
+from <DB_NAME>_ach_tmp.jwfn9xhryearly_dates yd
 -- ADD UNION ALLs for additional period definitions
 ) monthlyDates;
 
 TRUNCATE TABLE <DB_NAME>_ach_res.heracles_periods;
 
 WITH insertion_temp AS (
-	(
-	SELECT 
-		CAST(row_number() over (order by period_order, period_start_date) AS INT) as period_id,
-		period_name, 
-		period_order, 
-		period_type, 
-		period_start_date, 
-		period_end_date
-	from 
-		<DB_NAME>_ach_tmp.pggdlwq6temp_period
-	) 
-	UNION ALL (
-	SELECT 
-		period_id, 
-		period_name, 
-		period_order, 
-		period_type, 
-		period_start_date, 
-		period_end_date 
-	FROM 
-		<DB_NAME>_ach_res.heracles_periods)
-)
-
+(SELECT CAST(row_number() over (order by period_order, period_start_date) AS INT) as period_id
+ , period_name, period_order, period_type, period_start_date, period_end_date
+from <DB_NAME>_ach_tmp.jwfn9xhrtemp_period) UNION ALL (SELECT period_id, period_name, period_order, period_type, period_start_date, period_end_date FROM <DB_NAME>_ach_res.heracles_periods ))
 INSERT OVERWRITE TABLE <DB_NAME>_ach_res.heracles_periods  (period_id, period_name, period_order, period_type, period_start_date, period_end_date) SELECT * FROM insertion_temp;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6digits;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhrdigits;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6digits;
+drop table <DB_NAME>_ach_tmp.jwfn9xhrdigits;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6generate_dates;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6generate_dates;
+drop table <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6yearly_dates;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhryearly_dates;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6yearly_dates;
+drop table <DB_NAME>_ach_tmp.jwfn9xhryearly_dates;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6quarterly_dates;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6quarterly_dates;
+drop table <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6monthly_dates;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6monthly_dates;
+drop table <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates;
 
-truncate table <DB_NAME>_ach_tmp.pggdlwq6weekly_dates;
+truncate table <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates;
 
-drop table <DB_NAME>_ach_tmp.pggdlwq6weekly_dates;
+drop table <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates;
 
-TRUNCATE TABLE <DB_NAME>_ach_tmp.pggdlwq6temp_period;
+TRUNCATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period;
 
-DROP TABLE <DB_NAME>_ach_tmp.pggdlwq6temp_period;
-
-
+DROP TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period;
