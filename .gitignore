@@ -11,7 +11,8 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+# needed for databricks jdbc jar
+# *.jar
 *.war
 *.nar
 *.ear
