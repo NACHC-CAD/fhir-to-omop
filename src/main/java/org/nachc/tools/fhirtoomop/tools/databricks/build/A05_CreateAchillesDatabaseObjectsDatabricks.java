@@ -56,10 +56,10 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 		String sqlString = FileUtil.getAsString(is);
 		// update the parameters
 		// TODO: NEED TO FIX THIS!!!
-//		sqlString = replace(sqlString, "<VOCAB_SCHEMA_NAME>", vocabSchemaName);
-//		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
-//		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
-		sqlString = replace(sqlString, "<DB_NAME>", "demo_cdm");
+		sqlString = replace(sqlString, "<VOCAB_SCHEMA_NAME>", vocabSchemaName);
+		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
+		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
+//		sqlString = replace(sqlString, "<DB_NAME>", "demo_cdm");
 		// exceptions occur if the following is not set
 		log.info("SETTING: set spark.sql.ansi.enabled=false");
 		Database.query("set spark.sql.ansi.enabled=false", conn);

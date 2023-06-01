@@ -1,4 +1,30 @@
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort
+/* * * *
+ * 
+ * This script was created by running the following url against a local instance of Atlas.
+ * Version information for the specific build is shown below. 
+ * http://localhost:8080/WebAPI/ddl/results?dialect=spark&schema=<ACHILLES_RESULTS_SCHEMA_NAME>&vocabSchema=<VOCAB_SCHEMA_NAME>&tempSchema=<ACHILLES_TEMP_SCHEMA_NAME>&initConceptHierarchy=true
+ * 
+ *	------
+ *	WebAPI: 
+ *	Cloned from:
+ *	https://github.com/OHDSI/WebAPI
+ *	Branch: master
+ *	Date:   2023-06-01 13:52:32 -0400
+ *	SHA:    3222f318515f69e124eb6c251c4e98206ddf18e6 
+ *	------
+ * 
+ *	------
+ *	ATLAS
+ *	Cloned from:
+ *	https://github.com/OHDSI/Atlas
+ *	Branch: master
+ *	Date:   2023-05-25 12:58:31 -0400
+ *	SHA:    014a6f28c98df71d145ea05c542126cfc77a1009
+ *	------ 
+ * 
+ * * * */
+
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort
 USING DELTA
 AS
 SELECT
@@ -7,14 +33,14 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS date) AS cohort_start_date,
 	CAST(NULL AS date) AS cohort_end_date  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_censor_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_censor_stats 
 USING DELTA
 AS
 SELECT
 CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS bigint) AS lost_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_inclusion 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_inclusion 
 USING DELTA
 AS
 SELECT
@@ -24,7 +50,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS STRING) AS name,
 	CAST(NULL AS STRING) AS description  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_inclusion_result 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_inclusion_result 
 USING DELTA
 AS
 SELECT
@@ -33,7 +59,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS bigint) AS inclusion_rule_mask,
 	CAST(NULL AS bigint) AS person_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_inclusion_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_inclusion_stats 
 USING DELTA
 AS
 SELECT
@@ -44,7 +70,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS bigint) AS gain_count,
 	CAST(NULL AS bigint) AS person_total  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_summary_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_summary_stats 
 USING DELTA
 AS
 SELECT
@@ -53,7 +79,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS bigint) AS base_count,
 	CAST(NULL AS bigint) AS final_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_cache  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_cache  
 USING DELTA
 AS
 SELECT
@@ -62,14 +88,14 @@ CAST(NULL AS int) AS design_hash,
 	CAST(NULL AS date) AS cohort_start_date,
 	CAST(NULL AS date) AS cohort_end_date  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_censor_stats_cache  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_censor_stats_cache  
 USING DELTA
 AS
 SELECT
 CAST(NULL AS int) AS design_hash,
 	CAST(NULL AS bigint) AS lost_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_inclusion_result_cache  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_inclusion_result_cache  
 USING DELTA
 AS
 SELECT
@@ -78,7 +104,7 @@ CAST(NULL AS int) AS design_hash,
 	CAST(NULL AS bigint) AS inclusion_rule_mask,
 	CAST(NULL AS bigint) AS person_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_inclusion_stats_cache  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_inclusion_stats_cache  
 USING DELTA
 AS
 SELECT
@@ -89,7 +115,7 @@ CAST(NULL AS int) AS design_hash,
 	CAST(NULL AS bigint) AS gain_count,
 	CAST(NULL AS bigint) AS person_total  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_summary_stats_cache  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_summary_stats_cache  
 USING DELTA
 AS
 SELECT
@@ -98,7 +124,7 @@ CAST(NULL AS int) AS design_hash,
 	CAST(NULL AS bigint) AS base_count,
 	CAST(NULL AS bigint) AS final_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.feas_study_inclusion_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.feas_study_inclusion_stats 
 USING DELTA
 AS
 SELECT
@@ -109,7 +135,7 @@ CAST(NULL AS int) AS study_id,
 	CAST(NULL AS bigint) AS gain_count,
 	CAST(NULL AS bigint) AS person_total  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.feas_study_index_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.feas_study_index_stats 
 USING DELTA
 AS
 SELECT
@@ -117,7 +143,7 @@ CAST(NULL AS int) AS study_id,
 	CAST(NULL AS bigint) AS person_count,
 	CAST(NULL AS bigint) AS match_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.feas_study_result 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.feas_study_result 
 USING DELTA
 AS
 SELECT
@@ -125,7 +151,7 @@ CAST(NULL AS int) AS study_id,
 	CAST(NULL AS bigint) AS inclusion_rule_mask,
 	CAST(NULL AS bigint) AS person_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.heracles_analysis
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_analysis
 USING DELTA
 AS
 SELECT
@@ -138,7 +164,7 @@ CAST(NULL AS int) AS analysis_id,
 	CAST(NULL AS STRING) AS stratum_5_name,
 	CAST(NULL AS STRING) AS analysis_type  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.HERACLES_HEEL_results 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.HERACLES_HEEL_results 
 USING DELTA
 AS
 SELECT
@@ -147,7 +173,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS STRING) AS heracles_heel_warning  WHERE 1 = 0;
 
 --HINT PARTITION(cohort_definition_id int)
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.heracles_results
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_results
 USING DELTA
 AS
 SELECT
@@ -162,7 +188,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS TIMESTAMP) AS last_update_time  WHERE 1 = 0;
 
 --HINT PARTITION(cohort_definition_id int)
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.heracles_results_dist
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_results_dist
 USING DELTA
 AS
 SELECT
@@ -185,7 +211,7 @@ CAST(NULL AS int) AS cohort_definition_id,
 	CAST(NULL AS float) AS p90_value,
 	CAST(NULL AS TIMESTAMP) AS last_update_time  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.heracles_periods
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_periods
 USING DELTA
 AS
 SELECT
@@ -196,7 +222,7 @@ CAST(NULL AS int) AS period_id,
 	CAST(NULL AS date) AS period_start_date,
 	CAST(NULL AS date) AS period_end_date  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cohort_sample_element 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cohort_sample_element 
 USING DELTA
 AS
 SELECT
@@ -206,7 +232,7 @@ CAST(NULL AS int) AS cohort_sample_id,
 	CAST(NULL AS int) AS age,
 	CAST(NULL AS int) AS gender_concept_id  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.ir_analysis_dist  
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.ir_analysis_dist  
 USING DELTA
 AS
 SELECT
@@ -226,7 +252,7 @@ CAST(NULL AS int) AS analysis_id,
 	CAST(NULL AS int) AS p90_value,
 	CAST(NULL AS int) AS max_value  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.ir_analysis_result 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.ir_analysis_result 
 USING DELTA
 AS
 SELECT
@@ -238,7 +264,7 @@ CAST(NULL AS int) AS analysis_id,
 	CAST(NULL AS bigint) AS time_at_risk,
 	CAST(NULL AS bigint) AS cases  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.ir_analysis_strata_stats 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.ir_analysis_strata_stats 
 USING DELTA
 AS
 SELECT
@@ -250,7 +276,7 @@ CAST(NULL AS int) AS analysis_id,
 	CAST(NULL AS bigint) AS time_at_risk,
 	CAST(NULL AS bigint) AS cases  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.ir_strata 
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.ir_strata 
 USING DELTA
 AS
 SELECT
@@ -259,7 +285,7 @@ CAST(NULL AS int) AS analysis_id,
 	CAST(NULL AS STRING) AS name,
 	CAST(NULL AS STRING) AS description  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.cc_results
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.cc_results
 USING DELTA
 AS
 SELECT
@@ -289,7 +315,7 @@ CAST(NULL AS STRING) AS type,
 	CAST(NULL AS STRING) AS aggregate_name,
 	CAST(NULL AS integer) AS missing_means_zero  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.pathway_analysis_codes
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.pathway_analysis_codes
 USING DELTA
 AS
 SELECT
@@ -298,7 +324,7 @@ CAST(NULL AS bigint) AS pathway_analysis_generation_id,
 	CAST(NULL AS STRING) AS name,
 	CAST(NULL AS int) AS is_combo  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.pathway_analysis_events
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.pathway_analysis_events
 USING DELTA
 AS
 SELECT
@@ -310,7 +336,7 @@ CAST(NULL AS bigint) AS pathway_analysis_generation_id,
 	CAST(NULL AS TIMESTAMP) AS cohort_start_date,
 	CAST(NULL AS TIMESTAMP) AS cohort_end_date  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.pathway_analysis_paths
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.pathway_analysis_paths
 USING DELTA
 AS
 SELECT
@@ -328,7 +354,7 @@ CAST(NULL AS bigint) AS pathway_analysis_generation_id,
 	CAST(NULL AS bigint) AS step_10,
 	CAST(NULL AS bigint) AS count_value  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.pathway_analysis_stats
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.pathway_analysis_stats
 USING DELTA
 AS
 SELECT
@@ -337,7 +363,7 @@ CAST(NULL AS bigint) AS pathway_analysis_generation_id,
 	CAST(NULL AS bigint) AS target_cohort_count,
 	CAST(NULL AS bigint) AS pathways_count  WHERE 1 = 0;
 
-CREATE TABLE IF NOT EXISTS <DB_NAME>_ach_res.concept_hierarchy
+CREATE TABLE IF NOT EXISTS <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
 USING DELTA
 AS
 SELECT
@@ -350,7 +376,7 @@ CAST(NULL AS int) AS concept_id,
 	CAST(NULL AS STRING) AS level3_concept_name,
 	CAST(NULL AS STRING) AS level4_concept_name  WHERE 1 = 0;
 
-TRUNCATE TABLE <DB_NAME>_ach_res.concept_hierarchy;
+TRUNCATE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy;
 
 WITH insertion_temp AS (
 (SELECT snomed.concept_id,
@@ -365,18 +391,18 @@ FROM (
  SELECT
  concept_id,
  concept_name
- FROM <DB_NAME>.concept
+ FROM <VOCAB_SCHEMA_NAME>.concept
  WHERE domain_id = 'Condition'
 ) snomed
 LEFT JOIN (
  SELECT
  c1.concept_id AS snomed_concept_id,
  max(c2.concept_id) AS pt_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.domain_id = 'Condition'
  AND ca1.min_levels_of_separation = 1
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'MedDRA'
  GROUP BY c1.concept_id
 ) snomed_to_pt ON snomed.concept_id = snomed_to_pt.snomed_concept_id
@@ -385,11 +411,11 @@ LEFT JOIN (
  c1.concept_id AS pt_concept_id,
  c1.concept_name AS pt_concept_name,
  max(c2.concept_id) AS hlt_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'MedDRA'
  AND ca1.min_levels_of_separation = 1
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'MedDRA'
  GROUP BY c1.concept_id, c1.concept_name
 ) pt_to_hlt ON snomed_to_pt.pt_concept_id = pt_to_hlt.pt_concept_id
@@ -398,11 +424,11 @@ LEFT JOIN (
  c1.concept_id AS hlt_concept_id,
  c1.concept_name AS hlt_concept_name,
  max(c2.concept_id) AS hlgt_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'MedDRA'
  AND ca1.min_levels_of_separation = 1
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'MedDRA'
  GROUP BY c1.concept_id, c1.concept_name
 ) hlt_to_hlgt ON pt_to_hlt.hlt_concept_id = hlt_to_hlgt.hlt_concept_id
@@ -411,17 +437,17 @@ LEFT JOIN (
  c1.concept_id AS hlgt_concept_id,
  c1.concept_name AS hlgt_concept_name,
  max(c2.concept_id) AS soc_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'MedDRA'
  AND ca1.min_levels_of_separation = 1
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'MedDRA'
  GROUP BY c1.concept_id, c1.concept_name
 ) hlgt_to_soc ON hlt_to_hlgt.hlgt_concept_id = hlgt_to_soc.hlgt_concept_id
-LEFT JOIN <DB_NAME>.concept soc ON hlgt_to_soc.soc_concept_id = soc.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept soc ON hlgt_to_soc.soc_concept_id = soc.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
 WITH insertion_temp AS (
@@ -439,10 +465,10 @@ FROM (
  c1.concept_name,
  c2.concept_id AS rxnorm_ingredient_concept_id,
  c2.concept_name AS RxNorm_ingredient_concept_name
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.domain_id = 'Drug'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.domain_id = 'Drug'
  AND c2.concept_class_id = 'Ingredient'
 ) rxnorm
@@ -450,11 +476,11 @@ LEFT JOIN (
  SELECT
  c1.concept_id AS rxnorm_ingredient_concept_id,
  max(c2.concept_id) AS atc5_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.domain_id = 'Drug'
  AND c1.concept_class_id = 'Ingredient'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 4th'
  GROUP BY c1.concept_id
@@ -464,11 +490,11 @@ LEFT JOIN (
  c1.concept_id AS atc5_concept_id,
  c1.concept_name AS atc5_concept_name,
  max(c2.concept_id) AS atc3_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'ATC'
  AND c1.concept_class_id = 'ATC 4th'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 2nd'
  GROUP BY c1.concept_id, c1.concept_name
@@ -478,18 +504,18 @@ LEFT JOIN (
  c1.concept_id AS atc3_concept_id,
  c1.concept_name AS atc3_concept_name,
  max(c2.concept_id) AS atc1_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'ATC'
  AND c1.concept_class_id = 'ATC 2nd'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 1st'
  GROUP BY c1.concept_id, c1.concept_name
 ) atc3_to_atc1 ON atc5_to_atc3.atc3_concept_id = atc3_to_atc1.atc3_concept_id
-LEFT JOIN <DB_NAME>.concept atc1 ON atc3_to_atc1.atc1_concept_id = atc1.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept atc1 ON atc3_to_atc1.atc1_concept_id = atc1.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
 WITH insertion_temp AS (
@@ -505,7 +531,7 @@ FROM (
  SELECT
  c2.concept_id AS rxnorm_ingredient_concept_id,
  c2.concept_name AS RxNorm_ingredient_concept_name
- FROM <DB_NAME>.concept c2
+ FROM <VOCAB_SCHEMA_NAME>.concept c2
  WHERE c2.domain_id = 'Drug'
  AND c2.concept_class_id = 'Ingredient'
 ) rxnorm
@@ -513,11 +539,11 @@ LEFT JOIN (
  SELECT
  c1.concept_id AS rxnorm_ingredient_concept_id,
  max(c2.concept_id) AS atc5_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.domain_id = 'Drug'
  AND c1.concept_class_id = 'Ingredient'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 4th'
  GROUP BY c1.concept_id
@@ -527,11 +553,11 @@ LEFT JOIN (
  c1.concept_id AS atc5_concept_id,
  c1.concept_name AS atc5_concept_name,
  max(c2.concept_id) AS atc3_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'ATC'
  AND c1.concept_class_id = 'ATC 4th'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 2nd'
  GROUP BY c1.concept_id, c1.concept_name
@@ -541,18 +567,18 @@ LEFT JOIN (
  c1.concept_id AS atc3_concept_id,
  c1.concept_name AS atc3_concept_name,
  max(c2.concept_id) AS atc1_concept_id
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON c1.concept_id = ca1.descendant_concept_id
  AND c1.vocabulary_id = 'ATC'
  AND c1.concept_class_id = 'ATC 2nd'
- INNER JOIN <DB_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca1.ancestor_concept_id = c2.concept_id
  AND c2.vocabulary_id = 'ATC'
  AND c2.concept_class_id = 'ATC 1st'
  GROUP BY c1.concept_id, c1.concept_name
 ) atc3_to_atc1 ON atc5_to_atc3.atc3_concept_id = atc3_to_atc1.atc3_concept_id
-LEFT JOIN <DB_NAME>.concept atc1 ON atc3_to_atc1.atc1_concept_id = atc1.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept atc1 ON atc3_to_atc1.atc1_concept_id = atc1.concept_id) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
 WITH insertion_temp AS (
@@ -568,18 +594,18 @@ FROM (
  SELECT DISTINCT
  concept_id,
  concept_name
- FROM <DB_NAME>.concept c
+ FROM <VOCAB_SCHEMA_NAME>.concept c
  WHERE domain_id = 'Measurement'
 ) m
-LEFT JOIN <DB_NAME>.concept_ancestor ca1 ON M.concept_id = ca1.DESCENDANT_CONCEPT_ID AND ca1.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c1 ON ca1.ANCESTOR_CONCEPT_ID = c1.concept_id
-LEFT JOIN <DB_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.DESCENDANT_CONCEPT_ID AND ca2.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c2 ON ca2.ANCESTOR_CONCEPT_ID = c2.concept_id
-LEFT JOIN <DB_NAME>.concept_ancestor ca3 ON c2.concept_id = ca3.DESCENDANT_CONCEPT_ID AND ca3.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c3 ON ca3.ANCESTOR_CONCEPT_ID = c3.concept_id
-GROUP BY M.concept_id, M.concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON M.concept_id = ca1.DESCENDANT_CONCEPT_ID AND ca1.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.ANCESTOR_CONCEPT_ID = c1.concept_id
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.DESCENDANT_CONCEPT_ID AND ca2.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca2.ANCESTOR_CONCEPT_ID = c2.concept_id
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca3 ON c2.concept_id = ca3.DESCENDANT_CONCEPT_ID AND ca3.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c3 ON ca3.ANCESTOR_CONCEPT_ID = c3.concept_id
+GROUP BY M.concept_id, M.concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
 WITH insertion_temp AS (
@@ -595,18 +621,18 @@ FROM (
  SELECT
  concept_id,
  concept_name
- FROM <DB_NAME>.concept
+ FROM <VOCAB_SCHEMA_NAME>.concept
  WHERE domain_id = 'Observation'
 ) obs
-LEFT JOIN <DB_NAME>.concept_ancestor ca1 ON obs.concept_id = ca1.DESCENDANT_CONCEPT_ID AND ca1.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c1 ON ca1.ANCESTOR_CONCEPT_ID = c1.concept_id
-LEFT JOIN <DB_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.DESCENDANT_CONCEPT_ID AND ca2.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c2 ON ca2.ANCESTOR_CONCEPT_ID = c2.concept_id
-LEFT JOIN <DB_NAME>.concept_ancestor ca3 ON c2.concept_id = ca3.DESCENDANT_CONCEPT_ID AND ca3.min_levels_of_separation = 1
-LEFT JOIN <DB_NAME>.concept c3 ON ca3.ANCESTOR_CONCEPT_ID = c3.concept_id
-GROUP BY obs.concept_id, obs.concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca1 ON obs.concept_id = ca1.DESCENDANT_CONCEPT_ID AND ca1.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.ANCESTOR_CONCEPT_ID = c1.concept_id
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.DESCENDANT_CONCEPT_ID AND ca2.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca2.ANCESTOR_CONCEPT_ID = c2.concept_id
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca3 ON c2.concept_id = ca3.DESCENDANT_CONCEPT_ID AND ca3.min_levels_of_separation = 1
+LEFT JOIN <VOCAB_SCHEMA_NAME>.concept c3 ON ca3.ANCESTOR_CONCEPT_ID = c3.concept_id
+GROUP BY obs.concept_id, obs.concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
 WITH insertion_temp AS (
@@ -623,21 +649,21 @@ FROM
  SELECT
  c1.concept_id,
  CONCAT(v1.vocabulary_name, ' ', c1.concept_code, ': ', c1.concept_name) AS proc_concept_name
- FROM <DB_NAME>.concept c1
- INNER JOIN <DB_NAME>.vocabulary v1 ON c1.vocabulary_id = v1.vocabulary_id
+ FROM <VOCAB_SCHEMA_NAME>.concept c1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.vocabulary v1 ON c1.vocabulary_id = v1.vocabulary_id
  WHERE c1.domain_id = 'Procedure'
 ) procs
 LEFT JOIN (
  SELECT
  ca0.DESCENDANT_CONCEPT_ID,
  max(ca0.ancestor_concept_id) AS ancestor_concept_id
- FROM <DB_NAME>.concept_ancestor ca0
+ FROM <VOCAB_SCHEMA_NAME>.concept_ancestor ca0
  INNER JOIN (
  SELECT DISTINCT c2.concept_id AS os3_concept_id
- FROM <DB_NAME>.concept_ancestor ca1
- INNER JOIN <DB_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
- INNER JOIN <DB_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
- INNER JOIN <DB_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept_ancestor ca1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
  WHERE ca1.ancestor_concept_id = 4040390
  AND ca1.Min_LEVELS_OF_SEPARATION = 2
  AND ca2.MIN_LEVELS_OF_SEPARATION = 1
@@ -654,8 +680,8 @@ LEFT JOIN (
  SELECT
  DESCENDANT_CONCEPT_ID AS os1_concept_id,
  concept_name AS os1_concept_name
- FROM <DB_NAME>.concept_ancestor ca1
- INNER JOIN <DB_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept_ancestor ca1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
  WHERE ancestor_concept_id = 4040390
  AND Min_LEVELS_OF_SEPARATION = 1
  ) proc_by_os1
@@ -664,10 +690,10 @@ LEFT JOIN (
  max(c1.CONCEPT_ID) AS os1_concept_id,
  c2.concept_id AS os2_concept_id,
  c2.concept_name AS os2_concept_name
- FROM <DB_NAME>.concept_ancestor ca1
- INNER JOIN <DB_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
- INNER JOIN <DB_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
- INNER JOIN <DB_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept_ancestor ca1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
  WHERE ca1.ancestor_concept_id = 4040390
  AND ca1.Min_LEVELS_OF_SEPARATION = 1
  AND ca2.MIN_LEVELS_OF_SEPARATION = 1
@@ -678,22 +704,22 @@ LEFT JOIN (
  max(c1.CONCEPT_ID) AS os2_concept_id,
  c2.concept_id AS os3_concept_id,
  c2.concept_name AS os3_concept_name
- FROM <DB_NAME>.concept_ancestor ca1
- INNER JOIN <DB_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
- INNER JOIN <DB_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
- INNER JOIN <DB_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
+ FROM <VOCAB_SCHEMA_NAME>.concept_ancestor ca1
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c1 ON ca1.DESCENDANT_CONCEPT_ID = c1.concept_id
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept_ancestor ca2 ON c1.concept_id = ca2.ANCESTOR_CONCEPT_ID
+ INNER JOIN <VOCAB_SCHEMA_NAME>.concept c2 ON ca2.DESCENDANT_CONCEPT_ID = c2.concept_id
  WHERE ca1.ancestor_concept_id = 4040390
  AND ca1.Min_LEVELS_OF_SEPARATION = 2
  AND ca2.MIN_LEVELS_OF_SEPARATION = 1
  GROUP BY c2.concept_id, c2.concept_name
  ) proc_by_os3 ON proc_by_os2.os2_concept_id = proc_by_os3.os2_concept_id
 ) proc_hierarchy ON ca1.ancestor_concept_id = proc_hierarchy.os3_concept_id
-GROUP BY procs.concept_id, procs.proc_concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <DB_NAME>_ach_res.concept_hierarchy
+GROUP BY procs.concept_id, procs.proc_concept_name) UNION ALL (SELECT concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name FROM <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
  ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.concept_hierarchy
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.concept_hierarchy
   (concept_id, concept_name, treemap, concept_hierarchy_type, level1_concept_name, level2_concept_name, level3_concept_name, level4_concept_name) SELECT * FROM insertion_temp;
 
-TRUNCATE TABLE <DB_NAME>_ach_res.heracles_analysis;
+TRUNCATE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_analysis;
 
 WITH insertion_temp AS (
 (SELECT 0 as analysis_id,
@@ -2585,12 +2611,12 @@ NULL as stratum_3_name,
 NULL as stratum_4_name,
 NULL as stratum_5_name,
 CAST('HEALTHCARE_UTILIZATION' as STRING) as analysis_type
-) UNION ALL (SELECT analysis_id,analysis_name,stratum_1_name,stratum_2_name,stratum_3_name,stratum_4_name,stratum_5_name,analysis_type FROM <DB_NAME>_ach_res.heracles_analysis
+) UNION ALL (SELECT analysis_id,analysis_name,stratum_1_name,stratum_2_name,stratum_3_name,stratum_4_name,stratum_5_name,analysis_type FROM <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_analysis
 ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.heracles_analysis
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_analysis
  (analysis_id,analysis_name,stratum_1_name,stratum_2_name,stratum_3_name,stratum_4_name,stratum_5_name,analysis_type) SELECT * FROM insertion_temp;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrdigits
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits
 USING DELTA
 AS
 SELECT
@@ -2600,41 +2626,41 @@ FROM
  select 0 as n union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9
 ) digits;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates
 USING DELTA
 AS
 SELECT
 y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) AS d_years,
  mths.n as d_months
 FROM
-<DB_NAME>_ach_tmp.jwfn9xhrdigits y1,
-<DB_NAME>_ach_tmp.jwfn9xhrdigits y10,
+<ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits y1,
+<ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits y10,
 (select 0 n union all select 1 union all select 9) y100,
 (select 1 n union all select 2) y1000,
 (select 1 n union all select 2 union all select 3 union all select 4 union all select 5 union all select 6 union all select 7 union all select 8 union all select 9 union all select 10 union all select 11 union all select 12) mths
  where y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) >= 1900 and y1.n + (10*y10.n) + (100*y100.n) + (1000*y1000.n) < 2100
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhryearly_dates
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiyearly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(01 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
+<ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates
 where d_months = 1
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfimonthly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(01 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
+<ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiweekly_dates
 USING DELTA
 AS
 SELECT
@@ -2642,20 +2668,20 @@ date_add(to_date(cast(1900 as string) || '-' || cast(1 as string) || '-' || cast
 FROM
 (
  select d1.n + (10 * d10.n) + (100 * d100.n) + (1000 * d1000.n) as rn
- from <DB_NAME>_ach_tmp.jwfn9xhrdigits d1, <DB_NAME>_ach_tmp.jwfn9xhrdigits d10, <DB_NAME>_ach_tmp.jwfn9xhrdigits d100, <DB_NAME>_ach_tmp.jwfn9xhrdigits d1000
+ from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits d1, <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits d10, <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits d100, <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits d1000
 ) seq;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiquarterly_dates
 USING DELTA
 AS
 SELECT
 to_date(cast(d_years as string) || '-' || cast(d_months as string) || '-' || cast(1 as string)) as generated_date
 FROM
-<DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates
+<ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates
  where d_months in (1,4,7,10)
 ;
 
-CREATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period
+CREATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfitemp_period
 USING DELTA
 AS
 SELECT
@@ -2667,14 +2693,14 @@ select CAST('Monthly' AS STRING) as period_name
  , CAST( 'mm' AS STRING) as period_type
  , md.generated_date as period_start_date
  , (md.generated_date + INTERVAL 1 month) as period_end_date
-from <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates md
+from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfimonthly_dates md
 UNION ALL
 select CAST('Weekly' AS STRING) as period_name
  , 2 as period_order
  , CAST('ww' AS STRING) as period_type
  , wd.generated_date as period_start_date
  , date_add(wd.generated_date, 7) as period_end_date
-from <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates wd
+from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiweekly_dates wd
 where wd.generated_date >= to_date(cast(1900 as string) || '-' || cast(1 as string) || '-' || cast(1 as string)) and wd.generated_date < to_date(cast(2100 as string) || '-' || cast(1 as string) || '-' || cast(1 as string))
 UNION ALL
 select CAST('Quarterly' AS STRING) as period_name
@@ -2682,49 +2708,52 @@ select CAST('Quarterly' AS STRING) as period_name
  , CAST('qq' AS STRING) as period_type
  , qd.generated_date as period_start_date
  , (qd.generated_date + INTERVAL 3 month) as period_end_date
-from <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates qd
+from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiquarterly_dates qd
 UNION ALL
 select CAST('Yearly' AS STRING) as period_name
  , 4 as period_order
  , CAST('yy' AS STRING) as period_type
  , yd.generated_date as period_start_date
  , (yd.generated_date + INTERVAL 1 year) as period_end_date
-from <DB_NAME>_ach_tmp.jwfn9xhryearly_dates yd
+from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiyearly_dates yd
 -- ADD UNION ALLs for additional period definitions
 ) monthlyDates;
 
-TRUNCATE TABLE <DB_NAME>_ach_res.heracles_periods;
+TRUNCATE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_periods;
 
 WITH insertion_temp AS (
 (SELECT CAST(row_number() over (order by period_order, period_start_date) AS INT) as period_id
  , period_name, period_order, period_type, period_start_date, period_end_date
-from <DB_NAME>_ach_tmp.jwfn9xhrtemp_period) UNION ALL (SELECT period_id, period_name, period_order, period_type, period_start_date, period_end_date FROM <DB_NAME>_ach_res.heracles_periods ))
-INSERT OVERWRITE TABLE <DB_NAME>_ach_res.heracles_periods  (period_id, period_name, period_order, period_type, period_start_date, period_end_date) SELECT * FROM insertion_temp;
+from <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfitemp_period) UNION ALL (SELECT period_id, period_name, period_order, period_type, period_start_date, period_end_date FROM <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_periods ))
+INSERT OVERWRITE TABLE <ACHILLES_RESULTS_SCHEMA_NAME>.heracles_periods  (period_id, period_name, period_order, period_type, period_start_date, period_end_date) SELECT * FROM insertion_temp;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhrdigits;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhrdigits;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfidigits;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhrgenerate_dates;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfigenerate_dates;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhryearly_dates;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiyearly_dates;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhryearly_dates;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiyearly_dates;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiquarterly_dates;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhrquarterly_dates;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiquarterly_dates;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfimonthly_dates;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhrmonthly_dates;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfimonthly_dates;
 
-truncate table <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates;
+truncate table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiweekly_dates;
 
-drop table <DB_NAME>_ach_tmp.jwfn9xhrweekly_dates;
+drop table <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfiweekly_dates;
 
-TRUNCATE TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period;
+TRUNCATE TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfitemp_period;
 
-DROP TABLE <DB_NAME>_ach_tmp.jwfn9xhrtemp_period;
+DROP TABLE <ACHILLES_TEMP_SCHEMA_NAME>.hpdikvfitemp_period;
+
+
+
