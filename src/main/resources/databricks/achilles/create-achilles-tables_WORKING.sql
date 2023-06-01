@@ -14,7 +14,6 @@ INSERT OVERWRITE TABLE demo_cdm_ach_res.heracles_periods  SELECT * FROM insertio
  * 
  */
 
-
 /**
  * 
  * This file was created by deploying an instance of Atlas and then running this in a browser:

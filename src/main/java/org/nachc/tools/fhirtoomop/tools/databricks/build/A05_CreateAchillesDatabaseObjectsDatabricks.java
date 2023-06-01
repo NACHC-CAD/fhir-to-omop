@@ -26,7 +26,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class A05_CreateAchillesDatabaseObjectsDatabricks {
 
-	private static final String DDL_FILE = "/databricks/achilles/create-achilles-tables-ddl.sql";
+
+//	private static final String DDL_FILE = "/databricks/achilles/create-achilles-tables-ddl.sql";
+	private static final String DDL_FILE = "/databricks/achilles/create-achilles-tables-ddl_TEST.sql";
 
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -59,6 +61,9 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 //		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
 //		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
 		sqlString = replace(sqlString, "<DB_NAME>", "demo_cdm");
+		// exceptions occur if the following is not set
+		log.info("SETTING: set spark.sql.ansi.enabled=false");
+		Database.query("set spark.sql.ansi.enabled=false", conn);
 		// create the tables
 		log.info("Creating database objects...");
 		Database.executeSqlScript(sqlString, conn);
