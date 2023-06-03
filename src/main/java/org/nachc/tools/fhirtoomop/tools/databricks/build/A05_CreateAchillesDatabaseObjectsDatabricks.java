@@ -12,7 +12,7 @@ import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
-/**
+/*
  * 
  * CDM ???
  * I would think this script would be version dependent but I'm not seeing where this is configured?
@@ -55,11 +55,9 @@ public class A05_CreateAchillesDatabaseObjectsDatabricks {
 		InputStream is = FileUtil.getInputStream(DDL_FILE);
 		String sqlString = FileUtil.getAsString(is);
 		// update the parameters
-		// TODO: NEED TO FIX THIS!!!
 		sqlString = replace(sqlString, "<VOCAB_SCHEMA_NAME>", vocabSchemaName);
 		sqlString = replace(sqlString, "<ACHILLES_TEMP_SCHEMA_NAME>", achillesTempSchemaName);
 		sqlString = replace(sqlString, "<ACHILLES_RESULTS_SCHEMA_NAME>", achillesResultsSchemaName);
-//		sqlString = replace(sqlString, "<DB_NAME>", "demo_cdm");
 		// exceptions occur if the following is not set
 		log.info("SETTING: set spark.sql.ansi.enabled=false");
 		Database.query("set spark.sql.ansi.enabled=false", conn);

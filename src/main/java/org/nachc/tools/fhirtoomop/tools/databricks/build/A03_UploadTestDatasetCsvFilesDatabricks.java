@@ -55,12 +55,13 @@ public class A03_UploadTestDatasetCsvFilesDatabricks {
 		log.info("START: Creating test database(Synthea synthetic health database, CDM 5.3): " + schemaName);
 		log.info("-------------------------------");
 		// get the location to write the files to
+		String restUrl = DatabricksProperties.getRestUrl();
 		String uploadRoot = DatabricksProperties.getDatabricksUploadRoot();
 		String databaseName = DatabricksProperties.getSchemaName();
 		databricksFilesRoot = uploadRoot + "/" + databricksFilesRoot + "/csv";
 		// delete existing files
 		log.info("Deleting existing files...");
-		log.info("Databricks file dir: \n" + databricksFilesRoot);
+		log.info("Databricks upload params:" + "\nURL: " + restUrl + "\nDatabricks File Dir: " + databricksFilesRoot);
 		DeleteCsvFromDatabricks.exec(databricksFilesRoot, true);
 		// write files
 		log.info("Writing zip file to working dir...");
