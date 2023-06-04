@@ -74,5 +74,25 @@ public class DatabricksProperties {
 	public static String getAchillesResultsSchemaName() {
 		return PROPS.getProperty("AchillesResultsSchemaName");
 	}
+	
+	//
+	// WebApi properties
+	//
+	
+	public static String getWebApiJdbcUrl() {
+		return PROPS.getProperty("WebApiJdbcUrl");
+	}
 
+	public static String getWebApiSchema() {
+		return PROPS.getProperty("WebApiSchema");
+	}
+	
+	public static String getWebApiKey() {
+		return PROPS.getProperty("WebApiKey");
+	}
+
+	public static String getWebApiName() {
+		return PROPS.getProperty("WebApiName");
+	}
+	
 }
