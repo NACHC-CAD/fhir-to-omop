@@ -12,6 +12,13 @@ import com.nach.core.util.file.FileUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
+/* * * *
+ * 
+ * Documentation for this is at:
+ * https://github.com/OHDSI/WebAPI/wiki/CDM-Configuration
+ * 
+ * * * */
+
 @Slf4j
 public class A09_CreateAchillesWebApiRecords {
 
@@ -34,6 +41,7 @@ public class A09_CreateAchillesWebApiRecords {
 	public static void exec(Connection conn) {
 		String sourceId = getSourceId(conn);
 		insertSource(conn, sourceId);
+		insertSourceDaimon(conn, sourceId);
 	}
 	
 	private static void insertSource(Connection conn, String sourceId) {
@@ -51,11 +59,44 @@ public class A09_CreateAchillesWebApiRecords {
 		log.info("Done inserting source record.");
 	}
 
+	private static void insertSourceDaimon(Connection conn, String sourceId) {
+		// build the sqlString
+		log.info("Inserting source_daimon records...");
+		String sqlString = FileUtil.getAsString("/databricks/webapi/insert-webapi-src-daimon.sql");
+		String webApiSchemaName = DatabricksProperties.getWebApiSchema();
+		String cdmSchemaName = DatabricksProperties.getSchemaName();
+		String vocabSchemaName = DatabricksProperties.getVocabSchemaName();
+		String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsSchemaName();
+		sqlString = sqlString.replace("@webApiSchemaName", webApiSchemaName);
+		sqlString = sqlString.replace("@sourceId", sourceId);
+		sqlString = sqlString.replace("@cdmSchemaName", cdmSchemaName);
+		sqlString = sqlString.replace("@vocabSchemaName", vocabSchemaName);
+		sqlString = sqlString.replace("@achillesResultsSchemaName", achillesResultsSchemaName);
+		sqlString = sqlString.replace("@sourceDaimonId01", getSourceDaimonId(conn));
+		sqlString = sqlString.replace("@sourceDaimonId02", getSourceDaimonId(conn));
+		sqlString = sqlString.replace("@sourceDaimonId03", getSourceDaimonId(conn));
+		// log the sqlString
+		log.info("SQL FOR SOURCE_DAIMON INSERTS: \n" + sqlString);
+		// execute the sqlString
+		Database.executeSqlScript(sqlString, conn);
+		log.info("Done creating source_daimon records");
+	}
+	
 	//
 	// private method to get the nextVal for the primary key for the source table
 	//
 	
 	private static String getSourceId(Connection conn) {
+		String sqlString = "select nextval('webapi.source_sequence') as nextval";
+		Data data = Database.query(sqlString, conn);
+		if(data.size() == 0) {
+			throw new RuntimeException("Could not get nextVal:\n" + sqlString);
+		}
+		String rtn = data.get(0).get("nextval");
+		return rtn;
+	}
+
+	private static String getSourceDaimonId(Connection conn) {
 		String sqlString = "select nextval('webapi.source_daimon_sequence') as nextval";
 		Data data = Database.query(sqlString, conn);
 		if(data.size() == 0) {
