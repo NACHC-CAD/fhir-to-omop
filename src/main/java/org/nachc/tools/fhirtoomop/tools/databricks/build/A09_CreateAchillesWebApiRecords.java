@@ -111,14 +111,16 @@ public class A09_CreateAchillesWebApiRecords {
 	//
 	
 	private static String getSourceConnection() {
-		String rtn = DatabricksProperties.getJdbcUrl();
-		if(rtn.indexOf(";ssl=") < 0) {
-			throw new RuntimeException("Bad url, ssl must be defined (i.e. ;ssl=0 or ;ssl=1 needs to be included in the url) for: \n" + rtn);
+		String url = DatabricksProperties.getJdbcUrl();
+		String token = DatabricksProperties.getToken();
+		if(url.indexOf(";ssl=") < 0) {
+			throw new RuntimeException("Bad url, ssl must be defined (i.e. ;ssl=0 or ;ssl=1 needs to be included in the url) for: \n" + url);
 		}
-		if(rtn.indexOf("UseNativeQuery") < 0) {
-			rtn = rtn.replace(";ssl=", ";UseNativeQuery=1;ssl=");
+		if(url.indexOf("UseNativeQuery") < 0) {
+			url = url.replace(";ssl=", ";UseNativeQuery=1;ssl=");
 		}
-		return rtn;
+		url = url + token;
+		return url;
 	}
 
 }
