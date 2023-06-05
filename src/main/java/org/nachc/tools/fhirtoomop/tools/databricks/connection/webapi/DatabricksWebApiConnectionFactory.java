@@ -8,7 +8,7 @@ import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksPropertie
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class WebApiConnectionFactory {
+public class DatabricksWebApiConnectionFactory {
 
 	public static Connection getConnection() {
 		try {

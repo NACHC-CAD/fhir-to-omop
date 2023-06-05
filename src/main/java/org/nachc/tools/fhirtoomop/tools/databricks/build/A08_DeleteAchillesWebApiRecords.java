@@ -2,7 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.databricks.build;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.databricks.connection.webapi.WebApiConnectionFactory;
+import org.nachc.tools.fhirtoomop.tools.databricks.connection.webapi.DatabricksWebApiConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -15,7 +15,7 @@ public class A08_DeleteAchillesWebApiRecords {
 	public static void main(String[] args) {
 		Connection conn = null;
 		try {
-			conn = WebApiConnectionFactory.getConnection();
+			conn = DatabricksWebApiConnectionFactory.getConnection();
 			exec(conn);
 		} finally {
 			Database.close(conn);
