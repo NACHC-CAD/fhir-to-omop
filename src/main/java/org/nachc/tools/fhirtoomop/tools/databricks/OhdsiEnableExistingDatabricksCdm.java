@@ -2,10 +2,16 @@ package org.nachc.tools.fhirtoomop.tools.databricks;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.databricks.build.A04_CreateAchilliesDatabasesDatabricks;
-import org.nachc.tools.fhirtoomop.tools.databricks.build.A05_CreateAchillesDatabaseObjectsDatabricks;
-import org.nachc.tools.fhirtoomop.tools.databricks.build.A06_UploadAchillesAnalysisDetailsCsv;
-import org.nachc.tools.fhirtoomop.tools.databricks.build.A07_RunAchillesScript;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00a_CreateOhdsiDatabaseForWebApiSchema;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00b_CreateAtlasDatabaseUsers;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00c_CreateAtlasWebApiSchema;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00d_CreateAtlasWebApiTables;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR04_CreateAchilliesDatabasesDatabricks;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR05_CreateAchillesDatabaseObjectsDatabricks;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR06_UploadAchillesAnalysisDetailsCsv;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR07_RunAchillesScript;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR08_DeleteAchillesWebApiRecords;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR09_CreateAchillesWebApiRecords;
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
@@ -43,12 +49,20 @@ public class OhdsiEnableExistingDatabricksCdm {
 		// timer
 		Timer timer = new Timer();
 		timer.start();
+		// create the webapi schema
+		DBR00a_CreateOhdsiDatabaseForWebApiSchema.exec();
+		DBR00b_CreateAtlasDatabaseUsers.exec(conn);
+		DBR00c_CreateAtlasWebApiSchema.exec(conn);
+		DBR00d_CreateAtlasWebApiTables.exec(conn);
 		// install and populate achilles
-		A04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
-		A05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
-		A06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, achillesResultsSchemaName, conn);
+		DBR04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
+		DBR05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
+		DBR06_UploadAchillesAnalysisDetailsCsv.exec(databricksFilesRoot, achillesResultsSchemaName, conn);
 		// run the achilles script
-		A07_RunAchillesScript.exec(schemaName, achillesResultsSchemaName, conn);
+		DBR07_RunAchillesScript.exec(schemaName, achillesResultsSchemaName, conn);
+		// delete and create the webapi records
+		DBR08_DeleteAchillesWebApiRecords.exec(conn);
+		DBR09_CreateAchillesWebApiRecords.exec(conn);
 		// output timer info
 		timer.stop();
 		log.info("-----------------");

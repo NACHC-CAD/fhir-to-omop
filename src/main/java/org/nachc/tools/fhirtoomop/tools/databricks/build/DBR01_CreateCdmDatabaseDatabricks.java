@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A01_CreateCdmDatabaseDatabricks {
+public class DBR01_CreateCdmDatabaseDatabricks {
 
 	public static void main(String[] args) {
 		Connection conn = null;

@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A02_CreateCdmDatabaseObjectsDatabricks {
+public class DBR02_CreateCdmDatabaseObjectsDatabricks {
 
 	private static final String DDL_FILE = "/databricks/cdm/spark/OMOPCDM_spark_5.3_ddl.sql";
 

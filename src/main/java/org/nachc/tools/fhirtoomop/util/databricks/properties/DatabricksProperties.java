@@ -28,6 +28,14 @@ public class DatabricksProperties {
 	}
 
 	//
+	// get property by name
+	//
+	
+	public static String get(String key) {
+		return PROPS.getProperty(key);
+	}
+	
+	//
 	// REST properties
 	//
 	
@@ -83,6 +91,14 @@ public class DatabricksProperties {
 		return PROPS.getProperty("WebApiJdbcUrl");
 	}
 
+	public static String getWebApiBootStrapJdbcUrl() {
+		return PROPS.getProperty("WebApiBootStrapJdbcUrl");
+	}
+	
+	public static String getWebApiDatabase() {
+		return PROPS.getProperty("WebApiDatabase");
+	}
+	
 	public static String getWebApiSchema() {
 		return PROPS.getProperty("WebApiSchema");
 	}

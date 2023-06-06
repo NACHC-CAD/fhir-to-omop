@@ -10,7 +10,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A08_DeleteAchillesWebApiRecords {
+public class DBR08_DeleteAchillesWebApiRecords {
 
 	public static void main(String[] args) {
 		Connection conn = null;

@@ -27,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A03_UploadTestDatasetCsvFilesDatabricks {
+public class DBR03_UploadTestDatasetCsvFilesDatabricks {
 
 	private static final File WORKING_DIR = new File("C:\\temp\\demo_cdm");
 

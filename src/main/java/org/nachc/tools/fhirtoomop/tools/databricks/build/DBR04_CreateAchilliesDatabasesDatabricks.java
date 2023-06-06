@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
-public class A04_CreateAchilliesDatabasesDatabricks {
+public class DBR04_CreateAchilliesDatabasesDatabricks {
 
 	public static void main(String[] args) {
 		Connection conn = null;

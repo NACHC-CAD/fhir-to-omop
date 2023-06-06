@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A06_UploadAchillesAnalysisDetailsCsv {
+public class DBR06_UploadAchillesAnalysisDetailsCsv {
 
 	private static final String FILE_NAME = "achilles_analysis_details.csv";
 	

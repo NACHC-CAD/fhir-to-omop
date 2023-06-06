@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A07_RunAchillesScript {
+public class DBR07_RunAchillesScript {
 
 	public static final String ACHILLES_SCRIPT = "/databricks/achilles/achilles.sql";
 

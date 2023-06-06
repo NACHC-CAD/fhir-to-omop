@@ -21,4 +21,15 @@ public class DatabricksWebApiConnectionFactory {
 		}
 	}
 	
+	public static Connection getBootstrapConnection() {
+		try {
+			String url = DatabricksProperties.getWebApiBootStrapJdbcUrl();
+			log.info("Getting connection for:\n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch(Exception exp) {
+			throw new RuntimeException(exp);
+		}
+	}
+	
 }

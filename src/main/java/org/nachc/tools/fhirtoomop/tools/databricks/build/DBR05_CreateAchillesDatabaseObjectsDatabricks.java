@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A05_CreateAchillesDatabaseObjectsDatabricks {
+public class DBR05_CreateAchillesDatabaseObjectsDatabricks {
 
 
 	private static final String DDL_FILE = "/databricks/achilles/create-achilles-tables-ddl.sql";

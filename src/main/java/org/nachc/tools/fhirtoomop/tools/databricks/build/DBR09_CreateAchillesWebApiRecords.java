@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
  * * * */
 
 @Slf4j
-public class A09_CreateAchillesWebApiRecords {
+public class DBR09_CreateAchillesWebApiRecords {
 
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -28,7 +28,7 @@ public class A09_CreateAchillesWebApiRecords {
 			conn = DatabricksWebApiConnectionFactory.getConnection();
 			// delete existing records
 			log.info("DELETEING EXISTING RECORDS...");
-			A08_DeleteAchillesWebApiRecords.exec(conn);
+			DBR08_DeleteAchillesWebApiRecords.exec(conn);
 			// create new records
 			log.info("CREATING NEW RECORDS...");
 			exec(conn);
