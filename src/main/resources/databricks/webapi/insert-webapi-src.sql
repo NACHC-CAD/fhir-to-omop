@@ -3,16 +3,16 @@ INSERT INTO webapi.source (
     source_name, 
     source_key, 
     source_connection, 
-    source_dialect,
-    is_cache_enabled
+    source_dialect
+--    is_cache_enabled
 ) 
 SELECT 
     @sourceId, 
     '@sourceName', 
     '@sourceKey', 
     '@sourceConnection',
-    'spark',
-    true
+    'spark'
+--    true
 ;
 
 
