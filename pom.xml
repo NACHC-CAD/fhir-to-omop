@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<version>1.2.001</version>
+		<version>1.5.001</version>
 	</properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -179,7 +179,7 @@
 
 		<!-- 
 		* 
-		* EXCLUDE AUTHENTICATION INFO FROM DEPLOYMENT BUILD 
+		* EXCLUDE AUTHENTICATION INFO FROM DEPLOYMENT BUILD (include in local build)
 		*
 		-->
 
