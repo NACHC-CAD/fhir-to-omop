@@ -3,7 +3,6 @@ package org.nachc.tools.fhirtoomop.tools.databricks.build;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.databricks.connection.webapi.DatabricksWebApiConnectionFactory;
-import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -43,10 +42,16 @@ public class DBR09_CreateAchillesWebApiRecords {
 		insertSource(conn, sourceId);
 		insertSourceDaimon(conn, sourceId);
 	}
-	
+
 	private static void insertSource(Connection conn, String sourceId) {
 		log.info("Inserting source record...");
-		String sqlString = FileUtil.getAsString("/databricks/webapi/insert-webapi-src.sql");
+		String sqlString = null;
+		String webApiSchemaName = DatabricksProperties.getWebApiSchema();
+		if (hasIsCacheEnabledCol(webApiSchemaName, conn)) {
+			sqlString = FileUtil.getAsString("/databricks/webapi/insert-webapi-src-cache-enabled.sql");
+		} else {
+			sqlString = FileUtil.getAsString("/databricks/webapi/insert-webapi-src.sql");
+		}
 		String sourceName = DatabricksProperties.getWebApiName();
 		String sourceKey = DatabricksProperties.getWebApiKey();
 		String sourceConnection = getSourceConnection();
@@ -81,15 +86,15 @@ public class DBR09_CreateAchillesWebApiRecords {
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done creating source_daimon records");
 	}
-	
+
 	//
 	// private method to get the nextVal for the primary key for the source table
 	//
-	
+
 	private static String getSourceId(Connection conn) {
 		String sqlString = "select nextval('webapi.source_sequence') as nextval";
 		Data data = Database.query(sqlString, conn);
-		if(data.size() == 0) {
+		if (data.size() == 0) {
 			throw new RuntimeException("Could not get nextVal:\n" + sqlString);
 		}
 		String rtn = data.get(0).get("nextval");
@@ -99,7 +104,7 @@ public class DBR09_CreateAchillesWebApiRecords {
 	private static String getSourceDaimonId(Connection conn) {
 		String sqlString = "select nextval('webapi.source_daimon_sequence') as nextval";
 		Data data = Database.query(sqlString, conn);
-		if(data.size() == 0) {
+		if (data.size() == 0) {
 			throw new RuntimeException("Could not get nextVal:\n" + sqlString);
 		}
 		String rtn = data.get(0).get("nextval");
@@ -109,18 +114,31 @@ public class DBR09_CreateAchillesWebApiRecords {
 	//
 	// private method to get the url
 	//
-	
+
 	private static String getSourceConnection() {
 		String url = DatabricksProperties.getJdbcUrl();
 		String token = DatabricksProperties.getToken();
-		if(url.indexOf(";ssl=") < 0) {
+		if (url.indexOf(";ssl=") < 0) {
 			throw new RuntimeException("Bad url, ssl must be defined (i.e. ;ssl=0 or ;ssl=1 needs to be included in the url) for: \n" + url);
 		}
-		if(url.indexOf("UseNativeQuery") < 0) {
+		if (url.indexOf("UseNativeQuery") < 0) {
 			url = url.replace(";ssl=", ";UseNativeQuery=1;ssl=");
 		}
 		url = url + token;
 		return url;
+	}
+
+	private static boolean hasIsCacheEnabledCol(String webApiSchemaName, Connection conn) {
+		try {
+			String sqlString = "select is_cache_enabled from " + webApiSchemaName + "." + "source";
+			log.info("Checking for is_cache_enable column: \n" + sqlString);
+			Database.query(sqlString, conn);
+			log.info("IS_CACHE_ENABLED detected");
+			return true;
+		} catch (Exception exp) {
+			log.info("IS_CACHE_ENABLED NOT detected");
+			return false;
+		}
 	}
 
 }
