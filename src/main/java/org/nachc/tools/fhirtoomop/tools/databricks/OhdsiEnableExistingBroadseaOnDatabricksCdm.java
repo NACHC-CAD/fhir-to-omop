@@ -6,6 +6,7 @@ import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR04_CreateAchilliesDa
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR05_CreateAchillesDatabaseObjectsDatabricks;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR06_UploadAchillesAnalysisDetailsCsv;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR07_RunAchillesScript;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR08_DeleteAchillesWebApiRecords;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR09_CreateAchillesWebApiRecords;
 import org.nachc.tools.fhirtoomop.tools.databricks.connection.webapi.DatabricksWebApiConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
@@ -64,7 +65,7 @@ public class OhdsiEnableExistingBroadseaOnDatabricksCdm {
 //		DBR00c_CreateAtlasWebApiSchema.exec(conn);
 //		DBR00d_CreateAtlasWebApiTables.exec(conn);
 		// delete and create the webapi records
-//		DBR08_DeleteAchillesWebApiRecords.exec(conn);
+		DBR08_DeleteAchillesWebApiRecords.exec(conn);
 		DBR09_CreateAchillesWebApiRecords.exec(conn);
 		// install and populate achilles
 		DBR04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
