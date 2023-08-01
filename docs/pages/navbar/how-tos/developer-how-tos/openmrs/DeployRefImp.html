@@ -1,0 +1,102 @@
+<html>
+	
+	<head>
+		<!-- favicon link -->
+		<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico">
+		<!-- include lib code -->
+		<script src="../../../../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+		<div id="headerInclude"></div>
+		<script>$("#headerInclude").load("/fhir-to-omop/header.html");</script>
+	</head>
+
+	<body>
+		<div class="container-fluid main-container">
+
+			<!-- navbar -->
+			<div id="navbarInclude"></div>
+			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
+
+			<h1>How to Build and Deploy an OpenMRS instance</h1>
+			
+			<h2>Introduction</h2>
+			<p>
+				OpenMRS is an opensource electronic Medical Records System. 
+				(more information at <a href="https://openmrs.org">openmrs.org</a>)
+				This page will show how to build and deploy an instance of OpenMRS directly to a Tomcat instance 
+				(no Docker or other dependencies required). 
+			</p>
+			
+			<h2>Build and Deploy an OpenMRS instance</h2>
+			
+			<!-- download resources -->
+			
+			<h3>Download the resources</h3>
+			
+			For this example we will be using the OpenMRS reference implementation described at 
+			<a href=""></a>. 
+			The original files used for this example were downloaded on August 1st 2023 from 
+			<a href="https://openmrs.org/download">https://openmrs.org/download</a> and are available directly here: 
+			<ul>
+				<li>
+					<a download href="https://www.dropbox.com/scl/fi/rbbudqvdf7k76gd7w9kgz/openmrs.war?rlkey=34b825bdb84ukw4f4pav0guap&dl=1">openmrs.war</a>
+				</li>
+				<li>
+					<a download href="https://www.dropbox.com/scl/fi/9o6drfbx64diri1hq49oy/referenceapplication-addons-2.12.2.zip?rlkey=c784k30st9g2w56pi4tsxfeub&dl=1">Reference Application</a>
+				</li>
+			</ul>
+			The files that need to be downloaded are shown below. 
+			<br/>
+			<img src="./img/open-mrs-download.png" />
+
+			<!-- unpack the resources -->
+			
+			<h3>Unpack the resources</h3>
+			These are the files that should exist after the download.  
+			<br/>
+			<img src="./img/downloaded.png" />
+			<br/>
+			<br/>
+			For this build we will need to update the WAR file with the contents of the ZIP file. 
+			To do this we will need to rename the WAR file to a .zip file and then extract the contents of each. 
+			After doing this you should have the files shown below. 
+			<br/>
+			<img src="./img/extracted.png" />
+			<br/>
+			<br/>
+			<p>
+				We can now build the deployment by moving the .owa and .omod files from the referenceapplication-package-2.12.2 folder to the openmrs folder. 
+			</p>
+			<p>
+				Navigate to the \referenceapplication-package-2.12.2\modules of the reference application. 
+				Copy all of the files there. 
+				Paste them in to the ./openmrs/WEB-INF/bundledModules folder of the openmrs directory. 
+				When this is done, the bundledModules folder should look similar to what is shown below. 
+			</p>
+			<img src="./img/modules.png" />
+			<br/>
+			<br/>
+			<p>
+				Move all of the .owa files from the reference implementation. 
+				Navigate to the ./referenceapplication-package-2.12.2/owa folder. 
+				Copy all of the files there. 
+				Paste these files into ./openmrs/WEB-INF/bundledOwas. 
+				When this is done, the bundledModules folder should look similar to what is shown below. 
+			</p>
+			<img src="./img/owa.png" />
+			<br/>
+			<br/>
+			We can now create the deployable openmrs.war file. 
+			Select the files <b>with in</b> the openmrs folder and compress them to a zip file. 
+			<br/>
+			<img src="./img/compress.png" />
+			<br/>
+			<br/>
+			Rename the resulting .zip file to openmrs.war. 
+			<br/>
+			<img src="./img/war.png" />
+			
+			 
+			
+		</div>
+	</body>
+</html>
