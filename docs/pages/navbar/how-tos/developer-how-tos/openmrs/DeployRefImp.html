@@ -25,6 +25,17 @@
 				This page will show how to build and deploy an instance of OpenMRS directly to a Tomcat instance 
 				(no Docker or other dependencies required). 
 			</p>
+			<p>
+				This document walks through the process of creating a deployable instance of OpenMRS from the resources available from OpenMRS. 
+				If you are just looking for a deployable version of the reference implementation created here, 
+				you can just download the openmrs.war file below and deploy it to your Tomcat instance 
+				by dropping it into your Tomcat's webapps folder. 
+				<ul>
+					<li>
+						<a download href="https://www.dropbox.com/scl/fi/nkp43fgteqwtclx0m6ubb/openmrs.war?rlkey=9a7uj4whpl0wgnym07u3g5h8y&dl=1">openmrs.war (prebuilt)</a>
+					</li>
+				</ul>
+			</p>
 			
 			<h2>Build and Deploy an OpenMRS instance</h2>
 			
@@ -101,9 +112,31 @@
 			<img src="./img/deploy.png" />
 			<br/>
 			<br/>
-			
-			
-			 
+			Start Tomcat by calling catalina.bat start from the Tomcat bin folder. 
+			<br/>
+			<img src="./img/start-tom.png" />
+			<br/>
+			<br/>
+			Starting Tomcat will take a few minutes as the openmrs application does its initial build. 
+			(in this example it took about a minute and a half). 
+			When Tomcat has finished starting, you should see something like what is shown below in the Tomcat window. 
+			<br/>
+			<img src="./img/tomcat-output.png" />
+			<br/>
+			<br/>
+			Open a browser and navigate to http://localhost:8080/openmrs. 
+			You should see something like what is shown below. 
+			Log in using admin as the Username and Admin123 as the Password. 
+			<br/>
+			<img src="./img/openmrs-login.png" />
+			<br/>
+			<br/>
+			After a successful login you should see something like the following. 
+			<br/>
+			<img src="./img/openmrs-successful-login.png" />
+			<br/>
+			<br/>
+			<h3>! ! ! Congratulation, You Have Successfully Deployed an Instance of OpenMRS ! ! !</h3>
 			
 		</div>
 	</body>
