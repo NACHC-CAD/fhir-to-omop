@@ -39,6 +39,21 @@
 			
 			<h2>Build and Deploy an OpenMRS instance</h2>
 			
+			<h3>Before you get started...</h3>
+			<ul>
+				<li>
+					Make sure the time zone for your MySql database has been set. 
+					If it has not, this can easily be done by logging in as root and executing the following SQL. 
+					<pre>SET GLOBAL time_zone = '+0:00';</pre>
+				</li>
+				<li>
+					Make sure there are no artifacts in your C:\Users\&lt;my_username&gt;\Application Data\OpenMRS director. 
+					Sometimes this can cause failures with strange error messages. 
+					More information is available in this 
+					<a href="https://talk.openmrs.org/t/question-about-errors-seen-on-install/40088">OpenMRS forum posting</a>.
+				</li>
+			</ul>
+			
 			<!-- download resources -->
 			
 			<h3>Download the resources</h3>
