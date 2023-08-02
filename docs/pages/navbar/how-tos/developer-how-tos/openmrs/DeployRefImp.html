@@ -42,6 +42,9 @@
 			<h3>Before you get started...</h3>
 			<ul>
 				<li>
+					You will need the password for your MySql root account.
+				</li>
+				<li>
 					Make sure the time zone for your MySql database has been set. 
 					If it has not, this can easily be done by logging in as root and executing the following SQL. 
 					<pre>SET GLOBAL time_zone = '+0:00';</pre>
@@ -122,6 +125,9 @@
 			<img src="./img/war.png" />
 			<br/>
 			<br/>
+			
+			<h3>Deploy the application</h3>
+			
 			Deploy the application to Tomcat by copying the newly created openmrs.war file to the webapps folder of your Tomcat instance. 
 			<br/>
 			<img src="./img/deploy.png" />
@@ -139,7 +145,31 @@
 			<img src="./img/tomcat-output.png" />
 			<br/>
 			<br/>
-			Open a browser and navigate to http://localhost:8080/openmrs. 
+			
+			<!-- initialization steps -->
+			
+			<h3>Initialization steps</h3>
+			Open a browser and navigate to <a href="http://localhost:8080/openmrs">http://localhost:8080/openmrs</a>. 
+			The first time you do this, you will be presented with a series of screens that will allow you to initialize the application. 
+			There are only a few steps and a few variable that need to be set. 
+			Enter the information requested and step through the steps. 
+			They should be similar to the following. 
+			<br/>
+			<br/>
+			<img src="./img/install-001.png" />
+			<br/>			
+			<img src="./img/install-002.png" />
+			<br/>			
+			<img src="./img/install-003.png" />
+			<br/>			
+			<img src="./img/install-004.png" />
+			<br/>			
+
+			<!-- confirm instalation -->
+
+			<h3>Confirm installation</h3>
+			
+			The next time you open a browser and navigate to http://localhost:8080/openmrs. 
 			You should see something like what is shown below. 
 			Log in using admin as the Username and Admin123 as the Password. 
 			<br/>
