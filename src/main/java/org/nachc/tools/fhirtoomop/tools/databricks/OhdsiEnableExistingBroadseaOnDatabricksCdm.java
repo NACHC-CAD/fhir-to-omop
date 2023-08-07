@@ -35,8 +35,6 @@ public class OhdsiEnableExistingBroadseaOnDatabricksCdm {
 	public static void exec() {
 		// echo properties
 		new TestDatabricksProperties();
-		// delete and create the database to hold the webapi schema (required bootstrap connection)
-//		DBR00a_CreateOhdsiDatabaseForWebApiSchema.exec();
 		// build the webapi schema
 		Connection conn = null;
 		try {
@@ -63,10 +61,6 @@ public class OhdsiEnableExistingBroadseaOnDatabricksCdm {
 		// timer
 		Timer timer = new Timer();
 		timer.start();
-		// create the webapi schema
-//		DBR00b_CreateAtlasDatabaseUsers.exec(conn);
-//		DBR00c_CreateAtlasWebApiSchema.exec(conn);
-//		DBR00d_CreateAtlasWebApiTables.exec(conn);
 		// install and populate achilles
 		DBR04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
 		DBR05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
