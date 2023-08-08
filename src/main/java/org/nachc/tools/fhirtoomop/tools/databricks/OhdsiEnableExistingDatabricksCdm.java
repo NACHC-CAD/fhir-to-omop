@@ -15,6 +15,8 @@ import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR09_CreateAchillesWeb
 import org.nachc.tools.fhirtoomop.tools.databricks.connection.webapi.DatabricksWebApiConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.database.DatabricksDatabase;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
+import org.yaorma.database.Data;
+import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,11 +39,13 @@ public class OhdsiEnableExistingDatabricksCdm {
 			conn = DatabricksWebApiConnectionFactory.getConnection();
 			log.info("Building Databricks instance...");
 			String databricksFilesRoot = DatabricksProperties.getDatabricksFilesRoot();
+			String webApiDatabaseName = DatabricksProperties.getWebApiDatabase();
+			String webApiSchemaName = DatabricksProperties.getWebApiSchema();
 			String schemaName = DatabricksProperties.getSchemaName();
 			String vocabSchemaName = DatabricksProperties.getVocabSchemaName();
 			String achillesTempSchemaName = DatabricksProperties.getAchillesTempSchemaName();
 			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsSchemaName();
-			buildWebApi(databricksFilesRoot, schemaName, vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
+			buildWebApi(databricksFilesRoot, webApiDatabaseName, webApiSchemaName, schemaName, vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
 			log.info("Done building instance.");
 		} finally {
 			try {
@@ -52,14 +56,19 @@ public class OhdsiEnableExistingDatabricksCdm {
 		}
 	}
 
-	private static void buildWebApi(String databricksFilesRoot, String schemaName, String vocabSchemaName, String achillesTempSchemaName, String achillesResultsSchemaName, Connection conn) {
+	private static void buildWebApi(String databricksFilesRoot, String webApiDatabaseName, String webApiSchemaName, String schemaName, String vocabSchemaName, String achillesTempSchemaName, String achillesResultsSchemaName, Connection conn) {
 		// timer
 		Timer timer = new Timer();
 		timer.start();
 		// create the webapi schema
-		DBR00b_CreateAtlasDatabaseUsers.exec(conn);
-		DBR00c_CreateAtlasWebApiSchema.exec(conn);
-		DBR00d_CreateAtlasWebApiTables.exec(conn);
+		boolean webApiSchemaExists = webApiSchemaExists(webApiDatabaseName, webApiSchemaName, conn);
+		log.info("webapi exists: " + webApiSchemaExists);
+		log.info("Starting build...");
+		if(webApiSchemaExists == false) {
+			DBR00b_CreateAtlasDatabaseUsers.exec(conn);
+			DBR00c_CreateAtlasWebApiSchema.exec(conn);
+			DBR00d_CreateAtlasWebApiTables.exec(conn);
+		}
 		// install and populate achilles
 		DBR04_CreateAchilliesDatabasesDatabricks.exec(achillesTempSchemaName, achillesResultsSchemaName, conn);
 		DBR05_CreateAchillesDatabaseObjectsDatabricks.exec(vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
@@ -80,4 +89,18 @@ public class OhdsiEnableExistingDatabricksCdm {
 		log.info("Done running scripts.");
 	}
 
+	private static boolean webApiSchemaExists(String databaseName, String schemaName, Connection conn) {
+		String sqlString = "";
+		sqlString += "select catalog_name, schema_name \n";
+		sqlString += "from information_schema.schemata \n";
+		sqlString += "where catalog_name = ? \n";
+		sqlString += "and schema_name = ? \n";
+		String[] params = {databaseName, schemaName};
+		Data data = Database.query(sqlString,  params, conn);
+		if(data.size() > 0) {
+			return true;
+		}
+		return false;
+	}
+	
 }

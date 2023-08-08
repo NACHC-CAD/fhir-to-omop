@@ -31,6 +31,8 @@ public class DBR09_CreateAchillesWebApiRecords {
 			// create new records
 			log.info("CREATING NEW RECORDS...");
 			exec(conn);
+		} catch(Exception exp) {
+			throw new RuntimeException(exp);
 		} finally {
 			Database.close(conn);
 		}
@@ -52,15 +54,17 @@ public class DBR09_CreateAchillesWebApiRecords {
 		} else {
 			sqlString = FileUtil.getAsString("/databricks/webapi/insert-webapi-src.sql");
 		}
+		String webapiSchemaName = DatabricksProperties.getWebApiSchema();
 		String sourceName = DatabricksProperties.getWebApiName();
 		String sourceKey = DatabricksProperties.getWebApiKey();
 		String sourceConnection = getSourceConnection();
+		sqlString = sqlString.replace("@webapiSchemaName", webapiSchemaName);
 		sqlString = sqlString.replace("@sourceId", sourceId);
 		sqlString = sqlString.replace("@sourceName", sourceName);
 		sqlString = sqlString.replace("@sourceKey", sourceKey);
 		sqlString = sqlString.replace("@sourceConnection", sourceConnection);
-		log.info("Executing script: \n" + sqlString);
-		Database.executeSqlScript(sqlString, conn);
+		log.info("Executing sql: \n" + sqlString);
+		Database.update(sqlString, conn);
 		log.info("Done inserting source record.");
 	}
 

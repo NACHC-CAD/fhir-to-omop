@@ -1,4 +1,4 @@
-INSERT INTO webapi.source (
+INSERT INTO @webapiSchemaName.source (
     source_id, 
     source_name, 
     source_key, 

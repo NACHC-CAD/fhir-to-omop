@@ -35,6 +35,7 @@ public class DBR08_DeleteAchillesWebApiRecords {
 	private static String getSourceId(String key, Connection conn) {
 		String schema = DatabricksProperties.getWebApiSchema();
 		String sqlString = "select source_id from " + schema + "." + "source where source_key = ?";
+		log.info("sqlString\n" + sqlString);
 		Data data = Database.query(sqlString, key, conn);
 		if (data.size() > 0) {
 			String id = data.get(0).get("sourceId");

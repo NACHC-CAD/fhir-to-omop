@@ -48,6 +48,8 @@ public class OhdsiEnableExistingBroadseaOnDatabricksCdm {
 			String achillesResultsSchemaName = DatabricksProperties.getAchillesResultsSchemaName();
 			buildWebApi(databricksFilesRoot, schemaName, vocabSchemaName, achillesTempSchemaName, achillesResultsSchemaName, conn);
 			log.info("Done building instance.");
+		} catch(Exception exp) {
+			throw new RuntimeException(exp);
 		} finally {
 			try {
 				DatabricksDatabase.close(conn);
