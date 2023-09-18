@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<version>1.5.016</version>
+		<version>1.5.017</version>
 	</properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
