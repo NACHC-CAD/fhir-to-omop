@@ -6,6 +6,7 @@ import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00a_CreateOhdsiDatab
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00b_CreateAtlasDatabaseUsers;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00c_CreateAtlasWebApiSchema;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR00d_CreateAtlasWebApiTables;
+import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR02a_CreateCdmSourceRecordInCdmForAtlas;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR04_CreateAchilliesDatabasesDatabricks;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR05_CreateAchillesDatabaseObjectsDatabricks;
 import org.nachc.tools.fhirtoomop.tools.databricks.build.DBR06_UploadAchillesAnalysisDetailsCsv;
@@ -64,7 +65,7 @@ public class OhdsiEnableExistingDatabricksCdm {
 		boolean webApiSchemaExists = webApiSchemaExists(webApiDatabaseName, webApiSchemaName, conn);
 		log.info("webapi exists: " + webApiSchemaExists);
 		log.info("Starting build...");
-		if(webApiSchemaExists == false) {
+		if (webApiSchemaExists == false) {
 			DBR00b_CreateAtlasDatabaseUsers.exec(conn);
 			DBR00c_CreateAtlasWebApiSchema.exec(conn);
 			DBR00d_CreateAtlasWebApiTables.exec(conn);
@@ -78,6 +79,8 @@ public class OhdsiEnableExistingDatabricksCdm {
 		// delete and create the webapi records
 		DBR08_DeleteAchillesWebApiRecords.exec(conn);
 		DBR09_CreateAchillesWebApiRecords.exec(conn);
+		// delete and create the cdm_source record
+		DBR02a_CreateCdmSourceRecordInCdmForAtlas.exec(conn);
 		// output timer info
 		timer.stop();
 		log.info("-----------------");
@@ -95,12 +98,12 @@ public class OhdsiEnableExistingDatabricksCdm {
 		sqlString += "from information_schema.schemata \n";
 		sqlString += "where catalog_name = ? \n";
 		sqlString += "and schema_name = ? \n";
-		String[] params = {databaseName, schemaName};
-		Data data = Database.query(sqlString,  params, conn);
-		if(data.size() > 0) {
+		String[] params = { databaseName, schemaName };
+		Data data = Database.query(sqlString, params, conn);
+		if (data.size() > 0) {
 			return true;
 		}
 		return false;
 	}
-	
+
 }
