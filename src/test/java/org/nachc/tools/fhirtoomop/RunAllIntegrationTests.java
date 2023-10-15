@@ -16,6 +16,7 @@ import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.MappedConceptCache;
 import org.nachc.tools.fhirtoomop.util.mapping.impl.cache.StandardConceptCache;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.util.time.Timer;
 
 import com.googlecode.junittoolbox.SuiteClasses;
@@ -42,6 +43,7 @@ public class RunAllIntegrationTests {
 	@BeforeClass
 	public static void setup() {
 		TIMER.start();
+		AppParams.touch();
 		log.info("***********************************************************");
 		log.info("Starting set up");
 		log.info("***********************************************************");

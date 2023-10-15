@@ -21,6 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 public class AppParams {
 
 	private static final String SRC = "auth/app.properties";
+	
+	private static File PARAMS_FILE;
 
 	private static Properties PROPS = null;
 
@@ -37,21 +39,41 @@ public class AppParams {
 				System.out.println("Could not load default properties.");
 				System.out.println("A properties file will need to be provided by the user.");
 			}
+			String msg = "Properties file:\n\n";
+			msg += "-----------------------\n";
+			msg += "*\n";
+			msg += "* START PROPERTIES FILE\n";
+			msg += "*\n";
+			msg += "-----------------------\n";
+			msg += "\n";
+			msg += "--- PROPERTIES FILE NAME -----------------------------\n";
+			msg += FileUtil.getCanonicalPath(PARAMS_FILE) + "\n\n"; 
+			msg += "--- PROPERTIES FILE CONTENTS -------------------------\n\n";
+			msg += FileUtil.getAsString(PARAMS_FILE) + "\n";
+			msg += "-----------------------\n";
+			msg += "*\n";
+			msg += "* END PROPERTIES FILE\n";
+			msg += "*\n";
+			msg += "-----------------------\n";
+			msg += "*\n";
+			log.info(msg);
 		} catch(Throwable thr) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
 		}
 	}
 
+	public static void touch() {
+	}
+	
 	private static Properties getProps() {
 		try {
 			File srcFile = FileUtil.getFile(SRC, false);
 			String fileName = FileUtil.getAsString(srcFile);
 			fileName = fileName.trim();
 			log.info(fileName);
-			//			fileName = "C:\\_WORKSPACES\\nachc\\_CURRENT\\KEYS\\application-auth\\fhir-to-omop\\app.properties";
-			log.info(fileName);
 			File file = new File(fileName);
+			PARAMS_FILE = file;
 			log.info("App Properties File Exists: " + file.exists());
 			InputStream is = new FileInputStream(file);
 			PROPS = PropertiesUtil.getAsProperties(is, fileName);
@@ -67,6 +89,7 @@ public class AppParams {
 			File srcFile = FileUtil.getFile(SRC, true);
 			String fileName = FileUtil.getAsString(srcFile);
 			File file = new File(fileName);
+			PARAMS_FILE = file;
 			InputStream is = new FileInputStream(file);
 			PROPS = PropertiesUtil.getAsProperties(is, fileName);
 			return PROPS;
