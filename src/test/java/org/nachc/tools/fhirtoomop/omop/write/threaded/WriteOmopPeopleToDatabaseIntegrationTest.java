@@ -9,7 +9,9 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientResources;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFilesFactory;
 import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
+import org.nachc.tools.fhirtoomop.omop.write.singlepatient.WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.database.Database;
 import org.yaorma.util.time.Timer;
 
@@ -32,6 +34,11 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 	
 	private static final int numberOfConnections = 10;
 	
+	public static void main(String[] args) {
+		TruncateAllDataTables.exec();
+		new WriteOmopPeopleToDatabaseIntegrationTest().shouldWritePeopleToDatabase();
+	}
+	
 	@Test
 	public void shouldWritePeopleToDatabase() {
 		log.info("Starting test...");
@@ -45,7 +52,7 @@ public class WriteOmopPeopleToDatabaseIntegrationTest {
 			timer.stop();
 		} finally {
 			try {
-				FixSequences.exec();
+				// FixSequences.exec();
 			} finally {
 				closeConnections(conns);
 			}

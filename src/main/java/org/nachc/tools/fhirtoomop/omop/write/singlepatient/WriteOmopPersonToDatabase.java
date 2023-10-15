@@ -90,7 +90,7 @@ public class WriteOmopPersonToDatabase {
 				}
 				Dao.insert(dvo, conn);
 			} catch(Exception exp) {
-				exp.printStackTrace();
+				throw new RuntimeException(exp);
 			}
 		}
 	}

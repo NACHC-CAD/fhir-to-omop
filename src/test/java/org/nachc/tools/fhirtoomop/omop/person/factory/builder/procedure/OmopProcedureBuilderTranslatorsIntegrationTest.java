@@ -25,11 +25,18 @@ public class OmopProcedureBuilderTranslatorsIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/use-cases/measurement-as-proc/0a2a950e-59b0-4669-8007-a505a3f14cbc";
 
+	public static void main(String[] args) {
+		TruncateAllDataTables.exec();
+		new OmopProcedureBuilderTranslatorsIntegrationTest().shouldWritePatientToDatabase();
+	}
+	
+	/**
+	 * If running this test manually, run this prior to running the test (or just use the main above):
+	 * TruncateAllDataTables.exec();
+	 */
 	@Test
 	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
-//		this test should work without needing to truncate
-//		TruncateAllDataTables.exec();
 		List<String> fileList = FileUtil.listResources(DIR_PATH, getClass());
 		FhirPatientResourcesAsFiles resources = new FhirPatientResourcesAsFiles(fileList);
 		FhirPatient fhirPatient = new FhirPatientFactory(resources).build();

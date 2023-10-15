@@ -9,8 +9,8 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
-import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 
 import com.nach.core.util.file.FileUtil;
 
@@ -21,6 +21,11 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/test-sets/test-set-02";
 
+	public static void main(String[] args) {
+		TruncateAllDataTables.exec();
+		new WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest().shouldWriteTwoPatientToDatabase();
+	}
+	
 	@Test
 	public void shouldWriteTwoPatientToDatabase() {
 		log.info("Starting test...");
@@ -44,7 +49,7 @@ public class WriteTwoOmopPeopleToDatabaseUsingSingleThreadIntegrationTest {
 			}
 		} finally {
 			try {
-				FixSequences.exec();
+				// FixSequences.exec();
 			} finally {
 				OmopDatabaseConnectionFactory.close(conn);
 			}

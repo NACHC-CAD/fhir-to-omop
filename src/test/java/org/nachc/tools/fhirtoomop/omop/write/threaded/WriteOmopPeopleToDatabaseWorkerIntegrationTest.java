@@ -37,7 +37,7 @@ public class WriteOmopPeopleToDatabaseWorkerIntegrationTest {
 			writer.exec();
 		} finally {
 			try {
-				FixSequences.exec();
+				// FixSequences.exec();
 			} finally {
 				closeConnections(conns);
 			}

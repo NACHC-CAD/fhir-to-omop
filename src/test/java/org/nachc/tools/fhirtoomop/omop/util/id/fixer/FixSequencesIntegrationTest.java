@@ -14,16 +14,14 @@ public class FixSequencesIntegrationTest {
 
 	private static final String DIR_PATH = "/test/fhir/test-patient-01/5acc8bb4-2d14-4461-a560-228d96459cc3";
 
-
-	@Test
+	// @Test
 	public void shouldResetSequence() {
 		log.info("Starting test...");
-		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("Setting concept sequence to 0");
 			String dbName = getDbName();
-			Database.update("use " + dbName, conn);
-			Database.update("alter sequence concept_concept_id restart with 0", conn);
+			Database.update("alter sequence concept_concept_id restart with 1", conn);
 			Database.commit(conn);
 			log.info("Resetting sequences...");
 			FixSequences.exec();

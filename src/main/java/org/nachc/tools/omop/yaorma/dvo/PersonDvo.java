@@ -23,7 +23,7 @@ public class PersonDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "cdm_f2o_build";
+    public static final String SCHEMA_NAME = "etl_synthea_1k";
     
     //
     // columnNames

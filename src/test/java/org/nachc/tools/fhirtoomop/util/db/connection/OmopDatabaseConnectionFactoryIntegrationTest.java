@@ -22,7 +22,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 		log.info("Starting test...");
 		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
-			String sqlString = "select * from master.information_schema.tables order by table_name";
+			String sqlString = "select * from concept limit 10";
 			Data data = Database.query(sqlString, conn);
 			log.info("Got " + data.size() + " records.");
 			for(Row row : data) {

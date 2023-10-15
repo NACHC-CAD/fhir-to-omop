@@ -11,7 +11,7 @@ public class OmopConceptFactory {
 		if(id == null) {
 			return null;
 		}
-		ConceptDvo rtn = Dao.find(new ConceptDvo(), "concept_id", id + "", conn);
+		ConceptDvo rtn = Dao.find(new ConceptDvo(), "concept_id", id, conn);
 		return rtn;
 	}
 	

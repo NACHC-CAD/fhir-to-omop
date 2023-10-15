@@ -50,10 +50,9 @@ public class FixSequences {
 		};
 		
 	public static void exec() {
-		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String dbName = getDbName();
-			Database.update("use " + dbName, conn);
 			int cnt = -1;
 			for(String seqName : SEQ_NAMES) {
 				cnt++;

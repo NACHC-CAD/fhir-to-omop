@@ -70,7 +70,7 @@
 		<dependency>
 			<groupId>org.nachc.cad.tools</groupId>
 			<artifactId>core</artifactId>
-			<version>1.1.021</version>
+			<version>1.1.022</version>
 		</dependency>
 
 		<dependency>

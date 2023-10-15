@@ -65,9 +65,6 @@ public class RunAllIntegrationTests {
 		try {
 			log.info("");
 			log.info("");
-//			truncate tables is done by PopulateOmopInstanceFromFhirFiles
-//			log.info("Truncating data tables...");
-//			TruncateAllDataTables.exec();
 			log.info("Populating with patients using config file (PopulateOmopInstanceFromFhirFiles)...");
 			new PopulateOmopInstanceFromFhirFiles().exec();
 			log.info("");
@@ -90,7 +87,7 @@ public class RunAllIntegrationTests {
 			assertTrue(connCount == 0);
 			log.info("");
 		} finally {
-			FixSequences.exec();
+			// FixSequences.exec();
 		}
 		log.info("Done.");
 	}

@@ -21,7 +21,7 @@ public class OmopDatabaseConnectionFactoryBootStrapIntegrationTest {
 		log.info("Starting test...");
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String sqlString = "select * from master.information_schema.tables order by table_name";
+			String sqlString = "select 1 as one";
 			Data data = Database.query(sqlString, conn);
 			log.info("Got " + data.size() + " records.");
 			for(Row row : data) {

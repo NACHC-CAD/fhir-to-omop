@@ -11,9 +11,8 @@ import org.nachc.tools.fhirtoomop.fhir.patient.factory.FhirPatientFactory;
 import org.nachc.tools.fhirtoomop.fhir.patient.factory.impl.file.FhirPatientResourcesAsFiles;
 import org.nachc.tools.fhirtoomop.omop.person.OmopPerson;
 import org.nachc.tools.fhirtoomop.omop.person.factory.OmopPersonFactory;
-import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
-import org.nachc.tools.omop.yaorma.dvo.ProcedureOccurrenceDvo;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -22,9 +21,18 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WriteOmopPersonToDatabaseIntegrationTest {
-	
+
 	private static final String DIR_PATH = "/test/fhir/test-patient-01/5acc8bb4-2d14-4461-a560-228d96459cc3";
 
+	public static void main(String[] args) {
+		TruncateAllDataTables.exec();
+		new WriteOmopPersonToDatabaseIntegrationTest().shouldWritePatientToDatabase();
+	}
+
+	/**
+	 * If running this test manually, run this prior to running the test (or just use the main above):
+	 * TruncateAllDataTables.exec();
+	 */
 	@Test
 	public void shouldWritePatientToDatabase() {
 		log.info("Starting test...");
@@ -47,7 +55,7 @@ public class WriteOmopPersonToDatabaseIntegrationTest {
 			assertTrue(after > before);
 		} finally {
 			try {
-				FixSequences.exec();
+				// FixSequences.exec();
 			} finally {
 				OmopDatabaseConnectionFactory.close(conn);
 			}
