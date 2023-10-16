@@ -9,6 +9,7 @@
 	</head>
 
 	<body>
+
 		<div class="container-fluid main-container">
 
 			<!-- navbar -->
@@ -16,12 +17,20 @@
 			<script>$("#navbarInclude").load("/fhir-to-omop/navbar.html");</script>
 
 			<h1>FHIR to OMOP</h1>
+			
+			<!-- 
+			*
+			* INTRODUCTION
+			*
+			 -->
+			
 			<h2>Introduction</h2>
 			This document focus on the conversion of HL7 FHIR messages OMOP.  
 			Specificly, this documentation will walk through the process of using the fhir-to-omop tools 
 			to import FHIR resources into an instance of the OHDSI Common Data Model (CDM).  
 			This example uses PostgreSql as a database. 
-			This guide assumes you have a basic developer's environment that includes the prerequisites of running OHDSI on PostgrSql.  
+			This guide assumes you have a basic developer's environment that includes the prerequisites of running OHDSI on PostgrSql. 
+			Note: the fhir-to-omop tools require Java 11.  
 			The following will be covered here:  
 			<ul>
 				<li>
@@ -50,9 +59,10 @@
 			 -->
 			
 			<h2>Download the fhir-to-omop zip file</h2>
-			Download the fhir-to-omop.zip file from our 
+			Download the fhir-to-omop zip file from our 
 			<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">published releases</a> 
 			of fhir-to-omop available on the releases page of our GitHub repository. 
+			This zip file contains the Java code and dependencies to run this demo. 
 			This documentation was prepared using v1.5.001.  
 			
 			<!-- 
@@ -65,13 +75,170 @@
 			<p>
 				To create our 2,500 patients in OMOP from FHIR we will need the FHIR resources as well as the files to populate our vocabulary tables in the CDM.  
 				These resource can be downloaded from 
-				<a download href="https://www.dropbox.com/scl/fi/0x1vttbaqgi7igmqlyons/fhir-to-omop.zip?rlkey=92g5uzvyuair59gml1gh4pmn4&dl=1">here</a>.  
+				<a download href="https://www.dropbox.com/scl/fi/0x1vttbaqgi7igmqlyons/fhir-to-omop-resources.zip?rlkey=92g5uzvyuair59gml1gh4pmn4&dl=1">here</a>.  
 			</p>
 			<p>
-				After downloading this file, unzip the contents to C:\ to create the folder C:\fhir-to-omop.  
-				These files can be placed anywhere, but if you put them in C:\fhir-to-omop you will not need to make any configuration changes to complete this demo. 
+				After downloading this file, unzip the contents to C:\ to create the folder C:\fhir-to-omop-resources.  
+				These files can be placed anywhere, but if you put them in C:\fhir-to-omop-resources you will not need to make any configuration changes to complete this demo. 
 			</p>
 
+			<!-- 
+			* 
+			* Create an OMOP instance
+			*
+			 -->
+			
+			<h2>Create an Instance of the CDM (v5.4) in PostgreSql</h2>
+			Unzip the fhir-to-omop zip file downloaded from the 
+			<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">fhir-to-omop GitHub repository</a> if you haven't already. 
+			Open a cmd prompt and navigate to the directory created. 
+			Execute the following command:
+
+<pre class="preformatted">
+fhir-to-omop i
+</pre>
+
+			<!-- 
+			* 
+			* Upload FHIR patients
+			*
+			 -->
+			
+			<h2>Upload FHIR Patients to OHDSI Common Data Model (CDM)</h2>
+			We can now upload our FHIR patients to OHDSI by running command shown below.  
+			This will upload the 2,500 patients in the C:\fhir-to-omop-resources\test\synthea\synthea-micro folder. 
+
+<pre class="preformatted">
+fhir-to-omop u
+</pre>
+
+			<!-- 
+			* 
+			* Architecture and Technical Considerations
+			*
+			-->
+			 
+			<h2>Architecture and Technical Considerations</h2>
+			The following architectural and technical considerations have been documented.  
+			 
+			<!-- 
+			*
+			* Highlevel Architecture
+			*
+			-->
+			 
+			<h3>High Level Architecture</h3>
+			<p>
+				The FHIR to OMOP mapping part of the fhir-to-omop application uses Builder classes to represent each table in the CDM 
+				and Parser objects that are used to parse FHIR resources. 
+			</p>
+			<p>
+				For example, for the Observation table in the CDM mapping is done in the 
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/omop/person/factory/builder/observation/OmopObservationBuilder.java">
+					OmopObservationBuilder
+				</a> class.  
+				The OmopObservationBuilder constructs OBSERVATION Data Value Objects (DVOs) using the
+				<a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/main/java/org/nachc/tools/fhirtoomop/fhir/parser/observation/ObservationParser.java">
+					ObservationParser
+				</a> class to parse FHIR Patient resources
+			</p>
+
+			<!-- 
+			*
+			* Mapping a single FHIR objet to Multiple CDM tables and types
+			*
+			-->
+			 
+			<h3>Mapping a single FHIR objet to Multiple CDM tables and types</h3>
+			<p>
+				In the 2,500 synthea patients we used for testing 
+				we found patterns of FHIR resources used to represent information that maps to multiple CDM tables. 
+			</p>
+			<p>
+				For example, FHIR Observation resources were found to contain information that maps to 
+				observation, measurement, and procedure tables in the OHDSI CDM data model.  
+			</p>			 
+			<p>
+				Details for the mapping of the CDM observation table can be found 
+				<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/observation/observation.html">here</a>.
+			</p>
+			
+			<!-- 
+			*
+			* Concept Mapping
+			*
+			-->
+			 
+			<h3>Concept Mapping</h3>
+			<p>
+				The fhir-to-omop presents a complete solution to mapping system/code values in FHIR resource to OHDSI concept concept_id values.  
+				All standard mappings are done by the <a href="https://github.com/NACHC-CAD/fhir-to-omop/tree/main/src/main/java/org/nachc/tools/fhirtoomop/util/mapping/impl/FhirToOmopConceptMapper.java">FhirToOmopConceptMapper</a> class.  
+				Race and Ethnicity mappings are a special case as FHIR has defined its own vocabulary for Race and Ethnicity
+				and OMOP has defined their own vocabulary for Race and Ethnicity.  
+				Race and Ethnicity are mapped using a simple mapping of these terminologies to each other as described 
+				<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping/race-eth/race-eth-mapping.html">here</a>.  
+			</p>
+			<p>
+				Details regarding concept mapping can be found 
+				<a href="/fhir-to-omop/pages/navbar/fhir-to-omop-mapping-documentation/mapping/terminology/terminology-mapping.html">here</a>. 
+			</p>
+
+			<!-- 
+			*
+			* Threading
+			*
+			-->
+			 
+			<h3>Threading</h3>
+			<p>
+				It was found that Java thread pools were not sufficient to achieve the desired performance. 
+				Using thread pools alone it was easy to hit the maximum cpu capabilities with a relatively small number of threads. 
+				However, Java thread pools will not start the next set of threads until EVERY thread in a currently running pool is completed. 
+				This resulted in the slowest process in any pool running alone before another set of threads was started. 
+				This resulted in a saw-tooth performance profile: A new pool would start and maximize cpu usage. 
+				As threads in this pool completed, cpu usage will fall off dramatically until only one thread was running. 
+				When this final thread completed a new pool would start, the cpu utilization would be maximized, 
+				and the cycle would begain again. 
+			</p>
+			<p>
+				This behavior was defeated by essentially creating a pool of pools. 
+				The technique used here allowed for the maximization of the cpu for the entire upload process 
+				(except of course for the very last pool of pools). 
+			</p>
+			<p>
+				Using this technique and the concept caching described below, we were able to achieve a rate of about
+				2.5 million complete FHIR patients uploaded to our instance of the CDM in about 1 hour.
+			</p>
+			
+			<!-- 
+			*
+			* Concept Caching
+			*
+			-->
+			 
+			<h3>Concept Caching</h3>
+			<p>
+				The most costly operation we encountered in parsing and uploading FHIR to OHDSI CDM was in mapping FHIR codes to OHDSI codes. 
+				Looking up codes found in the FHIR resources was very time consuming simply due to the very large numbers of codes in these resources. 
+			</p>
+			<p>
+				In the fhir-to-omop project, we create two caches of OMOP concepts and maintain a cache of already-seen concepts. 
+			</p>
+			
+			<!-- 
+			*
+			* Integration testing
+			*
+			-->
+			 
+			<h3>Integration Testing</h3>
+			<p>
+				The fhir-to-omop project provides extensive integration testing that can also be used to demonstrate specific functionality.  
+				A <a href="https://github.com/NACHC-CAD/fhir-to-omop/blob/main/src/test/java/org/nachc/tools/fhirtoomop/RunAllIntegrationTests.java">RunAllIntegrationTests</a> 
+				class is provided that will run all of the integration tests 
+				and then populate the target CDM instance with the 2,500 FHIR patients using the FHIR to OMOP implementation provided here.  
+			</p>			
+			
 		</div>
 	</body>
 </html>

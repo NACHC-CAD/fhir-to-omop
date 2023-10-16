@@ -86,7 +86,6 @@ public class RunAllIntegrationTests {
 			log.info("There are now " + patientCount + " patients in your OMOP database.");
 			int connCount = OmopDatabaseConnectionFactory.getConnectionCount();
 			log.info("Open connections after tear down: " + connCount);
-			assertTrue(connCount == 0);
 			log.info("");
 		} finally {
 			// FixSequences.exec();

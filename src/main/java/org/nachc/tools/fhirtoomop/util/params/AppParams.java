@@ -55,7 +55,7 @@ public class AppParams {
 			msg += "* END PROPERTIES FILE\n";
 			msg += "*\n";
 			msg += "-----------------------\n";
-			msg += "*\n";
+			msg += "\n";
 			log.info(msg);
 		} catch(Throwable thr) {
 			System.out.println("Could not load default properties.");
