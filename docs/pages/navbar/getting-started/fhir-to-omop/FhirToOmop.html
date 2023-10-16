@@ -239,6 +239,22 @@ fhir-to-omop u
 				and then populate the target CDM instance with the 2,500 FHIR patients using the FHIR to OMOP implementation provided here.  
 			</p>			
 			
+			<!-- 
+			*
+			* Versioning
+			*
+			-->
+			 
+			<h3>Versioning</h3>
+			<p>
+				FHIR to OMOP integration is complicated by the existance of multiple versions of the OHDDI CDM and multiple version of FHIR. 
+				The fhir-to-omop implementation presented here includes support for FHIR DTSU3 and R4. 
+				This is achieved by the creation of two sets of parser classes: a DTSU3 version and an R4 version. 
+				The version used is configured and can be changed at run time using a configuration file (fhir-context.txt). 
+				Currently, this implementation only supports CDM 5.4.  
+				The existing code base could be easily modified to use inheritance to support CDM 5.3 and 5.4 with a minimum effort. 
+			</p>
+			
 		</div>
 	</body>
 </html>
