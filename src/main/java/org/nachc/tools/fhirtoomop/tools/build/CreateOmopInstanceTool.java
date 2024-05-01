@@ -69,7 +69,7 @@ public class CreateOmopInstanceTool {
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-			LoadTerminology.exec(conn);
+//			LoadTerminology.exec(conn);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
@@ -79,6 +79,8 @@ public class CreateOmopInstanceTool {
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");
+		} catch(Throwable thr) {
+			throw(new RuntimeException(thr));
 		} finally {
 			log.info("Closing database connection...");
 			Database.close(conn);

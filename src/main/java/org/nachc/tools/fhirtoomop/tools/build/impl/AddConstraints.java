@@ -36,6 +36,8 @@ public class AddConstraints {
 			logMsg("ADDING CONSTRAINTS");
 			sqlString = FileUtil.getAsString(CONSTRAINTS);
 			Database.executeSqlScript(sqlString, conn);
+		} catch(Throwable thr) {
+			throw(new RuntimeException(thr));
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

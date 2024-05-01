@@ -18,6 +18,8 @@ public class BurnEverythingToTheGround {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			exec(conn);
+		} catch(Throwable thr) {
+			throw(new RuntimeException(thr));
 		} finally {
 			Database.close(conn);
 		}

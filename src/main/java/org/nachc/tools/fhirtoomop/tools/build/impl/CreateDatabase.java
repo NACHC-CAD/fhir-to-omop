@@ -16,6 +16,8 @@ public class CreateDatabase {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			exec(conn);
+		} catch(Throwable thr) {
+			throw(new RuntimeException(thr));
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}
