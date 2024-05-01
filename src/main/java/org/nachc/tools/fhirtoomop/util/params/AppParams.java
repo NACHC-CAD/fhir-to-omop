@@ -6,8 +6,6 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.Properties;
 
-import javax.batch.operations.BatchRuntimeException;
-
 import org.nachc.tools.fhirtoomop.util.db.connection.type.ConnectionDbmsType;
 import org.yaorma.util.time.TimeUtil;
 
@@ -135,7 +133,7 @@ public class AppParams {
 		} catch (Throwable thr) {
 			log.info("Could not load property: " + key);
 			log.info("PROPS: " + PROPS);
-			throw new BatchRuntimeException("Could not load property", thr);
+			throw new RuntimeException("Could not load property", thr);
 		}
 	}
 
