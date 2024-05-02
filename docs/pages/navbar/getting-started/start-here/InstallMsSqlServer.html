@@ -27,6 +27,16 @@
 			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/sqlserver-download.PNG" />             
 			<br/>
 
+			<!-- select insta SSMS option -->
+			<br/>
+			When the install is done, select install SSMS to install the Sql Server Management Studio (SSMS). 
+			This is an application that can be used to directly interact with instances of Sql Server. 
+			If you forget to do this install, you can follow the optional instructions below to install it directly. 
+			<br/>
+			<br/>
+			<img width="400px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/installDone.png" />             
+			
+
 			<!-- install ssms -->			
 			<h1>Install Microsoft Sql Server Management Studio (SSMS)</h1>
 			Follow the instructions at the link below to install a Microsoft Sql Server Management Studio.
@@ -50,15 +60,15 @@
 			
 			<h3>Enable TCP/IP</h3>
 			TCP/IP connectivity can be enabled in the SQl Server Configuration Manager as shown below.
-			<p>
-				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip.JPG" />
-			</p>
 			
+			<p>
+				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip-show-port.JPG" />
+			</p>			
 			<h3>Check TCP/IP Port</h3>
 			While we're here, we can check what port MS Sql Server is listening on (default is 1433).  
 			Right click on "TCP/IP Enabled" and select "Properties" to display the TCP/IP Properties window shown below.  
 			<p>
-				<img width="800px" src="./sqlserver/sql-server-enable-tcp-ip-show-port.JPG" />
+				<img width="800px" src="./sqlserver/port.png" />
 			</p>			
 
 			<h1>Enable Mixed Mode Authentication</h1>
@@ -91,28 +101,33 @@
 
 			<!-- jdbc driver -->
 			<h1>Download the MS Sql Server JDBC Driver</h1>
-			The MS Sql Server JDBC Driver jar file can be downloaded directly from <a href="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/mssql-jdbc-10.2.0.jre8.jar" download>here</a>, or from 
-			Microsoft <a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/release-notes-for-the-jdbc-driver">here</a>.  
+			The MS Sql Server JDBC Driver jar file can be downloaded from Microsoft <a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/release-notes-for-the-jdbc-driver">here</a>.  
 			<img width="800px" src="/fhir-to-omop/pages/navbar/getting-started/start-here/sqlserver/download-jdbc-driver.png" />             
 
 
 			<!-- dlls for jdbc -->
 			<h1>Install DLLs for Microsoft Sql Server JDBC Connectivity</h1>
 			<p>
+				For some reason Microsoft requires the installation of custom DLLs for JDBC to work. 
+				<br/>
+				<font color="red">
+				Note that the versions of the DLL and the JDBC jar need to match. 
+				There are specific versions for JRE versions (JRE 11, JRE 8, etc.). 
+				The drivers for these versions are marked as 11.2.2.jre11, 11.2.2.jre8, etc.  
+				</font>
+				You may need to modify the pom.xml file of your application to use the correct version of the driver for your database version. 
 			</p>
-			Some instalations of MS Sql Server do not include the DLLs required for JDBC Connectivity.  
-			These files can be downloaded from Microsoft and are included in the JDBC Driver download described above  
-			<a href="https://docs.microsoft.com/en-us/sql/connect/jdbc/release-notes-for-the-jdbc-driver?view=sql-server-ver15">here</a>. The copy of the files we used is 
-			<a download href="./sqlserver/sqljdbc-dll/sqljdbc_10.2.0.0_enu.zip">here</a>.  
-			After the files have been downloaded, unzip the zip file (we unzip to directory shown below).  
 			<p>
+				The DLLs can be found in the zip file we downloaded for the JDBC Driver as shown below after the zip has been unzipped 
+				(enu/auth/64 for the 64 bit version). 
 			</p>
 			<p>
-				<img src="./sqlserver/sqljdbc-dll/file-location.JPG" />
+				<img src="./sqlserver/dlls.png" />
 			</p>
 			<p>
 				<br/>
-				Then add the location of the dll to your path as shown below.  
+				Move the dll to a perminant location and then add the location of the dll to your path as shown below. 
+				Alternatively you can move the dll to a location already on the path.   
 			</p>
 			<p>
 				<img src="./sqlserver/sqljdbc-dll/path.JPG" />
