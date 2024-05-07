@@ -54,9 +54,9 @@ public class UploadTestDataSet {
 		sqlString += "WITH \n";
 		sqlString += "( \n";
 		sqlString += "    FIELDTERMINATOR = ',', \n";
-		sqlString += "    ROWTERMINATOR = '\n', \n";  // Adjusted for Windows line endings
+		sqlString += "    ROWTERMINATOR = '\n', \n";
 		sqlString += "    FIRSTROW = 2, \n";
-		sqlString += "    FORMAT = 'CSV', \n";            // Optional, use if on SQL Server 2017+
+		sqlString += "    FORMAT = 'CSV', \n";
 		sqlString += "    TABLOCK \n";
 		sqlString += ") \n";		Database.update("truncate table " + tableName, conn);
 		Database.update(sqlString, conn);
