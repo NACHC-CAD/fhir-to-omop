@@ -13,16 +13,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateDatabaseIndexes {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/OMOPCDM_sql_server_5.4_indices.sql");
+	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_indices.sql");
 
 	public static void exec(Connection conn) {
 		String dbName = AppParams.getDbName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");
-		Database.executeSqlScript(IS, conn);
+		String sqlString = updateSql(IS);
+		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
 		log.info("Done creating database tables.");		
 	}
 	
+	private static String updateSql(InputStream is) {
+		String str = FileUtil.getAsString(is);
+		str = str.replaceAll("@cdmDatabaseSchema.", "");
+		return str;
+	}
+
 }

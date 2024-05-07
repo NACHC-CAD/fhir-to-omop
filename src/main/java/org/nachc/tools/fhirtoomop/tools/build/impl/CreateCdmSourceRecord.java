@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateCdmSourceRecord {
 
-	private static final String PATH = "/sqlserver/omop/create-cdm-source-record.sql";
+	private static final String PATH = "/sqlserver/omop/5.3/cdm/create-cdm-source-record.sql";
 	
 	public static void exec(Connection conn) {
 		String sqlString = FileUtil.getAsString(PATH);

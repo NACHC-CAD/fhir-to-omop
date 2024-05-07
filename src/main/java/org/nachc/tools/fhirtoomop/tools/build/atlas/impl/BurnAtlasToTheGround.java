@@ -25,7 +25,7 @@ public class BurnAtlasToTheGround {
 	}
 	
 	public static void exec() {
-		dropPosgresDbObjects();
+//		dropPosgresDbObjects();
 		dropSqlServerDbObjects();
 	}
 	

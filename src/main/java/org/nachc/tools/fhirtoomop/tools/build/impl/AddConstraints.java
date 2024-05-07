@@ -1,5 +1,6 @@
 package org.nachc.tools.fhirtoomop.tools.build.impl;
 
+import java.io.InputStream;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
@@ -13,9 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AddConstraints {
 
-	private static final String PK = "/sqlserver/omop/OMOPCDM_sql_server_5.4_primary_keys.sql";
+	private static final String PK = "/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_primary_keys.sql";
 	
-	private static final String CONSTRAINTS = "/sqlserver/omop/OMOPCDM_sql_server_5.4_constraints.sql";
+	private static final String CONSTRAINTS = "/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_constraints.sql";
 	
 	public static void main(String[] args) {
 		exec();
@@ -31,10 +32,12 @@ public class AddConstraints {
 			// add primary keys
 			logMsg("ADDING PRIMARY KEYS");
 			sqlString = FileUtil.getAsString(PK);
+			sqlString = updateSql(sqlString);
 			Database.executeSqlScript(sqlString, conn);
 			// add constraints
 			logMsg("ADDING CONSTRAINTS");
 			sqlString = FileUtil.getAsString(CONSTRAINTS);
+			sqlString = updateSql(sqlString);
 			Database.executeSqlScript(sqlString, conn);
 		} catch(Throwable thr) {
 			throw(new RuntimeException(thr));
@@ -52,4 +55,9 @@ public class AddConstraints {
 		log.info("==================================================");
 	}
 	
+	private static String updateSql(String str) {
+		str = str.replaceAll("@cdmDatabaseSchema.", "");
+		return str;
+	}
+
 }
