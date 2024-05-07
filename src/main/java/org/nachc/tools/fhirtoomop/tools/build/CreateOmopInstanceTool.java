@@ -61,7 +61,7 @@ public class CreateOmopInstanceTool {
 			CreateFhirResoureTables.exec(conn);
 			CreateMappingTables.exec(conn);
 			// create the cdm_source record (uses app.parameters values)
-			CreateCdmSourceRecord.exec(conn);
+//			CreateCdmSourceRecord.exec(conn);
 			Database.commit(conn);
 			// move the race eth files
 			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
@@ -74,8 +74,8 @@ public class CreateOmopInstanceTool {
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
 			// create the indexes and add constraints
-			CreateDatabaseIndexes.exec(conn);
-			AddConstraints.exec();
+//			CreateDatabaseIndexes.exec(conn);
+//			AddConstraints.exec();
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

@@ -25,6 +25,11 @@ public class CreateDatabaseUser {
 		addPrivs(db + "_dqd_results", uid, conn);
 		Database.commit(conn);
 		// done
+		// do the special grant for bulk upload
+		Database.update("use master", conn);
+		Database.update("GRANT ADMINISTER BULK OPERATIONS TO " + uid, conn);
+		Database.commit(conn);
+		// switch back to the current schema
 		Database.update("use " + db, conn);
 		log.info("Done creating database user.");
 	}

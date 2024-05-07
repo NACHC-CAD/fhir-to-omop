@@ -44,19 +44,31 @@ public class UploadTestDataSet {
 		log.info("-----------");
 		log.info("Uploading file: " + FileUtil.getCanonicalPath(file));
 		log.info("Table Name: " + tableName);
+		if(skip(tableName) == true) {
+			log.info("SKIPPING TABLE: " + tableName);
+			return;
+		}
 		String sqlString = "";
 		sqlString += "BULK INSERT " + tableName + " \n";
 		sqlString += "FROM '" + FileUtil.getCanonicalPath(file) + "' \n";
 		sqlString += "WITH \n";
 		sqlString += "( \n";
 		sqlString += "    FIELDTERMINATOR = ',', \n";
-		sqlString += "    ROWTERMINATOR = '\n', \n";
+		sqlString += "    ROWTERMINATOR = '\n', \n";  // Adjusted for Windows line endings
 		sqlString += "    FIRSTROW = 2, \n";
+		sqlString += "    FORMAT = 'CSV', \n";            // Optional, use if on SQL Server 2017+
 		sqlString += "    TABLOCK \n";
-		sqlString += ") \n";
-		Database.update("truncate table " + tableName, conn);
+		sqlString += ") \n";		Database.update("truncate table " + tableName, conn);
 		Database.update(sqlString, conn);
 		log.info("Done with file: " + FileUtil.getCanonicalPath(file));
 	}
 
+	private static boolean skip(String tableName) {
+		if("concept_recommended".equals(tableName)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }
