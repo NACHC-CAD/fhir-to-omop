@@ -35,13 +35,13 @@ public class PopulatePreviousVisitTable {
 			conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		} else {
 			conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
-			String useString = "use " + AppParams.getDbName();
+			String useString = "use " + AppParams.getSchemaName();
 			log.info("Setting schema: \n" + useString);
 			Database.update(useString, conn);
 		}
 		try {
 			if("mssql".equals(AppParams.get("cdmDbType"))) {
-				String dbName = AppParams.getDbName();
+				String dbName = AppParams.getSchemaName();
 				Database.update("use " + dbName, conn);
 			}
 			Database.executeSqlScript(is, conn);

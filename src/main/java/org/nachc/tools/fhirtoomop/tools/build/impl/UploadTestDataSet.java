@@ -35,6 +35,8 @@ public class UploadTestDataSet {
 			log.info("Done uploading files.");
 		} catch(Exception exp) {
 			throw new RuntimeException(exp);
+		} finally {
+			FileUtil.rmdir(outputDir);
 		}
 	}
 

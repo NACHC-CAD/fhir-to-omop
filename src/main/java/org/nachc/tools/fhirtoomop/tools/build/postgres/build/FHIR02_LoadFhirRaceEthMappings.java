@@ -103,7 +103,7 @@ public class FHIR02_LoadFhirRaceEthMappings {
 
 	private static String getSqlString(File sqlFile) {
 		String sqlString = FileUtil.getAsString(sqlFile);
-		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDbName());
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getSchemaName());
 		return sqlString;
 	}
 

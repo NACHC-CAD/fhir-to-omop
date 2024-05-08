@@ -135,7 +135,7 @@ public class PopulateOmopInstanceFromSyntheaFiles {
 		InputStream is = FileUtil.getInputStream(filePath);
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String dbName = AppParams.getDbName();
+			String dbName = AppParams.getSchemaName();
 			Database.update("use " + dbName, conn);
 			Database.executeSqlScript(is, conn);
 		} finally {

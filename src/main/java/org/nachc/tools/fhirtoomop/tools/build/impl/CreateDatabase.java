@@ -26,9 +26,10 @@ public class CreateDatabase {
 	
 	public static void exec(Connection conn) {
 		log.info("Creating databases...");
-		String databaseName = AppParams.getDbName();
+		String databaseName = AppParams.getSchemaName();
+		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		createDatabase(databaseName, conn);
-		createDatabase(databaseName + "_dqd_results", conn);
+		createDatabase(dqdDatabaseName, conn);
 		Database.commit(conn);
 		log.info("Done creating databases.");
 	}

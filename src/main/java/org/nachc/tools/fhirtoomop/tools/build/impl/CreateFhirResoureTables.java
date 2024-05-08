@@ -16,7 +16,7 @@ public class CreateFhirResoureTables {
 	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/fhir/fhir-resources-ddl.sql");
 	
 	public static void exec(Connection conn) {
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

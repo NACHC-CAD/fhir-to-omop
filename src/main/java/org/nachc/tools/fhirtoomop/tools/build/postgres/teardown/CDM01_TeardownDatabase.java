@@ -29,7 +29,7 @@ public class CDM01_TeardownDatabase {
 				return;
 			}
 			log.info("Dropping CDM databases...");
-			String databaseName = AppParams.getDbName();
+			String databaseName = AppParams.getSchemaName();
 			dropSchema(databaseName, conn);
 			dropSchema(databaseName + "_dqd_results", conn);
 			log.info("Done dropping CDM databases.");

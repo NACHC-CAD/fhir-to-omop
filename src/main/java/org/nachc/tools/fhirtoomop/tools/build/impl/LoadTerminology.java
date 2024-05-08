@@ -20,7 +20,7 @@ public class LoadTerminology {
 		String rootDir = AppParams.getTerminologyRootDir();
 		String sqlString = SQL_STRING.replace("@terminologiesRootFolder/", rootDir);
 		InputStream is = new ByteArrayInputStream(sqlString.getBytes());
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

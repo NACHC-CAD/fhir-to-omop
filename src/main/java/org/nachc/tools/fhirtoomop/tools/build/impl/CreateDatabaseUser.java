@@ -11,9 +11,10 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateDatabaseUser {
 
 	public static void exec(Connection conn) {
-		String db = AppParams.getDbName();
+		String db = AppParams.getSchemaName();
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
+		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);
@@ -22,7 +23,7 @@ public class CreateDatabaseUser {
 		Database.update("create login " + uid + " with password = '" + pwd + "'", conn);
 		// create user
 		addPrivs(db, uid, conn);
-		addPrivs(db + "_dqd_results", uid, conn);
+		addPrivs(dqdDatabaseName, uid, conn);
 		Database.commit(conn);
 		// done
 		// do the special grant for bulk upload

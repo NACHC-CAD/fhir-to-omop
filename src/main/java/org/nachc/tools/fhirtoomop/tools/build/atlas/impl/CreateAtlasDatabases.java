@@ -25,7 +25,7 @@ public class CreateAtlasDatabases {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			BurnAtlasToTheGround.dropSqlServerDbObjects();
-			String databaseName = AppParams.getDbName();
+			String databaseName = AppParams.getSchemaName();
 			createDatabase(databaseName + "_ach_results", conn);
 			createDatabase(databaseName + "_ach_temp", conn);
 			runInitScript(conn);
@@ -71,7 +71,7 @@ public class CreateAtlasDatabases {
 		msg += "\n------------------------------------------------";
 		msg += "\n\n\n";
 		log.info(msg);
-		String databaseName = AppParams.getDbName();
+		String databaseName = AppParams.getSchemaName();
 		String vocabSchema = databaseName + ".dbo";
 		String resultsSchema = databaseName + "_ach_results" + ".dbo";
 		String sqlString = FileUtil.getAsString(PATH);

@@ -18,7 +18,7 @@ public class CreateDatabaseTables {
 	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_ddl.sql");
 	
 	public static void exec(Connection conn) {
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

@@ -70,6 +70,10 @@ public class AppParams {
 			String fileName = FileUtil.getAsString(srcFile);
 			fileName = fileName.trim();
 			log.info(fileName);
+			// log the working dir
+			File workingDir = new File(".");
+			log.info("WORKING DIR: \n" + FileUtil.getCanonicalPath(workingDir));
+			// get the parameters file
 			File file = new File(fileName);
 			PARAMS_FILE = file;
 			log.info("App Properties File Exists: " + file.exists());
@@ -160,11 +164,17 @@ public class AppParams {
 	}
 
 	public static String getFullyQualifiedDbName() {
-		return get("syntheaDb");
+		return get("SchemaName");
 	}
 
-	public static String getDbName() {
-		String rtn = get("syntheaDb");
+	// ---
+	//
+	// schema names
+	//
+	// ---
+	
+	public static String getSchemaName() {
+		String rtn = get("SchemaName");
 		return getCatalogPart(rtn);
 	}
 
@@ -181,6 +191,26 @@ public class AppParams {
 		if (rtn.indexOf(".") > 0) {
 			rtn = rtn.trim().substring(rtn.indexOf(".") + 1, rtn.length());
 		}
+		return rtn;
+	}
+
+	public static String getVocabSchemaName() {
+		String rtn = get("VocabSchemaName");
+		return rtn;
+	}
+
+	public static String getAchillesTempSchemaName() {
+		String rtn = get("AchillesTempSchemaName");
+		return rtn;
+	}
+
+	public static String getAchillesResultsSchemaName() {
+		String rtn = get("AchillesResultsSchemaName");
+		return rtn;
+	}
+
+	public static String getDqdResultsSchemaName() {
+		String rtn = get("DqdResultsSchemaName");
 		return rtn;
 	}
 

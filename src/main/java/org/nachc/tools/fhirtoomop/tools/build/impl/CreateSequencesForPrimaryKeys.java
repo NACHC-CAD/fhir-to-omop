@@ -26,7 +26,7 @@ public class CreateSequencesForPrimaryKeys {
 	}
 	
 	public static void exec(Connection conn) {
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

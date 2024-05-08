@@ -1,8 +1,8 @@
 package org.nachc.tools.fhirtoomop.tools.build;
 
+import java.io.File;
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.tools.build.impl.AddConstraints;
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
@@ -15,6 +15,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
+import org.nachc.tools.fhirtoomop.tools.build.impl.UploadTestDataSet;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -61,20 +62,23 @@ public class CreateOmopInstanceTool {
 			CreateFhirResoureTables.exec(conn);
 			CreateMappingTables.exec(conn);
 			// create the cdm_source record (uses app.parameters values)
-//			CreateCdmSourceRecord.exec(conn);
+			CreateCdmSourceRecord.exec(conn);
 			Database.commit(conn);
 			// move the race eth files
 			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
 			raceFiles.exec();
+			// create the sequences
+			logMsg("CREATING SEQUENCES");
+			CreateSequencesForPrimaryKeys.exec(conn);
+			// upload the test data set
+			UploadTestDataSet.exec(conn, new File("./delete_me"));
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
 //			LoadTerminology.exec(conn);
-			// create the sequences
-			logMsg("CREATING SEQUENCES");
-			CreateSequencesForPrimaryKeys.exec(conn);
 			// create the indexes and add constraints
-//			CreateDatabaseIndexes.exec(conn);
+			logMsg("CREATING INDEXES");
+			CreateDatabaseIndexes.exec(conn);
 //			AddConstraints.exec();
 			timer.stop();
 			log.info("Done creating instance");
@@ -87,7 +91,7 @@ public class CreateOmopInstanceTool {
 			log.info("Database closed");
 		}
 		logMsg("DONE");
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
 		String msg = "";

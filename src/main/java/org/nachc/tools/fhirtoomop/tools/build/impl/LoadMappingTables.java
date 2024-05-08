@@ -19,7 +19,7 @@ public class LoadMappingTables {
 		log.info("LOAD RACE/ETH SQL FILE: " + FileUtil.getCanonicalPath(sqlFile));
 		log.info("-----------------------");
 		InputStream IS = FileUtil.getInputStream(sqlFile);
-		String dbName = AppParams.getDbName();
+		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

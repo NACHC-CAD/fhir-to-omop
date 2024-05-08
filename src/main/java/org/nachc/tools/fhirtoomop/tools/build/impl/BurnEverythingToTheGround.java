@@ -37,10 +37,11 @@ public class BurnEverythingToTheGround {
 		// drop the database
 		String databaseName = AppParams.getFullyQualifiedDbName();
 		databaseName = AppParams.getCatalogPart(databaseName);
+		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		log.warn("DROPPING DATABASE: " + databaseName);
 		Database.update("use master", conn);
 		Database.update("drop database if exists " + databaseName, conn);
-		Database.update("drop database if exists " + databaseName + "_dqd_results", conn);
+		Database.update("drop database if exists " + dqdDatabaseName, conn);
 		log.warn("DATABASE DROPPED: " + databaseName);
 		// drop the login
 		String uid = AppParams.getUid();

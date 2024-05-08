@@ -44,7 +44,7 @@ public class FhirToOmopIdGenerator {
 			String cdmDbType = AppParams.get("cdmDbType");
 			if ("postgres".equals(cdmDbType)) {
 				Database.commit(conn);
-				String schemaName = AppParams.getDbName();
+				String schemaName = AppParams.getSchemaName();
 				String seqName = tableName + "_" + idName;
 				seqName = schemaName + "." + seqName;
 				String sqlString = "select nextval('" + seqName + "') as val";
