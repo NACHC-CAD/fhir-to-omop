@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAchillesDatabases;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
@@ -80,6 +81,8 @@ public class CreateOmopInstanceTool {
 			logMsg("CREATING INDEXES");
 			CreateDatabaseIndexes.exec(conn);
 //			AddConstraints.exec();
+			// add achilles databases
+			CreateAchillesDatabases.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");
