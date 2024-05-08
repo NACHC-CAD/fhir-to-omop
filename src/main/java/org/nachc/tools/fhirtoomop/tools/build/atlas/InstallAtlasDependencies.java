@@ -1,7 +1,7 @@
 package org.nachc.tools.fhirtoomop.tools.build.atlas;
 
 import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAtlasPostgresDependencies;
-import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAtlasDatabases;
+import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAchillesDatabases;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ public class InstallAtlasDependencies {
 	public static void exec() {
 		log.info("Installing Atlas Dependencies...");
 		CreateAtlasPostgresDependencies.exec();
-		CreateAtlasDatabases.exec();
+		CreateAchillesDatabases.exec();
 		log.info("Done installing Atlas dependencies...");
 	}
 

@@ -11,7 +11,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateAtlasDatabases {
+public class CreateAchillesDatabases {
 
 	private static final String PATH = "/sqlserver/omop/achilles/init-achilles.sql";
 
@@ -24,15 +24,18 @@ public class CreateAtlasDatabases {
 	public static void exec() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			BurnAtlasToTheGround.dropSqlServerDbObjects();
-			String databaseName = AppParams.getSchemaName();
-			createDatabase(databaseName + "_ach_results", conn);
-			createDatabase(databaseName + "_ach_temp", conn);
-			runInitScript(conn);
-			Database.commit(conn);
+			exec(conn);
 		} finally {
-			OmopDatabaseConnectionFactory.close(conn);
+			Database.close(conn);
 		}
+	}
+
+	public static void exec(Connection conn) {
+		BurnAtlasToTheGround.dropSqlServerDbObjects();
+		createDatabase(AppParams.getAchillesResultsSchemaName(), conn);
+		createDatabase(AppParams.getAchillesTempSchemaName(), conn);
+		runInitScript(conn);
+		Database.commit(conn);
 		log.info("Done creating Atlas Dependencies");
 	}
 
@@ -43,7 +46,7 @@ public class CreateAtlasDatabases {
 		String uid = AppParams.getUid();
 		addPrivs(databaseName, uid, conn);
 	}
-	
+
 	private static void addPrivs(String schemaName, String uid, Connection conn) {
 		// switch to the database
 		Database.update("use " + schemaName, conn);
@@ -59,8 +62,13 @@ public class CreateAtlasDatabases {
 		Database.update("exec sp_addrolemember N'db_ddladmin', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_owner', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_securityadmin', N'" + uid + "'", conn);
+		// do the special grant for bulk upload
+		Database.update("use master", conn);
+		Database.update("GRANT ADMINISTER BULK OPERATIONS TO " + uid, conn);
+		Database.commit(conn);
+		Database.update("use " + schemaName, conn);
 	}
-	
+
 	private static void runInitScript(Connection conn) {
 		String msg = "";
 		msg += "\n\n\n";
@@ -73,7 +81,8 @@ public class CreateAtlasDatabases {
 		log.info(msg);
 		String databaseName = AppParams.getSchemaName();
 		String vocabSchema = databaseName + ".dbo";
-		String resultsSchema = databaseName + "_ach_results" + ".dbo";
+		String resultsSchema = AppParams.getAchillesResultsSchemaName();
+		resultsSchema = resultsSchema + ".dbo";
 		String sqlString = FileUtil.getAsString(PATH);
 		sqlString = sqlString.replace("<ACHILLES_RESULTS_SCHEMA>", resultsSchema);
 		sqlString = sqlString.replace("<VOCAB_SCHEMA>", vocabSchema);
@@ -85,5 +94,5 @@ public class CreateAtlasDatabases {
 		Database.executeSqlScript(sqlString, conn);
 		Database.commit(conn);
 	}
-	
+
 }

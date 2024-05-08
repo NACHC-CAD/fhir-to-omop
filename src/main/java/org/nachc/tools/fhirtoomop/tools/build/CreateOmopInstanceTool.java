@@ -3,8 +3,8 @@ package org.nachc.tools.fhirtoomop.tools.build;
 import java.io.File;
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAchillesDatabases;
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
-import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAchillesDatabases;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
@@ -14,7 +14,6 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.UploadTestDataSet;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
@@ -86,8 +85,8 @@ public class CreateOmopInstanceTool {
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");
-		} catch(Throwable thr) {
-			throw(new RuntimeException(thr));
+		} catch (Throwable thr) {
+			throw (new RuntimeException(thr));
 		} finally {
 			log.info("Closing database connection...");
 			Database.close(conn);
