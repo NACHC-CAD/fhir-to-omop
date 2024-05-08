@@ -163,10 +163,14 @@ public class AppParams {
 		return get("pwd");
 	}
 
-	public static String getFullyQualifiedDbName() {
-		return get("SchemaName");
+	public static String getFullySpecifiedSchemaName() {
+		return get("FullySpecifiedSchemaName");
 	}
 
+	public static String getFullySpecifiedAchilliesResultsSchemaName() {
+		return get("FullySpecifiedAchilliesResultsSchemaName");
+	}
+	
 	// ---
 	//
 	// schema names

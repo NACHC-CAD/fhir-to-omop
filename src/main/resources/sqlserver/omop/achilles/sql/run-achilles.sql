@@ -17,7 +17,7 @@ CAST(GETDATE() AS VARCHAR(255)) as stratum_3,
 cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_0
-from matlab_example.dbo.person;
+from @FullySpecifiedCdmSchema.person;
 
 --HINT DISTRIBUTE_ON_KEY(stratum_1)
 select 0 as analysis_id, CAST('' AS VARCHAR(255)) as stratum_1, 
@@ -33,7 +33,7 @@ COUNT_BIG(distinct person_id) as count_value,
 	cast(null as float) as p75_value,
 	cast(null as float) as p90_value
 into #s_tmpach_dist_0
-from matlab_example.dbo.person;
+from @FullySpecifiedCdmSchema.person;
 
 
 -- 1	Number of persons
@@ -42,7 +42,7 @@ select 1 as analysis_id,
 cast(null as varchar(255)) as stratum_1, cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_1
-from matlab_example.dbo.person;
+from @FullySpecifiedCdmSchema.person;
 
 
 -- 2	Number of persons by gender
@@ -53,7 +53,7 @@ CAST(gender_concept_id AS VARCHAR(255)) as stratum_1,
 cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_2
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by GENDER_CONCEPT_ID;
 
 
@@ -64,7 +64,7 @@ select 3 as analysis_id,  CAST(year_of_birth AS VARCHAR(255)) as stratum_1,
 cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_3
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by YEAR_OF_BIRTH;
 
 
@@ -75,7 +75,7 @@ select 4 as analysis_id,  CAST(RACE_CONCEPT_ID AS VARCHAR(255)) as stratum_1,
 cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_4
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by RACE_CONCEPT_ID;
 
 
@@ -86,7 +86,7 @@ select 5 as analysis_id,  CAST(ETHNICITY_CONCEPT_ID AS VARCHAR(255)) as stratum_
 cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_5
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by ETHNICITY_CONCEPT_ID;
 
 
@@ -98,7 +98,7 @@ select 10 as analysis_id,  CAST(year_of_birth AS VARCHAR(255)) as stratum_1,
   cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
   COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_10
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by YEAR_OF_BIRTH, gender_concept_id;
 
 
@@ -110,11 +110,11 @@ select 11 as analysis_id,  CAST(P.year_of_birth AS VARCHAR(255)) as stratum_1,
   cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
   COUNT_BIG(distinct P.person_id) as count_value
 into #s_tmpach_11
-from matlab_example.dbo.person P
+from @FullySpecifiedCdmSchema.person P
 where not exists
 (
   select 1
-  from matlab_example.dbo.death D
+  from @FullySpecifiedCdmSchema.death D
   where P.person_id = D.person_id
 )
 group by P.YEAR_OF_BIRTH, P.gender_concept_id;
@@ -127,7 +127,7 @@ select 12 as analysis_id, CAST(RACE_CONCEPT_ID AS VARCHAR(255)) as stratum_1, CA
 cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_12
-from matlab_example.dbo.person
+from @FullySpecifiedCdmSchema.person
 group by RACE_CONCEPT_ID,ETHNICITY_CONCEPT_ID;
 
 
@@ -138,8 +138,8 @@ WITH rawData AS (
   select
     year(op1.index_date) - p1.YEAR_OF_BIRTH as stratum_1,
     COUNT_BIG(p1.person_id) as count_value
-  from matlab_example.dbo.person p1
-    inner join (select person_id, MIN(observation_period_start_date) as index_date from matlab_example.dbo.observation_period group by PERSON_ID) op1
+  from @FullySpecifiedCdmSchema.person p1
+    inner join (select person_id, MIN(observation_period_start_date) as index_date from @FullySpecifiedCdmSchema.observation_period group by PERSON_ID) op1
     on p1.PERSON_ID = op1.PERSON_ID
   group by year(op1.index_date) - p1.YEAR_OF_BIRTH
 )
@@ -163,8 +163,8 @@ WITH rawData AS (
     p1.gender_concept_id as stratum_1,
     year(op1.index_date) - p1.YEAR_OF_BIRTH as stratum_2,
     COUNT_BIG(p1.person_id) as count_value
-  from matlab_example.dbo.person p1
-    inner join (select person_id, MIN(observation_period_start_date) as index_date from matlab_example.dbo.observation_period group by PERSON_ID) op1
+  from @FullySpecifiedCdmSchema.person p1
+    inner join (select person_id, MIN(observation_period_start_date) as index_date from @FullySpecifiedCdmSchema.observation_period group by PERSON_ID) op1
     on p1.PERSON_ID = op1.PERSON_ID
   group by p1.gender_concept_id, year(op1.index_date) - p1.YEAR_OF_BIRTH)
 SELECT
@@ -186,8 +186,8 @@ with rawData (person_id, age_value) as
 (
 select p.person_id, 
   MIN(YEAR(observation_period_start_date)) - P.YEAR_OF_BIRTH as age_value
-  from matlab_example.dbo.person p
-  JOIN matlab_example.dbo.observation_period op on p.person_id = op.person_id
+  from @FullySpecifiedCdmSchema.person p
+  JOIN @FullySpecifiedCdmSchema.observation_period op on p.person_id = op.person_id
   group by p.person_id, p.year_of_birth
 ),
 overallStats (avg_value, stdev_value, min_value, max_value, total) as
@@ -244,8 +244,8 @@ from tempResults
 with rawData (gender_concept_id, age_value) as
 (
   select p.gender_concept_id, MIN(YEAR(observation_period_start_date)) - P.YEAR_OF_BIRTH as age_value
-	from matlab_example.dbo.person p
-	JOIN matlab_example.dbo.observation_period op on p.person_id = op.person_id
+	from @FullySpecifiedCdmSchema.person p
+	JOIN @FullySpecifiedCdmSchema.observation_period op on p.person_id = op.person_id
 	group by p.person_id,p.gender_concept_id, p.year_of_birth
 ),
 overallStats (gender_concept_id, avg_value, stdev_value, min_value, max_value, total) as
@@ -311,7 +311,7 @@ FROM
 (
   select DATEDIFF(dd,op.observation_period_start_date, op.observation_period_end_date) as count_value,
 	  ROW_NUMBER() over (PARTITION by op.person_id order by op.observation_period_start_date asc) as rn
-  from matlab_example.dbo.observation_period op
+  from @FullySpecifiedCdmSchema.observation_period op
 ) A
 where rn = 1;
 	
@@ -381,9 +381,9 @@ FROM
 (
   select person_id, DATEDIFF(dd,op.observation_period_start_date, op.observation_period_end_date) as count_value,
     ROW_NUMBER() over (PARTITION by op.person_id order by op.observation_period_start_date asc) as rn
-  from matlab_example.dbo.observation_period op
+  from @FullySpecifiedCdmSchema.observation_period op
 ) op
-JOIN matlab_example.dbo.person p on op.person_id = p.person_id
+JOIN @FullySpecifiedCdmSchema.person p on op.person_id = p.person_id
 where op.rn = 1
 ;
 
@@ -458,9 +458,9 @@ with rawData (age_decile, count_value) as
   		op.observation_period_start_date,
   		op.observation_period_end_date,
       ROW_NUMBER() over (PARTITION by op.person_id order by op.observation_period_start_date asc) as rn
-    from matlab_example.dbo.observation_period op
+    from @FullySpecifiedCdmSchema.observation_period op
   ) op
-  JOIN matlab_example.dbo.person p on op.person_id = p.person_id
+  JOIN @FullySpecifiedCdmSchema.person p on op.person_id = p.person_id
   where op.rn = 1
 ),
 overallStats (age_decile, avg_value, stdev_value, min_value, max_value, total) as
@@ -527,13 +527,13 @@ WITH rawData AS (
   select
     floor(DATEDIFF(dd, op1.observation_period_start_date, op1.observation_period_end_date)/30) as stratum_1,
     COUNT_BIG(distinct p1.person_id) as count_value
-  from matlab_example.dbo.person p1
+  from @FullySpecifiedCdmSchema.person p1
     inner join
     (select person_id,
       OBSERVATION_PERIOD_START_DATE,
       OBSERVATION_PERIOD_END_DATE,
       ROW_NUMBER() over (PARTITION by person_id order by observation_period_start_date asc) as rn1
-       from matlab_example.dbo.observation_period
+       from @FullySpecifiedCdmSchema.observation_period
     ) op1
     on p1.PERSON_ID = op1.PERSON_ID
     where op1.rn1 = 1
@@ -577,8 +577,8 @@ select obs_year,
        datefromparts(obs_year,month_start,day_start) obs_year_start,
        datefromparts(obs_year,month_end,day_end) obs_year_end
   from ymd
- where obs_year >= (select min(year(observation_period_start_date)) from matlab_example.dbo.observation_period)
-   and obs_year <= (select max(year(observation_period_start_date)) from matlab_example.dbo.observation_period)
+ where obs_year >= (select min(year(observation_period_start_date)) from @FullySpecifiedCdmSchema.observation_period)
+   and obs_year <= (select max(year(observation_period_start_date)) from @FullySpecifiedCdmSchema.observation_period)
 ) 
 SELECT 
 	109                               AS analysis_id,  
@@ -591,7 +591,7 @@ SELECT
 INTO 
 	#s_tmpach_109
 FROM 
-	matlab_example.dbo.observation_period op
+	@FullySpecifiedCdmSchema.observation_period op
 CROSS JOIN 
 	year_ranges yr
 WHERE
@@ -614,7 +614,7 @@ SELECT
 	COUNT_BIG(distinct op1.PERSON_ID) as count_value
 into #s_tmpach_110
 FROM
-matlab_example.dbo.observation_period op1
+@FullySpecifiedCdmSchema.observation_period op1
 join 
 (
   SELECT DISTINCT 
@@ -622,7 +622,7 @@ join
     DATEFROMPARTS(YEAR(observation_period_start_date), MONTH(observation_period_start_date), 1)
     AS obs_month_start,
     EOMONTH(observation_period_start_date) AS obs_month_end
-  FROM matlab_example.dbo.observation_period
+  FROM @FullySpecifiedCdmSchema.observation_period
 ) t1 on	op1.observation_period_start_date <= t1.obs_month_start
 	and	op1.observation_period_end_date >= t1.obs_month_end
 group by t1.obs_month;
@@ -638,7 +638,7 @@ WITH rawData AS (
     YEAR(observation_period_start_date)*100 + month(OBSERVATION_PERIOD_START_DATE) as stratum_1,
     COUNT_BIG(distinct op1.PERSON_ID) as count_value
   from
-    matlab_example.dbo.observation_period op1
+    @FullySpecifiedCdmSchema.observation_period op1
   group by YEAR(observation_period_start_date)*100 + month(OBSERVATION_PERIOD_START_DATE)
 )
 SELECT
@@ -661,7 +661,7 @@ WITH rawData AS (
     YEAR(observation_period_end_date)*100 + month(observation_period_end_date) as stratum_1,
     COUNT_BIG(distinct op1.PERSON_ID) as count_value
   from
-    matlab_example.dbo.observation_period op1
+    @FullySpecifiedCdmSchema.observation_period op1
   group by YEAR(observation_period_end_date)*100 + month(observation_period_end_date)
 )
 SELECT
@@ -685,7 +685,7 @@ select 113 as analysis_id,
 	COUNT_BIG(distinct op1.PERSON_ID) as count_value
 into #s_tmpach_113
 from
-	(select person_id, COUNT_BIG(OBSERVATION_period_start_date) as num_periods from matlab_example.dbo.observation_period group by PERSON_ID) op1
+	(select person_id, COUNT_BIG(OBSERVATION_period_start_date) as num_periods from @FullySpecifiedCdmSchema.observation_period group by PERSON_ID) op1
 group by op1.num_periods
 ;
 
@@ -700,7 +700,7 @@ select distinct
 INTO
   #temp_dates_116
 from 
-  matlab_example.dbo.observation_period
+  @FullySpecifiedCdmSchema.observation_period
 ;
 
 --HINT DISTRIBUTE_ON_KEY(stratum_1)
@@ -711,9 +711,9 @@ WITH rawData AS (
     floor((t1.obs_year - p1.year_of_birth)/10) as stratum_3,
     COUNT_BIG(distinct p1.PERSON_ID) as count_value
   from
-    matlab_example.dbo.person p1
+    @FullySpecifiedCdmSchema.person p1
     inner join
-    matlab_example.dbo.observation_period op1
+    @FullySpecifiedCdmSchema.observation_period op1
     on p1.person_id = op1.person_id
     ,
     #temp_dates_116 t1
@@ -756,7 +756,7 @@ into #s_tmpach_117
 FROM date_keys t1
 left join
   (select t2.obs_month, op2.*
-    from matlab_example.dbo.observation_period op2, date_keys t2
+    from @FullySpecifiedCdmSchema.observation_period op2, date_keys t2
     where year(op2.observation_period_start_date)*100 + month(op2.observation_period_start_date) <= t2.obs_month
     and year(op2.observation_period_end_date)*100 + month(op2.observation_period_end_date) >= t2.obs_month
   ) op1 on op1.obs_month = t1.obs_month
@@ -773,7 +773,7 @@ select 119 as analysis_id,
   COUNT_BIG(*) as count_value
 into #s_tmpach_119
 from
-  matlab_example.dbo.observation_period op1
+  @FullySpecifiedCdmSchema.observation_period op1
 group by op1.period_type_concept_id
 ;
 
@@ -793,9 +793,9 @@ SELECT
 INTO 
 	#s_tmpach_200
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -821,9 +821,9 @@ SELECT
 INTO 
 	#s_tmpach_201
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -843,9 +843,9 @@ SELECT
 	YEAR(vo.visit_start_date) * 100 + MONTH(vo.visit_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT vo.person_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -879,9 +879,9 @@ SELECT
 	vo.person_id,
 	COUNT_BIG(DISTINCT vo.visit_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -955,13 +955,13 @@ SELECT
 	FLOOR((YEAR(vo.visit_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.visit_occurrence vo 
+	@FullySpecifiedCdmSchema.visit_occurrence vo 
 ON 
 	p.person_id = vo.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -997,16 +997,16 @@ SELECT
 	p.gender_concept_id AS stratum2_id,
 	v.visit_start_year - p.year_of_birth AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		vo.person_id,
 		vo.visit_concept_id,
 		MIN(YEAR(vo.visit_start_date)) AS visit_start_year
 	FROM 
-		matlab_example.dbo.visit_occurrence vo
+		@FullySpecifiedCdmSchema.visit_occurrence vo
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		vo.person_id = op.person_id
 	AND 
@@ -1084,8 +1084,8 @@ select 207 as analysis_id,
 	COUNT_BIG(vo1.PERSON_ID) as count_value
 into #s_tmpach_207
 from
-	matlab_example.dbo.visit_occurrence vo1
-	left join matlab_example.dbo.person p1
+	@FullySpecifiedCdmSchema.visit_occurrence vo1
+	left join @FullySpecifiedCdmSchema.person p1
 	on p1.person_id = vo1.person_id
 where p1.person_id is null
 ;
@@ -1099,8 +1099,8 @@ select 209 as analysis_id,
 	COUNT_BIG(vo1.PERSON_ID) as count_value
 into #s_tmpach_209
 from
-	matlab_example.dbo.visit_occurrence vo1
-	left join matlab_example.dbo.care_site cs1
+	@FullySpecifiedCdmSchema.visit_occurrence vo1
+	left join @FullySpecifiedCdmSchema.care_site cs1
 	on vo1.care_site_id = cs1.care_site_id
 where vo1.care_site_id is not null
 	and cs1.care_site_id is null
@@ -1120,9 +1120,9 @@ SELECT
 INTO 
 	#s_tmpach_210
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 LEFT JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -1143,9 +1143,9 @@ WITH rawData AS (
     p1.gender_concept_id as stratum_2,
     floor((year(visit_start_date) - p1.year_of_birth)/10) as stratum_3,
     COUNT_BIG(distinct p1.PERSON_ID) as count_value
-  from matlab_example.dbo.person p1
+  from @FullySpecifiedCdmSchema.person p1
   inner join
-  matlab_example.dbo.visit_occurrence vo1
+  @FullySpecifiedCdmSchema.visit_occurrence vo1
   on p1.person_id = vo1.person_id
   group by
     YEAR(visit_start_date),
@@ -1171,8 +1171,8 @@ FROM rawData;
 with rawData(stratum_id, count_value) as
 (
   select visit_concept_id AS stratum_id, datediff(dd,visit_start_date,visit_end_date) as count_value
-  from matlab_example.dbo.visit_occurrence vo inner join 
-  matlab_example.dbo.observation_period op on vo.person_id = op.person_id
+  from @FullySpecifiedCdmSchema.visit_occurrence vo inner join 
+  @FullySpecifiedCdmSchema.observation_period op on vo.person_id = op.person_id
   -- only include events that occur during observation period
   where vo.visit_start_date >= op.observation_period_start_date and
   isnull(vo.visit_end_date,vo.visit_start_date) <= op.observation_period_end_date
@@ -1239,9 +1239,9 @@ SELECT
 	YEAR(vo.visit_start_date) * 100 + MONTH(vo.visit_start_date) AS stratum_1,
 	COUNT_BIG(vo.person_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -1273,9 +1273,9 @@ SELECT
 	YEAR(vo.visit_start_date) AS stratum_1,
 	COUNT_BIG(DISTINCT vo.person_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -1313,9 +1313,9 @@ SELECT
 INTO 
 	#s_tmpach_225
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -1336,33 +1336,33 @@ select 226 as analysis_id,
 into #s_tmpach_226
 from (
   select 'drug_exposure' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.drug_exposure t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.drug_exposure t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
   union
   select 'condition_occurrence' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.condition_occurrence t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.condition_occurrence t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
   union
   select 'device_exposure' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.device_exposure t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.device_exposure t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
   union
   select 'procedure_occurrence' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.procedure_occurrence t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.procedure_occurrence t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
   union
   select 'measurement' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.measurement t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.measurement t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
   union
   select 'observation' cdm_table, coalesce(visit_concept_id,0) visit_concept_id, count(*) record_count
-  from matlab_example.dbo.observation t
-  left join matlab_example.dbo.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
+  from @FullySpecifiedCdmSchema.observation t
+  left join @FullySpecifiedCdmSchema.visit_occurrence v on t.visit_occurrence_id = v.visit_occurrence_id
   group by visit_concept_id
 ) v
 ;
@@ -1375,7 +1375,7 @@ select 300 as analysis_id,
 cast(null as varchar(255)) as stratum_1, cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct provider_id) as count_value
 into #s_tmpach_300
-from matlab_example.dbo.provider;
+from @FullySpecifiedCdmSchema.provider;
 
 
 -- 301	Number of providers by specialty concept_id
@@ -1386,7 +1386,7 @@ CAST(specialty_concept_id AS VARCHAR(255)) as stratum_1,
 cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 COUNT_BIG(distinct provider_id) as count_value
 into #s_tmpach_301
-from matlab_example.dbo.provider
+from @FullySpecifiedCdmSchema.provider
 group by specialty_CONCEPT_ID;
 
 
@@ -1401,8 +1401,8 @@ select 303 as analysis_id,
        cast(null as varchar(255)) as stratum_5, 
        count_big(*) AS count_value
   into #s_tmpach_303 
-  from matlab_example.dbo.provider p
-  join matlab_example.dbo.visit_occurrence vo
+  from @FullySpecifiedCdmSchema.provider p
+  join @FullySpecifiedCdmSchema.visit_occurrence vo
     on vo.provider_id = p.provider_id
  group by p.specialty_concept_id, visit_concept_id;
  
@@ -1420,7 +1420,7 @@ select 325 as analysis_id,
        cast(null as varchar(255)) as stratum_5, 
        count_big(*) AS count_value
   into #s_tmpach_325 
-  from matlab_example.dbo.provider
+  from @FullySpecifiedCdmSchema.provider
  group by specialty_source_concept_id;
  
  
@@ -1440,9 +1440,9 @@ SELECT
 INTO 
 	#s_tmpach_400
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1467,9 +1467,9 @@ SELECT
 INTO 
 	#s_tmpach_401
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1489,9 +1489,9 @@ SELECT
 	YEAR(co.condition_start_date) * 100 + MONTH(co.condition_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT co.person_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1525,9 +1525,9 @@ SELECT
 	co.person_id,
 	COUNT_BIG(DISTINCT co.condition_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1601,13 +1601,13 @@ SELECT
 	FLOOR((YEAR(co.condition_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.condition_occurrence co 
+	@FullySpecifiedCdmSchema.condition_occurrence co 
 ON 
 	p.person_id = co.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1648,9 +1648,9 @@ SELECT
 INTO 
 	#s_tmpach_405
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1672,16 +1672,16 @@ SELECT
 INTO 
 	#rawData_406
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		co.person_id,
 		co.condition_concept_id,
 		MIN(YEAR(co.condition_start_date)) AS condition_start_year
 	FROM 
-		matlab_example.dbo.condition_occurrence co
+		@FullySpecifiedCdmSchema.condition_occurrence co
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		co.person_id = op.person_id
 	AND 
@@ -1769,9 +1769,9 @@ SELECT
 INTO 
 	#s_tmpach_414
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1796,9 +1796,9 @@ SELECT
 INTO 
 	#s_tmpach_415
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1823,9 +1823,9 @@ SELECT
 INTO 
 	#s_tmpach_416
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1844,9 +1844,9 @@ SELECT
 	YEAR(co.condition_start_date) * 100 + MONTH(co.condition_start_date) AS stratum_1,
 	COUNT_BIG(co.person_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1884,9 +1884,9 @@ SELECT
 INTO 
 	#s_tmpach_425
 FROM 
-	matlab_example.dbo.condition_occurrence co
+	@FullySpecifiedCdmSchema.condition_occurrence co
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	co.person_id = op.person_id
 AND 
@@ -1913,9 +1913,9 @@ SELECT
 INTO 
 	#s_tmpach_500
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	d.person_id = op.person_id
 AND 
@@ -1940,9 +1940,9 @@ SELECT
 INTO 
 	#s_tmpach_501
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	d.person_id = op.person_id
 AND 
@@ -1961,9 +1961,9 @@ SELECT
 	YEAR(d.death_date) * 100 + MONTH(d.death_date) AS stratum_1,
 	COUNT_BIG(DISTINCT d.person_id) AS count_value
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	d.person_id = op.person_id
 AND 
@@ -1997,13 +1997,13 @@ SELECT
 	FLOOR((YEAR(d.death_date) - p.year_of_birth) / 10) AS stratum_3,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.death d 
+	@FullySpecifiedCdmSchema.death d 
 ON 
 	p.person_id = d.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	d.person_id = op.person_id
 AND 
@@ -2043,9 +2043,9 @@ SELECT
 INTO 
 	#s_tmpach_505
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	d.person_id = op.person_id
 AND 
@@ -2066,15 +2066,15 @@ SELECT
 	p.gender_concept_id AS stratum_id,
 	d.death_year - p.year_of_birth AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		d.person_id,
 		MIN(YEAR(d.death_date)) AS death_year
 	FROM 
-		matlab_example.dbo.death d
+		@FullySpecifiedCdmSchema.death d
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		d.person_id = op.person_id
 	AND 
@@ -2169,15 +2169,15 @@ SELECT
 	DATEDIFF(dd, d.death_date, co.max_date) AS count_value,
 	1.0 * (ROW_NUMBER() OVER (ORDER BY DATEDIFF(dd, d.death_date, co.max_date))) / (COUNT_BIG(*) OVER () + 1) AS p1
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN (
 	SELECT 
 		co.person_id,
 		MAX(co.condition_start_date) AS max_date
 	FROM 
-		matlab_example.dbo.condition_occurrence co
+		@FullySpecifiedCdmSchema.condition_occurrence co
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		co.person_id = op.person_id
 	AND 
@@ -2198,15 +2198,15 @@ WITH rawData(count_value) AS (
 SELECT 
 	DATEDIFF(dd, d.death_date, de.max_date) AS count_value
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN (
 	SELECT 
 		de.person_id,
 		MAX(de.drug_exposure_start_date) AS max_date
 	FROM 
-		matlab_example.dbo.drug_exposure de
+		@FullySpecifiedCdmSchema.drug_exposure de
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		de.person_id = op.person_id
 	AND 
@@ -2280,15 +2280,15 @@ WITH rawData(count_value) AS (
 SELECT 
 	DATEDIFF(dd, d.death_date, vo.max_date) AS count_value
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN (
 	SELECT 
 		vo.person_id,
 		MAX(vo.visit_start_date) AS max_date
 	FROM 
-		matlab_example.dbo.visit_occurrence vo
+		@FullySpecifiedCdmSchema.visit_occurrence vo
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		vo.person_id = op.person_id
 	AND 
@@ -2362,15 +2362,15 @@ WITH rawData(count_value) AS (
 SELECT 
 	DATEDIFF(dd, d.death_date, po.max_date) AS count_value
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN (
 	SELECT 
 		po.person_id,
 		MAX(po.procedure_date) AS max_date
 	FROM 
-		matlab_example.dbo.procedure_occurrence po
+		@FullySpecifiedCdmSchema.procedure_occurrence po
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		po.person_id = op.person_id
 	AND 
@@ -2444,15 +2444,15 @@ WITH rawData(count_value) AS (
 SELECT 
 	DATEDIFF(dd, d.death_date, o.max_date) AS count_value
 FROM 
-	matlab_example.dbo.death d
+	@FullySpecifiedCdmSchema.death d
 JOIN (
 	SELECT 
 		o.person_id,
 		MAX(o.observation_date) AS max_date
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		o.person_id = op.person_id
 	AND 
@@ -2529,7 +2529,7 @@ select 525 as analysis_id,
        cast(null as varchar(255)) as stratum_5,
        count_big(*) AS count_value
   into #s_tmpach_525 
-  from matlab_example.dbo.death
+  from @FullySpecifiedCdmSchema.death
  group by cause_source_concept_id;
 
 
@@ -2547,9 +2547,9 @@ SELECT
 INTO 
 	#s_tmpach_600
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2574,9 +2574,9 @@ SELECT
 INTO 
 	#s_tmpach_601
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2596,9 +2596,9 @@ SELECT
 	YEAR(po.procedure_date) * 100 + MONTH(po.procedure_date) AS stratum_2,
 	COUNT_BIG(DISTINCT po.person_id) AS count_value
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2631,9 +2631,9 @@ WITH rawData(count_value) AS
 SELECT 
 	COUNT_BIG(DISTINCT po.procedure_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2707,13 +2707,13 @@ SELECT
 	FLOOR((YEAR(po.procedure_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.procedure_occurrence po 
+	@FullySpecifiedCdmSchema.procedure_occurrence po 
 ON 
 	p.person_id = po.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2754,9 +2754,9 @@ SELECT
 INTO 
 	#s_tmpach_605
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2778,16 +2778,16 @@ SELECT
 INTO 
 	#rawData_606
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		po.person_id,
 		po.procedure_concept_id,
 		MIN(YEAR(po.procedure_date)) AS procedure_start_year
 	FROM 
-		matlab_example.dbo.procedure_occurrence po
+		@FullySpecifiedCdmSchema.procedure_occurrence po
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		po.person_id = op.person_id
 	AND 
@@ -2869,9 +2869,9 @@ SELECT
 	YEAR(po.procedure_date) * 100 + MONTH(po.procedure_date) AS stratum_1,
 	COUNT_BIG(po.person_id) AS count_value
 FROM
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2909,9 +2909,9 @@ SELECT
 INTO 
 	#s_tmpach_625
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2935,9 +2935,9 @@ SELECT
 INTO 
 	#s_tmpach_630
 FROM 
-	matlab_example.dbo.procedure_occurrence po
+	@FullySpecifiedCdmSchema.procedure_occurrence po
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	po.person_id = op.person_id
 AND 
@@ -2966,9 +2966,9 @@ FROM (
 		COUNT(po.procedure_occurrence_id) AS prc_cnt,
 		po.person_id
 	FROM 
-		matlab_example.dbo.procedure_occurrence po
+		@FullySpecifiedCdmSchema.procedure_occurrence po
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		po.person_id = op.person_id
 	AND 
@@ -2998,9 +2998,9 @@ SELECT
 INTO 
 	#s_tmpach_700
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3025,9 +3025,9 @@ SELECT
 INTO 
 	#s_tmpach_701
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3047,9 +3047,9 @@ SELECT
 	YEAR(de.drug_exposure_start_date) * 100 + MONTH(de.drug_exposure_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3082,9 +3082,9 @@ WITH rawData(count_value) AS
 SELECT 
 	COUNT_BIG(DISTINCT de.drug_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3158,13 +3158,13 @@ SELECT
 	FLOOR((YEAR(de.drug_exposure_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.drug_exposure de 
+	@FullySpecifiedCdmSchema.drug_exposure de 
 ON 
 	p.person_id = de.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3205,9 +3205,9 @@ SELECT
 INTO 
 	#s_tmpach_705
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3229,16 +3229,16 @@ SELECT
 INTO 
 	#rawData_706
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		de.person_id,
 		de.drug_concept_id,
 		MIN(YEAR(de.drug_exposure_start_date)) AS drug_start_year
 	FROM 
-		matlab_example.dbo.drug_exposure de
+		@FullySpecifiedCdmSchema.drug_exposure de
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		de.person_id = op.person_id
 	AND 
@@ -3322,9 +3322,9 @@ SELECT
 	de.drug_concept_id AS stratum_id,
 	de.days_supply AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3396,9 +3396,9 @@ SELECT
 	de.drug_concept_id AS stratum_id,
 	de.refills AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3470,9 +3470,9 @@ SELECT
 	de.drug_concept_id AS stratum_id,
 	CAST(de.quantity AS FLOAT) AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3544,9 +3544,9 @@ SELECT
 	YEAR(de.drug_exposure_start_date) * 100 + MONTH(de.drug_exposure_start_date) AS stratum_1,
 	COUNT_BIG(de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3584,9 +3584,9 @@ SELECT
 INTO 
 	#s_tmpach_725
 FROM 
-	matlab_example.dbo.drug_exposure de
+	@FullySpecifiedCdmSchema.drug_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -3616,9 +3616,9 @@ FROM (
 		COUNT(de.drug_exposure_id) AS drg_cnt,
 		de.person_id
 	FROM 
-		matlab_example.dbo.drug_exposure de
+		@FullySpecifiedCdmSchema.drug_exposure de
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		de.person_id = op.person_id
 	AND 
@@ -3649,9 +3649,9 @@ SELECT
 INTO 
 	#s_tmpach_800
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3676,9 +3676,9 @@ SELECT
 INTO 
 	#s_tmpach_801
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3698,9 +3698,9 @@ SELECT
 	YEAR(o.observation_date) * 100 + MONTH(o.observation_date) AS stratum_2,
 	COUNT_BIG(DISTINCT o.person_id) AS count_value
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3733,9 +3733,9 @@ WITH rawData(count_value) AS
 SELECT 
 	COUNT_BIG(DISTINCT o.observation_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3810,13 +3810,13 @@ SELECT
 	FLOOR((YEAR(o.observation_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.observation o 
+	@FullySpecifiedCdmSchema.observation o 
 ON 
 	p.person_id = o.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3857,9 +3857,9 @@ SELECT
 INTO 
 	#s_tmpach_805
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -3881,16 +3881,16 @@ SELECT
 INTO 
 	#rawData_806
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		o.person_id,
 		o.observation_concept_id,
 		MIN(YEAR(o.observation_date)) AS observation_start_year
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		o.person_id = op.person_id
 	AND 
@@ -3980,9 +3980,9 @@ SELECT
 INTO 
 	#s_tmpach_807
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4002,7 +4002,7 @@ select 814 as analysis_id,
 	COUNT_BIG(o1.PERSON_ID) as count_value
 into #s_tmpach_814
 from
-	matlab_example.dbo.observation o1
+	@FullySpecifiedCdmSchema.observation o1
 where o1.value_as_number is null
 	and o1.value_as_string is null
 	and o1.value_as_concept_id is null
@@ -4027,9 +4027,9 @@ FROM (
 		o.unit_concept_id,
 		CAST(o.value_as_number AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		o.person_id = op.person_id
 	AND 
@@ -4060,9 +4060,9 @@ FROM (
 		o.unit_concept_id,
 		CAST(o.value_as_number AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		o.person_id = op.person_id
 	AND 
@@ -4132,9 +4132,9 @@ SELECT
 	YEAR(o.observation_date) * 100 + MONTH(o.observation_date) AS stratum_1,
 	COUNT_BIG(o.person_id) AS count_value
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4173,9 +4173,9 @@ SELECT
 INTO 
 	#s_tmpach_822
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4202,9 +4202,9 @@ SELECT
 INTO 
 	#s_tmpach_823
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4230,9 +4230,9 @@ SELECT
 INTO 
 	#s_tmpach_825
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4257,9 +4257,9 @@ SELECT
 INTO 
 	#s_tmpach_826
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4284,9 +4284,9 @@ SELECT
 INTO 
 	#s_tmpach_827
 FROM 
-	matlab_example.dbo.observation o
+	@FullySpecifiedCdmSchema.observation o
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	o.person_id = op.person_id
 AND 
@@ -4317,9 +4317,9 @@ FROM (
 		COUNT(o.observation_id) AS obs_cnt,
 		o.person_id
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		o.person_id = op.person_id
 	AND 
@@ -4350,9 +4350,9 @@ SELECT
 INTO 
 	#s_tmpach_900
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4377,9 +4377,9 @@ SELECT
 INTO 
 	#s_tmpach_901
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4399,9 +4399,9 @@ SELECT
 	YEAR(de.drug_era_start_date) * 100 + MONTH(de.drug_era_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4433,9 +4433,9 @@ WITH rawData(count_value) AS (
 SELECT
 	COUNT_BIG(DISTINCT de.drug_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4509,13 +4509,13 @@ SELECT
 	FLOOR((YEAR(de.drug_era_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.drug_era de 
+	@FullySpecifiedCdmSchema.drug_era de 
 ON 
 	p.person_id = de.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4552,16 +4552,16 @@ SELECT
 INTO 
 	#rawData_906
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		de.person_id,
 		de.drug_concept_id,
 		MIN(YEAR(de.drug_era_start_date)) AS drug_start_year
 	FROM 
-		matlab_example.dbo.drug_era de
+		@FullySpecifiedCdmSchema.drug_era de
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		de.person_id = op.person_id
 	AND 
@@ -4646,9 +4646,9 @@ SELECT
 	de.drug_concept_id AS stratum1_id,
 	DATEDIFF(dd, de.drug_era_start_date, de.drug_era_end_date) AS count_value
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4721,9 +4721,9 @@ SELECT
 	YEAR(de.drug_era_start_date) * 100 + MONTH(de.drug_era_start_date) AS stratum_1,
 	COUNT_BIG(de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.drug_era de
+	@FullySpecifiedCdmSchema.drug_era de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -4761,9 +4761,9 @@ SELECT
 INTO 
 	#s_tmpach_1000
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -4788,9 +4788,9 @@ SELECT
 INTO 
 	#s_tmpach_1001
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -4810,9 +4810,9 @@ SELECT
 	YEAR(ce.condition_era_start_date) * 100 + MONTH(ce.condition_era_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT ce.person_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -4845,9 +4845,9 @@ WITH rawData(count_value) AS
 SELECT 
 	COUNT_BIG(DISTINCT ce.condition_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -4921,13 +4921,13 @@ SELECT
 	FLOOR((YEAR(ce.condition_era_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.condition_era ce 
+	@FullySpecifiedCdmSchema.condition_era ce 
 ON 
 	p.person_id = ce.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -4964,16 +4964,16 @@ SELECT
 INTO 
 	#rawData_1006
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		ce.person_id,
 		ce.condition_concept_id,
 		MIN(YEAR(ce.condition_era_start_date)) AS condition_start_year
 	FROM 
-		matlab_example.dbo.condition_era ce
+		@FullySpecifiedCdmSchema.condition_era ce
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		ce.person_id = op.person_id
 	AND 
@@ -5057,9 +5057,9 @@ SELECT
 	ce.condition_concept_id AS stratum1_id,
 	DATEDIFF(dd, ce.condition_era_start_date, ce.condition_era_end_date) AS count_value
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -5132,9 +5132,9 @@ SELECT
 	YEAR(ce.condition_era_start_date) * 100 + MONTH(ce.condition_era_start_date) AS stratum_1,
 	COUNT_BIG(ce.person_id) AS count_value
 FROM 
-	matlab_example.dbo.condition_era ce
+	@FullySpecifiedCdmSchema.condition_era ce
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	ce.person_id = op.person_id
 AND 
@@ -5165,8 +5165,8 @@ WITH rawData AS (
   select
     left(l1.zip,3) as stratum_1,
     COUNT_BIG(distinct person_id) as count_value
-  from matlab_example.dbo.person p1
-    inner join matlab_example.dbo.location l1
+  from @FullySpecifiedCdmSchema.person p1
+    inner join @FullySpecifiedCdmSchema.location l1
     on p1.location_id = l1.location_id
   where p1.location_id is not null
     and l1.zip is not null
@@ -5192,8 +5192,8 @@ select 1101 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(distinct person_id) as count_value
 into #s_tmpach_1101
-from matlab_example.dbo.person p1
-	inner join matlab_example.dbo.location l1
+from @FullySpecifiedCdmSchema.person p1
+	inner join @FullySpecifiedCdmSchema.location l1
 	on p1.location_id = l1.location_id
 where p1.location_id is not null
 	and l1.state is not null
@@ -5207,8 +5207,8 @@ WITH rawData AS (
   select
     left(l1.zip,3) as stratum_1,
     COUNT_BIG(distinct care_site_id) as count_value
-  from matlab_example.dbo.care_site cs1
-    inner join matlab_example.dbo.location l1
+  from @FullySpecifiedCdmSchema.care_site cs1
+    inner join @FullySpecifiedCdmSchema.location l1
     on cs1.location_id = l1.location_id
   where cs1.location_id is not null
     and l1.zip is not null
@@ -5234,8 +5234,8 @@ select 1103 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(distinct care_site_id) as count_value
 into #s_tmpach_1103
-from matlab_example.dbo.care_site cs1
-	inner join matlab_example.dbo.location l1
+from @FullySpecifiedCdmSchema.care_site cs1
+	inner join @FullySpecifiedCdmSchema.location l1
 	on cs1.location_id = l1.location_id
 where cs1.location_id is not null
 	and l1.state is not null
@@ -5250,8 +5250,8 @@ select 1200 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(person_id) as count_value
 into #s_tmpach_1200
-from matlab_example.dbo.person p1
-	inner join matlab_example.dbo.care_site cs1
+from @FullySpecifiedCdmSchema.person p1
+	inner join @FullySpecifiedCdmSchema.care_site cs1
 	on p1.care_site_id = cs1.care_site_id
 where p1.care_site_id is not null
 	and cs1.place_of_service_concept_id is not null
@@ -5266,8 +5266,8 @@ select 1201 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(visit_occurrence_id) as count_value
 into #s_tmpach_1201
-from matlab_example.dbo.visit_occurrence vo1
-	inner join matlab_example.dbo.care_site cs1
+from @FullySpecifiedCdmSchema.visit_occurrence vo1
+	inner join @FullySpecifiedCdmSchema.care_site cs1
 	on vo1.care_site_id = cs1.care_site_id
 where vo1.care_site_id is not null
 	and cs1.place_of_service_concept_id is not null
@@ -5282,7 +5282,7 @@ select 1202 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(care_site_id) as count_value
 into #s_tmpach_1202
-from matlab_example.dbo.care_site cs1
+from @FullySpecifiedCdmSchema.care_site cs1
 where cs1.place_of_service_concept_id is not null
 group by cs1.place_of_service_concept_id;
 
@@ -5301,9 +5301,9 @@ SELECT
 INTO 
 	#s_tmpach_1203
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -5332,9 +5332,9 @@ SELECT
 INTO 
 	#s_tmpach_1300
 FROM
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-    matlab_example.dbo.observation_period op 
+    @FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5361,9 +5361,9 @@ SELECT
 INTO 
 	#s_tmpach_1301
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5383,9 +5383,9 @@ SELECT
 	YEAR(vd.visit_detail_start_date)*100 + MONTH(vd.visit_detail_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT vd.person_id) AS count_value
 FROM
-	matlab_example.dbo.visit_detail vd 
+	@FullySpecifiedCdmSchema.visit_detail vd 
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5419,9 +5419,9 @@ SELECT
 	vd.person_id,
 	COUNT_BIG(DISTINCT vd.visit_detail_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5533,13 +5533,13 @@ SELECT
 	FLOOR((YEAR(vd.visit_detail_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.visit_detail vd 
+	@FullySpecifiedCdmSchema.visit_detail vd 
 ON 
 	p.person_id = vd.person_id 
 JOIN
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5576,16 +5576,16 @@ SELECT
 	p.gender_concept_id AS stratum2_id,
 	vd.visit_detail_start_year - p.year_of_birth AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		vd.person_id,
 		vd.visit_detail_concept_id,
 		MIN(YEAR(vd.visit_detail_start_date)) AS visit_detail_start_year
 	FROM 
-		matlab_example.dbo.visit_detail vd
+		@FullySpecifiedCdmSchema.visit_detail vd
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		vd.person_id = op.person_id
 	AND	
@@ -5719,13 +5719,13 @@ SELECT
 	FLOOR((YEAR(vd.visit_detail_start_date) - p.year_of_birth) / 10) AS stratum_3,
 	COUNT_BIG(DISTINCT vd.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.visit_detail vd 
+	@FullySpecifiedCdmSchema.visit_detail vd 
 ON 
 	vd.person_id = p.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5761,9 +5761,9 @@ SELECT
 	vd.visit_detail_concept_id AS stratum_id,
 	DATEDIFF(dd, vd.visit_detail_start_date, vd.visit_detail_END_date) AS count_value
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5882,9 +5882,9 @@ SELECT
 	YEAR(vd.visit_detail_start_date) * 100 + MONTH(vd.visit_detail_start_date) AS stratum_1,
 	COUNT_BIG(vd.person_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5916,9 +5916,9 @@ SELECT
 	YEAR(vd.visit_detail_start_date) AS stratum_1,
 	COUNT_BIG(DISTINCT vd.person_id) AS count_value
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5956,9 +5956,9 @@ SELECT
 INTO 
 	#s_tmpach_1325
 FROM 
-	matlab_example.dbo.visit_detail vd
+	@FullySpecifiedCdmSchema.visit_detail vd
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vd.person_id = op.person_id
 AND	
@@ -5986,9 +5986,9 @@ FROM (
 		COALESCE(vd.visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.drug_exposure de
+		@FullySpecifiedCdmSchema.drug_exposure de
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		de.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6001,9 +6001,9 @@ FROM (
 		COALESCE(vd.visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.condition_occurrence co
+		@FullySpecifiedCdmSchema.condition_occurrence co
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		co.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6016,9 +6016,9 @@ FROM (
 		COALESCE(visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.device_exposure de
+		@FullySpecifiedCdmSchema.device_exposure de
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		de.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6031,9 +6031,9 @@ FROM (
 		COALESCE(vd.visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.procedure_occurrence po
+		@FullySpecifiedCdmSchema.procedure_occurrence po
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		po.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6046,9 +6046,9 @@ FROM (
 		COALESCE(vd.visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		m.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6061,9 +6061,9 @@ FROM (
 		COALESCE(vd.visit_detail_concept_id, 0) visit_detail_concept_id,
 		COUNT(*) record_count
 	FROM 
-		matlab_example.dbo.observation o
+		@FullySpecifiedCdmSchema.observation o
 	LEFT JOIN 
-		matlab_example.dbo.visit_detail vd 
+		@FullySpecifiedCdmSchema.visit_detail vd 
 	ON 
 		o.visit_occurrence_id = vd.visit_occurrence_id
 	GROUP BY 
@@ -6079,13 +6079,13 @@ with rawData(stratum1_id, count_value) as
 (
   select p1.gender_concept_id as stratum1_id,
     DATEDIFF(dd,ppp1.payer_plan_period_start_date, ppp1.payer_plan_period_end_date) as count_value
-  from matlab_example.dbo.person p1
+  from @FullySpecifiedCdmSchema.person p1
 	inner join 
 	(select person_id, 
 		payer_plan_period_START_DATE, 
 		payer_plan_period_END_DATE, 
 		ROW_NUMBER() over (PARTITION by person_id order by payer_plan_period_start_date asc) as rn1
-		 from matlab_example.dbo.payer_plan_period
+		 from @FullySpecifiedCdmSchema.payer_plan_period
 	) ppp1
 	on p1.PERSON_ID = ppp1.PERSON_ID
 	where ppp1.rn1 = 1
@@ -6154,13 +6154,13 @@ with rawData(stratum_id, count_value) as
 (
   select floor((year(ppp1.payer_plan_period_START_DATE) - p1.YEAR_OF_BIRTH)/10) as stratum_id,
     DATEDIFF(dd,ppp1.payer_plan_period_start_date, ppp1.payer_plan_period_end_date) as count_value
-  from matlab_example.dbo.person p1
+  from @FullySpecifiedCdmSchema.person p1
 	inner join 
 	(select person_id, 
 		payer_plan_period_START_DATE, 
 		payer_plan_period_END_DATE, 
 		ROW_NUMBER() over (PARTITION by person_id order by payer_plan_period_start_date asc) as rn1
-		 from matlab_example.dbo.payer_plan_period
+		 from @FullySpecifiedCdmSchema.payer_plan_period
 	) ppp1
 	on p1.PERSON_ID = ppp1.PERSON_ID
 	where ppp1.rn1 = 1
@@ -6227,13 +6227,13 @@ select 1408 as analysis_id,
 	cast(null as varchar(255)) as stratum_2, cast(null as varchar(255)) as stratum_3, cast(null as varchar(255)) as stratum_4, cast(null as varchar(255)) as stratum_5,
 	COUNT_BIG(distinct p1.person_id) as count_value
 into #s_tmpach_1408
-from matlab_example.dbo.person p1
+from @FullySpecifiedCdmSchema.person p1
 	inner join 
 	(select person_id, 
 		payer_plan_period_START_DATE, 
 		payer_plan_period_END_DATE, 
 		ROW_NUMBER() over (PARTITION by person_id order by payer_plan_period_start_date asc) as rn1
-		 from matlab_example.dbo.payer_plan_period
+		 from @FullySpecifiedCdmSchema.payer_plan_period
 	) ppp1
 	on p1.PERSON_ID = ppp1.PERSON_ID
 	where ppp1.rn1 = 1
@@ -6251,7 +6251,7 @@ select distinct
 INTO
   #temp_dates_1409
 from 
-  matlab_example.dbo.payer_plan_period
+  @FullySpecifiedCdmSchema.payer_plan_period
 ;
 
 --HINT DISTRIBUTE_ON_KEY(stratum_1)
@@ -6261,9 +6261,9 @@ select 1409 as analysis_id,
 	COUNT_BIG(distinct p1.PERSON_ID) as count_value
 into #s_tmpach_1409
 from
-	matlab_example.dbo.person p1
+	@FullySpecifiedCdmSchema.person p1
 	inner join 
-    matlab_example.dbo.payer_plan_period ppp1
+    @FullySpecifiedCdmSchema.payer_plan_period ppp1
 	on p1.person_id = ppp1.person_id
 	,
 	#temp_dates_1409 t1 
@@ -6287,7 +6287,7 @@ SELECT DISTINCT
 INTO
   #temp_dates_1410
 FROM 
-  matlab_example.dbo.payer_plan_period
+  @FullySpecifiedCdmSchema.payer_plan_period
 ;
 
 --HINT DISTRIBUTE_ON_KEY(stratum_1)
@@ -6298,9 +6298,9 @@ select
 	COUNT_BIG(distinct p1.PERSON_ID) as count_value
 into #s_tmpach_1410
 from
-	matlab_example.dbo.person p1
+	@FullySpecifiedCdmSchema.person p1
 	inner join 
-  matlab_example.dbo.payer_plan_period ppp1
+  @FullySpecifiedCdmSchema.payer_plan_period ppp1
 	on p1.person_id = ppp1.person_id
 	,
 	#temp_dates_1410
@@ -6322,8 +6322,8 @@ select 1411 as analysis_id,
 	COUNT_BIG(distinct p1.PERSON_ID) as count_value
 into #s_tmpach_1411
 from
-	matlab_example.dbo.person p1
-	inner join matlab_example.dbo.payer_plan_period ppp1
+	@FullySpecifiedCdmSchema.person p1
+	inner join @FullySpecifiedCdmSchema.payer_plan_period ppp1
 	on p1.person_id = ppp1.person_id
 group by DATEFROMPARTS(YEAR(payer_plan_period_start_date), MONTH(payer_plan_period_start_date), 1)
 ;
@@ -6338,8 +6338,8 @@ select 1412 as analysis_id,
 	COUNT_BIG(distinct p1.PERSON_ID) as count_value
 into #s_tmpach_1412
 from
-	matlab_example.dbo.person p1
-	inner join matlab_example.dbo.payer_plan_period ppp1
+	@FullySpecifiedCdmSchema.person p1
+	inner join @FullySpecifiedCdmSchema.payer_plan_period ppp1
 	on p1.person_id = ppp1.person_id
 group by DATEFROMPARTS(YEAR(payer_plan_period_start_date), MONTH(payer_plan_period_start_date), 1)
 ;
@@ -6354,8 +6354,8 @@ select 1413 as analysis_id,
 	COUNT_BIG(distinct p1.PERSON_ID) as count_value
 into #s_tmpach_1413
 from
-	matlab_example.dbo.person p1
-	inner join (select person_id, COUNT_BIG(payer_plan_period_start_date) as num_periods from matlab_example.dbo.payer_plan_period group by PERSON_ID) ppp1
+	@FullySpecifiedCdmSchema.person p1
+	inner join (select person_id, COUNT_BIG(payer_plan_period_start_date) as num_periods from @FullySpecifiedCdmSchema.payer_plan_period group by PERSON_ID) ppp1
 	on p1.person_id = ppp1.person_id
 group by ppp1.num_periods
 ;
@@ -6372,7 +6372,7 @@ select 1425 as analysis_id,
        cast(null as varchar(255)) as stratum_5,
        count_big(*) AS count_value
   into #s_tmpach_1425 
-  from matlab_example.dbo.payer_plan_period
+  from @FullySpecifiedCdmSchema.payer_plan_period
  group by payer_source_concept_id;
 
 
@@ -6391,9 +6391,9 @@ SELECT
 INTO 
 	#s_tmpach_1800
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6418,9 +6418,9 @@ SELECT
 INTO 
 	#s_tmpach_1801
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6440,9 +6440,9 @@ SELECT
 	YEAR(m.measurement_date) * 100 + MONTH(m.measurement_date) AS stratum_2,
 	COUNT_BIG(DISTINCT m.person_id) AS count_value
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6475,9 +6475,9 @@ with rawData(count_value) as
 SELECT 
 	COUNT_BIG(DISTINCT m.measurement_concept_id) AS count_value
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6552,13 +6552,13 @@ SELECT
 	FLOOR((YEAR(m.measurement_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.measurement m 
+	@FullySpecifiedCdmSchema.measurement m 
 ON 
 	p.person_id = m.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6599,9 +6599,9 @@ SELECT
 INTO 
 	#s_tmpach_1805
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -6623,16 +6623,16 @@ SELECT
 INTO 
 	#rawData_1806
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		m.person_id,
 		m.measurement_concept_id,
 		MIN(YEAR(m.measurement_date)) AS measurement_start_year
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -6721,9 +6721,9 @@ SELECT
 INTO 
 	#s_tmpach_1807
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6749,9 +6749,9 @@ SELECT
 INTO 
 	#s_tmpach_1811
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6779,9 +6779,9 @@ SELECT
 INTO 
 	#s_tmpach_1814
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -6811,9 +6811,9 @@ FROM (
 		m.unit_concept_id,
 		CAST(m.value_as_number AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -6868,9 +6868,9 @@ join
 			m.unit_concept_id,
 			CAST(m.value_as_number AS FLOAT) AS count_value
 		FROM 
-			matlab_example.dbo.measurement m
+			@FullySpecifiedCdmSchema.measurement m
 		JOIN 
-			matlab_example.dbo.observation_period op 
+			@FullySpecifiedCdmSchema.observation_period op 
 		ON 
 			m.person_id = op.person_id
 		AND 
@@ -6924,9 +6924,9 @@ FROM (
 		m.unit_concept_id,
 		CAST(m.range_low AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -6962,9 +6962,9 @@ FROM (
 		m.unit_concept_id,
 		CAST(m.range_low AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
   	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -7051,9 +7051,9 @@ FROM (
 		unit_concept_id,
 		CAST(range_high AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -7089,9 +7089,9 @@ FROM (
 		m.unit_concept_id,
 		CAST(m.range_high AS FLOAT) AS count_value
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -7178,9 +7178,9 @@ SELECT
 INTO 
 	#rawData_1818
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7233,9 +7233,9 @@ SELECT
 INTO 
 	#s_tmpach_1819
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7259,9 +7259,9 @@ SELECT
 	YEAR(m.measurement_date) * 100 + MONTH(m.measurement_date) AS stratum_1,
 	COUNT_BIG(m.person_id) AS count_value
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7293,7 +7293,7 @@ select 1821 as analysis_id,
 	COUNT_BIG(m.PERSON_ID) as count_value
 into #s_tmpach_1821
 from
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 where m.value_as_number is null
 ;
 
@@ -7313,9 +7313,9 @@ SELECT
 INTO 
 	#s_tmpach_1822
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7342,9 +7342,9 @@ SELECT
 INTO 
 	#s_tmpach_1823
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7370,9 +7370,9 @@ SELECT
 INTO 
 	#s_tmpach_1825
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7397,9 +7397,9 @@ SELECT
 INTO 
 	#s_tmpach_1826
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7425,9 +7425,9 @@ SELECT
 INTO 
 	#s_tmpach_1827
 FROM 
-	matlab_example.dbo.measurement m
+	@FullySpecifiedCdmSchema.measurement m
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	m.person_id = op.person_id
 AND 
@@ -7457,9 +7457,9 @@ FROM (
 		COUNT(m.measurement_id) AS meas_cnt,
 		m.person_id
 	FROM 
-		matlab_example.dbo.measurement m
+		@FullySpecifiedCdmSchema.measurement m
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		m.person_id = op.person_id
 	AND 
@@ -7487,75 +7487,75 @@ select 1900 as analysis_id,
 cnt as count_value
  into #s_tmpach_1900
  from (
-  select 'measurement' as table_name, 'measurement_source_value' as column_name, measurement_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.measurement where measurement_concept_id = 0 group by measurement_source_value 
+  select 'measurement' as table_name, 'measurement_source_value' as column_name, measurement_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.measurement where measurement_concept_id = 0 group by measurement_source_value 
   union
-  select 'measurement' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.measurement where unit_concept_id = 0 group by unit_source_value 
+  select 'measurement' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.measurement where unit_concept_id = 0 group by unit_source_value 
   union
-  select 'procedure_occurrence' as table_name,'procedure_source_value' as column_name, procedure_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.procedure_occurrence where procedure_concept_id = 0 group by procedure_source_value 
+  select 'procedure_occurrence' as table_name,'procedure_source_value' as column_name, procedure_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.procedure_occurrence where procedure_concept_id = 0 group by procedure_source_value 
   union
-  select 'procedure_occurrence' as table_name,'modifier_source_value' as column_name, modifier_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.procedure_occurrence where modifier_concept_id = 0 group by modifier_source_value 
+  select 'procedure_occurrence' as table_name,'modifier_source_value' as column_name, modifier_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.procedure_occurrence where modifier_concept_id = 0 group by modifier_source_value 
   union
-  select 'drug_exposure' as table_name, 'drug_source_value' as column_name, drug_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.drug_exposure where drug_concept_id = 0 group by drug_source_value 
+  select 'drug_exposure' as table_name, 'drug_source_value' as column_name, drug_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.drug_exposure where drug_concept_id = 0 group by drug_source_value 
   union
-  select 'drug_exposure' as table_name, 'route_source_value' as column_name, route_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.drug_exposure where route_concept_id = 0 group by route_source_value 
+  select 'drug_exposure' as table_name, 'route_source_value' as column_name, route_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.drug_exposure where route_concept_id = 0 group by route_source_value 
   union
-  select 'condition_occurrence' as table_name, 'condition_source_value' as column_name, condition_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.condition_occurrence where condition_concept_id = 0 group by condition_source_value 
+  select 'condition_occurrence' as table_name, 'condition_source_value' as column_name, condition_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.condition_occurrence where condition_concept_id = 0 group by condition_source_value 
   union
-  select 'condition_occurrence' as table_name, 'condition_status_source_value' as column_name, condition_status_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.condition_occurrence where condition_status_concept_id = 0 group by condition_status_source_value 
+  select 'condition_occurrence' as table_name, 'condition_status_source_value' as column_name, condition_status_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.condition_occurrence where condition_status_concept_id = 0 group by condition_status_source_value 
   union
-  select 'observation' as table_name, 'observation_source_value' as column_name, observation_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.observation where observation_concept_id = 0 group by observation_source_value                  
+  select 'observation' as table_name, 'observation_source_value' as column_name, observation_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.observation where observation_concept_id = 0 group by observation_source_value                  
   union
-  select 'observation' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.observation where unit_concept_id = 0 group by unit_source_value                  
+  select 'observation' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.observation where unit_concept_id = 0 group by unit_source_value                  
   union
-  select 'observation' as table_name, 'qualifier_source_value' as column_name, qualifier_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.observation where qualifier_concept_id = 0 group by qualifier_source_value
+  select 'observation' as table_name, 'qualifier_source_value' as column_name, qualifier_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.observation where qualifier_concept_id = 0 group by qualifier_source_value
   union
-  select 'payer_plan_period' as table_name, 'payer_source_value' as column_name, payer_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.payer_plan_period where payer_concept_id = 0 group by payer_source_value                    
+  select 'payer_plan_period' as table_name, 'payer_source_value' as column_name, payer_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.payer_plan_period where payer_concept_id = 0 group by payer_source_value                    
   union
-  select 'payer_plan_period' as table_name, 'plan_source_value' as column_name, plan_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.payer_plan_period where plan_concept_id = 0 group by plan_source_value                    
+  select 'payer_plan_period' as table_name, 'plan_source_value' as column_name, plan_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.payer_plan_period where plan_concept_id = 0 group by plan_source_value                    
   union
-  select 'payer_plan_period' as table_name, 'sponsor_source_value' as column_name, sponsor_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.payer_plan_period where sponsor_concept_id = 0 group by sponsor_source_value                    
+  select 'payer_plan_period' as table_name, 'sponsor_source_value' as column_name, sponsor_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.payer_plan_period where sponsor_concept_id = 0 group by sponsor_source_value                    
   union
-  select 'payer_plan_period' as table_name, 'stop_reason_source_value' as column_name, stop_reason_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.payer_plan_period where stop_reason_concept_id = 0 group by stop_reason_source_value                    
+  select 'payer_plan_period' as table_name, 'stop_reason_source_value' as column_name, stop_reason_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.payer_plan_period where stop_reason_concept_id = 0 group by stop_reason_source_value                    
   union
-  select 'provider' as table_name, 'specialty_source_value' as column_name, specialty_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.provider where specialty_concept_id = 0 group by specialty_source_value
+  select 'provider' as table_name, 'specialty_source_value' as column_name, specialty_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.provider where specialty_concept_id = 0 group by specialty_source_value
   union  
-  select 'provider' as table_name, 'gender_source_value' as column_name, gender_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.provider where gender_concept_id = 0 group by gender_source_value
+  select 'provider' as table_name, 'gender_source_value' as column_name, gender_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.provider where gender_concept_id = 0 group by gender_source_value
   union  
-  select 'person' as table_name, 'gender_source_value' as column_name, gender_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.person where gender_concept_id = 0 group by gender_source_value                    
+  select 'person' as table_name, 'gender_source_value' as column_name, gender_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.person where gender_concept_id = 0 group by gender_source_value                    
   union
-  select 'person' as table_name, 'race_source_value' as column_name, race_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.person where race_concept_id = 0 group by race_source_value                    
+  select 'person' as table_name, 'race_source_value' as column_name, race_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.person where race_concept_id = 0 group by race_source_value                    
   union
-  select 'person' as table_name, 'ethnicity_source_value' as column_name, ethnicity_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.person where ethnicity_concept_id = 0 group by ethnicity_source_value                    
+  select 'person' as table_name, 'ethnicity_source_value' as column_name, ethnicity_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.person where ethnicity_concept_id = 0 group by ethnicity_source_value                    
   union
-  select 'specimen' as table_name, 'specimen_source_value' as column_name, specimen_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.specimen where specimen_concept_id = 0 group by specimen_source_value                    
+  select 'specimen' as table_name, 'specimen_source_value' as column_name, specimen_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.specimen where specimen_concept_id = 0 group by specimen_source_value                    
   union
-  select 'specimen' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.specimen where unit_concept_id = 0 group by unit_source_value                    
+  select 'specimen' as table_name, 'unit_source_value' as column_name, unit_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.specimen where unit_concept_id = 0 group by unit_source_value                    
   union
-  select 'specimen' as table_name, 'anatomic_site_source_value' as column_name, anatomic_site_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.specimen where anatomic_site_concept_id = 0 group by anatomic_site_source_value                    
+  select 'specimen' as table_name, 'anatomic_site_source_value' as column_name, anatomic_site_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.specimen where anatomic_site_concept_id = 0 group by anatomic_site_source_value                    
   union
-  select 'specimen' as table_name, 'disease_status_source_value' as column_name, disease_status_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.specimen where disease_status_concept_id = 0 group by disease_status_source_value                    
+  select 'specimen' as table_name, 'disease_status_source_value' as column_name, disease_status_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.specimen where disease_status_concept_id = 0 group by disease_status_source_value                    
   
   union
-  select 'visit_detail' as table_name, 'visit_detail_source_value' as column_name, visit_detail_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_detail where visit_detail_concept_id = 0 group by visit_detail_source_value
+  select 'visit_detail' as table_name, 'visit_detail_source_value' as column_name, visit_detail_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_detail where visit_detail_concept_id = 0 group by visit_detail_source_value
   union
   
-  select 'visit_detail' as table_name, 'admitting_source_value' as column_name, admitting_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_detail where admitting_source_concept_id = 0 group by admitting_source_value
+  select 'visit_detail' as table_name, 'admitting_source_value' as column_name, admitting_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_detail where admitting_source_concept_id = 0 group by admitting_source_value
   union
-  select 'visit_detail' as table_name, 'discharge_to_source_value' as column_name, discharge_to_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_detail where discharge_to_concept_id = 0 group by discharge_to_source_value
+  select 'visit_detail' as table_name, 'discharge_to_source_value' as column_name, discharge_to_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_detail where discharge_to_concept_id = 0 group by discharge_to_source_value
 	
   
   union
-  select 'visit_occurrence' as table_name, 'visit_source_value' as column_name, visit_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_occurrence where visit_concept_id = 0 group by visit_source_value
+  select 'visit_occurrence' as table_name, 'visit_source_value' as column_name, visit_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_occurrence where visit_concept_id = 0 group by visit_source_value
   union
   
-	select 'visit_occurrence' as table_name, 'admitting_source_value' as column_name, admitting_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_occurrence where admitting_source_concept_id = 0 group by admitting_source_value
+	select 'visit_occurrence' as table_name, 'admitting_source_value' as column_name, admitting_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_occurrence where admitting_source_concept_id = 0 group by admitting_source_value
   union
-  select 'visit_occurrence' as table_name, 'discharge_to_source_value' as column_name, discharge_to_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.visit_occurrence where discharge_to_concept_id = 0 group by discharge_to_source_value
+  select 'visit_occurrence' as table_name, 'discharge_to_source_value' as column_name, discharge_to_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.visit_occurrence where discharge_to_concept_id = 0 group by discharge_to_source_value
 			
   union
-  select 'device_exposure' as table_name, 'device_source_value' as column_name, device_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.device_exposure where device_concept_id = 0 group by device_source_value
+  select 'device_exposure' as table_name, 'device_source_value' as column_name, device_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.device_exposure where device_concept_id = 0 group by device_source_value
   union
-  select 'death' as table_name, 'cause_source_value' as column_name, cause_source_value as source_value, count_big(*) as cnt from matlab_example.dbo.death where cause_concept_id = 0 group by cause_source_value
+  select 'death' as table_name, 'cause_source_value' as column_name, cause_source_value as source_value, count_big(*) as cnt from @FullySpecifiedCdmSchema.death where cause_concept_id = 0 group by cause_source_value
 ) a
 where cnt >= 1 
 ;
@@ -7581,9 +7581,9 @@ FROM (
     SELECT
       co.person_id
     FROM
-      matlab_example.dbo.condition_occurrence co
+      @FullySpecifiedCdmSchema.condition_occurrence co
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       co.person_id = op.person_id
     AND
@@ -7599,9 +7599,9 @@ FROM (
     SELECT
       de.person_id
     FROM
-      matlab_example.dbo.drug_exposure de
+      @FullySpecifiedCdmSchema.drug_exposure de
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       de.person_id = op.person_id
     AND
@@ -7634,9 +7634,9 @@ FROM (
     SELECT
       co.person_id
     FROM
-      matlab_example.dbo.condition_occurrence co
+      @FullySpecifiedCdmSchema.condition_occurrence co
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       co.person_id = op.person_id
     AND
@@ -7652,9 +7652,9 @@ FROM (
     SELECT
       po.person_id
     FROM
-      matlab_example.dbo.procedure_occurrence po
+      @FullySpecifiedCdmSchema.procedure_occurrence po
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       po.person_id = op.person_id
     AND
@@ -7687,9 +7687,9 @@ FROM (
     SELECT
       m.person_id
     FROM
-      matlab_example.dbo.measurement m
+      @FullySpecifiedCdmSchema.measurement m
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       m.person_id = op.person_id
     AND
@@ -7705,9 +7705,9 @@ FROM (
     SELECT
       co.person_id
     FROM
-      matlab_example.dbo.condition_occurrence co
+      @FullySpecifiedCdmSchema.condition_occurrence co
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       co.person_id = op.person_id
     AND
@@ -7723,9 +7723,9 @@ FROM (
     SELECT
       de.person_id
     FROM
-      matlab_example.dbo.drug_exposure de
+      @FullySpecifiedCdmSchema.drug_exposure de
     JOIN
-      matlab_example.dbo.observation_period op
+      @FullySpecifiedCdmSchema.observation_period op
     ON
       de.person_id = op.person_id
     AND
@@ -7753,9 +7753,9 @@ SELECT
 INTO 
 	#s_tmpach_2003
 FROM 
-	matlab_example.dbo.visit_occurrence vo
+	@FullySpecifiedCdmSchema.visit_occurrence vo
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	vo.person_id = op.person_id
 AND 
@@ -7768,13 +7768,13 @@ AND
 -- Analysis 2004: Number of distinct patients that overlap between specific domains
 -- Bit String Breakdown:   1) Condition Occurrence 2) Drug Exposure 3) Device Exposure 4) Measurement 5) Death 6) Procedure Occurrence 7) Observation
 
-select distinct person_id into #conoc from matlab_example.dbo.condition_occurrence;
-select distinct person_id into #drexp from matlab_example.dbo.drug_exposure;
-select distinct person_id into #dvexp from matlab_example.dbo.device_exposure;
-select distinct person_id into #msmt from matlab_example.dbo.measurement;
-select distinct person_id into #death from matlab_example.dbo.death;
-select distinct person_id into #prococ from matlab_example.dbo.procedure_occurrence;
-select distinct person_id into #obs from matlab_example.dbo.observation;
+select distinct person_id into #conoc from @FullySpecifiedCdmSchema.condition_occurrence;
+select distinct person_id into #drexp from @FullySpecifiedCdmSchema.drug_exposure;
+select distinct person_id into #dvexp from @FullySpecifiedCdmSchema.device_exposure;
+select distinct person_id into #msmt from @FullySpecifiedCdmSchema.measurement;
+select distinct person_id into #death from @FullySpecifiedCdmSchema.death;
+select distinct person_id into #prococ from @FullySpecifiedCdmSchema.procedure_occurrence;
+select distinct person_id into #obs from @FullySpecifiedCdmSchema.observation;
 
 with rawData as (
 select 2004 as analysis_id,
@@ -7786,7 +7786,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7796,7 +7796,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7806,7 +7806,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7816,7 +7816,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7826,7 +7826,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7836,7 +7836,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0000111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7846,7 +7846,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7856,7 +7856,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7866,7 +7866,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7876,7 +7876,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7886,7 +7886,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7896,7 +7896,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7906,7 +7906,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7916,7 +7916,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0001111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7926,7 +7926,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7936,7 +7936,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7946,7 +7946,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7956,7 +7956,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7966,7 +7966,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7976,7 +7976,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7986,7 +7986,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -7996,7 +7996,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0010111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8006,7 +8006,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8016,7 +8016,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8026,7 +8026,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8036,7 +8036,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8046,7 +8046,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8056,7 +8056,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8066,7 +8066,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8076,7 +8076,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0011111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8086,7 +8086,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8096,7 +8096,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8106,7 +8106,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8116,7 +8116,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8126,7 +8126,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8136,7 +8136,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8146,7 +8146,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8156,7 +8156,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0100111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8166,7 +8166,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8176,7 +8176,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8186,7 +8186,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8196,7 +8196,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8206,7 +8206,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8216,7 +8216,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8226,7 +8226,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8236,7 +8236,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0101111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8246,7 +8246,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8256,7 +8256,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8266,7 +8266,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8276,7 +8276,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8286,7 +8286,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8296,7 +8296,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8306,7 +8306,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8316,7 +8316,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0110111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8326,7 +8326,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8336,7 +8336,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8346,7 +8346,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8356,7 +8356,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8366,7 +8366,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8376,7 +8376,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8386,7 +8386,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8396,7 +8396,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('0111111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8406,7 +8406,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8416,7 +8416,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8426,7 +8426,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8436,7 +8436,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8446,7 +8446,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8456,7 +8456,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8466,7 +8466,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8476,7 +8476,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1000111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8486,7 +8486,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8496,7 +8496,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8506,7 +8506,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8516,7 +8516,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8526,7 +8526,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8536,7 +8536,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8546,7 +8546,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8556,7 +8556,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1001111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8566,7 +8566,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8576,7 +8576,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8586,7 +8586,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8596,7 +8596,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8606,7 +8606,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8616,7 +8616,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8626,7 +8626,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8636,7 +8636,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1010111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8646,7 +8646,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8656,7 +8656,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8666,7 +8666,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8676,7 +8676,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8686,7 +8686,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8696,7 +8696,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8706,7 +8706,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8716,7 +8716,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1011111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8726,7 +8726,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8736,7 +8736,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8746,7 +8746,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8756,7 +8756,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8766,7 +8766,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8776,7 +8776,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8786,7 +8786,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8796,7 +8796,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1100111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8806,7 +8806,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8816,7 +8816,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8826,7 +8826,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8836,7 +8836,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8846,7 +8846,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8856,7 +8856,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8866,7 +8866,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8876,7 +8876,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1101111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8886,7 +8886,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8896,7 +8896,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8906,7 +8906,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8916,7 +8916,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8926,7 +8926,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8936,7 +8936,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8946,7 +8946,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8956,7 +8956,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1110111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8966,7 +8966,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111000' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8976,7 +8976,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111001' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8986,7 +8986,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111010' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -8996,7 +8996,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111011' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -9006,7 +9006,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111100' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -9016,7 +9016,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111101' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -9026,7 +9026,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111110' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -9036,7 +9036,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) totalPersonsDb UNION ALL
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) totalPersonsDb UNION ALL
 select 2004 as analysis_id,
        CAST('1111111' AS VARCHAR(255)) as stratum_1,
        cast((1.0 * personIntersection.count_value / totalPersonsDb.totalPersons) as varchar(255)) as stratum_2,
@@ -9046,7 +9046,7 @@ select 2004 as analysis_id,
        personIntersection.count_value
       from
       (select count(*) as count_value from(select person_id from #conoc intersect select person_id from #drexp intersect select person_id from #dvexp intersect select person_id from #msmt intersect select person_id from #death intersect select person_id from #prococ intersect select person_id from #obs) subquery) personIntersection,
-  (select count(distinct(person_id)) as totalPersons from matlab_example.dbo.person) as totalPersonsDb) select * INTO #s_tmpach_2004 from rawData;
+  (select count(distinct(person_id)) as totalPersons from @FullySpecifiedCdmSchema.person) as totalPersonsDb) select * INTO #s_tmpach_2004 from rawData;
 
 drop table #conoc;
 drop table #drexp;
@@ -9071,9 +9071,9 @@ SELECT
 INTO 
 	#s_tmpach_2100
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9098,9 +9098,9 @@ SELECT
 INTO 
 	#s_tmpach_2101
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9120,9 +9120,9 @@ SELECT
 	YEAR(de.device_exposure_start_date) * 100 + MONTH(de.device_exposure_start_date) AS stratum_2,
 	COUNT_BIG(DISTINCT de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9158,13 +9158,13 @@ SELECT
 	FLOOR((YEAR(de.device_exposure_start_date) - p.year_of_birth) / 10) AS stratum_4,
 	COUNT_BIG(DISTINCT p.person_id) AS count_value
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN 
-	matlab_example.dbo.device_exposure de 
+	@FullySpecifiedCdmSchema.device_exposure de 
 ON 
 	p.person_id = de.person_id
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9205,9 +9205,9 @@ SELECT
 INTO 
 	#s_tmpach_2105
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9229,16 +9229,16 @@ SELECT
 INTO 
 	#rawData_2106
 FROM 
-	matlab_example.dbo.person p
+	@FullySpecifiedCdmSchema.person p
 JOIN (
 	SELECT 
 		d.person_id,
 		d.device_concept_id,
 		MIN(YEAR(d.device_exposure_start_date)) AS device_exposure_start_year
 	FROM 
-		matlab_example.dbo.device_exposure d
+		@FullySpecifiedCdmSchema.device_exposure d
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		d.person_id = op.person_id
 	AND 
@@ -9321,9 +9321,9 @@ SELECT
 	YEAR(de.device_exposure_start_date) * 100 + MONTH(de.device_exposure_start_date) AS stratum_1,
 	COUNT_BIG(de.person_id) AS count_value
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9361,9 +9361,9 @@ SELECT
 INTO 
 	#s_tmpach_2125
 FROM 
-	matlab_example.dbo.device_exposure de
+	@FullySpecifiedCdmSchema.device_exposure de
 JOIN 
-	matlab_example.dbo.observation_period op 
+	@FullySpecifiedCdmSchema.observation_period op 
 ON 
 	de.person_id = op.person_id
 AND 
@@ -9393,9 +9393,9 @@ FROM (
 		COUNT(d.device_exposure_id) AS device_count,
 		d.person_id
 	FROM 
-		matlab_example.dbo.device_exposure d
+		@FullySpecifiedCdmSchema.device_exposure d
 	JOIN 
-		matlab_example.dbo.observation_period op 
+		@FullySpecifiedCdmSchema.observation_period op 
 	ON 
 		d.person_id = op.person_id
 	AND 
@@ -9420,7 +9420,7 @@ select 2200 as analysis_id,
 	COUNT_BIG(distinct m.PERSON_ID) as count_value
 into #s_tmpach_2200
 from
-	matlab_example.dbo.note m
+	@FullySpecifiedCdmSchema.note m
 group by m.note_type_CONCEPT_ID
 ;
 
@@ -9434,20 +9434,20 @@ select 2201 as analysis_id,
 	COUNT_BIG(m.PERSON_ID) as count_value
 into #s_tmpach_2201
 from
-	matlab_example.dbo.note m
+	@FullySpecifiedCdmSchema.note m
 group by m.note_type_CONCEPT_ID
 ;
 
 
 
-  IF OBJECT_ID('matlab_example_ach_res.dbo.achilles_results', 'U') IS NOT NULL
-    drop table matlab_example_ach_res.dbo.achilles_results;
+  IF OBJECT_ID('@FullySpecifiedAchillesResultsSchema.achilles_results', 'U') IS NOT NULL
+    drop table @FullySpecifiedAchillesResultsSchema.achilles_results;
 
 --HINT DISTRIBUTE_ON_KEY(analysis_id)
 
 select analysis_id, stratum_1, stratum_2, stratum_3, stratum_4, stratum_5, count_value
 
-  into matlab_example_ach_res.dbo.achilles_results
+  into @FullySpecifiedAchillesResultsSchema.achilles_results
 
 from 
 (
@@ -9911,14 +9911,14 @@ union all
 
 
 
-  IF OBJECT_ID('matlab_example_ach_res.dbo.achilles_results_dist', 'U') IS NOT NULL
-    drop table matlab_example_ach_res.dbo.achilles_results_dist;
+  IF OBJECT_ID('@FullySpecifiedAchillesResultsSchema.achilles_results_dist', 'U') IS NOT NULL
+    drop table @FullySpecifiedAchillesResultsSchema.achilles_results_dist;
 
 --HINT DISTRIBUTE_ON_KEY(analysis_id)
 
 select analysis_id, stratum_1, stratum_2, stratum_3, stratum_4, stratum_5, count_value, min_value, max_value, avg_value, stdev_value, median_value, p10_value, p25_value, p75_value, p90_value
 
-  into matlab_example_ach_res.dbo.achilles_results_dist
+  into @FullySpecifiedAchillesResultsSchema.achilles_results_dist
 
 from 
 (
@@ -10060,34 +10060,34 @@ union all
 ;
 
 
-drop index if exists matlab_example_ach_res.dbo.idx_ar_aid;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ar_aid;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ar_s1;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ar_s1;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ar_s2;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ar_s2;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ar_aid_s1;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ar_aid_s1;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ar_aid_s1234;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ar_aid_s1234;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ard_aid;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ard_aid;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ard_s1;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ard_s1;
 
-drop index if exists matlab_example_ach_res.dbo.idx_ard_s2;
+drop index if exists @FullySpecifiedAchillesResultsSchema.idx_ard_s2;
 
-create index idx_ar_aid on matlab_example_ach_res.dbo.achilles_results (analysis_id);
+create index idx_ar_aid on @FullySpecifiedAchillesResultsSchema.achilles_results (analysis_id);
 
-create index idx_ar_s1 on matlab_example_ach_res.dbo.achilles_results (stratum_1);
+create index idx_ar_s1 on @FullySpecifiedAchillesResultsSchema.achilles_results (stratum_1);
 
-create index idx_ar_s2 on matlab_example_ach_res.dbo.achilles_results (stratum_2);
+create index idx_ar_s2 on @FullySpecifiedAchillesResultsSchema.achilles_results (stratum_2);
 
-create index idx_ar_aid_s1 on matlab_example_ach_res.dbo.achilles_results (analysis_id,stratum_1);
+create index idx_ar_aid_s1 on @FullySpecifiedAchillesResultsSchema.achilles_results (analysis_id,stratum_1);
 
-create index idx_ar_aid_s1234 on matlab_example_ach_res.dbo.achilles_results (analysis_id,stratum_1,stratum_2,stratum_3,stratum_4);
+create index idx_ar_aid_s1234 on @FullySpecifiedAchillesResultsSchema.achilles_results (analysis_id,stratum_1,stratum_2,stratum_3,stratum_4);
 
-create index idx_ard_aid on matlab_example_ach_res.dbo.achilles_results_dist (analysis_id);
+create index idx_ard_aid on @FullySpecifiedAchillesResultsSchema.achilles_results_dist (analysis_id);
 
-create index idx_ard_s1 on matlab_example_ach_res.dbo.achilles_results_dist (stratum_1);
+create index idx_ard_s1 on @FullySpecifiedAchillesResultsSchema.achilles_results_dist (stratum_1);
 
-create index idx_ard_s2 on matlab_example_ach_res.dbo.achilles_results_dist (stratum_2);
+create index idx_ard_s2 on @FullySpecifiedAchillesResultsSchema.achilles_results_dist (stratum_2);

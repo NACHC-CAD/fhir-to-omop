@@ -36,7 +36,7 @@ public class TruncateAllDataTables {
 		}
 		try {
 			// get the params
-			String schemaName = AppParams.getFullyQualifiedDbName();
+			String schemaName = AppParams.getFullySpecifiedSchemaName();
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
 			// truncate the data tables
 			TruncateDataTables.truncateTables(tableNames, conn);

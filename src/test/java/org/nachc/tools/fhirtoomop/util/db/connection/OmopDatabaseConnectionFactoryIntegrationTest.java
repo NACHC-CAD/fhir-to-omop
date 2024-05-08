@@ -30,7 +30,7 @@ public class OmopDatabaseConnectionFactoryIntegrationTest {
 			}
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
-			String schemaName = AppParams.getFullyQualifiedDbName();
+			String schemaName = AppParams.getFullySpecifiedSchemaName();
 			log.info("Got Schema: " + schemaName);
 		} catch(Exception exp) {
 			throw new RuntimeException(exp);

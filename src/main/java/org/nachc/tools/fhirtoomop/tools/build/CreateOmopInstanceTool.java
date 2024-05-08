@@ -15,6 +15,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
+import org.nachc.tools.fhirtoomop.tools.build.impl.RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.UploadTestDataSet;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -82,6 +83,8 @@ public class CreateOmopInstanceTool {
 //			AddConstraints.exec();
 			// add achilles databases
 			CreateAchillesDatabases.exec(conn);
+			// run achilles
+			RunAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

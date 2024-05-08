@@ -35,7 +35,7 @@ public class FixSequencesIntegrationTest {
 	}
 	
 	private String getDbName() {
-		String schema = AppParams.getFullyQualifiedDbName();
+		String schema = AppParams.getFullySpecifiedSchemaName();
 		if (schema.trim().endsWith(".dbo")) {
 			schema = schema.substring(0, schema.indexOf(".dbo"));
 		}
