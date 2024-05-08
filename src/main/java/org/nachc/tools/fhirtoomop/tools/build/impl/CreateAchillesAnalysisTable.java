@@ -28,7 +28,7 @@ public class CreateAchillesAnalysisTable {
 	}
 	
 	public static void exec(Connection conn) {
-//		createTable(conn);
+		createTable(conn);
 		uploadData(conn);
 	}
 	
@@ -44,6 +44,7 @@ public class CreateAchillesAnalysisTable {
 	}
 	
 	private static void uploadData(Connection conn) {
+		log.info("Uploading data...");
 		File dir = new File("./delete_me_achilles");
 		try {
 			FileUtil.mkdirs(dir);
@@ -63,7 +64,9 @@ public class CreateAchillesAnalysisTable {
 			sqlString += "    FORMAT = 'CSV', \n";
 			sqlString += "    TABLOCK \n";
 			sqlString += ") \n";		Database.update("truncate table " + tableName, conn);
+			log.info("Populating table...");
 			Database.update(sqlString, conn);
+			log.info("Done creating achilles_analysis table.");
 		} finally {
 			FileUtil.rmdir(dir);
 		}

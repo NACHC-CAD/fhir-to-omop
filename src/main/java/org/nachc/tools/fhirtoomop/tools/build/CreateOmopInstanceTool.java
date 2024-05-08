@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAchillesDatabases;
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
+import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAchillesAnalysisTable;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateDatabaseIndexes;
@@ -14,6 +15,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateFhirResoureTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
+import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.UploadTestDataSet;
@@ -76,7 +78,7 @@ public class CreateOmopInstanceTool {
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-//			LoadTerminology.exec(conn);
+			LoadTerminology.exec(conn);
 			// create the indexes and add constraints
 			logMsg("CREATING INDEXES");
 			CreateDatabaseIndexes.exec(conn);
@@ -84,6 +86,7 @@ public class CreateOmopInstanceTool {
 			// add achilles databases
 			CreateAchillesDatabases.exec(conn);
 			// run achilles
+			CreateAchillesAnalysisTable.exec(conn);
 			RunAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
