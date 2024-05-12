@@ -18,6 +18,7 @@ public class LoadTerminology {
 
 	public static void exec(Connection conn) {
 		String rootDir = AppParams.getTerminologyRootDir();
+		log.info("Loading terminology from: \n" + rootDir);
 		String sqlString = SQL_STRING.replace("@terminologiesRootFolder/", rootDir);
 		InputStream is = new ByteArrayInputStream(sqlString.getBytes());
 		String dbName = AppParams.getSchemaName();
