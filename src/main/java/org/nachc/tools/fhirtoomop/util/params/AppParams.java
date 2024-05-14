@@ -349,4 +349,30 @@ public class AppParams {
 		return rtn;
 	}
 
+	// ---
+	//
+	// webapi parameters
+	//
+	// ---
+	
+	public static String getWebApiConnectionString() {
+		return get("WebApiConnectionString");
+	}
+
+	public static String getWebApiSourceName() {
+		return get("WebApiSourceName");
+	}
+
+	public static String getWebApiSourceKey() {
+		return get("WebApiSourceKey");
+	}
+
+	public static String getWebApiSourceJdbcUrl() {
+		return get("WebApiSourceJdbcUrl");
+	}
+
+	public static String getWebApiSourceDialect() {
+		return get("WebApiSourceDialect");
+	}
+
 }

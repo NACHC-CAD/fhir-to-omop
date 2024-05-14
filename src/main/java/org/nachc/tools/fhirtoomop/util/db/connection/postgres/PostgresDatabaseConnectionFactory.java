@@ -45,5 +45,16 @@ public class PostgresDatabaseConnectionFactory {
 		}
 	}
 
+	public static Connection getWebApiConnection() {
+		try {
+			String url = AppParams.getWebApiConnectionString();
+			log.info("Getting connection for url: \n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+	}
+
 	
 }
