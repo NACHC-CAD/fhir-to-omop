@@ -28,10 +28,6 @@ public class PostgresDatabaseConnectionFactory {
 	}
 
 	public static Connection getCdmConnection() {
-		return getSchemaConnection();
-	}
-
-	private static Connection getSchemaConnection() {
 		try {
 			String url = AppParams.getPostgresBootstrapUrl();
 			String uid = AppParams.getPostgresBootstrapUid();
@@ -48,5 +44,6 @@ public class PostgresDatabaseConnectionFactory {
 			throw (new RuntimeException(exp));
 		}
 	}
+
 	
 }
