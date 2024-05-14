@@ -18,7 +18,7 @@ public class FHIR06a_CreateSyntheaNative {
 	}
 
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String schemaName = AppParams.get("syntheaNative");
 			Database.update("drop schema if exists " + schemaName + " cascade", conn);

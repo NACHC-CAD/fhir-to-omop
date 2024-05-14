@@ -22,7 +22,7 @@ public class InstallAtlasDatasource {
 	}
 	
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString;
 			// delete from webapi.source_daimon

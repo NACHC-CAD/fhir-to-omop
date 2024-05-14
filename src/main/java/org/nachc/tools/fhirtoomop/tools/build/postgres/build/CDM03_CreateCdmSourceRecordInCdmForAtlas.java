@@ -21,7 +21,7 @@ public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 
 	public static void exec() {
 		log.info("Creating CDM source record in CDM for Atlas record");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			String sqlString = FileUtil.getAsString(PATH);

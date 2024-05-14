@@ -36,7 +36,7 @@ public class FHIR02_LoadFhirRaceEthMappings {
 
 	public static void exec() {
 		log.info("Creating FHIR race/eth mappings table.");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			FHIR02_LoadFhirRaceEthMappings loadRaceFiles = new FHIR02_LoadFhirRaceEthMappings();
 			loadRaceFiles.createMappingSqlFile();

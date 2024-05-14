@@ -21,7 +21,7 @@ public class ETLSYN02_CreateIndexes {
 
 	public static void exec() {
 		log.info("Creating INDEXES for ETL-Synthea");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			String sqlString = FileUtil.getAsString(PATH);

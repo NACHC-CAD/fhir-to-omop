@@ -26,7 +26,7 @@ public class VOC99_LoadTerminology {
 		log.info("Loading terminologies...");
 		Timer timer = new Timer();
 		timer.start();
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Done loading terminologies.");

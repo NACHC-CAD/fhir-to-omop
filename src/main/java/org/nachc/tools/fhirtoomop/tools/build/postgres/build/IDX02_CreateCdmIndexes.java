@@ -24,7 +24,7 @@ public class IDX02_CreateCdmIndexes {
 		log.info("Creating CDM INDEXES...");
 		Timer timer = new Timer();
 		timer.start();
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");

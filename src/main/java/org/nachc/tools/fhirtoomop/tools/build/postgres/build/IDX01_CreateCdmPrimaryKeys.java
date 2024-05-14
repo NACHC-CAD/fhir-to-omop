@@ -21,7 +21,7 @@ public class IDX01_CreateCdmPrimaryKeys {
 
 	public static void exec() {
 		log.info("Creating CDM database tables...");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");

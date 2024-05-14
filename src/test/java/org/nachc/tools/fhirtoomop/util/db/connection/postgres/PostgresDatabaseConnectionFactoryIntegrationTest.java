@@ -36,7 +36,7 @@ public class PostgresDatabaseConnectionFactoryIntegrationTest {
 
 	public void shouldGetOhdsiConnection() {
 		log.info("Getting OHDSI Connection...");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString = "SELECT current_user, user, session_user, current_database(), current_catalog, version()";
 			Data data = Database.query(sqlString, conn);

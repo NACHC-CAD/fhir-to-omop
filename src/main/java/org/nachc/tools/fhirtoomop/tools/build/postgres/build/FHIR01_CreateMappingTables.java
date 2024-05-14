@@ -21,7 +21,7 @@ public class FHIR01_CreateMappingTables {
 
 	public static void exec() {
 		log.info("Creating mapping tables...");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");

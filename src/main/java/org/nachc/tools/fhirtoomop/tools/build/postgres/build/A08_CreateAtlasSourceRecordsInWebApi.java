@@ -22,7 +22,7 @@ public class A08_CreateAtlasSourceRecordsInWebApi {
 	}
 	
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString;
 			// create the new records

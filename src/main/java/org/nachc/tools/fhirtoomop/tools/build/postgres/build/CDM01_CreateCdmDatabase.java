@@ -17,7 +17,7 @@ public class CDM01_CreateCdmDatabase {
 	}
 
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("Creating databases...");
 			String databaseName = AppParams.getSchemaName();

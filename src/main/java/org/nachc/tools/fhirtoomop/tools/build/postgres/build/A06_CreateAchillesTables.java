@@ -21,7 +21,7 @@ public class A06_CreateAchillesTables {
 
 	public static void exec() {
 		log.info("Creating Achilles tables.");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("getting sql script...");
 			log.info("executing script...");

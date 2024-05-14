@@ -20,7 +20,7 @@ public class AtlasInstallCreateWebApiSchema {
 	}
 
 	public static void exec() {
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("getting sql script...");
 			log.info("executing script...");

@@ -21,7 +21,7 @@ public class A07_GrantPrivileges {
 
 	public static void exec() {
 		log.info("Creating privileges.");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("getting sql script...");
 			log.info("executing script...");

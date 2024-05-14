@@ -21,7 +21,7 @@ public class FHIR06b_CreateSyntheaNativeDatabaseTables {
 
 	public static void exec() {
 		log.info("START: Creating SYNTHEA_NATIVE database tables...");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");

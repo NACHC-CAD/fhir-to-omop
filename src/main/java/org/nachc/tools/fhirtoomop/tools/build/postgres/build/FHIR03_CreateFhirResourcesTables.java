@@ -21,7 +21,7 @@ public class FHIR03_CreateFhirResourcesTables {
 
 	public static void exec() {
 		log.info("Creating FHIR resource database tables...");
-		Connection conn = PostgresDatabaseConnectionFactory.getOhdsiConnection();
+		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");
