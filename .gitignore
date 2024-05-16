@@ -32,6 +32,7 @@ hs_err_pid*
 .project
 /.settings/
 /delete_me/
+/src/main/resources/auth/app.properties
 
 # rstudio files
 .RData
