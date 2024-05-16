@@ -23,7 +23,7 @@ public class VisitDetailDvo implements Dvo {
     // schemaName
     //
     
-    public static final String SCHEMA_NAME = "etl_synthea_1k";
+    public static final String SCHEMA_NAME = "synthea_micro.dbo";
     
     //
     // columnNames
