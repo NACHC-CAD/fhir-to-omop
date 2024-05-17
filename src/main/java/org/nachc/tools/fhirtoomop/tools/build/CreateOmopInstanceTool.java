@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.atlas.impl.CreateAchillesDatabases;
+import org.nachc.tools.fhirtoomop.tools.build.impl.AddConstraints;
 import org.nachc.tools.fhirtoomop.tools.build.impl.BurnEverythingToTheGround;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateAchillesAnalysisTable;
 import org.nachc.tools.fhirtoomop.tools.build.impl.CreateCdmSourceRecord;
@@ -78,16 +79,16 @@ public class CreateOmopInstanceTool {
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-//			LoadTerminology.exec(conn);
+			LoadTerminology.exec(conn);
 			// create the indexes and add constraints
 			logMsg("CREATING INDEXES");
 			CreateDatabaseIndexes.exec(conn);
-//			AddConstraints.exec();
+			AddConstraints.exec();
 			// add achilles databases
 			CreateAchillesDatabases.exec(conn);
 			// run achilles
-//			CreateAchillesAnalysisTable.exec(conn);
-//			RunAchilles.exec(conn);
+			CreateAchillesAnalysisTable.exec(conn);
+			RunAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

@@ -1,0 +1,3 @@
+2024-05-17 07:15:30	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-05-17 07:15:32	[Main thread]	INFO	Achilles	achilles	All Achilles SQL scripts can be found in folder: output/achilles.sql
+2024-05-17 07:15:32	[Main thread]	INFO	Achilles	achilles	[Total Runtime] 1.935583 secs

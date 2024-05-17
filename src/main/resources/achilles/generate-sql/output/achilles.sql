@@ -1,14 +1,3 @@
-/* * * *
- * 
- * This script was created by running Achilles with sqlOnly = TRUE.  
- * The "if exists" clauses were added to the drop indexes statements at the very bottom of the script
- * to get rid of errors these statements were giving.  
- * 
- * This script was generated 2024-05-08 using the scripts from the fhir-to-omop documentation 
- * for Achilles.  
- * 
- * * * */
-
 -- 0	cdm name, version of Achilles and date when pre-computations were executed
 
 --HINT DISTRIBUTE_ON_KEY(stratum_1)
@@ -10051,21 +10040,21 @@ union all
 ;
 
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ar_aid;
+drop index synthea_micro_ach_res.dbo.idx_ar_aid;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ar_s1;
+drop index synthea_micro_ach_res.dbo.idx_ar_s1;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ar_s2;
+drop index synthea_micro_ach_res.dbo.idx_ar_s2;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ar_aid_s1;
+drop index synthea_micro_ach_res.dbo.idx_ar_aid_s1;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ar_aid_s1234;
+drop index synthea_micro_ach_res.dbo.idx_ar_aid_s1234;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ard_aid;
+drop index synthea_micro_ach_res.dbo.idx_ard_aid;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ard_s1;
+drop index synthea_micro_ach_res.dbo.idx_ard_s1;
 
-drop index if exists synthea_micro_ach_res.dbo.idx_ard_s2;
+drop index synthea_micro_ach_res.dbo.idx_ard_s2;
 
 create index idx_ar_aid on synthea_micro_ach_res.dbo.achilles_results (analysis_id);
 

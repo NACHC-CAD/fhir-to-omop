@@ -3,8 +3,6 @@
  * 
  * http://localhost:8080/WebAPI/ddl/results?dialect=postgresql&schema=<dbName>_ach_results&vocabSchema=<dbName>&tempSchema=<dbName>_ach_temp&initConceptHierarchy=true
  * 
- * The hardcoded schemaname was then replaced with @TODO: FINISH THIS THOUGHT
- * 
  */
 
 CREATE TABLE IF NOT EXISTS <dbName>_ach_results.cohort

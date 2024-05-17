@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.build.impl;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
@@ -13,6 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 public class RunAchilles {
 
 	public static final String FILE_NAME = "/sqlserver/omop/achilles/sql/run-achilles.sql";
+
+	public static void main(String[] args) {
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			exec(conn);
+		} finally {
+			Database.close(conn);
+		}
+	}
 
 	public static void exec(Connection conn) {
 		log.info("Getting sql script to run Achilles...");
