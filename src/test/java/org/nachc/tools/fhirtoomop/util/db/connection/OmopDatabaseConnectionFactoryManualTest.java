@@ -15,7 +15,7 @@ import org.yaorma.database.Row;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OmopDatabaseConnectionFactoryIntegrationTest {
+public class OmopDatabaseConnectionFactoryManualTest {
 
 	@Test
 	public void shouldGetConnection() {

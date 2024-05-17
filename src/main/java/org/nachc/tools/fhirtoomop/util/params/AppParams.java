@@ -178,7 +178,7 @@ public class AppParams {
 	// ---
 	
 	public static String getSchemaName() {
-		String rtn = get("SchemaName");
+		String rtn = getFullySpecifiedSchemaName();
 		return getCatalogPart(rtn);
 	}
 

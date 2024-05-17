@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateDatabaseTables {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_ddl.sql");
+	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.4/OMOPCDM_sql_server_5.4_ddl.sql");
 	
 	public static void exec(Connection conn) {
 		String dbName = AppParams.getSchemaName();

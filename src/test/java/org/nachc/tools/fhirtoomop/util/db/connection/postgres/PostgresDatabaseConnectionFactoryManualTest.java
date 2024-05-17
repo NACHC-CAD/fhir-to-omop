@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class PostgresDatabaseConnectionFactoryIntegrationTest {
+public class PostgresDatabaseConnectionFactoryManualTest {
 
 	@Test
 	public void shouldGetConnections() {

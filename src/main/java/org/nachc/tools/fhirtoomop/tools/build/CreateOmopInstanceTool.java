@@ -74,7 +74,7 @@ public class CreateOmopInstanceTool {
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
 			// upload the test data set
-			UploadTestDataSet.exec(conn, new File("./delete_me"));
+//			UploadTestDataSet.exec(conn, new File("./delete_me"));
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
@@ -86,8 +86,8 @@ public class CreateOmopInstanceTool {
 			// add achilles databases
 			CreateAchillesDatabases.exec(conn);
 			// run achilles
-			CreateAchillesAnalysisTable.exec(conn);
-			RunAchilles.exec(conn);
+//			CreateAchillesAnalysisTable.exec(conn);
+//			RunAchilles.exec(conn);
 			timer.stop();
 			log.info("Done creating instance");
 			log.info("----------------");

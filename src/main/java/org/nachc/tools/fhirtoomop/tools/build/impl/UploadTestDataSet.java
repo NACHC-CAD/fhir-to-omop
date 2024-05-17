@@ -68,6 +68,8 @@ public class UploadTestDataSet {
 	private static boolean skip(String tableName) {
 		if("concept_recommended".equals(tableName)) {
 			return true;
+		} else if("attribute_definition".equals(tableName)) {
+			return true;
 		} else {
 			return false;
 		}

@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateDatabaseIndexes {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_indices.sql");
+	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.4/OMOPCDM_sql_server_5.4_indices.sql");
 
 	public static void exec(Connection conn) {
 		String dbName = AppParams.getSchemaName();

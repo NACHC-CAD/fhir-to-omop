@@ -12,7 +12,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UploadTestDataSetIntegrationTest {
+public class UploadTestDataSetManualTest {
 
 	@Test
 	public void shouldUploadTestData() {
