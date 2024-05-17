@@ -14,7 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UploadTestDataSet {
 
-	private static final String FILE_NAME = "/broadsea/exported-test-data/demo_cdm.zip";
+//	private static final String FILE_NAME = "/broadsea/exported-test-data/demo_cdm.zip";
+
+	private static final String FILE_NAME = "/eunomia/Synthea27Nj_5.4.zip";
 
 	public static void exec(Connection conn, File outputDir) {
 		try {
@@ -25,11 +27,13 @@ public class UploadTestDataSet {
 			InputStream is = FileUtil.getInputStream(FILE_NAME);
 			ZipUtil.unzip(is, outputDir);
 			log.info("Unzipped to: " + FileUtil.getCanonicalPath(outputDir));
-			File srcDir = new File(outputDir, "demo_cdm");
+			File srcDir = outputDir;
 			File[] files = srcDir.listFiles();
 			log.info("Got " + files.length + " files...");
 			for(File file : files) {
-				uploadFile(conn, file);
+				if(file.isDirectory() == false) {
+					uploadFile(conn, file);
+				}
 			}
 			log.info("-----------");
 			log.info("Done uploading files.");

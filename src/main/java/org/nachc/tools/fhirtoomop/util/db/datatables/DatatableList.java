@@ -19,7 +19,8 @@ public class DatatableList {
 			"visit_occurrence",
 			"provider",
 			"person",
-			"fhir_resource"
+			"fhir_resource",
+			"cdm_source"
 	};
 
 	public static String[] getDatatableArray() {

@@ -5,6 +5,7 @@ import java.sql.Connection;
 
 import org.junit.Test;
 import org.nachc.tools.fhirtoomop.util.db.connection.mssql.MsSqlDatabaseConnectionFactory;
+import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -21,8 +22,13 @@ public class UploadTestDataSetManualTest {
 		try {
 			conn = MsSqlDatabaseConnectionFactory.getCdmConnection();
 			log.info("Got connection: " + conn);
+			log.info("Truncating data tables...");
+			TruncateAllDataTables.exec();
+			log.info("Unzipping data zip...");
 			File unzipDir = FileUtil.mkdirs(new File("./delete_me"));
+			log.info("Uploading data...");
 			UploadTestDataSet.exec(conn, unzipDir);
+			log.info("Done uploading data.");
 		} finally {
 			log.info("Closing connection.");
 			Database.close(conn);

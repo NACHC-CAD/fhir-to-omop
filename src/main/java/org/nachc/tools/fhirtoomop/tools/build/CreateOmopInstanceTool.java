@@ -74,11 +74,11 @@ public class CreateOmopInstanceTool {
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
 			// upload the test data set
-//			UploadTestDataSet.exec(conn, new File("./delete_me"));
+			UploadTestDataSet.exec(conn, new File("./delete_me"));
 			// load the terminologies
 			logMsg("LOADING TERMINOLOGY");
 			LoadMappingTables.exec(raceFiles.getSqlFile(), conn);
-			LoadTerminology.exec(conn);
+//			LoadTerminology.exec(conn);
 			// create the indexes and add constraints
 			logMsg("CREATING INDEXES");
 			CreateDatabaseIndexes.exec(conn);
