@@ -67,6 +67,8 @@ public class RunAllIntegrationTests {
 		try {
 			log.info("");
 			log.info("");
+			log.info("Truncating data tables...");
+			TruncateAllDataTables.exec();
 			log.info("Populating with patients using config file (PopulateOmopInstanceFromFhirFiles)...");
 			new PopulateOmopInstanceFromFhirFiles().exec();
 			log.info("");
