@@ -61,7 +61,7 @@ public class FhirToOmopMain {
 			// instant omop
 			case "instant-omop":
 			case "i":
-				CreateOmopInstanceToolPostgres.exec();
+				CreateOmopInstanceTool.createOmopInstance();
 				break;
 			// download fhir patient ids
 			case "download-patient-ids":
