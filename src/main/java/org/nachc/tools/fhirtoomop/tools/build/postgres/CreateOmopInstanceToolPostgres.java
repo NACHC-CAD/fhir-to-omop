@@ -87,13 +87,13 @@ public class CreateOmopInstanceToolPostgres {
 		// IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
 
-		ETLSYN01_LoadSynthFiles.exec();
-		ETLSYN02_CreateIndexes.exec();
-		ETLSYN03_EtlSyntheaToCdm.exec();
+//		ETLSYN01_LoadSynthFiles.exec();
+//		ETLSYN02_CreateIndexes.exec();
+//		ETLSYN03_EtlSyntheaToCdm.exec();
 
 		FHIR05_CreateSequencesForPrimaryKeys.exec();
 		
-		ACH1_RunAchilles.exec();
+//		ACH1_RunAchilles.exec();
 		timer.stop();
 		log.info("\n\nBUILD TIME: " + timer.getElapsedString());
 		log.info("Done.");

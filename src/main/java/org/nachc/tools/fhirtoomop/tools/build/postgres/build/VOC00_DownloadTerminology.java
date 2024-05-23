@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres.build;
 import java.io.File;
 
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.yaorma.util.time.TimeUtil;
 import org.yaorma.util.time.Timer;
 
 import com.nach.core.util.file.FileUtil;
@@ -25,8 +26,20 @@ public class VOC00_DownloadTerminology {
 		if (terminologyRootDir.exists() == false && terminologyDownloadIfNotFound == true) {
 			Timer timer = new Timer();
 			timer.start();
-			log.info("DOWNLOADING DEFAULT TERMINOLOGY (Terminology files not found and downloadIfNotFound has been set to true in properties file)");
-			FileUtil.mkdirs(terminologyRootDir.getParentFile());
+			String msg = "\n\n";
+			msg += "* * * \n";
+			msg += "*  \n";		
+			msg += "* ! ! !DOWNLOADING DEFAULT TERMINOLOGY ! ! ! \n";
+			msg += "* (Terminology files not found and downloadIfNotFound has been set to true in properties file)  \n";
+			msg += "*  \n";		
+			msg += "* * *  \n";
+			msg += "\n\n";
+			log.info(msg);
+			log.info("Terminology files will be downloaded to: \n" + terminologyRootDir);
+			TimeUtil.sleep(5);
+			log.info("Starting download...");
+			FileUtil.rmdir(terminologyRootDir);
+			FileUtil.mkdirs(terminologyRootDir);
 			String url = AppParams.get("terminologyDownloadUrl");
 			HttpRequestClient client = new HttpRequestClient(url);
 			log.info("Getting file from: " + client.getUrl());
