@@ -163,7 +163,7 @@ public class ConditionEraDvo implements Dvo {
     };
     
     public String getSchemaName() {
-        return SCHEMA_NAME;
+        return org.nachc.tools.fhirtoomop.util.params.AppParams.getFullySpecifiedSchemaName();
     };
     
     public String[] getColumnNames() {
