@@ -45,8 +45,8 @@ public class VOC00_DownloadTerminology {
 			log.info("Getting file from: " + client.getUrl());
 			client.doGet();
 			log.info("Got file, writing to disc (this takes several minutes)...");
-			String zipFileName = terminologyRootDir.getName() + ".zip";
-			File zipFile = new File(terminologyRootDir.getParent(), zipFileName);
+			String zipFileName = "default-terminology.zip";
+			File zipFile = new File(terminologyRootDir, zipFileName);
 			FileUtil.createNewFile(zipFile);
 //			client.writeResponseToFile(zip);
 			log.info("Writing file to: " + FileUtil.getCanonicalPath(zipFile));
