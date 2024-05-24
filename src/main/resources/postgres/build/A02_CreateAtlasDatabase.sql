@@ -5,6 +5,7 @@ CREATE DATABASE "<ohdsiDbName>"
     LC_COLLATE = 'English_United States.1252'
     LC_CTYPE = 'English_United States.1252'
     TABLESPACE = pg_default
+    TEMPLATE = template0
     CONNECTION LIMIT = -1;
 
 COMMENT ON DATABASE "<ohdsiDbName>"

@@ -63,13 +63,25 @@ public class FHIR02_LoadFhirRaceEthMappings {
 				String dstFileName = fileName.substring(start, end);
 				File file = new File(DST_DIR, dstFileName);
 				if (fileName.endsWith("Eth.txt")) {
-					sql = sql.replace("<ETH_FILE>", FileUtil.getCanonicalPath(file));
+					if("true".equals(AppParams.get("runningFromDocker"))) {
+						String filePath = file.getPath();
+						filePath = filePath.replace("\\", "/");
+						sql = sql.replace("<ETH_FILE>", filePath);
+					} else {
+						sql = sql.replace("<ETH_FILE>", FileUtil.getCanonicalPath(file));
+					}
 				}
 				if (fileName.endsWith("Race.txt")) {
-					sql = sql.replace("<RACE_FILE>", FileUtil.getCanonicalPath(file));
+					if("true".equals(AppParams.get("runningFromDocker"))) {
+						String filePath = file.getPath();
+						filePath = filePath.replace("\\", "/");
+						sql = sql.replace("<RACE_FILE>", filePath);
+					} else {
+						sql = sql.replace("<RACE_FILE>", FileUtil.getCanonicalPath(file));
+					}
 				}
 				String txt = FileUtil.getAsString(fileName);
-				log.info("Writing to: " + FileUtil.getCanonicalPath(file));
+				log.info("Writing to: \n" + FileUtil.getCanonicalPath(file));
 				FileUtil.write(txt, file);
 			} catch (Exception exp) {
 				log.info("Skipping: " + fileName);
