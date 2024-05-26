@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-import org.nachc.tools.fhirtoomop.tools.build.CreateOmopInstanceTool;
 import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDatasource;
 import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDependencies;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateOmopInstanceToolPostgres;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatientIds;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatients;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
-import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromSyntheaFiles;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 
 import com.nach.core.util.file.FileUtil;
@@ -28,7 +26,7 @@ public class FhirToOmopMain {
 			if (args.length > 1) {
 				paramTwo = args[1];
 				System.out.println("Got parameter: " + paramTwo);
-			} 
+			}
 			// get the config file
 			File dir = new File("./auth");
 			String fileName = FileUtil.getCanonicalPath(dir);
@@ -79,7 +77,7 @@ public class FhirToOmopMain {
 				new PopulateOmopInstanceFromFhirFiles().exec();
 				break;
 			case "syn":
-				PopulateOmopInstanceFromSyntheaFiles.main(null);
+				new PopulateOmopInstanceFromFhirFiles().exec();
 				break;
 			case "atlas-old":
 				InstallAtlasDependencies.exec();
@@ -118,7 +116,7 @@ public class FhirToOmopMain {
 	}
 
 	private static void downLoadPatientIds(String param) {
-		if(param != null) {
+		if (param != null) {
 			System.out.println("Parsing " + param + " as a number...");
 			int max = Integer.parseInt(param);
 			DownloadPatientIds.exec(max);
@@ -126,7 +124,7 @@ public class FhirToOmopMain {
 			DownloadPatientIds.exec();
 		}
 	}
-	
+
 	// ---
 	//
 	// error cases
