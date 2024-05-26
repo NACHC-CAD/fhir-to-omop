@@ -24,6 +24,10 @@ import lombok.extern.slf4j.Slf4j;
 public class PopulateOmopInstanceFromFhirFiles {
 
 	private List<Connection> connectionList = null;
+
+	//
+	// constructors
+	//
 	
 	public PopulateOmopInstanceFromFhirFiles() {
 		log.info("No database connections provided");
@@ -34,10 +38,22 @@ public class PopulateOmopInstanceFromFhirFiles {
 		this.connectionList = connectionList;
 	}
 	
+	//
+	// main
+	//
+	
 	public static void main(String[] args) {
+		log.info("TRUNCATING DATA TABLES...");
+		TruncateAllDataTables.exec();
+		log.info("LOADING DATA...");
 		new PopulateOmopInstanceFromFhirFiles().exec();
+		log.info("Done.");
 	}
 
+	//
+	// implementation
+	//
+	
 	public void exec() {
 		String rootDir = AppParams.getFhirPatientsDirName();
 		log.info("Root Dir: " + rootDir);

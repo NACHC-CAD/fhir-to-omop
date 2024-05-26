@@ -22,7 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 public class PopulateOmopInstanceFromSyntheaFiles {
 
 	public static void main(String[] args) {
+		log.info("TRUNCATING DATA TABLES...");
+		TruncateAllDataTables.exec();
+		log.info("ULOADING SYNTHEA FILES...");
 		new PopulateOmopInstanceFromSyntheaFiles().exec();
+		log.info("Done.");
 	}
 
 	public void exec() {
