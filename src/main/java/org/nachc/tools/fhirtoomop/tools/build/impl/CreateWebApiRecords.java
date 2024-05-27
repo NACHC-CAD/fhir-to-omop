@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateWebApiRecords {
 
-	public static final String SOURCE_FILE_NAME = "/auth/sqlserver/webapi-source.sql";
+	public static final String SOURCE_FILE_NAME = "/sqlserver/omop/webapi-source.sql";
 	
 	public static void main(String[] args) {
 		exec();
