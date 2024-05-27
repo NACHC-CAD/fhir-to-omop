@@ -54,6 +54,8 @@ public class RunAllIntegrationTests {
 		try {
 			MappedConceptCache.init(conn);
 			StandardConceptCache.init(conn);
+		} catch(Throwable thr) {
+			throw new RuntimeException(thr);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
 		}

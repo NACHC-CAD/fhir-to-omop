@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class DownloadDefaultFhirPatientFiles {
 
-	public static void exec() {
+	public static File exec() {
 		String url = AppParams.get("syntheaDefaultTestFhirPatientsUrl");
 		String dir = AppParams.get("syntheaDefaultTestFhirPatientsDir");
 		String zipFileName = "synthea_micro.zip";
@@ -39,6 +39,7 @@ public class DownloadDefaultFhirPatientFiles {
 		File unzipped = ZipUtil.unzip(zipFile, dirFile);
 		unzipped = unzipped.getParentFile();
 		log.info("File unzipped to: \n" + FileUtil.getCanonicalPath(unzipped));
+		return unzipped;
 	}
 	
 }

@@ -10,6 +10,7 @@
 
 	<logger name="ch.qos.logback" level="ERROR" />
 	<logger name="ca.uhn.fhir" level="ERROR" />
+	<logger name="org.apache.http.client.protocol" level="ERROR" />
 	
 	<root level="info">
 		<appender-ref ref="STDOUT" />

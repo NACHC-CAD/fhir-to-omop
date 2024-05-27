@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.nachc.tools.fhirtoomop.omop.write.threaded.WriteOmopPeopleToDatabase;
+import org.nachc.tools.fhirtoomop.tools.populate.impl.DownloadDefaultFhirPatientFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.truncatedatatables.TruncateAllDataTables;
@@ -55,14 +56,24 @@ public class PopulateOmopInstanceFromFhirFiles {
 	//
 	
 	public void exec() {
-		String rootDir = AppParams.getFhirPatientsDirName();
-		log.info("Root Dir: " + rootDir);
-		List<String> fileList = getFiles();
+		String rootDirName = AppParams.getFhirPatientsDirName();
+		log.info("Root Dir: " + rootDirName);		
+		File rootDir = new File(rootDirName);
+		boolean useDefault = "true".equals(AppParams.get("downloadFhirFilesIfNotFound"));
+		List<String> fileList = null;
+		if(rootDir.exists() == true) {
+			log.info("USING SPECIFIED FHIR FILES DIR");
+			fileList = getFiles(rootDir);
+		} else if(useDefault == true) {
+			log.info("USING DEFAULT TEST FHIR FILES");
+			File downloadedDir = DownloadDefaultFhirPatientFiles.exec();
+			fileList = getFiles(downloadedDir);
+		}
 		exec(fileList);
+		log.info("Done uploading patients.");
 	}
 	
-	private List<String> getFiles() {
-		File dir = new File(AppParams.getFhirPatientsDirName());
+	private List<String> getFiles(File dir) {
 		File[] files = dir.listFiles();
 		List<String> fileNames = new ArrayList<String>();
 		int cnt = 0;
@@ -125,7 +136,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 		} finally {
 			closeConnections(connList);
 			timer.stop();
-			log.info("***************************************************************");
+			log.info("*********************************************");
 			log.info("! ! ! DONE WRITING PATIENTS TO DATABASE ! ! !");
 			log.info("------------");
 			log.info("START:   " + timer.getStartAsString());
@@ -136,7 +147,7 @@ public class PopulateOmopInstanceFromFhirFiles {
 			log.info("AFTER:   " + numberOfPatientsAfter);
 			log.info("------------");
 			log.info("! ! ! DONE WRITING PATIENTS TO DATABASE ! ! !");
-			log.info("***************************************************************");
+			log.info("*********************************************");
 			log.info("");
 			log.info("Your OMOP database now has " + numberOfPatientsAfter + " patients.");
 		}
