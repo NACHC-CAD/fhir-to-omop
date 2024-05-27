@@ -54,7 +54,7 @@ public class AppParams {
 			msg += "*\n";
 			msg += "-----------------------\n";
 			msg += "\n";
-			log.info(msg);
+			log.debug(msg);
 		} catch(Throwable thr) {
 			System.out.println("Could not load default properties.");
 			System.out.println("A properties file will need to be provided by the user.");
