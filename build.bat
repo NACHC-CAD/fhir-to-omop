@@ -1,0 +1,1 @@
+mvn -f pom-build.xml clean install
