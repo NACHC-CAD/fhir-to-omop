@@ -25,74 +25,102 @@
 			 -->
 			
 			<h2>Introduction</h2>
-			This document focus on the conversion of HL7 FHIR messages OMOP.  
-			Specificly, this documentation will walk through the process of using the fhir-to-omop tools 
-			to import FHIR resources into an instance of the OHDSI Common Data Model (CDM).  
-			This example uses PostgreSql as a database. 
-			This guide assumes you have a basic developer's environment that includes the prerequisites of running OHDSI on PostgrSql. 
-			Note: the fhir-to-omop tools require Java 11.  
-			The following will be covered here:  
+			<p>
+				This document focus on the conversion of HL7 FHIR messages OMOP.  
+				Specificly, this documentation will walk through the process of using the fhir-to-omop tools 
+				to import FHIR resources into an instance of the OHDSI Common Data Model (CDM).  
+				This example uses PostgreSql as a database. 
+				This guide assumes you have a basic developer's environment that includes the prerequisites of running OHDSI on PostgrSql. 
+				Note: the fhir-to-omop tools require Java 11.  
+			</p>
+			<p>
+				Installing and running the fhir-to-omop tool consists of the following simple steps that will be covered in this document. 
+			</p>
 			<ul>
 				<li>
-					Download of all of the files required for this exercise 
-					including a library of 2,500 FHIR patients and a complete instance of an OHDSI vocabulary downloaded from Athena.  
+					Install and Run Broadsea
 				</li>
 				<li>
-					Using the fhir-to-omop tools create an instance of the CDM in PostgreSql.  
+					Download and Install (unzip) the fhir-to-omop tool
 				</li>
 				<li>
-					Creation of 2,500 patients in the CDM from FHIR resources.  
+					Use the fhir-to-omop tool to create an OHDSI CDM and all other dependencies (run fhir-to-omop i)
 				</li>
 				<li>
-					Links to documentation showing the architecture of the FHIR to OMOP solution implemented here 
-					including notes on overall design, 
-					issues around race/ethnicity, 
-					discussion of the threading model used achive processing rates of approximately 2.5 million full patient records per hour, 
-					and other architectural and design considerations. 
+					Use the fhir-to-omop tool to upload a set of test FHIR patients (run fhir-to-omop u)
+				</li>
+				<li>
+					Launch Atlas to view and use our newly created OHDSI instance
 				</li>
 			</ul>
 			
+			<!-- 
+			* 
+			* Install and Run Broadsea
+			*
+			 -->
+			
+			<h2>Install and Run Broadsea</h2>
+			<p>
+				<div style="color: red;">
+				<b>Note:</b> 
+				The docker-compose.yml file needs to be slightly modified 
+				to include the mem_limit and shm_size settings shown below.  
+				</div>
+			</p>
+			<p>
+				You can update the existing docker-compose.yml file or 
+				simply replace it with this 
+				<a download href="./img/docker-compose.yml">docker-compose.yml</a> file. 
+			</p>	
+<pre class="preformatted">
+  broadsea-atlasdb:
+    profiles: [ "default", "atlasdb" ]
+    image: ohdsi/broadsea-atlasdb:2.0.0
+    container_name: broadsea-atlasdb
+    platform: "linux/amd64"
+    cpus: 2
+    mem_limit: 2g
+    shm_size: 2g
+    environment:
+      - POSTGRES_PASSWORD=mypass
+    ports:
+      - "5432:5432"
+    volumes:
+     - atlasdb-postgres-data:/var/lib/postgresql/data
+     - ./100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
+     - C:/temp:/temp
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+</pre>
+			</p>
 			<!-- 
 			* 
 			* Download fhir-to-omop
 			*
 			 -->
 			
-			<h2>Download the fhir-to-omop zip file</h2>
+			<h2>Download and Install (unzip) the fhir-to-omop tool</h2>
 			Download the fhir-to-omop zip file from our 
 			<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">published releases</a> 
 			of fhir-to-omop available on the releases page of our GitHub repository. 
 			This zip file contains the Java code and dependencies to run this demo. 
-			This documentation was prepared using v1.5.001.  
+			This documentation was prepared using v1.6.000.  
 			
-			<!-- 
-			* 
-			* Download resources
-			*
-			 -->
-			
-			<h2>Download Resources</h2>
-			<p>
-				To create our 2,500 patients in OMOP from FHIR we will need the FHIR resources as well as the files to populate our vocabulary tables in the CDM.  
-				These resource can be downloaded from 
-				<a download href="https://www.dropbox.com/scl/fi/0x1vttbaqgi7igmqlyons/fhir-to-omop-resources.zip?rlkey=92g5uzvyuair59gml1gh4pmn4&dl=1">here</a>.  
-			</p>
-			<p>
-				After downloading this file, unzip the contents to C:\ to create the folder C:\fhir-to-omop-resources.  
-				These files can be placed anywhere, but if you put them in C:\fhir-to-omop-resources you will not need to make any configuration changes to complete this demo. 
-			</p>
-
 			<!-- 
 			* 
 			* Create an OMOP instance
 			*
 			 -->
 			
-			<h2>Create an Instance of the CDM (v5.4) in PostgreSql</h2>
+			<h2>Use the fhir-to-omop tool to create an OHDSI CDM</h2>
 			Unzip the fhir-to-omop zip file downloaded from the 
 			<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">fhir-to-omop GitHub repository</a> if you haven't already. 
 			Open a cmd prompt and navigate to the directory created. 
-			Execute the following command:
+			Execute the following command to create an instance of the CDM (v5.4) in PostgreSql:
 
 <pre class="preformatted">
 fhir-to-omop i
@@ -104,13 +132,31 @@ fhir-to-omop i
 			*
 			 -->
 			
-			<h2>Upload FHIR Patients to OHDSI Common Data Model (CDM)</h2>
+			<h2>Use the fhir-to-omop tool to upload a set of test FHIR patients (run fhir-to-omop u)</h2>
 			We can now upload our FHIR patients to OHDSI by running command shown below.  
-			This will upload the 2,500 patients in the C:\fhir-to-omop-resources\test\synthea\synthea-micro folder. 
+			This will upload 2,500 FHIR patients from files that are downloaded as part of this process. 
 
 <pre class="preformatted">
 fhir-to-omop u
 </pre>
+
+			<!-- 
+			* 
+			* Launch Atlas to view and use our newly created OHDSI instance
+			*
+			 -->
+			
+			<h2>Launch Atlas to view and use our newly created OHDSI instance</h2>
+
+			<!-- 
+			* 
+			* Notes on Resources
+			*
+			 -->
+			
+			<h2>Notes on Resources</h2>
+			
+			
 
 			<!-- 
 			* 
