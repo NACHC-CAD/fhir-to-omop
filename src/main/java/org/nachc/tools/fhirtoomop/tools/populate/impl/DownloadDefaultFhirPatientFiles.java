@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.populate.impl;
 import java.io.File;
 
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.yaorma.util.time.TimeUtil;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.file.ZipUtil;
@@ -17,14 +18,15 @@ public class DownloadDefaultFhirPatientFiles {
 		String url = AppParams.get("syntheaDefaultTestFhirPatientsUrl");
 		String dir = AppParams.get("syntheaDefaultTestFhirPatientsDir");
 		String zipFileName = "synthea_micro.zip";
-		String msg = "Download default test patients...\n";
+		String msg = "Download default test patients...\n\n\n";
 		msg += "---------------\n";
 		msg += "Downloading synthea_micro as default test files:\n";
 		msg += "dir = " + dir + "\n";
 		msg += "zip = " + zipFileName + "\n";
 		msg += "url = " + url + "\n";
-		msg += "---------------\n";
+		msg += "---------------\n\n\n";
 		log.info(msg);
+		TimeUtil.sleep(5);
 		HttpRequestClient client = new HttpRequestClient(url);
 		log.info("Downloading file...");
 		client.doGet();

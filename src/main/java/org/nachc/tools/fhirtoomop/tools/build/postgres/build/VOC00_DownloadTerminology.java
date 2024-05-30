@@ -29,7 +29,7 @@ public class VOC00_DownloadTerminology {
 			String msg = "\n\n";
 			msg += "* * * \n";
 			msg += "*  \n";		
-			msg += "* ! ! !DOWNLOADING DEFAULT TERMINOLOGY ! ! ! \n";
+			msg += "* ! ! ! DOWNLOADING DEFAULT TERMINOLOGY ! ! ! \n";
 			msg += "* (Terminology files not found and downloadIfNotFound has been set to true in properties file)  \n";
 			msg += "*  \n";		
 			msg += "* * *  \n";
