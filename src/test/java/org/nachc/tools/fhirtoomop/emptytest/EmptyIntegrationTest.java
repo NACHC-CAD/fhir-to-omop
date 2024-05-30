@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop;
+package org.nachc.tools.fhirtoomop.emptytest;
 
 import org.junit.Test;
 

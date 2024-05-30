@@ -1,7 +1,5 @@
 package org.nachc.tools.fhirtoomop;
 
-import static org.junit.Assert.assertTrue;
-
 import java.sql.Connection;
 
 import org.junit.AfterClass;
@@ -9,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
-import org.nachc.tools.fhirtoomop.omop.util.id.fixer.FixSequences;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.counts.GetCountForTable;
@@ -28,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @RunWith(WildcardPatternSuite.class)
 
 @SuiteClasses({ "**/*IntegrationTest.class" })
-// @SuiteClasses({ "EmptyIntegrationTest.class" })
+// @SuiteClasses({ "emptytest/EmptyIntegrationTest.class" })
 // @SuiteClasses({ "omop/write/threaded/WriteOmopPeopleToDatabaseWorkerIntegrationTest.class" })
 // @SuiteClasses({ "omop/write/threaded/**/*IntegrationTest.class" })
 // @SuiteClasses({ "omop/**/*.IntegrationTest.class" })
@@ -54,7 +51,7 @@ public class RunAllIntegrationTests {
 		try {
 			MappedConceptCache.init(conn);
 			StandardConceptCache.init(conn);
-		} catch(Throwable thr) {
+		} catch (Throwable thr) {
 			throw new RuntimeException(thr);
 		} finally {
 			OmopDatabaseConnectionFactory.close(conn);
@@ -100,11 +97,7 @@ public class RunAllIntegrationTests {
 	public static void exec() {
 		JUnitCore junit = new JUnitCore();
 		Result result = junit.run(RunAllIntegrationTests.class);
-		System.out.println("Finished. Result: Failures: " +
-				result.getFailureCount() + ". Ignored: " +
-				result.getIgnoreCount() + ". Tests run: " +
-				result.getRunCount() + ". Time: " +
-				result.getRunTime() + "ms.");
+		System.out.println("Finished. Result: Failures: " + result.getFailureCount() + ". Ignored: " + result.getIgnoreCount() + ". Tests run: " + result.getRunCount() + ". Time: " + result.getRunTime() + "ms.");
 	}
 
 }
