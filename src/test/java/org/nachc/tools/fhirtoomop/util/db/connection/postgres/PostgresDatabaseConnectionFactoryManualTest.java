@@ -35,7 +35,7 @@ public class PostgresDatabaseConnectionFactoryManualTest {
 	}
 
 	public void shouldGetOhdsiConnection() {
-		log.info("Getting OHDSI Connection...");
+		log.info("Getting ohdsi Connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString = "SELECT current_user, user, session_user, current_database(), current_catalog, version()";
@@ -44,7 +44,7 @@ public class PostgresDatabaseConnectionFactoryManualTest {
 		} finally {
 			Database.close(conn);
 		}
-		log.info("Done testing OHDSI connection.");
+		log.info("Done testing ohdsi connection.");
 	}
 
 }

@@ -42,6 +42,8 @@ public class CreateOmopInstanceToolPostgres {
 	}
 
 	public static void exec() {
+		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
+		BurnEverythingToTheGroundPostgres.exec();
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			exec(conn);
@@ -54,8 +56,6 @@ public class CreateOmopInstanceToolPostgres {
 		Timer timer = new Timer();
 		timer.start();
 		log.info("CREATING OMOP INSTANCE FOR POSTGRESQL...");
-		log.info("! ! ! BURNING EVERYTHING TO THE GROUND ! ! !");
-		BurnEverythingToTheGroundPostgres.exec(conn);
 		log.info("! ! ! CREATING OMOP INSTANCE FOR POSTGRESQL ! ! !");
 		// do the dependency installs up front so we can see if something goes awry early in the build
 		ACH0_InstallAch.exec();

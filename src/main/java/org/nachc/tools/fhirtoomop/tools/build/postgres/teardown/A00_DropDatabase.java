@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A05_DropDatabase {
+public class A00_DropDatabase {
 
 	public static void main(String[] args) {
 		log.info("Deleting database...");
@@ -21,9 +21,10 @@ public class A05_DropDatabase {
 		log.info("Getting connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String databaseName = AppParams.get("ohdsiDbName");
-			boolean exists = databaseExists(conn);
-			if(exists == true) {
+			String databaseName = AppParams.getOhdsiDbName();
+			log.info("Dropping database: " + databaseName);
+			boolean exists = databaseExists(databaseName, conn);
+			if (exists == true) {
 				disconnectOtherUsers(databaseName, conn);
 				dropDatabase(databaseName, conn);
 			}
@@ -38,28 +39,28 @@ public class A05_DropDatabase {
 	//
 	// check if the database exists
 	//
-	
-	private static boolean databaseExists(Connection conn) {
+
+	private static boolean databaseExists(String databaseName, Connection conn) {
 		log.info("Checking if database exists...");
 		String sqlString = "";
-		sqlString += "SELECT \n"; 
-		sqlString += "    CASE \n"; 
-		sqlString += "        WHEN EXISTS (SELECT 1 FROM pg_database WHERE datname = 'OHDSI') THEN 1 \n"; 
-		sqlString += "        ELSE 0 \n"; 
+		sqlString += "SELECT \n";
+		sqlString += "    CASE \n";
+		sqlString += "        WHEN EXISTS (SELECT 1 FROM pg_database WHERE datname = '" + databaseName + "') THEN 1 \n";
+		sqlString += "        ELSE 0 \n";
 		sqlString += "    END AS exists \n";
 		String existsString = Database.queryForFirst(sqlString, "exists", conn);
 		boolean rtn = false;
-		if("1".equals(existsString)) {
+		if ("1".equals(existsString)) {
 			rtn = true;
 		}
 		log.info("Database exists: " + rtn);
 		return rtn;
 	}
-	
+
 	//
 	// disconnect other users
 	//
-	
+
 	private static void disconnectOtherUsers(String databaseName, Connection conn) {
 		log.info("Disconnecting other users...");
 		String sqlString = "";
@@ -70,11 +71,11 @@ public class A05_DropDatabase {
 		Database.query(sqlString, conn);
 		log.info("Done disconnecting other users.");
 	}
-	
+
 	//
 	// drop the database
 	//
-	
+
 	private static void dropDatabase(String databaseName, Connection conn) {
 		String sqlString = "drop database \"" + databaseName + "\"";
 		log.info("Sql: \n" + sqlString);

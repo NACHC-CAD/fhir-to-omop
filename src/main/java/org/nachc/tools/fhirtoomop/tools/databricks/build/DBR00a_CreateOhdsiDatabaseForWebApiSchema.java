@@ -34,7 +34,7 @@ public class DBR00a_CreateOhdsiDatabaseForWebApiSchema {
 		String dbName = DatabricksProperties.getWebApiDatabase();
 		boolean exists = exists(conn, dbName);
 		if(exists == false) {
-			log.info("! ! ! CREATING OHDSI DATABASE ! ! !");
+			log.info("! ! ! creating ohdsi database ! ! !");
 			String sqlString = "create database \"" + dbName + "\"";
 			log.info("SQL: \n" + sqlString);
 			Database.update(sqlString, conn);

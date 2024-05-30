@@ -171,6 +171,11 @@ public class AppParams {
 		return get("FullySpecifiedAchilliesResultsSchemaName");
 	}
 	
+	public static String getOhdsiDbName() {
+		return get("ohdsiDbName");
+	}
+	
+	
 	// ---
 	//
 	// schema names

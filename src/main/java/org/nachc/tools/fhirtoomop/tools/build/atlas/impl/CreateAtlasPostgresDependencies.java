@@ -18,7 +18,7 @@ public class CreateAtlasPostgresDependencies {
 		log.info("Creating PostgreSql users for Atlas...");
 		AtlasInstallInitPostgresCreateUsers.exec();
 		// create the database
-		log.info("Creating OHDSI database for Atlas...");
+		log.info("Creating ohdsi database for Atlas...");
 		AtlasInstallCreateDatabase.exec();
 		// create the webapi schema
 		log.info("Creating schema for Atlas...");

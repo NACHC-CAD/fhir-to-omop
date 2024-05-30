@@ -2,6 +2,7 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres;
 
 import java.sql.Connection;
 
+import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A00_DropDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A01_TearDownAtlasDatabaseUsers;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A02_TearDownAtlasDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.teardown.A03_TearDownAtlasWebApiSchema;
@@ -17,23 +18,24 @@ import lombok.extern.slf4j.Slf4j;
 public class BurnEverythingToTheGroundPostgres {
 
 	public static void main(String[] args) {
+		exec();
+	}
+
+	public static void exec() {
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			exec(conn);
+			log.info("BURNING POSTGRES OMOP INSTANCE TO THE GROUND...");
+			A04_TearDownAchillesDatabases.exec(conn);
+			A03_TearDownAtlasWebApiSchema.exec(conn);
+			A02_TearDownAtlasDatabase.exec(conn);
+			A01_TearDownAtlasDatabaseUsers.exec(conn);
+			CDM01_TeardownDatabase.exec();
+			TruncateSyntheaNativeSchema.exec();
+			A00_DropDatabase.exec();
+			log.info("Done burning everything to the ground.");
 		} finally {
 			Database.close(conn);
 		}
-	}
-
-	public static void exec(Connection conn) {
-		log.info("BURNING POSTGRES OMOP INSTANCE TO THE GROUND...");
-		A04_TearDownAchillesDatabases.exec(conn);
-		A03_TearDownAtlasWebApiSchema.exec(conn);
-		A02_TearDownAtlasDatabase.exec(conn);
-		A01_TearDownAtlasDatabaseUsers.exec(conn);
-		CDM01_TeardownDatabase.exec();
-		TruncateSyntheaNativeSchema.exec();
-		log.info("Done.");
 	}
 
 }

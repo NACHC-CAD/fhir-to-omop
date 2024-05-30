@@ -32,8 +32,9 @@ public class PostgresDatabaseConnectionFactory {
 			String url = AppParams.getPostgresBootstrapUrl();
 			String uid = AppParams.getPostgresBootstrapUid();
 			String pwd = AppParams.getPostgresBootstrapPwd();
+			String databaseName = AppParams.getOhdsiDbName();
 			String schema = AppParams.get("atlasCdm");
-			url += "/OHDSI";
+			url += "/" + databaseName;
 			url += "?" + "user=" + uid;
 			url += "&" + "password=" + pwd;
 			url += "&" + "currentSchema=" + schema;
