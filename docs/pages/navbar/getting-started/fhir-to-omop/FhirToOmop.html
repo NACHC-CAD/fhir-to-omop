@@ -69,11 +69,11 @@
 			<p>
 			</p>
 				Download Broadsea by cloaning the github project and then checking out the latest version as shown below. 
-				This documentation was developed using v3.0.5
+				This documentation was developed using the commit with SHA=069e0492823b43705f849ffc710c6d07dfd19980. 
 <pre class="preformatted">
 git clone https://github.com/OHDSI/Broadsea
 cd Broadsea
-git checkout v3.5.0
+git checkout 069e0492823b43705f849ffc710c6d07dfd19980
 </pre>
 			<p>
 				<div style="color: red;">
@@ -92,27 +92,26 @@ git checkout v3.5.0
 <pre class="preformatted">
   broadsea-atlasdb:
     profiles: [ "default", "atlasdb" ]
-    image: ohdsi/broadsea-atlasdb:2.1.0-secret
+    image: ohdsi/broadsea-atlasdb:2.0.0
     container_name: broadsea-atlasdb
-    platform: linux/amd64
-    restart: unless-stopped
+    platform: "linux/amd64"
     cpus: 2
     mem_limit: 2g
     shm_size: 2g
     environment:
-      POSTGRES_PASSWORD: mypass
+      - POSTGRES_PASSWORD=mypass
     ports:
       - "5432:5432"
     volumes:
-      - atlasdb-postgres-data:/var/lib/postgresql/data
-      - ./atlasdb/100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
-      - C:/temp:/temp
+     - atlasdb-postgres-data:/var/lib/postgresql/data
+     - ./100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
+     - C:/temp:/temp
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 10
-      
+
 </pre>
 			</p>
 			<p>

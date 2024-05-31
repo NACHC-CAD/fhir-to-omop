@@ -63,7 +63,7 @@ public class CreateOmopInstanceToolPostgres {
 		VOC00_DownloadTerminology.exec();
 		// do the install
 		A01_CreateAtlasDatabaseUsers.exec(conn);
-		A02_CreateAtlasDatabase.exec(conn);
+//		A02_CreateAtlasDatabase.exec(conn);
 		A03_CreateAtlasWebApiSchema.exec();
 		A04_CreateAtlasWebApiTables.exec();
 		A05_CreateAchillesDatabases.exec();

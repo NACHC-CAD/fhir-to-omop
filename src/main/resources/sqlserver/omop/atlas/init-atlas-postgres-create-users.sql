@@ -55,7 +55,7 @@ CREATE ROLE <ohdsiAppUserUid> WITH
 
 GRANT ohdsi_app TO ohdsi_app_user;
 
-COMMENT ON ROLE <ohdsiAppUserUid> IS 'Application user account for OHDSI applications';
+COMMENT ON ROLE <ohdsiAppUserUid> IS 'Application user account for ohdsi applications';
 
 
 

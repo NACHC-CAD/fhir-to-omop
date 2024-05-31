@@ -18,7 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 public class BurnEverythingToTheGroundPostgres {
 
 	public static void main(String[] args) {
+		log.info("Burning everything to the ground...");
 		exec();
+		log.info("Done.");
 	}
 
 	public static void exec() {
@@ -27,11 +29,11 @@ public class BurnEverythingToTheGroundPostgres {
 			log.info("BURNING POSTGRES OMOP INSTANCE TO THE GROUND...");
 			A04_TearDownAchillesDatabases.exec(conn);
 			A03_TearDownAtlasWebApiSchema.exec(conn);
-			A02_TearDownAtlasDatabase.exec(conn);
+//			A02_TearDownAtlasDatabase.exec(conn);
 			A01_TearDownAtlasDatabaseUsers.exec(conn);
 			CDM01_TeardownDatabase.exec();
 			TruncateSyntheaNativeSchema.exec();
-			A00_DropDatabase.exec();
+//			A00_DropDatabase.exec();
 			log.info("Done burning everything to the ground.");
 		} finally {
 			Database.close(conn);
