@@ -62,10 +62,26 @@
 			
 			<h2>Install and Run Broadsea</h2>
 			<p>
+				Broadsea is a Dockerized build of a suite of OHDSI tools that greatly simplifies setup. 
+				More information is available at 
+				<a href="https://ohdsi.github.io/Broadsea/">https://ohdsi.github.io/Broadsea/</a>.
+			</p>
+			<p>
+			</p>
+				Download Broadsea by cloaning the github project and then checking out the latest version as shown below. 
+				This documentation was developed using v3.0.5
+<pre class="preformatted">
+git clone https://github.com/OHDSI/Broadsea
+cd Broadsea
+git checkout v3.5.0
+</pre>
+			<p>
 				<div style="color: red;">
 				<b>Note:</b> 
 				The docker-compose.yml file needs to be slightly modified 
-				to include the mem_limit and shm_size settings shown below.  
+				to include the mem_limit and shm_size settings 
+				and the volume mapping to the directory where are datafiles will be stored
+				(in this case C:/temp:/temp) as shown below.  
 				</div>
 			</p>
 			<p>
@@ -76,25 +92,71 @@
 <pre class="preformatted">
   broadsea-atlasdb:
     profiles: [ "default", "atlasdb" ]
-    image: ohdsi/broadsea-atlasdb:2.0.0
+    image: ohdsi/broadsea-atlasdb:2.1.0-secret
     container_name: broadsea-atlasdb
-    platform: "linux/amd64"
+    platform: linux/amd64
+    restart: unless-stopped
     cpus: 2
     mem_limit: 2g
     shm_size: 2g
     environment:
-      - POSTGRES_PASSWORD=mypass
+      POSTGRES_PASSWORD: mypass
     ports:
       - "5432:5432"
     volumes:
-     - atlasdb-postgres-data:/var/lib/postgresql/data
-     - ./100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
-     - C:/temp:/temp
+      - atlasdb-postgres-data:/var/lib/postgresql/data
+      - ./atlasdb/100_populate_source_source_daimon.sql:/docker-entrypoint-initdb.d/100_populate_source_source_daimon.sql:ro
+      - C:/temp:/temp
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 10
+      
+</pre>
+			</p>
+			<p>
+				One of the features of Docker is that it maintains copies and backups of older versions of applications. 
+				Sometimes this can lead to older versions and other applications interfering with our application. 
+				The following two scripts can be used to help with this. 
+				The first script (clean-docker.sh) will remove all old builds from your Docker instance. 
+				This includes any other Docker applications you may have previously deployed to that docker instance. 
+				<b>
+					NOTE: THIS SCRIPT WILL REMOVE ALL OLD BUILDS FROM YOUR DOCKER INSTANCE. 
+					THIS INCLUDES ANY OTHER DOCKER APPLICATIONS YOU MAY HAVE PREVIOUSLY DEPLOYED TO THAT DOCKER INSTANCE.
+				</b>
+				The second script can be used to show what applications are currently deployed to Docker. 
+				<ul>
+					<li>
+						<a download href="./img/clean-docker.sh">clean-docker.sh</a>
+					</li>
+					<li>
+						<a download href="./img/show-docker.bat">show-docker.bat</a>
+					</li>
+				</ul>
+			</p>
+			<p>
+				To start and stop Broadsea, run the following. 
+				I like to put these commands in .bat files so I don't need to remember these commands.
+				<ul>
+					<li>
+						<a download href="./img/start.bat">start.bat</a>
+					</li>
+					<li>
+						<a download href="./img/stop.bat">stop.bat</a>
+					</li>
+				</ul>
+			</p>
+			<p>
+				Start Broadsea:
+<pre class="preformatted">
+docker compose pull && docker-compose --profile default up -d
+</pre>
+			</p>
+			<p>
+				Stop Broadsea:
+<pre class="preformatted">
+docker compose --profile default down 
 </pre>
 			</p>
 			<!-- 

@@ -1,0 +1,1 @@
+docker compose pull && docker-compose --profile default up -d
