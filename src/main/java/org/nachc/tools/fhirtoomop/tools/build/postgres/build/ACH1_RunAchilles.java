@@ -14,26 +14,63 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ACH1_RunAchilles {
 
+	private static final String ACHILLES_SCRIPT = "/postgres/build/r/achilles/run-achilles.r";
+
+	private static final String INSTALL_SCRIPT = "/postgres/build/r/achilles/install-achilles.r";
+
 	public static void main(String[] args) {
 		exec();
+		log.info("Done.");
 	}
 
 	public static void exec() {
+		log.info("Installing and running Achilles...");
+		runAchilles();
+		log.info("Done with Achilles.");
+	}
+
+	private static void runAchilles() {
 		// run achilles
 		log.info("---------------------");
 		log.info("START: Running Achilles...");
-		String rString = FileUtil.getAsString("/postgres/build/r/achilles/run-achilles.r");
-		String dbms = AppParams.get("cdmDbType");
+		// get the parameters
+		String rString = FileUtil.getAsString(ACHILLES_SCRIPT);
+		String dbms = AppParams.get("atlasDbms");
 		String user = AppParams.get("ohdsiAdminUserUid");
 		String pwd = AppParams.get("ohdsiAdminUserPwd");
 		String server = AppParams.get("postgresServer");
 		String port = AppParams.get("postgresPort");
+		String cdmVersion = AppParams.get("cdm_version");
+		String cdmDbName = AppParams.get("atlasCdm");
+		String resultsDbName = AppParams.get("atlasResults");
 		String pathToDriver = AppParams.get("postgresPathToDriver");
+		pathToDriver = pathToDriver.replace("\\", "\\\\");
+		// update the script with the parameters
+		rString = rString.replace("@dbms", dbms);
+		rString = rString.replace("@user", user);
+		rString = rString.replace("@pwd", pwd);
+		rString = rString.replace("@server", server);
+		rString = rString.replace("@port", port);
+		rString = rString.replace("@pathToDriver", pathToDriver);
+		rString = rString.replace("@cdmVersion", cdmVersion);
+		rString = rString.replace("@cdmDbName", cdmDbName);
+		rString = rString.replace("@resultsDbName", resultsDbName);
+		String msg = "Running Achilles script...\n\n";
+		msg += "* * * \n";
+		msg += "* RUNNING ACHILLES R SCRIPT\n";
+		msg += "* * * \n";
+		msg += "\n";
+		msg += "---START SCRIPT----------------------------\n\n";
+		msg += rString;
+		msg += "\n";
+		msg += "---END SCRIPT------------------------------\n";
+		msg += "\n\n";
+		log.info(msg);
 		// download the driver if it doesn't exist
 		downloadDriver(pathToDriver);
-//		RunRFileAsBat.run(rString);
+		log.info("Running Achilles...");
+		RunRFileAsBat.run(rString);
 		log.info("DONE: Running Achilles...");
-		log.info("---------------------");
 	}
 
 	private static void downloadDriver(String pathToDriver) {
@@ -42,7 +79,7 @@ public class ACH1_RunAchilles {
 		String fileName = "postgresql-42.3.3.jar";
 		File dir = new File(pathToDriver);
 		File file = new File(dir, fileName);
-		if(dir.exists() == false || file.exists() == false) {
+		if (dir.exists() == false || file.exists() == false) {
 			log.info("PostgreSql driver not found, downloading now...");
 			FileUtil.rmdir(dir);
 			FileUtil.mkdirs(dir);
@@ -55,17 +92,5 @@ public class ACH1_RunAchilles {
 			log.info("Driver already exists, skipping download.");
 		}
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-

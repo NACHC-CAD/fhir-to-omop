@@ -1,0 +1,47 @@
+Thread: Main
+Message:  Error executing SQL:
+org.postgresql.util.PSQLException: ERROR: relation "etl_synthea_1k_ach_res.achilles_results" does not exist
+An error report has been created at  C:/_YES/workspace/fhir-to-omop/errorReportSql.txt
+Level:  FATAL
+Time:  2024-06-01 22:09:23
+
+Stack trace:
+12: (function (condition) 
+{
+    if (is(condition, "error")) {
+        log("FATAL"
+11: signalCondition(cnd)
+10: signal_abort(cnd, .file)
+9: abort(paste("Error executing SQL:", message, paste("An error report has bee
+8: .createErrorReport(dbms, err$message, sqlStatement, errorReportFile)
+7: value[[3]](cond)
+6: tryCatchOne(expr, names, parentenv, handlers[[1]])
+5: tryCatchList(expr, classes, parentenv, handlers)
+4: tryCatch({
+    startQuery <- Sys.time()
+    rowsAffected <- c(rowsAffected, l
+3: DatabaseConnector::executeSql(connection = connection, sql = paste(indicesS
+2: createIndices(connectionDetails = connectionDetails, resultsDatabaseSchema 
+1: Achilles::achilles(cdmVersion = cdmVersion, connectionDetails = connectionD
+
+R version:
+R version 4.2.3 (2023-03-15 ucrt)
+
+Platform:
+x86_64-w64-mingw32
+
+Attached base packages:
+- stats
+- graphics
+- grDevices
+- utils
+- datasets
+- methods
+- base
+
+Other attached packages:
+- Achilles (1.7.2)
+- DatabaseConnector (6.3.2)
+- SqlRender (1.18.0)
+
+

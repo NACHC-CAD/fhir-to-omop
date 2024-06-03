@@ -35,7 +35,7 @@ public class A06_CreateAchillesTables {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<dbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("@achillesResultsDbName", AppParams.getAchillesResultsSchemaName());
 		return sqlString;
 	}
 

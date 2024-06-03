@@ -14,17 +14,17 @@ pkgbuild::check_build_tools()
 # test that SqlRenderer was install and works
 translate("SELECT TOP 10 * FROM person;", "postgresql")
 
-dbms <- "postgresql"
-user <- "ohdsi_admin_user" 
-password <- "app1" 
-server <- "localhost/OHDSI" 
-port <- "5432"
-pathToDriver <- "C:\\_YES\\databases\\postgres\\drivers\\42.3.3"  
+dbms <- "@dbms"
+user <- "@user" 
+password <- "@pwd" 
+server <- "@server" 
+port <- "@port"
+pathToDriver <- "@pathToDriver"  
 extraSettings <- ""
 
-cdmVersion <- "5.4" 
-cdmDatabaseSchema <- "etl_synthea_1k"
-resultsDatabaseSchema <- "etl_synthea_1k_ach_res"
+cdmVersion <- "@cdmVersion" 
+cdmDatabaseSchema <- "@cdmDbName"
+resultsDatabaseSchema <- "@resultsDbName"
 
 connectionDetails <- DatabaseConnector::createConnectionDetails(
   dbms = dbms, 
@@ -44,6 +44,6 @@ Achilles::achilles(
   cdmDatabaseSchema = cdmDatabaseSchema,
   resultsDatabaseSchema = resultsDatabaseSchema
 )
-print("Done running Achilles")
+
 sink(file=NULL)
 print("Done running Achilles")

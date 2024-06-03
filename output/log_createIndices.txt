@@ -1,2 +1,14 @@
-2023-10-15 20:09:21	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
-2023-10-15 20:09:22	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.434 secs
+2024-06-01 09:20:28	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-01 09:20:31	[Main thread]	FATAL	rJava	.jcheck	org.postgresql.util.PSQLException: Connection to 127.0.0.1:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2024-06-01 21:24:54	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-01 21:24:54	[Main thread]	FATAL	DatabaseConnector	.createErrorReport	Error executing SQL: org.postgresql.util.PSQLException: ERROR: relation "etl_synthea_1k_ach_res.achilles_results" does not exist An error report has been created at  C:/_YES/workspace/fhir-to-omop/errorReportSql.txt
+2024-06-01 21:45:36	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-01 21:45:36	[Main thread]	FATAL	DatabaseConnector	.createErrorReport	Error executing SQL: org.postgresql.util.PSQLException: ERROR: relation "etl_synthea_1k_ach_res.achilles_results" does not exist An error report has been created at  C:/_YES/workspace/fhir-to-omop/errorReportSql.txt
+2024-06-01 22:09:23	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-01 22:09:23	[Main thread]	FATAL	DatabaseConnector	.createErrorReport	Error executing SQL: org.postgresql.util.PSQLException: ERROR: relation "etl_synthea_1k_ach_res.achilles_results" does not exist An error report has been created at  C:/_YES/workspace/fhir-to-omop/errorReportSql.txt
+2024-06-02 01:07:32	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-02 01:07:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.236 secs
+2024-06-02 08:47:31	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-02 08:47:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.301 secs
+2024-06-02 22:52:45	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
+2024-06-02 22:52:45	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.326 secs

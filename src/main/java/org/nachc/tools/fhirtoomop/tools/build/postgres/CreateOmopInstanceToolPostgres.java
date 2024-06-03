@@ -3,7 +3,6 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A01_CreateAtlasDatabaseUsers;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A02_CreateAtlasDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A03_CreateAtlasWebApiSchema;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A04_CreateAtlasWebApiTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A05_CreateAchillesDatabases;
@@ -11,21 +10,19 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesT
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH0_InstallAch;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH1_RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN00_LoadDevTools;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN01_LoadSynthFiles;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN02_CreateIndexes;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN03_EtlSyntheaToCdm;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR01_CreateMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR02_LoadFhirRaceEthMappings;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR04_AddPlaceholderCdmRecords;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR05_CreateSequencesForPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSyntheaNative;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06b_CreateSyntheaNativeDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX03_CreateCdmConstraints;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC00_DownloadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
@@ -77,22 +74,20 @@ public class CreateOmopInstanceToolPostgres {
 		FHIR01_CreateMappingTables.exec();
 		FHIR02_LoadFhirRaceEthMappings.exec();
 		FHIR03_CreateFhirResourcesTables.exec();
-//		FHIR04_AddPlaceholderCdmRecords.exec();
-//		FHIR05_CreateSequencesForPrimaryKeys.exec();
+		FHIR04_AddPlaceholderCdmRecords.exec();
+		FHIR05_CreateSequencesForPrimaryKeys.exec();
 		FHIR06a_CreateSyntheaNative.exec();
 		FHIR06b_CreateSyntheaNativeDatabaseTables.exec();
 		VOC99_LoadTerminology.exec();
 		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
-		// IDX03_CreateCdmConstraints.exec();
+//		IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
 
 //		ETLSYN01_LoadSynthFiles.exec();
 //		ETLSYN02_CreateIndexes.exec();
 //		ETLSYN03_EtlSyntheaToCdm.exec();
 
-		FHIR05_CreateSequencesForPrimaryKeys.exec();
-		
 //		ACH1_RunAchilles.exec();
 		timer.stop();
 		log.info("\n\nBUILD TIME: " + timer.getElapsedString());

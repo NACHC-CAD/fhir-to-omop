@@ -21,16 +21,17 @@ public class A04_TearDownAchillesDatabases {
 	}
 
 	public static void exec(Connection conn) {
-		String databaseName = AppParams.getSchemaName();
-		dropDatabase(databaseName + "_ach_res", conn);
-		dropDatabase(databaseName + "_ach_tmp", conn);
+		String resName = AppParams.getAchillesResultsSchemaName();
+		String tempName = AppParams.getAchillesTempSchemaName();
+		dropDatabase(resName, conn);
+		dropDatabase(tempName, conn);
 		Database.commit(conn);
 		log.info("Done tearing down Achilles databases.");
 	}
 
 	private static void dropDatabase(String databaseName, Connection conn) {
-		log.info("Dropping database: " + databaseName);
-		Database.update("drop database if exists " + databaseName, conn);
+		log.info("Dropping schema: " + databaseName);
+		Database.update("drop schema if exists " + databaseName + " cascade", conn);
 	}
 
 }

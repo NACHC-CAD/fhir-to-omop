@@ -8,7 +8,7 @@ SQL:
 drop index etl_synthea_1k_ach_res.idx_ar_aid
 
 R version:
-R version 4.2.2 (2022-10-31 ucrt)
+R version 4.2.3 (2023-03-15 ucrt)
 
 Platform:
 x86_64-w64-mingw32
@@ -23,6 +23,6 @@ Attached base packages:
 - base
 
 Other attached packages:
-- Achilles (1.7)
-- DatabaseConnector (6.2.4)
-- SqlRender (1.16.1)
+- Achilles (1.7.2)
+- DatabaseConnector (6.3.2)
+- SqlRender (1.18.0)

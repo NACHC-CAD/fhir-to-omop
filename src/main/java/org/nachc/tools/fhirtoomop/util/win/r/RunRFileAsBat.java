@@ -14,15 +14,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RunRFileAsBat {
 
+	private static String DIR = "/temp/ponos";
+	
 	public static void run(String rScript) {
 		writeFile(rScript);
 		File bat = writeBatFile();
 		runBatFile(bat);
+//		deleteFiles();
 	}
 	
 	private static void writeFile(String rScript) {
 		log.info("Writing source file to /temp/ponos");
-		File dir = new File("/temp/ponos");
+		File dir = new File(DIR);
 		FileUtil.rmdir(dir);
 		FileUtil.mkdirs(dir);
 		File file = new File(dir,"ponos.r");
@@ -56,18 +59,28 @@ public class RunRFileAsBat {
 			BufferedReader reader = new BufferedReader(isReader);
 			String line;
 			// read the output
+			log.info("Script is running...\n\n");
+			System.out.println("--- OUTPUT FROM SCRIPT -----------------------------------------\n\n");
 			while ((line = reader.readLine()) != null) {
-				log.info(line);
+				System.out.println(line);
 			}
 			// wait for the process to finish
 			int exitCode = process.waitFor();
+			System.out.println("\n");
+			System.out.println("--- END OUTPUT FROM SCRIPT -------------------------------------\n\n");
 			// done
 			log.info("EXIT CODE: " + exitCode);
 		} catch (Exception exp) {
 			throw new RuntimeException(exp);
 		}
+		timer.stop();
 		log.info("TIME TO RUN PROCESS: " + timer.getElapsedString());
 		log.info("Done running process.");
 	}
 
+	private static void deleteFiles() {
+		File dir = new File(DIR);
+		FileUtil.rmdir(dir);
+	}
+	
 }

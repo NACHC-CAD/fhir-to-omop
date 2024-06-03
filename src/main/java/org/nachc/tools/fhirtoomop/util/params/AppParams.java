@@ -209,12 +209,12 @@ public class AppParams {
 	}
 
 	public static String getAchillesTempSchemaName() {
-		String rtn = get("AchillesTempSchemaName");
+		String rtn = get("atlasTemp");
 		return rtn;
 	}
 
 	public static String getAchillesResultsSchemaName() {
-		String rtn = get("AchillesResultsSchemaName");
+		String rtn = get("atlasResults");
 		return rtn;
 	}
 
