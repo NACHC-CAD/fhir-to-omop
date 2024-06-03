@@ -50,6 +50,9 @@
 					Use the fhir-to-omop tool to upload a set of test FHIR patients (run fhir-to-omop u)
 				</li>
 				<li>
+					Use the fhir-to-omop tool to run Achilles (run fhir-to-omop a)
+				</li>
+				<li>
 					Launch Atlas to view and use our newly created OHDSI instance
 				</li>
 			</ul>
@@ -118,16 +121,22 @@ git checkout 069e0492823b43705f849ffc710c6d07dfd19980
 				One of the features of Docker is that it maintains copies and backups of older versions of applications. 
 				Sometimes this can lead to older versions and other applications interfering with our application. 
 				The following two scripts can be used to help with this. 
-				The first script (clean-docker.sh) will remove all old builds from your Docker instance. 
-				This includes any other Docker applications you may have previously deployed to that docker instance. 
+				The clean-docker.sh script will remove all old builds from your Docker instance. 
+				This script can be used if your CDM is not in the Broadsea instance of PostgreSql. 
+				The reset.bat script will remove all old builds but will retain the PostgreSql database. 
+				This script should be used if your CDM is in the Broadsea instance of PostgreSql. 
+				The instances removed by these scripts include any other Docker applications you may have previously deployed to that docker instance. 
 				<b>
-					NOTE: THIS SCRIPT WILL REMOVE ALL OLD BUILDS FROM YOUR DOCKER INSTANCE. 
+					NOTE: THESE SCRIPTS WILL REMOVE ALL OLD BUILDS FROM YOUR DOCKER INSTANCE. 
 					THIS INCLUDES ANY OTHER DOCKER APPLICATIONS YOU MAY HAVE PREVIOUSLY DEPLOYED TO THAT DOCKER INSTANCE.
 				</b>
 				The second script can be used to show what applications are currently deployed to Docker. 
 				<ul>
 					<li>
-						<a download href="./img/clean-docker.sh">clean-docker.sh</a>
+						<a download href="./img/clean-docker.sh">clean-docker.sh</a> (Use if your CDM is not in Broadsea)
+					</li>
+					<li>
+						<a download href="./img/reset.bat">reset.bat</a> (Use if your CDM is in Broadsea)
 					</li>
 					<li>
 						<a download href="./img/show-docker.bat">show-docker.bat</a>
@@ -169,7 +178,7 @@ docker compose --profile default down
 			<a href="https://github.com/NACHC-CAD/fhir-to-omop/releases">published releases</a> 
 			of fhir-to-omop available on the releases page of our GitHub repository. 
 			This zip file contains the Java code and dependencies to run this demo. 
-			This documentation was prepared using v1.6.000.  
+			This documentation was prepared using v1.6.001.  
 			
 			<!-- 
 			* 
@@ -203,11 +212,29 @@ fhir-to-omop u
 
 			<!-- 
 			* 
+			* Run Atlas
+			*
+			 -->
+			
+			<h2>Use the fhir-to-omop tool to run Achilles</h2>
+			Our CDM now contains the 2,500 FHIR patients. 
+			To view and use these patients in Atlas, we need to first run Achilles. 
+			Achilles can be run by executing fhir-to-omop a. 
+
+<pre class="preformatted">
+fhir-to-omop a
+</pre>
+
+			<!-- 
+			* 
 			* Launch Atlas to view and use our newly created OHDSI instance
 			*
 			 -->
 			
 			<h2>Launch Atlas to view and use our newly created OHDSI instance</h2>
+			We can now launch Atlas and view and manipulate our FHIR patients in Atlas and the other tools of the OHDSI suite of tooling. 
+
+<img src="./img/fhir-patients-in-atlas.png" />
 
 			<!-- 
 			* 
@@ -216,7 +243,13 @@ fhir-to-omop u
 			 -->
 			
 			<h2>Notes on Resources</h2>
-			
+			The vocabulary and terminology resources use in the above process are downloaded to you local machine. 
+			This includes a complete set of vocabulary tables from Athena and the 2,500 test FHIR patients. 
+			These resources can be found in C:\temp\fhir-to-omop. Also installed in this directory are 
+			the driver needed to connect to PostgreSql, and the files required to create mapping tables 
+			used to map FHIR race and ethnicity concepts to OHDSI race and ethnicity concepts. 
+			<br/>
+			<img src="./img/temp-dir.png" />
 			
 
 			<!-- 
