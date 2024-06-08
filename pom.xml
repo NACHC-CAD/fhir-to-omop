@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<version>1.6.003</version> 
+		<version>1.6.006</version>
 	</properties>
 
 	<groupId>org.nachc.cad.tools</groupId>
@@ -47,6 +47,10 @@
 			<id>ossrh</id>
 			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
 		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>		
 	</distributionManagement>
 
 	<repositories>
@@ -219,6 +223,9 @@
 				<includes>
 					<include>**/*.*</include>
 				</includes>
+					<!-- * * *
+					* intentionally omit exclusion of auth/**/*.properties																							
+					-->							
 			</resource>
 		</resources>
 
