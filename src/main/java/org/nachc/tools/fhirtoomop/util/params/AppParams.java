@@ -69,10 +69,10 @@ public class AppParams {
 			File srcFile = FileUtil.getFile(SRC, false);
 			String fileName = FileUtil.getAsString(srcFile);
 			fileName = fileName.trim();
-			log.info(fileName);
+			log.info("AppParams fileName: \n" + fileName);
 			// log the working dir
 			File workingDir = new File(".");
-			log.info("WORKING DIR: \n" + FileUtil.getCanonicalPath(workingDir));
+			log.info("WORKING DIR: " + FileUtil.getCanonicalPath(workingDir));
 			// get the parameters file
 			File file = new File(fileName);
 			PARAMS_FILE = file;
@@ -399,6 +399,10 @@ public class AppParams {
 
 	public static String getSyntheaCsvJdbcDriverName() {
 		return get("SyntheaCsvJdbcDriverName");
+	}
+
+	public static String getSyntheaCsvNativeSchema() {
+		return get("SyntheaCsvNativeSchema");
 	}
 
 }
