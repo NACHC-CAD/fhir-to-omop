@@ -380,4 +380,25 @@ public class AppParams {
 		return get("WebApiSourceDialect");
 	}
 
+	public static String getSyntheaCsvJdbcLocation() {
+		return get("SyntheaCsvJdbcLocation");
+	}
+	
+	public static String getSyntheaCsvJdbcDownloadUrl() {
+		return get("SyntheaCsvJdbcDownloadUrl");
+	}
+
+	public static boolean getSyntheaCsvDownloadJdbcDriverIfNotFound() {
+		String str = get("SyntheaCsvDownloadJdbcDriverIfNotFound");
+		if("true".equalsIgnoreCase(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public static String getSyntheaCsvJdbcDriverName() {
+		return get("SyntheaCsvJdbcDriverName");
+	}
+
 }
