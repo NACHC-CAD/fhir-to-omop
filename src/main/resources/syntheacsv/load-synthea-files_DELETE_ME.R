@@ -7,6 +7,7 @@
 
 print("Installing NACHC-CAD/ETL-Synthea...")
 devtools::install_github("NACHC-CAD/ETL-Synthea")
+print("Done installing.")
 print("Setting parameters...")
 
 library(ETLSyntheaBuilder)

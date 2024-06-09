@@ -404,5 +404,41 @@ public class AppParams {
 	public static String getSyntheaCsvNativeSchema() {
 		return get("SyntheaCsvNativeSchema");
 	}
+	
+	public static String getSyntheaCsvNativeDatabase() {
+		return get("SyntheaCsvNativeDatabase");
+	}
+	
+	public static String getServerName() {
+		return get("ServerName");
+	}
+	
+	public static String getPort() {
+		return get("Port");
+	}
 
+	public static String getSyntheaVersion() {
+		return get("SyntheaVersion");
+	}
+	
+	public static String getCdmVersion() {
+		return get("cdm_version");
+	}
+	
+	public static String getDbmsName() {
+		return get("DbmsName");
+	}
+	
+	public static String getSyntehsCsvUid() {
+		return get("SyntehsCsvUid");
+	}
+	
+	public static String getSyntehsCsvPwd() {
+		return get("SyntheaCsvPwd");
+	}
+	
+	public static String getJdbcExtraSettings() {
+		return get("JdbcExtraSettings");
+	}
+	
 }

@@ -3,6 +3,7 @@ package org.nachc.tools.fhirtoomop.tools.build.impl;
 import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,13 +15,19 @@ public class CreateDatabaseUser {
 		String db = AppParams.getSchemaName();
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
+		exec(conn, db, uid, pwd);
+	}
+
+	public static void exec(Connection conn, String db, String uid, String pwd) {
 		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);
 		// create the log in
-		log.info("Creating login: " + uid);
-		Database.update("create login " + uid + " with password = '" + pwd + "'", conn);
+		if (loginExists(uid, conn) == false) {
+			log.info("Creating login: " + uid);
+			Database.update("create login " + uid + " with password = '" + pwd + "'", conn);
+		}
 		// create user
 		addPrivs(db, uid, conn);
 		addPrivs(dqdDatabaseName, uid, conn);
@@ -36,12 +43,24 @@ public class CreateDatabaseUser {
 		log.info("Done creating database user.");
 	}
 
+	private static boolean loginExists(String uid, Connection conn) {
+		String sqlString = "SELECT * FROM sys.server_principals WHERE name = N'" + uid + "'";
+		Data data = Database.query(sqlString, conn);
+		if (data.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	private static void addPrivs(String schemaName, String uid, Connection conn) {
 		// switch to the database
 		Database.update("use " + schemaName, conn);
 		// create the user
-		log.info("Creating user: " + uid);
-		Database.update("create user " + uid + " for login " + uid + " with default_schema = " + schemaName, conn);
+		if(userExists(uid, conn) == false) {
+			log.info("Creating user: " + uid);
+			Database.update("create user " + uid + " for login " + uid + " with default_schema = " + schemaName, conn);
+		}
 		// add the privs
 		log.info("Adding privileges...");
 		Database.update("exec sp_addrolemember N'db_accessadmin', N'" + uid + "'", conn);
@@ -52,5 +71,15 @@ public class CreateDatabaseUser {
 		Database.update("exec sp_addrolemember N'db_owner', N'" + uid + "'", conn);
 		Database.update("exec sp_addrolemember N'db_securityadmin', N'" + uid + "'", conn);
 	}
-	
+
+	private static boolean userExists(String uid, Connection conn) {
+		String sqlString = "SELECT * FROM sys.database_principals WHERE name = N'" + uid + "' AND type = 'S'";
+		Data data = Database.query(sqlString, conn);
+		if(data.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

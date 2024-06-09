@@ -1,8 +1,18 @@
 package org.nachc.tools.fhirtoomop.util.db.connection.type;
 
 public enum ConnectionDbmsType {
-	MSSQL,
-	POSTGRESQL;
+	MSSQL("mssql"),
+	POSTGRESQL("postgres");
+	
+	private String name;
+	
+	private ConnectionDbmsType(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
 	
 	public static ConnectionDbmsType get(String typeString) {
 		if("mssql".equals(typeString)) {

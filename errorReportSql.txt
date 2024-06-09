@@ -1,11 +1,19 @@
 DBMS:
-postgresql
+sql server
 
 Error:
-org.postgresql.util.PSQLException: ERROR: index "idx_ar_aid" does not exist
+com.microsoft.sqlserver.jdbc.SQLServerException: The specified schema name "synthea_native_csv" either does not exist or you do not have permission to use it.
 
 SQL:
-drop index etl_synthea_1k_ach_res.idx_ar_aid
+--HINT DISTRIBUTE_ON_RANDOM
+create table synthea_native_csv.allergies (
+start         date,
+stop          date,
+patient       varchar(1000),
+encounter     varchar(1000),
+code          varchar(100),
+description   varchar(255)
+)
 
 R version:
 R version 4.2.3 (2023-03-15 ucrt)
@@ -23,6 +31,4 @@ Attached base packages:
 - base
 
 Other attached packages:
-- Achilles (1.7.2)
-- DatabaseConnector (6.3.2)
-- SqlRender (1.18.0)
+- ETLSyntheaBuilder (1.0)

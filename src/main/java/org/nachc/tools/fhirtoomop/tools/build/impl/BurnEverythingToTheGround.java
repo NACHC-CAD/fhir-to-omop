@@ -44,11 +44,24 @@ public class BurnEverythingToTheGround {
 		Database.update("drop database if exists " + dqdDatabaseName, conn);
 		Database.update("drop database if exists " + AppParams.getAchillesResultsSchemaName(), conn);
 		Database.update("drop database if exists " + AppParams.getAchillesTempSchemaName(), conn);
+		Database.update("drop database if exists " + AppParams.getSyntheaCsvNativeSchema(), conn);
 		log.warn("DATABASE DROPPED: " + databaseName);
-		// drop the login
-		String uid = AppParams.getUid();
+		String uid;
+		boolean loginExists = false;
+		// drop the login for the cdm user
+		uid = AppParams.getUid();
 		log.warn("DROPPING LOGIN: " + uid);
-		boolean loginExists = loginExists(conn, uid);
+		loginExists = loginExists(conn, uid);
+		if (loginExists) {
+			log.info("Doing drop...");
+			Database.update("drop login " + uid, conn);
+			log.info("Done with drop.");
+		}
+		log.warn("LOGIN DROPPED: " + uid);
+		// drop the login for the synthea csv user
+		uid = AppParams.getSyntehsCsvUid();
+		log.warn("DROPPING LOGIN: " + uid);
+		loginExists = loginExists(conn, uid);
 		if (loginExists) {
 			log.info("Doing drop...");
 			Database.update("drop login " + uid, conn);
