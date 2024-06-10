@@ -1,0 +1,21 @@
+#
+# install synthea
+#
+
+git clone https://github.com/synthetichealth/synthea.git
+cd synthea
+git checkout v3.0.0
+gradlew.bat build check test
+
+#
+# edit C:\_YES\workspace\synthea\src\main\resources
+#
+
+exporter.fhir.export = false
+exporter.csv.export = true
+
+#
+# create patients
+#
+
+run_synthea.bat -p 100 -m pregnancy labor_and_delivery postpartum_care

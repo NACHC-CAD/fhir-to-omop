@@ -20,7 +20,7 @@ public class UploadSyntheaCsvFilesToOhdsi {
 	public static void exec() {
 		try {
 			log.info("\n\n\n-----------------------------------");
-			log.info("Creating tables for Synthea CSV import.");
+			log.info("RUNNING R SCRIPT TO UPLOAD FILES.");
 			// get the parameters
 			String dbms = AppParams.getDbmsName();
 			String server = AppParams.getServerName();
@@ -32,7 +32,7 @@ public class UploadSyntheaCsvFilesToOhdsi {
 			String cdmVersion = AppParams.getCdmVersion();
 			String syntheaVersion = AppParams.getSyntheaVersion();
 			String syntheaCsvNativeSchema = AppParams.getSyntheaCsvNativeSchema();
-			String syntheaCsvFilesDir = AppParams.getSyntheaPatientsDirName();
+			String syntheaCsvFilesDir = getPathToDataFiles();
 			String extraSettings = AppParams.getJdbcExtraSettings();
 			// get the script
 			String str = FileUtil.getAsString("/syntheacsv/load-synthea-files.r");
@@ -61,6 +61,14 @@ public class UploadSyntheaCsvFilesToOhdsi {
 
 	private static String getPathToDriver() {
 		String dir = AppParams.getSyntheaCsvJdbcLocation();
+		File file = new File(dir);
+		String rtn = FileUtil.getCanonicalPath(file);
+		rtn = rtn.replace("\\", "\\\\");
+		return rtn;
+	}
+	
+	private static String getPathToDataFiles() {
+		String dir = AppParams.getSyntheaCsvFilesDir();
 		File file = new File(dir);
 		String rtn = FileUtil.getCanonicalPath(file);
 		rtn = rtn.replace("\\", "\\\\");

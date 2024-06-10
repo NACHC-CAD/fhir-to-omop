@@ -30,16 +30,49 @@ syntheaVersion <- "@SyntheaVersion"
 syntheaSchema  <- "@SyntheaCsvNativeSchema"
 syntheaFileLoc <- "@SyntheaCsvFilesDir"
 
+print("")
+print("")
+print("# * * *")
+print("#")
+print("# CREATING TABLES")
+print("#")
+print("# * * *")
+print("")
+print("")
+
 ETLSyntheaBuilder::CreateSyntheaTables(
 	connectionDetails = cd, 
 	syntheaSchema = syntheaSchema, 
 	syntheaVersion = syntheaVersion
 )
 
-# ETLSyntheaBuilder::LoadSyntheaTables(connectionDetails = cd, syntheaSchema = syntheaSchema, syntheaFileLoc = syntheaFileLoc)
+print("")
+print("")
+print("# * * *")
+print("#")
+print("# LOADING DATA")
+print("#")
+print("# * * *")
+print("")
+print("")
+
+ETLSyntheaBuilder::LoadSyntheaTables(
+	connectionDetails = cd, 
+	syntheaSchema = syntheaSchema, 
+	syntheaFileLoc = syntheaFileLoc
+)
 
 # ETLSyntheaBuilder::LoadEventTables(connectionDetails = cd, cdmSchema = cdmSchema, syntheaSchema = syntheaSchema, cdmVersion = cdmVersion, syntheaVersion = syntheaVersion)
 
+print("")
+print("")
+print("# * * *")
+print("#")
+print("# Done.")
+print("#")
+print("# * * *")
+print("")
+print("")
 
 
 

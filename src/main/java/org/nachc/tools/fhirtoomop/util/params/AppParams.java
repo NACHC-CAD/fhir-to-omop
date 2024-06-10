@@ -441,4 +441,20 @@ public class AppParams {
 		return get("JdbcExtraSettings");
 	}
 	
+	public static String getSyntheaCsvFilesDir() {
+		return get("SyntheaCsvFilesDir");
+	}
+	
+	public static String getSyntheaCsvTestFilesUrl() {
+		return get("SyntheaCsvTestFilesUrl");
+	}
+	
+	public static boolean getSyntheaCsvDownloadTestFilesIfNotFound() {
+		String str = get("SyntheaCsvDownloadTestFilesIfNotFound");
+		if("true".equals(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
