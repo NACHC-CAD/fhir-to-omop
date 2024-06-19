@@ -12,19 +12,14 @@ import com.nach.core.util.file.ZipUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UploadTestDataSet {
+public class UploadCsvFilesZip {
 
-//	private static final String FILE_NAME = "/broadsea/exported-test-data/demo_cdm.zip";
-
-	private static final String FILE_NAME = "/eunomia/Synthea27Nj_5.4.zip";
-
-	public static void exec(Connection conn, File outputDir) {
+	public static void exec(Connection conn, InputStream is, File outputDir) {
 		try {
 			log.info("Cleaning up files...");
 			FileUtil.rmdir(outputDir);
 			FileUtil.mkdirs(outputDir);
 			log.info("Unzipping file...");
-			InputStream is = FileUtil.getInputStream(FILE_NAME);
 			ZipUtil.unzip(is, outputDir);
 			log.info("Unzipped to: " + FileUtil.getCanonicalPath(outputDir));
 			File srcDir = outputDir;

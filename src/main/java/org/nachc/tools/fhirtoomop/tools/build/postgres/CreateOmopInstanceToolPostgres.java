@@ -22,7 +22,6 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06a_CreateSynth
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR06b_CreateSyntheaNativeDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX02_CreateCdmIndexes;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX03_CreateCdmConstraints;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC00_DownloadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.VOC99_LoadTerminology;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
@@ -48,7 +47,7 @@ public class CreateOmopInstanceToolPostgres {
 			Database.close(conn);
 		}
 	}
-	
+
 	private static void exec(Connection conn) {
 		Timer timer = new Timer();
 		timer.start();
@@ -60,7 +59,7 @@ public class CreateOmopInstanceToolPostgres {
 		VOC00_DownloadTerminology.exec();
 		// do the install
 		A01_CreateAtlasDatabaseUsers.exec(conn);
-//		A02_CreateAtlasDatabase.exec(conn);
+		//		A02_CreateAtlasDatabase.exec(conn);
 		A03_CreateAtlasWebApiSchema.exec();
 		A04_CreateAtlasWebApiTables.exec();
 		A05_CreateAchillesDatabases.exec();
@@ -69,8 +68,8 @@ public class CreateOmopInstanceToolPostgres {
 		A08_CreateAtlasSourceRecordsInWebApi.exec();
 		CDM01_CreateCdmDatabase.exec();
 		CDM02a_CreateCdmDatabaseTables.exec();
-//		CDM02b_CreateCdmDatabasePrimaryKeys.exec();
-//		CDM03_CreateCdmSourceRecordInCdmForAtlas.exec();
+		//		CDM02b_CreateCdmDatabasePrimaryKeys.exec();
+		//		CDM03_CreateCdmSourceRecordInCdmForAtlas.exec();
 		FHIR01_CreateMappingTables.exec();
 		FHIR02_LoadFhirRaceEthMappings.exec();
 		FHIR03_CreateFhirResourcesTables.exec();
@@ -81,14 +80,14 @@ public class CreateOmopInstanceToolPostgres {
 		VOC99_LoadTerminology.exec();
 		IDX01_CreateCdmPrimaryKeys.exec();
 		IDX02_CreateCdmIndexes.exec();
-//		IDX03_CreateCdmConstraints.exec();
+		//		IDX03_CreateCdmConstraints.exec();
 		// NEXT: LOAD DATA, RUN ACHILLES, BUILD WEB-API, DEPLOY APPLICATIONS
 
-//		ETLSYN01_LoadSynthFiles.exec();
-//		ETLSYN02_CreateIndexes.exec();
-//		ETLSYN03_EtlSyntheaToCdm.exec();
+		//		ETLSYN01_LoadSynthFiles.exec();
+		//		ETLSYN02_CreateIndexes.exec();
+		//		ETLSYN03_EtlSyntheaToCdm.exec();
 
-//		ACH1_RunAchilles.exec();
+		//		ACH1_RunAchilles.exec();
 		timer.stop();
 		log.info("\n\nBUILD TIME: " + timer.getElapsedString());
 		log.info("Done.");

@@ -19,7 +19,7 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.RunAchilles;
-import org.nachc.tools.fhirtoomop.tools.build.impl.UploadTestDataSet;
+import org.nachc.tools.fhirtoomop.tools.build.impl.UploadCsvFilesZip;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -40,6 +40,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateOmopInstanceTool {
 
+	private static final String DST_DIR = "/temp/fhir-to-omop";
+	
 	public static void main(String[] args) {
 		createOmopInstance();
 	}
@@ -70,7 +72,7 @@ public class CreateOmopInstanceTool {
 			Database.commit(conn);
 			// move the race eth files
 			MoveRaceEthFiles raceFiles = new MoveRaceEthFiles();
-			raceFiles.exec();
+			raceFiles.exec(DST_DIR);
 			// create the sequences
 			logMsg("CREATING SEQUENCES");
 			CreateSequencesForPrimaryKeys.exec(conn);
