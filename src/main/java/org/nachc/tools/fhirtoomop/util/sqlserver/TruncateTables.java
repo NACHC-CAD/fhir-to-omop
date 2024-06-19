@@ -27,6 +27,8 @@ public class TruncateTables {
 	private ArrayList<String> ignored = new ArrayList<String>();
 
 	private List<String> ignoreList = VocabularyTablesList.getTablesList();
+	
+	private boolean invertIgnore = false;
 
 	private List<String> allTables = null;
 
@@ -37,10 +39,11 @@ public class TruncateTables {
 	public static void main(String[] args) {
 		// truncateDataTables();
 		// truncateAllTables();
+		truncateVocabularyTables();
 	}
 
 	//
-	// static methods to execute based on configuration
+	// truncate only the data tables (keep terminology)
 	//
 
 	public static void truncateDataTables() {
@@ -52,6 +55,24 @@ public class TruncateTables {
 		log.info("Done.");
 	}
 
+	//
+	// truncate only the terminology tables (keep data)
+	//
+
+	public static void truncateVocabularyTables() {
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		TruncateTables trunk = new TruncateTables();
+		trunk.invertIgnore = true;
+		trunk.truncateDataTables(dbName, schemaName, conn);
+		log.info("Done.");
+	}
+
+	//
+	// truncate all tables
+	//
+	
 	public static void truncateAllTables() {
 		String dbName = AppParams.getDatabaseName();
 		String schemaName = AppParams.getSchemaName();
@@ -84,13 +105,22 @@ public class TruncateTables {
 	}
 
 	private boolean ignore(String tableName) {
+		boolean isOnIgnoreList = isOnIgnoreList(tableName);
+		if(invertIgnore == true) {
+			return !isOnIgnoreList;
+		} else {
+			return isOnIgnoreList;
+		}
+	}
+
+	private boolean isOnIgnoreList(String tableName) {
 		if (ignoreList.contains(tableName.toUpperCase())) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
+	
 	private List<String> getTablesForSchema(String dbName, String schemaName, Connection conn) {
 		if (allTables == null) {
 			allTables = new ArrayList<String>();
