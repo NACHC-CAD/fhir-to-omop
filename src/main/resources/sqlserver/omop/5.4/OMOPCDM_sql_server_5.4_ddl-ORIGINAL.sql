@@ -4,7 +4,7 @@
 CREATE TABLE PERSON (
 			person_id integer NOT NULL,
 			gender_concept_id integer NOT NULL,
-			year_of_birth integer NULL,
+			year_of_birth integer NOT NULL,
 			month_of_birth integer NULL,
 			day_of_birth integer NULL,
 			birth_datetime datetime NULL,

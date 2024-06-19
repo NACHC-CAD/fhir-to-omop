@@ -31,7 +31,7 @@ public class DBR03_UploadTestDatasetCsvFilesDatabricks {
 
 	private static final File WORKING_DIR = new File("C:\\temp\\demo_cdm");
 
-	private static final InputStream ZIP_SRC = FileUtil.getInputStream("/databricks/demo_cdm.zip");
+	private static final String FILE_NAME = "/databricks/demo_cdm.zip";
 	
 	public static void main(String[] args) {
 		Connection conn = null;
@@ -72,7 +72,8 @@ public class DBR03_UploadTestDatasetCsvFilesDatabricks {
 		// copy and extract the zip file
 		log.info("Extracting zip file...");
 		File zipFile = new File(WORKING_DIR, "demo_cdm.zip");
-		FileUtil.write(ZIP_SRC, zipFile);
+		InputStream zipSrc = FileUtil.getInputStream(FILE_NAME);
+		FileUtil.write(zipSrc, zipFile);
 		ZipUtil.unzip(zipFile, WORKING_DIR);
 		// get the list of files
 		log.info("Getting list of files...");

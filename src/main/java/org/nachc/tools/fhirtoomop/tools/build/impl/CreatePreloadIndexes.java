@@ -14,8 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreatePreloadIndexes {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/indexes/sqlserver-indexes.sql");
-
+	private static final String FILE_NAME = "/sqlserver/indexes/sqlserver-indexes.sql";
+	
 	public static void main(String[] arags) {
 		exec(OmopDatabaseConnectionFactory.getCdmConnection());
 	}
@@ -25,7 +25,8 @@ public class CreatePreloadIndexes {
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");
-		Database.executeSqlScript(IS, conn);
+		InputStream is = FileUtil.getInputStream(FILE_NAME);
+		Database.executeSqlScript(is, conn);
 		log.info("Done running script.");
 		log.info("Done creating database tables.");		
 	}

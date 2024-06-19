@@ -14,8 +14,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateSequencesForPrimaryKeys {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/sequences.sql");
-
+	private static final String FILE_NAME = "/sqlserver/omop/sequences.sql";
+	
 	public static void main(String[] args) {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
@@ -30,7 +30,8 @@ public class CreateSequencesForPrimaryKeys {
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");
-		Database.executeSqlScript(IS, conn);
+		InputStream is = FileUtil.getInputStream(FILE_NAME);
+		Database.executeSqlScript(is, conn);
 		log.info("Done running script.");
 		log.info("Done creating sequences for primary keys.");
 	}

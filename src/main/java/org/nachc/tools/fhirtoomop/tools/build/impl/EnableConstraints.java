@@ -11,7 +11,7 @@ public class EnableConstraints {
 
 	public static void exec(Connection conn) {
 		String sqlString = "EXEC sp_msforeachtable \"ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all\"";
-		log.info("Dropping constraints\n:" + sqlString);
+		log.info("Enabling constraints\n:" + sqlString);
 		Database.update(sqlString, conn);
 		log.info("Done with drop.");
 	}

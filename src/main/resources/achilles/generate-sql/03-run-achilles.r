@@ -2,7 +2,6 @@
 # ---
 # 
 # Script to run Achilles
-# Run the install (once) and then run this script to run achilles.
 #
 # ---
 

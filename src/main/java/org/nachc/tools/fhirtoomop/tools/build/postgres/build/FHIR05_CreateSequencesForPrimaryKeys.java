@@ -15,8 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FHIR05_CreateSequencesForPrimaryKeys {
 
-	private static final InputStream IS = FileUtil.getInputStream("/postgres/build/FHIR05_CreateSequencesForPrimaryKeys.sql");
-
+	private static final String FILE_NAME = "/postgres/build/FHIR05_CreateSequencesForPrimaryKeys.sql";
+	
 	public static void main(String[] args) {
 		exec();
 	}
@@ -26,7 +26,8 @@ public class FHIR05_CreateSequencesForPrimaryKeys {
 		try {
 			String dbName = AppParams.getSchemaName();
 			log.info("Running script...");
-			Database.executeSqlScript(IS, conn);
+			InputStream is = FileUtil.getInputStream(FILE_NAME);
+			Database.executeSqlScript(is, conn);
 			log.info("Done running script.");
 			log.info("Done creating sequences for primary keys.");
 		} finally {

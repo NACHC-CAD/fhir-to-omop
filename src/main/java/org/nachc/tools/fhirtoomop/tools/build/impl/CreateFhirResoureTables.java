@@ -13,14 +13,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateFhirResoureTables {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/fhir/fhir-resources-ddl.sql");
+	private static final String FILE_NAME = "/sqlserver/fhir/fhir-resources-ddl.sql";
 	
 	public static void exec(Connection conn) {
 		String dbName = AppParams.getSchemaName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");
-		Database.executeSqlScript(IS, conn);
+		InputStream is = FileUtil.getInputStream(FILE_NAME);
+		Database.executeSqlScript(is, conn);
 		log.info("Done running script.");
 		log.info("Done creating database tables.");		
 	}

@@ -75,6 +75,9 @@ public class AppParams {
 			log.info("WORKING DIR: " + FileUtil.getCanonicalPath(workingDir));
 			// get the parameters file
 			File file = new File(fileName);
+			if(file.exists() == false) {
+				file = FileUtil.getFile(fileName);
+			}
 			PARAMS_FILE = file;
 			log.info("App Properties File Exists: " + file.exists());
 			InputStream is = new FileInputStream(file);

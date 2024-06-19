@@ -15,17 +15,27 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateDatabaseTables {
 
-	private static final InputStream IS = FileUtil.getInputStream("/sqlserver/omop/5.4/OMOPCDM_sql_server_5.4_ddl.sql");
+	private static final String FILE_NAME = "/sqlserver/omop/5.4/OMOPCDM_sql_server_5.4_ddl.sql";
 	
 	public static void exec(Connection conn) {
-		String dbName = AppParams.getSchemaName();
-		log.info("Using: " + dbName);
-		Database.update("use " + dbName, conn);
-		log.info("Running script...");
-		String sqlString = updateSql(IS);
-		Database.executeSqlScript(sqlString, conn);
-		log.info("Done running script.");
-		log.info("Done creating database tables.");
+		InputStream is = null;
+		try {
+			String dbName = AppParams.getSchemaName();
+			log.info("Using: " + dbName);
+			Database.update("use " + dbName, conn);
+			log.info("Running script...");
+			is = FileUtil.getInputStream(FILE_NAME);
+			String sqlString = updateSql(is);
+			Database.executeSqlScript(sqlString, conn);
+			log.info("Done running script.");
+			log.info("Done creating database tables.");
+		} finally {
+			try {
+				is.close();
+			} catch(Exception exp) {
+				throw new RuntimeException(exp);
+			}
+		}
 	}
 	
 	private static String updateSql(InputStream is) {

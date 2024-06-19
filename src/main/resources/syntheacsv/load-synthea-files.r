@@ -7,11 +7,6 @@
 #
 # ---
 
-print("Installing NACHC-CAD/ETL-Synthea...")
-devtools::install_github("NACHC-CAD/ETL-Synthea@9e324c67b999f961603de2865d1fe6fbecd58091")
-print("Done installing.")
-print("Setting parameters...")
-
 library(ETLSyntheaBuilder)
 
 cd <- DatabaseConnector::createConnectionDetails(
@@ -62,7 +57,42 @@ ETLSyntheaBuilder::LoadSyntheaTables(
 	syntheaFileLoc = syntheaFileLoc
 )
 
-# ETLSyntheaBuilder::LoadEventTables(connectionDetails = cd, cdmSchema = cdmSchema, syntheaSchema = syntheaSchema, cdmVersion = cdmVersion, syntheaVersion = syntheaVersion)
+print("")
+print("")
+print("# * * *")
+print("#")
+print("# CREATING MAP AND ROLLUP TABLES")
+print("#")
+print("# * * *")
+print("")
+print("")
+
+ETLSyntheaBuilder::CreateMapAndRollupTables(
+	connectionDetails = cd, 
+	cdmSchema = cdmSchema, 
+	syntheaSchema = syntheaSchema, 
+	cdmVersion = cdmVersion, 
+	syntheaVersion = syntheaVersion
+)
+
+print("")
+print("")
+print("# * * *")
+print("#")
+print("# LOADING EVENT TABLES")
+print("#")
+print("# * * *")
+print("")
+print("")
+
+ETLSyntheaBuilder::LoadEventTables(
+	connectionDetails = cd, 
+	cdmSchema = cdmSchema, 
+	syntheaSchema = syntheaSchema, 
+	cdmVersion = cdmVersion, 
+	syntheaVersion = 
+	syntheaVersion
+)
 
 print("")
 print("")

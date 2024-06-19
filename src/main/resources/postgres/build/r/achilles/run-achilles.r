@@ -1,18 +1,12 @@
 # ---
 # 
 # Script to run Achilles
-# Run the install (once) and then run this script to run achilles.
 #
 # ---
 
 sink(file="./SINK.TXT")
 library(SqlRender)
 library(Achilles)
-
-# check pkgbuild
-pkgbuild::check_build_tools()
-# test that SqlRenderer was install and works
-translate("SELECT TOP 10 * FROM person;", "postgresql")
 
 dbms <- "@dbms"
 user <- "@user" 

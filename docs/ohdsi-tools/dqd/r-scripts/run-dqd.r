@@ -9,9 +9,6 @@
 # The output of this script is a single JSON file that can then be rendered with the run-dqd.r script 
 # to view the results as a web page in a browser.  
 # 
-# Prior to running this script you will need to download and install the jdbc driver For MS Sql Server.  
-# This is entered as the pathToDriver variable below.  
-#
 # ---
 
 # ---

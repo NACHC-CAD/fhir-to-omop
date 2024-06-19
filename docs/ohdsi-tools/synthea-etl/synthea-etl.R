@@ -3,11 +3,7 @@
 # This file has been addapted from the documentation for the ETL-Synthea project:
 # https://github.com/OHDSI/ETL-Synthea
 #
-# The SHA code used to specify the version used here is for the 2022-12-02 commit.  
-#
 # ---
-
-devtools::install_github("OHDSI/ETL-Synthea@bae1c8eca8dba7ba1129f6c5f758b985c5458405")
 
 library(ETLSyntheaBuilder)
 

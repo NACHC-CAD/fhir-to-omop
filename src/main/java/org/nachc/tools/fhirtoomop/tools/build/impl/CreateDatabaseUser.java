@@ -20,6 +20,7 @@ public class CreateDatabaseUser {
 
 	public static void exec(Connection conn, String db, String uid, String pwd) {
 		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
+		String cdmDatabaseName = AppParams.getSchemaName();
 		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);
@@ -31,6 +32,7 @@ public class CreateDatabaseUser {
 		// create user
 		addPrivs(db, uid, conn);
 		addPrivs(dqdDatabaseName, uid, conn);
+		addPrivs(cdmDatabaseName, uid, conn);
 		Database.commit(conn);
 		// done
 		// do the special grant for bulk upload and others
