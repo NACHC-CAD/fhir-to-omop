@@ -36,7 +36,7 @@ public class BurnEverythingToTheGround {
 	public static void doSqlServerDrop(Connection conn) {
 		// drop the database
 		String databaseName = AppParams.getFullySpecifiedSchemaName();
-		databaseName = AppParams.getCatalogPart(databaseName);
+		databaseName = AppParams.getDatabasePart(databaseName);
 		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		log.warn("DROPPING DATABASE: " + databaseName);
 		Database.update("use master", conn);

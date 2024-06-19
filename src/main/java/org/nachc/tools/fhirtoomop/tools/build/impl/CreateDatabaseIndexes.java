@@ -16,7 +16,7 @@ public class CreateDatabaseIndexes {
 	private static final String FILE_NAME = "/sqlserver/omop/5.4/OMOPCDM_sql_server_5.4_indices.sql";
 	
 	public static void exec(Connection conn) {
-		String dbName = AppParams.getSchemaName();
+		String dbName = AppParams.getDatabaseName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

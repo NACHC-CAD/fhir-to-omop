@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CreateDatabaseUser {
 
 	public static void exec(Connection conn) {
-		String db = AppParams.getSchemaName();
+		String db = AppParams.getDatabaseName();
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
 		exec(conn, db, uid, pwd);
@@ -20,7 +20,7 @@ public class CreateDatabaseUser {
 
 	public static void exec(Connection conn, String db, String uid, String pwd) {
 		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
-		String cdmDatabaseName = AppParams.getSchemaName();
+		String cdmDatabaseName = AppParams.getDatabaseName();
 		// switch to the using db
 		log.info("Using: " + db);
 		Database.update("use " + db, conn);

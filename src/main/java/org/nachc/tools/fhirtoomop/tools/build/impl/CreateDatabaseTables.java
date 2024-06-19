@@ -20,7 +20,7 @@ public class CreateDatabaseTables {
 	public static void exec(Connection conn) {
 		InputStream is = null;
 		try {
-			String dbName = AppParams.getSchemaName();
+			String dbName = AppParams.getDatabaseName();
 			log.info("Using: " + dbName);
 			Database.update("use " + dbName, conn);
 			log.info("Running script...");

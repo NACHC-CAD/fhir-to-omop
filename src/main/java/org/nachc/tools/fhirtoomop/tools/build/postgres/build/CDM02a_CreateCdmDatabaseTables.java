@@ -25,7 +25,7 @@ public class CDM02a_CreateCdmDatabaseTables {
 		log.info("Got connection...");
 		try {
 			log.info("Running script...");
-			String dbName = AppParams.getSchemaName();
+			String dbName = AppParams.getDatabaseName();
 			log.info("DB NAME: " + dbName);
 			String sqlString = SQL;
 			sqlString = sqlString.replace("@cdmDatabaseSchema", dbName);

@@ -52,7 +52,7 @@ public class BurnAtlasToTheGround {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
 			String databaseName = AppParams.getFullySpecifiedSchemaName();
-			databaseName = AppParams.getCatalogPart(databaseName);
+			databaseName = AppParams.getDatabasePart(databaseName);
 			Database.update("drop database if exists " + databaseName + "_ach_res", conn);
 			Database.update("drop database if exists " + databaseName + "_ach_tmp", conn);
 		} finally {

@@ -102,7 +102,7 @@ public class CreateOmopInstanceTool {
 			log.info("Database closed");
 		}
 		logMsg("DONE");
-		String dbName = AppParams.getSchemaName();
+		String dbName = AppParams.getDatabaseName();
 		String uid = AppParams.getUid();
 		String pwd = AppParams.getPwd();
 		String msg = "";

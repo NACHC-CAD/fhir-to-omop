@@ -40,7 +40,7 @@ public class FHIR04_AddPlaceholderCdmRecords {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDatabaseName());
 		return sqlString;
 	}
 

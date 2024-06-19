@@ -26,7 +26,7 @@ public class LoadMappingTables {
 		sqlString = sqlString.replace("<RACE_FILE>", FileUtil.getCanonicalPath(raceFile));
 		sqlString = sqlString.replace("<ETH_FILE>", FileUtil.getCanonicalPath(ethFile));
 		log.info("SQL STRING: \n" + sqlString);
-		String dbName = AppParams.getSchemaName();
+		String dbName = AppParams.getDatabaseName();
 		log.info("Using: " + dbName);
 		Database.update("use " + dbName, conn);
 		log.info("Running script...");

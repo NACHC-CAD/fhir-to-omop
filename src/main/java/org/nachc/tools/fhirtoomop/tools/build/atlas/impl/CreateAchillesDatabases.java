@@ -79,7 +79,7 @@ public class CreateAchillesDatabases {
 		msg += "\n------------------------------------------------";
 		msg += "\n\n\n";
 		log.info(msg);
-		String databaseName = AppParams.getSchemaName();
+		String databaseName = AppParams.getDatabaseName();
 		String vocabSchema = databaseName + ".dbo";
 		String resultsSchema = AppParams.getAchillesResultsSchemaName();
 		resultsSchema = resultsSchema + ".dbo";

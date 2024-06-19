@@ -35,7 +35,7 @@ public class FHIR03_CreateFhirResourcesTables {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDatabaseName());
 		return sqlString;
 	}
 

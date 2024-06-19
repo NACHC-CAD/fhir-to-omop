@@ -185,12 +185,17 @@ public class AppParams {
 	//
 	// ---
 	
-	public static String getSchemaName() {
+	public static String getDatabaseName() {
 		String rtn = getFullySpecifiedSchemaName();
-		return getCatalogPart(rtn);
+		return getDatabasePart(rtn);
 	}
 
-	public static String getCatalogPart(String schemaName) {
+	public static String getSchemaName() {
+		String rtn = getFullySpecifiedSchemaName();
+		return getSchemaPart(rtn);
+	}
+
+	public static String getDatabasePart(String schemaName) {
 		String rtn = schemaName;
 		if (rtn.indexOf(".") > 0) {
 			rtn = rtn.trim().substring(0, rtn.trim().indexOf("."));

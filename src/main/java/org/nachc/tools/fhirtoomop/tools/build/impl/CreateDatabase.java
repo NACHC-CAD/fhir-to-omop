@@ -26,7 +26,7 @@ public class CreateDatabase {
 	
 	public static void exec(Connection conn) {
 		log.info("Creating databases...");
-		String databaseName = AppParams.getSchemaName();
+		String databaseName = AppParams.getDatabaseName();
 		String dqdDatabaseName = AppParams.getDqdResultsSchemaName();
 		createDatabase(databaseName, conn);
 		createDatabase(dqdDatabaseName, conn);

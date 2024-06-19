@@ -25,7 +25,7 @@ public class ETLSYN02_CreateIndexes {
 		log.info("Got connection...");
 		try {
 			String sqlString = FileUtil.getAsString(PATH);
-			String schemaName = AppParams.getSchemaName();
+			String schemaName = AppParams.getDatabaseName();
 			sqlString = sqlString.replace("@cdm_schema", schemaName);
 			log.info("SQLSTRING: \n\n" + sqlString + "\n\n");
 			log.info("Creating indexes from script...");

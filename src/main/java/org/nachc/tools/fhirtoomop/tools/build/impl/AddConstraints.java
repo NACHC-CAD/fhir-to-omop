@@ -26,7 +26,7 @@ public class AddConstraints {
 		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
 			String sqlString;
-			String databaseName = AppParams.getSchemaName();
+			String databaseName = AppParams.getDatabaseName();
 			// use
 			Database.update("use " + databaseName, conn);
 			// add primary keys

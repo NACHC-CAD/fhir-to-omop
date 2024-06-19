@@ -46,7 +46,7 @@ public class VOC99_LoadTerminology {
 	private static String getSqlString() {
 		String rootDir = AppParams.getTerminologyRootDir();
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<dbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("<dbName>", AppParams.getDatabaseName());
 		sqlString = sqlString.replace("@terminologiesRootFolder/", rootDir);		
 		return sqlString;
 	}

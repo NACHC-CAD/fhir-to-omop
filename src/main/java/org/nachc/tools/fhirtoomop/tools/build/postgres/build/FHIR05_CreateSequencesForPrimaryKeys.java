@@ -24,7 +24,7 @@ public class FHIR05_CreateSequencesForPrimaryKeys {
 	public static void exec() {
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
-			String dbName = AppParams.getSchemaName();
+			String dbName = AppParams.getDatabaseName();
 			log.info("Running script...");
 			InputStream is = FileUtil.getInputStream(FILE_NAME);
 			Database.executeSqlScript(is, conn);

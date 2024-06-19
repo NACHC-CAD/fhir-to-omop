@@ -46,7 +46,7 @@ public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 
 	private static String replace(String sqlString, String name) {
 		sqlString = sqlString.replace("@" + name, AppParams.get(name));
-		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDatabaseName());
 		return sqlString;
 	}
 

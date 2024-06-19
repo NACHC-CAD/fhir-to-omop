@@ -22,7 +22,7 @@ public class GenerateOrmForObservationManualTest {
 		log.info("Generating person Dvo...");
 		Connection conn = OmopDatabaseConnectionFactory.getCdmConnection();
 		try {
-			String schemaName = AppParams.getSchemaName();
+			String schemaName = AppParams.getDatabaseName();
 			String packageName = "org.nachc.tools.omop.orm.ormgenerator.dvo";
 			File destDir = FileUtil.getFromProjectRoot("/src/test/java/org/nachc/tools/omop/orm/ormgenerator/dvo");
 			DvoGenerator dvo = new DvoGenerator("OBSERVATION", schemaName, conn, new MsSqlServerOrmCodeGenerator());

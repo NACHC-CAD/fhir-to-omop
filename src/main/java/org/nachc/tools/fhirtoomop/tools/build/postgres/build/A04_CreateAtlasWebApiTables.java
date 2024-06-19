@@ -35,7 +35,7 @@ public class A04_CreateAtlasWebApiTables {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<dbName>", AppParams.getSchemaName());
+		sqlString = sqlString.replace("<dbName>", AppParams.getDatabaseName());
 		return sqlString;
 	}
 

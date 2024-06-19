@@ -15,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GetCountsForAllTablesInSchema {
 
 	public static Data getCountsForSchema(String schemaName, Connection conn) {
-		String cat = AppParams.getCatalogPart(schemaName);
+		String cat = AppParams.getDatabasePart(schemaName);
 		String sch = AppParams.getSchemaPart(schemaName);
 		log.info("Getting counts for: " + cat + "." + sch);
 		String sqlString = "select * from information_schema.tables where table_catalog = ? and table_schema = ?";

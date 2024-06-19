@@ -20,7 +20,7 @@ public class CDM01_CreateCdmDatabase {
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			log.info("Creating databases...");
-			String databaseName = AppParams.getSchemaName();
+			String databaseName = AppParams.getDatabaseName();
 			createDatabase(databaseName, conn);
 			createDatabase(databaseName + "_dqd_results", conn);
 			createDatabase("synthea_native", conn);
