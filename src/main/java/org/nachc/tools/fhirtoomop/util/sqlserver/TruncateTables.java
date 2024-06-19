@@ -37,9 +37,28 @@ public class TruncateTables {
 	//
 
 	public static void main(String[] args) {
-		// truncateDataTables();
 		// truncateAllTables();
-		truncateVocabularyTables();
+		// truncateDataTables();
+		// truncateVocabularyTables();
+	}
+
+	// ---
+	//
+	// PUBLIC STATIC METHODS
+	//
+	// ---
+	
+	//
+	// truncate all tables
+	//
+	
+	public static void truncateAllTables() {
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		TruncateTables trunk = new TruncateTables();
+		trunk.truncateAllTables(dbName, schemaName, conn);
+		log.info("Done.");
 	}
 
 	//
@@ -69,57 +88,52 @@ public class TruncateTables {
 		log.info("Done.");
 	}
 
+	// ---
+	//
+	// PUBLIC INSTANCE METHODS TO PERFORM TRUNCATE BASED ON PASSED IN PARAMETERS
+	//
+	// ---
+	
 	//
 	// truncate all tables
 	//
 	
-	public static void truncateAllTables() {
-		String dbName = AppParams.getDatabaseName();
-		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
-		TruncateTables trunk = new TruncateTables();
-		trunk.truncateAllTables(dbName, schemaName, conn);
-		log.info("Done.");
+	public void truncateAllTables(String dbName, String schemaName, Connection conn) {
+		this.ignoreList = new ArrayList<String>();
+		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
+		for (String tableName : allTables) {
+			truncateTable(dbName, schemaName, tableName, conn);
+		}
+		logOutcomes();
 	}
 
 	//
-	// method to truncate data tables
+	// truncate only the data tables
 	//
 
 	public void truncateDataTables(String dbName, String schemaName, Connection conn) {
 		this.ignoreList = VocabularyTablesList.getTablesList();
 		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
 		for (String tableName : allTables) {
-			truncateTable(schemaName, tableName, conn);
+			truncateTable(dbName, schemaName, tableName, conn);
 		}
 		logOutcomes();
 	}
 
-	public void truncateAllTables(String dbName, String schemaName, Connection conn) {
-		this.ignoreList = new ArrayList<String>();
-		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
-		for (String tableName : allTables) {
-			truncateTable(schemaName, tableName, conn);
-		}
-		logOutcomes();
+	//
+	// truncate only the vocabulary tables
+	//
+
+	public void truncateVocabularyTables(String dbName, String schemaName, Connection conn) {
+		this.invertIgnore = true;
+		this.truncateDataTables(dbName, schemaName, conn);
 	}
 
-	private boolean ignore(String tableName) {
-		boolean isOnIgnoreList = isOnIgnoreList(tableName);
-		if(invertIgnore == true) {
-			return !isOnIgnoreList;
-		} else {
-			return isOnIgnoreList;
-		}
-	}
-
-	private boolean isOnIgnoreList(String tableName) {
-		if (ignoreList.contains(tableName.toUpperCase())) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// internal implementation (all private past here) ------------------------
+	
+	//
+	// method to get all of the tables for a schema
+	//
 	
 	private List<String> getTablesForSchema(String dbName, String schemaName, Connection conn) {
 		if (allTables == null) {
@@ -138,8 +152,33 @@ public class TruncateTables {
 		return allTables;
 	}
 
-	private void truncateTable(String schemaName, String tableName, Connection conn) {
-		String fullTableName = schemaName + "." + tableName;
+	//
+	// methods to see if a table should be ignored
+	//
+	
+	private boolean ignore(String tableName) {
+		boolean isOnIgnoreList = isOnIgnoreList(tableName);
+		if(invertIgnore == true) {
+			return !isOnIgnoreList;
+		} else {
+			return isOnIgnoreList;
+		}
+	}
+
+	private boolean isOnIgnoreList(String tableName) {
+		if (ignoreList.contains(tableName.toUpperCase())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	//
+	// truncate table method
+	//
+	
+	private void truncateTable(String dbName, String schemaName, String tableName, Connection conn) {
+		String fullTableName = dbName + "." + schemaName + "." + tableName;
 		log.info("Truncating table: " + fullTableName);
 		if (ignore(tableName) == true) {
 			ignored.add(fullTableName);
@@ -149,6 +188,7 @@ public class TruncateTables {
 				try {
 					Database.update("truncate table " + fullTableName, conn);
 				} catch (Exception exp) {
+					log.info("TRUNCATE METHOD FAILD, USING DELETE: " + fullTableName);
 					Database.update("delete from " + fullTableName, conn);
 				}
 				success.add(fullTableName);
@@ -160,6 +200,10 @@ public class TruncateTables {
 		}
 	}
 
+	//
+	// log the outcome
+	//
+	
 	private void logOutcomes() {
 		String msg;
 		msg = "\n--------------------\n";
