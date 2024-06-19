@@ -460,4 +460,30 @@ public class AppParams {
 			return false;
 		}
 	}
+	
+	//
+	// download cdm csv
+	//
+	
+	public static String getCdmCsvZipFileLocation() {
+		return get("CdmCsvZipFileLocation");
+	}
+	
+	public static String getCdmCsvZipFileName() {
+		return get("CdmCsvZipFileName");
+	}
+	
+	public static String getCdmCsvDownloadUrl() {
+		return get("CdmCsvDownloadUrl");
+	}
+
+	public static boolean getCdmCsvDownloadIfNotFound() {
+		String str = get("CdmCsvDownloadIfNotFound");
+		if("true".equalsIgnoreCase(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }
