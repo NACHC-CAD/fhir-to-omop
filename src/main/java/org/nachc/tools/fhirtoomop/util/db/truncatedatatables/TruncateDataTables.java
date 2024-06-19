@@ -8,6 +8,12 @@ import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * This class is deprecated. 
+ * Use org.nachc.tools.fhirtoomop.util.db.truncate.TruncateTables
+ * See org.nachc.tools.fhirtoomop.util.db.truncate.impl.TruncateCdmTables as an example.  
+ */
+@Deprecated
 @Slf4j
 public class TruncateDataTables {
 

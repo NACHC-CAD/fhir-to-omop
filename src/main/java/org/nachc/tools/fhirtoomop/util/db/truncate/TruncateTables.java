@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.sqlserver;
+package org.nachc.tools.fhirtoomop.util.db.truncate;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -11,8 +11,12 @@ import org.yaorma.database.Data;
 import org.yaorma.database.Database;
 import org.yaorma.database.Row;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+@Getter
+@Setter
 @Slf4j
 public class TruncateTables {
 
@@ -33,109 +37,10 @@ public class TruncateTables {
 	private List<String> allTables = null;
 
 	//
-	// main method (for manual testing)
-	//
-
-	public static void main(String[] args) {
-		// truncateAllTables();
-		// truncateDataTables();
-		// truncateVocabularyTables();
-	}
-
-	// ---
-	//
-	// PUBLIC STATIC METHODS
-	//
-	// ---
-	
-	//
-	// truncate all tables
-	//
-	
-	public static void truncateAllTables() {
-		String dbName = AppParams.getDatabaseName();
-		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
-		TruncateTables trunk = new TruncateTables();
-		trunk.truncateAllTables(dbName, schemaName, conn);
-		log.info("Done.");
-	}
-
-	//
-	// truncate only the data tables (keep terminology)
-	//
-
-	public static void truncateDataTables() {
-		String dbName = AppParams.getDatabaseName();
-		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
-		TruncateTables trunk = new TruncateTables();
-		trunk.truncateDataTables(dbName, schemaName, conn);
-		log.info("Done.");
-	}
-
-	//
-	// truncate only the terminology tables (keep data)
-	//
-
-	public static void truncateVocabularyTables() {
-		String dbName = AppParams.getDatabaseName();
-		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
-		TruncateTables trunk = new TruncateTables();
-		trunk.invertIgnore = true;
-		trunk.truncateDataTables(dbName, schemaName, conn);
-		log.info("Done.");
-	}
-
-	// ---
-	//
-	// PUBLIC INSTANCE METHODS TO PERFORM TRUNCATE BASED ON PASSED IN PARAMETERS
-	//
-	// ---
-	
-	//
-	// truncate all tables
-	//
-	
-	public void truncateAllTables(String dbName, String schemaName, Connection conn) {
-		this.ignoreList = new ArrayList<String>();
-		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
-		for (String tableName : allTables) {
-			truncateTable(dbName, schemaName, tableName, conn);
-		}
-		logOutcomes();
-	}
-
-	//
-	// truncate only the data tables
-	//
-
-	public void truncateDataTables(String dbName, String schemaName, Connection conn) {
-		this.ignoreList = VocabularyTablesList.getTablesList();
-		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
-		for (String tableName : allTables) {
-			truncateTable(dbName, schemaName, tableName, conn);
-		}
-		logOutcomes();
-	}
-
-	//
-	// truncate only the vocabulary tables
-	//
-
-	public void truncateVocabularyTables(String dbName, String schemaName, Connection conn) {
-		this.invertIgnore = true;
-		this.truncateDataTables(dbName, schemaName, conn);
-	}
-
-	// internal implementation (all private past here) ------------------------
-	
-	//
 	// method to get all of the tables for a schema
 	//
 	
-	private List<String> getTablesForSchema(String dbName, String schemaName, Connection conn) {
+	public List<String> getTablesForSchema(String dbName, String schemaName, Connection conn) {
 		if (allTables == null) {
 			allTables = new ArrayList<String>();
 			String sqlString = "";
@@ -156,7 +61,7 @@ public class TruncateTables {
 	// methods to see if a table should be ignored
 	//
 	
-	private boolean ignore(String tableName) {
+	public boolean ignore(String tableName) {
 		boolean isOnIgnoreList = isOnIgnoreList(tableName);
 		if(invertIgnore == true) {
 			return !isOnIgnoreList;
@@ -165,7 +70,7 @@ public class TruncateTables {
 		}
 	}
 
-	private boolean isOnIgnoreList(String tableName) {
+	public boolean isOnIgnoreList(String tableName) {
 		if (ignoreList.contains(tableName.toUpperCase())) {
 			return true;
 		} else {
@@ -177,7 +82,7 @@ public class TruncateTables {
 	// truncate table method
 	//
 	
-	private void truncateTable(String dbName, String schemaName, String tableName, Connection conn) {
+	public void truncateTable(String dbName, String schemaName, String tableName, Connection conn) {
 		String fullTableName = dbName + "." + schemaName + "." + tableName;
 		log.info("Truncating table: " + fullTableName);
 		if (ignore(tableName) == true) {
@@ -204,7 +109,7 @@ public class TruncateTables {
 	// log the outcome
 	//
 	
-	private void logOutcomes() {
+	public void logOutcomes() {
 		String msg;
 		msg = "\n--------------------\n";
 		msg += "Success: The following tables were successfully truncated. \n";
