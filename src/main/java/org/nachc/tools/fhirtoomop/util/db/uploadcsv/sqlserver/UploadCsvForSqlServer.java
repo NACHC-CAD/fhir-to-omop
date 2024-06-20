@@ -56,6 +56,7 @@ public class UploadCsvForSqlServer {
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done with upload.");
 	}
 
 	public static void uploadDatatables() {
@@ -78,6 +79,7 @@ public class UploadCsvForSqlServer {
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done with upload.");
 	}
 
 	public static void uploadTerminologyTables() {
@@ -101,6 +103,7 @@ public class UploadCsvForSqlServer {
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done with upload.");
 	}
 
 	private static void download() {
