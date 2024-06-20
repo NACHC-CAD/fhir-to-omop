@@ -4,24 +4,29 @@ import java.io.File;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
 import com.nach.core.util.file.ZipUtil;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+@Getter
+@Setter
 @Slf4j
 public class UploadCsvFilesZip {
 
-	private ArrayList<String> ignoreList = new ArrayList<String>();
+	private List<String> ignoreList = new ArrayList<String>();
 	
-	private ArrayList<String> success = new ArrayList<String>();
+	private List<String> success = new ArrayList<String>();
 	
-	private ArrayList<String> failure = new ArrayList<String>();
+	private List<String> failure = new ArrayList<String>();
 	
-	private ArrayList<String> ignored = new ArrayList<String>();
+	private List<String> ignored = new ArrayList<String>();
 	
 	private boolean invertIgnore = false;
 
