@@ -73,12 +73,10 @@ public class CreateWebApiRecords {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
 		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
 		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
-		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("atlasCdm"));
+		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("bootstrapUrl"));
 		sqlString = sqlString.replace("<atlasResults>", AppParams.get("atlasResults"));
 		sqlString = sqlString.replace("<atlasTemp>", AppParams.get("atlasTemp"));
-		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("atlasCdmUrl"));
+		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("atlasCdm"));
 		return sqlString;
 	}
 }
