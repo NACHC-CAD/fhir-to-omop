@@ -127,15 +127,7 @@ public class AppParams {
 	}
 
 	// ---
-	// 
-	// METHODS TO GET PROPERTIES
-	//
-	// ---	
-
-	// ---
-	//
 	// get property using a key
-	//
 	// ---
 
 	public static String get(String key) {
@@ -146,6 +138,28 @@ public class AppParams {
 			log.info("PROPS: " + PROPS);
 			throw new RuntimeException("Could not load property", thr);
 		}
+	}
+
+	// ---
+	// 
+	// METHODS TO GET PROPERTIES
+	//
+	// ---	
+
+	// ---
+	// POSTGRES (WEBAPI) CONNECTION PROPERTIES
+	// ---
+
+	public static String getPostgresBootstrapUrl() {
+		return get("postgresBootstrapUrl");
+	}
+
+	public static String getPostgresBootstrapUid() {
+		return get("postgresBootstrapUid");
+	}
+
+	public static String getPostgresBootstrapPwd() {
+		return get("postgresBootstrapPwd");
 	}
 
 	// ---
@@ -180,9 +194,6 @@ public class AppParams {
 		return get("FullySpecifiedAchilliesResultsSchemaName");
 	}
 	
-	public static String getOhdsiDbName() {
-		return get("ohdsiDbName");
-	}
 	// ---
 	// DATABASE AND SCHEMA NAMES
 	// ---
@@ -213,6 +224,10 @@ public class AppParams {
 		return rtn;
 	}
 
+	// ---
+	// VOCAB, ACHILLES, AND DQD SCHEMAS
+	// ---
+	
 	public static String getVocabSchemaName() {
 		String rtn = get("VocabSchemaName");
 		return rtn;
@@ -231,24 +246,6 @@ public class AppParams {
 	public static String getDqdResultsSchemaName() {
 		String rtn = get("DqdResultsSchemaName");
 		return rtn;
-	}
-
-	// ---
-	//
-	// postgres stuff
-	//
-	// ---
-
-	public static String getPostgresBootstrapUrl() {
-		return get("postgresBootstrapUrl");
-	}
-
-	public static String getPostgresBootstrapUid() {
-		return get("postgresBootstrapUid");
-	}
-
-	public static String getPostgresBootstrapPwd() {
-		return get("postgresBootstrapPwd");
 	}
 
 	// terminology stuff

@@ -21,7 +21,7 @@ public class A00_DropDatabase {
 		log.info("Getting connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String databaseName = AppParams.getOhdsiDbName();
+			String databaseName = AppParams.get("ohdsiDbName");
 			log.info("Dropping database: " + databaseName);
 			boolean exists = databaseExists(databaseName, conn);
 			if (exists == true) {

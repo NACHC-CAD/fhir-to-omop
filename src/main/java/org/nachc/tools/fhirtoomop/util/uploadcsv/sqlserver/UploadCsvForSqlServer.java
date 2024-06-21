@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.db.uploadcsv.sqlserver;
+package org.nachc.tools.fhirtoomop.util.uploadcsv.sqlserver;
 
 import java.io.File;
 import java.io.FileInputStream;

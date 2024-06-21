@@ -11,7 +11,7 @@ import com.nach.core.util.file.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateWebApiRecords {
+public class CreateWebApiRecordsForSqlServerBuild {
 
 	public static final String SOURCE_FILE_NAME = "/sqlserver/omop/webapi-source.sql";
 	
