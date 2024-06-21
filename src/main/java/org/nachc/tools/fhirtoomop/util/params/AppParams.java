@@ -18,6 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AppParams {
 
+	//
+	// static variables and initializers
+	//
+	
 	private static final String SRC = "auth/app.properties";
 	
 	private static File PARAMS_FILE;
@@ -145,9 +149,7 @@ public class AppParams {
 	}
 
 	// ---
-	//
-	// connection stuff
-	//
+	// CONNECTION PROPERTIES
 	// ---
 
 	public static String getBootstrapUrl() {
@@ -166,6 +168,10 @@ public class AppParams {
 		return get("pwd");
 	}
 
+	// ---
+	// SCHEMA PROPERTIES
+	// ---
+
 	public static String getFullySpecifiedSchemaName() {
 		return get("FullySpecifiedSchemaName");
 	}
@@ -177,12 +183,8 @@ public class AppParams {
 	public static String getOhdsiDbName() {
 		return get("ohdsiDbName");
 	}
-	
-	
 	// ---
-	//
-	// schema names
-	//
+	// DATABASE AND SCHEMA NAMES
 	// ---
 	
 	public static String getDatabaseName() {
