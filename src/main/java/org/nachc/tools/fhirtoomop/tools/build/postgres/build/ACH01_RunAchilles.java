@@ -12,7 +12,7 @@ import com.nach.core.util.http.HttpRequestClient;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ACH1_RunAchilles {
+public class ACH01_RunAchilles {
 
 	private static final String ACHILLES_SCRIPT = "/postgres/build/r/achilles/run-achilles.r";
 
@@ -36,8 +36,8 @@ public class ACH1_RunAchilles {
 		// get the parameters
 		String rString = FileUtil.getAsString(ACHILLES_SCRIPT);
 		String dbms = AppParams.get("atlasDbms");
-		String user = AppParams.get("ohdsiAdminUserUid");
-		String pwd = AppParams.get("ohdsiAdminUserPwd");
+		String user = AppParams.get("uid");
+		String pwd = AppParams.get("pwd");
 		String server = AppParams.get("postgresServer");
 		String port = AppParams.get("postgresPort");
 		String cdmVersion = AppParams.get("cdm_version");

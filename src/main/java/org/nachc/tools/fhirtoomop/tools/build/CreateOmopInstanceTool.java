@@ -18,7 +18,6 @@ import org.nachc.tools.fhirtoomop.tools.build.impl.CreateSequencesForPrimaryKeys
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.tools.build.impl.LoadTerminology;
 import org.nachc.tools.fhirtoomop.tools.build.impl.MoveRaceEthFiles;
-import org.nachc.tools.fhirtoomop.tools.build.impl.RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.build.impl.UploadCsvFilesZip;
 import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;

@@ -7,7 +7,7 @@ import java.io.InputStream;
 import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDatasource;
 import org.nachc.tools.fhirtoomop.tools.build.atlas.InstallAtlasDependencies;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.CreateOmopInstanceToolPostgres;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH1_RunAchilles;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH01_RunAchilles;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatientIds;
 import org.nachc.tools.fhirtoomop.tools.download.DownloadPatients;
 import org.nachc.tools.fhirtoomop.tools.populate.PopulateOmopInstanceFromFhirFiles;
@@ -48,7 +48,7 @@ public class FhirToOmopMain {
 			case "say-hello":
 			case "a":
 				System.out.println("Running Achilles...");
-				ACH1_RunAchilles.exec();				
+				ACH01_RunAchilles.exec();				
 				System.out.println("Done.");
 				break;
 			case "h":

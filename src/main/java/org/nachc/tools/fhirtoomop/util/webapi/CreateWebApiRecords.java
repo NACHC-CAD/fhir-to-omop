@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CreateWebApiRecords {
 
-	private static final String FILE_PATH = "/postgres/build/A08_CreateAtlasSourceRecordsInWebApi.sql";
+	private static final String FILE_PATH = "/achilles/create-webapi-source-records.sql";
 
 	public static void main(String[] args) {
 		exec();
@@ -73,10 +73,11 @@ public class CreateWebApiRecords {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
 		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
 		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("bootstrapUrl"));
+		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("atlasCdmUrl"));
 		sqlString = sqlString.replace("<atlasResults>", AppParams.get("atlasResults"));
 		sqlString = sqlString.replace("<atlasTemp>", AppParams.get("atlasTemp"));
 		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("atlasCdm"));
+		sqlString = sqlString.replace("<atlasDbms>", AppParams.get("atlasDbms"));
 		return sqlString;
 	}
 }

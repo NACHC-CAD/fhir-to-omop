@@ -1,27 +1,21 @@
 Thread: Main
-Message:  Error executing SQL:
-org.postgresql.util.PSQLException: ERROR: relation "etl_synthea_1k_ach_res.achilles_results" does not exist
-An error report has been created at  C:/_YES/workspace/fhir-to-omop/errorReportSql.txt
+Message:  com.microsoft.sqlserver.jdbc.SQLServerException: "encrypt" property is set to "true" and "trustServerCertificate" property is set to "false" but the driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption: Error: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target. ClientConnectionId:e9ec480a-3fef-4b70-9fbc-107761693e2d
 Level:  FATAL
-Time:  2024-06-01 22:09:23
+Time:  2024-06-23 19:34:58
 
 Stack trace:
-12: (function (condition) 
+10: (function (condition) 
 {
     if (is(condition, "error")) {
         log("FATAL"
-11: signalCondition(cnd)
-10: signal_abort(cnd, .file)
-9: abort(paste("Error executing SQL:", message, paste("An error report has bee
-8: .createErrorReport(dbms, err$message, sqlStatement, errorReportFile)
-7: value[[3]](cond)
-6: tryCatchOne(expr, names, parentenv, handlers[[1]])
-5: tryCatchList(expr, classes, parentenv, handlers)
-4: tryCatch({
-    startQuery <- Sys.time()
-    rowsAffected <- c(rowsAffected, l
-3: DatabaseConnector::executeSql(connection = connection, sql = paste(indicesS
-2: createIndices(connectionDetails = connectionDetails, resultsDatabaseSchema 
+9: stop(list("com.microsoft.sqlserver.jdbc.SQLServerException: \"encrypt\" pro
+8: .jcheck(silent = FALSE)
+7: rJava::.jcall(jdbcDriver, "Ljava/sql/Connection;", "connect", as.character(
+6: connectUsingJdbcDriver(driver, connectionString, user = connectionDetails$u
+5: connectSqlServer(connectionDetails)
+4: connectUsingJdbc(connectionDetails)
+3: DatabaseConnector::connect(connectionDetails = connectionDetails)
+2: .getSourceName(connectionDetails, cdmDatabaseSchema)
 1: Achilles::achilles(cdmVersion = cdmVersion, connectionDetails = connectionD
 
 R version:

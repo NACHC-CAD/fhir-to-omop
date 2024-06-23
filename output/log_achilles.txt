@@ -7833,3 +7833,17 @@
 2024-06-02 22:52:45	[Main thread]	INFO	DatabaseConnector	connectPostgreSql	Connecting using PostgreSQL driver
 2024-06-02 22:52:45	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.326 secs
 2024-06-02 22:52:45	[Main thread]	INFO	Achilles	achilles	[Total Runtime] 2.223871 hours
+2024-06-23 17:10:17	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 17:10:17	[Main thread]	FATAL	DatabaseConnector	findPathToJar	No drivers matching pattern '^mssql-jdbc.*.jar$|^sqljdbc.*\.jar$'found in folder 'C:\temp\polites\drivers\postgres\42.3.3'.  Please download the JDBC drivers for your database to the folder. See `?jdbcDrivers` for instructions on downloading the drivers.
+2024-06-23 17:50:07	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 17:50:07	[Main thread]	FATAL	DatabaseConnector	findPathToJar	No drivers matching pattern '^mssql-jdbc.*.jar$|^sqljdbc.*\.jar$'found in folder 'C:\temp\polites\drivers\postgres\42.3.3'.  Please download the JDBC drivers for your database to the folder. See `?jdbcDrivers` for instructions on downloading the drivers.
+2024-06-23 19:03:25	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 19:03:25	[Main thread]	FATAL	DatabaseConnector	findPathToJar	No drivers matching pattern '^mssql-jdbc.*.jar$|^sqljdbc.*\.jar$'found in folder 'C:\temp\polites\drivers\postgres\42.3.3'.  Please download the JDBC drivers for your database to the folder. See `?jdbcDrivers` for instructions on downloading the drivers.
+2024-06-23 19:08:13	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 19:08:14	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-06-23 19:08:44	[Main thread]	FATAL	rJava	.jcheck	com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host 127.0.0.1/postgres, port 5432 has failed. Error: "127.0.0.1/postgres. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.".
+2024-06-23 19:31:15	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 19:31:16	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-06-23 19:34:58	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-06-23 19:34:58	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-06-23 19:34:58	[Main thread]	FATAL	rJava	.jcheck	com.microsoft.sqlserver.jdbc.SQLServerException: "encrypt" property is set to "true" and "trustServerCertificate" property is set to "false" but the driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption: Error: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target. ClientConnectionId:e9ec480a-3fef-4b70-9fbc-107761693e2d

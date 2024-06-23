@@ -27,6 +27,11 @@ public class CreateAchillesAnalysisTable {
 		}
 	}
 	
+	public static void exec() {
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		exec(conn);
+	}
+	
 	public static void exec(Connection conn) {
 		createTable(conn);
 		uploadData(conn);
