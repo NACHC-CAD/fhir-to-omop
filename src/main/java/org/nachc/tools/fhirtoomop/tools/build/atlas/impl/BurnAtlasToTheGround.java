@@ -51,7 +51,7 @@ public class BurnAtlasToTheGround {
 	public static void dropSqlServerDbObjects() {
 		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String databaseName = AppParams.getFullySpecifiedSchemaName();
+			String databaseName = AppParams.getFullySpecifiedCdmSchemaName();
 			databaseName = AppParams.getDatabasePart(databaseName);
 			Database.update("drop database if exists " + databaseName + "_ach_res", conn);
 			Database.update("drop database if exists " + databaseName + "_ach_tmp", conn);

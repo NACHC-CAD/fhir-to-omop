@@ -30,7 +30,7 @@ public class OmopDatabaseConnectionFactoryManualTest {
 			}
 			log.info("Got " + data.size() + " records.");
 			assertTrue(data.size() > 0);
-			String schemaName = AppParams.getFullySpecifiedSchemaName();
+			String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
 			log.info("Got Schema: " + schemaName);
 		} catch(Exception exp) {
 			throw new RuntimeException(exp);

@@ -2,27 +2,10 @@ DBMS:
 sql server
 
 Error:
-com.microsoft.sqlserver.jdbc.SQLServerException: There is already an object named 'allergies' in the database.
+com.microsoft.sqlserver.jdbc.SQLServerException: Cannot drop the index 'synthea_omop_ach_res.dbo.idx_ar_aid', because it does not exist or you do not have permission.
 
 SQL:
---HINT DISTRIBUTE_ON_RANDOM
-create table synthea_native_csv.dbo.allergies (
-start        date,
-stop         date,
-patient      varchar(1000),
-encounter    varchar(1000),
-code         varchar(100),
-system       varchar(255),
-description  varchar(255),
-"type"       varchar(255),
-category     varchar(255),
-reaction1    varchar(255),
-description1 varchar(255),
-severity1    varchar(255),
-reaction2    varchar(255),
-description2 varchar(255),
-severity2    varchar(255)
-)
+drop index synthea_omop_ach_res.dbo.idx_ar_aid
 
 R version:
 R version 4.2.3 (2023-03-15 ucrt)
@@ -40,4 +23,6 @@ Attached base packages:
 - base
 
 Other attached packages:
-- ETLSyntheaBuilder (2.0)
+- Achilles (1.7.2)
+- DatabaseConnector (6.3.2)
+- SqlRender (1.18.0)

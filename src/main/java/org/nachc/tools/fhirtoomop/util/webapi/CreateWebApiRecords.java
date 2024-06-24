@@ -74,10 +74,10 @@ public class CreateWebApiRecords {
 		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
 		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
 		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("atlasCdmUrl"));
-		sqlString = sqlString.replace("<atlasResults>", AppParams.get("atlasResults"));
-		sqlString = sqlString.replace("<atlasTemp>", AppParams.get("atlasTemp"));
-		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("atlasCdm"));
-		sqlString = sqlString.replace("<atlasDbms>", AppParams.get("atlasDbms"));
+		sqlString = sqlString.replace("<atlasResults>", AppParams.getAchillesResultsSchemaName());
+		sqlString = sqlString.replace("<atlasTemp>", AppParams.getAchillesTempSchemaName());
+		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("FullySpecifiedCdmSchemaName"));
+		sqlString = sqlString.replace("<atlasDbms>", AppParams.get("DbmsName"));
 		return sqlString;
 	}
 }

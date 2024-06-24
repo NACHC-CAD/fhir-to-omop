@@ -42,7 +42,7 @@ public class TruncateAllDataTables {
 		}
 		try {
 			// get the params
-			String schemaName = AppParams.getFullySpecifiedSchemaName();
+			String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
 			List<String> tableNames = Arrays.asList(TABLE_NAMES);
 			// truncate the data tables
 			TruncateDataTables.truncateTables(tableNames, conn);

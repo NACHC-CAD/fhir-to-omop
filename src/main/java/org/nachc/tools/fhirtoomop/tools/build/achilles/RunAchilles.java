@@ -34,28 +34,30 @@ public class RunAchilles {
 		// run achilles
 		log.info("---------------------");
 		log.info("START: Running Achilles...");
-		// get the parameters
+		// get the r script
 		String rString = FileUtil.getAsString(ACHILLES_SCRIPT);
-		String dbms = AppParams.get("atlasDbms");
+		// get the connection parameters
+		String dbms = AppParams.get("DbmsName");
 		String user = AppParams.get("uid");
 		String pwd = AppParams.get("pwd");
-		String server = AppParams.get("ServerName");
-		String port = AppParams.get("Port");
-		String cdmVersion = AppParams.get("cdm_version");
-		String cdmDbName = AppParams.get("atlasCdm");
-		String resultsDbName = AppParams.get("atlasResults");
+		String connectionString = AppParams.get("url");
 		String pathToDriver = AppParams.get("DatabaseDrvierPath");
 		pathToDriver = pathToDriver.replace("\\", "\\\\");
-		// update the script with the parameters
+		// get the version and schema parameters
+		String cdmVersion = AppParams.get("CdmVersion");
+		String cdmDatabaseSchema = AppParams.get("FullySpecifiedCdmSchemaName");
+		String resultsDatabaseSchema = AppParams.getAchillesResultsSchemaName();
+		// database parameters
 		rString = rString.replace("@dbms", dbms);
 		rString = rString.replace("@user", user);
-		rString = rString.replace("@pwd", pwd);
-		rString = rString.replace("@server", server);
-		rString = rString.replace("@port", port);
+		rString = rString.replace("@password", pwd);
+		rString = rString.replace("@connectionString", connectionString);
 		rString = rString.replace("@pathToDriver", pathToDriver);
+		// other parameters
 		rString = rString.replace("@cdmVersion", cdmVersion);
-		rString = rString.replace("@cdmDbName", cdmDbName);
-		rString = rString.replace("@resultsDbName", resultsDbName);
+		rString = rString.replace("@cdmDatabaseSchema", cdmDatabaseSchema);
+		rString = rString.replace("@resultsDatabaseSchema", resultsDatabaseSchema);
+		// run the script
 		String msg = "Running Achilles script...\n\n";
 		msg += "* * * \n";
 		msg += "* RUNNING ACHILLES R SCRIPT\n";
@@ -77,8 +79,6 @@ public class RunAchilles {
 	private static void downloadDriver(String pathToDriver) {
 		log.info("Checking for database driver...");
 		DriverType driverType = getDriverType();
-//		String url = "https://www.dropbox.com/scl/fi/drg1kgckeykub44uwgeay/postgresql-42.3.3.jar?rlkey=xopakpf2zokbjorl2pmtkat2a&st=e2ou9gxh&dl=1";
-//		String fileName = "postgresql-42.3.3.jar";
 		String url = driverType.getParams().getUrl();
 		String fileName = driverType.getParams().getFileName();
 		File dir = new File(pathToDriver);

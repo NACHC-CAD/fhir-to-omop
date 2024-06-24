@@ -133,7 +133,7 @@ public class ConceptAncestorDvo implements Dvo {
     };
     
     public String getSchemaName() {
-        return org.nachc.tools.fhirtoomop.util.params.AppParams.getFullySpecifiedSchemaName();
+        return org.nachc.tools.fhirtoomop.util.params.AppParams.getFullySpecifiedCdmSchemaName();
     };
     
     public String[] getColumnNames() {

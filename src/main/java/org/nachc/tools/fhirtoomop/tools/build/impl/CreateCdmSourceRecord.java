@@ -26,7 +26,7 @@ public class CreateCdmSourceRecord {
 		sqlString = replace(sqlString, "source_release_date");
 		sqlString = replace(sqlString, "cdm_release_date");
 		sqlString = replace(sqlString, "cdm_version_concept_id");
-		sqlString = replace(sqlString, "cdm_version");
+		sqlString = replace(sqlString, "CdmVersion");
 		sqlString = replace(sqlString, "vocabulary_version");
 		log.info("SQLSTRING: \n\n" + sqlString);
 		Database.executeSqlScript(sqlString, conn);

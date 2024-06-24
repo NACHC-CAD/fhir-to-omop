@@ -186,25 +186,21 @@ public class AppParams {
 	// SCHEMA PROPERTIES
 	// ---
 
-	public static String getFullySpecifiedSchemaName() {
-		return get("FullySpecifiedSchemaName");
+	public static String getFullySpecifiedCdmSchemaName() {
+		return get("FullySpecifiedCdmSchemaName");
 	}
 
-	public static String getFullySpecifiedAchilliesResultsSchemaName() {
-		return get("FullySpecifiedAchilliesResultsSchemaName");
-	}
-	
 	// ---
 	// DATABASE AND SCHEMA NAMES
 	// ---
 	
 	public static String getDatabaseName() {
-		String rtn = getFullySpecifiedSchemaName();
+		String rtn = getFullySpecifiedCdmSchemaName();
 		return getDatabasePart(rtn);
 	}
 
 	public static String getSchemaName() {
-		String rtn = getFullySpecifiedSchemaName();
+		String rtn = getFullySpecifiedCdmSchemaName();
 		return getSchemaPart(rtn);
 	}
 
@@ -233,13 +229,42 @@ public class AppParams {
 		return rtn;
 	}
 
-	public static String getAchillesTempSchemaName() {
-		String rtn = get("atlasTemp");
-		return rtn;
+	// results
+	public static String getAchillesResultsDatabaseName() {
+		String db = get("achillesResultsDatabase");
+		return db;
 	}
 
 	public static String getAchillesResultsSchemaName() {
-		String rtn = get("atlasResults");
+		String db = get("achillesResultsDatabase");
+		String schema = get("achillesResultsSchema");
+		String rtn = db + "." + schema;
+		return rtn;
+	}
+
+	// temp
+	public static String getAchillesTempDatabaseName() {
+		String db = get("achillesTempDatabase");
+		return db;
+	}
+
+	public static String getAchillesTempSchemaName() {
+		String db = get("achillesTempDatabase");
+		String schema = get("achillesTempSchema");
+		String rtn = db + "." + schema;
+		return rtn;
+	}
+
+	// vocab
+	public static String getAchillesVocabDatabaseName() {
+		String db = get("achillesVocabDatabase");
+		return db;
+	}
+
+	public static String getAchillesVocabSchemaName() {
+		String db = get("achillesVocabDatabase");
+		String schema = get("achillesVocabSchema");
+		String rtn = db + "." + schema;
 		return rtn;
 	}
 
@@ -356,7 +381,7 @@ public class AppParams {
 	}
 
 	public static ConnectionDbmsType getDbmsType() {
-		String typeString = get("cdmDbType");
+		String typeString = get("DbmsName");
 		ConnectionDbmsType rtn = ConnectionDbmsType.get(typeString);
 		return rtn;
 	}
@@ -429,7 +454,7 @@ public class AppParams {
 	}
 	
 	public static String getCdmVersion() {
-		return get("cdm_version");
+		return get("CdmVersion");
 	}
 	
 	public static String getDbmsName() {

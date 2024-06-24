@@ -40,7 +40,7 @@ public class PopulatePreviousVisitTable {
 			Database.update(useString, conn);
 		}
 		try {
-			if("mssql".equals(AppParams.get("cdmDbType"))) {
+			if("sql server".equals(AppParams.get("DbmsName"))) {
 				String dbName = AppParams.getDatabaseName();
 				Database.update("use " + dbName, conn);
 			}

@@ -1,22 +1,27 @@
 Thread: Main
-Message:  com.microsoft.sqlserver.jdbc.SQLServerException: "encrypt" property is set to "true" and "trustServerCertificate" property is set to "false" but the driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption: Error: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target. ClientConnectionId:e9ec480a-3fef-4b70-9fbc-107761693e2d
+Message:  Error executing SQL:
+com.microsoft.sqlserver.jdbc.SQLServerException: Database 'synthea_omop_ach_res' does not exist.
+An error report has been created at  output/achillesErrorCreateAchillesAnalysis.txt
 Level:  FATAL
-Time:  2024-06-23 19:34:58
+Time:  2024-06-23 22:17:16
 
 Stack trace:
-10: (function (condition) 
+11: (function (condition) 
 {
     if (is(condition, "error")) {
         log("FATAL"
-9: stop(list("com.microsoft.sqlserver.jdbc.SQLServerException: \"encrypt\" pro
-8: .jcheck(silent = FALSE)
-7: rJava::.jcall(jdbcDriver, "Ljava/sql/Connection;", "connect", as.character(
-6: connectUsingJdbcDriver(driver, connectionString, user = connectionDetails$u
-5: connectSqlServer(connectionDetails)
-4: connectUsingJdbc(connectionDetails)
-3: DatabaseConnector::connect(connectionDetails = connectionDetails)
-2: .getSourceName(connectionDetails, cdmDatabaseSchema)
-1: Achilles::achilles(cdmVersion = cdmVersion, connectionDetails = connectionD
+10: signalCondition(cnd)
+9: signal_abort(cnd, .file)
+8: abort(paste("Error executing SQL:", message, paste("An error report has bee
+7: .createErrorReport(dbms, err$message, sqlStatement, errorReportFile)
+6: value[[3]](cond)
+5: tryCatchOne(expr, names, parentenv, handlers[[1]])
+4: tryCatchList(expr, classes, parentenv, handlers)
+3: tryCatch({
+    startQuery <- Sys.time()
+    rowsAffected <- c(rowsAffected, l
+2: DatabaseConnector::executeSql(connection = connection, sql = sql, errorRepo
+1: Achilles::achilles(connectionDetails = connectionDetails, cdmVersion = cdmV
 
 R version:
 R version 4.2.3 (2023-03-15 ucrt)

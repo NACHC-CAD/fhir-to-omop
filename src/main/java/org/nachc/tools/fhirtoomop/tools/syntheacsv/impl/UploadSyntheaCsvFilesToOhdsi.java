@@ -28,7 +28,7 @@ public class UploadSyntheaCsvFilesToOhdsi {
 			String pwd = AppParams.getSyntehsCsvPwd();
 			String port = AppParams.getPort();
 			String pathToDriver = getPathToDriver();
-			String fullySpecifiedSchemaName = AppParams.getFullySpecifiedSchemaName();
+			String fullySpecifiedSchemaName = AppParams.getFullySpecifiedCdmSchemaName();
 			String cdmVersion = AppParams.getCdmVersion();
 			String syntheaVersion = AppParams.getSyntheaVersion();
 			String syntheaCsvNativeSchema = AppParams.getSyntheaCsvNativeSchema();

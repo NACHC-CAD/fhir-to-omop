@@ -35,12 +35,12 @@ public class ACH01_RunAchilles {
 		log.info("START: Running Achilles...");
 		// get the parameters
 		String rString = FileUtil.getAsString(ACHILLES_SCRIPT);
-		String dbms = AppParams.get("atlasDbms");
+		String dbms = AppParams.get("DbmsName");
 		String user = AppParams.get("uid");
 		String pwd = AppParams.get("pwd");
 		String server = AppParams.get("postgresServer");
 		String port = AppParams.get("postgresPort");
-		String cdmVersion = AppParams.get("cdm_version");
+		String cdmVersion = AppParams.get("CdmVersion");
 		String cdmDbName = AppParams.get("atlasCdm");
 		String resultsDbName = AppParams.get("atlasResults");
 		String pathToDriver = AppParams.get("postgresPathToDriver");

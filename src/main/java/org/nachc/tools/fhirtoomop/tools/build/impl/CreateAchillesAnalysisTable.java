@@ -39,8 +39,8 @@ public class CreateAchillesAnalysisTable {
 	
 	private static void createTable(Connection conn) {
 		String sqlString = FileUtil.getAsString(DDL_FILE);
-		String cdmSchema = AppParams.getFullySpecifiedSchemaName();
-		String resSchema = AppParams.getFullySpecifiedAchilliesResultsSchemaName();
+		String cdmSchema = AppParams.getFullySpecifiedCdmSchemaName();
+		String resSchema = AppParams.getAchillesResultsSchemaName();
 		sqlString = sqlString.replaceAll("@FullySpecifiedCdmSchema", cdmSchema);
 		sqlString = sqlString.replaceAll("@FullySpecifiedAchillesResultsSchema", resSchema);
 		log.info("Running Achilles SQL script...");
@@ -56,7 +56,7 @@ public class CreateAchillesAnalysisTable {
 			File tempFile = new File(dir, "temp.txt");
 			String data = FileUtil.getAsString(UPLOAD_FILE);
 			FileUtil.write(data, tempFile);
-			String resSchema = AppParams.getFullySpecifiedAchilliesResultsSchemaName();
+			String resSchema = AppParams.getAchillesResultsSchemaName();
 			String tableName = resSchema + ".achilles_analysis";
 			String sqlString = "";
 			sqlString += "BULK INSERT " + tableName + " \n";

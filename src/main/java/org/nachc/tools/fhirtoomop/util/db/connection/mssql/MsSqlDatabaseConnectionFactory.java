@@ -24,7 +24,7 @@ public class MsSqlDatabaseConnectionFactory {
 	}
 
 	public static Connection getCdmConnection() {
-		return connect(AppParams.getFullySpecifiedSchemaName());
+		return connect(AppParams.getFullySpecifiedCdmSchemaName());
 	}
 
 	private static Connection connect(String schema) {

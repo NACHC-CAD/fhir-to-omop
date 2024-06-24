@@ -71,7 +71,7 @@ public class FixSequences {
 	}
 
 	private static String getDbName() {
-		String schema = AppParams.getFullySpecifiedSchemaName();
+		String schema = AppParams.getFullySpecifiedCdmSchemaName();
 		if (schema.trim().endsWith(".dbo")) {
 			schema = schema.substring(0, schema.indexOf(".dbo"));
 		}
