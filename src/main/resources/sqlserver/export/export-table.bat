@@ -1,0 +1,1 @@
+bcp @fullySpecifiedSchemaName.@tableName out @pathToOutputFile -c -t -S @serverName -U @uid -P @pwd

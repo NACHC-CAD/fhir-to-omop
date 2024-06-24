@@ -273,8 +273,12 @@ public class AppParams {
 		return rtn;
 	}
 
+	// export
+	public static String getExportDir() {
+		return get("ExportDir");
+	}
+	
 	// terminology stuff
-
 	public static String getTerminologyRootDir() {
 		return get("terminologyRootDir");
 	}
