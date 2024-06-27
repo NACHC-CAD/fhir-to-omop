@@ -16,154 +16,26 @@ import com.nach.core.util.string.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AppParams {
+public class AppParams extends AppParamsInitialization {
 
-	//
-	// static variables and initializers
-	//
-	
-	private static final String SRC = "auth/app.properties";
-	
-	private static File PARAMS_FILE;
+	// ---
+	// GLOBAL PARAMETERS
+	// ---
 
-	private static Properties PROPS = null;
-
-	static {
-		try {
-			// init props
-			PROPS = getProps();
-			// init props for dev env
-			if (PROPS == null) {
-				PROPS = getPropsInTestEnv();
-			}
-			// log if props could not be created (it is set in the code for some applications)
-			if (PROPS == null) {
-				System.out.println("Could not load default properties.");
-				System.out.println("A properties file will need to be provided by the user.");
-			}
-			String msg = "Properties file:\n\n";
-			msg += "-----------------------\n";
-			msg += "*\n";
-			msg += "* START PROPERTIES FILE\n";
-			msg += "*\n";
-			msg += "-----------------------\n";
-			msg += "\n";
-			msg += "--- PROPERTIES FILE NAME -----------------------------\n";
-			msg += FileUtil.getCanonicalPath(PARAMS_FILE) + "\n\n"; 
-			msg += "--- PROPERTIES FILE CONTENTS -------------------------\n\n";
-			msg += FileUtil.getAsString(PARAMS_FILE) + "\n";
-			msg += "-----------------------\n";
-			msg += "*\n";
-			msg += "* END PROPERTIES FILE\n";
-			msg += "*\n";
-			msg += "-----------------------\n";
-			msg += "\n";
-			log.debug(msg);
-		} catch(Throwable thr) {
-			System.out.println("Could not load default properties.");
-			System.out.println("A properties file will need to be provided by the user.");
-		}
-	}
-
-	public static void touch() {
+	public static String getDbmsName() {
+		return get("DbmsName");
 	}
 	
-	private static Properties getProps() {
-		try {
-			File srcFile = FileUtil.getFile(SRC, false);
-			String fileName = FileUtil.getAsString(srcFile);
-			fileName = fileName.trim();
-			log.info("AppParams fileName: \n" + fileName);
-			// log the working dir
-			File workingDir = new File(".");
-			log.info("WORKING DIR: " + FileUtil.getCanonicalPath(workingDir));
-			// get the parameters file
-			File file = new File(fileName);
-			if(file.exists() == false) {
-				file = FileUtil.getFile(fileName);
-			}
-			PARAMS_FILE = file;
-			log.info("App Properties File Exists: " + file.exists());
-			InputStream is = new FileInputStream(file);
-			PROPS = PropertiesUtil.getAsProperties(is, fileName);
-			return PROPS;
-		} catch (Exception exp) {
-			log.info("Exception thrown: " + exp.getMessage());
-			throw new RuntimeException(exp);
-		}
+	public static String getCdmVersion() {
+		return get("CdmVersion");
 	}
 
-	private static Properties getPropsInTestEnv() {
-		try {
-			File srcFile = FileUtil.getFile(SRC, true);
-			String fileName = FileUtil.getAsString(srcFile);
-			File file = new File(fileName);
-			PARAMS_FILE = file;
-			InputStream is = new FileInputStream(file);
-			PROPS = PropertiesUtil.getAsProperties(is, fileName);
-			return PROPS;
-		} catch (Exception exp) {
-			throw new RuntimeException(exp);
-		}
-	}
-
-	/**
-	 * 
-	 * This method should only be used by the main class to allow the user to set
-	 * properties locally
-	 * 
-	 */
-	public static void setProps(InputStream srcIs) {
-		try {
-			String fileName = FileUtil.getAsString(srcIs);
-			fileName = fileName.trim();
-			log.info("SETTING PROPS FROM: " + fileName);
-			File file = new File(fileName);
-			InputStream is = new FileInputStream(file);
-			PROPS = PropertiesUtil.getAsProperties(is, fileName);
-		} catch (Exception exp) {
-			throw new RuntimeException(exp);
-		}
+	public static String getExportDir() {
+		return get("ExportDir");
 	}
 
 	// ---
-	// get property using a key
-	// ---
-
-	public static String get(String key) {
-		try {
-			return PROPS.getProperty(key);
-		} catch (Throwable thr) {
-			log.info("Could not load property: " + key);
-			log.info("PROPS: " + PROPS);
-			throw new RuntimeException("Could not load property", thr);
-		}
-	}
-
-	// ---
-	// 
-	// METHODS TO GET PROPERTIES
-	//
-	// ---	
-
-	// ---
-	// POSTGRES (WEBAPI) CONNECTION PROPERTIES
-	// ---
-
-	public static String getPostgresBootstrapUrl() {
-		return get("postgresBootstrapUrl");
-	}
-
-	public static String getPostgresBootstrapUid() {
-		return get("postgresBootstrapUid");
-	}
-
-	public static String getPostgresBootstrapPwd() {
-		return get("postgresBootstrapPwd");
-	}
-
-	// ---
-	// CONNECTION PROPERTIES
+	// DATABASE CONNECTION INFORMATION FOR THE CDM INSTANCE
 	// ---
 
 	public static String getBootstrapUrl() {
@@ -182,14 +54,126 @@ public class AppParams {
 		return get("pwd");
 	}
 
-	// ---
-	// SCHEMA PROPERTIES
-	// ---
-
+	public static String getServerName() {
+		return get("ServerName");
+	}
+	
 	public static String getFullySpecifiedCdmSchemaName() {
 		return get("FullySpecifiedCdmSchemaName");
 	}
 
+	public static String getDatabaseDriverName() {
+		return get("DatabaseDriverName");
+	}
+
+	// ---
+	// POSTGRES CONNECTION INFORMATION (FOR WEBAPI INFORMATION)
+	// ---
+	
+	public static String getPostgresBootstrapUrl() {
+		return get("postgresBootstrapUrl");
+	}
+
+	public static String getPostgresBootstrapUid() {
+		return get("postgresBootstrapUid");
+	}
+
+	public static String getPostgresBootstrapPwd() {
+		return get("postgresBootstrapPwd");
+	}
+	
+	public static String getPostgresBootstrapServer() {
+		return get("postgresBootstrapServer");
+	}
+	
+	public static String getPostgresBootstrapPort() {
+		return get("postgresBootstrapPort");
+	}
+	
+	public static String getPostgresBootstrapDatabaseName() {
+		return get("postgresBootstrapDatabaseName");
+	}
+	
+	public static String getPostgresBootstrapSchemaName() {
+		return get("postgresBootstrapSchemaName");
+	}
+	
+	public static String getPostgresBootstrapPathToDriver() {
+		return get("postgresBootstrapPathToDriver");
+	}
+
+	// ---
+	// DQD
+	// ---
+	
+	public static String getDqdResultsSchemaName() {
+		String rtn = get("DqdResultsSchemaName");
+		return rtn;
+	}
+
+	// ---
+	// CDM_SOURCE
+	// ---
+	
+	public static String getCdmSourceName() {
+		String rtn = get("CdmSourceName");
+		return rtn;
+	}
+	
+	public static String getCdmSourcebbreviation() {
+		String rtn = get("CdmSourcebbreviation");
+		return rtn;
+	}
+	
+	public static String getCdmHolder() {
+		String rtn = get("CdmHolder");
+		return rtn;
+	}
+	
+	public static String getCdmSourceDescription() {
+		String rtn = get("CdmSourceDescription");
+		return rtn;
+	}
+	
+	public static String getCdmSourceDocumentationReference() {
+		String rtn = get("FOO");
+		return rtn;
+	}
+	
+	public static String getCdmEtlReference() {
+		String rtn = get("CdmEtlReference");
+		return rtn;
+	}
+	
+	public static String getSourceReleaseDate() {
+		String rtn = get("SourceReleaseDate");
+		return rtn;
+	}
+	
+	public static String getCdmReleaseDate() {
+		String rtn = get("CdmReleaseDate");
+		return rtn;
+	}
+	
+	public static String getVocabularyVersion() {
+		String rtn = get("VocabularyVersion");
+		return rtn;
+	}
+	
+	public static String getCdmVersionConceptId() {
+		String rtn = get("CdmVersionConceptId");
+		return rtn;
+	}
+	
+	public static String get() {
+		String rtn = get("FOO");
+		return rtn;
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	
+	
 	// ---
 	// DATABASE AND SCHEMA NAMES
 	// ---
@@ -268,16 +252,6 @@ public class AppParams {
 		return rtn;
 	}
 
-	public static String getDqdResultsSchemaName() {
-		String rtn = get("DqdResultsSchemaName");
-		return rtn;
-	}
-
-	// export
-	public static String getExportDir() {
-		return get("ExportDir");
-	}
-	
 	// terminology stuff
 	public static String getTerminologyRootDir() {
 		return get("terminologyRootDir");
@@ -445,24 +419,12 @@ public class AppParams {
 		return get("SyntheaCsvNativeDatabase");
 	}
 	
-	public static String getServerName() {
-		return get("ServerName");
-	}
-	
 	public static String getPort() {
 		return get("Port");
 	}
 
 	public static String getSyntheaVersion() {
 		return get("SyntheaVersion");
-	}
-	
-	public static String getCdmVersion() {
-		return get("CdmVersion");
-	}
-	
-	public static String getDbmsName() {
-		return get("DbmsName");
 	}
 	
 	public static String getSyntehsCsvUid() {

@@ -50,7 +50,7 @@ public class ExportTables {
 			ExportTable.exec(tableName);
 		}
 		// create the zip file
-		log.info("Creating zip file...");
+		log.info("Creating zip file (this can take several minutes for large databases and/or if you've included a full vocabulary)...");
 		String exportDirName = AppParams.getExportDir();
 		String zipFileName = "export.zip";
 		File zipFileDir = new File(exportDirName).getParentFile();
