@@ -22,7 +22,8 @@ public class DownloadDefaultTerminology {
 	public static void exec() {
 		log.info("Looking for default terminology...");
 		boolean terminologyDownloadIfNotFound = "true".equalsIgnoreCase(AppParams.getTerminologyDownloadIfNotFound());
-		File terminologyRootDir = new File(AppParams.getTerminologyRootDir());
+		String rootDir = AppParams.getTerminologyRootDir();
+		File terminologyRootDir = new File(rootDir);
 		if (terminologyRootDir.exists() == false && terminologyDownloadIfNotFound == true) {
 			Timer timer = new Timer();
 			timer.start();
@@ -30,7 +31,7 @@ public class DownloadDefaultTerminology {
 			msg += "* * * \n";
 			msg += "*  \n";		
 			msg += "* ! ! ! DOWNLOADING DEFAULT TERMINOLOGY ! ! ! \n";
-			msg += "* (Terminology files not found and downloadIfNotFound has been set to true in properties file)  \n";
+			msg += "* (Terminology files not found and TerminologyDownloadIfNotFound has been set to true in properties file)  \n";
 			msg += "*  \n";		
 			msg += "* * *  \n";
 			msg += "\n\n";
@@ -55,6 +56,7 @@ public class DownloadDefaultTerminology {
 			timer.stop();
 			log.info("Time to download terminology: " + timer.getElapsedString());
 			log.info("Got terminology files!");
+			log.info("Done with download of terminology.");
 		}
 	}
 

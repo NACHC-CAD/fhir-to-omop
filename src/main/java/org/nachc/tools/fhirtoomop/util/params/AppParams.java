@@ -204,7 +204,10 @@ public class AppParams extends AppParamsInitialization {
 	public static String getFullySpecifiedAchillesResultsSchemaName() {
 		String db = getAchillesResultsDatabase();
 		String schema = getAchillesResultsSchema();
-		String rtn = db + "." + schema;
+		String rtn = db;
+		if(schema != null) {
+			rtn += "." + schema;
+		}
 		return rtn;
 	}
 	
@@ -220,7 +223,10 @@ public class AppParams extends AppParamsInitialization {
 	public static String getFullySpecifiedAchillesTempSchemaName() {
 		String db = getAchillesTempDatabase();
 		String schema = getAchillesTempSchema();
-		String rtn = db + "." + schema;
+		String rtn = db;
+		if(schema != null) {
+			rtn += "." + schema;
+		}
 		return rtn;
 	}
 
@@ -240,7 +246,10 @@ public class AppParams extends AppParamsInitialization {
 	public static String getAchillesVocabSchemaName() {
 		String db = getFullySpecifiedAchillesVocabDatabase();
 		String schema = getAchillesVocabSchema();
-		String rtn = db + "." + schema;
+		String rtn = db;
+		if(schema != null) {
+			rtn += "." + schema;
+		}
 		return rtn;
 	}
 
