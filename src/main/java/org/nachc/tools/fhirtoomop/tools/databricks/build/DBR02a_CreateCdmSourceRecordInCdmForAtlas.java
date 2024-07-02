@@ -33,7 +33,7 @@ public class DBR02a_CreateCdmSourceRecordInCdmForAtlas {
 		sqlString = sqlString.replace("@cdm_source_name", AppParams.getCdmSourceName());
 		sqlString = sqlString.replace("@cdm_source_abbreviation", AppParams.getCdmSourceAbbreviation());
 		sqlString = sqlString.replace("@cdm_holder", AppParams.getCdmHolder());
-		sqlString = sqlString.replace("@source_description", AppParams.getCdmSourceDescription());
+		sqlString = sqlString.replace("@source_description", AppParams.getSourceDescription());
 		sqlString = sqlString.replace("@source_documentation_reference", AppParams.getSourceDocumentationReference());
 		sqlString = sqlString.replace("@cdm_etl_reference", AppParams.getCdmEtlReference());
 		sqlString = sqlString.replace("@source_release_date", AppParams.getSourceReleaseDate());

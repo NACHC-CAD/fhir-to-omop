@@ -120,7 +120,7 @@ public class AppParams extends AppParamsInitialization {
 	}
 	
 	public static String getCdmSourceAbbreviation() {
-		String rtn = get("CdmSourcebbreviation");
+		String rtn = get("CdmSourceAbbreviation");
 		return rtn;
 	}
 	
@@ -129,13 +129,13 @@ public class AppParams extends AppParamsInitialization {
 		return rtn;
 	}
 	
-	public static String getCdmSourceDescription() {
-		String rtn = get("CdmSourceDescription");
+	public static String getSourceDescription() {
+		String rtn = get("SourceDescription");
 		return rtn;
 	}
 	
 	public static String getSourceDocumentationReference() {
-		String rtn = get("CdmSourceDocumentationReference");
+		String rtn = get("SourceDocumentationReference");
 		return rtn;
 	}
 	
