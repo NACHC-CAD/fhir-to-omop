@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import org.nachc.tools.fhirtoomop.util.databricks.connection.DatabricksConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.databricks.properties.DatabricksProperties;
+import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -29,17 +30,17 @@ public class DBR02a_CreateCdmSourceRecordInCdmForAtlas {
 		log.info("Creating CDM source record in CDM for Atlas record");
 		log.info("Got connection...");
 		String sqlString = FileUtil.getAsString(PATH);
-		sqlString = replace(sqlString, "cdm_source_name");
-		sqlString = replace(sqlString, "cdm_source_abbreviation");
-		sqlString = replace(sqlString, "cdm_holder");
-		sqlString = replace(sqlString, "source_description");
-		sqlString = replace(sqlString, "source_documentation_reference");
-		sqlString = replace(sqlString, "cdm_etl_reference");
-		sqlString = replace(sqlString, "source_release_date");
-		sqlString = replace(sqlString, "cdm_release_date");
-		sqlString = replace(sqlString, "cdm_version_concept_id");
-		sqlString = replace(sqlString, "CdmVersion");
-		sqlString = replace(sqlString, "vocabulary_version");
+		sqlString = sqlString.replace("@cdm_source_name", AppParams.getCdmSourceName());
+		sqlString = sqlString.replace("@cdm_source_abbreviation", AppParams.getCdmSourceAbbreviation());
+		sqlString = sqlString.replace("@cdm_holder", AppParams.getCdmHolder());
+		sqlString = sqlString.replace("@source_description", AppParams.getCdmSourceDescription());
+		sqlString = sqlString.replace("@source_documentation_reference", AppParams.getSourceDocumentationReference());
+		sqlString = sqlString.replace("@cdm_etl_reference", AppParams.getCdmEtlReference());
+		sqlString = sqlString.replace("@source_release_date", AppParams.getSourceReleaseDate());
+		sqlString = sqlString.replace("@cdm_release_date", AppParams.getCdmReleaseDate());
+		sqlString = sqlString.replace("@cdm_version_concept_id", AppParams.getCdmVersionConceptId());
+		sqlString = sqlString.replace("@cdm_version", AppParams.getCdmVersion());
+		sqlString = sqlString.replace("@vocabulary_version", AppParams.getVocabularyVersion());
 		log.info("SQLSTRING: \n\n" + sqlString);
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done creating CDM source record in CDM for Atlas record");

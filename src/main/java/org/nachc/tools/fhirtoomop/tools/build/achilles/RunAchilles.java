@@ -37,16 +37,16 @@ public class RunAchilles {
 		// get the r script
 		String rString = FileUtil.getAsString(ACHILLES_SCRIPT);
 		// get the connection parameters
-		String dbms = AppParams.get("DbmsName");
-		String user = AppParams.get("uid");
-		String pwd = AppParams.get("pwd");
-		String connectionString = AppParams.get("url");
-		String pathToDriver = AppParams.get("DatabaseDrvierPath");
+		String dbms = AppParams.getDbmsName();
+		String user = AppParams.getUid();
+		String pwd = AppParams.getPwd();
+		String connectionString = AppParams.getUrl();
+		String pathToDriver = AppParams.getDatabaseDriverPath();
 		pathToDriver = pathToDriver.replace("\\", "\\\\");
 		// get the version and schema parameters
-		String cdmVersion = AppParams.get("CdmVersion");
-		String cdmDatabaseSchema = AppParams.get("FullySpecifiedCdmSchemaName");
-		String resultsDatabaseSchema = AppParams.getAchillesResultsSchemaName();
+		String cdmVersion = AppParams.getCdmVersion();
+		String cdmDatabaseSchema = AppParams.getFullySpecifiedCdmSchemaName();
+		String resultsDatabaseSchema = AppParams.getFullySpecifiedAchillesResultsSchemaName();
 		// database parameters
 		rString = rString.replace("@dbms", dbms);
 		rString = rString.replace("@user", user);
@@ -98,7 +98,7 @@ public class RunAchilles {
 	}
 	
 	private static DriverType getDriverType() {
-		String driverName = AppParams.get("DatabaseDriverName");
+		String driverName = AppParams.getDatabaseDriverName();
 		DriverType rtn = DriverType.getDriverType(driverName);
 		return rtn;
 	}

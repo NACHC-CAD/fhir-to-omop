@@ -71,13 +71,13 @@ public class CreateWebApiRecords {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
-		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("atlasCdmUrl"));
-		sqlString = sqlString.replace("<atlasResults>", AppParams.getAchillesResultsSchemaName());
-		sqlString = sqlString.replace("<atlasTemp>", AppParams.getAchillesTempSchemaName());
-		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("FullySpecifiedCdmSchemaName"));
-		sqlString = sqlString.replace("<atlasDbms>", AppParams.get("DbmsName"));
+		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.getAtlasDataSourceName());
+		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.getAtlasDataSourceKey());
+		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.getAtlasCdmUrl());
+		sqlString = sqlString.replace("<atlasResults>", AppParams.getFullySpecifiedAchillesResultsSchemaName());
+		sqlString = sqlString.replace("<atlasTemp>", AppParams.getFullySpecifiedAchillesTempSchemaName());
+		sqlString = sqlString.replace("<atlasCdm>", AppParams.getFullySpecifiedCdmSchemaName());
+		sqlString = sqlString.replace("<atlasDbms>", AppParams.getDbmsName());
 		return sqlString;
 	}
 }

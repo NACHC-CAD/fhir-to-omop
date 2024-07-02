@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class A08_CreateAtlasSourceRecordsInWebApi {
 
-	private static final String FILE_PATH = "/postgres/build/A08_CreateAtlasSourceRecordsInWebApi.sql";
+	private static final String FILE_PATH = "/achilles/create-webapi-source-records.sql";
 	
 	public static void main(String[] args) {
 		log.info("Starting main...");
@@ -38,14 +38,12 @@ public class A08_CreateAtlasSourceRecordsInWebApi {
 	
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
-		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.get("atlasDataSourceName"));
-		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.get("atlasDataSourceKey"));
-		sqlString = sqlString.replace("<atlasCdm>", AppParams.get("atlasCdm"));
-		sqlString = sqlString.replace("<atlasResults>", AppParams.get("atlasResults"));
-		sqlString = sqlString.replace("<atlasTemp>", AppParams.get("atlasTemp"));
-		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.get("atlasCdmUrl"));
+		sqlString = sqlString.replace("<atlasDataSourceName>", AppParams.getAtlasDataSourceName());
+		sqlString = sqlString.replace("<atlasDataSourceKey>", AppParams.getAtlasDataSourceKey());
+		sqlString = sqlString.replace("<atlasCdm>", AppParams.getFullySpecifiedCdmSchemaName());
+		sqlString = sqlString.replace("<atlasResults>", AppParams.getFullySpecifiedAchillesResultsSchemaName());
+		sqlString = sqlString.replace("<atlasTemp>", AppParams.getFullySpecifiedAchillesTempSchemaName());
+		sqlString = sqlString.replace("<atlasCdmUrl>", AppParams.getAtlasCdmUrl());
 		return sqlString;
 	}
 	

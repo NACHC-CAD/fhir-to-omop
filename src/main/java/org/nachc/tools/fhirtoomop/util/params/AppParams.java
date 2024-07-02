@@ -39,19 +39,19 @@ public class AppParams extends AppParamsInitialization {
 	// ---
 
 	public static String getBootstrapUrl() {
-		return get("bootstrapUrl");
+		return get("BootstrapUrl");
 	}
 
 	public static String getUrl() {
-		return get("url");
+		return get("Url");
 	}
 
 	public static String getUid() {
-		return get("uid");
+		return get("Uid");
 	}
 
 	public static String getPwd() {
-		return get("pwd");
+		return get("Pwd");
 	}
 
 	public static String getServerName() {
@@ -62,8 +62,16 @@ public class AppParams extends AppParamsInitialization {
 		return get("FullySpecifiedCdmSchemaName");
 	}
 
+	// ---
+	// DATABASE DRIVER
+	// ---
+	
 	public static String getDatabaseDriverName() {
 		return get("DatabaseDriverName");
+	}
+
+	public static String getDatabaseDriverPath() {
+		return get("DatabaseDrvierPath");
 	}
 
 	// ---
@@ -71,48 +79,39 @@ public class AppParams extends AppParamsInitialization {
 	// ---
 	
 	public static String getPostgresBootstrapUrl() {
-		return get("postgresBootstrapUrl");
+		return get("PostgresBootstrapUrl");
 	}
 
 	public static String getPostgresBootstrapUid() {
-		return get("postgresBootstrapUid");
+		return get("PostgresBootstrapUid");
 	}
 
 	public static String getPostgresBootstrapPwd() {
-		return get("postgresBootstrapPwd");
+		return get("PostgresBootstrapPwd");
 	}
 	
 	public static String getPostgresBootstrapServer() {
-		return get("postgresBootstrapServer");
+		return get("PostgresBootstrapServer");
 	}
 	
 	public static String getPostgresBootstrapPort() {
-		return get("postgresBootstrapPort");
+		return get("PostgresBootstrapPort");
 	}
 	
 	public static String getPostgresBootstrapDatabaseName() {
-		return get("postgresBootstrapDatabaseName");
+		return get("PostgresBootstrapDatabaseName");
 	}
 	
 	public static String getPostgresBootstrapSchemaName() {
-		return get("postgresBootstrapSchemaName");
+		return get("PostgresBootstrapSchemaName");
 	}
 	
 	public static String getPostgresBootstrapPathToDriver() {
-		return get("postgresBootstrapPathToDriver");
+		return get("PostgresBootstrapPathToDriver");
 	}
 
 	// ---
-	// DQD
-	// ---
-	
-	public static String getDqdResultsSchemaName() {
-		String rtn = get("DqdResultsSchemaName");
-		return rtn;
-	}
-
-	// ---
-	// CDM_SOURCE
+	// VALUES USED TO CREATE CDM_SOURCE RECORD
 	// ---
 	
 	public static String getCdmSourceName() {
@@ -120,7 +119,7 @@ public class AppParams extends AppParamsInitialization {
 		return rtn;
 	}
 	
-	public static String getCdmSourcebbreviation() {
+	public static String getCdmSourceAbbreviation() {
 		String rtn = get("CdmSourcebbreviation");
 		return rtn;
 	}
@@ -135,8 +134,8 @@ public class AppParams extends AppParamsInitialization {
 		return rtn;
 	}
 	
-	public static String getCdmSourceDocumentationReference() {
-		String rtn = get("FOO");
+	public static String getSourceDocumentationReference() {
+		String rtn = get("CdmSourceDocumentationReference");
 		return rtn;
 	}
 	
@@ -164,16 +163,125 @@ public class AppParams extends AppParamsInitialization {
 		String rtn = get("CdmVersionConceptId");
 		return rtn;
 	}
+
+	// ---
+	// TERMINOLOGY
+	// ---
 	
-	public static String get() {
-		String rtn = get("FOO");
+	public static String getTerminologyRootDir() {
+		return get("TerminologyRootDir");
+	}
+
+	public static String getTerminologyDownloadIfNotFound() {
+		return get("TerminologyDownloadIfNotFound");
+	}
+
+	public static String getTerminologyDownloadUrl() {
+		return get("TerminologyDownloadUrl");
+	}
+
+	// ---
+	// WEBAPI
+	// ---
+	
+	public static String getAtlasDataSourceName() {
+		return get("AtlasDataSourceName");
+	}
+	
+	public static String getAtlasDataSourceKey() {
+		return get("AtlasDataSourceKey");
+	}
+
+	// results
+	public static String getAchillesResultsDatabase() {
+		return get("AchillesResultsDatabase");
+	}
+	
+	public static String getAchillesResultsSchema() {
+		return get("AchillesResultsSchema");
+	}
+	
+	public static String getFullySpecifiedAchillesResultsSchemaName() {
+		String db = getAchillesResultsDatabase();
+		String schema = getAchillesResultsSchema();
+		String rtn = db + "." + schema;
 		return rtn;
 	}
 	
+	// temp
+	public static String getAchillesTempDatabase() {
+		return get("AchillesTempDatabase");
+	}
+	
+	public static String getAchillesTempSchema() {
+		return get("AchillesTempSchema");
+	}
+	
+	public static String getFullySpecifiedAchillesTempSchemaName() {
+		String db = getAchillesTempDatabase();
+		String schema = getAchillesTempSchema();
+		String rtn = db + "." + schema;
+		return rtn;
+	}
+
+	// vocab
+	public static String getFullySpecifiedAchillesVocabDatabase() {
+		return get("AchillesVocabDatabase");
+	}
+	
+	public static String getAchillesVocabSchema() {
+		return get("AchillesVocabSchema");
+	}
+	
+	public static String getAtlasCdmUrl() {
+		return get("AtlasCdmUrl");
+	}
+
+	public static String getAchillesVocabSchemaName() {
+		String db = getFullySpecifiedAchillesVocabDatabase();
+		String schema = getAchillesVocabSchema();
+		String rtn = db + "." + schema;
+		return rtn;
+	}
+
+	// ---
+	// CDM CSV
+	// ---
+	
+	public static String getCdmCsvZipFileLocation() {
+		return get("CdmCsvZipFileLocation");
+	}
+	
+	public static String getCdmCsvZipFileName() {
+		return get("CdmCsvZipFileName");
+	}
+	
+	public static String getCdmCsvDownloadUrl() {
+		return get("CdmCsvDownloadUrl");
+	}
+
+	public static boolean getCdmCsvDownloadIfNotFound() {
+		String str = get("CdmCsvDownloadIfNotFound");
+		if("true".equalsIgnoreCase(str)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// ---
+	// DQD
+	// ---
+	
+	public static String getDqdResultsSchemaName() {
+		String rtn = get("DqdResultsSchemaName");
+		return rtn;
+	}
+
 	// ------------------------------------------------------------------------
-	
-	
-	
+	// Everything beyond this is legacy and needs to be refactored
+	// ------------------------------------------------------------------------
+
 	// ---
 	// DATABASE AND SCHEMA NAMES
 	// ---
@@ -202,59 +310,6 @@ public class AppParams extends AppParamsInitialization {
 			rtn = rtn.trim().substring(rtn.indexOf(".") + 1, rtn.length());
 		}
 		return rtn;
-	}
-
-	// ---
-	// VOCAB, ACHILLES, AND DQD SCHEMAS
-	// ---
-	
-	public static String getVocabSchemaName() {
-		String rtn = get("VocabSchemaName");
-		return rtn;
-	}
-
-	// results
-	public static String getAchillesResultsDatabaseName() {
-		String db = get("achillesResultsDatabase");
-		return db;
-	}
-
-	public static String getAchillesResultsSchemaName() {
-		String db = get("achillesResultsDatabase");
-		String schema = get("achillesResultsSchema");
-		String rtn = db + "." + schema;
-		return rtn;
-	}
-
-	// temp
-	public static String getAchillesTempDatabaseName() {
-		String db = get("achillesTempDatabase");
-		return db;
-	}
-
-	public static String getAchillesTempSchemaName() {
-		String db = get("achillesTempDatabase");
-		String schema = get("achillesTempSchema");
-		String rtn = db + "." + schema;
-		return rtn;
-	}
-
-	// vocab
-	public static String getAchillesVocabDatabaseName() {
-		String db = get("achillesVocabDatabase");
-		return db;
-	}
-
-	public static String getAchillesVocabSchemaName() {
-		String db = get("achillesVocabDatabase");
-		String schema = get("achillesVocabSchema");
-		String rtn = db + "." + schema;
-		return rtn;
-	}
-
-	// terminology stuff
-	public static String getTerminologyRootDir() {
-		return get("terminologyRootDir");
 	}
 
 	// ---
@@ -359,7 +414,7 @@ public class AppParams extends AppParamsInitialization {
 	}
 
 	public static ConnectionDbmsType getDbmsType() {
-		String typeString = get("DbmsName");
+		String typeString = getDbmsName();
 		ConnectionDbmsType rtn = ConnectionDbmsType.get(typeString);
 		return rtn;
 	}
@@ -456,29 +511,5 @@ public class AppParams extends AppParamsInitialization {
 		}
 	}
 	
-	//
-	// download cdm csv
-	//
-	
-	public static String getCdmCsvZipFileLocation() {
-		return get("CdmCsvZipFileLocation");
-	}
-	
-	public static String getCdmCsvZipFileName() {
-		return get("CdmCsvZipFileName");
-	}
-	
-	public static String getCdmCsvDownloadUrl() {
-		return get("CdmCsvDownloadUrl");
-	}
-
-	public static boolean getCdmCsvDownloadIfNotFound() {
-		String str = get("CdmCsvDownloadIfNotFound");
-		if("true".equalsIgnoreCase(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 	
 }

@@ -42,8 +42,8 @@ public class BurnEverythingToTheGround {
 		Database.update("use master", conn);
 		Database.update("drop database if exists " + databaseName, conn);
 		Database.update("drop database if exists " + dqdDatabaseName, conn);
-		Database.update("drop database if exists " + AppParams.getAchillesResultsDatabaseName(), conn);
-		Database.update("drop database if exists " + AppParams.getAchillesTempDatabaseName(), conn);
+		Database.update("drop database if exists " + AppParams.getAchillesResultsDatabase(), conn);
+		Database.update("drop database if exists " + AppParams.getAchillesTempDatabase(), conn);
 		Database.update("drop database if exists " + AppParams.getSyntheaCsvNativeDatabase(), conn);
 		log.warn("DATABASE DROPPED: " + databaseName);
 		String uid;

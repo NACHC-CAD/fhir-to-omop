@@ -25,17 +25,17 @@ public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 		log.info("Got connection...");
 		try {
 			String sqlString = FileUtil.getAsString(PATH);
-			sqlString = replace(sqlString, "cdm_source_name");
-			sqlString = replace(sqlString, "cdm_source_abbreviation");
-			sqlString = replace(sqlString, "cdm_holder");
-			sqlString = replace(sqlString, "source_description");
-			sqlString = replace(sqlString, "source_documentation_reference");
-			sqlString = replace(sqlString, "cdm_etl_reference");
-			sqlString = replace(sqlString, "source_release_date");
-			sqlString = replace(sqlString, "cdm_release_date");
-			sqlString = replace(sqlString, "cdm_version_concept_id");
-			sqlString = replace(sqlString, "CdmVersion");
-			sqlString = replace(sqlString, "vocabulary_version");
+			sqlString = sqlString.replace("@cdm_source_name", AppParams.getCdmSourceName());
+			sqlString = sqlString.replace("@cdm_source_abbreviation", AppParams.getCdmSourceAbbreviation());
+			sqlString = sqlString.replace("@cdm_holder", AppParams.getCdmHolder());
+			sqlString = sqlString.replace("@source_description", AppParams.getCdmSourceDescription());
+			sqlString = sqlString.replace("@source_documentation_reference", AppParams.getSourceDocumentationReference());
+			sqlString = sqlString.replace("@cdm_etl_reference", AppParams.getCdmEtlReference());
+			sqlString = sqlString.replace("@source_release_date", AppParams.getSourceReleaseDate());
+			sqlString = sqlString.replace("@cdm_release_date", AppParams.getCdmReleaseDate());
+			sqlString = sqlString.replace("@cdm_version_concept_id", AppParams.getCdmVersionConceptId());
+			sqlString = sqlString.replace("@cdm_version", AppParams.getCdmVersion());
+			sqlString = sqlString.replace("@vocabulary_version", AppParams.getVocabularyVersion());
 			log.info("SQLSTRING: \n\n" + sqlString);
 			Database.executeSqlScript(sqlString, conn);
 		} finally {

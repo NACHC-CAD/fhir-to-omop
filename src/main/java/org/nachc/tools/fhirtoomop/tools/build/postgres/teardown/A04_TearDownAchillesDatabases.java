@@ -21,8 +21,8 @@ public class A04_TearDownAchillesDatabases {
 	}
 
 	public static void exec(Connection conn) {
-		String resName = AppParams.getAchillesResultsSchemaName();
-		String tempName = AppParams.getAchillesTempSchemaName();
+		String resName = AppParams.getFullySpecifiedAchillesResultsSchemaName();
+		String tempName = AppParams.getFullySpecifiedAchillesTempSchemaName();
 		dropDatabase(resName, conn);
 		dropDatabase(tempName, conn);
 		Database.commit(conn);

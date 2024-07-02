@@ -32,8 +32,8 @@ public class CreateAchillesDatabases {
 
 	public static void exec(Connection conn) {
 		BurnAtlasToTheGround.dropSqlServerDbObjects();
-		createDatabase(AppParams.getAchillesResultsDatabaseName(), conn);
-		createDatabase(AppParams.getAchillesTempDatabaseName(), conn);
+		createDatabase(AppParams.getAchillesResultsDatabase(), conn);
+		createDatabase(AppParams.getAchillesTempDatabase(), conn);
 		runInitScript(conn);
 		Database.commit(conn);
 		log.info("Done creating Atlas Dependencies");
@@ -80,7 +80,7 @@ public class CreateAchillesDatabases {
 		msg += "\n\n\n";
 		log.info(msg);
 		String vocabSchema = AppParams.getAchillesVocabSchemaName();
-		String resultsSchema = AppParams.getAchillesResultsSchemaName();
+		String resultsSchema = AppParams.getFullySpecifiedAchillesResultsSchemaName();
 		String sqlString = FileUtil.getAsString(PATH);
 		sqlString = sqlString.replace("<ACHILLES_RESULTS_SCHEMA>", resultsSchema);
 		sqlString = sqlString.replace("<VOCAB_SCHEMA>", vocabSchema);
