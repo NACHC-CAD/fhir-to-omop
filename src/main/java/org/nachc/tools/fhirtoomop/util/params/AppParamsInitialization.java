@@ -17,7 +17,7 @@ public class AppParamsInitialization {
 	// static variables and initializers
 	// ---
 	
-	protected static final String SRC = "auth/app.properties";
+	protected static final String SRC = "/auth/app.properties";
 	
 	protected static File PARAMS_FILE;
 
@@ -69,13 +69,26 @@ public class AppParamsInitialization {
 
 	protected static Properties getProps() {
 		try {
+			log.info("GETTING PROPERTIES...");
+			File workingDir = new File(".");
+			String msg = "";
+			msg = "\n";
+			msg += "-------------------------\n";
+			msg += "WORKING DIR: " + FileUtil.getCanonicalPath(workingDir) + "\n";
+			msg += "-------------------------\n";
+			log.info(msg);
+			log.info("SRC: " + SRC);
 			File srcFile = FileUtil.getFile(SRC, false);
+			log.info("srcFile: " + srcFile);
+			msg = "\n";
+			msg += "-------------------------\n";
+			msg += "app.params location: " + srcFile.getPath() + "\n";
+			msg += "app.params exists:   " + srcFile.exists() + "\n";
+			msg += "-------------------------\n";
+			log.info(msg);
 			String fileName = FileUtil.getAsString(srcFile);
 			fileName = fileName.trim();
 			log.info("AppParams fileName: \n" + fileName);
-			// log the working dir
-			File workingDir = new File(".");
-			log.info("WORKING DIR: " + FileUtil.getCanonicalPath(workingDir));
 			// get the parameters file
 			File file = new File(fileName);
 			if(file.exists() == false) {
