@@ -17,10 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 public class UploadSyntheaCsvFiles {
 
 	public static void main(String[] args) {
-		log.info("Finding resources...");
-		FindDriver.exec();
-		FindDataFiles.exec();
-		log.info("Uploading Synthea CSV files...");
 		Connection conn = MsSqlDatabaseConnectionFactory.getBootstrapConnection();
 		MsSqlDatabaseConnectionFactory.getCdmConnection();
 		exec(conn);
@@ -28,6 +24,11 @@ public class UploadSyntheaCsvFiles {
 	}
 
 	public static void exec(Connection conn) {
+		log.info("Finding driver...");
+		FindDriver.exec();
+		log.info("Finding data files...");
+		FindDataFiles.exec();
+		log.info("Uploading Synthea CSV files...");
 		String databaseName = AppParams.getSyntheaCsvNativeDatabase();
 		dropDatabase(databaseName, conn);
 		createDatabase(databaseName, conn);
