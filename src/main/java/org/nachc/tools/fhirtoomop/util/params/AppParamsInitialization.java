@@ -142,7 +142,15 @@ public class AppParamsInitialization {
 
 	public static String get(String key) {
 		try {
-			return PROPS.getProperty(key);
+			String rtn = PROPS.getProperty(key);
+			if(rtn == null) {
+				log.warn("");
+				log.warn("***");
+				log.warn("* COULD NOT FIND PARAMETER: " + key);
+				log.warn("***");
+				log.warn("");
+			}
+			return rtn;
 		} catch (Throwable thr) {
 			log.info("Could not load property: " + key);
 			log.info("PROPS: " + PROPS);

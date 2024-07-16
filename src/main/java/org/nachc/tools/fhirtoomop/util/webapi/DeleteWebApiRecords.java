@@ -29,7 +29,7 @@ public class DeleteWebApiRecords {
 	
 	public static void exec(Connection conn) {
 		String schemaName = getSchemaName();
-		String key = AppParams.get("atlasDataSourceKey");
+		String key = AppParams.getAtlasDataSourceKey();
 		log.info("Source key: " + key);
 		String sourceId = getSourceId(conn);
 		log.info("Source Id: " + sourceId);
@@ -62,14 +62,14 @@ public class DeleteWebApiRecords {
 	}
 	
 	private static String getSchemaName() {
-		String dbName = AppParams.get("postgresWebApiDatabaseName");
-		String schemaName = AppParams.get("postgresWebApiSchemaName");
+		String dbName = AppParams.getPostgresWebApiDatabaseName();
+		String schemaName = AppParams.getPostgresWebApiSchemaName();
 		String rtn = dbName + "." + schemaName;
 		return rtn;
 	}
 
 	private static String getSourceId(Connection conn) {
-		String sourceKey = AppParams.get("atlasDataSourceKey");
+		String sourceKey = AppParams.getAtlasDataSourceKey();
 		String schemaName = getSchemaName();
 		String tableName = schemaName + ".source";
 		String sqlString = "";

@@ -98,12 +98,12 @@ public class AppParams extends AppParamsInitialization {
 		return get("PostgresBootstrapPort");
 	}
 	
-	public static String getPostgresBootstrapDatabaseName() {
-		return get("PostgresBootstrapDatabaseName");
+	public static String getPostgresWebApiDatabaseName() {
+		return get("PostgresWebApiDatabaseName");
 	}
 	
-	public static String getPostgresBootstrapSchemaName() {
-		return get("PostgresBootstrapSchemaName");
+	public static String getPostgresWebApiSchemaName() {
+		return get("PostgresWebApiSchemaName");
 	}
 	
 	public static String getPostgresBootstrapPathToDriver() {
@@ -192,7 +192,7 @@ public class AppParams extends AppParamsInitialization {
 		return get("AtlasDataSourceKey");
 	}
 
-	// results
+	// web api results
 	public static String getAchillesResultsDatabase() {
 		return get("AchillesResultsDatabase");
 	}
@@ -211,7 +211,7 @@ public class AppParams extends AppParamsInitialization {
 		return rtn;
 	}
 	
-	// temp
+	// web api temp
 	public static String getAchillesTempDatabase() {
 		return get("AchillesTempDatabase");
 	}
@@ -230,7 +230,7 @@ public class AppParams extends AppParamsInitialization {
 		return rtn;
 	}
 
-	// vocab
+	// web api vocab
 	public static String getFullySpecifiedAchillesVocabDatabase() {
 		return get("AchillesVocabDatabase");
 	}
