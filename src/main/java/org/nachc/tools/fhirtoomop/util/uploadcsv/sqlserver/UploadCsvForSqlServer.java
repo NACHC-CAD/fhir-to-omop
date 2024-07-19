@@ -110,7 +110,7 @@ public class UploadCsvForSqlServer {
 		log.info("Looking for existing file");
 		File dir = new File(ZIP_DIR);
 		File out = new File(dir, ZIP_NAME);
-		if (dir.exists() == false && DOWNLOAD == true) {
+		if (out.exists() == false && DOWNLOAD == true) {
 			FileUtil.mkdirs(dir);
 			log.info("Doing download");
 			log.info("DOWNLOAD: " + DOWNLOAD);
