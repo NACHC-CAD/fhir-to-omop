@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.build.impl;
+package org.nachc.tools.fhirtoomop.tools.build.impl.impl_5_3;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -14,9 +14,21 @@ import com.nach.core.util.string.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CreateDatabaseTables {
+public class CreateDatabaseTables_5_3 {
 
 	private static final String FILE_NAME = "/sqlserver/omop/5.3/OMOPCDM_sql_server_5.3_ddl.sql";
+	
+	public static void main(String[] args) {
+		Connection conn = OmopDatabaseConnectionFactory.getBootstrapConnection();
+		try {
+			exec(conn);
+		} catch(Throwable thr) {
+			throw(new RuntimeException(thr));
+		} finally {
+			Database.close(conn);
+		}
+		log.info("Done.");
+	}
 	
 	public static void exec(Connection conn) {
 		InputStream is = null;
