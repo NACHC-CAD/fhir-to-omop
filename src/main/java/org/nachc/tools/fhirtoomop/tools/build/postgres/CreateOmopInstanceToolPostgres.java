@@ -10,7 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesT
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ACH00_InstallAchilles;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01b_CreateCdmSchema;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.ETLSYN00_LoadDevTools;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR01_CreateMappingTables;
@@ -66,7 +66,7 @@ public class CreateOmopInstanceToolPostgres {
 		A06_CreateAchillesTables.exec();
 		A07_GrantPrivileges.exec();
 		A08_CreateAtlasSourceRecordsInWebApi.exec();
-		CDM01_CreateCdmDatabase.exec();
+		CDM01b_CreateCdmSchema.exec();
 		CDM02a_CreateCdmDatabaseTables.exec();
 		//		CDM02b_CreateCdmDatabasePrimaryKeys.exec();
 		//		CDM03_CreateCdmSourceRecordInCdmForAtlas.exec();

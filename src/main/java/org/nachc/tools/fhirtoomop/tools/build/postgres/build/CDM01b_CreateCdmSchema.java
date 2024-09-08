@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class CDM01_CreateCdmDatabase {
+public class CDM01b_CreateCdmSchema {
 
 	public static void main(String[] args) {
 		exec();
@@ -25,16 +25,14 @@ public class CDM01_CreateCdmDatabase {
 	}
 
 	public static void exec(Connection conn) {
-		log.info("Creating databases...");
-		String databaseName = AppParams.getDatabaseName();
-		createDatabase(databaseName, conn);
-//		createDatabase(databaseName + "_dqd_results", conn);
-//		createDatabase("synthea_native", conn);
+		log.info("Creating schema...");
+		String databaseName = AppParams.getFullySpecifiedCdmSchemaName();
+		createSchema(databaseName, conn);
 		log.info("Done creating databases.");
 	}
 
-	private static void createDatabase(String databaseName, Connection conn) {
-		log.info("Creating database: " + databaseName);
+	private static void createSchema(String databaseName, Connection conn) {
+		log.info("Creating schema: " + databaseName);
 		Database.update("drop schema if exists " + databaseName, conn);
 		Database.update("create schema " + databaseName, conn);
 	}

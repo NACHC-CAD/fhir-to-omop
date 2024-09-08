@@ -11,7 +11,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesT
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateCdmSourceRecordInCdmForAtlas;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01_CreateCdmDatabase;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01b_CreateCdmSchema;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.IDX01_CreateCdmPrimaryKeys;
@@ -47,7 +47,7 @@ public class CreateOmopInstanceToolPostgresSyntheaCsv {
 //		A06_CreateAchillesTables.exec();
 //		A07_GrantPrivileges.exec();
 //		A08_CreateAtlasSourceRecordsInWebApi.exec();
-		CDM01_CreateCdmDatabase.exec();
+		CDM01b_CreateCdmSchema.exec();
 //		CDM02_CreateCdmDatabaseTables.exec();
 //		CDM03_CreateCdmSourceRecordInCdmForAtlas.exec();
 		/*

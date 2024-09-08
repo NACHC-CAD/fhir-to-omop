@@ -20,10 +20,17 @@ public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 	}
 
 	public static void exec() {
-		log.info("Creating CDM source record in CDM for Atlas record");
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
+			exec(conn);
+		} finally {
+			Database.close(conn);
+		}
+	}
+	
+	public static void exec(Connection conn) {
+		log.info("Creating CDM source record in CDM for Atlas record");
 			String sqlString = FileUtil.getAsString(PATH);
 			sqlString = sqlString.replace("@cdm_source_name", AppParams.getCdmSourceName());
 			sqlString = sqlString.replace("@cdm_source_abbreviation", AppParams.getCdmSourceAbbreviation());
@@ -38,9 +45,6 @@ public class CDM03_CreateCdmSourceRecordInCdmForAtlas {
 			sqlString = sqlString.replace("@vocabulary_version", AppParams.getVocabularyVersion());
 			log.info("SQLSTRING: \n\n" + sqlString);
 			Database.executeSqlScript(sqlString, conn);
-		} finally {
-			Database.close(conn);
-		}
 		log.info("Done creating CDM source record in CDM for Atlas record");
 	}
 

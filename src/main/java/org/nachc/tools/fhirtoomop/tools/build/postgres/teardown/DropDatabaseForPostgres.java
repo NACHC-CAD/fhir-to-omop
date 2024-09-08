@@ -103,9 +103,6 @@ public class DropDatabaseForPostgres {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (conn != null) {
-					conn.close();
-				}
 			} catch (SQLException ex) {
 				throw new RuntimeException(ex);
 			}
