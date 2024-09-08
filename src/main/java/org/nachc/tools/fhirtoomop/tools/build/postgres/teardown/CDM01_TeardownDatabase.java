@@ -2,7 +2,6 @@ package org.nachc.tools.fhirtoomop.tools.build.postgres.teardown;
 
 import java.sql.Connection;
 
-import org.nachc.tools.fhirtoomop.util.db.connection.OmopDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -24,7 +23,7 @@ public class CDM01_TeardownDatabase {
 		try {
 			try {
 				conn = PostgresDatabaseConnectionFactory.getCdmConnection();
-			} catch(Exception exp) {
+			} catch (Exception exp) {
 				log.info("Could not open connection, probably already deleted database: " + exp.getMessage());
 				return;
 			}
@@ -37,10 +36,19 @@ public class CDM01_TeardownDatabase {
 			Database.close(conn);
 		}
 	}
-	
+
+	public static void exec(Connection conn) {
+		log.info("Dropping CDM databases...");
+		String databaseName = AppParams.getDatabaseName();
+		String dqdDbName = AppParams.getDqdResultsSchemaName();
+		dropSchema(databaseName, conn);
+		dropSchema(dqdDbName, conn);
+		log.info("Done dropping CDM databases.");
+	}
+
 	private static void dropSchema(String schemaName, Connection conn) {
 		log.info("Dropping schema: " + schemaName);
 		Database.update("drop schema if exists " + schemaName + " cascade", conn);
 	}
-	
+
 }

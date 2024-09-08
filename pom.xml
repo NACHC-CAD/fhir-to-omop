@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<properties>
-		<version>1.7.053</version>
+		<version>1.7.054</version>
 	</properties>
 
 	<groupId>org.nachc.cad.tools</groupId>

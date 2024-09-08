@@ -23,8 +23,10 @@ public class A04_TearDownAchillesDatabases {
 	public static void exec(Connection conn) {
 		String resName = AppParams.getFullySpecifiedAchillesResultsSchemaName();
 		String tempName = AppParams.getFullySpecifiedAchillesTempSchemaName();
+		String synthDbName = AppParams.getSyntheaCsvNativeDatabase();
 		dropDatabase(resName, conn);
 		dropDatabase(tempName, conn);
+		dropDatabase(synthDbName, conn);
 		Database.commit(conn);
 		log.info("Done tearing down Achilles databases.");
 	}

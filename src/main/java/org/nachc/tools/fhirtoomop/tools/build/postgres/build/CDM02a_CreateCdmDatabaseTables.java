@@ -20,21 +20,25 @@ public class CDM02a_CreateCdmDatabaseTables {
 	}
 
 	public static void exec() {
-		log.info("Creating CDM database tables...");
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
-		log.info("Got connection...");
 		try {
-			log.info("Running script...");
-			String dbName = AppParams.getDatabaseName();
-			log.info("DB NAME: " + dbName);
-			String sqlString = SQL;
-			sqlString = sqlString.replace("@cdmDatabaseSchema", dbName);
-			log.info("Running script:\n\n" + sqlString + "\n\n");
-			Database.executeSqlScript(sqlString, conn);
-			log.info("Done running script.");
+			exec(conn);
 		} finally {
 			Database.close(conn);
 		}
+	}
+
+	public static void exec(Connection conn) {
+		log.info("Creating CDM database tables...");
+		log.info("Got connection...");
+		log.info("Running script...");
+		String dbName = AppParams.getDatabaseName();
+		log.info("DB NAME: " + dbName);
+		String sqlString = SQL;
+		sqlString = sqlString.replace("@cdmDatabaseSchema", dbName);
+		log.info("Running script:\n\n" + sqlString + "\n\n");
+		Database.executeSqlScript(sqlString, conn);
+		log.info("Done running script.");
 		log.info("Done creating CDM database tables.");
 	}
 
