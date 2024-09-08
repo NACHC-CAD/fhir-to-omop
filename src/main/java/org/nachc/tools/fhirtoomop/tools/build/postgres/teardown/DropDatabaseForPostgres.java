@@ -1,6 +1,9 @@
 package org.nachc.tools.fhirtoomop.tools.build.postgres.teardown;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -9,7 +12,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A00_DropDatabase {
+public class DropDatabaseForPostgres {
 
 	public static void main(String[] args) {
 		log.info("Deleting database...");
@@ -21,19 +24,28 @@ public class A00_DropDatabase {
 		log.info("Getting connection...");
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
 		try {
-			String databaseName = AppParams.get("ohdsiDbName");
-			log.info("Dropping database: " + databaseName);
-			boolean exists = databaseExists(databaseName, conn);
-			if (exists == true) {
-				disconnectOtherUsers(databaseName, conn);
-				dropDatabase(databaseName, conn);
-			}
+			exec(conn);
 		} finally {
 			log.info("Closing connection...");
 			Database.closeConnection(conn);
 			log.info("Connection closed.");
 		}
-		log.info("Done dropping database.");
+	}
+
+	public static void exec(Connection conn) {
+		String databaseName = AppParams.getFullySpecifiedDatabaseName();
+		if ("postgres".equalsIgnoreCase(databaseName)) {
+			log.info("! ! ! SKIPPING DROP DATABASE: Not allowed to drop the postgres database ! ! !");
+		} else {
+			log.info("Dropping database: " + databaseName);
+			boolean exists = databaseExists(databaseName, conn);
+			if (exists == true) {
+				disconnectOtherUsers(databaseName, conn);
+				Database.commit(conn);
+				dropDatabase(databaseName, conn);
+			}
+			log.info("Done dropping database.");
+		}
 	}
 
 	//
@@ -77,10 +89,26 @@ public class A00_DropDatabase {
 	//
 
 	private static void dropDatabase(String databaseName, Connection conn) {
-		String sqlString = "drop database \"" + databaseName + "\"";
-		log.info("Sql: \n" + sqlString);
-		log.info("Dropping database...");
-		Database.update(sqlString, conn);
-		log.info("Done with drop.");
+		Statement stmt = null;
+		try {
+			conn.setAutoCommit(true);
+			String sql = "DROP DATABASE " + databaseName;
+			stmt = conn.createStatement();
+			stmt.executeUpdate(sql);
+			log.info("Database " + databaseName + " dropped successfully.");
+		} catch (SQLException exp) {
+			throw new RuntimeException(exp);
+		} finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException ex) {
+				throw new RuntimeException(ex);
+			}
+		}
 	}
 }

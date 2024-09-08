@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class A01_TearDownAtlasDatabaseUsers {
+public class DropDatabaseUsersForPostgres {
 
 	private static final String FILE_PATH = "/postgres/teardown/A01_TearDownAtlasDatabaseUsers.sql";
 
@@ -41,10 +41,10 @@ public class A01_TearDownAtlasDatabaseUsers {
 	
 	private static String getDropUsersSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
-		sqlString = sqlString.replace("<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
-		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
-		sqlString = sqlString.replace("<ohdsiAppUserUid>", AppParams.get("ohdsiAppUserUid"));
+		sqlString = sqlString.replace("<ohdsiAdminUid>", AppParams.getUid());
+		sqlString = sqlString.replace("<ohdsiAdminUserUid>", AppParams.getUid());
+		sqlString = sqlString.replace("<ohdsiAppUid>", AppParams.get("Uuid"));
+		sqlString = sqlString.replace("<ohdsiAppUserUid>", AppParams.get("Uuid"));
 		return sqlString;
 	}
 	

@@ -9,7 +9,7 @@ import org.yaorma.database.Database;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class A04_TearDownAchillesDatabases {
+public class DropSchemasForPostgres {
 
 	public static void main(String[] args) {
 		Connection conn = PostgresDatabaseConnectionFactory.getBootstrapConnection();
@@ -21,19 +21,23 @@ public class A04_TearDownAchillesDatabases {
 	}
 
 	public static void exec(Connection conn) {
+		String cdmName = AppParams.getFullySpecifiedCdmSchemaName();
 		String resName = AppParams.getFullySpecifiedAchillesResultsSchemaName();
 		String tempName = AppParams.getFullySpecifiedAchillesTempSchemaName();
 		String synthDbName = AppParams.getSyntheaCsvNativeDatabase();
-		dropDatabase(resName, conn);
-		dropDatabase(tempName, conn);
-		dropDatabase(synthDbName, conn);
+		String webApiName = AppParams.getPostgresWebApiSchemaName();
+		dropSchema(cdmName, conn);
+		dropSchema(resName, conn);
+		dropSchema(tempName, conn);
+		dropSchema(synthDbName, conn);
+		dropSchema(webApiName, conn);
 		Database.commit(conn);
 		log.info("Done tearing down Achilles databases.");
 	}
 
-	private static void dropDatabase(String databaseName, Connection conn) {
-		log.info("Dropping schema: " + databaseName);
-		Database.update("drop schema if exists " + databaseName + " cascade", conn);
+	private static void dropSchema(String schemaName, Connection conn) {
+		log.info("Dropping schema: " + schemaName);
+		Database.update("drop schema if exists " + schemaName + " cascade", conn);
 	}
 
 }

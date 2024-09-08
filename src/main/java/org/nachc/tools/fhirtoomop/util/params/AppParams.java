@@ -58,6 +58,10 @@ public class AppParams extends AppParamsInitialization {
 		return get("ServerName");
 	}
 	
+	public static String getFullySpecifiedDatabaseName() {
+		return get("FullySpecifiedDatabaseName");
+	}
+	
 	public static String getFullySpecifiedCdmSchemaName() {
 		return get("FullySpecifiedCdmSchemaName");
 	}

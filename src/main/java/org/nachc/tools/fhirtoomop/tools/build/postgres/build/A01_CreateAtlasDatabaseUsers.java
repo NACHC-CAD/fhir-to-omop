@@ -40,14 +40,14 @@ public class A01_CreateAtlasDatabaseUsers {
 
 	private static String getSqlString() {
 		String sqlString = FileUtil.getAsString(FILE_PATH);
-		sqlString = replace(sqlString, "<ohdsiAdminUserUid>", AppParams.get("ohdsiAdminUserUid"));
-		sqlString = replace(sqlString, "<ohdsiAdminUserPwd>", AppParams.get("ohdsiAdminUserPwd"));
-		sqlString = replace(sqlString, "<ohdsiAdminUid>", AppParams.get("ohdsiAdminUid"));
-		sqlString = replace(sqlString, "<ohdsiAdminPwd>", AppParams.get("ohdsiAdminPwd"));
-		sqlString = replace(sqlString, "<ohdsiAppUserUid>", AppParams.get("ohdsiAppUserUid"));
-		sqlString = replace(sqlString, "<ohdsiAppUserPwd>", AppParams.get("ohdsiAppUserPwd"));
-		sqlString = replace(sqlString, "<ohdsiAppUid>", AppParams.get("ohdsiAppUid"));
-		sqlString = replace(sqlString, "<ohdsiAppPwd>", AppParams.get("ohdsiAppPwd"));
+		sqlString = replace(sqlString, "<ohdsiAdminUserUid>", AppParams.getUid());
+		sqlString = replace(sqlString, "<ohdsiAdminUserPwd>", AppParams.getPwd());
+		sqlString = replace(sqlString, "<ohdsiAdminUid>", AppParams.getUid());
+		sqlString = replace(sqlString, "<ohdsiAdminPwd>", AppParams.getUid());
+		sqlString = replace(sqlString, "<ohdsiAppUserUid>", AppParams.get("Uuid"));
+		sqlString = replace(sqlString, "<ohdsiAppUserPwd>", AppParams.get("Upwd"));
+		sqlString = replace(sqlString, "<ohdsiAppUid>", AppParams.get("Uuid"));
+		sqlString = replace(sqlString, "<ohdsiAppPwd>", AppParams.get("Upwd"));
 		return sqlString;
 	}
 
