@@ -8,6 +8,7 @@ import org.nachc.tools.fhirtoomop.util.db.connection.BootstrapConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.VocabularyTablesList;
 import org.nachc.tools.fhirtoomop.util.db.truncate.TruncateTables;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.yaorma.database.Database;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -61,9 +62,17 @@ public class TruncateCdmTables extends TruncateTables {
 	//
 
 	public static void truncateVocabularyTables() {
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		try {
+			truncateVocabularyTables(conn);
+		} finally {
+			Database.close(conn);
+		}
+	}
+	
+	public static void truncateVocabularyTables(Connection conn) {
 		String dbName = AppParams.getDatabaseName();
 		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
 		TruncateCdmTables trunk = new TruncateCdmTables();
 		trunk.setInvertIgnore(true);
 		trunk.truncateDataTables(dbName, schemaName, conn);
