@@ -10,7 +10,7 @@ import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A04_CreateAtlasWebA
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A06_CreateAchillesTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A07_GrantPrivileges;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.A08_CreateAtlasSourceRecordsInWebApi;
-import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateCdmSourceRecordInCdmForAtlas;
+import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM03_CreateCdmSourceRecordInCdm;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM01b_CreateCdmSchema;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.CDM02a_CreateCdmDatabaseTables;
 import org.nachc.tools.fhirtoomop.tools.build.postgres.build.FHIR03_CreateFhirResourcesTables;
