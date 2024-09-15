@@ -23,21 +23,25 @@ public class VOC99_LoadTerminology {
 	}
 
 	public static void exec() {
-		log.info("Loading terminologies...");
-		Timer timer = new Timer();
-		timer.start();
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
-		log.info("Got connection...");
 		try {
-			log.info("Done loading terminologies.");
-			String sqlString = getSqlString();
-			InputStream is = new ByteArrayInputStream(sqlString.getBytes());
-			log.info("Running script...");
-			Database.executeSqlScript(is, conn);
-			log.info("Done running script.");
+			exec(conn);
 		} finally {
 			Database.close(conn);
 		}
+	}
+
+	public static void exec(Connection conn) {
+		log.info("Loading terminologies...");
+		Timer timer = new Timer();
+		timer.start();
+		log.info("Got connection...");
+		log.info("Done loading terminologies.");
+		String sqlString = getSqlString();
+		InputStream is = new ByteArrayInputStream(sqlString.getBytes());
+		log.info("Running script...");
+		Database.executeSqlScript(is, conn);
+		log.info("Done running script.");
 		timer.stop();
 		log.info("TIME TO LOAD TERMINOLOGIES: " + timer.getElapsedString());
 		log.info("Done loading terminologies...");
@@ -47,7 +51,7 @@ public class VOC99_LoadTerminology {
 		String rootDir = AppParams.getTerminologyRootDir();
 		String sqlString = FileUtil.getAsString(FILE_PATH);
 		sqlString = sqlString.replace("<dbName>", AppParams.getDatabaseName());
-		sqlString = sqlString.replace("@terminologiesRootFolder/", rootDir);		
+		sqlString = sqlString.replace("@terminologiesRootFolder/", rootDir);
 		return sqlString;
 	}
 
