@@ -28,7 +28,7 @@ public class LoadMappingTables {
 		log.info("SQL STRING: \n" + sqlString);
 		String dbName = AppParams.getDatabaseName();
 		log.info("Using: " + dbName);
-		Database.update("use " + dbName, conn);
+//		Database.update("use " + dbName, conn);
 		log.info("Running script...");
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
