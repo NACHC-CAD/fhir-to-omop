@@ -171,7 +171,11 @@ public class AppParams extends AppParamsInitialization {
 	// ---
 	// TERMINOLOGY
 	// ---
-	
+
+	public static String getFhirMappingFilesDir() {
+		return get("FhirMappingFilesDir");
+	}
+
 	public static String getTerminologyRootDir() {
 		return get("TerminologyRootDir");
 	}

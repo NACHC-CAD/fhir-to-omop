@@ -6,7 +6,6 @@ import java.nio.file.FileSystems;
 import java.sql.Connection;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.tools.build.impl.LoadMappingTables;
 import org.nachc.tools.fhirtoomop.util.db.connection.postgres.PostgresDatabaseConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Database;
@@ -35,18 +34,24 @@ public class FHIR02_LoadFhirRaceEthMappings {
 	}
 
 	public static void exec() {
-		log.info("Creating FHIR race/eth mappings table.");
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		try {
 			FHIR02_LoadFhirRaceEthMappings loadRaceFiles = new FHIR02_LoadFhirRaceEthMappings();
 			loadRaceFiles.createMappingSqlFile();
-			loadRaceFiles.loadMappings(loadRaceFiles.getSqlFile(), conn);
+			File sqlFile = loadRaceFiles.getSqlFile();
+			exec(sqlFile, conn);
 		} finally {
 			Database.close(conn);
 		}
+	}
+
+	public static void exec(File sqlFile, Connection conn) {
+		log.info("Creating FHIR race/eth mappings table.");
+		FHIR02_LoadFhirRaceEthMappings loadRaceFiles = new FHIR02_LoadFhirRaceEthMappings();
+		loadRaceFiles.loadMappings(sqlFile, conn);
 		log.info("Done creating FHIR race/eth mappings table.");
 	}
-	
+
 	public void createMappingSqlFile() {
 		List<String> fileNames = FileUtil.listResources(DATA_DIR, getClass());
 		String sql = getMappingDataSql();
@@ -63,7 +68,7 @@ public class FHIR02_LoadFhirRaceEthMappings {
 				String dstFileName = fileName.substring(start, end);
 				File file = new File(DST_DIR, dstFileName);
 				if (fileName.endsWith("Eth.txt")) {
-					if("true".equals(AppParams.get("runningFromDocker"))) {
+					if ("true".equals(AppParams.get("runningFromDocker"))) {
 						String filePath = file.getPath();
 						filePath = filePath.replace("\\", "/");
 						sql = sql.replace("<ETH_FILE>", filePath);
@@ -72,7 +77,7 @@ public class FHIR02_LoadFhirRaceEthMappings {
 					}
 				}
 				if (fileName.endsWith("Race.txt")) {
-					if("true".equals(AppParams.get("runningFromDocker"))) {
+					if ("true".equals(AppParams.get("runningFromDocker"))) {
 						String filePath = file.getPath();
 						filePath = filePath.replace("\\", "/");
 						sql = sql.replace("<RACE_FILE>", filePath);
@@ -103,10 +108,20 @@ public class FHIR02_LoadFhirRaceEthMappings {
 	}
 
 	private void loadMappings(File sqlFile, Connection conn) {
+		String dirName = AppParams.getFhirMappingFilesDir();
+		String raceFileName = dirName + "/RaceAndEthnicityCDC-OMOP-MAPPING-Race.txt";
+		String ethFileName = dirName + "/RaceAndEthnicityCDC-OMOP-MAPPING-Eth.txt";
 		log.info("-----------------------");
 		log.info("LOAD RACE/ETH SQL FILE: " + FileUtil.getCanonicalPath(sqlFile));
 		log.info("-----------------------");
-		String sqlString = getSqlString(sqlFile);
+		String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
+		InputStream IS = FileUtil.getInputStream(sqlFile);
+		String sqlString = FileUtil.getAsString(sqlFile);
+		sqlString = sqlString.replace("<RACE_FILE>", raceFileName);
+		sqlString = sqlString.replace("<ETH_FILE>", ethFileName);
+		sqlString = sqlString.replace("<ohdsiDbName>", schemaName);
+		log.info("SQL STRING: \n" + sqlString);
+		log.info("Using schema: " + schemaName);
 		log.info("Running script...");
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
@@ -119,6 +134,4 @@ public class FHIR02_LoadFhirRaceEthMappings {
 		return sqlString;
 	}
 
-	
-	
 }
