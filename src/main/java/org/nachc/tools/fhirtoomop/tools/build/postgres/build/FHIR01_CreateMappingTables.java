@@ -24,13 +24,20 @@ public class FHIR01_CreateMappingTables {
 		Connection conn = PostgresDatabaseConnectionFactory.getCdmConnection();
 		log.info("Got connection...");
 		try {
-			log.info("Running script...");
-			String sqlString = getSqlString();
-			Database.executeSqlScript(sqlString, conn);
-			log.info("Done running script.");
+			exec(conn);
 		} finally {
 			Database.close(conn);
 		}
+		log.info("Done creating mapping tables.");
+	}
+
+	public static void exec(Connection conn) {
+		log.info("Creating mapping tables...");
+		log.info("Got connection...");
+		log.info("Running script...");
+		String sqlString = getSqlString();
+		Database.executeSqlScript(sqlString, conn);
+		log.info("Done running script.");
 		log.info("Done creating mapping tables.");
 	}
 
