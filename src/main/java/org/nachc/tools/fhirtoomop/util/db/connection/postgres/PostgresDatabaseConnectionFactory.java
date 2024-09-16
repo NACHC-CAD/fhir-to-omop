@@ -27,6 +27,18 @@ public class PostgresDatabaseConnectionFactory {
 
 	}
 
+	public static Connection getUserConnection() {
+		try {
+			String url = AppParams.getUrl();
+			log.info("Creating connection for: \n" + url);
+			Connection conn = DriverManager.getConnection(url);
+			conn.setAutoCommit(true);
+			return conn;
+		} catch (Exception exp) {
+			throw (new RuntimeException(exp));
+		}
+	}
+
 	public static Connection getCdmConnection() {
 		try {
 			String url = AppParams.getPostgresBootstrapUrl();
