@@ -49,8 +49,8 @@ public class CdmTablesForPostgres {
 
 	public static List<String> getTables(List<String> ignoreList, boolean invertIgnore, Connection conn) {
 		ArrayList<String> rtn = new ArrayList<String>();
-		String dbName = AppParams.getDatabaseName();
-		String schemaName = AppParams.getSchemaName();
+		String dbName = AppParams.getFullySpecifiedDatabaseName();
+		String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
 		String sqlString = "";
 		sqlString += "select table_name \n";
 		sqlString += "from information_schema.tables \n";
