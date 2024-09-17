@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.nachc.tools.fhirtoomop.util.db.connection.BootstrapConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.VocabularyTablesList;
+import org.nachc.tools.fhirtoomop.util.db.truncate.impl.TruncateTablesForSqlServer;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
 import org.yaorma.database.Data;
 import org.yaorma.database.Database;
@@ -18,45 +19,30 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 @Setter
 @Slf4j
-public class TruncateTables {
+public abstract class TruncateTables {
 
 	//
 	// instance variables
 	//
 
-	private ArrayList<String> success = new ArrayList<String>();
+	protected ArrayList<String> success = new ArrayList<String>();
 
-	private ArrayList<String> failure = new ArrayList<String>();
+	protected ArrayList<String> failure = new ArrayList<String>();
 
-	private ArrayList<String> ignored = new ArrayList<String>();
+	protected ArrayList<String> ignored = new ArrayList<String>();
 
-	private List<String> ignoreList = VocabularyTablesList.getTablesList();
+	protected List<String> ignoreList = VocabularyTablesList.getTablesList();
 	
-	private boolean invertIgnore = false;
+	protected boolean invertIgnore = false;
 
-	private List<String> allTables = null;
+	protected List<String> allTables = null;
 
 	//
-	// method to get all of the tables for a schema
+	// abstract methods
 	//
 	
-	public List<String> getTablesForSchema(String dbName, String schemaName, Connection conn) {
-		if (allTables == null) {
-			allTables = new ArrayList<String>();
-			String sqlString = "";
-			sqlString += "select table_name from information_schema.tables \n";
-			sqlString += "where table_catalog = '" + dbName + "' \n";
-			sqlString += "and table_schema = '" + schemaName + "' \n";
-			Database.update("use " + dbName, conn);
-			Data data = Database.query(sqlString, conn);
-			for (Row row : data) {
-				String str = row.get("tableName");
-				allTables.add(str);
-			}
-		}
-		return allTables;
-	}
-
+	public abstract List<String> getTablesForSchema(String dbName, String schemaName, Connection conn);
+	
 	//
 	// methods to see if a table should be ignored
 	//
@@ -144,6 +130,98 @@ public class TruncateTables {
 			msg += "--------------------\n";
 		}
 		log.info(msg);
+	}
+
+	// ---
+	//
+	// PUBLIC INSTANCE METHODS TO PERFORM TRUNCATE BASED ON PASSED IN PARAMETERS
+	//
+	// ---
+	
+	//
+	// truncate all tables
+	//
+	
+	public void truncateAllTables(String dbName, String schemaName, Connection conn) {
+		this.setIgnoreList(new ArrayList<String>());
+		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
+		for (String tableName : allTables) {
+			truncateTable(dbName, schemaName, tableName, conn);
+		}
+		logOutcomes();
+	}
+
+	//
+	// truncate only the data tables
+	//
+
+	public void truncateDataTables(String dbName, String schemaName, Connection conn) {
+		this.setIgnoreList(VocabularyTablesList.getTablesList());
+		List<String> allTables = getTablesForSchema(dbName, schemaName, conn);
+		for (String tableName : allTables) {
+			truncateTable(dbName, schemaName, tableName, conn);
+		}
+		logOutcomes();
+	}
+
+	//
+	// truncate only the vocabulary tables
+	//
+
+	public void truncateVocabularyTables(String dbName, String schemaName, Connection conn) {
+		this.setInvertIgnore(true);
+		this.truncateDataTables(dbName, schemaName, conn);
+	}
+
+	// * * *
+	//
+	// IMPLEMENTATION
+	//
+	// * * *
+	
+	//
+	// truncate all tables
+	//
+	
+	public void truncateAllTables() {
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		this.truncateAllTables(dbName, schemaName, conn);
+		log.info("Done.");
+	}
+
+	//
+	// truncate only the data tables (keep terminology)
+	//
+
+	public void truncateDataTables() {
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		this.truncateDataTables(dbName, schemaName, conn);
+		log.info("Done.");
+	}
+
+	//
+	// truncate only the terminology tables (keep data)
+	//
+
+	public void truncateVocabularyTables() {
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		try {
+			truncateVocabularyTables(conn);
+		} finally {
+			Database.close(conn);
+		}
+	}
+	
+	public void truncateVocabularyTables(Connection conn) {
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
+		this.setInvertIgnore(true);
+		this.truncateDataTables(dbName, schemaName, conn);
+		log.info("Done.");
 	}
 
 }
