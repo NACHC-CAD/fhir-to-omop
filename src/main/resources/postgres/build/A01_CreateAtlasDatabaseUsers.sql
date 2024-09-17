@@ -53,7 +53,7 @@ CREATE ROLE <ohdsiAppUserUid> WITH
   NOREPLICATION
   PASSWORD '<ohdsiAppUserPwd>';
 
-GRANT ohdsi_app TO ohdsi_app_user;
+-- GRANT <ohdsiAppUserUid> TO <ohdsiAppUserUid>;
 
 COMMENT ON ROLE <ohdsiAppUserUid> IS 'Application user account for OHDSI applications';
 
