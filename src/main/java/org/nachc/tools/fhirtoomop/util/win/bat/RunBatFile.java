@@ -14,6 +14,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class RunBatFile {
 
+	public static void main(String[] args) {
+		log.info("Running...");
+		File file = new File("C:\\temp\\ponos\\ponos.bat");
+		exec(file);
+		log.info("Done.");
+	}
+	
 	public static void exec(File file) {
 		Timer timer = new Timer();
 		timer.start();

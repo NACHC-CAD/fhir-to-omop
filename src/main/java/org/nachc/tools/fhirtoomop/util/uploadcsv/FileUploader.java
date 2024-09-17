@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.tools.build.impl;
+package org.nachc.tools.fhirtoomop.util.uploadcsv;
 
 import java.io.File;
 import java.io.InputStream;
@@ -15,20 +15,22 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-@Getter
-@Setter
 @Slf4j
-public class UploadCsvFilesZip {
+@Setter
+@Getter
+public abstract class FileUploader {
+	
+	protected List<String> ignoreList = new ArrayList<String>();
+	
+	protected List<String> success = new ArrayList<String>();
+	
+	protected List<String> failure = new ArrayList<String>();
+	
+	protected List<String> ignored = new ArrayList<String>();
+	
+	protected boolean invertIgnore = false;
 
-	private List<String> ignoreList = new ArrayList<String>();
-	
-	private List<String> success = new ArrayList<String>();
-	
-	private List<String> failure = new ArrayList<String>();
-	
-	private List<String> ignored = new ArrayList<String>();
-	
-	private boolean invertIgnore = false;
+	protected abstract void uploadFile(String dbName, String schemaName, File file, Connection conn);
 
 	public void exec(String dbName, String schemaName, InputStream is, File outputDir, Connection conn) {
 		try {
@@ -51,42 +53,7 @@ public class UploadCsvFilesZip {
 		}
 	}
 
-	private void uploadFile(String dbName, String schemaName, File file, Connection conn) {
-		String fileName = file.getName();
-		String tableName = fileName.substring(0, fileName.indexOf("."));
-		String fullName = dbName + "." + schemaName + "." + tableName;
-		log.info("-----------");
-		log.info("Uploading file: " + FileUtil.getCanonicalPath(file));
-		log.info("Table Name: " + fullName);
-		if(ignore(tableName) == true) {
-			log.info("SKIPPING TABLE: " + fullName);
-			this.ignored.add(fullName);
-			return;
-		}
-		try {
-			String sqlString = "";
-			sqlString += "BULK INSERT " + fullName + " \n";
-			sqlString += "FROM '" + FileUtil.getCanonicalPath(file) + "' \n";
-			sqlString += "WITH \n";
-			sqlString += "( \n";
-			sqlString += "    FIELDTERMINATOR = ',', \n";
-			sqlString += "    ROWTERMINATOR = '\n', \n";
-			sqlString += "    FIRSTROW = 2, \n";
-			sqlString += "    FORMAT = 'CSV', \n";
-			sqlString += "    TABLOCK \n";
-			sqlString += ") \n";		
-			Database.update("use " + dbName, conn);
-			Database.update(sqlString, conn);
-			this.success.add(fullName);
-		} catch(Exception exp) {
-			log.info("COULD NOT UPLOAD FILE (EXCEPTION OCCURRED): ");
-			log.info(exp.getMessage());
-			this.failure.add(fullName);
-		}
-		log.info("Done with file: " + FileUtil.getCanonicalPath(file));
-	}
-
-	private boolean ignore(String tableName) {
+	protected boolean ignore(String tableName) {
 		boolean rtn = false;
 		if(this.ignoreList.contains(tableName.toUpperCase())) {
 			rtn = true;
@@ -99,7 +66,7 @@ public class UploadCsvFilesZip {
 		return rtn;
 	}
 	
-	private boolean isZip(File file) {
+	protected boolean isZip(File file) {
 		String name = file.getName().toLowerCase();
 		if(name.endsWith(".zip") == true) {
 			return true;
@@ -112,7 +79,7 @@ public class UploadCsvFilesZip {
 	// log the outcome
 	//
 	
-	public void logOutcomes() {
+	protected void logOutcomes() {
 		String msg;
 		msg = "\n--------------------\n";
 		msg += "Success: The following tables were successfully uploaded. \n";

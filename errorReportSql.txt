@@ -2,10 +2,10 @@ DBMS:
 sql server
 
 Error:
-com.microsoft.sqlserver.jdbc.SQLServerException: Cannot drop the index 'synthea_omop_ach_res.dbo.idx_ar_aid', because it does not exist or you do not have permission.
+com.microsoft.sqlserver.jdbc.SQLServerException: Cannot drop the index 'polites_omop_ach_res.dbo.idx_ar_aid', because it does not exist or you do not have permission.
 
 SQL:
-drop index synthea_omop_ach_res.dbo.idx_ar_aid
+drop index polites_omop_ach_res.dbo.idx_ar_aid
 
 R version:
 R version 4.2.3 (2023-03-15 ucrt)

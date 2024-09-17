@@ -37,9 +37,22 @@ public class RunRFileAsBat {
 	private static File writeBatFile() {
 		log.info("Writing bat...");
 		File file = new File("/temp/ponos/ponos.bat");
-		FileUtil.write("rscript /temp/ponos/ponos.r", file);
+		String batFileContents = getBatFileContents(); 
+		FileUtil.write(batFileContents, file);
 		log.info("Done writing bat.");
 		return file;
+	}
+	
+	private static String getBatFileContents() {
+		String rtn = "\n\n";
+		rtn += "echo off \n";
+		rtn += "echo %JAVA_HOME% \n";
+		rtn += "echo Java Version: \n";
+		rtn += "java -version \n";
+		rtn += "echo.\n";
+		rtn += "echo.\n";
+		rtn += "rscript /temp/ponos/ponos.r \n";
+		return rtn;
 	}
 	
 	private static void runBatFile(File file) {

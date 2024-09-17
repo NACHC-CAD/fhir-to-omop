@@ -1,4 +1,4 @@
-package org.nachc.tools.fhirtoomop.util.uploadcsv.sqlserver;
+package org.nachc.tools.fhirtoomop.tools.build.impl.fileupload;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.util.List;
 
-import org.nachc.tools.fhirtoomop.tools.build.impl.UploadCsvFilesZip;
 import org.nachc.tools.fhirtoomop.util.db.connection.BootstrapConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.VocabularyTablesList;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
@@ -18,7 +17,7 @@ import com.nach.core.util.http.HttpRequestClient;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UploadCsvForSqlServer {
+public class UploadCsvFilesFromZipForSqlServer {
 
 	private static final String ZIP_DIR = AppParams.getCdmCsvZipFileLocation();
 
@@ -43,7 +42,7 @@ public class UploadCsvForSqlServer {
 		File file = null;
 		try {
 			download();
-			UploadCsvFilesZip upload = new UploadCsvFilesZip();
+			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");
@@ -64,7 +63,7 @@ public class UploadCsvForSqlServer {
 		File file = null;
 		try {
 			download();
-			UploadCsvFilesZip upload = new UploadCsvFilesZip();
+			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");
@@ -87,7 +86,7 @@ public class UploadCsvForSqlServer {
 		File file = null;
 		try {
 			download();
-			UploadCsvFilesZip upload = new UploadCsvFilesZip();
+			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");

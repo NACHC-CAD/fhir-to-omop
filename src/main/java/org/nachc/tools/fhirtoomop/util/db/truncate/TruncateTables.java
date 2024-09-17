@@ -47,7 +47,7 @@ public class TruncateTables {
 			sqlString += "select table_name from information_schema.tables \n";
 			sqlString += "where table_catalog = '" + dbName + "' \n";
 			sqlString += "and table_schema = '" + schemaName + "' \n";
-//			Database.update("use " + dbName, conn);
+			Database.update("use " + dbName, conn);
 			Data data = Database.query(sqlString, conn);
 			for (Row row : data) {
 				String str = row.get("tableName");

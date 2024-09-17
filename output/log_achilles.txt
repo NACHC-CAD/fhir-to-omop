@@ -11950,3 +11950,1028 @@
 2024-06-24 05:02:11	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
 2024-06-24 05:02:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0309 secs
 2024-06-24 05:02:11	[Main thread]	INFO	Achilles	achilles	[Total Runtime] 47.523582 secs
+2024-09-17 05:37:20	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-09-17 05:37:20	[Main thread]	FATAL	rJava	.jfindClass	java.lang.UnsupportedClassVersionError: com/microsoft/sqlserver/jdbc/SQLServerDriver has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
+2024-09-17 05:43:54	[Main thread]	INFO	Achilles	achilles	CDM Version 5.4 passed as parameter.
+2024-09-17 05:43:55	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:43:55	[Main thread]	INFO	Achilles	achilles	Beginning single-threaded execution
+2024-09-17 05:43:55	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:43:55	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00873 secs
+2024-09-17 05:43:56	[Main thread]	INFO	DatabaseConnector	insertTable.default	Inserting data took 0.0985 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Executing multiple queries. This could take a while
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 0 (Source name) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0208 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 0 (0.049573 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 1 (Number of persons) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00854 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1 (0.037366 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 2 (Number of persons by gender) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0158 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2 (0.041788 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 3 (Number of persons by year of birth) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0133 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 3 (0.040681 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 4 (Number of persons by race) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00841 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 4 (0.034506 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 5 (Number of persons by ethnicity) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00809 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 5 (0.033970 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 10 (Number of all persons by year of birth by gender) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00965 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 10 (0.036055 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 11 (Number of non-deceased persons by year of birth by gender) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0114 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 11 (0.037225 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 12 (Number of persons by race and ethnicity) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00926 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 12 (0.036076 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 101 (Number of persons by age, with age at first observation period) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0161 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 101 (0.041316 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 102 (Number of persons by gender by age, with age at first observation period) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0138 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 102 (0.040125 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 103 (Distribution of age at first observation period) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0336 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 103 (0.059039 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 104 (Distribution of age at first observation period by gender) -- START
+2024-09-17 05:43:57	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0466 secs
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 104 (0.072005 secs)
+2024-09-17 05:43:57	[Main thread]	INFO	Achilles	achilles	Analysis 105 (Length of observation (days) of first observation period) -- START
+2024-09-17 05:43:58	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.656 secs
+2024-09-17 05:43:58	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 105 (0.684610 secs)
+2024-09-17 05:43:58	[Main thread]	INFO	Achilles	achilles	Analysis 106 (Length of observation (days) of first observation period by gender) -- START
+2024-09-17 05:43:59	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.788 secs
+2024-09-17 05:43:59	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 106 (0.815133 secs)
+2024-09-17 05:43:59	[Main thread]	INFO	Achilles	achilles	Analysis 107 (Length of observation (days) of first observation period by age decile) -- START
+2024-09-17 05:44:00	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 1.13 secs
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 107 (1.160492 secs)
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	Analysis 108 (Number of persons by length of observation period, in 30d increments) -- START
+2024-09-17 05:44:00	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0206 secs
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 108 (0.049312 secs)
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	Analysis 109 (Number of persons with continuous observation in each year) -- START
+2024-09-17 05:44:00	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.235 secs
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 109 (0.260890 secs)
+2024-09-17 05:44:00	[Main thread]	INFO	Achilles	achilles	Analysis 110 (Number of persons with continuous observation in each month) -- START
+2024-09-17 05:44:01	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 1.05 secs
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 110 (1.081192 secs)
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	Analysis 111 (Number of persons by observation period start month) -- START
+2024-09-17 05:44:01	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0173 secs
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 111 (0.045429 secs)
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	Analysis 112 (Number of persons by observation period end month) -- START
+2024-09-17 05:44:01	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0198 secs
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 112 (0.048498 secs)
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	Analysis 113 (Number of persons by number of observation periods) -- START
+2024-09-17 05:44:01	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0123 secs
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 113 (0.040731 secs)
+2024-09-17 05:44:01	[Main thread]	INFO	Achilles	achilles	Analysis 116 (Number of persons with at least one day of observation in each year by gender and age decile) -- START
+2024-09-17 05:44:02	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.433 secs
+2024-09-17 05:44:02	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 116 (0.473621 secs)
+2024-09-17 05:44:02	[Main thread]	INFO	Achilles	achilles	Analysis 117 (Number of persons with at least one day of observation in each month) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 1.87 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 117 (1.899134 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 119 (Number of observation period records by period_type_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0175 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 119 (0.047835 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 200 (Number of persons with at least one visit occurrence, by visit_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0209 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 200 (0.050384 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 201 (Number of visit occurrence records, by visit_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0151 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 201 (0.042153 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 202 (Number of persons by visit occurrence start month, by visit_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0135 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 202 (0.041470 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 203 (Number of distinct visit occurrence concepts per person) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0364 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 203 (0.066588 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 204 (Number of persons with at least one visit occurrence, by visit_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0238 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 204 (0.053630 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 206 (Distribution of age by visit_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0578 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 206 (0.085608 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 207 (Number of visit records with invalid person_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0102 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 207 (0.038378 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 209 (Number of visit records with invalid care_site_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0135 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 209 (0.043041 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 210 (Number of visit_occurrence records outside a valid observation period) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0153 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 210 (0.045607 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 212 (Number of persons with at least one visit occurrence, by calendar year by gender by age decile) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0168 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 212 (0.046607 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 213 (Distribution of length of stay by visit_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0379 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 213 (0.067297 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 220 (Number of visit occurrence records by visit occurrence start month) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.015 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 220 (0.043425 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 221 (Number of persons by visit start year) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.018 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 221 (0.048602 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 225 (Number of visit_occurrence records by visit_source_concept_id) -- START
+2024-09-17 05:44:04	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0187 secs
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 225 (0.050887 secs)
+2024-09-17 05:44:04	[Main thread]	INFO	Achilles	achilles	Analysis 226 (Number of records by domain by visit_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0666 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 226 (0.099465 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 300 (Number of providers) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0101 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 300 (0.047225 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 301 (Number of providers by specialty concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00988 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 301 (0.043472 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 303 (Number of providers records by specialty_concept_id and visit_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0136 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 303 (0.045784 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 325 (Number of provider records by specialty_source_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0108 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 325 (0.042112 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 400 (Number of persons with at least one condition occurrence, by condition_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0573 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 400 (0.084823 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 401 (Number of condition occurrence records, by condition_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0372 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 401 (0.067166 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 402 (Number of persons by condition occurrence start month, by condition_concept_id) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.136 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 402 (0.166369 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 403 (Number of distinct condition occurrence concepts per person) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.214 secs
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 403 (0.247891 secs)
+2024-09-17 05:44:05	[Main thread]	INFO	Achilles	achilles	Analysis 404 (Number of persons with at least one condition occurrence, by condition_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:05	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.163 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 404 (0.213321 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 405 (Number of condition occurrence records, by condition_concept_id by condition_type_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0826 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 405 (0.114645 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 406 (Distribution of age by condition_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.287 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 406 (0.315380 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 414 (Number of condition occurrence records, by condition_status_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0383 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 414 (0.065304 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 415 (Number of condition occurrence records, by condition_type_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.037 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 415 (0.064937 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 416 (Number of condition occurrence records, by condition_status_concept_id, condition_type_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0495 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 416 (0.077057 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 420 (Number of condition occurrence records by condition occurrence start month) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0879 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 420 (0.114224 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 425 (Number of condition_occurrence records by condition_source_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0405 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 425 (0.068802 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 500 (Number of persons with death, by cause_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00863 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 500 (0.036145 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 501 (Number of records of death, by cause_concept_id) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00761 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 501 (0.039374 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 502 (Number of persons by death month) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00952 secs
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 502 (0.037842 secs)
+2024-09-17 05:44:06	[Main thread]	INFO	Achilles	achilles	Analysis 504 (Number of persons with a death, by calendar year by gender by age decile) -- START
+2024-09-17 05:44:06	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00914 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 504 (0.045799 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 505 (Number of death records, by death_type_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00836 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 505 (0.039520 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 506 (Distribution of age at death by gender) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0244 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 506 (0.055211 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 511 (Distribution of time from death to last condition) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0158 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 511 (0.047171 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 512 (Distribution of time from death to last drug) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0406 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 512 (0.068285 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 513 (Distribution of time from death to last visit) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.023 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 513 (0.051293 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 514 (Distribution of time from death to last procedure) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0197 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 514 (0.047383 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 515 (Distribution of time from death to last observation) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0198 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 515 (0.047193 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 525 (Number of death records by cause_source_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00589 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 525 (0.035970 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 600 (Number of persons with at least one procedure occurrence, by procedure_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00795 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 600 (0.036341 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 601 (Number of procedure occurrence records, by procedure_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00793 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 601 (0.035493 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 602 (Number of persons by procedure occurrence start month, by procedure_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0097 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 602 (0.037896 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 603 (Number of distinct procedure occurrence concepts per person) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0176 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 603 (0.044185 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 604 (Number of persons with at least one procedure occurrence, by procedure_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00935 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 604 (0.037459 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 605 (Number of procedure occurrence records, by procedure_concept_id by procedure_type_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00937 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 605 (0.038014 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 606 (Distribution of age by procedure_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0264 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 606 (0.056793 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 620 (Number of procedure occurrence records  by procedure occurrence start month) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00825 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 620 (0.035903 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 625 (Number of procedure_occurrence records by procedure_source_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00763 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 625 (0.035677 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 630 (Number of procedure_occurrence records inside a valid observation period) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00713 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 630 (0.033827 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 691 (Percentage of total persons that have at least x procedures) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0102 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 691 (0.038943 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 700 (Number of persons with at least one drug exposure, by drug_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0544 secs
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 700 (0.082265 secs)
+2024-09-17 05:44:07	[Main thread]	INFO	Achilles	achilles	Analysis 701 (Number of drug exposure records, by drug_concept_id) -- START
+2024-09-17 05:44:07	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0351 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 701 (0.066072 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 702 (Number of persons by drug exposure start month, by drug_concept_id) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.116 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 702 (0.147730 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 703 (Number of distinct drug exposure concepts per person) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.173 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 703 (0.202602 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 704 (Number of persons with at least one drug exposure, by drug_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.116 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 704 (0.143929 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 705 (Number of drug exposure records, by drug_concept_id by drug_type_concept_id) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0439 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 705 (0.072652 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 706 (Distribution of age by drug_concept_id) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.229 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 706 (0.257574 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 715 (Distribution of days_supply by drug_concept_id) -- START
+2024-09-17 05:44:08	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.101 secs
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 715 (0.129736 secs)
+2024-09-17 05:44:08	[Main thread]	INFO	Achilles	achilles	Analysis 716 (Distribution of refills by drug_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.192 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 716 (0.224053 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 717 (Distribution of quantity by drug_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.179 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 717 (0.209964 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 720 (Number of drug exposure records  by drug exposure start month) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0935 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 720 (0.122142 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 725 (Number of drug_exposure records by drug_source_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0454 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 725 (0.081650 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 791 (Percentage of total persons that have at least x drug exposures) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0654 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 791 (0.100321 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 800 (Number of persons with at least one observation occurrence, by observation_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00934 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 800 (0.043109 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 801 (Number of observation occurrence records, by observation_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0115 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 801 (0.049225 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 802 (Number of persons by observation occurrence start month, by observation_concept_id) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0103 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 802 (0.046701 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 803 (Number of distinct observation occurrence concepts per person) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0344 secs
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 803 (0.097675 secs)
+2024-09-17 05:44:09	[Main thread]	INFO	Achilles	achilles	Analysis 804 (Number of persons with at least one observation occurrence, by observation_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:09	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.019 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 804 (0.068588 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 805 (Number of observation occurrence records, by observation_concept_id by observation_type_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0121 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 805 (0.050912 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 806 (Distribution of age by observation_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.034 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 806 (0.077173 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 807 (Number of observation occurrence records, by observation_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0103 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 807 (0.047304 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 814 (Number of observation records with no value (numeric, string, or concept)) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00781 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 814 (0.044019 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 815 (Distribution of numeric values, by observation_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.033 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 815 (0.065639 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 820 (Number of observation records  by observation start month) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00847 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 820 (0.037654 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 822 (Number of observation records, by observation_concept_id and value_as_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00763 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 822 (0.036230 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 823 (Number of observation records, by observation_concept_id and qualifier_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00806 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 823 (0.042506 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 825 (Number of observation records by observation_source_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00854 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 825 (0.044009 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 826 (Number of observation records by value_as_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0083 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 826 (0.040834 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 827 (Number of observation records by unit_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00995 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 827 (0.045204 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 891 (Percentage of total persons that have at least x observations) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0097 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 891 (0.043837 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 900 (Number of persons with at least one drug era, by drug_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0529 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 900 (0.081337 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 901 (Number of drug era records, by drug_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0349 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 901 (0.064799 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 902 (Number of persons by drug era start month, by drug_concept_id) -- START
+2024-09-17 05:44:10	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.102 secs
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 902 (0.134486 secs)
+2024-09-17 05:44:10	[Main thread]	INFO	Achilles	achilles	Analysis 903 (Number of distinct drug era concepts per person) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.149 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 903 (0.184711 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 904 (Number of persons with at least one drug era, by drug_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.125 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 904 (0.160111 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 906 (Distribution of age by drug_concept_id) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.316 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 906 (0.350518 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 907 (Distribution of drug era length, by drug_concept_id) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.129 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 907 (0.161085 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 920 (Number of drug era records by drug era start month) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0928 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 920 (0.124324 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 1000 (Number of persons with at least one condition era, by condition_concept_id) -- START
+2024-09-17 05:44:11	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0561 secs
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1000 (0.087399 secs)
+2024-09-17 05:44:11	[Main thread]	INFO	Achilles	achilles	Analysis 1001 (Number of condition era records, by condition_concept_id) -- START
+2024-09-17 05:44:12	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0379 secs
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1001 (0.070781 secs)
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	Analysis 1002 (Number of persons by condition era start month, by condition_concept_id) -- START
+2024-09-17 05:44:12	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.136 secs
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1002 (0.170160 secs)
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	Analysis 1003 (Number of distinct condition era concepts per person) -- START
+2024-09-17 05:44:12	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.171 secs
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1003 (0.198156 secs)
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	Analysis 1004 (Number of persons with at least one condition era, by condition_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:12	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.118 secs
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1004 (0.144877 secs)
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	Analysis 1006 (Distribution of age by condition_concept_id) -- START
+2024-09-17 05:44:12	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.229 secs
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1006 (0.256576 secs)
+2024-09-17 05:44:12	[Main thread]	INFO	Achilles	achilles	Analysis 1007 (Distribution of condition era length, by condition_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.181 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1007 (0.215098 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1020 (Number of condition era records by condition era start month) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.113 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1020 (0.149118 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1100 (Number of persons by location 3-digit zip) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.014 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1100 (0.045943 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1101 (Number of persons by location state) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.012 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1101 (0.040029 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1102 (Number of care sites by location 3-digit zip) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00835 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1102 (0.036074 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1103 (Number of care sites by location state) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0075 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1103 (0.037762 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1200 (Number of persons by place of service) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00818 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1200 (0.035930 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1201 (Number of visits by place of service) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00727 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1201 (0.035011 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1202 (Number of care sites by place of service) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00583 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1202 (0.037323 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1203 (Number of visits by place of service discharge type) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00957 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1203 (0.038208 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1300 (Number of persons with at least one visit detail, by visit_detail_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00955 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1300 (0.038493 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1301 (Number of visit detail records, by visit_detail_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00765 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1301 (0.035686 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1302 (Number of persons by visit detail start month, by visit_detail_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0145 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1302 (0.041774 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1303 (Number of distinct visit detail concepts per person) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0169 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1303 (0.044064 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1304 (Number of persons with at least one visit detail, by visit_detail_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00958 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1304 (0.037504 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1306 (Distribution of age by visit_detail_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.021 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1306 (0.049193 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1312 (Number of persons with at least one visit detail, by calendar year by gender by age decile) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00998 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1312 (0.037143 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1313 (Distribution of length of stay by visit_detail_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.023 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1313 (0.049661 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1320 (Number of visit detail records by visit detail start month) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00859 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1320 (0.036773 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1321 (Number of persons by visit start year) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00936 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1321 (0.040110 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1325 (Number of visit_detail records by visit_detail_source_concept_id) -- START
+2024-09-17 05:44:13	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00847 secs
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1325 (0.039989 secs)
+2024-09-17 05:44:13	[Main thread]	INFO	Achilles	achilles	Analysis 1326 (Number of records by domain by visit_detail_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0563 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1326 (0.088797 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1406 (Length of payer plan (days) of first payer plan period by gender) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.02 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1406 (0.049102 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1407 (Length of payer plan (days) of first payer plan period by age decile) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0223 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1407 (0.051337 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1408 (Number of persons by length of payer plan period, in 30d increments) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0103 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1408 (0.039782 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1409 (Number of persons with continuous payer plan in each year) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0191 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1409 (0.045856 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1410 (Number of persons with continuous payer plan in each month) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0124 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1410 (0.039077 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1411 (Number of persons by payer plan period start month) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00759 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1411 (0.035160 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1412 (Number of persons by payer plan period end month) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00785 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1412 (0.035578 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1413 (Number of persons by number of payer plan periods) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00987 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1413 (0.037556 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1425 (Number of payer_plan_period records by payer_source_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00593 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1425 (0.033223 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1800 (Number of persons with at least one measurement occurrence, by measurement_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00812 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1800 (0.035560 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1801 (Number of measurement occurrence records, by measurement_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0113 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1801 (0.038938 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1802 (Number of persons by measurement occurrence start month, by measurement_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0131 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1802 (0.039683 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1803 (Number of distinct mesurement occurrence concepts per person) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.017 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1803 (0.043201 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1804 (Number of persons with at least one mesurement  occurrence, by measurement_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0117 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1804 (0.038595 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1805 (Number of measurement occurrence records, by measurement_concept_id by measurement_type_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.013 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1805 (0.039680 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1806 (Distribution of age by measurement_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0229 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1806 (0.049431 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1807 (Number of measurement occurrence records, by measurement_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00764 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1807 (0.035526 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1811 (Number of measurement records with a valid value (with a mapped, non-null value_as_number)) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00771 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1811 (0.035155 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1814 (Number of measurement records with no value (numeric, string, or concept)) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00784 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1814 (0.035512 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1815 (Distribution of numeric values, by measurement_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0287 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1815 (0.064504 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1816 (Distribution of low range, by measurement_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:14	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0332 secs
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1816 (0.065640 secs)
+2024-09-17 05:44:14	[Main thread]	INFO	Achilles	achilles	Analysis 1817 (Distribution of high range, by measurement_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0439 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1817 (0.082594 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1818 (Number of measurement records below/within/above normal range, by measurement_concept_id and unit_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0223 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1818 (0.058881 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1819 (Number of measurement records, by measurement_concept_id, with a valid value (with a mapped, non-null value_as_number)) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0104 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1819 (0.042077 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1820 (Number of measurement records  by measurement start month) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00966 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1820 (0.044233 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1821 (Number of measurement records with no numeric value) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00875 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1821 (0.047554 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1822 (Number of measurement records, by measurement_concept_id and value_as_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0116 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1822 (0.040851 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1823 (Number of measurement records, by measurement_concept_id and operator_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00794 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1823 (0.036234 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1825 (Number of measurement records by measurement_source_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00714 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1825 (0.036166 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1826 (Number of measurement records by value_as_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00776 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1826 (0.034166 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1827 (Number of measurement records by unit_concept_id) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00701 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1827 (0.032679 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1891 (Percentage of total persons that have at least x measurements) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00994 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1891 (0.035867 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 1900 (Source values mapped to concept_id 0 by table, by column, by source_value) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.074 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 1900 (0.100850 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 2000 (Number of patients with at least 1 Dx and 1 Rx) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0661 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2000 (0.094804 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 2001 (Number of patients with at least 1 Dx and 1 Proc) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0225 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2001 (0.058069 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 2002 (Number of patients with at least 1 Meas, 1 Dx and 1 Rx) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0392 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2002 (0.073601 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 2003 (Number of patients with at least 1 Visit) -- START
+2024-09-17 05:44:15	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0181 secs
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2003 (0.052805 secs)
+2024-09-17 05:44:15	[Main thread]	INFO	Achilles	achilles	Analysis 2004 (Number of distinct patients that overlap between specific domains) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 1.52 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2004 (1.551151 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2100 (Number of persons with at least one device exposure, by device_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00779 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2100 (0.035530 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2101 (Number of device exposure records, by device_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00759 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2101 (0.036148 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2102 (Number of persons by device records  start month, by device_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00916 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2102 (0.035922 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2104 (Number of persons with at least one device exposure, by device_concept_id by calendar year by gender by age decile) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0111 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2104 (0.038435 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2105 (Number of device exposure records, by device_concept_id by device_type_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.011 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2105 (0.040663 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2106 (Distribution of age by device_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0276 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2106 (0.058067 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2120 (Number of device_exposure records by device_exposure start month) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0102 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2120 (0.039691 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2125 (Number of device_exposure records by device_source_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00761 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2125 (0.035910 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2191 (Percentage of total persons that have at least x device exposures) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00938 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2191 (0.038279 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2200 (Number of persons with at least one note by  note_type_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00781 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2200 (0.037118 secs)
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	Analysis 2201 (Number of note records, by note_type_concept_id) -- START
+2024-09-17 05:44:17	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00618 secs
+2024-09-17 05:44:17	[Main thread]	INFO	Achilles	achilles	[Main Analysis] [COMPLETE] 2201 (0.034941 secs)
+2024-09-17 05:44:23	[Main thread]	INFO	Achilles	achilles	Merging scratch Achilles tables
+2024-09-17 05:44:24	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.356 secs
+2024-09-17 05:44:24	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0861 secs
+2024-09-17 05:44:24	[Main thread]	INFO	Achilles	achilles	Done. Achilles results can now be found in schema polites_omop_ach_res.dbo
+2024-09-17 05:44:24	[Main thread]	INFO	Achilles	achilles	Dropping scratch Achilles tables from schema #
+2024-09-17 05:44:26	[Main thread]	TRACE	Achilles	dropAllScratchTables	Initiating cluster consisting only of main thread
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0033 secs
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00369 secs
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00309 secs
+2024-09-17 05:44:26	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00528 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00369 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00366 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00346 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00335 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00583 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00394 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00361 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00692 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00325 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00676 secs
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:27	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00454 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.004 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00389 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00357 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00587 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00317 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00476 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0055 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.006 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00521 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00346 secs
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:28	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00374 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00557 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00386 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00371 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00375 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00326 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00421 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00316 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00429 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00385 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00335 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00307 secs
+2024-09-17 05:44:29	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00469 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00487 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00486 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00417 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00335 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0031 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00377 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00427 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00475 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00354 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00304 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00387 secs
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:30	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00318 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00305 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00416 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00421 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00302 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00452 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00314 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00439 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00321 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00304 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00849 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00378 secs
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:31	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00315 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0037 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00584 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00464 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00438 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00521 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00347 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0035 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00372 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00401 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00494 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00417 secs
+2024-09-17 05:44:32	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00548 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00363 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00422 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00412 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00347 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00339 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00882 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00393 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00331 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00383 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00351 secs
+2024-09-17 05:44:33	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00322 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00331 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00728 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00325 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00491 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.007 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00324 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00423 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00316 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00398 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00486 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.004 secs
+2024-09-17 05:44:34	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00525 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0037 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0039 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00838 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00437 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00885 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00496 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00548 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00324 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00327 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00406 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00411 secs
+2024-09-17 05:44:35	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00546 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00601 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00541 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00409 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0037 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00353 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00316 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00904 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00319 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0033 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00708 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00502 secs
+2024-09-17 05:44:36	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00432 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00418 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00435 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00372 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00347 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00385 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00398 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00423 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00409 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00325 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00326 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00334 secs
+2024-09-17 05:44:37	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0032 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00467 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00834 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0032 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00538 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00372 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00357 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0038 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00326 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00498 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00442 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0037 secs
+2024-09-17 05:44:38	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00406 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0039 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00399 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00453 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00361 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00348 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00327 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00429 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00363 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00341 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00334 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00416 secs
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:39	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00396 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00417 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00624 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00403 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00316 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00828 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00379 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0063 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00455 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00404 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00396 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00444 secs
+2024-09-17 05:44:40	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00449 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00446 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00436 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00413 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00426 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00566 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00433 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00417 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00449 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00417 secs
+2024-09-17 05:44:41	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00644 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00495 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00406 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00382 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00597 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0056 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00493 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00437 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00398 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00337 secs
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:42	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00339 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00404 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0093 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0051 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.0054 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00477 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00398 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00409 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00339 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00351 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00347 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00325 secs
+2024-09-17 05:44:43	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00328 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00399 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00512 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00403 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00404 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00394 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00529 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00371 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00411 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00373 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00363 secs
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:44	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.00306 secs
+2024-09-17 05:44:45	[Main thread]	INFO	Achilles	achilles	Temporary Achilles tables removed from schema #
+2024-09-17 05:44:45	[Main thread]	INFO	DatabaseConnector	connectSqlServer	Connecting using SQL Server driver
+2024-09-17 05:44:45	[Main thread]	INFO	DatabaseConnector	executeSql	Executing SQL took 0.163 secs
+2024-09-17 05:44:45	[Main thread]	INFO	Achilles	achilles	[Total Runtime] 50.584231 secs

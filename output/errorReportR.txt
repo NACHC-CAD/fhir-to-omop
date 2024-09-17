@@ -1,26 +1,22 @@
 Thread: Main
-Message:  Error executing SQL:
-com.microsoft.sqlserver.jdbc.SQLServerException: Database 'synthea_omop_ach_res' does not exist.
-An error report has been created at  output/achillesErrorCreateAchillesAnalysis.txt
+Message:  java.lang.UnsupportedClassVersionError: com/microsoft/sqlserver/jdbc/SQLServerDriver has been compiled by a more recent version of the Java Runtime (class file version 55.0), this version of the Java Runtime only recognizes class file versions up to 52.0
 Level:  FATAL
-Time:  2024-06-23 22:17:16
+Time:  2024-09-17 05:37:20
 
 Stack trace:
 11: (function (condition) 
 {
     if (is(condition, "error")) {
         log("FATAL"
-10: signalCondition(cnd)
-9: signal_abort(cnd, .file)
-8: abort(paste("Error executing SQL:", message, paste("An error report has bee
-7: .createErrorReport(dbms, err$message, sqlStatement, errorReportFile)
-6: value[[3]](cond)
-5: tryCatchOne(expr, names, parentenv, handlers[[1]])
-4: tryCatchList(expr, classes, parentenv, handlers)
-3: tryCatch({
-    startQuery <- Sys.time()
-    rowsAffected <- c(rowsAffected, l
-2: DatabaseConnector::executeSql(connection = connection, sql = sql, errorRepo
+10: stop(list("java.lang.UnsupportedClassVersionError: com/microsoft/sqlserver/
+9: rJava::.jfindClass(as.character(driverClass)[1])
+8: rJava::is.jnull(rJava::.jfindClass(as.character(driverClass)[1]))
+7: loadJdbcDriver(driverClass, classPath)
+6: getJbcDriverSingleton("com.microsoft.sqlserver.jdbc.SQLServerDriver", jarPa
+5: connectSqlServer(connectionDetails)
+4: connectUsingJdbc(connectionDetails)
+3: DatabaseConnector::connect(connectionDetails = connectionDetails)
+2: .getSourceName(connectionDetails, cdmDatabaseSchema)
 1: Achilles::achilles(connectionDetails = connectionDetails, cdmVersion = cdmV
 
 R version:
