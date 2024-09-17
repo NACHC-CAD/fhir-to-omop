@@ -9,6 +9,7 @@ import java.util.List;
 import org.nachc.tools.fhirtoomop.util.db.connection.BootstrapConnectionFactory;
 import org.nachc.tools.fhirtoomop.util.db.datatables.VocabularyTablesList;
 import org.nachc.tools.fhirtoomop.util.params.AppParams;
+import org.nachc.tools.fhirtoomop.util.uploadcsv.FileUploader;
 import org.yaorma.database.Database;
 
 import com.nach.core.util.file.FileUtil;
@@ -17,7 +18,7 @@ import com.nach.core.util.http.HttpRequestClient;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class UploadCsvFilesFromZipForSqlServer {
+public class UploadCsvFilesFromZipForSqlServer extends FileUploader {
 
 	private static final String ZIP_DIR = AppParams.getCdmCsvZipFileLocation();
 
@@ -32,8 +33,8 @@ public class UploadCsvFilesFromZipForSqlServer {
 	private static final String SCHEMA = AppParams.getSchemaName();
 
 	public static void main(String[] args) {
-//		uploadAll();
-//		uploadDatatables();
+		//		uploadAll();
+		//		uploadDatatables();
 		uploadTerminologyTables();
 	}
 
@@ -42,7 +43,7 @@ public class UploadCsvFilesFromZipForSqlServer {
 		File file = null;
 		try {
 			download();
-			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
+			UploadCsvFilesFromZipForPostgres upload = new UploadCsvFilesFromZipForPostgres();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");
@@ -63,7 +64,6 @@ public class UploadCsvFilesFromZipForSqlServer {
 		File file = null;
 		try {
 			download();
-			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");
@@ -71,6 +71,7 @@ public class UploadCsvFilesFromZipForSqlServer {
 			List<String> ignoreList = VocabularyTablesList.getTablesList();
 			FileUtil.rmdir(unzipDir);
 			FileUtil.mkdirs(unzipDir);
+			UploadCsvFilesFromZipForSqlServer upload = new UploadCsvFilesFromZipForSqlServer();
 			upload.setIgnoreList(ignoreList);
 			upload.exec(DB, SCHEMA, is, dir, conn);
 		} catch (Exception exp) {
@@ -86,7 +87,7 @@ public class UploadCsvFilesFromZipForSqlServer {
 		File file = null;
 		try {
 			download();
-			FileUploaderForSqlServer upload = new FileUploaderForSqlServer();
+			UploadCsvFilesFromZipForPostgres upload = new UploadCsvFilesFromZipForPostgres();
 			File dir = new File(ZIP_DIR);
 			file = new File(dir, ZIP_NAME);
 			File unzipDir = new File(dir, "csv");
@@ -122,6 +123,42 @@ public class UploadCsvFilesFromZipForSqlServer {
 			log.info("DOWNLOAD: " + DOWNLOAD);
 			log.info("DIR: " + FileUtil.getCanonicalPath(dir));
 		}
+	}
+
+	@Override
+	protected void uploadFile(String dbName, String schemaName, File file, Connection conn) {
+		String fileName = file.getName();
+		String tableName = fileName.substring(0, fileName.indexOf("."));
+		String fullName = dbName + "." + schemaName + "." + tableName;
+		log.info("-----------");
+		log.info("Uploading file: " + FileUtil.getCanonicalPath(file));
+		log.info("Table Name: " + fullName);
+		if(ignore(tableName) == true) {
+			log.info("SKIPPING TABLE: " + fullName);
+			this.ignored.add(fullName);
+			return;
+		}
+		try {
+			String sqlString = "";
+			sqlString += "BULK INSERT " + fullName + " \n";
+			sqlString += "FROM '" + FileUtil.getCanonicalPath(file) + "' \n";
+			sqlString += "WITH \n";
+			sqlString += "( \n";
+			sqlString += "    FIELDTERMINATOR = ',', \n";
+			sqlString += "    ROWTERMINATOR = '\n', \n";
+			sqlString += "    FIRSTROW = 2, \n";
+			sqlString += "    FORMAT = 'CSV', \n";
+			sqlString += "    TABLOCK \n";
+			sqlString += ") \n";		
+			Database.update("use " + dbName, conn);
+			Database.update(sqlString, conn);
+			this.success.add(fullName);
+		} catch(Exception exp) {
+			log.info("COULD NOT UPLOAD FILE (EXCEPTION OCCURRED): ");
+			log.info(exp.getMessage());
+			this.failure.add(fullName);
+		}
+		log.info("Done with file: " + FileUtil.getCanonicalPath(file));
 	}
 
 }

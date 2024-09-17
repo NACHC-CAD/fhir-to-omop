@@ -196,8 +196,8 @@ public abstract class TruncateTables {
 	//
 
 	public void truncateDataTables(Connection conn) {
-		String dbName = AppParams.getFullySpecifiedDatabaseName();
-		String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
+		String dbName = AppParams.getDatabaseName();
+		String schemaName = AppParams.getSchemaName();
 		this.truncateDataTables(dbName, schemaName, conn);
 		log.info("Done.");
 	}
