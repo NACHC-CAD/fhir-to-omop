@@ -26,6 +26,10 @@ public class RunAchilles {
 
 	public static void exec() {
 		log.info("Installing and running Achilles...");
+		log.info("Installing Achilles...");
+		// TODO: NEED A FIX FOR THIS!
+		// InstallAchilles.exec();
+		log.info("Running Achilles...");
 		runAchilles();
 		log.info("Done with Achilles.");
 	}

@@ -304,7 +304,7 @@ public class AppParams extends AppParamsInitialization {
 	// ---
 	
 	public static String getDatabaseName() {
-		String rtn = getFullySpecifiedCdmSchemaName();
+		String rtn = getFullySpecifiedDatabaseName();
 		return getDatabasePart(rtn);
 	}
 

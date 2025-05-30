@@ -87,6 +87,7 @@ public abstract class TruncateTables {
 			} catch (Exception exp) {
 				log.info("An error occured trying to truncate table: " + tableName);
 				failure.add(schemaName + "." + fullTableName);
+				throw(new RuntimeException(exp));
 			}
 		}
 	}
@@ -184,9 +185,13 @@ public abstract class TruncateTables {
 	//
 	
 	public void truncateAllTables() {
+		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
+		this.truncateAllTables(conn);
+	}
+
+	public void truncateAllTables(Connection conn) {
 		String dbName = AppParams.getDatabaseName();
 		String schemaName = AppParams.getSchemaName();
-		Connection conn = BootstrapConnectionFactory.getBootstrapConnection();
 		this.truncateAllTables(dbName, schemaName, conn);
 		log.info("Done.");
 	}

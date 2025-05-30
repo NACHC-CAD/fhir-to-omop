@@ -43,7 +43,7 @@ public class CDM03_CreateCdmSourceRecordInCdm {
 		sqlString = sqlString.replace("@cdm_version_concept_id", AppParams.getCdmVersionConceptId());
 		sqlString = sqlString.replace("@cdm_version", AppParams.getCdmVersion());
 		sqlString = sqlString.replace("@vocabulary_version", AppParams.getVocabularyVersion());
-		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getDatabaseName());
+		sqlString = sqlString.replace("<ohdsiDbName>", AppParams.getFullySpecifiedCdmSchemaName());
 		log.info("SQLSTRING: \n\n" + sqlString);
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done creating CDM source record in CDM for Atlas record");

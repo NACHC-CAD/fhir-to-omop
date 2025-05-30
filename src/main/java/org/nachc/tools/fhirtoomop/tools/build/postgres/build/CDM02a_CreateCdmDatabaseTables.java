@@ -32,10 +32,10 @@ public class CDM02a_CreateCdmDatabaseTables {
 		log.info("Creating CDM database tables...");
 		log.info("Got connection...");
 		log.info("Running script...");
-		String dbName = AppParams.getDatabaseName();
-		log.info("DB NAME: " + dbName);
+		String schemaName = AppParams.getFullySpecifiedCdmSchemaName();
+		log.info("SCHEMA NAME: " + schemaName);
 		String sqlString = SQL;
-		sqlString = sqlString.replace("@cdmDatabaseSchema", dbName);
+		sqlString = sqlString.replace("@cdmDatabaseSchema", schemaName);
 		log.info("Running script:\n\n" + sqlString + "\n\n");
 		Database.executeSqlScript(sqlString, conn);
 		log.info("Done running script.");
